@@ -47,7 +47,7 @@ export function Hero() {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-background py-20 lg:py-0">
       {/* Background patterns baseados no Design System da UPDO */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_45%_at_50%_50%,var(--color-primary)_0%,transparent_100%)] opacity-[0.05]" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_30%,rgba(34,197,94,0.07),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(59,130,246,0.05),transparent_40%)]" />
 
       {/* Grid pattern overlay para visual tecnológico */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:42px_42px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
@@ -93,7 +93,7 @@ export function Hero() {
             >
               <Button
                 size="lg"
-                className="group relative h-16 rounded-full px-10 text-lg font-bold shadow-xl shadow-accent/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-accent/40 active:scale-95 w-full sm:w-auto overflow-hidden bg-accent text-accent-foreground border-none"
+                className="group relative h-16 rounded-full px-10 text-lg font-bold shadow-[0_0_20px_rgba(34,197,94,0.25)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.40)] active:scale-95 w-full sm:w-auto overflow-hidden bg-accent text-accent-foreground border-none"
               >
                 {/* Efeito de brilho (Glow) no hover */}
                 <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] motion-reduce:animate-none pointer-events-none" />
@@ -111,24 +111,26 @@ export function Hero() {
             {/* Micro Prova Social */}
             <motion.div
               variants={itemVariants}
-              className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4"
+              className="mt-10 flex flex-col gap-3"
             >
-              <div className="flex flex-col">
-                <span className="text-2xl font-black font-heading text-foreground">
-                  +31%
-                </span>
-                <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
-                  crescimento anual
-                </span>
-              </div>
-              <div className="h-8 w-px bg-border hidden sm:block" />
-              <div className="flex flex-col">
-                <span className="text-2xl font-black font-heading text-foreground">
-                  +R$ 1.5M
-                </span>
-                <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
-                  em escala operacional
-                </span>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-xl font-black font-heading text-foreground">
+                    +125
+                  </span>
+                  <span className="text-sm text-muted-foreground font-medium">
+                    empresas atendidas
+                  </span>
+                </div>
+                <div className="h-4 w-px bg-border hidden sm:block" />
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-xl font-black font-heading text-foreground">
+                    +R$ 750M
+                  </span>
+                  <span className="text-sm text-muted-foreground font-medium">
+                    gerados em vendas
+                  </span>
+                </div>
               </div>
             </motion.div>
           </motion.div>

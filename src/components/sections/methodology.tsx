@@ -60,7 +60,10 @@ export function Methodology() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
           >
-            <h2 className="font-heading text-4xl md:text-6xl font-black tracking-tight text-foreground leading-[1.1]">
+            <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-primary/70">
+              Metodologia
+            </span>
+            <h2 className="mt-4 font-heading text-4xl md:text-6xl font-black tracking-tight text-foreground leading-[1.1]">
               Sua empresa não precisa de <br className="hidden md:block" />
               <span className="text-muted-foreground/30">mais marketing.</span>
             </h2>
@@ -138,42 +141,6 @@ export function Methodology() {
             ))}
           </div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-32 flex flex-col md:flex-row items-center justify-between border-t border-border/50 pt-10 gap-6"
-        >
-          <div className="flex items-center gap-4">
-            <div className="flex -space-x-2">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="w-8 h-8 rounded-full border-2 border-background bg-muted overflow-hidden flex items-center justify-center bg-linear-to-br from-blue-50 to-blue-100"
-                >
-                  <span className="text-[8px] font-bold text-blue-400">UP</span>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-[0.3em] font-black text-foreground">
-                Estrutura de Crescimento UPDO v2.0
-              </span>
-              <span className="text-[9px] text-muted-foreground uppercase tracking-widest">
-                Framework Proprietário • 2024/2026
-              </span>
-            </div>
-          </div>
-          <a
-            href="#contato"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors duration-200 cursor-pointer group/cta"
-          >
-            Agendar um diagnóstico
-            <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover/cta:translate-x-1" />
-          </a>
-        </motion.div>
       </div>
     </section>
   );
