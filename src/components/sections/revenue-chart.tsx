@@ -12,36 +12,44 @@ import {
 } from "recharts";
 
 const data = [
-  { month: "Jan", realizado: 417825, meta: 470727 },
-  { month: "Fev", realizado: 427562, meta: 441447 },
-  { month: "Mar", realizado: 462577, meta: 450130 },
-  { month: "Abr", realizado: 520555, meta: 472681 },
-  { month: "Mai", realizado: 560175, meta: 473065 },
+  { month: "Jan", realizado: 485812, meta: 470727 },
+  { month: "Fev", realizado: 427563, meta: 441447 },
+  { month: "Mar", realizado: 462578, meta: 450130 },
+  { month: "Abr", realizado: 520556, meta: 472681 },
+  { month: "Mai", realizado: 560176, meta: 473065 },
   { month: "Jun", realizado: 570437, meta: 475920 },
-  { month: "Jul", realizado: 583029, meta: 493489 },
+  { month: "Jul", realizado: 553029, meta: 493489 },
   { month: "Ago", realizado: 820837, meta: 511484 },
   { month: "Set", realizado: 592763, meta: 531708 },
   { month: "Out", realizado: 573343, meta: 514676 },
   { month: "Nov", realizado: 538264, meta: 486986 },
-  { month: "Dez", realizado: 512637, meta: 477470 },
+  { month: "Dez", realizado: 473646, meta: 477470 },
 ];
 
 const data2024Total = 5013899.94;
-const data2025Total = 6579004.0;
+const data2025Total = 6579003.33;
 const growthValue = data2025Total - data2024Total;
 const growthPercent = (growthValue / data2024Total) * 100;
 
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
-    const isHighlight =
-      payload[0].payload.month === "Ago" ||
-      payload[0].payload.month === "Nov" ||
-      payload[0].payload.month === "Dez";
+    const realizadoEntry = payload.find((p: any) => p.dataKey === "realizado");
+    const metaEntry = payload.find((p: any) => p.dataKey === "meta");
+    const month = payload[0]?.payload?.month;
+
+    const isHighlight = month === "Ago" || month === "Nov";
+    const isBelowTarget = month === "Dez" || month === "Fev";
+
+    const realizado = realizadoEntry?.value ?? 0;
+    const meta = metaEntry?.value ?? 0;
+    const diff = meta > 0 ? ((realizado - meta) / meta) * 100 : 0;
+    const diffLabel = `${diff >= 0 ? "+" : ""}${diff.toFixed(1)}%`;
+    const aboveMeta = diff >= 0;
 
     return (
       <div className="rounded-lg border bg-background p-3 shadow-xl ring-1 ring-black/5">
         <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-muted-foreground italic">
-          {payload[0].payload.month} 2025
+          {month} 2025
         </p>
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between gap-4">
@@ -58,7 +66,7 @@ const CustomTooltip = ({ active, payload }: any) => {
                 isHighlight ? "text-accent" : "text-primary"
               }`}
             >
-              R$ {payload[0].value?.toLocaleString("pt-BR")}
+              R$ {realizado.toLocaleString("pt-BR")}
             </span>
           </div>
           <div className="flex items-center justify-between gap-4">
@@ -67,17 +75,25 @@ const CustomTooltip = ({ active, payload }: any) => {
               Projetado:
             </span>
             <span className="text-xs font-bold font-heading text-muted-foreground">
-              R$ {payload[0].payload.meta?.toLocaleString("pt-BR")}
+              R$ {meta.toLocaleString("pt-BR")}
             </span>
           </div>
-          {isHighlight && (
-            <div className="mt-1 pt-1 border-t border-border/50">
-              <p className="text-[9px] font-bold text-accent uppercase tracking-tighter">
-                {payload[0].payload.month === "Ago"
-                  ? "★ Recorde do Ano"
-                  : "✓ Escala Confirmada"}
-              </p>
-            </div>
+          <div className="mt-1 pt-1 border-t border-border/50 flex items-center justify-between">
+            <span className="text-[9px] font-bold uppercase tracking-tighter text-muted-foreground">
+              vs. Meta
+            </span>
+            <span
+              className={`text-sm font-black font-heading ${
+                aboveMeta ? "text-accent" : "text-red-400"
+              }`}
+            >
+              {diffLabel}
+            </span>
+          </div>
+          {isHighlight && month === "Ago" && (
+            <p className="text-[9px] font-bold text-accent uppercase tracking-tighter">
+              ★ Recorde do Ano
+            </p>
           )}
         </div>
       </div>
@@ -169,7 +185,8 @@ export function RevenueChart() {
             dot={(props) => {
               const { cx, cy, payload, index } = props;
               // Destacar o pico (Agosto - index 7) e os últimos 2 pontos
-              const isHighlight = index === 7 || index >= data.length - 2;
+              // Ago (index 7) = record; Nov (index 10) = above target; Fev (1) e Dez (11) = below target
+              const isHighlight = index === 7 || index === 10;
               if (isHighlight) {
                 return (
                   <circle
