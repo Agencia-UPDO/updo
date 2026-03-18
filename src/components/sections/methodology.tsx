@@ -66,8 +66,13 @@ export function Methodology() {
             </h2>
             <div className="mt-6 flex items-center gap-4">
               <div className="w-12 h-1 bg-accent rounded-full" />
-              <p className="text-xl md:text-2xl font-bold text-primary tracking-tight max-w-2xl bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
-                Precisa de uma estrutura que sustente o crescimento.
+              <p className="text-xl md:text-2xl font-bold text-primary tracking-tight max-w-2xl">
+                Precisa de uma estrutura que sustente o{" "}
+                <span className="relative inline-block">
+                  <span className="bg-[linear-gradient(90deg,_#2563eb_0%,_#16a34a_100%)] bg-clip-text text-transparent bg-[length:200%_100%] animate-[gradientShift_4s_ease-in-out_infinite] motion-reduce:animate-none">
+                    crescimento.
+                  </span>
+                </span>
               </p>
             </div>
           </motion.div>
@@ -123,8 +128,8 @@ export function Methodology() {
                     </h3>
                   </div>
 
-                  <p className="text-muted-foreground leading-relaxed text-[15px] max-w-[260px] font-medium opacity-70 group-hover:opacity-100 transition-opacity duration-500 italic border-l-2 border-transparent group-hover:border-accent/30 pl-0 group-hover:pl-4 transition-all">
-                    "{pillar.description}"
+                  <p className="text-muted-foreground leading-relaxed text-[15px] max-w-[260px] font-medium opacity-70 group-hover:opacity-100 border-l-2 border-transparent group-hover:border-accent/30 pl-0 group-hover:pl-4 transition-[opacity,padding-left,border-color] duration-500">
+                    {pillar.description}
                   </p>
                 </div>
 
@@ -161,10 +166,13 @@ export function Methodology() {
               </span>
             </div>
           </div>
-          <p className="text-xs text-muted-foreground/60 italic font-bold tracking-tight text-center md:text-right max-w-xs">
-            "Saindo do marketing de tentativa para a estrutura de escala
-            previsível."
-          </p>
+          <a
+            href="#contato"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors duration-200 cursor-pointer group/cta"
+          >
+            Agendar um diagnóstico
+            <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover/cta:translate-x-1" />
+          </a>
         </motion.div>
       </div>
     </section>

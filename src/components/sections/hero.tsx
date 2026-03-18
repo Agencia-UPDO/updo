@@ -96,17 +96,16 @@ export function Hero() {
                 className="group relative h-16 rounded-full px-10 text-lg font-bold shadow-xl shadow-accent/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-accent/40 active:scale-95 w-full sm:w-auto overflow-hidden bg-accent text-accent-foreground border-none"
               >
                 {/* Efeito de brilho (Glow) no hover */}
-                <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
+                <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] motion-reduce:animate-none pointer-events-none" />
                 Agendar diagnóstico
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="h-16 rounded-full px-10 text-lg font-bold border-2 transition-all duration-300 hover:bg-primary/5 hover:scale-105 active:scale-95 w-full sm:w-auto"
+              <Link
+                href="/metodologia"
+                className="h-16 rounded-full px-10 text-lg font-bold border-2 border-border bg-transparent inline-flex items-center justify-center transition-all duration-300 hover:bg-primary/5 hover:scale-105 active:scale-95 w-full sm:w-auto"
               >
-                <Link href="/metodologia">Nossa metodologia</Link>
-              </Button>
+                Nossa metodologia
+              </Link>
             </motion.div>
 
             {/* Micro Prova Social */}
@@ -165,8 +164,8 @@ export function Hero() {
               </div>
 
               {/* Frase estratégica abaixo do gráfico */}
-              <p className="mt-4 text-center text-[10px] font-medium text-muted-foreground italic tracking-tight">
-                "Crescimento previsível vem de estrutura, não de tentativa."
+              <p className="mt-4 text-center text-[10px] font-medium text-muted-foreground tracking-tight">
+                Crescimento previsível vem de estrutura, não de tentativa.
               </p>
 
               {/* Legenda na base do gráfico */}
