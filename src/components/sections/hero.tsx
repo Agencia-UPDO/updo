@@ -105,7 +105,7 @@ export function Hero() {
                 size="lg"
                 className="h-16 rounded-full px-10 text-lg font-bold border-2 transition-all duration-300 hover:bg-primary/5 hover:scale-105 active:scale-95 w-full sm:w-auto"
               >
-                <Link href="/como-trabalhamos">Como trabalhamos</Link>
+                <Link href="/metodologia">Nossa metodologia</Link>
               </Button>
             </motion.div>
 
