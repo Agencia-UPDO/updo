@@ -13,8 +13,32 @@ export const siteConfig = {
   },
   mainNav: [
     {
-      title: "Página Inicial",
+      title: "Home",
       href: "/",
+    },
+    {
+      title: "Como Trabalhamos",
+      href: "/como-trabalhamos",
+    },
+    {
+      title: "Serviços",
+      href: "/servicos",
+    },
+    {
+      title: "Cases",
+      href: "/cases",
+    },
+    {
+      title: "Insights",
+      href: "https://insights.updo.com.br",
+    },
+    {
+      title: "Rodrigo Bueno",
+      href: "/rodrigo-bueno",
+    },
+    {
+      title: "Diagnóstico Estratégico",
+      href: "/diagnostico",
     },
   ],
 };
