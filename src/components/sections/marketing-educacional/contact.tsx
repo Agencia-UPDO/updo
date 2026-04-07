@@ -41,6 +41,12 @@ const labelClass =
 
 export function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    nome: "",
+    instituicao: "",
+    email: "",
+    telefone: "",
+  });
   const [selected, setSelected] = useState<{
     challenge: string;
     investment: string;
@@ -49,8 +55,28 @@ export function Contact() {
     investment: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const formatPhone = (value: string) => {
+    if (!value) return value;
+    const phoneNumber = value.replace(/[^\d]/g, "");
+    const phoneNumberLength = phoneNumber.length;
+    if (phoneNumberLength < 3) return phoneNumber;
+    if (phoneNumberLength < 7) {
+      return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2)}`;
+    }
+    return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(
+      2,
+      7,
+    )}-${phoneNumber.slice(7, 11)}`;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formattedValue = formatPhone(e.target.value);
+    setFormData((prev) => ({ ...prev, telefone: formattedValue }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     // Simulação de envio
     setIsSubmitted(true);
 
@@ -60,15 +86,30 @@ export function Contact() {
         event: "Lead",
         formName: "Diagnóstico Educacional",
         location: "marketing-educacional",
+        formData: {
+          ...formData,
+          ...selected,
+        },
       });
     }
 
-    // Redireciona para o WhatsApp após um pequeno delay
+    // Monta a mensagem para o WhatsApp
+    const message = `Olá! Acabei de preencher o formulário no site:
+    
+*Nome:* ${formData.nome}
+*Instituição:* ${formData.instituicao}
+*E-mail:* ${formData.email}
+*Telefone:* ${formData.telefone}
+*Desafio:* ${selected.challenge}
+*Investimento:* ${selected.investment}
+
+Gostaria de agendar meu diagnóstico gratuito!`;
+
+    const whatsappUrl = `https://wa.me/5541987112003?text=${encodeURIComponent(message)}`;
+
+    // Redireciona para o WhatsApp após um pequeno delay para o usuário ver o sucesso
     setTimeout(() => {
-      window.open(
-        "https://wa.me/5541987112003?text=Olá, acabei de preencher o formulário no site e gostaria de receber um diagnóstico da captação de alunos da minha instituição",
-        "_blank",
-      );
+      window.open(whatsappUrl, "_blank");
     }, 1500);
   };
 
@@ -130,6 +171,13 @@ export function Contact() {
                         name="nome"
                         id="nome"
                         required
+                        value={formData.nome}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            nome: e.target.value,
+                          }))
+                        }
                         placeholder="Como prefere ser chamado"
                         className={inputClass}
                       />
@@ -141,6 +189,13 @@ export function Contact() {
                         name="instituicao"
                         id="instituicao"
                         required
+                        value={formData.instituicao}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            instituicao: e.target.value,
+                          }))
+                        }
                         placeholder="Nome da instituição"
                         className={inputClass}
                       />
@@ -155,6 +210,13 @@ export function Contact() {
                         name="email"
                         id="email"
                         required
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            email: e.target.value,
+                          }))
+                        }
                         placeholder="seu@email.com"
                         className={inputClass}
                       />
@@ -166,8 +228,11 @@ export function Contact() {
                         name="telefone"
                         id="telefone"
                         required
-                        placeholder="Seu melhor WhatsApp"
+                        value={formData.telefone}
+                        onChange={handlePhoneChange}
+                        placeholder="(41) 99999-9999"
                         className={inputClass}
+                        maxLength={15}
                       />
                     </div>
                   </div>
