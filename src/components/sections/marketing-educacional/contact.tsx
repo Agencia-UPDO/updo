@@ -53,7 +53,7 @@ export function Contact() {
     e.preventDefault();
     // Simulação de envio
     setIsSubmitted(true);
-    
+
     // Dispara o dataLayer
     if (typeof window !== "undefined" && (window as any).dataLayer) {
       (window as any).dataLayer.push({
@@ -67,7 +67,7 @@ export function Contact() {
     setTimeout(() => {
       window.open(
         "https://wa.me/5541987112003?text=Olá, acabei de preencher o formulário no site e gostaria de receber um diagnóstico da captação de alunos da minha instituição",
-        "_blank"
+        "_blank",
       );
     }, 1500);
   };
@@ -97,8 +97,8 @@ export function Contact() {
               <span className="text-white/25">da sua captação de alunos.</span>
             </h2>
             <p className="mt-4 text-white/40 text-base max-w-xl mx-auto leading-relaxed">
-              Vamos analisar sua estrutura atual e mostrar onde você está perdendo
-              alunos e como criar previsibilidade de matrículas.
+              Vamos analisar sua estrutura atual e mostrar onde você está
+              perdendo alunos e como criar previsibilidade de matrículas.
             </p>
           </motion.div>
 
@@ -167,7 +167,9 @@ export function Contact() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Principal desafio */}
                     <div className="flex flex-col gap-2">
-                      <label className={`${labelClass} flex items-center gap-1.5`}>
+                      <label
+                        className={`${labelClass} flex items-center gap-1.5`}
+                      >
                         <Target className="h-3 w-3" />
                         Principal desafio hoje
                       </label>
@@ -222,7 +224,9 @@ export function Contact() {
 
                     {/* Investimento em marketing */}
                     <div className="flex flex-col gap-2">
-                      <label className={`${labelClass} flex items-center gap-1.5`}>
+                      <label
+                        className={`${labelClass} flex items-center gap-1.5`}
+                      >
                         <Wallet className="h-3 w-3" />
                         Investimento em marketing
                       </label>
@@ -278,8 +282,8 @@ export function Contact() {
 
                   <div className="flex flex-col gap-5 pt-4 border-t border-white/[0.07]">
                     <p className="text-sm font-medium text-white/50 text-center leading-relaxed">
-                      Com base nas suas respostas, preparamos um diagnóstico inicial
-                      mais preciso.
+                      Com base nas suas respostas, preparamos um diagnóstico
+                      inicial mais preciso.
                     </p>
                     <div className="flex justify-center">
                       <button
