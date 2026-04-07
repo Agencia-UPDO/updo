@@ -127,6 +127,8 @@ export function Contact() {
                       <label className={labelClass}>Nome</label>
                       <input
                         type="text"
+                        name="nome"
+                        id="nome"
                         required
                         placeholder="Como prefere ser chamado"
                         className={inputClass}
@@ -136,6 +138,8 @@ export function Contact() {
                       <label className={labelClass}>Instituição</label>
                       <input
                         type="text"
+                        name="instituicao"
+                        id="instituicao"
                         required
                         placeholder="Nome da instituição"
                         className={inputClass}
@@ -148,6 +152,8 @@ export function Contact() {
                       <label className={labelClass}>E-mail</label>
                       <input
                         type="email"
+                        name="email"
+                        id="email"
                         required
                         placeholder="seu@email.com"
                         className={inputClass}
@@ -157,6 +163,8 @@ export function Contact() {
                       <label className={labelClass}>Telefone</label>
                       <input
                         type="tel"
+                        name="telefone"
+                        id="telefone"
                         required
                         placeholder="Seu melhor WhatsApp"
                         className={inputClass}
@@ -175,6 +183,8 @@ export function Contact() {
                       </label>
                       <div className="relative">
                         <select
+                          name="desafio"
+                          id="desafio"
                           required
                           value={selected.challenge}
                           onChange={(e) =>
@@ -222,7 +232,9 @@ export function Contact() {
                       </div>
                     </div>
 
-                    {/* Investimento em marketing */}
+                    {/* Inname="investimento"
+                          id="investimento"
+                          vestimento em marketing */}
                     <div className="flex flex-col gap-2">
                       <label
                         className={`${labelClass} flex items-center gap-1.5`}
