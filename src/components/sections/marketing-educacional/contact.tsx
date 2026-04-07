@@ -232,9 +232,7 @@ export function Contact() {
                       </div>
                     </div>
 
-                    {/* Inname="investimento"
-                          id="investimento"
-                          vestimento em marketing */}
+                    {/* Investimento em marketing */}
                     <div className="flex flex-col gap-2">
                       <label
                         className={`${labelClass} flex items-center gap-1.5`}
@@ -244,6 +242,8 @@ export function Contact() {
                       </label>
                       <div className="relative">
                         <select
+                          name="investimento"
+                          id="investimento"
                           required
                           value={selected.investment}
                           onChange={(e) =>
