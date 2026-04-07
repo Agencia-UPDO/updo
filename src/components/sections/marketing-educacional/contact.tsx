@@ -57,7 +57,7 @@ export function Contact() {
     // Dispara o dataLayer
     if (typeof window !== "undefined" && (window as any).dataLayer) {
       (window as any).dataLayer.push({
-        event: "lead",
+        event: "Lead",
         formName: "Diagnóstico Educacional",
         location: "marketing-educacional",
       });
