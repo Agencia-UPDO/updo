@@ -11,6 +11,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowLeft,
   ArrowRight,
@@ -188,8 +189,18 @@ export default function CaseEducacao() {
   return (
     <main className="flex flex-col">
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="bg-[#0A1529] relative overflow-hidden pt-28 pb-24 lg:pt-40 lg:pb-32">
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <section className="relative overflow-hidden pt-28 pb-24 lg:pt-40 lg:pb-32">
+        <div className="absolute inset-0 -z-10 bg-[#0A1529]">
+          <Image
+            src="/Imagens/bg-case-educacao.jpg"
+            alt="Background educacional"
+            fill
+            className="object-cover opacity-[0.15] grayscale"
+            priority
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A1529] via-transparent to-[#0A1529]" />
+        </div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#3B82F6]/[0.05] rounded-full blur-[160px] pointer-events-none" />
 
         <div className="container mx-auto px-4 lg:px-8">
@@ -200,11 +211,11 @@ export default function CaseEducacao() {
             transition={{ duration: 0.4 }}
           >
             <Link
-              href="/#cases"
+              href="/marketing-educacional"
               className="inline-flex items-center gap-2 text-xs font-bold text-white/25 hover:text-white/60 transition-colors duration-200 mb-16"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
-              Voltar para cases
+              Voltar para soluções educacionais
             </Link>
           </motion.div>
 
@@ -697,13 +708,6 @@ export default function CaseEducacao() {
               >
                 Solicitar diagnóstico gratuito
                 <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/#cases"
-                className="inline-flex items-center gap-2 text-sm font-bold text-white/30 hover:text-white/60 transition-colors duration-200"
-              >
-                <ArrowLeft className="h-3.5 w-3.5" />
-                Ver outros cases
               </Link>
             </div>
           </motion.div>

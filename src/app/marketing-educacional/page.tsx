@@ -6,15 +6,14 @@ import { SystemPreview } from "@/components/sections/marketing-educacional/syste
 import { Services } from "@/components/sections/marketing-educacional/services";
 import { Team } from "@/components/sections/marketing-educacional/team";
 import { Cases } from "@/components/sections/marketing-educacional/cases";
-import { FAQ } from "@/components/sections/marketing-educacional/faq";
 import { Contact } from "@/components/sections/marketing-educacional/contact";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Vendas e Captação de Alunos | Estratégia de Marketing Educacional | UPDO",
-  description: "Aumente suas matrículas com um sistema previsível de captação de alunos. Consultoria em marketing educacional, processos comerciais e inteligência de dados.",
+  title: "Aumento de Matrículas | Estratégia e Marketing Educacional | UPDO",
+  description: "Sistema previsível de captação de alunos para instituições de ensino. Consultoria em marketing educacional, processos comerciais e inteligência de dados.",
   openGraph: {
-    title: "UPDO | Marketing Educacional",
+    title: "Aumento de Matrículas | UPDO",
     description: "Sistema previsível de captação de alunos para instituições de ensino.",
     images: [
       {
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default function MarketingEducacionalPage() {
   return (
     <div className="flex flex-col">
       <Hero />
@@ -38,7 +37,6 @@ export default function Home() {
       <Services />
       <Team />
       <Cases />
-      <FAQ />
       <Contact />
     </div>
   );

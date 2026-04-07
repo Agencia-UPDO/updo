@@ -41,6 +41,40 @@ export const siteConfig = {
       href: "/diagnostico",
     },
   ],
+  educationalNav: [
+    {
+      title: "Home",
+      href: "/",
+    },
+    {
+      title: "Neuromarketing",
+      href: "/#neuromarketing",
+    },
+    {
+      title: "O Método",
+      href: "/#metodologia",
+    },
+    {
+      title: "Radar",
+      href: "/#sistema",
+    },
+    {
+      title: "Serviços",
+      href: "/#servicos",
+    },
+    {
+      title: "Especialistas",
+      href: "/#especialistas",
+    },
+    {
+      title: "Dúvidas",
+      href: "/#faq",
+    },
+    {
+      title: "Cases",
+      href: "/#cases",
+    },
+  ],
 };
 
 export type SiteConfig = typeof siteConfig;
