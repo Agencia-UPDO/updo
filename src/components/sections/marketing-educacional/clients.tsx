@@ -20,11 +20,11 @@ const track = [...clients, ...clients, ...clients];
 
 export function Clients() {
   return (
-    <section className="py-16 lg:py-20 bg-background border-y border-border/40 relative overflow-hidden">
+    <section className="py-14 lg:py-16 bg-background border-y border-border/40 relative overflow-hidden">
       <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-background to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-background to-transparent" />
 
-      <div className="container mx-auto px-4 lg:px-8 mb-10 text-center">
+      <div className="container mx-auto px-4 lg:px-8 mb-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,10 +35,25 @@ export function Clients() {
           <span className="inline-flex items-center rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-accent/80">
             Autoridade Educacional
           </span>
-          <h2 className="font-heading text-3xl md:text-5xl font-black tracking-tight text-foreground leading-[1.1]">
-            Instituições que escalam{" "}
-            <span className="text-muted-foreground/30">com nosso método.</span>
+          <h2 className="font-heading text-3xl md:text-4xl font-black tracking-tight text-foreground leading-[1.1]">
+            Instituições que confiam{" "}
+            <span className="text-muted-foreground/30">na UPDO.</span>
           </h2>
+          <div className="mt-4 flex flex-col items-center justify-center gap-3 text-sm text-muted-foreground sm:flex-row sm:gap-6">
+            <div className="flex items-baseline gap-1.5">
+              <span className="font-heading text-xl font-black text-foreground">
+                +1.2M
+              </span>
+              <span className="font-medium">leads gerados</span>
+            </div>
+            <div className="hidden h-4 w-px bg-border sm:block" />
+            <div className="flex items-baseline gap-1.5">
+              <span className="font-heading text-xl font-black text-foreground">
+                +R$ 450M
+              </span>
+              <span className="font-medium">em matrículas geradas</span>
+            </div>
+          </div>
         </motion.div>
       </div>
 

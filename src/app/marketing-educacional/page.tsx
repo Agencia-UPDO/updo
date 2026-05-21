@@ -1,12 +1,11 @@
 import { Hero } from "@/components/sections/marketing-educacional/hero";
 import { Clients } from "@/components/sections/marketing-educacional/clients";
-import { Neuromarketing } from "@/components/sections/marketing-educacional/neuromarketing";
-import { Methodology } from "@/components/sections/marketing-educacional/methodology";
-import { SystemPreview } from "@/components/sections/marketing-educacional/system-preview";
+import { ConversionBarriers } from "@/components/sections/marketing-educacional/conversion-barriers";
 import { Services } from "@/components/sections/marketing-educacional/services";
-import { Team } from "@/components/sections/marketing-educacional/team";
 import { Cases } from "@/components/sections/marketing-educacional/cases";
+import { FAQ } from "@/components/sections/marketing-educacional/faq";
 import { Contact } from "@/components/sections/marketing-educacional/contact";
+import { VideoProof } from "@/components/sections/marketing-educacional/video-proof";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -31,13 +30,12 @@ export default function MarketingEducacionalPage() {
     <div className="flex flex-col">
       <Hero />
       <Clients />
-      <Neuromarketing />
-      <Methodology />
-      <SystemPreview />
-      <Services />
-      <Team />
+      <ConversionBarriers />
       <Cases />
       <Contact />
+      <VideoProof />
+      <Services />
+      <FAQ />
     </div>
   );
 }

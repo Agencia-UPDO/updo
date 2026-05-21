@@ -78,7 +78,8 @@ export function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          {navItems.map((item) => (
+          {!isEducationalPage &&
+            navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -95,7 +96,7 @@ export function Navbar() {
             >
               {item.title}
             </Link>
-          ))}
+            ))}
         </nav>
 
         {/* CTA Button (Desktop) */}
@@ -107,12 +108,13 @@ export function Navbar() {
               "rounded-full px-6 transition-all duration-300 hover:scale-105 active:scale-95 h-10",
             )}
           >
-            Agendar diagnóstico
+            {isEducationalPage ? "Analisar minha captação" : "Agendar diagnóstico"}
           </Link>
         </div>
 
         {/* Mobile Navigation */}
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        {!isEducationalPage && (
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger
             className="md:hidden"
             render={
@@ -221,7 +223,19 @@ export function Navbar() {
               </div>
             </div>
           </SheetContent>
-        </Sheet>
+          </Sheet>
+        )}
+        {isEducationalPage && (
+          <Link
+            href="#contato"
+            className={cn(
+              buttonVariants({ variant: "default" }),
+              "md:hidden h-10 rounded-full px-4 text-xs font-bold",
+            )}
+          >
+            Diagnóstico
+          </Link>
+        )}
       </div>
     </header>
   );

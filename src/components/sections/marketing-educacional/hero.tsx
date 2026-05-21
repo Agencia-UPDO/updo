@@ -5,7 +5,12 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { RevenueChart } from "./revenue-chart";
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, Target, ChevronUp } from "lucide-react";
+import {
+  ArrowRight,
+  TrendingUp,
+  Target,
+  ChevronUp,
+} from "lucide-react";
 
 export function Hero() {
   const containerVariants = {
@@ -66,39 +71,38 @@ export function Hero() {
               variants={itemVariants}
               className="mb-8 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary md:text-sm cursor-pointer hover:bg-primary/10 transition-colors"
             >
-              Marketing Educacional · Matrículas · Vendas
+              Para faculdades, pós-graduações e instituições de ensino
             </motion.div>
 
             <motion.h1
               variants={itemVariants}
               className="font-heading text-4xl font-black leading-[1.2] tracking-tight text-foreground md:text-5xl lg:text-5xl"
             >
-              Aumente suas matrículas com um{" "}
+              Capte mais alunos e transforme leads em{" "}
               <span className="text-primary italic relative inline-block">
-                sistema previsível
+                matrículas
                 <span className="absolute -bottom-1 left-0 h-1 w-full bg-primary/10 -skew-x-12" />
               </span>{" "}
-              de captação de alunos.
+              com mais previsibilidade.
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
               className="mt-8 max-w-xl text-lg text-muted-foreground md:text-xl leading-relaxed"
             >
-              Atendemos instituições como PUCPR, Faculdade IBRATE, CNA e outras
-              instituições de ensino, estruturando funis que transformam
-              interesse em matrícula.
+              Unimos mídia, landing pages, dados e processo comercial para sua
+              instituição captar alunos com mais previsibilidade e transformar
+              demanda em matrícula.
             </motion.p>
 
             <motion.ul
               variants={containerVariants}
-              className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6"
+              className="mt-8 flex flex-col gap-3"
             >
               {[
-                "Gere leads qualificados todos os dias",
-                "Pare de depender de indicação",
-                "Tenha previsibilidade de turmas",
-                "Processo real de captação",
+                "Leads com mais intenção de matrícula",
+                "Mais previsibilidade para fechar turmas",
+                "Marketing e comercial conectados ao resultado",
               ].map((bullet, i) => (
                 <motion.li
                   key={i}
@@ -126,36 +130,19 @@ export function Hero() {
               >
                 {/* Efeito de brilho (Glow) no hover */}
                 <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] motion-reduce:animate-none pointer-events-none" />
-                Quero meu diagnóstico gratuito
+                Quero analisar minha captação
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.div>
 
-            {/* Micro Prova Social */}
             <motion.div
               variants={itemVariants}
-              className="mt-10 flex flex-col gap-3"
+              className="mt-4 text-sm font-medium text-muted-foreground"
             >
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-                <div className="flex items-baseline gap-1.5">
-                  <span className="text-xl font-black font-heading text-foreground">
-                    +1.2M
-                  </span>
-                  <span className="text-sm text-muted-foreground font-medium">
-                    leads gerados
-                  </span>
-                </div>
-                <div className="h-4 w-px bg-border hidden sm:block" />
-                <div className="flex items-baseline gap-1.5">
-                  <span className="text-xl font-black font-heading text-foreground">
-                    +R$ 450M
-                  </span>
-                  <span className="text-sm text-muted-foreground font-medium">
-                    em matrículas geradas
-                  </span>
-                </div>
-              </div>
+              Diagnóstico inicial para mapear gargalos de mídia, lead e
+              matrícula.
             </motion.div>
+
           </motion.div>
 
           {/* Lado Direito: Dashboard Elegante e Gráfico de Regressão */}

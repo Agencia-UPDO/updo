@@ -131,15 +131,15 @@ Gostaria de agendar meu diagnóstico gratuito!`;
             className="mb-14 text-center"
           >
             <span className="inline-flex items-center rounded-full border border-[#22C55E]/25 bg-[#22C55E]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-[#22C55E]/80">
-              Oferta Especial
+              Análise da captação
             </span>
             <h2 className="mt-3 font-heading text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.1]">
               Receba um diagnóstico gratuito <br className="hidden md:block" />
               <span className="text-white/25">da sua captação de alunos.</span>
             </h2>
             <p className="mt-4 text-white/40 text-base max-w-xl mx-auto leading-relaxed">
-              Vamos analisar sua estrutura atual e mostrar onde você está
-              perdendo alunos e como criar previsibilidade de matrículas.
+              Vamos analisar onde sua captação perde alunos e indicar os
+              próximos passos para gerar matrículas com mais previsibilidade.
             </p>
           </motion.div>
 
