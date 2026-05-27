@@ -30,6 +30,7 @@ const data2024Total = 5013899.94;
 const data2025Total = 6579003.33;
 const growthValue = data2025Total - data2024Total;
 const growthPercent = (growthValue / data2024Total) * 100;
+const intelligenceColor = "#6575FF";
 
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
@@ -37,7 +38,6 @@ const CustomTooltip = ({ active, payload }: any) => {
     const metaEntry = payload.find((p: any) => p.dataKey === "meta");
     const month = payload[0]?.payload?.month;
 
-    const isHighlight = month === "Ago" || month === "Nov";
     const isBelowTarget = month === "Dez" || month === "Fev";
 
     const realizado = realizadoEntry?.value ?? 0;
@@ -55,16 +55,14 @@ const CustomTooltip = ({ active, payload }: any) => {
           <div className="flex items-center justify-between gap-4">
             <span className="flex items-center gap-1.5 text-xs font-medium text-foreground">
               <span
-                className={`h-1.5 w-1.5 rounded-full ${
-                  isHighlight ? "bg-accent" : "bg-primary"
-                }`}
+                className="h-1.5 w-1.5 rounded-full"
+                style={{ backgroundColor: intelligenceColor }}
               />
               Realizado:
             </span>
             <span
-              className={`text-xs font-bold font-heading ${
-                isHighlight ? "text-accent" : "text-primary"
-              }`}
+              className="text-xs font-bold font-heading"
+              style={{ color: intelligenceColor }}
             >
               R$ {realizado.toLocaleString("pt-BR")}
             </span>
@@ -84,14 +82,15 @@ const CustomTooltip = ({ active, payload }: any) => {
             </span>
             <span
               className={`text-sm font-black font-heading ${
-                aboveMeta ? "text-accent" : "text-red-400"
+                aboveMeta ? "" : "text-red-400"
               }`}
+              style={aboveMeta ? { color: intelligenceColor } : undefined}
             >
               {diffLabel}
             </span>
           </div>
-          {isHighlight && month === "Ago" && (
-            <p className="text-[9px] font-bold text-accent uppercase tracking-tighter">
+          {month === "Ago" && (
+            <p className="text-[9px] font-bold uppercase tracking-tighter" style={{ color: intelligenceColor }}>
               ★ Recorde do Ano
             </p>
           )}
@@ -114,12 +113,12 @@ export function RevenueChart() {
             <linearGradient id="colorRealizado" x1="0" y1="0" x2="0" y2="1">
               <stop
                 offset="5%"
-                stopColor="var(--color-primary)"
-                stopOpacity={0.2}
+                stopColor={intelligenceColor}
+                stopOpacity={0.22}
               />
               <stop
                 offset="95%"
-                stopColor="var(--color-primary)"
+                stopColor={intelligenceColor}
                 stopOpacity={0}
               />
             </linearGradient>
@@ -154,7 +153,7 @@ export function RevenueChart() {
           <Tooltip
             content={<CustomTooltip />}
             cursor={{
-              stroke: "var(--color-primary)",
+              stroke: intelligenceColor,
               strokeWidth: 1,
               strokeDasharray: "4 4",
               opacity: 0.3,
@@ -178,7 +177,7 @@ export function RevenueChart() {
           <Area
             type="monotone"
             dataKey="realizado"
-            stroke="var(--color-primary)"
+            stroke={intelligenceColor}
             strokeWidth={3}
             fillOpacity={1}
             fill="url(#colorRealizado)"
@@ -194,7 +193,7 @@ export function RevenueChart() {
                     cx={cx}
                     cy={cy}
                     r={5}
-                    fill="var(--color-accent)"
+                    fill={intelligenceColor}
                     stroke="#fff"
                     strokeWidth={2}
                   />
@@ -206,13 +205,13 @@ export function RevenueChart() {
                   cx={cx}
                   cy={cy}
                   r={3}
-                  fill="var(--color-primary)"
+                  fill={intelligenceColor}
                   stroke="#fff"
                   strokeWidth={1}
                 />
               );
             }}
-            activeDot={{ r: 6, strokeWidth: 0, fill: "var(--color-accent)" }}
+            activeDot={{ r: 6, strokeWidth: 0, fill: intelligenceColor }}
           />
         </AreaChart>
       </ResponsiveContainer>

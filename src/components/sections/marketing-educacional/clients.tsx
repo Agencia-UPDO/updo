@@ -8,11 +8,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const clients = [
-  { id: 1, name: "PUCPR", src: "/Imagens/PUCPRcwb.png" },
-  { id: 2, name: "CNA", src: "/Imagens/CNA-Ingles-Definitivo.png" },
-  { id: 3, name: "Faculdade IBRATE", src: "/Imagens/Faculdade-Ibrate.png" },
-  { id: 4, name: "Instituto EQUILIBRA", src: "/Imagens/Instituto-Equilibra.png" },
-  { id: 5, name: "Veta Pós-graduação", src: "/Imagens/veta.svg" },
+  { id: 1, name: "PUCPR", src: "/Clientes/Logo PUCPR.png" },
+  { id: 2, name: "CNA", src: "/Clientes/Logo CNA.png" },
+  { id: 3, name: "Faculdade IBRATE", src: "/Clientes/Logo Faculdade Ibrate.png" },
+  { id: 4, name: "Instituto Equilibra", src: "/Clientes/Logo Instituto Equilibra.png" },
+  { id: 5, name: "Veta Pós-graduação", src: "/Clientes/Logo Veta Pós Graduação.png" },
+  { id: 6, name: "UniCV", src: "/Clientes/Logo UniCV.png" },
+  { id: 7, name: "Interpret 2B", src: "/Clientes/Logo Interpret 2B.png" },
 ];
 
 // Triple the list to ensure seamless looping on all screen sizes
@@ -32,7 +34,7 @@ export function Clients() {
           transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
           className="flex flex-col items-center gap-3"
         >
-          <span className="inline-flex items-center rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-accent/80">
+          <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
             Autoridade Educacional
           </span>
           <h2 className="font-heading text-3xl md:text-4xl font-black tracking-tight text-foreground leading-[1.1]">
@@ -85,6 +87,7 @@ function LogoSlot({ name, src }: { name: string; src: string }) {
           src={src}
           alt={`Logo ${name}`}
           fill
+          unoptimized
           className="object-contain"
         />
       </div>

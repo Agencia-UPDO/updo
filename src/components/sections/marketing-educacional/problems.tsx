@@ -77,7 +77,7 @@ function ProblemContent({
         {!hideTitle && (
           <div className="flex flex-col gap-2.5">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#22C55E]/60">
+              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#56FED5]/70">
                 Problema 0{index + 1}
               </span>
               <span className="text-white/15 text-xs">·</span>
@@ -93,8 +93,8 @@ function ProblemContent({
         <p className="text-[15px] text-white/55 leading-relaxed">
           {problem.description}
         </p>
-        <div className="border-l-2 border-[#22C55E]/60 pl-5 py-2 shadow-[-2px_0_8px_rgba(34,197,94,0.15)]">
-          <span className="block text-[9px] font-black uppercase tracking-[0.3em] text-[#22C55E]/55 mb-2">
+        <div className="border-l-2 border-[#56FED5]/60 pl-5 py-2 shadow-[-2px_0_8px_rgba(86,254,213,0.18)]">
+          <span className="block text-[9px] font-black uppercase tracking-[0.3em] text-[#56FED5]/65 mb-2">
             Impacto no negócio
           </span>
           <p className="text-sm text-white/50 leading-relaxed">
@@ -102,8 +102,8 @@ function ProblemContent({
           </p>
         </div>
         <div className="flex items-start gap-3 pt-1">
-          <div className="w-5 h-px bg-[#22C55E]/50 mt-[11px] shrink-0" />
-          <p className="text-base font-bold bg-[linear-gradient(90deg,#22C55E,#4ADE80)] bg-clip-text text-transparent leading-relaxed">
+          <div className="w-5 h-px bg-[#56FED5]/55 mt-[11px] shrink-0" />
+          <p className="text-base font-bold bg-[linear-gradient(90deg,#56FED5,#9cffea)] bg-clip-text text-transparent leading-relaxed">
             {problem.insight}
           </p>
         </div>
@@ -140,7 +140,7 @@ export function Problems() {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
           className="mb-12 lg:mb-16"
         >
-          <span className="inline-flex items-center rounded-full border border-[#22C55E]/25 bg-[#22C55E]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-[#22C55E]/80">
+          <span className="inline-flex items-center rounded-full border border-[#56FED5]/30 bg-[#56FED5]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-[#56FED5]/90">
             Diagnóstico
           </span>
           <h2 className="mt-3 font-heading text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.1] max-w-2xl">
@@ -168,24 +168,24 @@ export function Problems() {
                 key={problem.id}
                 className={`rounded-xl border overflow-hidden transition-colors duration-200 ${
                   isOpen
-                    ? "border-[#22C55E]/30 bg-[#0F1C33]"
+                    ? "border-[#56FED5]/35 bg-[#0F1C33]"
                     : "border-white/[0.08] bg-white/[0.02]"
                 }`}
               >
                 <button
                   onClick={() => setMobileOpen(isOpen ? null : index)}
-                  className="relative flex items-center gap-3 w-full text-left px-4 py-4 outline-none focus-visible:ring-2 focus-visible:ring-[#22C55E]/40"
+                  className="relative flex items-center gap-3 w-full text-left px-4 py-4 outline-none focus-visible:ring-2 focus-visible:ring-[#56FED5]/45"
                 >
                   <span
                     className={`absolute left-0 top-1/2 -translate-y-1/2 w-[2px] rounded-full transition-all duration-300 ${
                       isOpen
-                        ? "h-8 bg-[#22C55E] shadow-[0_0_6px_rgba(34,197,94,0.7)]"
+                        ? "h-8 bg-[#56FED5] shadow-[0_0_6px_rgba(86,254,213,0.75)]"
                         : "h-0"
                     }`}
                   />
                   <span
                     className={`text-[10px] font-black font-mono w-4 shrink-0 ${
-                      isOpen ? "text-[#22C55E]" : "text-white/20"
+                      isOpen ? "text-[#56FED5]" : "text-white/20"
                     }`}
                   >
                     0{index + 1}
@@ -193,13 +193,13 @@ export function Problems() {
                   <div
                     className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-all duration-200 ${
                       isOpen
-                        ? "bg-[#22C55E]/15 border border-[#22C55E]/25"
+                        ? "bg-[#56FED5]/15 border border-[#56FED5]/30"
                         : "bg-white/[0.05] border border-white/[0.07]"
                     }`}
                   >
                     <problem.icon
                       className={`h-3.5 w-3.5 transition-colors duration-200 ${
-                        isOpen ? "text-[#22C55E]" : "text-white/25"
+                        isOpen ? "text-[#56FED5]" : "text-white/25"
                       }`}
                     />
                   </div>
@@ -212,7 +212,7 @@ export function Problems() {
                   </span>
                   <ChevronDown
                     className={`h-4 w-4 shrink-0 transition-all duration-300 ${
-                      isOpen ? "rotate-180 text-[#22C55E]/60" : "text-white/20"
+                      isOpen ? "rotate-180 text-[#56FED5]/70" : "text-white/20"
                     }`}
                   />
                 </button>
@@ -261,22 +261,22 @@ export function Problems() {
                 <button
                   key={problem.id}
                   onClick={() => setActive(index)}
-                  className={`relative flex items-center gap-3 text-left rounded-xl px-4 py-3.5 w-full transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#22C55E]/40 ${
+                  className={`relative flex items-center gap-3 text-left rounded-xl px-4 py-3.5 w-full transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#56FED5]/45 ${
                     isActive
-                      ? "bg-[#22C55E]/[0.10] border border-[#22C55E]/30 shadow-[0_0_18px_rgba(34,197,94,0.10)]"
+                      ? "bg-[#56FED5]/[0.10] border border-[#56FED5]/35 shadow-[0_0_18px_rgba(86,254,213,0.16)]"
                       : "border border-transparent hover:bg-white/[0.04] hover:border-white/[0.07]"
                   }`}
                 >
                   <span
                     className={`absolute left-0 top-1/2 -translate-y-1/2 w-[2px] rounded-full transition-all duration-300 ${
                       isActive
-                        ? "h-8 bg-[#22C55E] shadow-[0_0_6px_rgba(34,197,94,0.7)]"
+                        ? "h-8 bg-[#56FED5] shadow-[0_0_6px_rgba(86,254,213,0.75)]"
                         : "h-0"
                     }`}
                   />
                   <span
                     className={`text-[10px] font-black font-mono w-4 shrink-0 transition-colors duration-200 ${
-                      isActive ? "text-[#22C55E]" : "text-white/20"
+                      isActive ? "text-[#56FED5]" : "text-white/20"
                     }`}
                   >
                     0{index + 1}
@@ -284,13 +284,13 @@ export function Problems() {
                   <div
                     className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-all duration-200 ${
                       isActive
-                        ? "bg-[#22C55E]/15 border border-[#22C55E]/25"
+                        ? "bg-[#56FED5]/15 border border-[#56FED5]/30"
                         : "bg-white/[0.05] border border-white/[0.07]"
                     }`}
                   >
                     <problem.icon
                       className={`h-3.5 w-3.5 transition-colors duration-200 ${
-                        isActive ? "text-[#22C55E]" : "text-white/25"
+                        isActive ? "text-[#56FED5]" : "text-white/25"
                       }`}
                     />
                   </div>
@@ -311,7 +311,7 @@ export function Problems() {
             {/* Progress bar */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-white/[0.05]">
               <motion.div
-                className="h-full bg-[#22C55E]/50 rounded-full"
+                className="h-full bg-[#56FED5]/60 rounded-full"
                 initial={false}
                 animate={{
                   width: `${((active + 1) / problems.length) * 100}%`,

@@ -129,7 +129,7 @@ export function Neuromarketing() {
             href="#contato"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "rounded-full px-10 h-16 text-lg font-bold bg-accent text-accent-foreground border-none shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] active:scale-95 flex items-center justify-center gap-2",
+              "rounded-full px-10 h-16 text-lg font-bold bg-accent text-accent-foreground border-none shadow-[0_0_20px_rgba(86,254,213,0.32)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(86,254,213,0.52)] active:scale-95 flex items-center justify-center gap-2",
             )}
           >
             Quero aplicar isso na minha captação

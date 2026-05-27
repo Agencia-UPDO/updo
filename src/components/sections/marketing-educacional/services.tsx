@@ -99,13 +99,13 @@ export function Services() {
   return (
     <section
       id="servicos"
-      className="pt-24 lg:pt-40 pb-24 lg:pb-40 bg-background relative overflow-hidden"
+      className="relative overflow-hidden bg-background py-18 lg:py-28"
     >
       {/* Subtle grid */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_50%,#000_60%,transparent_100%)]" />
       {/* Glows */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/[0.04] rounded-full blur-[120px] -z-10 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-500/[0.04] rounded-full blur-[100px] -z-10 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#6575FF]/[0.04] rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#6575FF]/[0.04] rounded-full blur-[100px] -z-10 pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
@@ -116,7 +116,7 @@ export function Services() {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
           className="mb-16 lg:mb-20 max-w-2xl"
         >
-          <span className="inline-flex items-center rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-emerald-600 mb-6">
+          <span className="updo-badge mb-6 inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
             Serviços
           </span>
           <h2 className="mt-3 font-heading text-3xl md:text-5xl font-black tracking-tight text-foreground leading-[1.1]">
@@ -149,30 +149,23 @@ export function Services() {
                 <button
                   key={service.id}
                   onClick={() => setActive(index)}
-                  className={`relative flex items-center gap-3 text-left rounded-xl px-4 py-3.5 w-full transition-all duration-200 group outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 ${
+                  className={`relative flex items-center gap-3 text-left rounded-xl px-4 py-3.5 w-full transition-all duration-200 group outline-none focus-visible:ring-2 focus-visible:ring-accent/40 ${
                     isActive
-                      ? "bg-emerald-500/[0.06] border border-emerald-500/20"
-                      : "border border-transparent hover:bg-muted/50 hover:border-border"
+                      ? "border border-[#6575FF]/30 bg-[#6575FF]/[0.06]"
+                      : "border border-transparent hover:border-[#6575FF]/20 hover:bg-[#6575FF]/[0.035]"
                   }`}
                 >
-                  {/* Active left bar */}
-                  <span
-                    className={`absolute left-0 top-1/2 -translate-y-1/2 w-[2px] rounded-full transition-all duration-300 ${
-                      isActive ? "h-8 bg-emerald-500" : "h-0"
-                    }`}
-                  />
-
                   {/* Icon */}
                   <div
                     className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-all duration-200 ${
                       isActive
-                        ? "bg-emerald-500/10 border border-emerald-500/20"
+                        ? "border border-[#6575FF]/25 bg-[#6575FF]/10"
                         : "bg-muted border border-border/50"
                     }`}
                   >
                     <service.icon
                       className={`h-4 w-4 transition-colors duration-200 ${
-                        isActive ? "text-emerald-500" : "text-muted-foreground"
+                        isActive ? "text-[#6575FF]" : "text-muted-foreground"
                       }`}
                     />
                   </div>
@@ -189,7 +182,7 @@ export function Services() {
                   <ChevronRight
                     className={`ml-auto h-3.5 w-3.5 shrink-0 transition-all duration-200 ${
                       isActive
-                        ? "text-emerald-500 opacity-100"
+                        ? "text-[#6575FF] opacity-100"
                         : "opacity-0 group-hover:opacity-40"
                     }`}
                   />
@@ -204,7 +197,7 @@ export function Services() {
             <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#00000003_1px,transparent_1px),linear-gradient(to_bottom,#00000003_1px,transparent_1px)] bg-[size:20px_20px]" />
 
             {/* Top accent line */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/30 via-emerald-500/60 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#6575FF]/20 via-[#6575FF]/60 to-transparent" />
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -224,7 +217,7 @@ export function Services() {
                   {/* Tag + Title */}
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex items-center rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-[0.2em] text-emerald-600">
+                      <span className="inline-flex items-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/10 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-[0.2em] text-[#6575FF]">
                         {current.tag}
                       </span>
                     </div>
@@ -247,7 +240,7 @@ export function Services() {
 
                     {/* Solução */}
                     <div className="flex flex-col gap-2">
-                      <span className="text-[9px] font-black uppercase tracking-[0.3em] text-primary/50">
+                        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#6575FF]/60">
                         Solução
                       </span>
                       <p className="text-sm text-foreground/70 leading-relaxed">
@@ -257,13 +250,13 @@ export function Services() {
 
                     {/* Resultados */}
                     <div className="flex flex-col gap-2">
-                      <span className="text-[9px] font-black uppercase tracking-[0.3em] text-emerald-500/60">
+                      <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#6575FF]/60">
                         Resultados esperados
                       </span>
                       <ul className="flex flex-col gap-2">
                         {current.results.map((result, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500/60" />
+                            <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#6575FF]/70" />
                             <span className="text-sm text-foreground/70 leading-relaxed">
                               {result}
                             </span>
@@ -277,7 +270,7 @@ export function Services() {
                   <div className="flex items-center gap-3 pt-4 border-t border-border/40">
                     <Link
                       href="#contato"
-                      className="inline-flex items-center gap-2 text-sm font-bold text-accent hover:opacity-80 transition-all duration-200"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-[#6575FF] transition-all duration-200 hover:opacity-80"
                     >
                       Quero estruturar isso no meu negócio
                       <ArrowRight className="h-4 w-4" />

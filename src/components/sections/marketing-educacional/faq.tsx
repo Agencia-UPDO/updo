@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus } from "lucide-react";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
@@ -43,7 +43,7 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="py-24 lg:py-40 bg-white relative overflow-hidden"
+      className="relative overflow-hidden bg-white py-18 lg:py-28"
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
@@ -55,7 +55,7 @@ export function FAQ() {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <span className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-emerald-600">
+              <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Dúvidas Frequentes
               </span>
               <h2 className="mt-6 font-heading text-4xl lg:text-5xl font-black text-foreground leading-[1.1] tracking-tight">
@@ -70,7 +70,7 @@ export function FAQ() {
                 mais comuns de nossos parceiros.
               </p>
 
-              <div className="mt-12 p-6 rounded-3xl bg-slate-50 border border-slate-100 hidden lg:block">
+              <div className="mt-12 hidden rounded-2xl border border-border/70 bg-[var(--surface-soft)] p-6 lg:block">
                 <p className="text-sm font-medium text-slate-500 italic">
                   "Ainda tem alguma dúvida específica? Nosso diagnóstico
                   gratuito serve justamente para sanar cada detalhe do seu
@@ -90,10 +90,10 @@ export function FAQ() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={cn(
-                  "group rounded-3xl border transition-all duration-300",
+                  "group rounded-2xl border transition-all duration-300",
                   openIndex === index
-                    ? "border-emerald-500/30 bg-emerald-500/[0.02] shadow-xl shadow-emerald-500/5"
-                    : "border-slate-100 bg-white hover:border-slate-200",
+                    ? "border-[#6575FF]/30 bg-[#6575FF]/[0.06] shadow-[0_14px_42px_rgba(101,117,255,0.14)]"
+                    : "border-border/70 bg-white hover:border-[#6575FF]/30",
                 )}
               >
                 <button
@@ -106,7 +106,7 @@ export function FAQ() {
                     className={cn(
                       "text-lg font-bold tracking-tight transition-colors",
                       openIndex === index
-                        ? "text-emerald-700"
+                        ? "text-[#6575FF]"
                         : "text-foreground",
                     )}
                   >
@@ -116,8 +116,8 @@ export function FAQ() {
                     className={cn(
                       "flex h-8 w-8 min-w-[32px] items-center justify-center rounded-full transition-all",
                       openIndex === index
-                        ? "bg-emerald-500 text-white rotate-180"
-                        : "bg-slate-100 text-slate-400 group-hover:bg-slate-200",
+                        ? "rotate-180 bg-[#6575FF] text-white"
+                        : "bg-slate-100 text-slate-400 group-hover:bg-[#6575FF]/10 group-hover:text-[#6575FF]",
                     )}
                   >
                     {openIndex === index ? (

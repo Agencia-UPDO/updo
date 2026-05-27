@@ -28,13 +28,8 @@ const investments = [
   "Acima de R$20 mil/mês",
 ];
 
-const chipSelected =
-  "border-[#22C55E]/60 bg-[#22C55E]/15 text-white shadow-[0_0_12px_rgba(34,197,94,0.12)]";
-const chipDefault =
-  "border-white/[0.08] bg-white/[0.03] text-white/35 hover:border-white/25 hover:bg-white/[0.06] hover:text-white/70";
-
 const inputClass =
-  "w-full rounded-xl border border-white/[0.09] bg-white/[0.05] px-4 py-3.5 text-sm text-white placeholder:text-white/20 outline-none focus:border-[#22C55E]/40 focus:bg-white/[0.07] transition-colors duration-200";
+  "w-full rounded-xl border border-white/[0.12] bg-white/[0.06] px-4 py-3.5 text-sm text-white placeholder:text-white/32 outline-none transition-colors duration-200 focus:border-[#6575FF]/45 focus:bg-white/[0.08]";
 
 const labelClass =
   "text-[10px] font-black uppercase tracking-[0.25em] text-white/30";
@@ -116,10 +111,10 @@ Gostaria de agendar meu diagnóstico gratuito!`;
   return (
     <section
       id="contato"
-      className="py-24 lg:py-40 bg-foreground relative overflow-hidden"
+      className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28"
     >
       <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/[0.06] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#6575FF]/[0.08] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-3xl mx-auto">
@@ -130,7 +125,7 @@ Gostaria de agendar meu diagnóstico gratuito!`;
             transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="mb-14 text-center"
           >
-            <span className="inline-flex items-center rounded-full border border-[#22C55E]/25 bg-[#22C55E]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-[#22C55E]/80">
+            <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               Análise da captação
             </span>
             <h2 className="mt-3 font-heading text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.1]">
@@ -258,7 +253,7 @@ Gostaria de agendar meu diagnóstico gratuito!`;
                               challenge: e.target.value,
                             }))
                           }
-                          className="w-full appearance-none rounded-xl border border-white/[0.09] bg-white/[0.05] px-4 py-3.5 text-sm text-white outline-none focus:border-[#22C55E]/40 focus:bg-white/[0.07] transition-colors duration-200 cursor-pointer"
+                          className="w-full cursor-pointer appearance-none rounded-xl border border-white/[0.12] bg-white/[0.06] px-4 py-3.5 text-sm text-white outline-none transition-colors duration-200 focus:border-[#6575FF]/45 focus:bg-white/[0.08]"
                           style={{ colorScheme: "dark" }}
                         >
                           <option
@@ -317,7 +312,7 @@ Gostaria de agendar meu diagnóstico gratuito!`;
                               investment: e.target.value,
                             }))
                           }
-                          className="w-full appearance-none rounded-xl border border-white/[0.09] bg-white/[0.05] px-4 py-3.5 text-sm text-white outline-none focus:border-[#22C55E]/40 focus:bg-white/[0.07] transition-colors duration-200 cursor-pointer"
+                          className="w-full cursor-pointer appearance-none rounded-xl border border-white/[0.12] bg-white/[0.06] px-4 py-3.5 text-sm text-white outline-none transition-colors duration-200 focus:border-[#6575FF]/45 focus:bg-white/[0.08]"
                           style={{ colorScheme: "dark" }}
                         >
                           <option
@@ -365,7 +360,7 @@ Gostaria de agendar meu diagnóstico gratuito!`;
                     <div className="flex justify-center">
                       <button
                         type="submit"
-                        className="inline-flex items-center gap-2.5 rounded-full bg-[#22C55E] px-10 py-4 text-sm font-bold text-white shadow-[0_0_24px_rgba(34,197,94,0.35)] hover:shadow-[0_0_36px_rgba(34,197,94,0.55)] hover:bg-[#16a34a] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+                        className="inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:max-w-none sm:px-10"
                       >
                         Quero meu diagnóstico gratuito
                         <ArrowRight className="h-4 w-4" />
@@ -392,8 +387,8 @@ Gostaria de agendar meu diagnóstico gratuito!`;
                   animate={{ opacity: 1, y: 0 }}
                   className="flex flex-col items-center text-center py-12"
                 >
-                  <div className="h-20 w-20 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
-                    <CheckCircle2 className="h-10 w-10 text-emerald-500" />
+                  <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/12">
+                    <CheckCircle2 className="h-10 w-10 text-[#6575FF]" />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4">
                     Formulário enviado com sucesso!
@@ -402,7 +397,7 @@ Gostaria de agendar meu diagnóstico gratuito!`;
                     Recebemos seus dados e estamos te redirecionando agora mesmo
                     para o WhatsApp para iniciarmos seu diagnóstico.
                   </p>
-                  <div className="flex items-center gap-2 text-emerald-500 font-bold text-sm animate-pulse">
+                  <div className="flex animate-pulse items-center gap-2 text-sm font-bold text-[#6575FF]">
                     Redirecionando...
                   </div>
                 </motion.div>

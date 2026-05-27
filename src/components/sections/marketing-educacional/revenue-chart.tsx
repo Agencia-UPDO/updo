@@ -26,6 +26,9 @@ const data = [
   { month: "Dez", realizado: 473646, meta: 477470 },
 ];
 
+const interfacePurple = "#6575FF";
+const projectedLine = "#64748B";
+
 const data2024Total = 5013899.94;
 const data2025Total = 6579003.33;
 const growthValue = data2025Total - data2024Total;
@@ -54,17 +57,11 @@ const CustomTooltip = ({ active, payload }: any) => {
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between gap-4">
             <span className="flex items-center gap-1.5 text-xs font-medium text-foreground">
-              <span
-                className={`h-1.5 w-1.5 rounded-full ${
-                  isHighlight ? "bg-accent" : "bg-primary"
-                }`}
-              />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#6575FF]" />
               Realizado:
             </span>
             <span
-              className={`text-xs font-bold font-heading ${
-                isHighlight ? "text-accent" : "text-primary"
-              }`}
+              className="text-xs font-bold font-heading text-[#6575FF]"
             >
               R$ {realizado.toLocaleString("pt-BR")}
             </span>
@@ -84,15 +81,15 @@ const CustomTooltip = ({ active, payload }: any) => {
             </span>
             <span
               className={`text-sm font-black font-heading ${
-                aboveMeta ? "text-accent" : "text-red-400"
+                aboveMeta ? "text-[#6575FF]" : "text-red-400"
               }`}
             >
               {diffLabel}
             </span>
           </div>
           {isHighlight && month === "Ago" && (
-            <p className="text-[9px] font-bold text-accent uppercase tracking-tighter">
-              ★ Recorde do Ano
+            <p className="text-[9px] font-bold text-[#6575FF] uppercase tracking-tighter">
+              Recorde do ano
             </p>
           )}
         </div>
@@ -114,12 +111,12 @@ export function RevenueChart() {
             <linearGradient id="colorRealizado" x1="0" y1="0" x2="0" y2="1">
               <stop
                 offset="5%"
-                stopColor="var(--color-primary)"
+                stopColor={interfacePurple}
                 stopOpacity={0.2}
               />
               <stop
                 offset="95%"
-                stopColor="var(--color-primary)"
+                stopColor={interfacePurple}
                 stopOpacity={0}
               />
             </linearGradient>
@@ -154,7 +151,7 @@ export function RevenueChart() {
           <Tooltip
             content={<CustomTooltip />}
             cursor={{
-              stroke: "var(--color-primary)",
+              stroke: interfacePurple,
               strokeWidth: 1,
               strokeDasharray: "4 4",
               opacity: 0.3,
@@ -165,7 +162,7 @@ export function RevenueChart() {
           <Area
             type="monotone"
             dataKey="meta"
-            stroke="var(--color-muted-foreground)"
+            stroke={projectedLine}
             strokeWidth={1.5}
             strokeDasharray="5 5"
             strokeOpacity={0.4}
@@ -178,7 +175,7 @@ export function RevenueChart() {
           <Area
             type="monotone"
             dataKey="realizado"
-            stroke="var(--color-primary)"
+            stroke={interfacePurple}
             strokeWidth={3}
             fillOpacity={1}
             fill="url(#colorRealizado)"
@@ -194,7 +191,7 @@ export function RevenueChart() {
                     cx={cx}
                     cy={cy}
                     r={5}
-                    fill="var(--color-accent)"
+                    fill={interfacePurple}
                     stroke="#fff"
                     strokeWidth={2}
                   />
@@ -206,13 +203,13 @@ export function RevenueChart() {
                   cx={cx}
                   cy={cy}
                   r={3}
-                  fill="var(--color-primary)"
+                  fill={interfacePurple}
                   stroke="#fff"
                   strokeWidth={1}
                 />
               );
             }}
-            activeDot={{ r: 6, strokeWidth: 0, fill: "var(--color-accent)" }}
+            activeDot={{ r: 6, strokeWidth: 0, fill: interfacePurple }}
           />
         </AreaChart>
       </ResponsiveContainer>

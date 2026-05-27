@@ -35,9 +35,68 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "UPDO",
+    "alternateName": "Agência UPDO",
+    "url": "https://updo.com.br",
+    "logo": "https://updo.com.br/Imagens/Logo%20UPDO%202024%20Branca.svg",
+    "description": "Estruturamos marketing, vendas e dados para sua empresa crescer com previsibilidade. +300 empresas atendidas e +R$ 750M gerados em vendas.",
+    "founder": {
+      "@type": "Person",
+      "name": "Rodrigo Bueno",
+      "jobTitle": "Fundador e Estrategista",
+      "knowsAbout": [
+        "Marketing de Performance",
+        "Inside Sales",
+        "Neuromarketing",
+        "Inteligência de Dados",
+        "Inteligência Artificial"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "UPDO"
+      }
+    },
+    "address": [
+      {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Francisco Rocha, 198, Batel",
+        "addressLocality": "Curitiba",
+        "addressRegion": "PR",
+        "postalCode": "80420-130",
+        "addressCountry": "BR"
+      },
+      {
+        "@type": "PostalAddress",
+        "streetAddress": "Al. Presidente Taunay, 130, Batel",
+        "addressLocality": "Curitiba",
+        "addressRegion": "PR",
+        "postalCode": "80420-180",
+        "addressCountry": "BR"
+      }
+    ],
+    "telephone": "+55 41 98711-2003",
+    "email": "contato@updo.com.br",
+    "sameAs": [
+      "https://www.linkedin.com/company/agencia-updo/",
+      "https://www.instagram.com/agenciaupdo/",
+      "https://www.facebook.com/agenciaupdo",
+      "https://www.youtube.com/@agenciaupdo"
+    ],
+    "award": [
+      "3x finalista RD Station"
+    ]
+  };
+
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Script
           id="gtm-script"
           strategy="afterInteractive"
