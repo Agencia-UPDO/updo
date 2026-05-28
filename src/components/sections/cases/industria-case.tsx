@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import {
   ArrowLeft,
+  ArrowRight,
   TrendingUp,
   Target,
   DollarSign,
@@ -74,45 +75,45 @@ const solution = [
   {
     step: "01",
     icon: Search,
-    title: "Pesquisa Profunda e Desk Research",
+    title: "Pesquisa de mercado e desk research",
     description:
-      "Nenhum tiro no escuro. Iniciamos com imersão completa no mercado do cliente, analisando concorrentes, comportamento do consumidor e tendências. Esse desk research foi a base para uma estratégia com alicerces sólidos.",
+      "Mapeamos concorrentes, canais de venda, comportamento de compra e sazonalidade da categoria antes de definir mídia, mensagem e oferta.",
   },
   {
     step: "02",
     icon: BarChart3,
-    title: "Análise e Seleção de Canais",
+    title: "Seleção de canais por intenção",
     description:
-      "Com os dados em mãos, definimos os campos de batalha: Google Ads para capturar demanda de alta intenção e Meta Ads (Instagram) para gerar desejo e volume, alcançando o público em seus momentos de lazer.",
+      "Google Ads entrou para capturar demanda ativa. Meta Ads foi usado para ampliar alcance, testar criativos e gerar demanda em públicos com aderência ao produto.",
   },
   {
     step: "03",
     icon: Zap,
-    title: "Execução Ágil e Otimização Semanal",
+    title: "Otimização semanal de verba e criativos",
     description:
-      "Através de reuniões semanais de acompanhamento, analisamos resultados em tempo real, otimizando orçamentos, criativos e públicos para extrair o máximo de performance de cada real investido.",
+      "Acompanhamos investimento, retorno, ticket médio e vendas por canal para redistribuir verba e ajustar campanhas com base no que gerava receita.",
   },
   {
     step: "04",
     icon: FileText,
-    title: "Relatórios na Língua do C-Level",
+    title: "Relatórios para decisão da diretoria",
     description:
-      "Para vencer a desconfiança, a comunicação foi chave. Criamos dashboards que traduziam métricas complexas em uma linguagem clara para a diretoria: Investimento, Retorno e Lucratividade.",
+      "Organizamos os dados em uma leitura simples para gestão: quanto foi investido, quanto voltou, quais canais venderam e onde valia aumentar orçamento.",
   },
 ];
 
 const learnings = [
   {
     icon: Search,
-    text: "Desk research sólido antes de qualquer campanha elimina desperdício de verba e acelera os resultados desde o primeiro mês.",
+    text: "Campanha industrial precisa começar por mercado, canal e margem. Sem essa leitura, mídia vira teste caro.",
   },
   {
     icon: BarChart3,
-    text: "Google e Meta têm papéis diferentes no funil. Entender isso e alocar budget por intenção, e não por conveniência, faz toda a diferença.",
+    text: "Google e Meta funcionaram melhor quando cada canal recebeu uma função clara no funil, em vez de disputar o mesmo papel.",
   },
   {
     icon: FileText,
-    text: "Relatórios que falam a língua do cliente transformam céticos em defensores do marketing digital. Esse alinhamento é o combustível para escala.",
+    text: "Para diretoria comprar a estratégia, o relatório precisa mostrar receita, investimento, ROI e próximos ajustes sem ruído.",
   },
 ];
 
@@ -134,10 +135,10 @@ const ChartCard = ({
   title: string;
   children: React.ReactNode;
 }) => (
-  <div className="group relative rounded-2xl border border-border/60 bg-white p-7 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-primary/20 overflow-hidden">
-    <div className="absolute top-0 left-0 w-1 h-full bg-primary/0 transition-all duration-300 group-hover:bg-primary/40" />
+  <div className="group relative overflow-hidden rounded-2xl border border-border/70 bg-white p-7 transition-all duration-300 hover:border-[#6575FF]/30 hover:shadow-[0_18px_44px_rgba(101,117,255,0.12)]">
+    <div className="absolute top-0 left-0 w-1 h-full bg-[#6575FF]/0 transition-all duration-300 group-hover:bg-[#6575FF]/40" />
     <p className="text-xs font-black uppercase tracking-[0.25em] text-muted-foreground/60 mb-8 flex items-center gap-2 font-heading">
-      <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
+      <span className="w-1.5 h-1.5 rounded-full bg-[#6575FF]/50" />
       {title}
     </p>
     {children}
@@ -196,9 +197,9 @@ export function CaseIndustriaClient() {
   return (
     <main className="flex flex-col">
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="bg-[#0A1529] relative overflow-hidden pt-28 pb-24 lg:pt-40 lg:pb-32">
+      <section className="relative overflow-hidden bg-[#07111F] pt-10 pb-16 lg:pt-40 lg:pb-28">
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#f97316]/[0.05] rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#6575FF]/[0.08] rounded-full blur-[160px] pointer-events-none" />
 
         <div className="container mx-auto px-4 lg:px-8">
           {/* Back nav */}
@@ -209,7 +210,7 @@ export function CaseIndustriaClient() {
           >
             <Link
               href="/#cases"
-              className="inline-flex items-center gap-2 text-xs font-bold text-white/25 hover:text-white/60 transition-colors duration-200 mb-16"
+              className="mb-10 inline-flex items-center gap-2 text-xs font-bold text-white/25 transition-colors duration-200 hover:text-white/60 lg:mb-16"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               Voltar para cases
@@ -223,23 +224,20 @@ export function CaseIndustriaClient() {
             transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="max-w-4xl mx-auto text-center"
           >
-            <span className="inline-flex items-center rounded-full border border-[#f97316]/25 bg-[#f97316]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-[#f97316]/80 mb-8">
+            <span className="updo-badge mb-8 inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               Case · Indústria de Bens de Consumo
             </span>
 
             <h1 className="font-heading font-black text-white tracking-tight leading-none">
-              <span className="block text-7xl md:text-9xl bg-[linear-gradient(135deg,#f97316_20%,#fb923c_80%)] bg-clip-text text-transparent">
-                1.527%
-              </span>
-              <span className="block mt-3 text-2xl md:text-3xl text-white/30 font-black">
-                de ROI e R$ 350k em vendas
+              <span className="block text-4xl text-white md:text-5xl lg:text-5xl">
+                1.527% de ROI e R$ 350k em vendas
               </span>
             </h1>
 
             <p className="mt-8 text-white/40 text-base md:text-lg leading-relaxed max-w-lg mx-auto">
-              Como transformamos o ceticismo de uma diretoria industrial em
-              R$&nbsp;350.000 de faturamento digital com apenas R$&nbsp;21.500
-              de investimento.
+              Como uma operação industrial validou mídia digital com
+              R$&nbsp;350.000 em receita atribuída a partir de R$&nbsp;21.500
+              investidos.
             </p>
           </motion.div>
 
@@ -252,23 +250,29 @@ export function CaseIndustriaClient() {
               delay: 0.25,
               ease: [0.21, 0.47, 0.32, 0.98],
             }}
-            className="mt-16 max-w-4xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-3"
+            className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-3 lg:mt-14 lg:grid-cols-4"
           >
             {keyMetrics.map((m) => (
               <div
                 key={m.label}
                 className={`flex flex-col gap-2.5 rounded-2xl border p-5 lg:p-6 ${
                   m.highlight
-                    ? "border-[#f97316]/30 bg-[#f97316]/[0.08]"
+                    ? "border-[#6575FF]/30 bg-[#6575FF]/[0.08]"
                     : "border-white/[0.07] bg-white/[0.03]"
                 }`}
               >
-                <m.icon
-                  className={`h-3.5 w-3.5 ${m.highlight ? "text-[#f97316]/60" : "text-white/20"}`}
-                />
+                <span
+                  className={`flex h-8 w-8 items-center justify-center rounded-full border ${
+                    m.highlight
+                      ? "border-[#6575FF]/25 bg-[#6575FF]/10 text-[#6575FF]"
+                      : "border-white/10 bg-white/[0.04] text-white/30"
+                  }`}
+                >
+                  <m.icon className="h-3.5 w-3.5" />
+                </span>
                 <span
                   className={`text-2xl lg:text-3xl font-black tracking-tight leading-none ${
-                    m.highlight ? "text-[#f97316]" : "text-white"
+                    m.highlight ? "text-[#6575FF]" : "text-white"
                   }`}
                 >
                   {m.value}
@@ -291,7 +295,7 @@ export function CaseIndustriaClient() {
       <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       {/* ── Challenge ────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-background">
+      <section className="py-18 lg:py-28 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -301,44 +305,42 @@ export function CaseIndustriaClient() {
             className="max-w-5xl mx-auto"
           >
             <div className="text-center mb-14">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+              <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Contexto
               </span>
-              <h2 className="mt-2 font-heading text-3xl lg:text-4xl font-black text-foreground tracking-tight">
+              <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
                 O problema de negócio
               </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div className="flex flex-col gap-4 rounded-2xl border border-border/60 bg-[#F7F9FF] p-8">
+              <div className="flex flex-col gap-4 rounded-2xl border border-border/70 bg-[var(--surface-soft)] p-8">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-red-400/70" />
                   <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
                     Problema
                   </span>
                 </div>
-                <p className="text-foreground/70 leading-relaxed text-[15px]">
-                  Uma gigante da indústria de bens de consumo, com forte atuação
-                  no varejo tradicional, chegou com um desafio duplo. O
-                  primeiro, externo: como gerar vendas diretas em um cenário
-                  digital cada vez mais competitivo? O segundo, e mais complexo,
-                  era interno: uma diretoria que não acreditava no potencial do
-                  marketing digital.
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  Uma indústria de bens de consumo, com forte atuação no varejo
+                  tradicional, precisava validar se mídia digital poderia gerar
+                  vendas diretas com retorno mensurável. O desafio não era só
+                  vender: era mostrar para a diretoria quais canais geravam
+                  receita, com qual investimento e em que velocidade.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-4 rounded-2xl border border-[#f97316]/20 bg-[#f97316]/[0.03] p-8">
+              <div className="flex flex-col gap-4 rounded-2xl border border-[#6575FF]/20 bg-[#6575FF]/[0.04] p-8">
                 <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f97316]/50" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#f97316]/60">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#6575FF]/60" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#6575FF]/70">
                     Hipótese
                   </span>
                 </div>
-                <p className="text-foreground/70 leading-relaxed text-[15px] italic">
-                  "Com pesquisa sólida, seleção criteriosa de canais e
-                  otimização semanal, conseguiríamos provar para a diretoria que
-                  cada real investido no digital retornaria múltiplas vezes,
-                  transformando céticos em defensores do canal."
+                <p className="text-sm leading-relaxed text-muted-foreground italic">
+                  "Com leitura de mercado, separação clara entre Google e Meta e
+                  acompanhamento semanal de ROI, seria possível comprovar o papel
+                  do digital sem depender de percepção ou métricas que não explicam receita."
                 </p>
               </div>
             </div>
@@ -347,7 +349,7 @@ export function CaseIndustriaClient() {
       </section>
 
       {/* ── Strategy ─────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-[#F7F9FF]">
+      <section className="py-18 lg:py-28 bg-[var(--surface-soft)]">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -357,14 +359,14 @@ export function CaseIndustriaClient() {
             className="max-w-5xl mx-auto"
           >
             <div className="text-center mb-14">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+              <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Estratégia
               </span>
-              <h2 className="mt-2 font-heading text-3xl lg:text-4xl font-black text-foreground tracking-tight">
+              <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
                 Nossa metodologia em 4 etapas
               </h2>
               <p className="mt-3 text-sm text-muted-foreground max-w-sm mx-auto">
-                Da pesquisa à prova irrefutável, passo a passo.
+                Pesquisa, canal, execução e leitura financeira.
               </p>
             </div>
 
@@ -380,13 +382,15 @@ export function CaseIndustriaClient() {
                     delay: i * 0.1,
                     ease: [0.21, 0.47, 0.32, 0.98],
                   }}
-                  className="flex flex-col gap-5 rounded-2xl border border-border/60 bg-white p-7"
+                  className="flex flex-col gap-5 rounded-2xl border border-border/70 bg-white p-7"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f97316]/10 text-xs font-black text-[#f97316]">
-                      {s.step}
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#6575FF]/20 bg-[#6575FF]/10 text-[#6575FF]">
+                      <s.icon className="h-5 w-5" />
                     </span>
-                    <s.icon className="h-4 w-4 text-[#f97316]/60" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground/60">
+                      Etapa {s.step}
+                    </span>
                   </div>
                   <div className="flex flex-col gap-2">
                     <h3 className="text-base font-black text-foreground leading-snug">
@@ -404,7 +408,7 @@ export function CaseIndustriaClient() {
       </section>
 
       {/* ── Charts ───────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-background">
+      <section className="py-18 lg:py-28 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -414,10 +418,10 @@ export function CaseIndustriaClient() {
             className="max-w-5xl mx-auto"
           >
             <div className="text-center mb-14">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+              <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Resultados visuais
               </span>
-              <h2 className="mt-2 font-heading text-3xl lg:text-4xl font-black text-foreground tracking-tight">
+              <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
                 A transformação em números
               </h2>
               <p className="mt-3 text-sm text-muted-foreground max-w-sm mx-auto">
@@ -464,12 +468,12 @@ export function CaseIndustriaClient() {
                       />
                       <Bar
                         dataKey="Investimento"
-                        fill="#f97316"
+                        fill="#94a3b8"
                         radius={[6, 6, 0, 0]}
                       />
                       <Bar
                         dataKey="Retorno"
-                        fill="#22C55E"
+                        fill="#6575FF"
                         radius={[6, 6, 0, 0]}
                       />
                     </BarChart>
@@ -477,13 +481,13 @@ export function CaseIndustriaClient() {
                 </div>
                 <div className="mt-8 flex items-center justify-center gap-6 border-t border-border/40 pt-6">
                   <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#f97316]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#94a3b8]" />
                     <span className="text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.2em]">
                       Investimento
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#22C55E]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#6575FF]" />
                     <span className="text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.2em]">
                       Retorno
                     </span>
@@ -539,13 +543,13 @@ export function CaseIndustriaClient() {
                       <Bar
                         yAxisId="left"
                         dataKey="ROI (%)"
-                        fill="#f97316"
+                        fill="#6575FF"
                         radius={[6, 6, 0, 0]}
                       />
                       <Bar
                         yAxisId="right"
                         dataKey="Ticket Médio (R$)"
-                        fill="#22C55E"
+                        fill="#94a3b8"
                         radius={[6, 6, 0, 0]}
                       />
                     </BarChart>
@@ -553,13 +557,13 @@ export function CaseIndustriaClient() {
                 </div>
                 <div className="mt-8 flex items-center justify-center gap-6 border-t border-border/40 pt-6">
                   <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#f97316]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#6575FF]" />
                     <span className="text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.2em]">
                       ROI
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#22C55E]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#94a3b8]" />
                     <span className="text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.2em]">
                       Ticket Médio
                     </span>
@@ -570,9 +574,11 @@ export function CaseIndustriaClient() {
 
             {/* Context highlights */}
             <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex items-start gap-3 rounded-2xl border border-[#f97316]/20 bg-[#f97316]/[0.04] p-6">
-                <CheckCircle2 className="h-4 w-4 text-[#f97316] mt-0.5 shrink-0" />
-                <p className="text-sm text-foreground/70 leading-relaxed">
+              <div className="flex items-start gap-3 rounded-2xl border border-[#6575FF]/20 bg-[#6575FF]/[0.04] p-6">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/20 bg-[#6575FF]/10 text-[#6575FF]">
+                  <CheckCircle2 className="h-4 w-4" />
+                </span>
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   <span className="font-bold text-foreground/80">
                     Google Ads: ROI de 1.863%.
                   </span>{" "}
@@ -581,9 +587,11 @@ export function CaseIndustriaClient() {
                   R$&nbsp;5.130.
                 </p>
               </div>
-              <div className="flex items-start gap-3 rounded-2xl border border-[#f97316]/20 bg-[#f97316]/[0.04] p-6">
-                <CheckCircle2 className="h-4 w-4 text-[#f97316] mt-0.5 shrink-0" />
-                <p className="text-sm text-foreground/70 leading-relaxed">
+              <div className="flex items-start gap-3 rounded-2xl border border-[#6575FF]/20 bg-[#6575FF]/[0.04] p-6">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/20 bg-[#6575FF]/10 text-[#6575FF]">
+                  <CheckCircle2 className="h-4 w-4" />
+                </span>
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   <span className="font-bold text-foreground/80">
                     Meta Ads: ROI de 1.314%.
                   </span>{" "}
@@ -597,7 +605,7 @@ export function CaseIndustriaClient() {
       </section>
 
       {/* ── Learnings ────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-[#F7F9FF]">
+      <section className="py-18 lg:py-28 bg-[var(--surface-soft)]">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -607,10 +615,10 @@ export function CaseIndustriaClient() {
             className="max-w-3xl mx-auto"
           >
             <div className="text-center mb-14">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+              <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Aprendizados
               </span>
-              <h2 className="mt-2 font-heading text-3xl lg:text-4xl font-black text-foreground tracking-tight">
+              <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
                 O que esse case ensina
               </h2>
             </div>
@@ -627,12 +635,12 @@ export function CaseIndustriaClient() {
                     delay: i * 0.1,
                     ease: [0.21, 0.47, 0.32, 0.98],
                   }}
-                  className="flex items-start gap-4 rounded-2xl border border-border/60 bg-white p-6"
+                  className="flex items-start gap-4 rounded-2xl border border-border/70 bg-white p-6"
                 >
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#f97316]/10">
-                    <l.icon className="h-4 w-4 text-[#f97316]" />
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/20 bg-[#6575FF]/10 text-[#6575FF]">
+                    <l.icon className="h-5 w-5" />
                   </div>
-                  <p className="text-sm text-foreground/70 leading-relaxed pt-1">
+                  <p className="pt-1 text-sm leading-relaxed text-muted-foreground">
                     {l.text}
                   </p>
                 </motion.div>
@@ -643,7 +651,9 @@ export function CaseIndustriaClient() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-background">
+      <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute bottom-0 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[100px] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -652,30 +662,25 @@ export function CaseIndustriaClient() {
             transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="max-w-2xl mx-auto text-center"
           >
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">
-              Próximo passo
-            </span>
-            <h2 className="mt-4 font-heading text-3xl lg:text-5xl font-black text-foreground tracking-tight leading-tight">
-              A história desta indústria pode ser a sua.
+            <h2 className="font-heading text-3xl font-black leading-tight tracking-tight text-white md:text-4xl">
+              Sua indústria pode medir melhor o retorno do digital.
             </h2>
-            <p className="mt-5 text-base text-muted-foreground leading-relaxed">
-              Nossa abordagem é focada em transformar desafios em oportunidades
-              e investimentos em resultados exponenciais. Está pronto para
-              construir seu próprio case de sucesso?
+            <p className="mt-4 text-base leading-relaxed text-white/35">
+              Vamos avaliar onde mídia, oferta e leitura comercial podem gerar
+              receita mensurável para a sua operação.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="https://conteudo.updo.com.br/pedido-de-orcamento-cases"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#f97316] px-8 py-4 text-sm font-black text-white transition-all duration-200 hover:bg-[#ea6c0a] hover:shadow-lg hover:-translate-y-0.5"
+                href="/#contato"
+                className="inline-flex h-13 items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95"
               >
-                Quero uma análise gratuita
+                Solicitar diagnóstico gratuito
+                <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/#cases"
-                className="inline-flex items-center gap-2 text-sm font-bold text-muted-foreground hover:text-foreground transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-bold text-white/30 transition-colors hover:text-white/60"
               >
                 <ArrowLeft className="h-3.5 w-3.5" />
                 Ver outros cases

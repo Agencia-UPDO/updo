@@ -237,7 +237,7 @@ export function CaseEducacaoClient() {
             </h1>
 
             <p className="mt-8 text-white/45 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-              Como transformamos uma instituição de ensino com quase 30 anos de
+              Como uma instituição de ensino com quase 30 anos de
               história: do platô de crescimento à referência em performance
               comercial na área da saúde no Sul do Brasil.
             </p>
@@ -622,11 +622,10 @@ export function CaseEducacaoClient() {
               Vencedores do Prêmio RD Station 2024
             </h2>
             <p className="mt-5 max-w-xl mx-auto text-sm leading-relaxed text-muted-foreground">
-              O sucesso dessa colaboração foi tão expressivo que chegamos à
-              final em 2023 e conquistamos o prêmio em 2024. Como parceiros Gold
-              da plataforma, esse reconhecimento valida que a estratégia certa,
-              aliada a uma execução impecável, gera resultados que são
-              referência no mercado.
+              A parceria chegou à final em 2023 e conquistou o prêmio em 2024.
+              Como parceiros Gold da plataforma, esse reconhecimento mostra que
+              processo comercial, mídia e dados bem conectados geram resultado
+              mensurável em captação educacional.
             </p>
             <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-[#6575FF]/20 bg-[#6575FF]/[0.06] px-6 py-3">
               <Trophy className="h-3.5 w-3.5 text-[#6575FF]" />
@@ -700,7 +699,7 @@ export function CaseEducacaoClient() {
             className="max-w-2xl mx-auto text-center"
           >
             <h2 className="font-heading text-3xl md:text-4xl font-black text-white leading-tight tracking-tight">
-              A história desta instituição pode ser a sua.
+              Sua instituição pode captar com mais previsibilidade.
             </h2>
             <p className="mt-4 text-white/35 text-base leading-relaxed">
               Vamos entender o seu negócio antes de propor qualquer coisa.

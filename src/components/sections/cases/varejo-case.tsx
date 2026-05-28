@@ -84,7 +84,7 @@ const solution = [
     icon: Database,
     title: "A Fundação: Catálogo e CRM",
     description:
-      "Substituímos o e-commerce problemático por um catálogo robusto focado em UX, com sistema de cotação integrado ao RD Station e CRM. Os vendedores passaram a acompanhar pedidos e conversas de WhatsApp, unificando a jornada do cliente.",
+      "Substituímos o e-commerce problemático por um catálogo focado em usabilidade, cotação e integração com RD Station e CRM. O time comercial passou a acompanhar pedidos e conversas de WhatsApp em um fluxo único.",
   },
   {
     step: "02",
@@ -105,7 +105,7 @@ const solution = [
 const learnings = [
   {
     icon: Database,
-    text: "Antes de investir em mídia, a fundação técnica precisa estar sólida. Um site com problemas de usabilidade é um filtro que desperdiça todo o investimento de tráfego.",
+    text: "Antes de aumentar mídia, o catálogo e o fluxo comercial precisavam funcionar. Sem isso, tráfego novo só aumentaria o desperdício.",
   },
   {
     icon: BarChart3,
@@ -240,7 +240,7 @@ export function CaseVarejoClient() {
             </h1>
 
             <p className="mt-8 text-white/40 text-base md:text-lg leading-relaxed max-w-lg mx-auto">
-              Como transformamos um varejista paulistano com mais de 20 anos de
+              Como um varejista paulistano com mais de 20 anos de
               mercado, saindo do histórico de tetos de faturamento para recordes
               consecutivos ano após ano.
             </p>
@@ -331,7 +331,7 @@ export function CaseVarejoClient() {
                   mercado chegou com um objetivo claro: aumentar as vendas.
                   Apesar da experiência no setor, a empresa nunca havia
                   alcançado o patamar de faturamento desejado. Experiências
-                  anteriores com agências não atingiram o potencial esperado, e
+                  anteriores com agências não deram previsibilidade de retorno, e
                   o CEO buscava parceria que comprovasse ROI de forma clara e
                   objetiva. O diagnóstico revelou o gargalo: o e-commerce
                   anterior tinha problemas técnicos e de usabilidade que
@@ -347,10 +347,10 @@ export function CaseVarejoClient() {
                   </span>
                 </div>
                 <p className="text-sm leading-relaxed text-muted-foreground italic">
-                  "Consertando a fundação digital primeiro e depois aplicando
+                  "Organizando catálogo, CRM e leitura de dados antes de escalar
                   planejamento baseado em dados e sazonalidade, conseguiríamos
-                  não apenas bater o faturamento histórico, mas criar um sistema
-                  de crescimento previsível e sustentável ano a ano."
+                  superar o faturamento histórico com mais controle sobre metas,
+                  campanhas e atendimento comercial."
                 </p>
               </div>
             </div>
@@ -376,8 +376,7 @@ export function CaseVarejoClient() {
                 Estratégia, dados e execução
               </h2>
               <p className="mt-3 text-sm text-muted-foreground max-w-sm mx-auto">
-                Três pilares que transformaram o varejo em uma máquina de vendas
-                omnichannel.
+                Três frentes que conectaram catálogo, mídia e comercial.
               </p>
             </div>
 
@@ -645,14 +644,12 @@ export function CaseVarejoClient() {
               Parceria contínua
             </span>
             <h2 className="font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
-              Uma jornada que começou em 2022 e continua quebrando recordes.
+              Uma parceria iniciada em 2022, com recordes ano após ano.
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground">
-              O sucesso dessa jornada transformou a avaliação inicial em uma
-              parceria sólida de longo prazo. Através de reuniões semanais de
-              acompanhamento, o cliente segue conosco até hoje, evoluindo e
-              quebrando novos recordes a cada ano, prova do valor e da confiança
-              construídos ao longo de cada ciclo.
+              O trabalho começou com correções de estrutura e virou rotina de
+              crescimento. Com acompanhamento semanal, o cliente passou a revisar
+              metas, campanhas e atendimento com base nos números de cada ciclo.
             </p>
 
             <div className="mt-10 grid grid-cols-2 gap-4 max-w-xl mx-auto sm:grid-cols-4">
@@ -737,12 +734,11 @@ export function CaseVarejoClient() {
             className="max-w-2xl mx-auto text-center"
           >
             <h2 className="font-heading text-3xl font-black leading-tight tracking-tight text-white md:text-4xl">
-              A história deste varejista pode ser a sua.
+              Seu varejo pode crescer com mais leitura comercial.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/35">
-              Nossa abordagem é focada em transformar desafios em oportunidades
-              e investimentos em resultados exponenciais. Está pronto para
-              construir seu próprio case de sucesso?
+              Vamos entender onde catálogo, mídia e atendimento podem melhorar
+              receita sem depender apenas de mais tráfego.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">

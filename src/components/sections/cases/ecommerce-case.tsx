@@ -130,26 +130,26 @@ const solution = [
     step: "01",
     title: "Diagnóstico e planejamento",
     description:
-      "Aplicamos a matriz CSD para estruturar hipóteses. Mapeamos a persona e usamos neuromarketing para criar anúncios com alta conexão emocional. Definimos KPIs claros: CAC-alvo e meta de ROAS.",
+      "Aplicamos a matriz CSD para organizar hipóteses, revisar persona, oferta e objeções de compra. A partir disso, definimos CAC-alvo, meta de ROAS e prioridades de teste.",
   },
   {
     step: "02",
     title: "Inteligência de dados",
     description:
-      "Analisamos o comportamento do consumidor e a jornada de compra para definir um CAC ideal. Cada decisão de investimento passou a ser guiada por dados, buscando a máxima eficiência.",
+      "Analisamos comportamento de navegação, etapas do checkout e custo por venda para entender onde aumentar verba e onde reduzir desperdício.",
   },
   {
     step: "03",
     title: "Execução e remarketing",
     description:
-      "Implementamos uma estrutura robusta de campanhas com testes contínuos de criativos e públicos. O remarketing foi essencial para recuperar carrinhos e maximizar a conversão.",
+      "Organizamos campanhas por intenção, criativos e públicos. O remarketing entrou para recuperar carrinhos e trazer de volta quem já havia demonstrado interesse.",
   },
 ];
 
 const learnings = [
   {
     icon: Crosshair,
-    text: "A segmentação baseada nas dores da persona foi o principal driver para taxa de conversão 3x superior à média do mercado.",
+    text: "A segmentação por intenção e objeção de compra foi decisiva para elevar a conversão acima da média do e-commerce brasileiro.",
   },
   {
     icon: TrendingUp,
@@ -461,7 +461,7 @@ export function CaseEcommerceClient() {
                 Funil de Conversão
               </span>
               <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
-                A jornada do cliente em números
+                O funil de compra em números
               </h2>
               <p className="mt-3 text-sm text-muted-foreground max-w-sm mx-auto">
                 Da primeira impressão até a venda, cada etapa medida e
@@ -743,7 +743,7 @@ export function CaseEcommerceClient() {
                     ROAS de 4.7x.
                   </span>{" "}
                   O mercado busca um ROAS saudável de 3x. Atingir quase 5x
-                  garante operação lucrativa com forte potencial de escala.
+                  indica uma operação com margem para aumentar investimento sem perder eficiência.
                 </p>
               </div>
             </div>
@@ -813,7 +813,7 @@ export function CaseEcommerceClient() {
             className="max-w-2xl mx-auto text-center"
           >
             <h2 className="font-heading text-3xl md:text-4xl font-black text-white leading-tight tracking-tight">
-              A história desta empresa pode ser a sua.
+              Seu e-commerce pode vender mais sem perder margem.
             </h2>
             <p className="mt-4 text-white/35 text-base leading-relaxed">
               Vamos entender o seu negócio antes de propor qualquer coisa.
