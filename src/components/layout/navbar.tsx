@@ -577,12 +577,6 @@ export function Navbar() {
                 </SheetClose>
               </div>
               <SheetTitle className="sr-only">{siteConfig.name}</SheetTitle>
-              <p className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
-                Menu UPDO
-              </p>
-              <p className="mt-4 max-w-xs text-sm font-medium leading-relaxed text-white/45">
-                Escolha uma área para ver como marketing, vendas e dados se conectam.
-              </p>
             </div>
 
             <nav className="relative z-10 flex-1 overflow-y-auto px-4 py-5">
