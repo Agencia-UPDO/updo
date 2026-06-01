@@ -9,12 +9,12 @@ import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet";
 import {
-  Menu,
   Home,
   Brain,
   Target,
@@ -25,7 +25,6 @@ import {
   ChevronRight,
   ChevronDown,
   Mail,
-  Phone,
   ArrowRight,
   Database,
   Eye,
@@ -36,7 +35,16 @@ import {
   Building2,
   Briefcase,
   Trophy,
+  X,
 } from "lucide-react";
+
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M20.52 3.48A11.8 11.8 0 0 0 12.12 0C5.58 0 .26 5.32.26 11.86c0 2.09.55 4.13 1.58 5.93L.16 24l6.35-1.66a11.85 11.85 0 0 0 5.61 1.43h.01c6.54 0 11.86-5.32 11.86-11.86 0-3.17-1.23-6.15-3.47-8.39ZM12.13 21.77h-.01a9.85 9.85 0 0 1-5.02-1.38l-.36-.21-3.77.99 1.01-3.67-.24-.38a9.83 9.83 0 0 1-1.51-5.25C2.23 6.43 6.67 2 12.13 2c2.63 0 5.11 1.03 6.97 2.89A9.8 9.8 0 0 1 22 11.91c0 5.44-4.43 9.86-9.87 9.86Zm5.41-7.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z" />
+    </svg>
+  );
+}
 
 /* ─── Sectors submenu data ─── */
 const sectorItems = [
@@ -162,6 +170,13 @@ const serviceItems = [
     description: "Google, Meta, LinkedIn e SEO integrados",
     href: "/servicos/geracao-de-demanda",
     icon: Target,
+    iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
+  },
+  {
+    title: "Treinamentos Corporativos",
+    description: "In company, neurovendas, IA e atendimento",
+    href: "/treinamentos-corporativos",
+    icon: GraduationCap,
     iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
   },
 ];
@@ -528,40 +543,50 @@ export function Navbar() {
         {/* Mobile Navigation */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger
-            className="lg:hidden"
-            render={
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-10 w-10 hover:bg-[#6575FF]/10"
-              />
-            }
+            className="group relative flex h-11 w-11 items-center justify-center rounded-full border border-border/70 bg-white shadow-[0_10px_26px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#6575FF]/35 hover:bg-[#6575FF]/[0.06] hover:shadow-[0_14px_34px_rgba(101,117,255,0.16)] active:scale-95 lg:hidden"
           >
-            <Menu className="h-6 w-6" />
+            <span className="absolute right-2.5 top-2.5 h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_12px_rgba(86,254,213,0.9)]" />
+            <span className="flex w-5 flex-col gap-1.5">
+              <span className="h-0.5 w-5 rounded-full bg-foreground transition-all duration-300 group-hover:bg-[#6575FF]" />
+              <span className="h-0.5 w-3.5 rounded-full bg-foreground transition-all duration-300 group-hover:w-5 group-hover:bg-[#6575FF]" />
+              <span className="h-0.5 w-5 rounded-full bg-foreground transition-all duration-300 group-hover:bg-[#6575FF]" />
+            </span>
             <span className="sr-only">Toggle de Menu</span>
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="flex flex-col w-[300px] sm:w-[400px] border-l border-white/5 bg-[#0A1120] p-0 text-white font-sans overflow-hidden"
+            showCloseButton={false}
+            className="flex w-[300px] flex-col gap-0 overflow-hidden border-l border-white/10 bg-[#07111F] p-0 font-sans text-white shadow-[-28px_0_80px_rgba(7,17,31,0.30)] sm:w-[400px]"
           >
-            <div className="p-8 border-b border-white/5 bg-white/[0.02]">
-              <div className="flex items-center justify-between mb-8">
+            <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:34px_34px]" />
+            <div className="pointer-events-none absolute -right-32 top-0 z-0 h-72 w-72 rounded-full bg-[#6575FF]/20 blur-[90px]" />
+            <div className="pointer-events-none absolute -bottom-28 left-0 z-0 h-72 w-72 rounded-full bg-accent/10 blur-[90px]" />
+
+            <div className="relative z-10 border-b border-white/10 bg-white/[0.03] px-6 py-7">
+              <div className="mb-7 flex items-center justify-between">
                 <Image
                   src="/Imagens/Logo UPDO 2024 Branca.svg"
                   alt="UPDO Logo"
                   width={140}
                   height={40}
-                  className="h-8 w-auto"
+                  className="h-9 w-auto"
                 />
+                <SheetClose className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white/50 transition-all duration-200 hover:border-[#6575FF]/35 hover:bg-[#6575FF]/10 hover:text-white active:scale-95">
+                  <X className="h-4 w-4 transition-transform duration-200 group-hover:rotate-90" />
+                  <span className="sr-only">Fechar menu</span>
+                </SheetClose>
               </div>
               <SheetTitle className="sr-only">{siteConfig.name}</SheetTitle>
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">
-                Navegação Estratégica
+              <p className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
+                Menu UPDO
+              </p>
+              <p className="mt-4 max-w-xs text-sm font-medium leading-relaxed text-white/45">
+                Escolha uma área para ver como marketing, vendas e dados se conectam.
               </p>
             </div>
 
-            <nav className="flex-1 overflow-y-auto pt-4">
-              <div className="grid gap-1 px-4">
+            <nav className="relative z-10 flex-1 overflow-y-auto px-4 py-5">
+              <div className="grid gap-1.5">
                 {navItems.map((item) => {
                   const Icon = getIcon(item.title);
 
@@ -571,7 +596,7 @@ export function Navbar() {
                         <button
                           type="button"
                           onClick={() => setMobileServicesOpen((v) => !v)}
-                          className="group flex w-full items-center gap-4 rounded-xl px-4 py-2.5 text-white/60 transition-all duration-200 hover:bg-white/5 hover:text-white"
+                          className="group flex w-full items-center gap-4 rounded-2xl border border-transparent px-4 py-3 text-white/65 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10 hover:text-white"
                         >
                           <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10">
                             <Blocks className="h-4 w-4" />
@@ -623,7 +648,7 @@ export function Navbar() {
                         <button
                           type="button"
                           onClick={() => setMobileSectorsOpen((v) => !v)}
-                          className="group flex w-full items-center gap-4 rounded-xl px-4 py-2.5 text-white/60 transition-all duration-200 hover:bg-white/5 hover:text-white"
+                          className="group flex w-full items-center gap-4 rounded-2xl border border-transparent px-4 py-3 text-white/65 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10 hover:text-white"
                         >
                           <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10">
                             <Blocks className="h-4 w-4" />
@@ -674,7 +699,7 @@ export function Navbar() {
                         <button
                           type="button"
                           onClick={() => setMobileCasesOpen((v) => !v)}
-                          className="group flex w-full items-center gap-4 rounded-xl px-4 py-2.5 text-white/60 transition-all duration-200 hover:bg-white/5 hover:text-white"
+                          className="group flex w-full items-center gap-4 rounded-2xl border border-transparent px-4 py-3 text-white/65 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10 hover:text-white"
                         >
                           <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10">
                             <Trophy className="h-4 w-4" />
@@ -733,9 +758,9 @@ export function Navbar() {
                       href={item.href}
                       onClick={() => setIsOpen(false)}
                       className={cn(
-                        "group flex items-center gap-4 rounded-xl px-4 py-2.5 transition-all duration-200 hover:bg-white/5",
+                        "group flex items-center gap-4 rounded-2xl border border-transparent px-4 py-3 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10",
                         pathname === item.href
-                          ? "text-[#6575FF] bg-white/[0.03]"
+                          ? "border-[#6575FF]/25 bg-[#6575FF]/10 text-white"
                           : "text-white/60 hover:text-white",
                       )}
                     >
@@ -758,13 +783,13 @@ export function Navbar() {
               </div>
             </nav>
 
-            <div className="p-8 bg-white/[0.02] border-t border-white/5 space-y-6">
+            <div className="relative z-10 space-y-6 border-t border-white/10 bg-white/[0.03] p-6">
               <Link
                 href="/diagnostico"
                 onClick={() => setIsOpen(false)}
                 className={cn(
                   buttonVariants({ size: "lg" }),
-                  "w-full rounded-2xl h-14 text-sm font-black uppercase tracking-wider bg-accent text-accent-foreground hover:opacity-90 shadow-xl shadow-accent/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2",
+                  "flex h-13 w-full items-center justify-center gap-2.5 rounded-full bg-accent text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.28)] transition-all duration-200 hover:scale-[1.02] hover:bg-[#3eecc4] active:scale-[0.98]",
                 )}
               >
                 Agendar diagnóstico
@@ -787,7 +812,7 @@ export function Navbar() {
                     href="tel:+5541987112003"
                     className="flex items-center gap-3 text-xs text-white/40 hover:text-[#6575FF] transition-colors"
                   >
-                    <Phone className="h-4 w-4" />
+                    <WhatsAppIcon className="h-4 w-4" />
                     (41) 98711-2003
                   </a>
                 </div>

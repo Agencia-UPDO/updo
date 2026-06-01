@@ -32,6 +32,7 @@ const navColumns = [
       { title: "Funil e Automação", href: "/servicos/funil-e-automacao" },
       { title: "UX e CRO", href: "/servicos/ux-cro" },
       { title: "Geração de Demanda", href: "/servicos/geracao-de-demanda" },
+      { title: "Treinamentos Corporativos", href: "/treinamentos-corporativos" },
     ],
   },
   {
