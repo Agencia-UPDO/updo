@@ -450,18 +450,18 @@ Quero conversar sobre um treinamento para a minha equipe.`;
 
       <section className="bg-white py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Formatos
               </span>
               <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
-                Treinamento no formato que o time consegue aplicar.
+                O formato depende do que precisa mudar na rotina.
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                Dá para fazer palestra, workshop prático ou um programa em
-                módulos. A escolha depende do público, do tempo disponível e
-                do que a empresa precisa mudar na rotina.
+                Depois do briefing, definimos se faz mais sentido uma palestra,
+                um workshop prático ou um programa em módulos para liderança,
+                comercial, atendimento ou marketing.
               </p>
             </div>
 
@@ -734,7 +734,7 @@ Quero conversar sobre um treinamento para a minha equipe.`;
 
       <section className="bg-white py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+          <div className="grid gap-14 lg:grid-cols-12 lg:items-center lg:gap-20">
             <div className="lg:col-span-5">
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Dúvidas frequentes

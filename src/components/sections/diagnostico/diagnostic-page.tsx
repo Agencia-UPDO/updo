@@ -141,7 +141,7 @@ Quero agendar meu diagnóstico estratégico.`;
         <div className="absolute bottom-0 left-0 -z-10 h-[420px] w-[420px] rounded-full bg-accent/[0.06] blur-[120px]" />
 
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-start lg:gap-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-16">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}

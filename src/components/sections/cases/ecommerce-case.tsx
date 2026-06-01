@@ -802,7 +802,7 @@ export function CaseEcommerceClient() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
+      <section className="relative isolate overflow-hidden bg-[#07111F] py-18 lg:py-28">
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#6575FF]/[0.08] rounded-full blur-[100px] pointer-events-none" />
 
@@ -814,7 +814,7 @@ export function CaseEcommerceClient() {
             transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="max-w-2xl mx-auto text-center"
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-black text-white leading-tight tracking-tight">
+            <h2 className="font-heading text-3xl font-black leading-[1.1] tracking-tight text-white md:text-5xl">
               Seu e-commerce pode vender mais sem perder margem.
             </h2>
             <p className="mt-4 text-white/35 text-base leading-relaxed">

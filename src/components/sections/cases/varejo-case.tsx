@@ -724,7 +724,7 @@ export function CaseVarejoClient() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
+      <section className="relative isolate overflow-hidden bg-[#07111F] py-18 lg:py-28">
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute bottom-0 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[100px] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
@@ -735,7 +735,7 @@ export function CaseVarejoClient() {
             transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="max-w-2xl mx-auto text-center"
           >
-            <h2 className="font-heading text-3xl font-black leading-tight tracking-tight text-white md:text-4xl">
+            <h2 className="font-heading text-3xl font-black leading-[1.1] tracking-tight text-white md:text-5xl">
               Seu varejo pode crescer com mais leitura comercial.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/35">

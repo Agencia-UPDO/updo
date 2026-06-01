@@ -191,10 +191,12 @@ export function CasesIndexClient() {
         </div>
       </section>
 
-      <section className="bg-[#0A1120] py-16 lg:py-20">
+      <section className="relative isolate overflow-hidden bg-[#07111F] py-18 lg:py-28">
+        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute bottom-0 left-1/2 -z-10 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[100px] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
-            <span className="inline-flex items-center rounded-full border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-accent">
+            <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               Próximo passo
             </span>
             <h2 className="font-heading text-3xl font-black leading-[1.1] tracking-tight text-white md:text-5xl">
@@ -206,7 +208,7 @@ export function CasesIndexClient() {
             </p>
             <Link
               href="/diagnostico"
-              className="group inline-flex h-14 items-center justify-center gap-3 rounded-full bg-accent px-8 text-sm font-bold text-white shadow-[0_0_24px_rgba(0,153,102,0.35)] transition-all duration-300 hover:scale-105 hover:bg-[#007a52] hover:shadow-[0_0_36px_rgba(0,153,102,0.55)] active:scale-95"
+              className="group inline-flex h-13 items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95"
             >
               Agendar diagnóstico
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
