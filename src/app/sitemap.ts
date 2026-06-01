@@ -1,9 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://updo.com.br").replace(
-  /\/$/,
-  "",
-);
+const baseUrl = "https://www.updo.com.br";
 
 const routes = [
   { path: "/", priority: 1 },
@@ -33,11 +30,11 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const lastModified = new Date("2026-06-01");
 
   return routes.map((route) => ({
     url: `${baseUrl}${route.path}`,
-    lastModified: now,
+    lastModified,
     changeFrequency: route.path === "/" ? "weekly" : "monthly",
     priority: route.priority,
   }));
