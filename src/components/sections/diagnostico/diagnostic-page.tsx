@@ -8,6 +8,7 @@ import {
   ArrowLeft,
   BarChart3,
   CheckCircle2,
+  ChevronDown,
   Clock,
   LineChart,
   Lock,
@@ -68,16 +69,17 @@ const deliverables = [
 ];
 
 const inputClass =
-  "w-full rounded-xl border border-white/[0.09] bg-white/[0.05] px-4 py-3.5 text-sm text-white placeholder:text-white/25 outline-none transition-colors duration-200 focus:border-accent/40 focus:bg-white/[0.07]";
+  "w-full rounded-xl border border-white/[0.12] bg-white/[0.06] px-4 py-3.5 text-sm text-white placeholder:text-white/32 outline-none transition-colors duration-200 focus:border-[#6575FF]/45 focus:bg-white/[0.08]";
 
 const selectClass =
-  "w-full appearance-none rounded-xl border border-white/[0.09] bg-white/[0.05] px-4 py-3.5 text-sm text-white outline-none transition-colors duration-200 focus:border-accent/40 focus:bg-white/[0.07]";
+  "w-full appearance-none rounded-xl border border-white/[0.12] bg-white/[0.06] px-4 py-3.5 text-sm text-white outline-none transition-colors duration-200 focus:border-[#6575FF]/45 focus:bg-white/[0.08]";
 
 const labelClass =
   "text-[10px] font-black uppercase tracking-[0.25em] text-white/35";
 
 export function DiagnosticPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [whatsAppUrl, setWhatsAppUrl] = useState("");
   const [formData, setFormData] = useState({
     nome: "",
     empresa: "",
@@ -128,19 +130,15 @@ export function DiagnosticPage() {
 
 Quero agendar meu diagnóstico estratégico.`;
 
-    const whatsappUrl = `https://wa.me/5541987112003?text=${encodeURIComponent(message)}`;
-
-    setTimeout(() => {
-      window.open(whatsappUrl, "_blank");
-    }, 1200);
+    setWhatsAppUrl(`https://wa.me/5541987112003?text=${encodeURIComponent(message)}`);
   };
 
   return (
     <main className="bg-background">
-      <section className="relative overflow-hidden bg-[#0A1120] py-20 lg:py-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-        <div className="absolute -top-40 right-0 h-[520px] w-[520px] rounded-full bg-accent/[0.08] blur-[130px]" />
-        <div className="absolute bottom-0 left-0 h-[420px] w-[420px] rounded-full bg-accent/[0.05] blur-[120px]" />
+      <section className="relative isolate overflow-hidden bg-[#07111F] py-20 lg:py-28">
+        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute -top-40 right-0 -z-10 h-[560px] w-[560px] rounded-full bg-[#6575FF]/[0.12] blur-[140px]" />
+        <div className="absolute bottom-0 left-0 -z-10 h-[420px] w-[420px] rounded-full bg-accent/[0.06] blur-[120px]" />
 
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-start lg:gap-16">
@@ -150,7 +148,7 @@ Quero agendar meu diagnóstico estratégico.`;
               transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
               className="pt-4"
             >
-              <span className="inline-flex items-center rounded-full border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-accent">
+              <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Diagnóstico estratégico
               </span>
               <h1 className="mt-5 font-heading text-4xl font-black leading-[1.08] tracking-tight text-white md:text-5xl lg:text-6xl">
@@ -169,8 +167,8 @@ Quero agendar meu diagnóstico estratégico.`;
                   "Próximos passos claros para marketing e vendas",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3 text-sm font-medium text-white/70">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)]">
-                      <span className="h-2 w-2 rounded-full bg-accent" />
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/10">
+                      <span className="h-2 w-2 rounded-full bg-[#6575FF]" />
                     </span>
                     {item}
                   </div>
@@ -183,12 +181,12 @@ Quero agendar meu diagnóstico estratégico.`;
                     key={item.title}
                     className="rounded-2xl border border-white/10 bg-white/[0.03] p-4"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] text-accent">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/10 text-[#6575FF]">
                       <item.icon className="h-4 w-4" />
                     </div>
-                    <h2 className="mt-4 font-heading text-base font-black tracking-tight text-white">
+                    <h3 className="mt-4 font-heading text-base font-black tracking-tight text-white">
                       {item.title}
-                    </h2>
+                    </h3>
                     <p className="mt-2 text-xs leading-relaxed text-white/45">
                       {item.description}
                     </p>
@@ -208,12 +206,11 @@ Quero agendar meu diagnóstico estratégico.`;
               className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-2xl backdrop-blur-xl md:p-8"
             >
               <div className="mb-8">
-                <h2 className="font-heading text-2xl font-black tracking-tight text-white">
+                <h3 className="font-heading text-2xl font-black tracking-tight text-white">
                   Agendar diagnóstico
-                </h2>
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/45">
-                  Preencha os dados para iniciarmos a análise e abrir a conversa
-                  pelo WhatsApp.
+                  Preencha os dados para iniciarmos a análise do seu cenário.
                 </p>
               </div>
 
@@ -342,7 +339,7 @@ Quero agendar meu diagnóstico estratégico.`;
                     <div className="mt-2 border-t border-white/[0.08] pt-6">
                       <button
                         type="submit"
-                        className="group inline-flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-sm font-bold text-white shadow-[0_0_24px_rgba(0,153,102,0.35)] transition-all duration-300 hover:scale-[1.02] hover:bg-[#007a52] hover:shadow-[0_0_36px_rgba(0,153,102,0.55)] active:scale-95"
+                        className="group inline-flex h-13 w-full cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95"
                       >
                         Quero meu diagnóstico estratégico
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -361,19 +358,39 @@ Quero agendar meu diagnóstico estratégico.`;
                     animate={{ opacity: 1, y: 0 }}
                     className="flex flex-col items-center py-12 text-center"
                   >
-                    <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)]">
-                      <CheckCircle2 className="h-10 w-10 text-accent" />
-                    </div>
-                    <h2 className="font-heading text-2xl font-black tracking-tight text-white">
+                    <motion.div
+                      initial={{ scale: 0.82, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+                      className="relative mb-6 flex h-20 w-20 items-center justify-center"
+                    >
+                      <motion.span
+                        initial={{ scale: 0.65, opacity: 0.55 }}
+                        animate={{ scale: 1.35, opacity: 0 }}
+                        transition={{ duration: 1.1, ease: "easeOut" }}
+                        className="absolute inset-0 rounded-full border border-accent/35"
+                      />
+                      <div className="flex h-20 w-20 items-center justify-center rounded-full border border-accent/25 bg-accent/12 shadow-[0_0_34px_rgba(86,254,213,0.18)]">
+                        <CheckCircle2 className="h-10 w-10 text-accent" />
+                      </div>
+                    </motion.div>
+                    <h3 className="font-heading text-2xl font-black tracking-tight text-white">
                       Formulário enviado.
-                    </h2>
+                    </h3>
                     <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/55">
-                      Estamos abrindo o WhatsApp para continuar o agendamento do
-                      seu diagnóstico.
+                      Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento inicial.
                     </p>
-                    <p className="mt-6 text-sm font-bold text-accent">
-                      Redirecionando...
-                    </p>
+                    {whatsAppUrl && (
+                      <Link
+                        href={whatsAppUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-accent px-5 text-sm font-bold text-accent-foreground transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] active:scale-95"
+                      >
+                        Falar agora pelo WhatsApp
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -382,13 +399,13 @@ Quero agendar meu diagnóstico estratégico.`;
         </div>
       </section>
 
-      <section className="bg-[#F7F9FF] py-16">
+      <section className="bg-[var(--surface-soft)] py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto mb-10 max-w-2xl text-center">
-            <span className="inline-flex items-center rounded-full border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-accent">
+            <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               Como conduzimos
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
+            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
               Diagnóstico antes de recomendação.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
@@ -418,9 +435,9 @@ Quero agendar meu diagnóstico estratégico.`;
             ].map((item, index) => (
               <div
                 key={item.title}
-                className="group rounded-3xl border border-border/60 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-accent-border)] hover:shadow-xl"
+                className="group rounded-2xl border border-border/70 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#6575FF]/30 hover:shadow-[0_18px_44px_rgba(101,117,255,0.12)]"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] text-accent">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/10 text-[#6575FF]">
                   <span className="font-heading text-sm font-black">
                     0{index + 1}
                   </span>
@@ -435,7 +452,7 @@ Quero agendar meu diagnóstico estratégico.`;
             ))}
           </div>
 
-          <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] p-6 text-center">
+          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-[#6575FF]/20 bg-[#6575FF]/[0.06] p-6 text-center">
             <p className="text-sm font-semibold leading-relaxed text-foreground/75">
               A ideia é simples: primeiro clareza, depois estratégia. Se fizer
               sentido avançar, mostramos o caminho com prioridade, contexto e
@@ -446,7 +463,7 @@ Quero agendar meu diagnóstico estratégico.`;
           <div className="mt-9 text-center">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-sm font-bold text-accent transition-opacity hover:opacity-80"
+              className="inline-flex items-center gap-2 text-sm font-bold text-[#6575FF] transition-opacity hover:opacity-80"
             >
               <ArrowLeft className="h-4 w-4" />
               Voltar para a home
@@ -513,15 +530,7 @@ function Select({
         ))}
       </select>
       <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/30">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <path
-            d="M2 4L6 8L10 4"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="1.5"
-          />
-        </svg>
+        <ChevronDown className="h-4 w-4" />
       </div>
     </div>
   );
