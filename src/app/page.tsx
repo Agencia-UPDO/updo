@@ -15,17 +15,17 @@ import { HomeContact } from "@/components/sections/home/contact";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "UPDO · Agência de Marketing, Vendas e IA",
+    absolute: "UPDO | Agência de Marketing, Vendas, Dados e IA",
   },
   description:
-    "Estruturamos marketing, vendas e dados para sua empresa crescer com previsibilidade. +300 empresas atendidas em educação, e-commerce, varejo e B2B. +1 década de mercado.",
+    "Agência de marketing, vendas, dados e IA em Curitiba. Estruturamos demanda, funil comercial, CRM e performance para empresas crescerem com previsibilidade.",
   alternates: {
     canonical: "https://updo.com.br",
   },
   openGraph: {
-    title: "UPDO · Agência de Marketing, Vendas e IA",
+    title: "UPDO | Agência de Marketing, Vendas, Dados e IA",
     description:
-      "Crescimento previsível para empresas que querem vender mais sem depender da sorte.",
+      "Estratégia, mídia, dados, IA e processo comercial para empresas que precisam crescer com previsibilidade.",
     url: "https://updo.com.br",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -35,15 +35,15 @@ export const metadata: Metadata = {
         url: "/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
-        alt: "UPDO · Agência de Marketing, Vendas e IA",
+        alt: "UPDO | Agência de Marketing, Vendas, Dados e IA",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "UPDO · Agência de Marketing, Vendas e IA",
+    title: "UPDO | Agência de Marketing, Vendas, Dados e IA",
     description:
-      "Crescimento previsível para empresas que querem vender mais sem depender da sorte.",
+      "Estratégia, mídia, dados, IA e processo comercial para empresas que precisam crescer com previsibilidade.",
     images: ["/Imagens/sala-cheia.jpg"],
   },
 };

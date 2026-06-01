@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import { DiagnosticPage } from "@/components/sections/diagnostico/diagnostic-page";
 
 export const metadata: Metadata = {
-  title: "Diagnóstico Estratégico de Marketing e Vendas",
+  title: "Diagnóstico de Marketing e Vendas",
   description:
-    "Agende um diagnóstico estratégico gratuito e entenda os gargalos de aquisição, funil comercial e previsibilidade de crescimento da sua empresa.",
+    "Diagnóstico gratuito para identificar gargalos de aquisição, landing page, CRM, atendimento e funil comercial antes de investir mais em mídia.",
   alternates: {
     canonical: "https://updo.com.br/diagnostico",
   },
   openGraph: {
-    title: "Diagnóstico Estratégico de Marketing e Vendas | UPDO",
+    title: "Diagnóstico de Marketing e Vendas | UPDO",
     description:
-      "Agende um diagnóstico estratégico gratuito e entenda os gargalos de aquisição, funil comercial e previsibilidade de crescimento da sua empresa.",
+      "Identifique gargalos de aquisição, landing page, CRM, atendimento e funil comercial antes de investir mais em mídia.",
     url: "https://updo.com.br/diagnostico",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Diagnóstico Estratégico de Marketing e Vendas | UPDO",
+    title: "Diagnóstico de Marketing e Vendas | UPDO",
     description:
-      "Agende um diagnóstico estratégico gratuito e entenda os gargalos de aquisição, funil comercial e previsibilidade de crescimento da sua empresa.",
+      "Identifique gargalos de aquisição, landing page, CRM, atendimento e funil comercial antes de investir mais em mídia.",
   },
 };
 

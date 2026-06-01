@@ -3,14 +3,14 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Termos de Uso",
+  title: "Termos de Uso | Regras do Site e Serviços",
   description:
     "Termos e condições de uso do site updo.com.br. Saiba quais são as regras e responsabilidades ao navegar e utilizar os serviços da UPDO.",
   alternates: {
     canonical: "https://updo.com.br/termos-de-uso",
   },
   openGraph: {
-    title: "Termos de Uso | UPDO",
+    title: "Termos de Uso | Regras do Site e Serviços | UPDO",
     description:
       "Termos e condições de uso do site updo.com.br. Saiba quais são as regras e responsabilidades ao navegar e utilizar os serviços da UPDO.",
     url: "https://updo.com.br/termos-de-uso",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Termos de Uso | UPDO",
+    title: "Termos de Uso | Regras do Site e Serviços | UPDO",
     description:
       "Termos e condições de uso do site updo.com.br. Saiba quais são as regras e responsabilidades ao navegar e utilizar os serviços da UPDO.",
   },

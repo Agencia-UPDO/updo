@@ -3,16 +3,16 @@ import Script from "next/script";
 import { CaseVarejoClient } from "@/components/sections/cases/varejo-case";
 
 export const metadata: Metadata = {
-  title: "Case Varejo | +87% de Faturamento em 2 Anos",
+  title: "Case de Marketing para Varejo | +87% de Faturamento",
   description:
-    "Como a UPDO quebrou o teto histórico de um varejista paulistano com mais de 20 anos de mercado: +87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022.",
+    "Case de marketing para varejo: +87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022 para uma operação varejista.",
   alternates: {
     canonical: "https://updo.com.br/cases/varejo",
   },
   openGraph: {
-    title: "Case Varejo | +87% de Faturamento em 2 Anos | UPDO",
+    title: "Case de Marketing para Varejo | +87% de Faturamento",
     description:
-      "Como a UPDO quebrou o teto histórico de um varejista paulistano com mais de 20 anos de mercado: +87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022.",
+      "+87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022 para uma operação varejista.",
     url: "https://updo.com.br/cases/varejo",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
         url: "/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
-        alt: "Case Varejo | +87% de Faturamento em 2 Anos | UPDO",
+        alt: "Case de Marketing para Varejo | +87% de Faturamento",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Case Varejo | +87% de Faturamento em 2 Anos | UPDO",
+    title: "Case de Marketing para Varejo | +87% de Faturamento",
     description:
-      "Como a UPDO quebrou o teto histórico de um varejista paulistano com mais de 20 anos de mercado: +87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022.",
+      "+87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022 para uma operação varejista.",
     images: ["/Imagens/sala-cheia.jpg"],
   },
 };
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Case Varejo | +87% de Faturamento em 2 Anos",
+  headline: "Case de Marketing para Varejo | +87% de Faturamento",
   description:
-    "Como a UPDO quebrou o teto histórico de um varejista paulistano com mais de 20 anos de mercado: +87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022.",
+    "Case de marketing para varejo: +87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022 para uma operação varejista.",
   url: "https://updo.com.br/cases/varejo",
   image: "https://updo.com.br/Imagens/sala-cheia.jpg",
   author: {

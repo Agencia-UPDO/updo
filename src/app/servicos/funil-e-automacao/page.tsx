@@ -3,16 +3,16 @@ import Script from "next/script";
 import { FunilLanding } from "@/components/sections/services/funil-landing";
 
 export const metadata: Metadata = {
-  title: "Funil e Automação: Nutrição de Leads e Lead Scoring",
+  title: "Funil e Automação de Marketing | Lead Scoring, CRM e WhatsApp",
   description:
-    "Estruturamos jornada, funil de nutrição, lead scoring e automação de WhatsApp para o lead certo chegar ao comercial no momento certo. Sem trabalho manual. Solicite diagnóstico gratuito.",
+    "Funil e automação de marketing com nutrição de leads, lead scoring, CRM, WhatsApp, e-mail e passagem de oportunidades qualificadas para vendas.",
   alternates: {
     canonical: "https://updo.com.br/servicos/funil-e-automacao",
   },
   openGraph: {
-    title: "Funil e Automação: Nutrição de Leads e Lead Scoring | UPDO",
+    title: "Funil e Automação de Marketing | Lead Scoring, CRM e WhatsApp",
     description:
-      "Estruturamos jornada, funil de nutrição, lead scoring e automação de WhatsApp para o lead certo chegar ao comercial no momento certo. Sem trabalho manual. Solicite diagnóstico gratuito.",
+      "Nutrição de leads, lead scoring, CRM, WhatsApp, e-mail e passagem de oportunidades qualificadas para vendas.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Funil e Automação: Nutrição de Leads e Lead Scoring | UPDO",
+    title: "Funil e Automação de Marketing | Lead Scoring, CRM e WhatsApp",
     description:
-      "Estruturamos jornada, funil de nutrição, lead scoring e automação de WhatsApp para o lead certo chegar ao comercial no momento certo. Sem trabalho manual. Solicite diagnóstico gratuito.",
+      "Nutrição de leads, lead scoring, CRM, WhatsApp, e-mail e passagem de oportunidades qualificadas para vendas.",
   },
 };
 

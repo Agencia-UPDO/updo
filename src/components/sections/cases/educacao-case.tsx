@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import {
@@ -11,7 +11,6 @@ import {
   CartesianGrid,
 } from "recharts";
 import Link from "next/link";
-import Image from "next/image";
 import {
   ArrowLeft,
   ArrowRight,
@@ -191,15 +190,7 @@ export function CaseEducacaoClient() {
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-10 pb-16 lg:pt-40 lg:pb-28">
         <div className="absolute inset-0 -z-10 bg-[#07111F]">
-          <Image
-            src="/Imagens/bg-case-educacao.jpg"
-            alt="Background educacional"
-            fill
-            className="object-cover opacity-[0.15] grayscale"
-            priority
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#07111F] via-transparent to-[#07111F]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         </div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#6575FF]/[0.08] rounded-full blur-[160px] pointer-events-none" />
 
@@ -687,7 +678,7 @@ export function CaseEducacaoClient() {
 
       {/* ── CTA ──────────────────────────────────────────── */}
       <section className="py-18 lg:py-28 bg-[#07111F] relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#6575FF]/[0.08] rounded-full blur-[100px] pointer-events-none" />
 
         <div className="container mx-auto px-4 lg:px-8">

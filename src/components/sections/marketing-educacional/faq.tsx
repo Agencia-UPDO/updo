@@ -58,9 +58,9 @@ export function FAQ() {
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Dúvidas Frequentes
               </span>
-              <h2 className="mt-6 font-heading text-4xl lg:text-5xl font-black text-foreground leading-[1.1] tracking-tight">
+              <h2 className="mt-6 font-heading text-3xl font-black text-foreground leading-[1.1] tracking-tight md:text-5xl">
                 Objeções matam <br />
-                <span className="text-muted-foreground/20">
+                <span>
                   suas matrículas.
                 </span>
               </h2>

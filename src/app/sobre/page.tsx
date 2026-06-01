@@ -3,16 +3,16 @@ import Script from "next/script";
 import { AboutPage } from "@/components/sections/about/about-page";
 
 export const metadata: Metadata = {
-  title: "Sobre | Agência de Marketing, Vendas e IA em Curitiba",
+  title: "Sobre | Agência de Marketing, Vendas e IA",
   description:
-    "Conheça a UPDO: fundada em 2017, +300 empresas atendidas, +R$750M em receita gerada. Agência de marketing, vendas e IA que responde pelo número, do anúncio ao caixa.",
+    "Conheça a UPDO, agência de marketing, vendas, dados e IA em Curitiba. Desde 2017, unimos comportamento do consumidor, mídia e processo comercial.",
   alternates: {
     canonical: "https://updo.com.br/sobre",
   },
   openGraph: {
-    title: "Sobre | Agência de Marketing, Vendas e IA em Curitiba | UPDO",
+    title: "Sobre a UPDO | Agência de Marketing, Vendas e IA",
     description:
-      "Conheça a UPDO: fundada em 2017, +300 empresas atendidas, +R$750M em receita gerada. Agência de marketing, vendas e IA que responde pelo número, do anúncio ao caixa.",
+      "Agência de marketing, vendas, dados e IA em Curitiba. Desde 2017, unimos comportamento do consumidor, mídia e processo comercial.",
     url: "https://updo.com.br/sobre",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
         url: "/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
-        alt: "UPDO - Agência de Marketing, Vendas e IA em Curitiba",
+        alt: "UPDO | Agência de Marketing, Vendas, Dados e IA em Curitiba",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sobre | Agência de Marketing, Vendas e IA em Curitiba | UPDO",
+    title: "Sobre a UPDO | Agência de Marketing, Vendas e IA",
     description:
-      "Conheça a UPDO: fundada em 2017, +300 empresas atendidas, +R$750M em receita gerada. Agência de marketing, vendas e IA que responde pelo número, do anúncio ao caixa.",
+      "Agência de marketing, vendas, dados e IA em Curitiba. Desde 2017, unimos comportamento do consumidor, mídia e processo comercial.",
     images: ["/Imagens/sala-cheia.jpg"],
   },
 };

@@ -197,7 +197,20 @@
     background-color: #07111f !important;
     border-color: rgb(86 254 213 / 42%) !important;
     color: #56fed5 !important;
-    box-shadow: 0 10px 24px rgb(7 17 31 / 14%) !important;
+    box-shadow: 0 10px 24px rgb(7 17 31 / 18%) !important;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .updo-hero-badge {
+    background-color: #07111f !important;
+    border-color: rgb(86 254 213 / 64%) !important;
+    color: #56fed5 !important;
+    box-shadow:
+      0 0 0 1px rgb(86 254 213 / 16%),
+      0 10px 24px rgb(7 17 31 / 28%) !important;
+    position: relative;
+    z-index: 10;
     width: fit-content;
     max-width: 100%;
   }

@@ -71,8 +71,8 @@ export function Footer() {
             </Link>
 
             <p className="max-w-sm text-sm leading-relaxed text-white/45 font-medium">
-              Agência de marketing, vendas e IA para empresas que querem
-              crescer com previsibilidade, não com sorte.
+              Estruturação de marketing, vendas e IA para empresas em
+              crescimento.
             </p>
 
             <div className="flex flex-col gap-4">

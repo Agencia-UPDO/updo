@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import Link from "next/link";
@@ -251,6 +251,27 @@ function TrustItem({ icon: Icon, text }: { icon: React.ElementType; text: string
   );
 }
 
+function SuccessIcon() {
+  return (
+    <motion.div
+      initial={{ scale: 0.82, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className="relative mb-6 flex h-20 w-20 items-center justify-center"
+    >
+      <motion.span
+        initial={{ scale: 0.65, opacity: 0.55 }}
+        animate={{ scale: 1.35, opacity: 0 }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
+        className="absolute inset-0 rounded-full border border-accent/35"
+      />
+      <div className="flex h-20 w-20 items-center justify-center rounded-full border border-accent/25 bg-accent/12 shadow-[0_0_34px_rgba(86,254,213,0.18)]">
+        <CheckCircle2 className="h-10 w-10 text-accent" />
+      </div>
+    </motion.div>
+  );
+}
+
 function CroVisual() {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-2xl">
@@ -264,9 +285,9 @@ function CroVisual() {
             Rodando
           </span>
         </div>
-        <h2 className="mt-2 font-heading text-2xl font-black tracking-tight text-white">
+        <h3 className="mt-2 font-heading text-2xl font-black tracking-tight text-white">
           A página só muda quando o dado mostra onde o usuário travou.
-        </h2>
+        </h3>
       </div>
 
       <div className="mt-5 grid grid-cols-2 gap-3">
@@ -336,6 +357,7 @@ function CroVisual() {
 export function UxCroLanding() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [whatsAppUrl, setWhatsAppUrl] = React.useState("");
   const [formData, setFormData] = React.useState({
     nome: "",
     empresa: "",
@@ -356,8 +378,7 @@ export function UxCroLanding() {
     return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const submitLead = () => {
     setIsSubmitted(true);
 
     if (typeof window !== "undefined") {
@@ -382,18 +403,30 @@ export function UxCroLanding() {
 
 Quero otimizar a conversão das minhas páginas.`;
 
-      setTimeout(() => {
-        window.open(`https://wa.me/5541987112003?text=${encodeURIComponent(message)}`, "_blank");
-      }, 1200);
+      const whatsappUrl = `https://wa.me/5541987112003?text=${encodeURIComponent(message)}`;
+      setWhatsAppUrl(whatsappUrl);
     }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitLead();
+  };
+
+  const handleSubmitClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const form = event.currentTarget.form;
+    if (form && !form.reportValidity()) return;
+    submitLead();
   };
 
   return (
     <main>
-      <section className="relative overflow-hidden bg-[#07111F] pt-10 pb-16 lg:pt-36 lg:pb-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute top-0 right-0 -z-10 h-[700px] w-[700px] rounded-full bg-[#6575FF]/[0.12] blur-[140px]" />
-        <div className="absolute bottom-0 left-0 -z-10 h-[500px] w-[500px] rounded-full bg-accent/[0.08] blur-[120px]" />
+      <section className="relative overflow-hidden pt-10 pb-16 lg:pt-36 lg:pb-28">
+        <div className="absolute inset-0 -z-10 bg-[#07111F]">
+          <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        </div>
+        <div className="absolute top-0 right-0 h-[700px] w-[700px] rounded-full bg-[#6575FF]/[0.12] blur-[140px]" />
+        <div className="absolute bottom-0 left-0 h-[500px] w-[500px] rounded-full bg-accent/[0.08] blur-[120px]" />
 
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
@@ -463,7 +496,7 @@ Quero otimizar a conversão das minhas páginas.`;
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               O problema
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
+            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
               Onde a página perde conversão sem aparecer no relatório.
             </h2>
           </div>
@@ -494,7 +527,7 @@ Quero otimizar a conversão das minhas páginas.`;
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               O que entregamos
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
+            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
               O que analisamos antes de mexer na página.
             </h2>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
@@ -532,15 +565,17 @@ Quero otimizar a conversão das minhas páginas.`;
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute top-1/2 left-1/2 -z-10 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6575FF]/[0.12] blur-[100px]" />
+      <section className="relative overflow-hidden py-18 lg:py-28">
+        <div className="absolute inset-0 -z-10 bg-[#07111F]">
+          <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        </div>
+        <div className="absolute top-1/2 left-1/2 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6575FF]/[0.12] blur-[100px]" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-12 max-w-xl">
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               Método CRO
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-white md:text-4xl">
+            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-white md:text-5xl">
               Os quatro pilares da otimização de conversão.
             </h2>
             <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/45">
@@ -576,7 +611,7 @@ Quero otimizar a conversão das minhas páginas.`;
                 <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                   Resultado real
                 </span>
-                <h2 className="mt-4 font-heading text-2xl font-black leading-tight tracking-tight text-foreground md:text-3xl">
+                <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
                   Mais conversão sem aumentar a verba de mídia.
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
@@ -617,9 +652,11 @@ Quero otimizar a conversão das minhas páginas.`;
         </div>
       </section>
 
-      <section id="contato" className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[120px]" />
+      <section id="contato" className="relative overflow-hidden py-18 lg:py-28">
+        <div className="absolute inset-0 -z-10 bg-[#07111F]">
+          <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        </div>
+        <div className="pointer-events-none absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[120px]" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <div className="mb-12 text-center">
@@ -730,7 +767,8 @@ Quero otimizar a conversão das minhas páginas.`;
                     Com base nas suas respostas, preparamos um diagnóstico mais preciso da experiência e conversão.
                   </p>
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={handleSubmitClick}
                     className="mx-auto inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:max-w-none sm:px-10"
                   >
                     Diagnosticar minha página
@@ -745,15 +783,24 @@ Quero otimizar a conversão das minhas páginas.`;
               </form>
             ) : (
               <div className="flex flex-col items-center py-12 text-center">
-                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/12">
-                  <CheckCircle2 className="h-10 w-10 text-[#6575FF]" />
-                </div>
+                <SuccessIcon />
                 <h3 className="font-heading text-2xl font-black tracking-tight text-white">
-                  Formulário enviado.
+                  Formulário enviado com sucesso.
                 </h3>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/55">
-                  Estamos abrindo o WhatsApp para continuar o diagnóstico.
+                  Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento inicial.
                 </p>
+                {whatsAppUrl && (
+                  <Link
+                    href={whatsAppUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-accent px-5 text-sm font-bold text-accent-foreground transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] active:scale-95"
+                  >
+                    Falar agora pelo WhatsApp
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                )}
               </div>
             )}
           </div>
@@ -767,7 +814,7 @@ Quero otimizar a conversão das minhas páginas.`;
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Dúvidas frequentes
               </span>
-              <h2 className="mt-6 font-heading text-4xl font-black leading-[1.1] tracking-tight text-foreground lg:text-5xl">
+              <h2 className="mt-6 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
                 Dúvidas sobre UX, CRO e otimização de conversão.
               </h2>
               <p className="mt-8 max-w-sm leading-relaxed text-muted-foreground">

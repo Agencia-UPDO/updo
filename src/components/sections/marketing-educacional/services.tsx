@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -102,7 +102,7 @@ export function Services() {
       className="relative overflow-hidden bg-background py-18 lg:py-28"
     >
       {/* Subtle grid */}
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_50%,#000_60%,transparent_100%)]" />
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none [mask-image:radial-gradient(ellipse_70%_60%_at_50%_50%,#000_60%,transparent_100%)]" />
       {/* Glows */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#6575FF]/[0.04] rounded-full blur-[120px] -z-10 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#6575FF]/[0.04] rounded-full blur-[100px] -z-10 pointer-events-none" />
@@ -120,8 +120,7 @@ export function Services() {
             Serviços
           </span>
           <h2 className="mt-3 font-heading text-3xl md:text-5xl font-black tracking-tight text-foreground leading-[1.1]">
-            O que você recebe{" "}
-            <span className="text-muted-foreground/30">na prática.</span>
+            O que você recebe na prática.
           </h2>
           <p className="mt-4 text-muted-foreground text-base max-w-lg leading-relaxed">
             Nós não vendemos apenas tráfego. Implementamos um sistema completo

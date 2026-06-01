@@ -169,8 +169,8 @@ export function OQueFazemosPage() {
 
       {/* ── Hero ── */}
       <section className="relative flex items-start overflow-hidden bg-background pt-10 pb-16 lg:min-h-[88vh] lg:items-center lg:py-28">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_30%,rgba(86,254,213,0.16),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(101,117,255,0.12),transparent_40%)]" />
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:42px_42px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(86,254,213,0.16),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(101,117,255,0.12),transparent_40%)] pointer-events-none" />
+        <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
@@ -180,7 +180,7 @@ export function OQueFazemosPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
             >
-              <span className="updo-badge inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-semibold md:text-sm">
+              <span className="updo-hero-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Como funcionamos
               </span>
               <h1 className="mt-8 font-heading text-4xl font-black leading-[1.12] tracking-tight text-foreground md:text-5xl lg:text-6xl">
@@ -230,7 +230,7 @@ export function OQueFazemosPage() {
               className="hidden lg:flex items-center justify-center"
             >
               <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#07111F] px-6 py-8 shadow-2xl xl:px-8">
-                <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_60%,rgba(101,117,255,0.22),transparent_65%),radial-gradient(circle_at_80%_20%,rgba(86,254,213,0.12),transparent_50%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_60%,rgba(101,117,255,0.22),transparent_65%),radial-gradient(circle_at_80%_20%,rgba(86,254,213,0.12),transparent_50%)] pointer-events-none" />
                 <p className="mb-4 text-center text-xs font-black uppercase tracking-[0.25em] text-white/40">
                   4 pilares UPDO
                 </p>
@@ -250,8 +250,9 @@ export function OQueFazemosPage() {
       </section>
 
       {/* ── Os 4 pilares ── */}
-      <section className="bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute-pointer-none" />
+      <section className="relative isolate overflow-hidden bg-[#07111F] py-18 lg:py-28">
+        <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[400px] w-[800px] rounded-full bg-[#6575FF]/[0.08] blur-[120px] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-14">
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
@@ -353,34 +354,6 @@ export function OQueFazemosPage() {
         </div>
       </section>
 
-      {/* ── O que entregamos ── */}
-      <section className="bg-[var(--surface-soft)] px-4 pb-18 lg:px-8 lg:pb-28">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="container mx-auto rounded-2xl border border-border/70 bg-white p-6 shadow-[var(--shadow-soft)] md:flex md:items-center md:justify-between md:gap-8 md:p-8"
-        >
-          <div>
-            <p className="font-heading text-2xl font-black leading-tight tracking-tight text-foreground">
-              Quer saber onde sua operação está travando hoje?
-            </p>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              O diagnóstico mostra se o gargalo está na estratégia, na execução,
-              no processo comercial ou na leitura dos dados.
-            </p>
-          </div>
-          <Link
-            href="/diagnostico"
-            className="group mt-6 inline-flex h-13 w-full items-center justify-center gap-2 rounded-full bg-accent px-7 text-sm font-bold text-accent-foreground shadow-[0_10px_24px_rgba(86,254,213,0.22)] transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_14px_34px_rgba(86,254,213,0.34)] active:scale-95 md:mt-0 md:w-auto"
-          >
-            Fazer diagnóstico gratuito
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </motion.div>
-      </section>
-
       <section className="bg-white py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-14 max-w-2xl">
@@ -429,7 +402,9 @@ export function OQueFazemosPage() {
       </section>
 
       {/* ── Quote Rodrigo ── */}
-      <section className="bg-[#07111F] py-18 lg:py-28">
+      <section className="relative isolate overflow-hidden bg-[#07111F] py-18 lg:py-28">
+        <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[300px] w-[600px] rounded-full bg-accent/[0.08] blur-[100px] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -438,7 +413,7 @@ export function OQueFazemosPage() {
             transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="mx-auto max-w-3xl text-center"
           >
-            <div className="updo-badge mb-8 inline-flex h-16 w-16 items-center justify-center rounded-full border">
+            <div className="mb-8 inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-[#56FED5] shadow-[0_10px_24px_rgba(7,17,31,0.18)]">
               <span className="font-heading text-3xl font-black">"</span>
             </div>
             <blockquote className="font-heading text-2xl font-black leading-snug tracking-tight text-white md:text-3xl lg:text-4xl">

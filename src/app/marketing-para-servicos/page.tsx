@@ -3,17 +3,17 @@ import Script from "next/script";
 import { ServicosLanding } from "@/components/sections/servicos/servicos-landing";
 
 export const metadata: Metadata = {
-  title: "Marketing para Serviços | Lead Qualificado e Canal Previsível",
+  title: "Marketing para Empresas de Serviços | Leads e Processo Comercial",
   description:
-    "Posicionamento, geração de demanda e processo comercial para planos de saúde, consultorias, seguros, contabilidade e serviços que querem crescer sem depender de indicação.",
+    "Marketing para empresas de serviços com posicionamento, geração de demanda, qualificação de leads, CRM e processo comercial para vender sem depender só de indicação.",
   alternates: {
     canonical: "https://updo.com.br/marketing-para-servicos",
   },
   openGraph: {
     title:
-      "Marketing para Serviços | Lead Qualificado e Canal Previsível | UPDO",
+      "Marketing para Empresas de Serviços | Leads e Processo Comercial",
     description:
-      "Posicionamento, geração de demanda e processo comercial para planos de saúde, consultorias, seguros, contabilidade e serviços que querem crescer sem depender de indicação.",
+      "Posicionamento, geração de demanda, qualificação de leads, CRM e processo comercial para empresas de serviços venderem sem depender só de indicação.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Marketing para Serviços | Lead Qualificado e Canal Previsível | UPDO",
+      "Marketing para Empresas de Serviços | Leads e Processo Comercial",
     description:
-      "Posicionamento, geração de demanda e processo comercial para planos de saúde, consultorias, seguros, contabilidade e serviços que querem crescer sem depender de indicação.",
+      "Posicionamento, geração de demanda, qualificação de leads, CRM e processo comercial para empresas de serviços venderem sem depender só de indicação.",
   },
 };
 

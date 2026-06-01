@@ -282,30 +282,6 @@ export function HomeServices() {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="mt-12 rounded-2xl border border-border/70 bg-white p-6 shadow-[var(--shadow-soft)] md:flex md:items-center md:justify-between md:gap-8 md:p-8"
-        >
-          <div>
-            <p className="font-heading text-2xl font-black leading-tight tracking-tight text-foreground">
-              Quer entender o que faz sentido para sua empresa?
-            </p>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              O diagnóstico mostra quais frentes devem entrar primeiro: demanda,
-              página, CRM, atendimento, vendas, dados ou IA.
-            </p>
-          </div>
-          <Link
-            href="/diagnostico"
-            className="group mt-6 inline-flex h-13 w-full items-center justify-center gap-2 rounded-full bg-accent px-7 text-sm font-bold text-accent-foreground shadow-[0_10px_24px_rgba(86,254,213,0.22)] transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_14px_34px_rgba(86,254,213,0.34)] active:scale-95 md:mt-0 md:w-auto"
-          >
-            Agendar diagnóstico
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

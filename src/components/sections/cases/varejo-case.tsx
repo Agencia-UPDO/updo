@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import {
@@ -202,8 +202,10 @@ export function CaseVarejoClient() {
   return (
     <main className="flex flex-col">
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#07111F] pt-10 pb-16 lg:pt-40 lg:pb-28">
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <section className="relative overflow-hidden pt-10 pb-16 lg:pt-40 lg:pb-28">
+        <div className="absolute inset-0 -z-10 bg-[#07111F]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        </div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#6575FF]/[0.08] rounded-full blur-[160px] pointer-events-none" />
 
         <div className="container mx-auto px-4 lg:px-8">
@@ -723,7 +725,7 @@ export function CaseVarejoClient() {
 
       {/* ── CTA ──────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute bottom-0 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[100px] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div

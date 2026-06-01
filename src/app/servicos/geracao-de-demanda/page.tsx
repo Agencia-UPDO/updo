@@ -3,16 +3,16 @@ import Script from "next/script";
 import { DemandaLanding } from "@/components/sections/services/demanda-landing";
 
 export const metadata: Metadata = {
-  title: "Geração de Demanda: Google, Meta, LinkedIn, SEO e GEO",
+  title: "Geração de Demanda | Google Ads, Meta, LinkedIn, SEO e GEO",
   description:
-    "Estruturamos estratégia de canal, mídia paga, SEO e GEO para gerar o lead certo com o menor CPL possível e presença em buscadores e respostas de IA.",
+    "Geração de demanda com Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, SEO e GEO para gerar leads qualificados e presença em buscadores e respostas de IA.",
   alternates: {
     canonical: "https://updo.com.br/servicos/geracao-de-demanda",
   },
   openGraph: {
-    title: "Geração de Demanda: Google, Meta, LinkedIn, SEO e GEO | UPDO",
+    title: "Geração de Demanda | Google Ads, Meta, LinkedIn, SEO e GEO",
     description:
-      "Estruturamos estratégia de canal, mídia paga, SEO e GEO para gerar o lead certo com o menor CPL possível e presença em buscadores e respostas de IA.",
+      "Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, SEO e GEO para gerar leads qualificados e presença em buscadores e respostas de IA.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Geração de Demanda: Google, Meta, LinkedIn, SEO e GEO | UPDO",
+    title: "Geração de Demanda | Google Ads, Meta, LinkedIn, SEO e GEO",
     description:
-      "Estruturamos estratégia de canal, mídia paga, SEO e GEO para gerar o lead certo com o menor CPL possível e presença em buscadores e respostas de IA.",
+      "Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, SEO e GEO para gerar leads qualificados e presença em buscadores e respostas de IA.",
   },
 };
 

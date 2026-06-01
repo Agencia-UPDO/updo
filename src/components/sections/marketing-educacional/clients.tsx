@@ -1,11 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-
-// ─── Placeholder client list ─────────────────────────────────────────────────
-// Replace `name` with your real client names / swap the div for <img> when
-// logos are ready.
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const clients = [
   { id: 1, name: "PUCPR", src: "/Clientes/Logo PUCPR.png" },
@@ -17,16 +15,124 @@ const clients = [
   { id: 7, name: "Interpret 2B", src: "/Clientes/Logo Interpret 2B.png" },
 ];
 
-// Triple the list to ensure seamless looping on all screen sizes
-const track = [...clients, ...clients, ...clients];
+const track = [...clients, ...clients];
+const DESKTOP_SPEED = 32;
 
 export function Clients() {
-  return (
-    <section className="py-14 lg:py-16 bg-background border-y border-border/40 relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-background to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-background to-transparent" />
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const animRef = useRef<number>(0);
+  const lastTimeRef = useRef<number>(0);
+  const pausedRef = useRef(false);
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isDraggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragScrollStartRef = useRef(0);
+  const [dragging, setDragging] = useState(false);
 
-      <div className="container mx-auto px-4 lg:px-8 mb-8 text-center">
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const animate = (time: number) => {
+      if (!pausedRef.current) {
+        if (lastTimeRef.current) {
+          const delta = time - lastTimeRef.current;
+          const loopWidth = container.scrollWidth / 2;
+          if (loopWidth > 0) {
+            container.scrollLeft += (DESKTOP_SPEED * delta) / 1000;
+            if (container.scrollLeft >= loopWidth) {
+              container.scrollLeft -= loopWidth;
+            }
+          }
+        }
+        lastTimeRef.current = time;
+      }
+      animRef.current = requestAnimationFrame(animate);
+    };
+
+    animRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animRef.current);
+  }, []);
+
+  const pause = () => {
+    pausedRef.current = true;
+    lastTimeRef.current = 0;
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+  };
+
+  const resume = (delay = 0) => {
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      pausedRef.current = false;
+      lastTimeRef.current = 0;
+    }, delay);
+  };
+
+  const scroll = (dir: "left" | "right") => {
+    pause();
+    scrollRef.current?.scrollBy({
+      left: dir === "left" ? -520 : 520,
+      behavior: "smooth",
+    });
+    resume(500);
+  };
+
+  const onMouseDown = (event: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    isDraggingRef.current = true;
+    dragStartXRef.current = event.clientX;
+    dragScrollStartRef.current = scrollRef.current.scrollLeft;
+    setDragging(true);
+    pause();
+    event.preventDefault();
+  };
+
+  const onMouseMove = (event: React.MouseEvent) => {
+    if (!isDraggingRef.current || !scrollRef.current) return;
+    const delta = event.clientX - dragStartXRef.current;
+    scrollRef.current.scrollLeft = dragScrollStartRef.current - delta;
+  };
+
+  const onMouseUp = () => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    setDragging(false);
+    resume(300);
+  };
+
+  return (
+    <section className="relative overflow-hidden border-y border-border/60 bg-[#F7F9FF] py-12 lg:py-14">
+      <style jsx>{`
+        @keyframes updo-education-client-marquee {
+          from {
+            transform: translate3d(0, 0, 0);
+          }
+          to {
+            transform: translate3d(-50%, 0, 0);
+          }
+        }
+
+        .education-client-marquee {
+          animation: updo-education-client-marquee 72s linear infinite;
+          will-change: transform;
+        }
+
+        @media (max-width: 640px) {
+          .education-client-marquee {
+            animation-duration: 68s;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .education-client-marquee {
+            animation-duration: 90s;
+          }
+        }
+      `}</style>
+
+      <div className="pointer-events-none absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]" />
+
+      <div className="container mx-auto mb-8 px-4 text-center lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,9 +143,8 @@ export function Clients() {
           <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
             Autoridade Educacional
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-black tracking-tight text-foreground leading-[1.1]">
-            Instituições que confiam{" "}
-            <span className="text-muted-foreground/30">na UPDO.</span>
+          <h2 className="font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
+            Instituições que confiam na UPDO.
           </h2>
           <div className="mt-4 flex flex-col items-center justify-center gap-3 text-sm text-muted-foreground sm:flex-row sm:gap-6">
             <div className="flex items-baseline gap-1.5">
@@ -59,38 +164,87 @@ export function Clients() {
         </motion.div>
       </div>
 
-      <div className="relative flex overflow-hidden group">
-        <motion.div
-          className="flex gap-20 items-center justify-start py-4"
-          animate={{ x: ["0%", "-33.33%"] }}
-          transition={{
-            duration: 25,
-            ease: "linear",
-            repeat: Infinity,
-          }}
-          style={{ willChange: "transform" }}
-        >
-          {track.map((client, i) => (
-            <LogoSlot key={i} name={client.name} src={client.src} />
-          ))}
-        </motion.div>
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="hidden items-center gap-4 lg:flex">
+          <button
+            onClick={() => scroll("left")}
+            aria-label="Anterior"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border bg-white text-muted-foreground shadow-sm transition-all hover:border-[#6575FF]/35 hover:text-[#6575FF] hover:shadow-md"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+
+          <div className="relative flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_16%,black_84%,transparent)]">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#F7F9FF] to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#F7F9FF] to-transparent" />
+            <div
+              ref={scrollRef}
+              onMouseLeave={onMouseUp}
+              onMouseDown={onMouseDown}
+              onMouseMove={onMouseMove}
+              onMouseUp={onMouseUp}
+              className={`flex items-center gap-10 overflow-x-scroll py-3 select-none [&::-webkit-scrollbar]:hidden ${dragging ? "cursor-grabbing" : "cursor-grab"}`}
+              style={{ scrollbarWidth: "none" }}
+            >
+              {track.map((client, index) => (
+                <LogoSlot
+                  key={`desktop-${client.name}-${index}`}
+                  name={client.name}
+                  src={client.src}
+                />
+              ))}
+            </div>
+          </div>
+
+          <button
+            onClick={() => scroll("right")}
+            aria-label="Próximo"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border bg-white text-muted-foreground shadow-sm transition-all hover:border-[#6575FF]/35 hover:text-[#6575FF] hover:shadow-md"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+
+        <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)] lg:hidden">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#F7F9FF] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#F7F9FF] to-transparent" />
+
+          <div className="education-client-marquee flex w-max items-center gap-8 py-3">
+            {track.map((client, index) => (
+              <LogoSlot
+                key={`mobile-${client.name}-${index}`}
+                name={client.name}
+                src={client.src}
+                compact
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
-function LogoSlot({ name, src }: { name: string; src: string }) {
+function LogoSlot({
+  name,
+  src,
+  compact = false,
+}: {
+  name: string;
+  src: string;
+  compact?: boolean;
+}) {
   return (
-    <div className="flex-shrink-0 flex items-center justify-center w-40 h-14 grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-      <div className="relative w-full h-full p-2">
-        <Image
-          src={src}
-          alt={`Logo ${name}`}
-          fill
-          unoptimized
-          className="object-contain"
-        />
-      </div>
+    <div
+      className={`relative shrink-0 ${compact ? "h-12 w-36" : "h-14 w-44"}`}
+    >
+      <Image
+        src={src}
+        alt={name}
+        fill
+        unoptimized
+        className="object-contain object-center transition-transform duration-300 hover:scale-105"
+      />
     </div>
   );
 }

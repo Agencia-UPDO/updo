@@ -3,16 +3,16 @@ import Script from "next/script";
 import { CaseIndustriaClient } from "@/components/sections/cases/industria-case";
 
 export const metadata: Metadata = {
-  title: "Case Indústria | ROI de 1.527% com R$ 21,5k de Mídia",
+  title: "Case de Marketing Industrial | ROI 1.527% em Mídia Paga",
   description:
-    "Como a UPDO gerou R$350.000 em faturamento digital para uma indústria de bens de consumo com apenas R$21.500 de investimento, comprovando ROI de 1.527% para uma diretoria cética.",
+    "Case de marketing industrial: R$350 mil em faturamento digital com R$21,5 mil de mídia paga, ROI de 1.527% e leitura clara para diretoria.",
   alternates: {
     canonical: "https://updo.com.br/cases/industria",
   },
   openGraph: {
-    title: "Case Indústria | ROI de 1.527% com R$ 21,5k de Mídia | UPDO",
+    title: "Case de Marketing Industrial | ROI 1.527% em Mídia Paga",
     description:
-      "Como a UPDO gerou R$350.000 em faturamento digital para uma indústria de bens de consumo com apenas R$21.500 de investimento, comprovando ROI de 1.527% para uma diretoria cética.",
+      "R$350 mil em faturamento digital com R$21,5 mil de mídia paga, ROI de 1.527% e leitura clara para diretoria.",
     url: "https://updo.com.br/cases/industria",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
         url: "/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
-        alt: "Case Indústria | ROI de 1.527% com R$ 21,5k de Mídia | UPDO",
+        alt: "Case de Marketing Industrial | ROI 1.527% em Mídia Paga",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Case Indústria | ROI de 1.527% com R$ 21,5k de Mídia | UPDO",
+    title: "Case de Marketing Industrial | ROI 1.527% em Mídia Paga",
     description:
-      "Como a UPDO gerou R$350.000 em faturamento digital para uma indústria de bens de consumo com apenas R$21.500 de investimento, comprovando ROI de 1.527% para uma diretoria cética.",
+      "R$350 mil em faturamento digital com R$21,5 mil de mídia paga, ROI de 1.527% e leitura clara para diretoria.",
     images: ["/Imagens/sala-cheia.jpg"],
   },
 };
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Case Indústria | ROI de 1.527% com R$ 21,5k de Mídia",
+  headline: "Case de Marketing Industrial | ROI 1.527% em Mídia Paga",
   description:
-    "Como a UPDO gerou R$350.000 em faturamento digital para uma indústria de bens de consumo com apenas R$21.500 de investimento, comprovando ROI de 1.527% para uma diretoria cética.",
+    "Case de marketing industrial: R$350 mil em faturamento digital com R$21,5 mil de mídia paga, ROI de 1.527% e leitura clara para diretoria.",
   url: "https://updo.com.br/cases/industria",
   image: "https://updo.com.br/Imagens/sala-cheia.jpg",
   author: {

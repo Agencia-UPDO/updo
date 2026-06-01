@@ -2,12 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  Activity,
-  Brain,
-  Bot,
-  ShieldCheck,
-} from "lucide-react";
+import { Brain, Bot, ShieldCheck } from "lucide-react";
 
 const secondaryPillars = [
   {
@@ -65,15 +60,14 @@ export function HomeDifferentials() {
           className="relative mb-5 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#07111F] via-[#0A1526] to-[#07111F] p-8 shadow-[0_24px_80px_rgba(7,17,31,0.22)] lg:p-12"
         >
           {/* Padrão de grid de fundo */}
-          <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
+          <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
           <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-accent/[0.08] rounded-full blur-[120px] pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] bg-accent/[0.08] rounded-full blur-[120px] pointer-events-none" />
 
           <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-14 items-center">
             {/* Coluna texto */}
             <div className="flex flex-col">
-              <div className="updo-badge inline-flex items-center self-start gap-2 rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
-                <Activity className="h-3 w-3" />
+              <div className="updo-badge inline-flex items-center self-start rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Sistema próprio
               </div>
               <h3 className="mt-4 font-heading text-3xl lg:text-4xl font-black text-white leading-[1.1] tracking-tight">

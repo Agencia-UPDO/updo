@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -138,7 +138,7 @@ Quero agendar meu diagnóstico estratégico.`;
   return (
     <main className="bg-background">
       <section className="relative overflow-hidden bg-[#0A1120] py-20 lg:py-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute -top-40 right-0 h-[520px] w-[520px] rounded-full bg-accent/[0.08] blur-[130px]" />
         <div className="absolute bottom-0 left-0 h-[420px] w-[420px] rounded-full bg-accent/[0.05] blur-[120px]" />
 

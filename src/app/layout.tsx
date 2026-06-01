@@ -5,6 +5,8 @@ import { siteConfig } from "@/config/site";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import Script from "next/script";
+import { Suspense } from "react";
+import { RouteTracker } from "@/components/analytics/route-tracker";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -42,7 +44,21 @@ export default function RootLayout({
     "alternateName": "Agência UPDO",
     "url": "https://updo.com.br",
     "logo": "https://updo.com.br/Imagens/Logo%20UPDO%202024%20Branca.svg",
-    "description": "Estruturamos marketing, vendas e dados para sua empresa crescer com previsibilidade. +300 empresas atendidas e +R$ 750M gerados em vendas.",
+    "description": "Agência de marketing, vendas, dados e IA em Curitiba. Estruturamos geração de demanda, funil comercial, CRM, dashboards e automações para empresas crescerem com previsibilidade.",
+    "areaServed": "Brasil",
+    "priceRange": "$$",
+    "knowsAbout": [
+      "Marketing de Performance",
+      "Geração de Demanda",
+      "Inside Sales",
+      "Funil Comercial",
+      "CRM",
+      "Automação de Marketing",
+      "Inteligência de Dados",
+      "Inteligência Artificial",
+      "SEO",
+      "GEO"
+    ],
     "founder": {
       "@type": "Person",
       "name": "Rodrigo Bueno",
@@ -52,7 +68,9 @@ export default function RootLayout({
         "Inside Sales",
         "Neuromarketing",
         "Inteligência de Dados",
-        "Inteligência Artificial"
+        "Inteligência Artificial",
+        "Comportamento do Consumidor",
+        "Neurovendas"
       ],
       "worksFor": {
         "@type": "Organization",
@@ -108,17 +126,30 @@ export default function RootLayout({
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-MZ73JF3');
 
-              // Bloco para evitar disparos de Page View em links de âncora (#)
+              // Bloco para filtrar eventos desnecessários do dataLayer:
+              // 1. gtm.historyChange — bloqueado porque o RouteTracker já envia
+              //    virtual_page_view em cada troca de rota SPA (evita page view duplo)
+              // 2. gtm.linkClick em âncoras da mesma página — bloqueado para não
+              //    duplicar page views em scroll interno
               (function() {
                 var push = dataLayer.push;
                 dataLayer.push = function() {
                   var args = Array.prototype.slice.call(arguments);
-                  if (args[0] && args[0].event === 'gtm.linkClick') {
+                  var evt = args[0] && args[0].event;
+
+                  // Bloqueia History Change nativo do GTM (RouteTracker cuida disso)
+                  if (evt === 'gtm.historyChange' || evt === 'gtm.historyChange-v2') {
+                    return;
+                  }
+
+                  // Bloqueia cliques em âncoras da mesma página
+                  if (evt === 'gtm.linkClick') {
                     var url = args[0]['gtm.elementUrl'] || '';
                     if (url.indexOf('#') !== -1 && url.split('#')[0] === window.location.href.split('#')[0]) {
-                      return; // Ignora o push se for apenas uma âncora na mesma página
+                      return;
                     }
                   }
+
                   return push.apply(dataLayer, args);
                 };
               })();
@@ -136,6 +167,9 @@ export default function RootLayout({
           }}
         />
         <Navbar />
+        <Suspense fallback={null}>
+          <RouteTracker />
+        </Suspense>
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

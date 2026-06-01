@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "UPDO",
   description:
-    "Agência de marketing, vendas e IA para empresas que querem crescer com previsibilidade.",
+    "Agência de marketing, vendas, dados e IA em Curitiba para empresas que querem gerar demanda, estruturar funil comercial e crescer com previsibilidade.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   ogImage: "https://updo.com.br/og.jpg",
   links: {
@@ -56,6 +56,10 @@ export const siteConfig = {
     {
       title: "Cases",
       href: "/cases",
+    },
+    {
+      title: "Treinamentos",
+      href: "/treinamentos-corporativos",
     },
     {
       title: "Insights",

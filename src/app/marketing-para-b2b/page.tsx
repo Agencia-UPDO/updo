@@ -3,16 +3,16 @@ import Script from "next/script";
 import { B2BLanding } from "@/components/sections/b2b/b2b-landing";
 
 export const metadata: Metadata = {
-  title: "Marketing B2B | Pipeline Previsível para SaaS e Serviços",
+  title: "Marketing B2B | LinkedIn Ads, ICP e Pipeline Comercial",
   description:
-    "Estratégia de marketing B2B com ICP definido, LinkedIn Ads, outbound e processo comercial para SaaS, consultorias e serviços que querem parar de depender de indicação.",
+    "Marketing B2B para SaaS, tecnologia e serviços corporativos com ICP, LinkedIn Ads, outbound, CRM, inside sales e pipeline comercial previsível.",
   alternates: {
     canonical: "https://updo.com.br/marketing-para-b2b",
   },
   openGraph: {
-    title: "Marketing B2B | Pipeline Previsível para SaaS e Serviços",
+    title: "Marketing B2B | LinkedIn Ads, ICP e Pipeline Comercial",
     description:
-      "Estratégia de marketing B2B com ICP definido, LinkedIn Ads, outbound e processo comercial para SaaS, consultorias e serviços que querem parar de depender de indicação.",
+      "ICP, LinkedIn Ads, outbound, CRM, inside sales e pipeline previsível para SaaS, tecnologia e serviços corporativos.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marketing B2B | Pipeline Previsível para SaaS e Serviços",
+    title: "Marketing B2B | LinkedIn Ads, ICP e Pipeline Comercial",
     description:
-      "Estratégia de marketing B2B com ICP definido, LinkedIn Ads, outbound e processo comercial para SaaS, consultorias e serviços que querem parar de depender de indicação.",
+      "ICP, LinkedIn Ads, outbound, CRM, inside sales e pipeline previsível para SaaS, tecnologia e serviços corporativos.",
   },
 };
 

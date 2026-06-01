@@ -183,15 +183,19 @@ const manifestoCards = [
 export function AboutPage() {
   return (
     <main className="bg-background">
-      <section className="relative overflow-hidden bg-[#07111F] pt-10 pb-16 lg:pt-40 lg:pb-28">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_20%,rgba(86,254,213,0.14),transparent_34%),radial-gradient(circle_at_85%_70%,rgba(101,117,255,0.16),transparent_36%)]" />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:42px_42px] opacity-55" />
+      <section className="relative isolate overflow-hidden bg-[#07111F] pt-10 pb-16 lg:pt-40 lg:pb-28">
+        <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_20%,rgba(86,254,213,0.14),transparent_34%),radial-gradient(circle_at_85%_70%,rgba(101,117,255,0.16),transparent_36%)]" />
+        <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px] opacity-55" />
 
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="relative z-10 container mx-auto px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:gap-20">
-            <motion.div {...fadeUp()} className="max-w-3xl">
-              <span className="updo-badge inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: EASE }}
+              className="max-w-3xl"
+            >
+              <span className="updo-hero-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Sobre a UPDO
               </span>
 
@@ -227,7 +231,9 @@ export function AboutPage() {
             </motion.div>
 
             <motion.div
-              {...fadeUp(0.15)}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
               className="hidden grid-cols-2 gap-3 rounded-3xl border border-white/10 bg-white/[0.04] p-3 shadow-2xl shadow-black/25 backdrop-blur-xl lg:grid"
             >
               {stats.map((stat, index) => (
@@ -301,8 +307,9 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:42px_42px]" />
+      <section className="relative isolate overflow-hidden bg-[#07111F] py-18 lg:py-28">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute top-0 right-0 h-[500px] w-[500px] rounded-full bg-[#6575FF]/[0.08] blur-[140px] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div {...fadeUp()} className="mb-14 max-w-2xl">
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
@@ -330,7 +337,7 @@ export function AboutPage() {
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-[#07111F]/88 via-[#07111F]/10 to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
-                    <span className="updo-badge inline-flex rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em]">
+                    <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                       {partner.role}
                     </span>
                     <h3 className="mt-3 font-heading text-3xl font-black tracking-tight text-white">
@@ -367,32 +374,9 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-[#07111F] px-4 pb-18 lg:px-8 lg:pb-28">
-        <motion.div
-          {...fadeUp(0.1)}
-          className="container mx-auto rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:flex md:items-center md:justify-between md:gap-8 md:p-8"
-        >
-          <div>
-            <p className="font-heading text-2xl font-black leading-tight tracking-tight text-white">
-              Quer entender como isso se aplica ao seu negócio?
-            </p>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/58">
-              O diagnóstico cruza marketing, vendas, dados e comportamento para
-              mostrar onde sua operação perde oportunidade hoje.
-            </p>
-          </div>
-          <Link
-            href="/diagnostico"
-            className="group mt-6 inline-flex h-13 w-full items-center justify-center gap-2 rounded-full bg-accent px-7 text-sm font-bold text-accent-foreground shadow-[0_10px_24px_rgba(86,254,213,0.22)] transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_14px_34px_rgba(86,254,213,0.34)] active:scale-95 md:mt-0 md:w-auto"
-          >
-            Agendar diagnóstico
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </motion.div>
-      </section>
-
-      <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_0%,rgba(101,117,255,0.18),transparent_34%),radial-gradient(circle_at_10%_80%,rgba(86,254,213,0.10),transparent_32%)]" />
+      <section className="relative isolate overflow-hidden bg-[#07111F] py-18 lg:py-28">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,rgba(101,117,255,0.18),transparent_34%),radial-gradient(circle_at_10%_80%,rgba(86,254,213,0.10),transparent_32%)] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div {...fadeUp()} className="mx-auto max-w-3xl text-center">
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
@@ -517,8 +501,9 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(86,254,213,0.12),transparent_35%),radial-gradient(circle_at_80%_20%,rgba(101,117,255,0.18),transparent_32%)]" />
+      <section className="relative isolate overflow-hidden bg-[#07111F] py-18 lg:py-28">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(86,254,213,0.12),transparent_35%),radial-gradient(circle_at_80%_20%,rgba(101,117,255,0.18),transparent_32%)] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             {...fadeUp()}

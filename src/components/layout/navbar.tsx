@@ -172,13 +172,6 @@ const serviceItems = [
     icon: Target,
     iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
   },
-  {
-    title: "Treinamentos Corporativos",
-    description: "In company, neurovendas, IA e atendimento",
-    href: "/treinamentos-corporativos",
-    icon: GraduationCap,
-    iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
-  },
 ];
 
 export function Navbar() {
@@ -227,6 +220,8 @@ export function Navbar() {
         return Blocks;
       case "setores":
         return Blocks;
+      case "treinamentos":
+        return GraduationCap;
       case "especialistas":
       case "rodrigo bueno":
         return Users;

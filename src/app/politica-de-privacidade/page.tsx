@@ -3,14 +3,14 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade",
+  title: "Política de Privacidade | LGPD e Dados Pessoais",
   description:
     "Saiba como a UPDO coleta, usa e protege seus dados pessoais em conformidade com a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).",
   alternates: {
     canonical: "https://updo.com.br/politica-de-privacidade",
   },
   openGraph: {
-    title: "Política de Privacidade | UPDO",
+    title: "Política de Privacidade | LGPD e Dados Pessoais | UPDO",
     description:
       "Saiba como a UPDO coleta, usa e protege seus dados pessoais em conformidade com a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).",
     url: "https://updo.com.br/politica-de-privacidade",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Política de Privacidade | UPDO",
+    title: "Política de Privacidade | LGPD e Dados Pessoais | UPDO",
     description:
       "Saiba como a UPDO coleta, usa e protege seus dados pessoais em conformidade com a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).",
   },

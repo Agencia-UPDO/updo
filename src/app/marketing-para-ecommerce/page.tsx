@@ -3,16 +3,16 @@ import Script from "next/script";
 import { EcommerceLanding } from "@/components/sections/ecommerce/ecommerce-landing";
 
 export const metadata: Metadata = {
-  title: "Marketing para E-commerce | Performance, CRO e Recompra",
+  title: "Marketing para E-commerce | Google Ads, CRO, ROAS e Recompra",
   description:
-    "Estratégia de marketing para e-commerce com mídia paga, CRO, CRM, dados e recompra para crescer sem perder margem. Google Ads, Meta Ads e checkout otimizados.",
+    "Marketing para e-commerce com Google Ads, Meta Ads, TikTok Ads, CRO, dados, checkout e recompra para aumentar vendas sem perder margem.",
   alternates: {
     canonical: "https://updo.com.br/marketing-para-ecommerce",
   },
   openGraph: {
-    title: "Marketing para E-commerce | Performance, CRO e Recompra",
+    title: "Marketing para E-commerce | Google Ads, CRO, ROAS e Recompra",
     description:
-      "Estratégia de marketing para e-commerce com mídia paga, CRO, CRM, dados e recompra para crescer sem perder margem. Google Ads, Meta Ads e checkout otimizados.",
+      "Google Ads, Meta Ads, TikTok Ads, CRO, dados, checkout e recompra para e-commerces venderem mais sem perder margem.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marketing para E-commerce | Performance, CRO e Recompra",
+    title: "Marketing para E-commerce | Google Ads, CRO, ROAS e Recompra",
     description:
-      "Estrategia de marketing para e-commerce com midia paga, CRO, CRM, dados e recompra para crescer sem perder margem.",
+      "Google Ads, Meta Ads, TikTok Ads, CRO, dados, checkout e recompra para e-commerces venderem mais sem perder margem.",
   },
 };
 

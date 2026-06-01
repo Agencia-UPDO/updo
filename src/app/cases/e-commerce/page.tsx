@@ -3,16 +3,16 @@ import Script from "next/script";
 import { CaseEcommerceClient } from "@/components/sections/cases/ecommerce-case";
 
 export const metadata: Metadata = {
-  title: "Case E-commerce | +6.900% de Vendas em 60 Dias",
+  title: "Case de Marketing para E-commerce | +6.900% em Vendas",
   description:
-    "Como a UPDO escalou um e-commerce de moda infantil de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS de 4.7x e taxa de conversão de 4,45%.",
+    "Case de marketing para e-commerce: loja virtual saiu de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS 4.7x e conversão de 4,45%.",
   alternates: {
     canonical: "https://updo.com.br/cases/e-commerce",
   },
   openGraph: {
-    title: "Case E-commerce | +6.900% de Vendas em 60 Dias | UPDO",
+    title: "Case de Marketing para E-commerce | +6.900% em Vendas",
     description:
-      "Como a UPDO escalou um e-commerce de moda infantil de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS de 4.7x e taxa de conversão de 4,45%.",
+      "Loja virtual saiu de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS 4.7x e conversão de 4,45%.",
     url: "https://updo.com.br/cases/e-commerce",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
         url: "/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
-        alt: "Case E-commerce | +6.900% de Vendas em 60 Dias | UPDO",
+        alt: "Case de Marketing para E-commerce | +6.900% em Vendas",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Case E-commerce | +6.900% de Vendas em 60 Dias | UPDO",
+    title: "Case de Marketing para E-commerce | +6.900% em Vendas",
     description:
-      "Como a UPDO escalou um e-commerce de moda infantil de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS de 4.7x e taxa de conversão de 4,45%.",
+      "Loja virtual saiu de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS 4.7x e conversão de 4,45%.",
     images: ["/Imagens/sala-cheia.jpg"],
   },
 };
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Case E-commerce | +6.900% de Vendas em 60 Dias",
+  headline: "Case de Marketing para E-commerce | +6.900% em Vendas",
   description:
-    "Como a UPDO escalou um e-commerce de moda infantil de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS de 4.7x e taxa de conversão de 4,45%.",
+    "Case de marketing para e-commerce: loja virtual saiu de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS 4.7x e conversão de 4,45%.",
   url: "https://updo.com.br/cases/e-commerce",
   image: "https://updo.com.br/Imagens/sala-cheia.jpg",
   author: {

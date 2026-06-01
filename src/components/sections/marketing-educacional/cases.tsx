@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -13,7 +13,7 @@ const caseMetrics = [
 export function Cases() {
   return (
     <section id="cases" className="relative overflow-hidden bg-[var(--surface-soft)] py-18 lg:py-28">
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
@@ -28,10 +28,7 @@ export function Cases() {
               Autoridade
             </span>
             <h2 className="mt-3 font-heading text-3xl md:text-5xl font-black tracking-tight text-foreground leading-[1.1]">
-              Prova real antes de{" "}
-              <span className="text-muted-foreground/30">
-                falar em escala.
-              </span>
+              Prova real antes de falar em escala.
             </h2>
           </div>
           <p className="text-muted-foreground text-sm max-w-xs leading-relaxed lg:text-right">
@@ -104,9 +101,7 @@ export function Cases() {
             className="group inline-flex h-13 w-full items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:px-10"
           >
             Quero analisar minha captação
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#07111f]/10 text-[#07111f] transition-transform group-hover:translate-x-1">
-              <ArrowRight className="h-3.5 w-3.5" />
-            </div>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </motion.div>
       </div>

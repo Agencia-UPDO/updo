@@ -3,16 +3,16 @@ import Script from "next/script";
 import { DadosLanding } from "@/components/sections/services/dados-landing";
 
 export const metadata: Metadata = {
-  title: "Inteligência de Dados: Dashboard e Atribuição Multi-touch",
+  title: "Inteligência de Dados e Dashboards | BI, Atribuição e KPIs",
   description:
-    "Estruturamos coleta, dashboard unificado, atribuição multi-touch e KPIs para decisão com dado real. Menos CAC e mais visibilidade sobre o que funciona em cada canal. Solicite diagnóstico.",
+    "Inteligência de dados para marketing e vendas com coleta, dashboard unificado, BI, atribuição multi-touch, KPIs, CAC, ROAS e leitura por canal.",
   alternates: {
     canonical: "https://updo.com.br/servicos/inteligencia-de-dados",
   },
   openGraph: {
-    title: "Inteligência de Dados: Dashboard e Atribuição Multi-touch | UPDO",
+    title: "Inteligência de Dados e Dashboards | BI, Atribuição e KPIs",
     description:
-      "Estruturamos coleta, dashboard unificado, atribuição multi-touch e KPIs para decisão com dado real. Menos CAC e mais visibilidade sobre o que funciona em cada canal. Solicite diagnóstico.",
+      "Coleta, dashboard unificado, BI, atribuição multi-touch, KPIs, CAC, ROAS e leitura por canal para marketing e vendas.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Inteligência de Dados: Dashboard e Atribuição Multi-touch | UPDO",
+    title: "Inteligência de Dados e Dashboards | BI, Atribuição e KPIs",
     description:
-      "Estruturamos coleta, dashboard unificado, atribuição multi-touch e KPIs para decisão com dado real. Menos CAC e mais visibilidade sobre o que funciona em cada canal. Solicite diagnóstico.",
+      "Coleta, dashboard unificado, BI, atribuição multi-touch, KPIs, CAC, ROAS e leitura por canal para marketing e vendas.",
   },
 };
 

@@ -61,7 +61,7 @@ export function Team() {
           </span>
           <h2 className="mt-4 font-heading text-3xl md:text-5xl font-black tracking-tight text-foreground leading-[1.1]">
             Estrategistas focados no <br />
-            <span className="text-muted-foreground/30">seu resultado.</span>
+            seu resultado.
           </h2>
           <p className="mt-6 text-muted-foreground text-base leading-relaxed">
             Na UPDO, você não é atendido por iniciantes. O seu projeto de captação

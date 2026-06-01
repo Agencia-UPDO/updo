@@ -3,16 +3,16 @@ import Script from "next/script";
 import { UxCroLanding } from "@/components/sections/services/ux-cro-landing";
 
 export const metadata: Metadata = {
-  title: "UX e CRO: Otimização de Conversão com Dado e Teste A/B",
+  title: "UX e CRO | Otimização de Landing Pages e Conversão",
   description:
-    "Diagnosticamos onde o usuário abandona, formulamos hipóteses com dado e testamos variantes com rigor estatístico para aumentar a taxa de conversão de forma contínua. Fale com especialista.",
+    "UX e CRO para landing pages, sites e e-commerce. Auditamos jornada, copy, formulário, CTA, heatmap e testes A/B para aumentar taxa de conversão.",
   alternates: {
     canonical: "https://updo.com.br/servicos/ux-cro",
   },
   openGraph: {
-    title: "UX e CRO: Otimização de Conversão com Dado e Teste A/B | UPDO",
+    title: "UX e CRO | Otimização de Landing Pages e Conversão",
     description:
-      "Diagnosticamos onde o usuário abandona, formulamos hipóteses com dado e testamos variantes com rigor estatístico para aumentar a taxa de conversão de forma contínua. Fale com especialista.",
+      "Auditoria de jornada, copy, formulário, CTA, heatmap e testes A/B para aumentar a taxa de conversão de landing pages, sites e e-commerce.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "UX e CRO: Otimização de Conversão com Dado e Teste A/B | UPDO",
+    title: "UX e CRO | Otimização de Landing Pages e Conversão",
     description:
-      "Diagnosticamos onde o usuário abandona, formulamos hipóteses com dado e testamos variantes com rigor estatístico para aumentar a taxa de conversão de forma contínua. Fale com especialista.",
+      "Auditoria de jornada, copy, formulário, CTA, heatmap e testes A/B para aumentar a taxa de conversão de landing pages, sites e e-commerce.",
   },
 };
 

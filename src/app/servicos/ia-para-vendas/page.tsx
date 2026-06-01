@@ -3,16 +3,16 @@ import Script from "next/script";
 import { IALanding } from "@/components/sections/services/ia-landing";
 
 export const metadata: Metadata = {
-  title: "IA para Vendas: Qualificação e Atendimento Automático",
+  title: "IA para Vendas e Atendimento | Agentes para WhatsApp e CRM",
   description:
-    "Agentes de IA que qualificam leads, fazem follow-up e agendam reuniões pelo WhatsApp, integrados ao seu CRM. Resposta em segundos, 24/7, sem substituir o time. Solicite diagnóstico gratuito.",
+    "Agentes de IA para vendas que qualificam leads, respondem no WhatsApp, fazem follow-up, agendam reuniões e integram dados ao CRM sem substituir o time comercial.",
   alternates: {
     canonical: "https://updo.com.br/servicos/ia-para-vendas",
   },
   openGraph: {
-    title: "IA para Vendas: Qualificação e Atendimento Automático | UPDO",
+    title: "IA para Vendas e Atendimento | Agentes para WhatsApp e CRM",
     description:
-      "Agentes de IA que qualificam leads, fazem follow-up e agendam reuniões pelo WhatsApp, integrados ao seu CRM. Resposta em segundos, 24/7, sem substituir o time. Solicite diagnóstico gratuito.",
+      "Agentes de IA que qualificam leads, respondem no WhatsApp, fazem follow-up, agendam reuniões e integram dados ao CRM.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IA para Vendas: Qualificação e Atendimento Automático | UPDO",
+    title: "IA para Vendas e Atendimento | Agentes para WhatsApp e CRM",
     description:
-      "Agentes de IA que qualificam leads, fazem follow-up e agendam reuniões pelo WhatsApp, integrados ao seu CRM. Resposta em segundos, 24/7, sem substituir o time. Solicite diagnóstico gratuito.",
+      "Agentes de IA que qualificam leads, respondem no WhatsApp, fazem follow-up, agendam reuniões e integram dados ao CRM.",
   },
 };
 

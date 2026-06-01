@@ -3,16 +3,16 @@ import Script from "next/script";
 import { IndustryLanding } from "@/components/sections/industry/industry-landing";
 
 export const metadata: Metadata = {
-  title: "Marketing para Indústria | Pipeline e Venda Complexa",
+  title: "Marketing para Indústria | Demanda B2B e Vendas Complexas",
   description:
-    "Estratégia de marketing para indústria com geração de demanda, LinkedIn Ads, inside sales, CRM e pipeline previsível para venda complexa e ciclo longo. Diagnóstico gratuito.",
+    "Marketing industrial B2B com Google Search, LinkedIn Ads, conteúdo técnico, CRM, inside sales e pipeline para vendas complexas e ciclos longos.",
   alternates: {
     canonical: "https://updo.com.br/marketing-para-industria",
   },
   openGraph: {
-    title: "Marketing para Indústria | Pipeline e Venda Complexa",
+    title: "Marketing para Indústria | Demanda B2B e Vendas Complexas",
     description:
-      "Estratégia de marketing para indústria com geração de demanda, LinkedIn Ads, inside sales, CRM e pipeline previsível para venda complexa e ciclo longo.",
+      "Google Search, LinkedIn Ads, conteúdo técnico, CRM, inside sales e pipeline para indústrias com vendas complexas e ciclos longos.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marketing para Indústria | Pipeline e Venda Complexa",
+    title: "Marketing para Indústria | Demanda B2B e Vendas Complexas",
     description:
-      "Estratégia de marketing para indústria com geração de demanda, LinkedIn Ads, inside sales, CRM e pipeline previsível para venda complexa e ciclo longo.",
+      "Google Search, LinkedIn Ads, conteúdo técnico, CRM, inside sales e pipeline para indústrias com vendas complexas e ciclos longos.",
   },
 };
 

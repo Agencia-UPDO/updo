@@ -51,7 +51,7 @@ export function Neuromarketing() {
 
             <h2 className="font-heading text-3xl md:text-5xl font-black tracking-tight text-foreground leading-[1.1] mb-8">
               Vender curso é projetar o aluno para o{" "}
-              <span className="text-primary italic">futuro.</span>
+              <span className="italic">futuro.</span>
             </h2>
 
             <p className="text-lg text-muted-foreground leading-relaxed mb-12 max-w-xl">

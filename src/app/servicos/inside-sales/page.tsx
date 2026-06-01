@@ -3,16 +3,16 @@ import Script from "next/script";
 import { InsideSalesLanding } from "@/components/sections/services/inside-sales-landing";
 
 export const metadata: Metadata = {
-  title: "Inside Sales: Processo Comercial Previsível e Escalável",
+  title: "Inside Sales e Processo Comercial | Playbook, Pipeline e Treinamento",
   description:
-    "Estruturamos playbook, pipeline, treinamento e gestão para o time comercial operar com consistência. Mais de 38% de conversão e 30% menos ciclo de venda. Fale com especialista.",
+    "Estruturamos inside sales com playbook, pipeline, CRM, SLA, treinamento de vendas e rotina de gestão para transformar leads em receita previsível.",
   alternates: {
     canonical: "https://updo.com.br/servicos/inside-sales",
   },
   openGraph: {
-    title: "Inside Sales: Processo Comercial Previsível e Escalável | UPDO",
+    title: "Inside Sales e Processo Comercial | Playbook, Pipeline e Treinamento",
     description:
-      "Estruturamos playbook, pipeline, treinamento e gestão para o time comercial operar com consistência. Mais de 38% de conversão e 30% menos ciclo de venda. Fale com especialista.",
+      "Playbook, pipeline, CRM, SLA, treinamento de vendas e rotina de gestão para transformar leads em receita previsível.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Inside Sales: Processo Comercial Previsível e Escalável | UPDO",
+    title: "Inside Sales e Processo Comercial | Playbook, Pipeline e Treinamento",
     description:
-      "Estruturamos playbook, pipeline, treinamento e gestão para o time comercial operar com consistência. Mais de 38% de conversão e 30% menos ciclo de venda. Fale com especialista.",
+      "Playbook, pipeline, CRM, SLA, treinamento de vendas e rotina de gestão para transformar leads em receita previsível.",
   },
 };
 

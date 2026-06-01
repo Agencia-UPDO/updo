@@ -17,7 +17,7 @@ export function VideoProof() {
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               Depoimento
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-black leading-tight tracking-tight text-foreground md:text-4xl">
+            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
               Resultado real também precisa parecer real.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground">

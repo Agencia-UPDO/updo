@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { RefreshCcw, ArrowRight } from "lucide-react";
@@ -14,7 +14,7 @@ export function Methodology() {
       className="py-24 lg:py-40 bg-[#0A1120] relative overflow-hidden text-white font-sans"
     >
       {/* Blueprint/Grid Texture Overlay */}
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
       {/* Background Glows */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] -z-10 animate-pulse" />

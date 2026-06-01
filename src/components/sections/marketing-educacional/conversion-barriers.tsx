@@ -25,7 +25,7 @@ export function ConversionBarriers() {
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Captação educacional
               </span>
-              <h2 className="mt-4 font-heading text-2xl font-black leading-tight text-foreground md:text-3xl">
+              <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
                 O que costuma travar a captação.
               </h2>
             </div>

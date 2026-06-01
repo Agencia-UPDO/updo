@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import Image from "next/image";
@@ -224,6 +224,27 @@ function SelectField({
   );
 }
 
+function SuccessIcon() {
+  return (
+    <motion.div
+      initial={{ scale: 0.82, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className="relative mb-6 flex h-20 w-20 items-center justify-center"
+    >
+      <motion.span
+        initial={{ scale: 0.65, opacity: 0.55 }}
+        animate={{ scale: 1.35, opacity: 0 }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
+        className="absolute inset-0 rounded-full border border-accent/35"
+      />
+      <div className="flex h-20 w-20 items-center justify-center rounded-full border border-accent/25 bg-accent/12 shadow-[0_0_34px_rgba(86,254,213,0.18)]">
+        <CheckCircle2 className="h-10 w-10 text-accent" />
+      </div>
+    </motion.div>
+  );
+}
+
 function TopicCard({ item }: { item: (typeof topics)[number] }) {
   return (
     <div className="group flex h-full flex-col gap-4 rounded-2xl border border-border/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#6575FF]/30 hover:bg-[#6575FF]/[0.035] hover:shadow-[0_18px_44px_rgba(101,117,255,0.12)]">
@@ -243,6 +264,7 @@ function TopicCard({ item }: { item: (typeof topics)[number] }) {
 export function TrainingPage() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [whatsAppUrl, setWhatsAppUrl] = React.useState("");
   const [formData, setFormData] = React.useState({
     nome: "",
     empresa: "",
@@ -262,8 +284,7 @@ export function TrainingPage() {
     return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const submitLead = () => {
     setIsSubmitted(true);
 
     if (typeof window !== "undefined") {
@@ -287,31 +308,41 @@ export function TrainingPage() {
 
 Quero conversar sobre um treinamento para a minha equipe.`;
 
-      setTimeout(() => {
-        window.open(`https://wa.me/5541987112003?text=${encodeURIComponent(message)}`, "_blank");
-      }, 900);
+      const whatsappUrl = `https://wa.me/5541987112003?text=${encodeURIComponent(message)}`;
+      setWhatsAppUrl(whatsappUrl);
     }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitLead();
+  };
+
+  const handleSubmitClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const form = event.currentTarget.form;
+    if (form && !form.reportValidity()) return;
+    submitLead();
   };
 
   return (
     <main>
-      <section className="relative overflow-hidden bg-background pt-10 pb-16 lg:pt-28 lg:pb-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#0b122014_1px,transparent_1px),linear-gradient(to_bottom,#0b122014_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute right-0 top-0 -z-10 h-[620px] w-[620px] rounded-full bg-[#6575FF]/[0.10] blur-[130px]" />
+      <section className="relative flex items-start overflow-hidden bg-background pt-10 pb-16 lg:min-h-[88vh] lg:items-center lg:py-28">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(86,254,213,0.16),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(101,117,255,0.12),transparent_40%)] pointer-events-none" />
+        <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
+          <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.75, ease: [0.21, 0.47, 0.32, 0.98] }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
             >
-              <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
+              <span className="updo-hero-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Educação executiva e in company
               </span>
-              <h1 className="mt-8 font-heading text-4xl font-black leading-[1.06] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+              <h1 className="mt-8 font-heading text-4xl font-black leading-[1.12] tracking-tight text-foreground md:text-5xl lg:text-6xl">
                 Treinamentos corporativos para times que precisam vender melhor.
               </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
                 Workshops, palestras e programas in company sobre vendas,
                 neurovendas, comportamento do consumidor, IA, atendimento e
                 rotina comercial, conduzidos por Rodrigo Bueno.
@@ -335,17 +366,17 @@ Quero conversar sobre um treinamento para a minha equipe.`;
                 ))}
               </div>
 
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Link
                   href="#contato"
-                  className="inline-flex h-13 items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95"
+                  className="group inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-accent px-8 text-base font-bold text-accent-foreground shadow-[0_10px_24px_rgba(86,254,213,0.22)] transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_14px_34px_rgba(86,254,213,0.34)] active:scale-95 sm:w-auto lg:h-16 lg:px-10 lg:text-lg"
                 >
                   Solicitar treinamento
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   href="#temas"
-                  className="inline-flex h-13 items-center justify-center gap-2.5 rounded-full border border-border/70 bg-white px-8 text-center text-sm font-bold text-foreground transition-all duration-200 hover:border-[#6575FF]/35 hover:bg-[#6575FF]/10 hover:text-[#6575FF]"
+                  className="inline-flex h-14 w-full items-center justify-center rounded-full border-2 border-border/80 bg-white/40 px-8 text-base font-bold text-foreground transition-all duration-300 hover:scale-105 hover:border-[#6575FF]/35 hover:bg-[#6575FF]/10 active:scale-95 sm:w-auto lg:h-16 lg:text-lg"
                 >
                   Ver temas
                 </Link>
@@ -353,9 +384,9 @@ Quero conversar sobre um treinamento para a minha equipe.`;
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.75, delay: 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+              initial={{ opacity: 0, scale: 0.96, x: 20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
               className="grid gap-4 sm:grid-cols-[1.12fr_0.88fr] lg:relative lg:min-h-[560px]"
             >
               <div className="relative min-h-[360px] overflow-hidden rounded-2xl border border-border/70 bg-white shadow-[var(--shadow-soft)] sm:col-span-2 lg:absolute lg:right-0 lg:top-0 lg:h-[460px] lg:w-[82%]">
@@ -368,14 +399,17 @@ Quero conversar sobre um treinamento para a minha equipe.`;
                   className="object-cover object-[50%_18%]"
                 />
               </div>
-              <div className="relative min-h-[260px] overflow-hidden rounded-2xl border border-border/70 bg-white shadow-[var(--shadow-soft)] lg:absolute lg:bottom-0 lg:left-0 lg:h-[330px] lg:w-[46%]">
+              <div className="relative min-h-[260px] rounded-2xl lg:absolute lg:bottom-0 lg:left-0 lg:h-[330px] lg:w-[46%]">
+                <div className="absolute -left-2 -top-2 h-24 w-24 rounded-tl-3xl border-l-2 border-t-2 border-[#6575FF]/55" />
+                <div className="relative h-full overflow-hidden rounded-2xl border border-border/70 bg-white shadow-[var(--shadow-soft)]">
                 <Image
                   src="/Imagens/Rodrigo-Bueno-Fundador-UPDO.jpg"
                   alt="Rodrigo Bueno, fundador da UPDO e professor de educação executiva"
                   fill
                   sizes="(min-width: 1024px) 24vw, 50vw"
-                  className="object-cover"
+                  className="object-cover object-[50%_18%]"
                 />
+                </div>
               </div>
               <div className="rounded-2xl border border-border/70 bg-white p-6 shadow-[var(--shadow-soft)] lg:absolute lg:bottom-8 lg:right-8 lg:w-[300px]">
                 <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
@@ -398,7 +432,7 @@ Quero conversar sobre um treinamento para a minha equipe.`;
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               Temas dos treinamentos
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
+            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
               Conteúdo para melhorar venda, atendimento e tomada de decisão.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -421,7 +455,7 @@ Quero conversar sobre um treinamento para a minha equipe.`;
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Formatos
               </span>
-              <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
+              <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
                 Treinamento no formato que o time consegue aplicar.
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -453,15 +487,15 @@ Quero conversar sobre um treinamento para a minha equipe.`;
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <section className="relative isolate overflow-hidden bg-[#07111F] py-18 lg:py-28">
+        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Como funciona
               </span>
-              <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-white md:text-4xl">
+              <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-white md:text-5xl">
                 A aula entra no contexto da operação.
               </h2>
               <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/50 md:text-base">
@@ -511,7 +545,7 @@ Quero conversar sobre um treinamento para a minha equipe.`;
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Quem conduz
               </span>
-              <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
+              <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
                 Treinamento conduzido por quem trabalha com funil, mídia e vendas.
               </h2>
               <p className="mt-5 text-base leading-relaxed text-muted-foreground">
@@ -543,9 +577,9 @@ Quero conversar sobre um treinamento para a minha equipe.`;
         </div>
       </section>
 
-      <section id="contato" className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-[120px]" />
+      <section id="contato" className="relative isolate overflow-hidden bg-[#07111F] py-18 lg:py-28">
+        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="pointer-events-none absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-[120px]" />
 
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl">
@@ -652,7 +686,8 @@ Quero conversar sobre um treinamento para a minha equipe.`;
                   </p>
                   <div className="flex justify-center">
                     <button
-                      type="submit"
+                      type="button"
+                      onClick={handleSubmitClick}
                       className="inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:max-w-none sm:px-10"
                     >
                       Solicitar proposta de treinamento
@@ -673,16 +708,24 @@ Quero conversar sobre um treinamento para a minha equipe.`;
               </form>
             ) : (
               <div className="flex flex-col items-center py-12 text-center">
-                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/12">
-                  <CheckCircle2 className="h-10 w-10 text-[#6575FF]" />
-                </div>
+                <SuccessIcon />
                 <h3 className="font-heading text-2xl font-black tracking-tight text-white">
-                  Formulário enviado.
+                  Formulário enviado com sucesso.
                 </h3>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/55">
-                  Recebemos suas informações e vamos continuar a conversa com
-                  um direcionamento inicial para o treinamento.
+                  Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento inicial.
                 </p>
+                {whatsAppUrl && (
+                  <Link
+                    href={whatsAppUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-accent px-5 text-sm font-bold text-accent-foreground transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] active:scale-95"
+                  >
+                    Falar agora pelo WhatsApp
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                )}
               </div>
             )}
           </div>
@@ -696,7 +739,7 @@ Quero conversar sobre um treinamento para a minha equipe.`;
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Dúvidas frequentes
               </span>
-              <h2 className="mt-6 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-4xl">
+              <h2 className="mt-6 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
                 Antes de levar o treinamento para o time.
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">

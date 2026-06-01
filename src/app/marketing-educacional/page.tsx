@@ -10,16 +10,16 @@ import { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Marketing Educacional para Faculdades e Escolas",
+  title: "Marketing Educacional | Captação de Alunos e Matrículas",
   description:
-    "Sistema previsível de captação de alunos para instituições de ensino. Consultoria em marketing educacional, processos comerciais e inteligência de dados. Solicite diagnóstico.",
+    "Marketing educacional para faculdades, pós-graduações e escolas. Estruturamos mídia, landing pages, CRM e comercial para gerar matrículas com previsibilidade.",
   alternates: {
     canonical: "https://updo.com.br/marketing-educacional",
   },
   openGraph: {
-    title: "Marketing Educacional para Faculdades e Escolas",
+    title: "Marketing Educacional | Captação de Alunos e Matrículas",
     description:
-      "Sistema previsível de captação de alunos para instituições de ensino. Consultoria em marketing educacional, processos comerciais e inteligência de dados.",
+      "Mídia, landing pages, CRM e processo comercial para faculdades, pós-graduações e escolas captarem alunos com previsibilidade.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marketing Educacional para Faculdades e Escolas",
+    title: "Marketing Educacional | Captação de Alunos e Matrículas",
     description:
-      "Sistema previsível de captação de alunos para instituições de ensino. Consultoria em marketing educacional, processos comerciais e inteligência de dados.",
+      "Mídia, landing pages, CRM e processo comercial para faculdades, pós-graduações e escolas captarem alunos com previsibilidade.",
   },
 };
 

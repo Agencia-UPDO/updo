@@ -3,16 +3,16 @@ import Script from "next/script";
 import { OQueFazemosPage } from "@/components/sections/about/o-que-fazemos-page";
 
 export const metadata: Metadata = {
-  title: "Como Trabalhamos | Metodologia e Entregas",
+  title: "Como Trabalhamos | Método de Marketing e Vendas",
   description:
-    "Conheça o método UPDO: como estruturamos planejamento, execução e feedback nos níveis estratégico, tático e operacional para conectar marketing, vendas e dados em um único sistema de crescimento previsível.",
+    "Conheça o método UPDO para conectar planejamento, mídia, dados, CRM, vendas e IA em ciclos de execução com responsáveis, métricas e entregáveis claros.",
   alternates: {
     canonical: "https://updo.com.br/o-que-fazemos",
   },
   openGraph: {
-    title: "Como Trabalhamos | Metodologia e Entregas da UPDO",
+    title: "Como Trabalhamos | Método UPDO para Marketing e Vendas",
     description:
-      "Conheça o método UPDO: como estruturamos planejamento, execução e feedback nos níveis estratégico, tático e operacional para conectar marketing, vendas e dados em um único sistema de crescimento previsível.",
+      "Como conectamos planejamento, mídia, dados, CRM, vendas e IA em ciclos de execução com responsáveis, métricas e entregáveis claros.",
     url: "https://updo.com.br/o-que-fazemos",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
         url: "/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
-        alt: "Como Trabalhamos | Metodologia e Entregas da UPDO",
+        alt: "Como Trabalhamos | Método UPDO para Marketing e Vendas",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Como Trabalhamos | Metodologia e Entregas da UPDO",
+    title: "Como Trabalhamos | Método UPDO para Marketing e Vendas",
     description:
-      "Conheça o método UPDO: como estruturamos planejamento, execução e feedback nos níveis estratégico, tático e operacional para conectar marketing, vendas e dados em um único sistema de crescimento previsível.",
+      "Como conectamos planejamento, mídia, dados, CRM, vendas e IA em ciclos de execução com responsáveis, métricas e entregáveis claros.",
     images: ["/Imagens/sala-cheia.jpg"],
   },
 };

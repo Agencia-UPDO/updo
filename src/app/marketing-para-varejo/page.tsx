@@ -3,16 +3,16 @@ import Script from "next/script";
 import { RetailLanding } from "@/components/sections/retail/retail-landing";
 
 export const metadata: Metadata = {
-  title: "Marketing para Varejo | Trafego Local, WhatsApp e Vendas",
+  title: "Marketing para Varejo | Tráfego Local, WhatsApp e Recompra",
   description:
-    "Estratégia de marketing para varejo com tráfego local, WhatsApp, loja física, catálogo, recompra e dados para vender com previsibilidade. Solicite diagnóstico gratuito.",
+    "Marketing para varejo físico e digital com tráfego local, Google Maps, WhatsApp, catálogo, recompra, equipe comercial e dados de performance.",
   alternates: {
     canonical: "https://updo.com.br/marketing-para-varejo",
   },
   openGraph: {
-    title: "Marketing para Varejo | Tráfego Local, WhatsApp e Vendas",
+    title: "Marketing para Varejo | Tráfego Local, WhatsApp e Recompra",
     description:
-      "Estratégia de marketing para varejo com tráfego local, WhatsApp, loja física, catálogo, recompra e dados para vender com previsibilidade.",
+      "Tráfego local, Google Maps, WhatsApp, catálogo, recompra, equipe comercial e dados para varejo físico e digital.",
     images: [
       {
         url: "/Imagens/sala-cheia.jpg",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marketing para Varejo | Tráfego Local, WhatsApp e Vendas",
+    title: "Marketing para Varejo | Tráfego Local, WhatsApp e Recompra",
     description:
-      "Estratégia de marketing para varejo com tráfego local, WhatsApp, loja física, catálogo, recompra e dados para vender com previsibilidade.",
+      "Tráfego local, Google Maps, WhatsApp, catálogo, recompra, equipe comercial e dados para varejo físico e digital.",
   },
 };
 

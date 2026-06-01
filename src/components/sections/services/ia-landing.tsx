@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import Link from "next/link";
@@ -271,6 +271,27 @@ function TrustItem({ icon: Icon, text }: { icon: React.ElementType; text: string
   );
 }
 
+function SuccessIcon() {
+  return (
+    <motion.div
+      initial={{ scale: 0.82, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className="relative mb-6 flex h-20 w-20 items-center justify-center"
+    >
+      <motion.span
+        initial={{ scale: 0.65, opacity: 0.55 }}
+        animate={{ scale: 1.35, opacity: 0 }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
+        className="absolute inset-0 rounded-full border border-accent/35"
+      />
+      <div className="flex h-20 w-20 items-center justify-center rounded-full border border-accent/25 bg-accent/12 shadow-[0_0_34px_rgba(86,254,213,0.18)]">
+        <CheckCircle2 className="h-10 w-10 text-accent" />
+      </div>
+    </motion.div>
+  );
+}
+
 /* ─────────────────────────────── Chat Demo ─────────────────────────────── */
 
 function ChatDemo() {
@@ -365,6 +386,7 @@ function ChatDemo() {
 export function IALanding() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [whatsAppUrl, setWhatsAppUrl] = React.useState("");
   const [formData, setFormData] = React.useState({
     nome: "",
     empresa: "",
@@ -403,8 +425,7 @@ export function IALanding() {
     return encodeURIComponent(lines);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const submitLead = () => {
     setIsSubmitted(true);
 
     if (typeof window !== "undefined") {
@@ -430,18 +451,30 @@ export function IALanding() {
 
 Quero entender como a IA pode ajudar nas minhas vendas.`;
 
-    setTimeout(() => {
-      window.open(`https://wa.me/5541987112003?text=${encodeURIComponent(message)}`, "_blank");
-    }, 1200);
+    const whatsappUrl = `https://wa.me/5541987112003?text=${encodeURIComponent(message)}`;
+    setWhatsAppUrl(whatsappUrl);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    submitLead();
+  };
+
+  const handleSubmitClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const form = e.currentTarget.form;
+    if (form && !form.reportValidity()) return;
+    submitLead();
   };
 
   return (
     <main>
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-[#07111F] pt-10 pb-16 lg:pt-36 lg:pb-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-[#6575FF]/[0.12] blur-[140px] pointer-events-none -z-10" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-accent/[0.08] blur-[120px] pointer-events-none -z-10" />
+      <section className="relative overflow-hidden pt-10 pb-16 lg:pt-36 lg:pb-28">
+        <div className="absolute inset-0 -z-10 bg-[#07111F]">
+          <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        </div>
+        <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-[#6575FF]/[0.12] blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-accent/[0.08] blur-[120px] pointer-events-none" />
 
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 items-center">
@@ -539,7 +572,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               O problema
             </span>
-            <h2 className="mt-4 font-heading text-3xl md:text-4xl font-black tracking-tight text-foreground leading-[1.1]">
+            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
               O que está custando vendas agora mesmo.
             </h2>
           </motion.div>
@@ -582,7 +615,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               O que entregamos
             </span>
-            <h2 className="mt-4 font-heading text-3xl md:text-4xl font-black tracking-tight text-foreground leading-[1.1]">
+            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
               Seis implementações que transformam velocidade em venda.
             </h2>
           </motion.div>
@@ -613,9 +646,11 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
       </section>
 
       {/* ── MATRIX ── */}
-      <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-[#6575FF]/[0.12] blur-[100px] pointer-events-none -z-10" />
+      <section className="relative overflow-hidden py-18 lg:py-28">
+        <div className="absolute inset-0 -z-10 bg-[#07111F]">
+          <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        </div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-[#6575FF]/[0.12] blur-[100px] pointer-events-none" />
 
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -628,7 +663,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               Como funciona
             </span>
-            <h2 className="mt-4 font-heading text-3xl md:text-4xl font-black tracking-tight text-white leading-[1.1]">
+            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-white md:text-5xl">
               A stack que roda o sistema.
             </h2>
             <p className="mt-4 text-sm text-white/45 leading-relaxed max-w-lg">
@@ -683,7 +718,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
                   <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                     Resultado real
                   </span>
-                  <h2 className="mt-4 font-heading text-2xl md:text-3xl font-black tracking-tight text-foreground leading-tight">
+                  <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
                     De 4h de espera para resposta em segundos, sem aumentar o time.
                   </h2>
                   <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
@@ -729,9 +764,11 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
       </section>
 
       {/* ── CONTACT FORM ── */}
-      <section id="contato" className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-[120px]" />
+      <section id="contato" className="relative overflow-hidden py-18 lg:py-28">
+        <div className="absolute inset-0 -z-10 bg-[#07111F]">
+          <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        </div>
+        <div className="pointer-events-none absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-[120px]" />
 
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl">
@@ -848,7 +885,8 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
                   </p>
                   <div className="flex justify-center">
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={handleSubmitClick}
                     className="mx-auto inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:max-w-none sm:px-10"
                   >
                     Quero o diagnóstico gratuito
@@ -864,19 +902,24 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
               </form>
             ) : (
               <div className="flex flex-col items-center py-12 text-center">
-                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/12">
-                  <CheckCircle2 className="h-10 w-10 text-[#6575FF]" />
-                </div>
+                <SuccessIcon />
                 <h3 className="font-heading text-2xl font-black tracking-tight text-white">
-                  Formulário enviado.
+                  Formulário enviado com sucesso.
                 </h3>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/55">
-                  Estamos abrindo o WhatsApp para continuar o diagnóstico
-                  de IA para vendas.
+                  Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento inicial.
                 </p>
-                <p className="mt-6 text-sm font-bold text-accent">
-                  Redirecionando...
-                </p>
+                {whatsAppUrl && (
+                  <Link
+                    href={whatsAppUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-accent px-5 text-sm font-bold text-accent-foreground transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] active:scale-95"
+                  >
+                    Falar agora pelo WhatsApp
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                )}
               </div>
             )}
           </div>
@@ -891,7 +934,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Dúvidas frequentes
               </span>
-              <h2 className="mt-6 font-heading text-4xl font-black leading-[1.1] tracking-tight text-foreground lg:text-5xl">
+              <h2 className="mt-6 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
                 Dúvidas sobre IA aplicada a vendas e atendimento.
               </h2>
               <p className="mt-8 max-w-sm leading-relaxed text-muted-foreground">

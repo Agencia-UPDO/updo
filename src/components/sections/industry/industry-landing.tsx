@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import Link from "next/link";
@@ -235,11 +235,11 @@ Quero diagnosticar minha operação comercial industrial.`;
   return (
     <main className="bg-background">
       {/* Hero */}
-      <section className="relative flex items-center overflow-hidden bg-background pt-10 pb-16 lg:min-h-[88vh] lg:py-28">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_30%,rgba(86,254,213,0.10),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(101,117,255,0.08),transparent_40%)]" />
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:42px_42px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <section className="relative isolate flex items-center overflow-hidden bg-background pt-10 pb-16 lg:min-h-[88vh] lg:py-28">
+        <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_20%_30%,rgba(86,254,213,0.10),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(101,117,255,0.08),transparent_40%)]" />
+        <div className="pointer-events-none absolute inset-0 z-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="relative z-10 container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -305,9 +305,9 @@ Quero diagnosticar minha operação comercial industrial.`;
                   <p className="text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground">
                     Case indústria
                   </p>
-                  <h2 className="mt-2 font-heading text-2xl font-black tracking-tight text-foreground">
+                  <h3 className="mt-2 font-heading text-2xl font-black tracking-tight text-foreground">
                     Pipeline previsível com venda complexa e ciclo longo estruturado.
-                  </h2>
+                  </h3>
                 </div>
 
                 <div className="mt-8 grid grid-cols-2 gap-4">
@@ -464,7 +464,9 @@ Quero diagnosticar minha operação comercial industrial.`;
       </section>
 
       {/* Case real */}
-      <section className="bg-[#07111F] py-18 lg:py-28">
+      <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
+        <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6575FF]/[0.10] blur-[100px]" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-center">
             <div>
@@ -525,7 +527,7 @@ Quero diagnosticar minha operação comercial industrial.`;
 
       {/* Formulário */}
       <section id="contato" className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[120px]" />
 
         <div className="container mx-auto px-4 lg:px-8">
@@ -680,7 +682,7 @@ Quero diagnosticar minha operação comercial industrial.`;
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Dúvidas frequentes
               </span>
-              <h2 className="mt-6 font-heading text-4xl font-black leading-[1.1] tracking-tight text-foreground lg:text-5xl">
+              <h2 className="mt-6 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
                 Dúvidas sobre marketing industrial e venda B2B.
               </h2>
               <p className="mt-8 max-w-sm leading-relaxed text-muted-foreground">

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import Link from "next/link";
@@ -201,6 +201,7 @@ const labelClass =
 export function ServicosLanding() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [whatsAppUrl, setWhatsAppUrl] = React.useState("");
   const [formData, setFormData] = React.useState({
     nome: "",
     empresa: "",
@@ -223,8 +224,7 @@ export function ServicosLanding() {
     return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2, 7)}-${phoneNumber.slice(7, 11)}`;
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const submitLead = () => {
     setIsSubmitted(true);
 
     if (typeof window !== "undefined") {
@@ -250,19 +250,29 @@ export function ServicosLanding() {
 
 Quero diagnosticar minha estratégia de marketing para serviços.`;
 
-    setTimeout(() => {
-      window.open(`https://wa.me/5541987112003?text=${encodeURIComponent(message)}`, "_blank");
-    }, 1200);
+    const whatsappUrl = `https://wa.me/5541987112003?text=${encodeURIComponent(message)}`;
+    setWhatsAppUrl(whatsappUrl);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitLead();
+  };
+
+  const handleSubmitClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const form = event.currentTarget.form;
+    if (form && !form.reportValidity()) return;
+    submitLead();
   };
 
   return (
     <main className="bg-background">
       {/* ── Hero ── */}
-      <section className="relative flex items-center overflow-hidden bg-background pt-10 pb-16 lg:min-h-[88vh] lg:py-28">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_30%,rgba(86,254,213,0.10),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(101,117,255,0.08),transparent_40%)]" />
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:42px_42px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <section className="relative isolate flex items-center overflow-hidden bg-background pt-10 pb-16 lg:min-h-[88vh] lg:py-28">
+        <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_20%_30%,rgba(86,254,213,0.10),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(101,117,255,0.08),transparent_40%)]" />
+        <div className="pointer-events-none absolute inset-0 z-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="relative z-10 container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -326,9 +336,9 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
                   <p className="text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground">
                     Pipeline de Serviços
                   </p>
-                  <h2 className="mt-2 font-heading text-2xl font-black tracking-tight text-foreground">
+                  <h3 className="mt-2 font-heading text-2xl font-black tracking-tight text-foreground">
                     Do primeiro clique ao contrato assinado com canal e qualificação estruturados.
-                  </h2>
+                  </h3>
                 </div>
 
                 <div className="mt-7 space-y-5">
@@ -494,7 +504,9 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
       </section>
 
       {/* ── Case real ── */}
-      <section className="bg-[#07111F] py-18 lg:py-28">
+      <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
+        <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6575FF]/[0.10] blur-[100px]" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-center">
             <div>
@@ -553,8 +565,8 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
 
       {/* ── Formulário ── */}
       <section id="contato" className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[120px]" />
+        <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="pointer-events-none absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[120px]" />
 
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl">
@@ -667,7 +679,8 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
 
                 <div className="flex flex-col items-center border-t border-white/[0.08] pt-6">
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={handleSubmitClick}
                     className="mx-auto inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:max-w-none sm:px-10"
                   >
                     Diagnosticar minha empresa de serviços
@@ -682,18 +695,24 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
               </form>
             ) : (
               <div className="flex flex-col items-center py-12 text-center">
-                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/12">
-                  <CheckCircle2 className="h-10 w-10 text-[#6575FF]" />
-                </div>
+                <SuccessIcon />
                 <h3 className="font-heading text-2xl font-black tracking-tight text-white">
-                  Formulário enviado.
+                  Formulário enviado com sucesso.
                 </h3>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/55">
-                  Estamos abrindo o WhatsApp para continuar o diagnóstico da sua empresa de serviços.
+                  Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento inicial.
                 </p>
-                <p className="mt-6 text-sm font-bold text-[#6575FF]">
-                  Redirecionando...
-                </p>
+                {whatsAppUrl && (
+                  <Link
+                    href={whatsAppUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-accent px-5 text-sm font-bold text-accent-foreground transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] active:scale-95"
+                  >
+                    Falar agora pelo WhatsApp
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                )}
               </div>
             )}
           </div>
@@ -708,7 +727,7 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                 Dúvidas frequentes
               </span>
-              <h2 className="mt-6 font-heading text-4xl font-black leading-[1.1] tracking-tight text-foreground lg:text-5xl">
+              <h2 className="mt-6 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
                 Dúvidas sobre marketing para planos de saúde, consultorias e outros serviços.
               </h2>
               <p className="mt-8 max-w-sm leading-relaxed text-muted-foreground">
@@ -867,5 +886,26 @@ function TrustItem({
       <Icon className="h-3 w-3" />
       {text}
     </span>
+  );
+}
+
+function SuccessIcon() {
+  return (
+    <motion.div
+      initial={{ scale: 0.82, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className="relative mb-6 flex h-20 w-20 items-center justify-center"
+    >
+      <motion.span
+        initial={{ scale: 0.65, opacity: 0.55 }}
+        animate={{ scale: 1.35, opacity: 0 }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
+        className="absolute inset-0 rounded-full border border-accent/35"
+      />
+      <div className="flex h-20 w-20 items-center justify-center rounded-full border border-accent/25 bg-accent/12 shadow-[0_0_34px_rgba(86,254,213,0.18)]">
+        <CheckCircle2 className="h-10 w-10 text-accent" />
+      </div>
+    </motion.div>
   );
 }

@@ -76,10 +76,9 @@ export function HomeHero() {
           >
             <motion.div
               variants={itemVariants}
-              className="updo-badge mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold md:mb-8 md:text-sm relative overflow-hidden group"
+              className="updo-badge mb-6 inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] md:mb-8 relative overflow-hidden group"
             >
               <span className="absolute inset-0 bg-white/20 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
               +10 anos de mercado
             </motion.div>
 

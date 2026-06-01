@@ -3,16 +3,16 @@ import Script from "next/script";
 import { CaseEducacaoClient } from "@/components/sections/cases/educacao-case";
 
 export const metadata: Metadata = {
-  title: "Case Educação | ROAS 20x e +211% de Leads",
+  title: "Case de Marketing Educacional | ROAS 20x e +211% de Leads",
   description:
-    "Como a UPDO transformou uma instituição de ensino superior com quase 30 anos de história: do platô de crescimento a ROAS 20x, +211% de leads e vencedores do Prêmio RD Station 2024.",
+    "Case de marketing educacional com ROAS 20x, +211% de leads e prêmio RD Station 2024 para instituição de ensino superior atendida pela UPDO.",
   alternates: {
     canonical: "https://updo.com.br/cases/educacao",
   },
   openGraph: {
-    title: "Case Educação | ROAS 20x e +211% de Leads | UPDO",
+    title: "Case de Marketing Educacional | ROAS 20x e +211% de Leads",
     description:
-      "Como a UPDO transformou uma instituição de ensino superior com quase 30 anos de história: do platô de crescimento a ROAS 20x, +211% de leads e vencedores do Prêmio RD Station 2024.",
+      "ROAS 20x, +211% de leads e prêmio RD Station 2024 para instituição de ensino superior atendida pela UPDO.",
     url: "https://updo.com.br/cases/educacao",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
         url: "/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
-        alt: "Case Educação | ROAS 20x e +211% de Leads | UPDO",
+        alt: "Case de Marketing Educacional | ROAS 20x e +211% de Leads",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Case Educação | ROAS 20x e +211% de Leads | UPDO",
+    title: "Case de Marketing Educacional | ROAS 20x e +211% de Leads",
     description:
-      "Como a UPDO transformou uma instituição de ensino superior com quase 30 anos de história: do platô de crescimento a ROAS 20x, +211% de leads e vencedores do Prêmio RD Station 2024.",
+      "ROAS 20x, +211% de leads e prêmio RD Station 2024 para instituição de ensino superior atendida pela UPDO.",
     images: ["/Imagens/sala-cheia.jpg"],
   },
 };
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Case Educação | ROAS 20x e +211% de Leads",
+  headline: "Case de Marketing Educacional | ROAS 20x e +211% de Leads",
   description:
-    "Como a UPDO transformou uma instituição de ensino superior com quase 30 anos de história: do platô de crescimento a ROAS 20x, +211% de leads e vencedores do Prêmio RD Station 2024.",
+    "Case de marketing educacional com ROAS 20x, +211% de leads e prêmio RD Station 2024 para instituição de ensino superior atendida pela UPDO.",
   url: "https://updo.com.br/cases/educacao",
   image: "https://updo.com.br/Imagens/sala-cheia.jpg",
   author: {

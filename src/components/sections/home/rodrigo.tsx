@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import {
   Award,
   Mic,
   Briefcase,
+  GraduationCap,
   Users,
 } from "lucide-react";
 
@@ -24,7 +25,7 @@ export function HomeRodrigo() {
       id="rodrigo"
       className="py-18 lg:py-28 bg-[#07111F] relative overflow-hidden"
     >
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-[#6575FF]/[0.055] blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8">
@@ -92,6 +93,31 @@ export function HomeRodrigo() {
               professor de pós-graduação na Faculdade IBRATE e professor de
               MBA na UFPR.
             </p>
+
+            <div className="mt-8 max-w-xl rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex gap-4">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/12 text-[#6575FF]">
+                    <GraduationCap className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="font-heading text-lg font-black leading-tight tracking-tight text-white">
+                      Treinamentos corporativos
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-white/58">
+                      Vendas, neurovendas, IA e atendimento comercial para times que precisam aplicar o método na rotina.
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href="/treinamentos-corporativos"
+                  className="group inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full border border-[#6575FF]/25 bg-[#6575FF]/10 px-5 text-sm font-bold text-[#6575FF] transition-all duration-300 hover:border-[#6575FF]/45 hover:bg-[#6575FF]/16 hover:text-white"
+                >
+                  Conhecer
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
 
             {/* Chips de conquista */}
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">

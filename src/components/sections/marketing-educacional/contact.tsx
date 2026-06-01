@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -113,7 +113,7 @@ Gostaria de agendar meu diagnóstico gratuito!`;
       id="contato"
       className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28"
     >
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#6575FF]/[0.08] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8">
@@ -130,7 +130,7 @@ Gostaria de agendar meu diagnóstico gratuito!`;
             </span>
             <h2 className="mt-3 font-heading text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.1]">
               Receba um diagnóstico gratuito <br className="hidden md:block" />
-              <span className="text-white/25">da sua captação de alunos.</span>
+              da sua captação de alunos.
             </h2>
             <p className="mt-4 text-white/40 text-base max-w-xl mx-auto leading-relaxed">
               Vamos analisar onde sua captação perde alunos e indicar os

@@ -3,16 +3,16 @@ import Script from "next/script";
 import { TrainingPage } from "@/components/sections/training/training-page";
 
 export const metadata: Metadata = {
-  title: "Treinamentos Corporativos e In Company | UPDO",
+  title: "Treinamentos Corporativos | Vendas, Neurovendas e IA",
   description:
-    "Treinamentos corporativos e in company em vendas, neurovendas, IA, atendimento, CRM e comportamento do consumidor com Rodrigo Bueno, professor PUCPR, UFPR e IBRATE.",
+    "Treinamentos corporativos e in company em vendas, neurovendas, atendimento, CRM, IA e comportamento do consumidor com Rodrigo Bueno, professor PUCPR, UFPR e IBRATE.",
   alternates: {
     canonical: "https://updo.com.br/treinamentos-corporativos",
   },
   openGraph: {
-    title: "Treinamentos Corporativos e In Company | UPDO",
+    title: "Treinamentos Corporativos | Vendas, Neurovendas e IA",
     description:
-      "Workshops, palestras e programas in company em vendas, neurovendas, IA, atendimento e rotina comercial com Rodrigo Bueno.",
+      "Workshops, palestras e programas in company em vendas, neurovendas, IA, atendimento, CRM e rotina comercial com Rodrigo Bueno.",
     url: "https://updo.com.br/treinamentos-corporativos",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Treinamentos Corporativos e In Company | UPDO",
+    title: "Treinamentos Corporativos | Vendas, Neurovendas e IA",
     description:
-      "Treinamentos em vendas, neurovendas, IA, atendimento e comportamento do consumidor para equipes comerciais.",
+      "Workshops, palestras e programas in company em vendas, neurovendas, IA, atendimento, CRM e rotina comercial com Rodrigo Bueno.",
     images: ["/Imagens/sala-cheia.jpg"],
   },
 };

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
@@ -70,7 +70,7 @@ const cases = [
 export function Cases() {
   return (
     <section className="py-24 lg:py-40 bg-[#F7F9FF] relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}

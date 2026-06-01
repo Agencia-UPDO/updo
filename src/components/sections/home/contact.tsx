@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -136,7 +136,7 @@ Gostaria de agendar meu diagnóstico estratégico!`;
       id="diagnostico"
       className="py-18 lg:py-28 bg-foreground relative overflow-hidden"
     >
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#6575FF]/[0.06] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8">
@@ -151,12 +151,8 @@ Gostaria de agendar meu diagnóstico estratégico!`;
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               Análise estratégica
             </span>
-            <h2 className="mt-3 font-heading text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.1]">
-              Receba um diagnóstico estratégico{" "}
-              <br className="hidden md:block" />
-              <span className="text-white/35">
-                do seu marketing e vendas.
-              </span>
+            <h2 className="mx-auto mt-3 max-w-3xl font-heading text-3xl font-black leading-[1.08] tracking-tight text-white md:text-5xl">
+              Receba um diagnóstico estratégico do seu marketing e vendas.
             </h2>
             <p className="mt-4 text-white/55 text-base max-w-xl mx-auto leading-relaxed">
               Vamos analisar onde sua operação perde receita e indicar os

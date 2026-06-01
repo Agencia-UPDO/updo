@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -82,7 +82,7 @@ export function CasesIndexClient() {
   return (
     <main className="bg-background">
       <section className="relative overflow-hidden bg-[#F7F9FF] pt-20 pb-16 lg:pt-28 lg:pb-20">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute top-0 right-0 h-[480px] w-[480px] rounded-full bg-accent/[0.06] blur-[120px]" />
 
         <div className="container mx-auto px-4 lg:px-8">

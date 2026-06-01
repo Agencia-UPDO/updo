@@ -50,14 +50,14 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex items-center overflow-hidden bg-background pt-10 pb-16 lg:min-h-[88vh] lg:py-28">
+    <section className="relative isolate flex items-center overflow-hidden bg-background pt-10 pb-16 lg:min-h-[88vh] lg:py-28">
       {/* Background patterns baseados no Design System da UPDO */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_30%,rgba(86,254,213,0.12),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(101,117,255,0.08),transparent_40%)]" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_20%_30%,rgba(86,254,213,0.12),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(101,117,255,0.08),transparent_40%)]" />
 
       {/* Grid pattern overlay para visual tecnológico */}
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:42px_42px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="relative z-10 container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Lado Esquerdo: Títulos e CTAs */}
           <motion.div
@@ -75,7 +75,7 @@ export function Hero() {
 
             <motion.h1
               variants={itemVariants}
-              className="font-heading text-4xl font-black leading-[1.2] tracking-tight text-foreground md:text-5xl lg:text-5xl"
+              className="max-w-2xl font-heading text-4xl font-black leading-[1.14] tracking-tight text-foreground md:text-5xl lg:text-5xl"
             >
               Capte mais alunos e transforme leads em{" "}
               <span className="relative inline-block text-foreground">
@@ -105,9 +105,9 @@ export function Hero() {
                 <motion.li
                   key={i}
                   variants={itemVariants}
-                  className="flex items-center gap-2 text-muted-foreground font-medium"
+                  className="flex items-center gap-3 text-sm font-medium text-muted-foreground"
                 >
-                  <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-[#6575FF]/20 bg-[#6575FF]/10">
+                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/20 bg-[#6575FF]/10">
                     <div className="h-2 w-2 rounded-full bg-[#6575FF]" />
                   </div>
                   {bullet}
