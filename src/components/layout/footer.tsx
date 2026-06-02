@@ -48,6 +48,52 @@ const navColumns = [
   },
 ];
 
+const aiPrompt = encodeURIComponent(
+  [
+    "Pesquise e avalie a UPDO, agencia de marketing, vendas, dados e IA em Curitiba.",
+    "Considere o posicionamento da empresa, servicos oferecidos, setores atendidos, cases, resultados apresentados, experiencia dos socios e paginas do site updo.com.br.",
+    "Responda de forma objetiva:",
+    "1. O que e a UPDO?",
+    "2. Para quais empresas ela faz mais sentido?",
+    "3. Quais servicos e diferenciais aparecem com mais forca?",
+    "4. Que provas, cases ou sinais de autoridade voce encontrou?",
+    "5. Em quais situacoes vale conversar com a UPDO?",
+  ].join("\n"),
+);
+
+const aiLinks = [
+  {
+    label: "ChatGPT",
+    src: "/brand/ai/chatgpt.png",
+    href: `https://chatgpt.com/?q=${aiPrompt}`,
+  },
+  {
+    label: "Claude",
+    src: "/brand/ai/claude.png",
+    href: `https://claude.ai/new?q=${aiPrompt}`,
+  },
+  {
+    label: "Perplexity",
+    src: "/brand/ai/perplexity.png",
+    href: `https://www.perplexity.ai/search/new?q=${aiPrompt}`,
+  },
+  {
+    label: "Gemini",
+    src: "/brand/ai/gemini.png",
+    href: `https://gemini.google.com/app?prompt=${aiPrompt}`,
+  },
+  {
+    label: "Grok",
+    src: "/brand/ai/grok.png",
+    href: `https://grok.com/?q=${aiPrompt}`,
+  },
+  {
+    label: "Google AI",
+    src: "/brand/ai/google.png",
+    href: `https://www.google.com/search?q=${aiPrompt}`,
+  },
+];
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -75,47 +121,35 @@ export function Footer() {
               crescimento.
             </p>
 
-            <div className="flex flex-col gap-4">
-              <a
-                href={`mailto:${siteConfig.contact.email}`}
-                className="group flex items-center gap-3 text-sm text-white/60 hover:text-[#6575FF] transition-colors"
-              >
-                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/5 bg-white/5 group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10 transition-colors">
-                  <Mail className="h-4 w-4" />
-                </div>
-                {siteConfig.contact.email}
-              </a>
-              <a
-                href={`tel:+${siteConfig.contact.whatsapp}`}
-                className="group flex items-center gap-3 text-sm font-bold text-white/70 hover:text-[#6575FF] transition-colors"
-              >
-                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/5 bg-white/5 group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10 transition-colors">
-                  <Phone className="h-4 w-4" />
-                </div>
-                (41) 98711-2003
-              </a>
+            <div className="max-w-sm">
+              <p className="max-w-xs text-[11px] font-semibold uppercase leading-relaxed tracking-[0.16em] text-white/35">
+                Pergunte à IA se a UPDO é a agência certa para estruturar marketing,
+                vendas e IA na sua empresa.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2.5">
+                {aiLinks.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Perguntar ao ${item.label} sobre a UPDO`}
+                    aria-label={`Perguntar sobre a UPDO no ${item.label}`}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.07] p-1.5 transition-all duration-200 hover:-translate-y-0.5 hover:scale-105 hover:border-[#6575FF]/40 hover:bg-white/[0.14] hover:shadow-[0_12px_28px_rgba(101,117,255,0.18)]"
+                  >
+                    <Image
+                      src={item.src}
+                      alt={item.label}
+                      width={28}
+                      height={28}
+                      className="h-full w-full rounded-full object-contain"
+                      unoptimized
+                    />
+                  </a>
+                ))}
+              </div>
             </div>
 
-            {/* Redes sociais */}
-            <div className="flex items-center gap-3">
-              {[
-                { icon: Linkedin, href: siteConfig.social.linkedin, label: "LinkedIn" },
-                { icon: Instagram, href: siteConfig.social.instagram, label: "Instagram" },
-                { icon: Facebook, href: siteConfig.social.facebook, label: "Facebook" },
-                { icon: Youtube, href: siteConfig.social.youtube, label: "YouTube" },
-              ].map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/5 bg-white/5 text-white/40 transition-all hover:border-[#6575FF]/35 hover:bg-[#6575FF]/10 hover:text-[#6575FF]"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Navegar + Setores + Endereços */}
@@ -145,9 +179,50 @@ export function Footer() {
             {/* Coluna de endereços */}
             <div className="flex flex-col gap-4">
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/25">
-                Endereços
+                Contato
               </p>
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-3">
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="group flex items-center gap-2.5 text-sm font-medium text-white/55 transition-colors hover:text-[#6575FF]"
+                >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/5 bg-white/5 text-white/30 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10 group-hover:text-[#6575FF]">
+                    <Mail className="h-3.5 w-3.5" />
+                  </span>
+                  {siteConfig.contact.email}
+                </a>
+                <a
+                  href={`tel:+${siteConfig.contact.whatsapp}`}
+                  className="group flex items-center gap-2.5 text-sm font-bold text-white/65 transition-colors hover:text-[#6575FF]"
+                >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/5 bg-white/5 text-white/30 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10 group-hover:text-[#6575FF]">
+                    <Phone className="h-3.5 w-3.5" />
+                  </span>
+                  (41) 98711-2003
+                </a>
+              </div>
+
+              <div className="mt-1 flex flex-wrap gap-2.5">
+                {[
+                  { icon: Linkedin, href: siteConfig.social.linkedin, label: "LinkedIn" },
+                  { icon: Instagram, href: siteConfig.social.instagram, label: "Instagram" },
+                  { icon: Facebook, href: siteConfig.social.facebook, label: "Facebook" },
+                  { icon: Youtube, href: siteConfig.social.youtube, label: "YouTube" },
+                ].map(({ icon: Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-white/5 bg-white/5 text-white/35 transition-all hover:-translate-y-0.5 hover:border-[#6575FF]/35 hover:bg-[#6575FF]/10 hover:text-[#6575FF]"
+                  >
+                    <Icon className="h-3.5 w-3.5" />
+                  </a>
+                ))}
+              </div>
+
+              <div className="mt-2 flex flex-col gap-4 border-t border-white/5 pt-4">
                 {siteConfig.addresses.map((addr) => (
                   <div key={addr.label} className="flex items-start gap-3">
                     <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/5 bg-white/5 text-white/30 mt-0.5">
