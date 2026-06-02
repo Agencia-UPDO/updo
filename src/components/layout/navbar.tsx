@@ -123,7 +123,7 @@ const caseItems = [
 const serviceItems = [
   {
     title: "IA para Vendas",
-    description: "Agentes de IA que qualificam leads e agendam reunioes",
+    description: "Agentes de IA que qualificam leads e agendam reuniões",
     href: "/servicos/ia-para-vendas",
     icon: Brain,
     iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
@@ -136,28 +136,28 @@ const serviceItems = [
     iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
   },
   {
-    title: "Inteligencia de Dados",
-    description: "Dashboard unificado, atribuicao e KPIs em tempo real",
+    title: "Inteligência de Dados",
+    description: "Dashboard unificado, atribuição e KPIs em tempo real",
     href: "/servicos/inteligencia-de-dados",
     icon: Database,
     iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
   },
   {
-    title: "Funil e Automacao",
-    description: "Nutricao, lead scoring e automacao de WhatsApp",
+    title: "Funil e Automação",
+    description: "Nutrição, lead scoring e automação de WhatsApp",
     href: "/servicos/funil-e-automacao",
     icon: Zap,
     iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
   },
   {
     title: "UX e CRO",
-    description: "Otimizacao de conversao com teste A/B e dado",
+    description: "Otimização de conversão com teste A/B e dado",
     href: "/servicos/ux-cro",
     icon: Eye,
     iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
   },
   {
-    title: "Geracao de Demanda",
+    title: "Geração de Demanda",
     description: "Google, Meta, LinkedIn e SEO integrados",
     href: "/servicos/geracao-de-demanda",
     icon: Target,
