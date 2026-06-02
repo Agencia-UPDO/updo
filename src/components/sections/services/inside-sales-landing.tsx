@@ -413,7 +413,8 @@ export function InsideSalesLanding() {
 
     if (typeof window !== "undefined") {
       const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer?.push({
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({
         event: "Lead",
         formName: "Diagnóstico Inside Sales",
         location: "servicos/inside-sales",

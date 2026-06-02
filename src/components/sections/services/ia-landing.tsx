@@ -24,7 +24,7 @@ import {
   Zap,
 } from "lucide-react";
 
-/* ─────────────────────────────── Data ─────────────────────────────── */
+/* ------------------------------- Data ------------------------------- */
 
 const metrics = [
   { label: "Tempo de resposta", value: "< 30s", detail: "24h por dia, 7 dias por semana" },
@@ -188,7 +188,7 @@ const mainPains = [
   "Escalar sem contratar mais pessoas",
 ];
 
-/* ─────────────────────────────── Helpers ─────────────────────────────── */
+/* ------------------------------- Helpers ------------------------------- */
 
 const inputClass =
   "w-full rounded-xl border border-white/[0.12] bg-white/[0.06] px-4 py-3.5 text-sm text-white placeholder:text-white/32 outline-none transition-colors duration-200 focus:border-[#6575FF]/45 focus:bg-white/[0.08]";
@@ -292,12 +292,12 @@ function SuccessIcon() {
   );
 }
 
-/* ─────────────────────────────── Chat Demo ─────────────────────────────── */
+/* ------------------------------- Chat Demo ------------------------------- */
 
 function ChatDemo() {
   const messages = [
     { from: "lead", text: "Oi, vi o anúncio de vocês. Tenho interesse." },
-    { from: "ai", text: "Olá! Fico feliz que tenha chegado até nós 😊\nPara eu te direcionar melhor: qual é o principal desafio que vocês estão enfrentando hoje em vendas?" },
+    { from: "ai", text: "Olá! Fico feliz que tenha chegado até nós.\nPara eu te direcionar melhor: qual é o principal desafio que vocês estão enfrentando hoje em vendas?" },
     { from: "lead", text: "A gente gera bastante lead mas o time não dá conta de atender todos." },
     { from: "ai", text: "Entendido. Esse é exatamente o problema que resolvemos.\nQual é o volume médio de leads que vocês recebem por mês?" },
     { from: "lead", text: "Umas 300 a 400 por mês." },
@@ -381,7 +381,7 @@ function ChatDemo() {
   );
 }
 
-/* ─────────────────────────────── Main ─────────────────────────────── */
+/* ------------------------------- Main ------------------------------- */
 
 export function IALanding() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
@@ -430,7 +430,8 @@ export function IALanding() {
 
     if (typeof window !== "undefined") {
       const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer?.push({
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({
         event: "Lead",
         formName: "Diagnóstico IA para Vendas",
         location: "servicos/ia-para-vendas",
@@ -468,7 +469,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
 
   return (
     <main>
-      {/* ── HERO ── */}
+      {/* -- HERO -- */}
       <section className="relative overflow-hidden pt-10 pb-16 lg:pt-36 lg:pb-28">
         <div className="absolute inset-0 -z-10 bg-[#07111F]">
           <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
@@ -559,7 +560,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
         </div>
       </section>
 
-      {/* ── BLOCKERS ── */}
+      {/* -- BLOCKERS -- */}
       <section className="bg-[var(--surface-soft)] py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -602,7 +603,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
         </div>
       </section>
 
-      {/* ── DELIVERABLES ── */}
+      {/* -- DELIVERABLES -- */}
       <section className="bg-white py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -645,7 +646,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
         </div>
       </section>
 
-      {/* ── MATRIX ── */}
+      {/* -- MATRIX -- */}
       <section className="relative overflow-hidden py-18 lg:py-28">
         <div className="absolute inset-0 -z-10 bg-[#07111F]">
           <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
@@ -702,7 +703,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
         </div>
       </section>
 
-      {/* ── CASE ── */}
+      {/* -- CASE -- */}
       <section className="bg-[var(--surface-soft)] py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl">
@@ -763,7 +764,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
         </div>
       </section>
 
-      {/* ── CONTACT FORM ── */}
+      {/* -- CONTACT FORM -- */}
       <section id="contato" className="relative overflow-hidden py-18 lg:py-28">
         <div className="absolute inset-0 -z-10 bg-[#07111F]">
           <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
@@ -926,7 +927,7 @@ Quero entender como a IA pode ajudar nas minhas vendas.`;
         </div>
       </section>
 
-      {/* ── FAQ ── */}
+      {/* -- FAQ -- */}
       <section className="bg-white py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-24">

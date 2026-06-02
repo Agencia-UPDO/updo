@@ -24,7 +24,7 @@ import {
   Zap,
 } from "lucide-react";
 
-/* ─── Data ─── */
+/* --- Data --- */
 
 const pipelineStages = [
   { stage: "Atração", value: "1.840", label: "visitas/mês", pct: 100 },
@@ -196,7 +196,7 @@ const selectClass =
 const labelClass =
   "text-[10px] font-black uppercase tracking-[0.25em] text-white/35";
 
-/* ─── Component ─── */
+/* --- Component --- */
 
 export function ServicosLanding() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
@@ -229,7 +229,8 @@ export function ServicosLanding() {
 
     if (typeof window !== "undefined") {
       const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer?.push({
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({
         event: "Lead",
         formName: "Diagnóstico Empresa de Serviços",
         location: "marketing-para-servicos",
@@ -267,7 +268,7 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
 
   return (
     <main className="bg-background">
-      {/* ── Hero ── */}
+      {/* -- Hero -- */}
       <section className="relative isolate flex items-center overflow-hidden bg-background pt-10 pb-16 lg:min-h-[88vh] lg:py-28">
         <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_20%_30%,rgba(86,254,213,0.10),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(101,117,255,0.08),transparent_40%)]" />
         <div className="pointer-events-none absolute inset-0 z-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
@@ -385,7 +386,7 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
         </div>
       </section>
 
-      {/* ── Gargalos ── */}
+      {/* -- Gargalos -- */}
       <section className="bg-[var(--surface-soft)] py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-12 max-w-2xl">
@@ -418,7 +419,7 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
         </div>
       </section>
 
-      {/* ── Deliverables ── */}
+      {/* -- Deliverables -- */}
       <section className="py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-12 max-w-2xl">
@@ -503,7 +504,7 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
         </div>
       </section>
 
-      {/* ── Case real ── */}
+      {/* -- Case real -- */}
       <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
         <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6575FF]/[0.10] blur-[100px]" />
@@ -563,7 +564,7 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
         </div>
       </section>
 
-      {/* ── Formulário ── */}
+      {/* -- Formulário -- */}
       <section id="contato" className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
         <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="pointer-events-none absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[120px]" />
@@ -719,7 +720,7 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
         </div>
       </section>
 
-      {/* ── FAQ ── */}
+      {/* -- FAQ -- */}
       <section className="bg-white py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-24">
@@ -803,7 +804,7 @@ Quero diagnosticar minha estratégia de marketing para serviços.`;
   );
 }
 
-/* ─── Helpers ─── */
+/* --- Helpers --- */
 
 function FormField({
   label,

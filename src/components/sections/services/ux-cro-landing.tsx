@@ -383,7 +383,8 @@ export function UxCroLanding() {
 
     if (typeof window !== "undefined") {
       const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer?.push({
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({
         event: "Lead",
         formName: "Diagnóstico UX e CRO",
         location: "servicos/ux-cro",

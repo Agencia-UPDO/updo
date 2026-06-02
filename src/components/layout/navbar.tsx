@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
   SheetClose,
@@ -24,7 +24,6 @@ import {
   BarChart,
   ChevronRight,
   ChevronDown,
-  Mail,
   ArrowRight,
   Database,
   Eye,
@@ -38,15 +37,7 @@ import {
   X,
 } from "lucide-react";
 
-function WhatsAppIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-      <path d="M20.52 3.48A11.8 11.8 0 0 0 12.12 0C5.58 0 .26 5.32.26 11.86c0 2.09.55 4.13 1.58 5.93L.16 24l6.35-1.66a11.85 11.85 0 0 0 5.61 1.43h.01c6.54 0 11.86-5.32 11.86-11.86 0-3.17-1.23-6.15-3.47-8.39ZM12.13 21.77h-.01a9.85 9.85 0 0 1-5.02-1.38l-.36-.21-3.77.99 1.01-3.67-.24-.38a9.83 9.83 0 0 1-1.51-5.25C2.23 6.43 6.67 2 12.13 2c2.63 0 5.11 1.03 6.97 2.89A9.8 9.8 0 0 1 22 11.91c0 5.44-4.43 9.86-9.87 9.86Zm5.41-7.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z" />
-    </svg>
-  );
-}
-
-/* ─── Sectors submenu data ─── */
+/* --- Sectors submenu data --- */
 const sectorItems = [
   {
     title: "Educação",
@@ -92,7 +83,7 @@ const sectorItems = [
   },
 ];
 
-/* ─── Cases submenu data ─── */
+/* --- Cases submenu data --- */
 const caseItems = [
   {
     title: "Educação",
@@ -128,7 +119,7 @@ const caseItems = [
   },
 ];
 
-/* ─── Services submenu data ─── */
+/* --- Services submenu data --- */
 const serviceItems = [
   {
     title: "IA para Vendas",
@@ -557,25 +548,25 @@ export function Navbar() {
             <div className="pointer-events-none absolute -right-32 top-0 z-0 h-72 w-72 rounded-full bg-[#6575FF]/20 blur-[90px]" />
             <div className="pointer-events-none absolute -bottom-28 left-0 z-0 h-72 w-72 rounded-full bg-accent/10 blur-[90px]" />
 
-            <div className="relative z-10 border-b border-white/10 bg-white/[0.03] px-6 py-7">
-              <div className="mb-7 flex items-center justify-between">
+            <div className="relative z-10 border-b border-white/10 bg-white/[0.03] px-5 py-5">
+              <div className="flex items-center justify-between">
                 <Image
                   src="/Imagens/Logo UPDO 2024 Branca.svg"
                   alt="UPDO Logo"
                   width={140}
                   height={40}
-                  className="h-9 w-auto"
+                  className="h-8 w-auto"
                 />
                 <SheetClose className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white/50 transition-all duration-200 hover:border-[#6575FF]/35 hover:bg-[#6575FF]/10 hover:text-white active:scale-95">
-                  <X className="h-4 w-4 transition-transform duration-200 group-hover:rotate-90" />
+                  <X className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-90" />
                   <span className="sr-only">Fechar menu</span>
                 </SheetClose>
               </div>
               <SheetTitle className="sr-only">{siteConfig.name}</SheetTitle>
             </div>
 
-            <nav className="relative z-10 flex-1 overflow-y-auto px-4 py-5">
-              <div className="grid gap-1.5">
+            <nav className="relative z-10 flex-1 overflow-y-auto px-3 py-3">
+              <div className="grid gap-1">
                 {navItems.map((item) => {
                   const Icon = getIcon(item.title);
 
@@ -585,10 +576,10 @@ export function Navbar() {
                         <button
                           type="button"
                           onClick={() => setMobileServicesOpen((v) => !v)}
-                          className="group flex w-full items-center gap-4 rounded-2xl border border-transparent px-4 py-3 text-white/65 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10 hover:text-white"
+                          className="group flex w-full items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 text-white/65 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10 hover:text-white"
                         >
-                          <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10">
-                            <Blocks className="h-4 w-4" />
+                          <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10">
+                            <Blocks className="h-3.5 w-3.5" />
                           </div>
                           <span className="text-sm font-bold tracking-tight">Serviços</span>
                           <ChevronDown
@@ -607,14 +598,14 @@ export function Navbar() {
                           )}
                         >
                           <div className="overflow-hidden">
-                            <div className="ml-[52px] mt-1 flex flex-col gap-0.5 border-l border-white/[0.07] pl-4 pb-2">
+                            <div className="ml-10 mt-1 flex flex-col gap-0.5 border-l border-white/[0.07] pl-3 pb-1.5">
                               {serviceItems.map((service) => (
                                 <Link
                                   key={service.href}
                                   href={service.href}
                                   onClick={() => { setIsOpen(false); setMobileServicesOpen(false); }}
                                   className={cn(
-                                    "flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm transition-all hover:bg-white/5",
+                                    "flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] transition-all hover:bg-white/5",
                                     pathname === service.href
                                       ? "text-[#6575FF]"
                                       : "text-white/50 hover:text-white",
@@ -637,10 +628,10 @@ export function Navbar() {
                         <button
                           type="button"
                           onClick={() => setMobileSectorsOpen((v) => !v)}
-                          className="group flex w-full items-center gap-4 rounded-2xl border border-transparent px-4 py-3 text-white/65 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10 hover:text-white"
+                          className="group flex w-full items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 text-white/65 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10 hover:text-white"
                         >
-                          <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10">
-                            <Blocks className="h-4 w-4" />
+                          <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10">
+                            <Blocks className="h-3.5 w-3.5" />
                           </div>
                           <span className="text-sm font-bold tracking-tight">Setores</span>
                           <ChevronDown
@@ -658,14 +649,14 @@ export function Navbar() {
                           )}
                         >
                           <div className="overflow-hidden">
-                            <div className="ml-[52px] mt-1 flex flex-col gap-0.5 border-l border-white/[0.07] pl-4 pb-2">
+                            <div className="ml-10 mt-1 flex flex-col gap-0.5 border-l border-white/[0.07] pl-3 pb-1.5">
                               {sectorItems.map((sector) => (
                                 <Link
                                   key={sector.href}
                                   href={sector.href}
                                   onClick={() => { setIsOpen(false); setMobileSectorsOpen(false); }}
                                   className={cn(
-                                    "flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm transition-all hover:bg-white/5",
+                                    "flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] transition-all hover:bg-white/5",
                                     pathname === sector.href
                                       ? "text-[#6575FF]"
                                       : "text-white/50 hover:text-white",
@@ -688,10 +679,10 @@ export function Navbar() {
                         <button
                           type="button"
                           onClick={() => setMobileCasesOpen((v) => !v)}
-                          className="group flex w-full items-center gap-4 rounded-2xl border border-transparent px-4 py-3 text-white/65 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10 hover:text-white"
+                          className="group flex w-full items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 text-white/65 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10 hover:text-white"
                         >
-                          <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10">
-                            <Trophy className="h-4 w-4" />
+                          <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10">
+                            <Trophy className="h-3.5 w-3.5" />
                           </div>
                           <span className="text-sm font-bold tracking-tight">Cases</span>
                           <ChevronDown
@@ -709,14 +700,14 @@ export function Navbar() {
                           )}
                         >
                           <div className="overflow-hidden">
-                            <div className="ml-[52px] mt-1 flex flex-col gap-0.5 border-l border-white/[0.07] pl-4 pb-2">
+                            <div className="ml-10 mt-1 flex flex-col gap-0.5 border-l border-white/[0.07] pl-3 pb-1.5">
                               {caseItems.map((c) => (
                                 <Link
                                   key={c.href}
                                   href={c.href}
                                   onClick={() => { setIsOpen(false); setMobileCasesOpen(false); }}
                                   className={cn(
-                                    "flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm transition-all hover:bg-white/5",
+                                    "flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] transition-all hover:bg-white/5",
                                     pathname === c.href
                                       ? "text-[#6575FF]"
                                       : "text-white/50 hover:text-white",
@@ -729,7 +720,7 @@ export function Navbar() {
                               <Link
                                 href="/cases"
                                 onClick={() => { setIsOpen(false); setMobileCasesOpen(false); }}
-                                className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-white/30 transition-all hover:bg-white/5 hover:text-white/60"
+                                className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] text-white/30 transition-all hover:bg-white/5 hover:text-white/60"
                               >
                                 <ArrowRight className="h-3.5 w-3.5 shrink-0" />
                                 Ver todos os cases
@@ -742,71 +733,47 @@ export function Navbar() {
                   }
 
                   return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={cn(
-                        "group flex items-center gap-4 rounded-2xl border border-transparent px-4 py-3 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10",
-                        pathname === item.href
-                          ? "border-[#6575FF]/25 bg-[#6575FF]/10 text-white"
-                          : "text-white/60 hover:text-white",
-                      )}
-                    >
-                      <div
+                    <React.Fragment key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
                         className={cn(
-                          "flex h-8 w-8 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10",
-                          pathname === item.href &&
-                            "border-[#6575FF]/35 bg-[#6575FF]/10 text-[#6575FF]",
+                          "group flex items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 transition-all duration-200 hover:border-[#6575FF]/20 hover:bg-[#6575FF]/10",
+                          pathname === item.href
+                            ? "border-[#6575FF]/25 bg-[#6575FF]/10 text-white"
+                            : "text-white/60 hover:text-white",
                         )}
                       >
-                        <Icon className="h-4 w-4" />
-                      </div>
-                      <span className="text-sm font-bold tracking-tight">
-                        {item.title}
-                      </span>
-                      <ChevronRight className="ml-auto h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-40 group-hover:translate-x-0" />
-                    </Link>
+                        <div
+                          className={cn(
+                            "flex h-7 w-7 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors group-hover:border-[#6575FF]/35 group-hover:bg-[#6575FF]/10",
+                            pathname === item.href &&
+                              "border-[#6575FF]/35 bg-[#6575FF]/10 text-[#6575FF]",
+                          )}
+                        >
+                          <Icon className="h-3.5 w-3.5" />
+                        </div>
+                        <span className="text-sm font-bold tracking-tight">
+                          {item.title}
+                        </span>
+                        <ChevronRight className="ml-auto h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-40 group-hover:translate-x-0" />
+                      </Link>
+
+                      {item.title === "Insights" && (
+                        <Link
+                          href="/diagnostico"
+                          onClick={() => setIsOpen(false)}
+                          className="mt-1 flex h-11 items-center justify-center gap-2 rounded-full bg-accent px-4 text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.24)] transition-all duration-200 hover:scale-[1.02] hover:bg-[#3eecc4] active:scale-[0.98]"
+                        >
+                          Agendar diagnóstico
+                          <ArrowRight className="h-3.5 w-3.5" />
+                        </Link>
+                      )}
+                    </React.Fragment>
                   );
                 })}
               </div>
             </nav>
-
-            <div className="relative z-10 space-y-6 border-t border-white/10 bg-white/[0.03] p-6">
-              <Link
-                href="/diagnostico"
-                onClick={() => setIsOpen(false)}
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "flex h-13 w-full items-center justify-center gap-2.5 rounded-full bg-accent text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.28)] transition-all duration-200 hover:scale-[1.02] hover:bg-[#3eecc4] active:scale-[0.98]",
-                )}
-              >
-                Agendar diagnóstico
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-
-              <div className="space-y-4 pt-2">
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
-                  Contato Direto
-                </p>
-                <div className="space-y-3">
-                  <a
-                    href="mailto:contato@updo.com.br"
-                    className="flex items-center gap-3 text-xs text-white/40 hover:text-[#6575FF] transition-colors"
-                  >
-                    <Mail className="h-4 w-4" />
-                    contato@updo.com.br
-                  </a>
-                  <a
-                    href="tel:+5541987112003"
-                    className="flex items-center gap-3 text-xs text-white/40 hover:text-[#6575FF] transition-colors"
-                  >
-                    <WhatsAppIcon className="h-4 w-4" />
-                    (41) 98711-2003
-                  </a>
-                </div>
-              </div>
-            </div>
           </SheetContent>
         </Sheet>
       </div>

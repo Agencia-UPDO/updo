@@ -107,7 +107,8 @@ export function DiagnosticPage() {
 
     if (typeof window !== "undefined") {
       const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer?.push({
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({
         event: "Lead",
         formName: "Diagnóstico Estratégico",
         location: "diagnostico-page",
