@@ -4,6 +4,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { RouteTransitionDelay } from "@/components/layout/route-transition-delay";
 import Script from "next/script";
 import { TitleSync } from "@/components/analytics/title-sync";
 import { RoutePageview } from "@/components/analytics/route-pageview";
@@ -139,6 +140,7 @@ export default function RootLayout({
           }}
         />
         <Navbar />
+        <RouteTransitionDelay />
         <TitleSync />
         <RoutePageview />
         <main className="flex-1">{children}</main>
