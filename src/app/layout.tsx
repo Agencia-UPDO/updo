@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import Script from "next/script";
 import { TitleSync } from "@/components/analytics/title-sync";
+import { RoutePageview } from "@/components/analytics/route-pageview";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -139,6 +140,7 @@ export default function RootLayout({
         />
         <Navbar />
         <TitleSync />
+        <RoutePageview />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
