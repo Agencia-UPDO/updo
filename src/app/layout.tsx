@@ -5,8 +5,7 @@ import { siteConfig } from "@/config/site";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import Script from "next/script";
-import { Suspense } from "react";
-import { RouteTracker } from "@/components/analytics/route-tracker";
+import { TitleSync } from "@/components/analytics/title-sync";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -125,34 +124,6 @@ export default function RootLayout({
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-MZ73JF3');
-
-              // Bloco para filtrar eventos desnecessários do dataLayer:
-              // 1. gtm.historyChange — bloqueado porque o RouteTracker já envia
-              //    virtual_page_view em cada troca de rota SPA (evita page view duplo)
-              // 2. gtm.linkClick em âncoras da mesma página — bloqueado para não
-              //    duplicar page views em scroll interno
-              (function() {
-                var push = dataLayer.push;
-                dataLayer.push = function() {
-                  var args = Array.prototype.slice.call(arguments);
-                  var evt = args[0] && args[0].event;
-
-                  // Bloqueia History Change nativo do GTM (RouteTracker cuida disso)
-                  if (evt === 'gtm.historyChange' || evt === 'gtm.historyChange-v2') {
-                    return;
-                  }
-
-                  // Bloqueia cliques em âncoras da mesma página
-                  if (evt === 'gtm.linkClick') {
-                    var url = args[0]['gtm.elementUrl'] || '';
-                    if (url.indexOf('#') !== -1 && url.split('#')[0] === window.location.href.split('#')[0]) {
-                      return;
-                    }
-                  }
-
-                  return push.apply(dataLayer, args);
-                };
-              })();
             `,
           }}
         />
@@ -167,9 +138,7 @@ export default function RootLayout({
           }}
         />
         <Navbar />
-        <Suspense fallback={null}>
-          <RouteTracker />
-        </Suspense>
+        <TitleSync />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
