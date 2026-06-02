@@ -183,6 +183,11 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  React.useEffect(() => {
+    const mobileLogo = new window.Image();
+    mobileLogo.src = "/Imagens/Logo UPDO 2024 Branca.svg";
+  }, []);
+
   // Fecha os dropdowns quando a rota muda
   React.useEffect(() => {
     setServicesOpen(false);
@@ -556,6 +561,7 @@ export function Navbar() {
                   width={140}
                   height={40}
                   className="h-8 w-auto"
+                  priority
                 />
                 <SheetClose className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white/50 transition-all duration-200 hover:border-[#6575FF]/35 hover:bg-[#6575FF]/10 hover:text-white active:scale-95">
                   <X className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-90" />
