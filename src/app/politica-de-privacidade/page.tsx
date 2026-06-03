@@ -4,16 +4,16 @@ import Link from "next/link";
 import { ArrowLeft, Mail, MapPin, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Politica de Privacidade | LGPD e Dados Pessoais",
+  title: "Política de Privacidade | LGPD e Dados Pessoais",
   description:
-    "Saiba como a UPDO coleta, usa e protege dados pessoais em formularios, analytics e campanhas, em conformidade com a LGPD.",
+    "Saiba como a UPDO coleta, usa e protege dados pessoais em formulários, analytics e campanhas, em conformidade com a LGPD.",
   alternates: {
     canonical: "https://updo.com.br/politica-de-privacidade",
   },
   openGraph: {
-    title: "Politica de Privacidade | LGPD e Dados Pessoais | UPDO",
+    title: "Política de Privacidade | LGPD e Dados Pessoais | UPDO",
     description:
-      "Como a UPDO coleta, usa e protege dados pessoais em formularios, analytics e campanhas, em conformidade com a LGPD.",
+      "Como a UPDO coleta, usa e protege dados pessoais em formulários, analytics e campanhas, em conformidade com a LGPD.",
     url: "https://updo.com.br/politica-de-privacidade",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Politica de Privacidade | LGPD e Dados Pessoais | UPDO",
+    title: "Política de Privacidade | LGPD e Dados Pessoais | UPDO",
     description:
-      "Como a UPDO coleta, usa e protege dados pessoais em formularios, analytics e campanhas, em conformidade com a LGPD.",
+      "Como a UPDO coleta, usa e protege dados pessoais em formulários, analytics e campanhas, em conformidade com a LGPD.",
   },
 };
 
@@ -33,9 +33,9 @@ const sections = [
     content: (
       <>
         <p>
-          A <strong>UPDO Agencia de Marketing Ltda.</strong>, CNPJ
-          30.119.930/0001-20, com sede em Curitiba / PR, e a controladora dos
-          dados pessoais coletados por meio deste site e dos formularios da
+          A <strong>UPDO Agência de Marketing Ltda.</strong>, CNPJ
+          30.119.930/0001-20, com sede em Curitiba / PR, é a controladora dos
+          dados pessoais coletados por meio deste site e dos formulários da
           UPDO.
         </p>
         <p>
@@ -50,7 +50,7 @@ const sections = [
     title: "2. Quais dados coletamos",
     content: (
       <>
-        <p>Quando voce preenche um formulario, podemos coletar:</p>
+        <p>Quando você preenche um formulário, podemos coletar:</p>
         <ul>
           <li>Nome, e-mail, telefone e empresa;</li>
           <li>
@@ -66,7 +66,7 @@ const sections = [
         <p>
           Tambem coletamos dados de navegacao de forma agregada por ferramentas
           como Google Analytics, Google Tag Manager e pixels de midia, incluindo
-          paginas visitadas, eventos, origem de acesso e desempenho de
+          páginas visitadas, eventos, origem de acesso e desempenho de
           campanhas.
         </p>
       </>
@@ -78,15 +78,15 @@ const sections = [
       <>
         <p>Usamos os dados coletados para:</p>
         <ul>
-          <li>Responder solicitacoes de diagnostico, contato ou treinamento;</li>
+          <li>Responder solicitações de diagnóstico, contato ou treinamento;</li>
           <li>Personalizar o atendimento conforme o contexto informado;</li>
           <li>Registrar conversoes em ferramentas de marketing e CRM;</li>
           <li>Mensurar campanhas, desempenho do site e qualidade dos leads;</li>
-          <li>Cumprir obrigacoes legais e regulatórias aplicaveis.</li>
+          <li>Cumprir obrigações legais e regulatórias aplicáveis.</li>
         </ul>
         <p>
           <strong>
-            A UPDO nao vende nem aluga dados pessoais para terceiros.
+            A UPDO não vende nem aluga dados pessoais para terceiros.
           </strong>
         </p>
       </>
@@ -98,8 +98,8 @@ const sections = [
       <>
         <p>
           O tratamento dos dados pessoais ocorre com base no consentimento
-          fornecido ao enviar formularios, no legitimo interesse para melhoria
-          dos nossos servicos e na necessidade de cumprimento de obrigacoes
+          fornecido ao enviar formulários, no legítimo interesse para melhoria
+          dos nossos serviços e na necessidade de cumprimento de obrigações
           legais ou regulatórias.
         </p>
       </>
@@ -140,7 +140,7 @@ const sections = [
     title: "7. Direitos do titular",
     content: (
       <>
-        <p>Nos termos da LGPD, voce pode solicitar:</p>
+        <p>Nos termos da LGPD, você pode solicitar:</p>
         <ul>
           <li>Confirmacao de tratamento e acesso aos dados;</li>
           <li>Correcao de dados incompletos, inexatos ou desatualizados;</li>
@@ -176,8 +176,8 @@ const sections = [
       <>
         <p>
           Adotamos medidas tecnicas e organizacionais para proteger dados
-          pessoais contra acesso nao autorizado, perda, uso indevido,
-          alteracao ou divulgacao indevida. O site utiliza HTTPS com
+          pessoais contra acesso não autorizado, perda, uso indevido,
+          alteração ou divulgação indevida. O site utiliza HTTPS com
           criptografia SSL/TLS.
         </p>
       </>
@@ -188,8 +188,8 @@ const sections = [
     content: (
       <>
         <p>
-          Esta politica pode ser atualizada periodicamente. A versao mais
-          recente estara sempre disponivel em{" "}
+          Esta política pode ser atualizada periodicamente. A versão mais
+          recente estará sempre disponível em{" "}
           <Link href="/politica-de-privacidade">
             updo.com.br/politica-de-privacidade
           </Link>
@@ -205,8 +205,8 @@ export default function PoliticaDePrivacidadePage() {
     <main className="bg-background">
       <LegalHero
         eyebrow="Privacidade e LGPD"
-        title="Politica de Privacidade"
-        description="Como a UPDO coleta, usa e protege os dados informados nos formularios, ferramentas de analytics, CRM e campanhas."
+        title="Política de Privacidade"
+        description="Como a UPDO coleta, usa e protege os dados informados nos formulários, ferramentas de analytics, CRM e campanhas."
       />
 
       <section className="bg-[var(--surface-soft)] py-18 lg:py-28">
@@ -221,7 +221,7 @@ export default function PoliticaDePrivacidadePage() {
                   Junho de 2026
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Esta pagina explica o tratamento de dados pessoais no site da
+                  Esta página explica o tratamento de dados pessoais no site da
                   UPDO.
                 </p>
                 <div className="mt-6 grid gap-3 border-t border-border/60 pt-5">

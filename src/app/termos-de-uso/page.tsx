@@ -4,16 +4,16 @@ import Link from "next/link";
 import { ArrowLeft, FileText, Mail, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Termos de Uso | Regras do Site e Servicos",
+  title: "Termos de Uso | Regras do Site e Serviços",
   description:
-    "Termos e condicoes de uso do site updo.com.br, incluindo responsabilidades, propriedade intelectual, formularios e limites de uso.",
+    "Termos e condições de uso do site updo.com.br, incluindo responsabilidades, propriedade intelectual, formulários e limites de uso.",
   alternates: {
     canonical: "https://updo.com.br/termos-de-uso",
   },
   openGraph: {
-    title: "Termos de Uso | Regras do Site e Servicos | UPDO",
+    title: "Termos de Uso | Regras do Site e Serviços | UPDO",
     description:
-      "Termos e condicoes de uso do site updo.com.br, incluindo responsabilidades, propriedade intelectual, formularios e limites de uso.",
+      "Termos e condições de uso do site updo.com.br, incluindo responsabilidades, propriedade intelectual, formulários e limites de uso.",
     url: "https://updo.com.br/termos-de-uso",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Termos de Uso | Regras do Site e Servicos | UPDO",
+    title: "Termos de Uso | Regras do Site e Serviços | UPDO",
     description:
-      "Termos e condicoes de uso do site updo.com.br, incluindo responsabilidades, propriedade intelectual, formularios e limites de uso.",
+      "Termos e condições de uso do site updo.com.br, incluindo responsabilidades, propriedade intelectual, formulários e limites de uso.",
   },
 };
 
@@ -33,25 +33,25 @@ const sections = [
     content: (
       <>
         <p>
-          A <strong>UPDO Agencia de Marketing Ltda.</strong>, CNPJ
-          30.119.930/0001-20, e uma empresa de marketing, vendas, dados e IA,
-          com sede em Curitiba / PR e atuacao em todo o Brasil.
+          A <strong>UPDO Agência de Marketing Ltda.</strong>, CNPJ
+          30.119.930/0001-20, é uma empresa de marketing, vendas, dados e IA,
+          com sede em Curitiba / PR e atuação em todo o Brasil.
         </p>
       </>
     ),
   },
   {
-    title: "2. Aceitacao dos termos",
+    title: "2. Aceitação dos termos",
     content: (
       <>
         <p>
-          Ao acessar ou utilizar este site, voce concorda com estes Termos de
-          Uso. Caso nao concorde com alguma condicao, recomendamos que nao
+          Ao acessar ou utilizar este site, você concorda com estes Termos de
+          Uso. Caso não concorde com alguma condição, recomendamos que não
           utilize o site.
         </p>
         <p>
-          A UPDO pode atualizar estes termos a qualquer momento. A versao mais
-          recente estara sempre publicada nesta pagina.
+          A UPDO pode atualizar estes termos a qualquer momento. A versão mais
+          recente estará sempre publicada nesta página.
         </p>
       </>
     ),
@@ -62,10 +62,10 @@ const sections = [
       <>
         <p>O site da UPDO tem como objetivo:</p>
         <ul>
-          <li>Apresentar servicos, setores atendidos, cases e conteudos;</li>
-          <li>Receber solicitacoes de diagnostico, contato e treinamento;</li>
-          <li>Compartilhar informacoes sobre marketing, vendas, dados e IA;</li>
-          <li>Mensurar campanhas e melhorar a experiencia de navegacao.</li>
+          <li>Apresentar serviços, setores atendidos, cases e conteúdos;</li>
+          <li>Receber solicitações de diagnóstico, contato e treinamento;</li>
+          <li>Compartilhar informações sobre marketing, vendas, dados e IA;</li>
+          <li>Mensurar campanhas e melhorar a experiência de navegação.</li>
         </ul>
       </>
     ),
@@ -74,13 +74,13 @@ const sections = [
     title: "4. Uso permitido",
     content: (
       <>
-        <p>Ao usar este site, voce concorda em:</p>
+        <p>Ao usar este site, você concorda em:</p>
         <ul>
-          <li>Acessar o conteudo apenas para fins licitos e legitimos;</li>
-          <li>Fornecer informacoes verdadeiras nos formularios;</li>
-          <li>Nao copiar, distribuir ou explorar conteudos sem autorizacao;</li>
-          <li>Nao enviar spam, virus, codigo malicioso ou tentativas de abuso;</li>
-          <li>Nao realizar scraping agressivo, engenharia reversa ou ataques.</li>
+          <li>Acessar o conteúdo apenas para fins lícitos e legítimos;</li>
+          <li>Fornecer informações verdadeiras nos formulários;</li>
+          <li>Não copiar, distribuir ou explorar conteúdos sem autorização;</li>
+          <li>Não enviar spam, vírus, código malicioso ou tentativas de abuso;</li>
+          <li>Não realizar scraping agressivo, engenharia reversa ou ataques.</li>
         </ul>
       </>
     ),
@@ -90,13 +90,13 @@ const sections = [
     content: (
       <>
         <p>
-          Textos, layouts, marcas, imagens, graficos, videos, metodologias,
-          materiais e demais conteudos do site pertencem a UPDO ou sao usados
-          mediante licenca. E proibida a reproducao total ou parcial sem
-          autorizacao previa e por escrito.
+          Textos, layouts, marcas, imagens, gráficos, vídeos, metodologias,
+          materiais e demais conteúdos do site pertencem à UPDO ou são usados
+          mediante licença. É proibida a reprodução total ou parcial sem
+          autorização prévia e por escrito.
         </p>
         <p>
-          Solicitacoes de uso podem ser enviadas para{" "}
+          Solicitações de uso podem ser enviadas para{" "}
           <a href="mailto:contato@updo.com.br">contato@updo.com.br</a>.
         </p>
       </>
@@ -107,34 +107,34 @@ const sections = [
     content: (
       <>
         <p>
-          Ao preencher formularios no site, voce fornece dados pessoais que sao
+          Ao preencher formulários no site, você fornece dados pessoais que são
           tratados conforme a nossa{" "}
           <Link href="/politica-de-privacidade">
-            Politica de Privacidade
+            Política de Privacidade
           </Link>
           .
         </p>
         <p>
-          O envio de formularios pode registrar conversoes em ferramentas de
-          CRM, analytics e midia, e permite que a equipe da UPDO entre em
-          contato para responder a solicitacao enviada.
+          O envio de formulários pode registrar conversões em ferramentas de
+          CRM, analytics e mídia, e permite que a equipe da UPDO entre em
+          contato para responder à solicitação enviada.
         </p>
       </>
     ),
   },
   {
-    title: "7. Resultados e informacoes do site",
+    title: "7. Resultados e informações do site",
     content: (
       <>
         <p>
-          Cases, numeros, exemplos e conteudos apresentados no site sao
+          Cases, números, exemplos e conteúdos apresentados no site são
           informativos. Resultados podem variar conforme setor, investimento,
           maturidade digital, processo comercial, equipe, produto e contexto de
           mercado.
         </p>
         <p>
-          Nenhum conteudo do site deve ser interpretado como garantia de
-          resultado especifico.
+          Nenhum conteúdo do site deve ser interpretado como garantia de
+          resultado específico.
         </p>
       </>
     ),
@@ -145,8 +145,8 @@ const sections = [
       <>
         <p>
           O site pode conter links para redes sociais, plataformas parceiras,
-          ferramentas de marketing, conteudos externos ou canais de atendimento.
-          A UPDO nao controla o conteudo, disponibilidade ou politicas desses
+          ferramentas de marketing, conteúdos externos ou canais de atendimento.
+          A UPDO não controla o conteúdo, disponibilidade ou políticas desses
           terceiros.
         </p>
       </>
@@ -157,10 +157,10 @@ const sections = [
     content: (
       <>
         <p>
-          Na extensao permitida pela legislacao brasileira, a UPDO nao sera
-          responsavel por danos diretos, indiretos, incidentais ou
+          Na extensão permitida pela legislação brasileira, a UPDO não será
+          responsável por danos diretos, indiretos, incidentais ou
           consequenciais decorrentes do uso do site, indisponibilidades
-          temporarias, erros de terceiros ou uso indevido pelo usuario.
+          temporárias, erros de terceiros ou uso indevido pelo usuário.
         </p>
       </>
     ),
@@ -170,10 +170,10 @@ const sections = [
     content: (
       <>
         <p>
-          Estes Termos de Uso sao regidos pelas leis da Republica Federativa do
-          Brasil. Para dirimir controversias, fica eleito o foro da comarca de{" "}
-          <strong>Curitiba, Parana</strong>, salvo disposicao legal em
-          contrario.
+          Estes Termos de Uso são regidos pelas leis da República Federativa do
+          Brasil. Para dirimir controvérsias, fica eleito o foro da comarca de{" "}
+          <strong>Curitiba, Paraná</strong>, salvo disposição legal em
+          contrário.
         </p>
       </>
     ),
@@ -183,7 +183,7 @@ const sections = [
     content: (
       <>
         <p>
-          Para duvidas sobre estes termos, envie uma mensagem para{" "}
+          Para dúvidas sobre estes termos, envie uma mensagem para{" "}
           <a href="mailto:contato@updo.com.br">contato@updo.com.br</a>.
         </p>
       </>
@@ -197,7 +197,7 @@ export default function TermosDeUsoPage() {
       <LegalHero
         eyebrow="Regras do site"
         title="Termos de Uso"
-        description="As condicoes para navegar no site da UPDO, preencher formularios, acessar conteudos e utilizar nossas informacoes."
+        description="As condições para navegar no site da UPDO, preencher formulários, acessar conteúdos e utilizar nossas informações."
       />
 
       <section className="bg-[var(--surface-soft)] py-18 lg:py-28">
@@ -212,7 +212,7 @@ export default function TermosDeUsoPage() {
                   Junho de 2026
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Estes termos definem o uso permitido do site e dos conteudos
+                  Estes termos definem o uso permitido do site e dos conteúdos
                   publicados pela UPDO.
                 </p>
                 <div className="mt-6 grid gap-3 border-t border-border/60 pt-5">
