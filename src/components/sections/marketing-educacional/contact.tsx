@@ -36,9 +36,11 @@ const labelClass =
 
 export function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState({
     nome: "",
-    instituicao: "",
+    empresa: "",
     email: "",
     telefone: "",
   });
@@ -69,43 +71,87 @@ export function Contact() {
     setFormData((prev) => ({ ...prev, telefone: formattedValue }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Simulação de envio
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError("");
 
-    // Dispara o dataLayer
-    if (typeof window !== "undefined" && (window as any).dataLayer) {
-      (window as any).dataLayer.push({
-        event: "Lead",
-        formName: "Diagnóstico Educacional",
-        location: "marketing-educacional",
-        formData: {
-          ...formData,
-          ...selected,
-        },
-      });
+    const payloadFormData = {
+      nome: formData.nome,
+      empresa: formData.empresa,
+      instituicao: formData.empresa,
+      email: formData.email,
+      telefone: formData.telefone,
+      sector: "Educação",
+      challenge: selected.challenge,
+      investment: selected.investment,
+      utm_source:
+        typeof window !== "undefined"
+          ? new URLSearchParams(window.location.search).get("utm_source") || ""
+          : "",
+      utm_medium:
+        typeof window !== "undefined"
+          ? new URLSearchParams(window.location.search).get("utm_medium") || ""
+          : "",
+      utm_campaign:
+        typeof window !== "undefined"
+          ? new URLSearchParams(window.location.search).get("utm_campaign") || ""
+          : "",
+      utm_content:
+        typeof window !== "undefined"
+          ? new URLSearchParams(window.location.search).get("utm_content") || ""
+          : "",
+      utm_term:
+        typeof window !== "undefined"
+          ? new URLSearchParams(window.location.search).get("utm_term") || ""
+          : "",
+    };
+
+    if (typeof window !== "undefined") {
+      try {
+        const w = window as Window & { dataLayer?: Record<string, unknown>[] };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: "Lead",
+          formName: "Diagnóstico Educacional",
+          location: "marketing-educacional",
+          formData: payloadFormData,
+        });
+      } catch {
+        // Tracking nao pode bloquear o envio do lead para a RD.
+      }
     }
 
-    // Monta a mensagem para o WhatsApp
-    const message = `Olá! Acabei de preencher o formulário no site:
-    
-*Nome:* ${formData.nome}
-*Instituição:* ${formData.instituicao}
-*E-mail:* ${formData.email}
-*Telefone:* ${formData.telefone}
-*Desafio:* ${selected.challenge}
-*Investimento:* ${selected.investment}
+    try {
+      const response = await fetch("/api/rd-conversion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formName: "Diagnóstico Educacional",
+          pagePath: "/marketing-educacional",
+          pageUrl:
+            typeof window !== "undefined"
+              ? window.location.href
+              : "https://www.updo.com.br/marketing-educacional",
+          formData: payloadFormData,
+        }),
+      });
 
-Gostaria de agendar meu diagnóstico gratuito!`;
+      if (!response.ok) {
+        throw new Error("Falha ao enviar o formulario.");
+      }
 
-    const whatsappUrl = `https://wa.me/5541987112003?text=${encodeURIComponent(message)}`;
-
-    // Redireciona para o WhatsApp após um pequeno delay para o usuário ver o sucesso
-    setTimeout(() => {
-      window.open(whatsappUrl, "_blank");
-    }, 1500);
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Não conseguimos enviar agora. Tente novamente em alguns segundos.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -178,17 +224,17 @@ Gostaria de agendar meu diagnóstico gratuito!`;
                       />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <label className={labelClass}>Instituição</label>
+                      <label className={labelClass}>Empresa</label>
                       <input
                         type="text"
-                        name="instituicao"
-                        id="instituicao"
+                        name="empresa"
+                        id="empresa"
                         required
-                        value={formData.instituicao}
+                        value={formData.empresa}
                         onChange={(e) =>
                           setFormData((prev) => ({
                             ...prev,
-                            instituicao: e.target.value,
+                            empresa: e.target.value,
                           }))
                         }
                         placeholder="Nome da instituição"
@@ -360,12 +406,20 @@ Gostaria de agendar meu diagnóstico gratuito!`;
                     <div className="flex justify-center">
                       <button
                         type="submit"
+                        disabled={isSubmitting}
                         className="inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:max-w-none sm:px-10"
                       >
-                        Quero meu diagnóstico gratuito
+                        {isSubmitting
+                          ? "Enviando..."
+                          : "Quero meu diagnóstico gratuito"}
                         <ArrowRight className="h-4 w-4" />
                       </button>
                     </div>
+                    {submitError && (
+                      <p className="text-center text-xs font-semibold text-red-300">
+                        {submitError}
+                      </p>
+                    )}
                     <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
                       <span className="flex items-center gap-1.5 text-[10px] font-medium text-white/20">
                         <ShieldCheck className="h-3 w-3" /> Sem spam
@@ -394,12 +448,9 @@ Gostaria de agendar meu diagnóstico gratuito!`;
                     Formulário enviado com sucesso!
                   </h3>
                   <p className="text-white/60 max-w-sm mb-8">
-                    Recebemos seus dados e estamos te redirecionando agora mesmo
-                    para o WhatsApp para iniciarmos seu diagnóstico.
+                    Recebemos seus dados. Nossa equipe vai analisar as
+                    informações e retornar com os próximos passos.
                   </p>
-                  <div className="flex animate-pulse items-center gap-2 text-sm font-bold text-[#6575FF]">
-                    Redirecionando...
-                  </div>
                 </motion.div>
               )}
             </AnimatePresence>

@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
+import type { ElementType, ReactNode } from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, FileText, Mail, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Termos de Uso | Regras do Site e Serviços",
+  title: "Termos de Uso | Regras do Site e Servicos",
   description:
-    "Termos e condições de uso do site updo.com.br. Saiba quais são as regras e responsabilidades ao navegar e utilizar os serviços da UPDO.",
+    "Termos e condicoes de uso do site updo.com.br, incluindo responsabilidades, propriedade intelectual, formularios e limites de uso.",
   alternates: {
     canonical: "https://updo.com.br/termos-de-uso",
   },
   openGraph: {
-    title: "Termos de Uso | Regras do Site e Serviços | UPDO",
+    title: "Termos de Uso | Regras do Site e Servicos | UPDO",
     description:
-      "Termos e condições de uso do site updo.com.br. Saiba quais são as regras e responsabilidades ao navegar e utilizar os serviços da UPDO.",
+      "Termos e condicoes de uso do site updo.com.br, incluindo responsabilidades, propriedade intelectual, formularios e limites de uso.",
     url: "https://updo.com.br/termos-de-uso",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -20,188 +21,223 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Termos de Uso | Regras do Site e Serviços | UPDO",
+    title: "Termos de Uso | Regras do Site e Servicos | UPDO",
     description:
-      "Termos e condições de uso do site updo.com.br. Saiba quais são as regras e responsabilidades ao navegar e utilizar os serviços da UPDO.",
+      "Termos e condicoes de uso do site updo.com.br, incluindo responsabilidades, propriedade intelectual, formularios e limites de uso.",
   },
 };
+
+const sections = [
+  {
+    title: "1. Sobre a UPDO",
+    content: (
+      <>
+        <p>
+          A <strong>UPDO Agencia de Marketing Ltda.</strong>, CNPJ
+          30.119.930/0001-20, e uma empresa de marketing, vendas, dados e IA,
+          com sede em Curitiba / PR e atuacao em todo o Brasil.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "2. Aceitacao dos termos",
+    content: (
+      <>
+        <p>
+          Ao acessar ou utilizar este site, voce concorda com estes Termos de
+          Uso. Caso nao concorde com alguma condicao, recomendamos que nao
+          utilize o site.
+        </p>
+        <p>
+          A UPDO pode atualizar estes termos a qualquer momento. A versao mais
+          recente estara sempre publicada nesta pagina.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "3. Finalidade do site",
+    content: (
+      <>
+        <p>O site da UPDO tem como objetivo:</p>
+        <ul>
+          <li>Apresentar servicos, setores atendidos, cases e conteudos;</li>
+          <li>Receber solicitacoes de diagnostico, contato e treinamento;</li>
+          <li>Compartilhar informacoes sobre marketing, vendas, dados e IA;</li>
+          <li>Mensurar campanhas e melhorar a experiencia de navegacao.</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    title: "4. Uso permitido",
+    content: (
+      <>
+        <p>Ao usar este site, voce concorda em:</p>
+        <ul>
+          <li>Acessar o conteudo apenas para fins licitos e legitimos;</li>
+          <li>Fornecer informacoes verdadeiras nos formularios;</li>
+          <li>Nao copiar, distribuir ou explorar conteudos sem autorizacao;</li>
+          <li>Nao enviar spam, virus, codigo malicioso ou tentativas de abuso;</li>
+          <li>Nao realizar scraping agressivo, engenharia reversa ou ataques.</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    title: "5. Propriedade intelectual",
+    content: (
+      <>
+        <p>
+          Textos, layouts, marcas, imagens, graficos, videos, metodologias,
+          materiais e demais conteudos do site pertencem a UPDO ou sao usados
+          mediante licenca. E proibida a reproducao total ou parcial sem
+          autorizacao previa e por escrito.
+        </p>
+        <p>
+          Solicitacoes de uso podem ser enviadas para{" "}
+          <a href="mailto:contato@updo.com.br">contato@updo.com.br</a>.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "6. Formularios e dados pessoais",
+    content: (
+      <>
+        <p>
+          Ao preencher formularios no site, voce fornece dados pessoais que sao
+          tratados conforme a nossa{" "}
+          <Link href="/politica-de-privacidade">
+            Politica de Privacidade
+          </Link>
+          .
+        </p>
+        <p>
+          O envio de formularios pode registrar conversoes em ferramentas de
+          CRM, analytics e midia, e permite que a equipe da UPDO entre em
+          contato para responder a solicitacao enviada.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "7. Resultados e informacoes do site",
+    content: (
+      <>
+        <p>
+          Cases, numeros, exemplos e conteudos apresentados no site sao
+          informativos. Resultados podem variar conforme setor, investimento,
+          maturidade digital, processo comercial, equipe, produto e contexto de
+          mercado.
+        </p>
+        <p>
+          Nenhum conteudo do site deve ser interpretado como garantia de
+          resultado especifico.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "8. Links de terceiros",
+    content: (
+      <>
+        <p>
+          O site pode conter links para redes sociais, plataformas parceiras,
+          ferramentas de marketing, conteudos externos ou canais de atendimento.
+          A UPDO nao controla o conteudo, disponibilidade ou politicas desses
+          terceiros.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "9. Limitacao de responsabilidade",
+    content: (
+      <>
+        <p>
+          Na extensao permitida pela legislacao brasileira, a UPDO nao sera
+          responsavel por danos diretos, indiretos, incidentais ou
+          consequenciais decorrentes do uso do site, indisponibilidades
+          temporarias, erros de terceiros ou uso indevido pelo usuario.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "10. Legislacao aplicavel e foro",
+    content: (
+      <>
+        <p>
+          Estes Termos de Uso sao regidos pelas leis da Republica Federativa do
+          Brasil. Para dirimir controversias, fica eleito o foro da comarca de{" "}
+          <strong>Curitiba, Parana</strong>, salvo disposicao legal em
+          contrario.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "11. Contato",
+    content: (
+      <>
+        <p>
+          Para duvidas sobre estes termos, envie uma mensagem para{" "}
+          <a href="mailto:contato@updo.com.br">contato@updo.com.br</a>.
+        </p>
+      </>
+    ),
+  },
+];
 
 export default function TermosDeUsoPage() {
   return (
     <main className="bg-background">
-      <section className="border-b border-border/50 bg-[#F7F9FF] py-14">
+      <LegalHero
+        eyebrow="Regras do site"
+        title="Termos de Uso"
+        description="As condicoes para navegar no site da UPDO, preencher formularios, acessar conteudos e utilizar nossas informacoes."
+      />
+
+      <section className="bg-[var(--surface-soft)] py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
-          <Link
-            href="/"
-            className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-accent transition-opacity hover:opacity-75"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Voltar para a home
-          </Link>
-          <p className="mt-4 text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">
-            Última atualização: maio de 2026
-          </p>
-          <h1 className="mt-3 font-heading text-4xl font-black tracking-tight text-foreground md:text-5xl">
-            Termos de Uso
-          </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-            Ao acessar e utilizar o site <strong>updo.com.br</strong>, você
-            concorda com os termos e condições descritos abaixo. Leia com
-            atenção antes de prosseguir.
-          </p>
-        </div>
-      </section>
+          <div className="grid gap-10 lg:grid-cols-[0.34fr_0.66fr] lg:gap-16">
+            <aside className="lg:sticky lg:top-28 lg:self-start">
+              <div className="rounded-2xl border border-border/70 bg-white p-6 shadow-sm">
+                <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
+                  Atualizacao
+                </span>
+                <p className="mt-4 font-heading text-2xl font-black tracking-tight text-foreground">
+                  Junho de 2026
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Estes termos definem o uso permitido do site e dos conteudos
+                  publicados pela UPDO.
+                </p>
+                <div className="mt-6 grid gap-3 border-t border-border/60 pt-5">
+                  <ContactRow icon={FileText} text="Termos do site" />
+                  <ContactRow icon={Mail} text="contato@updo.com.br" />
+                  <ContactRow icon={MapPin} text="Curitiba / PR" />
+                </div>
+              </div>
+            </aside>
 
-      <section className="py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-3xl">
-            <Prose>
-
-              <h2>1. Sobre a UPDO</h2>
-              <p>
-                <strong>UPDO Agência de Marketing Ltda.</strong><br />
-                CNPJ: 30.119.930/0001-20<br />
-                Endereço: Rua Francisco Rocha, 198, Batel, Curitiba / PR<br />
-                E-mail: <a href="mailto:contato@updo.com.br">contato@updo.com.br</a>
-              </p>
-              <p>
-                A UPDO é uma agência de marketing, vendas e inteligência
-                artificial com sede em Curitiba (PR), atuante em todo o
-                território nacional.
-              </p>
-
-              <h2>2. Aceitação dos termos</h2>
-              <p>
-                O acesso e uso deste site implicam a aceitação integral destes
-                Termos de Uso. Caso não concorde com alguma condição, pedimos
-                que não utilize o site. A UPDO pode modificar estes termos a
-                qualquer momento, sendo responsabilidade do usuário verificar
-                periodicamente a versão atualizada.
-              </p>
-
-              <h2>3. Finalidade do site</h2>
-              <p>
-                O site <strong>updo.com.br</strong> tem como finalidade:
-              </p>
-              <ul>
-                <li>Apresentar os serviços de marketing, vendas e IA da UPDO;</li>
-                <li>Disponibilizar conteúdo informativo sobre estratégias de crescimento empresarial;</li>
-                <li>Receber solicitações de diagnóstico estratégico por meio de formulários de contato;</li>
-                <li>Redirecionar interessados para atendimento via WhatsApp.</li>
-              </ul>
-
-              <h2>4. Uso permitido</h2>
-              <p>Ao utilizar este site, você concorda em:</p>
-              <ul>
-                <li>Acessar o conteúdo apenas para fins lícitos e legítimos;</li>
-                <li>Não reproduzir, copiar, distribuir ou explorar comercialmente qualquer conteúdo sem autorização prévia e por escrito da UPDO;</li>
-                <li>Não utilizar o site para enviar spam, vírus, ou qualquer conteúdo malicioso;</li>
-                <li>Fornecer informações verídicas nos formulários de contato;</li>
-                <li>Não realizar engenharia reversa, scraping automatizado ou qualquer ação que prejudique o funcionamento do site.</li>
-              </ul>
-
-              <h2>5. Propriedade intelectual</h2>
-              <p>
-                Todo o conteúdo deste site (incluindo textos, imagens,
-                logotipos, layouts, marcas, vídeos e materiais gráficos) é de
-                propriedade exclusiva da UPDO ou foi licenciado para uso pela
-                empresa, e é protegido pelas leis de propriedade intelectual
-                brasileiras (Lei nº 9.610/1998 e Lei nº 9.279/1996).
-              </p>
-              <p>
-                É vedada qualquer reprodução, total ou parcial, sem
-                autorização expressa e por escrito da UPDO. Solicitações de uso
-                devem ser encaminhadas para{" "}
-                <a href="mailto:contato@updo.com.br">contato@updo.com.br</a>.
-              </p>
-
-              <h2>6. Formulários e dados pessoais</h2>
-              <p>
-                Ao preencher formulários neste site, você fornece dados
-                pessoais que serão tratados conforme nossa{" "}
-                <Link href="/politica-de-privacidade">
-                  Política de Privacidade
-                </Link>
-                , em conformidade com a LGPD (Lei nº 13.709/2018).
-              </p>
-              <p>
-                O envio do formulário gera um redirecionamento ao WhatsApp para
-                continuação do atendimento. A UPDO não se responsabiliza por
-                falhas técnicas no aplicativo de terceiros.
-              </p>
-
-              <h2>7. Isenção de responsabilidade</h2>
-              <p>A UPDO não se responsabiliza por:</p>
-              <ul>
-                <li>
-                  <strong>Resultados específicos:</strong> as informações e
-                  cases apresentados no site são exemplos reais, mas os
-                  resultados variam conforme o contexto, setor, maturidade
-                  digital e investimento de cada empresa.
-                </li>
-                <li>
-                  <strong>Disponibilidade do site:</strong> o site pode passar
-                  por manutenções, atualizações ou indisponibilidades
-                  temporárias sem aviso prévio.
-                </li>
-                <li>
-                  <strong>Links externos:</strong> o site pode conter links
-                  para sites de terceiros (como LinkedIn, Instagram, YouTube,
-                  WhatsApp e parceiros). A UPDO não controla o conteúdo desses
-                  sites e não se responsabiliza por suas políticas.
-                </li>
-                <li>
-                  <strong>Uso indevido:</strong> qualquer dano decorrente do
-                  uso indevido ou inadequado do site pelo usuário.
-                </li>
-              </ul>
-
-              <h2>8. Links para sites de terceiros</h2>
-              <p>
-                Este site pode conter links para sites externos, incluindo
-                redes sociais, parceiros certificados (Google, Meta, Amazon,
-                RD Station) e blog de conteúdo. Esses links são fornecidos
-                apenas para conveniência do usuário. A UPDO não endossa nem
-                garante o conteúdo de sites de terceiros e não se
-                responsabiliza por eventuais danos decorrentes do acesso a
-                eles.
-              </p>
-
-              <h2>9. Limitação de responsabilidade</h2>
-              <p>
-                Na máxima extensão permitida pela legislação brasileira, a UPDO
-                não será responsável por danos diretos, indiretos, incidentais,
-                especiais ou consequenciais decorrentes do uso ou
-                impossibilidade de uso deste site, mesmo que tenha sido
-                informada da possibilidade de tais danos.
-              </p>
-
-              <h2>10. Legislação aplicável e foro</h2>
-              <p>
-                Estes Termos de Uso são regidos pelas leis da República
-                Federativa do Brasil. Para dirimir quaisquer controvérsias
-                decorrentes destes termos, fica eleito o foro da comarca de{" "}
-                <strong>Curitiba, Paraná</strong>, com exclusão de qualquer
-                outro, por mais privilegiado que seja.
-              </p>
-
-              <h2>11. Contato</h2>
-              <p>
-                Para dúvidas, sugestões ou solicitações relacionadas a estes
-                Termos de Uso:
-              </p>
-              <ul>
-                <li>
-                  <strong>E-mail:</strong>{" "}
-                  <a href="mailto:contato@updo.com.br">contato@updo.com.br</a>
-                </li>
-                <li>
-                  <strong>Endereço:</strong> Rua Francisco Rocha, 198, Batel,
-                  Curitiba / PR
-                </li>
-              </ul>
-
-            </Prose>
+            <div className="grid gap-4">
+              {sections.map((section) => (
+                <article
+                  key={section.title}
+                  className="rounded-2xl border border-border/70 bg-white p-6 shadow-sm md:p-8"
+                >
+                  <h2 className="font-heading text-2xl font-black tracking-tight text-foreground">
+                    {section.title}
+                  </h2>
+                  <div className="mt-4">
+                    <Prose>{section.content}</Prose>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -209,15 +245,69 @@ export default function TermosDeUsoPage() {
   );
 }
 
-function Prose({ children }: { children: React.ReactNode }) {
+function LegalHero({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <section className="relative isolate overflow-hidden bg-[#07111F] pt-20 pb-16 lg:pt-32 lg:pb-24">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      <div className="pointer-events-none absolute top-0 right-0 -z-10 h-[560px] w-[560px] rounded-full bg-[#6575FF]/[0.12] blur-[140px]" />
+      <div className="container mx-auto px-4 lg:px-8">
+        <Link
+          href="/"
+          className="mb-10 inline-flex items-center gap-2 text-sm font-bold text-white/60 transition-colors hover:text-white"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Voltar para a home
+        </Link>
+        <div className="max-w-3xl">
+          <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
+            {eyebrow}
+          </span>
+          <h1 className="mt-5 font-heading text-4xl font-black leading-[1.08] tracking-tight text-white md:text-5xl lg:text-6xl">
+            {title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/55 md:text-lg">
+            {description}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactRow({
+  icon: Icon,
+  text,
+}: {
+  icon: ElementType;
+  text: string;
+}) {
+  return (
+    <div className="flex items-center gap-3 text-sm font-semibold text-muted-foreground">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/20 bg-[#6575FF]/10 text-[#6575FF]">
+        <Icon className="h-4 w-4" />
+      </span>
+      {text}
+    </div>
+  );
+}
+
+function Prose({ children }: { children: ReactNode }) {
   return (
     <div className="
-      [&>h2]:font-heading [&>h2]:text-2xl [&>h2]:font-black [&>h2]:tracking-tight [&>h2]:text-foreground [&>h2]:mt-10 [&>h2]:mb-4
-      [&>p]:text-muted-foreground [&>p]:leading-relaxed [&>p]:text-sm [&>p]:mt-4
-      [&>ul]:mt-3 [&>ul]:flex [&>ul]:flex-col [&>ul]:gap-2 [&>ul]:pl-5 [&>ul]:list-disc
-      [&_li]:text-muted-foreground [&_li]:text-sm [&_li]:leading-relaxed
-      [&_a]:text-accent [&_a]:font-semibold [&_a]:hover:underline
-      [&_strong]:text-foreground [&_strong]:font-bold
+      [&>p]:mt-4 [&>p]:text-sm [&>p]:leading-relaxed [&>p]:text-muted-foreground
+      [&>p:first-child]:mt-0
+      [&>ul]:mt-4 [&>ul]:flex [&>ul]:list-disc [&>ul]:flex-col [&>ul]:gap-2 [&>ul]:pl-5
+      [&_li]:text-sm [&_li]:leading-relaxed [&_li]:text-muted-foreground
+      [&_a]:font-semibold [&_a]:text-[#6575FF] [&_a]:hover:underline
+      [&_strong]:font-bold [&_strong]:text-foreground
     ">
       {children}
     </div>

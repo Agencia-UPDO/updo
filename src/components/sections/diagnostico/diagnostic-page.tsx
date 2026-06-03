@@ -79,6 +79,8 @@ const labelClass =
 
 export function DiagnosticPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [whatsAppUrl, setWhatsAppUrl] = useState("");
   const [formData, setFormData] = useState({
     nome: "",
@@ -101,23 +103,42 @@ export function DiagnosticPage() {
     return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2, 7)}-${phoneNumber.slice(7, 11)}`;
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError("");
 
     if (typeof window !== "undefined") {
-      const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer = w.dataLayer || [];
-      w.dataLayer.push({
-        event: "Lead",
-        formName: "Diagnóstico Estratégico",
-        location: "diagnostico-page",
-        formData: {
-          ...formData,
-          ...selected,
-        },
-      });
+      try {
+        const w = window as Window & { dataLayer?: Record<string, unknown>[] };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: "Lead",
+          formName: "Diagnóstico Estratégico",
+          location: "diagnostico-page",
+          formData: {
+            ...formData,
+            ...selected,
+          },
+        });
+      } catch {
+        // Tracking nao pode bloquear o envio do lead para a RD.
+      }
     }
+
+    const searchParams =
+      typeof window !== "undefined"
+        ? new URLSearchParams(window.location.search)
+        : null;
+    const payloadFormData = {
+      ...formData,
+      ...selected,
+      utm_source: searchParams?.get("utm_source") || "",
+      utm_medium: searchParams?.get("utm_medium") || "",
+      utm_campaign: searchParams?.get("utm_campaign") || "",
+      utm_content: searchParams?.get("utm_content") || "",
+      utm_term: searchParams?.get("utm_term") || "",
+    };
 
     const message = `Olá! Vim pela página de diagnóstico da UPDO:
 
@@ -132,6 +153,36 @@ export function DiagnosticPage() {
 Quero agendar meu diagnóstico estratégico.`;
 
     setWhatsAppUrl(`https://wa.me/5541987112003?text=${encodeURIComponent(message)}`);
+
+    try {
+      const response = await fetch("/api/rd-conversion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formName: "Diagnóstico Estratégico",
+          pagePath: "/diagnostico",
+          pageUrl:
+            typeof window !== "undefined"
+              ? window.location.href
+              : "https://www.updo.com.br/diagnostico",
+          formData: payloadFormData,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Falha ao enviar o formulario.");
+      }
+
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Não conseguimos enviar agora. Tente novamente em alguns segundos.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -340,11 +391,19 @@ Quero agendar meu diagnóstico estratégico.`;
                     <div className="mt-2 border-t border-white/[0.08] pt-6">
                       <button
                         type="submit"
+                        disabled={isSubmitting}
                         className="group inline-flex h-13 w-full cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95"
                       >
-                        Quero meu diagnóstico estratégico
+                        {isSubmitting
+                          ? "Enviando..."
+                          : "Quero meu diagnóstico estratégico"}
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </button>
+                      {submitError && (
+                        <p className="mt-3 text-center text-xs font-semibold text-red-300">
+                          {submitError}
+                        </p>
+                      )}
                       <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
                         <TrustItem icon={ShieldCheck} text="Sem spam" />
                         <TrustItem icon={Clock} text="Resposta em até 1 dia útil" />

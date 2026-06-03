@@ -264,7 +264,8 @@ function TopicCard({ item }: { item: (typeof topics)[number] }) {
 export function TrainingPage() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
-  const [whatsAppUrl, setWhatsAppUrl] = React.useState("");
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState("");
   const [formData, setFormData] = React.useState({
     nome: "",
     empresa: "",
@@ -284,45 +285,74 @@ export function TrainingPage() {
     return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
   };
 
-  const submitLead = () => {
-    setIsSubmitted(true);
+  const submitLead = async () => {
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    const searchParams =
+      typeof window !== "undefined"
+        ? new URLSearchParams(window.location.search)
+        : null;
+    const payloadFormData = {
+      ...formData,
+      ...selected,
+      service: "Treinamentos Corporativos",
+      utm_source: searchParams?.get("utm_source") || "",
+      utm_medium: searchParams?.get("utm_medium") || "",
+      utm_campaign: searchParams?.get("utm_campaign") || "",
+      utm_content: searchParams?.get("utm_content") || "",
+      utm_term: searchParams?.get("utm_term") || "",
+    };
 
     if (typeof window !== "undefined") {
-      const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer = w.dataLayer || [];
-      w.dataLayer.push({
-        event: "Lead",
-        formName: "Treinamentos Corporativos",
-        location: "treinamentos-corporativos",
-        formData: { ...formData, ...selected },
+      try {
+        const w = window as Window & { dataLayer?: Record<string, unknown>[] };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: "Lead",
+          formName: "Treinamentos Corporativos",
+          location: "treinamentos-corporativos",
+          formData: payloadFormData,
+        });
+      } catch {
+        // Tracking nao pode bloquear o envio do lead para a RD.
+      }
+    }
+
+    try {
+      const response = await fetch("/api/rd-conversion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formName: "Treinamentos Corporativos",
+          pagePath: "/treinamentos-corporativos",
+          pageUrl:
+            typeof window !== "undefined"
+              ? window.location.href
+              : "https://www.updo.com.br/treinamentos-corporativos",
+          formData: payloadFormData,
+        }),
       });
 
-      const message = `Olá! Vim pela página de Treinamentos Corporativos da UPDO:
+      if (!response.ok) {
+        throw new Error("Falha ao enviar o formulario.");
+      }
 
-*Nome:* ${formData.nome}
-*Empresa:* ${formData.empresa}
-*E-mail:* ${formData.email}
-*Telefone:* ${formData.telefone}
-*Tamanho da empresa:* ${selected.companySize}
-*Formato de interesse:* ${selected.format}
-*Tema principal:* ${selected.topic}
-
-Quero conversar sobre um treinamento para a minha equipe.`;
-
-      const whatsappUrl = `https://wa.me/5541987112003?text=${encodeURIComponent(message)}`;
-      setWhatsAppUrl(whatsappUrl);
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Não conseguimos enviar agora. Tente novamente em alguns segundos.",
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitLead();
-  };
-
-  const handleSubmitClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const form = event.currentTarget.form;
-    if (form && !form.reportValidity()) return;
-    submitLead();
+    await submitLead();
   };
 
   return (
@@ -687,14 +717,19 @@ Quero conversar sobre um treinamento para a minha equipe.`;
                   </p>
                   <div className="flex justify-center">
                     <button
-                      type="button"
-                      onClick={handleSubmitClick}
-                      className="inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:max-w-none sm:px-10"
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:max-w-none sm:px-10"
                     >
-                      Solicitar proposta de treinamento
+                      {isSubmitting ? "Enviando..." : "Solicitar proposta de treinamento"}
                       <ArrowRight className="h-4 w-4" />
                     </button>
                   </div>
+                  {submitError && (
+                    <p className="text-center text-xs font-semibold text-red-300">
+                      {submitError}
+                    </p>
+                  )}
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
                     <span className="flex items-center gap-1.5 text-[10px] font-medium text-white/25">
                       <ShieldCheck className="h-3 w-3" />
@@ -716,17 +751,6 @@ Quero conversar sobre um treinamento para a minha equipe.`;
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/55">
                   Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento inicial.
                 </p>
-                {whatsAppUrl && (
-                  <Link
-                    href={whatsAppUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-accent px-5 text-sm font-bold text-accent-foreground transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] active:scale-95"
-                  >
-                    Falar agora pelo WhatsApp
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                )}
               </div>
             )}
           </div>

@@ -345,7 +345,8 @@ function DemandVisual() {
 export function DemandaLanding() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
-  const [whatsAppUrl, setWhatsAppUrl] = React.useState("");
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState("");
   const [formData, setFormData] = React.useState({
     nome: "",
     empresa: "",
@@ -366,46 +367,74 @@ export function DemandaLanding() {
     return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
   };
 
-  const submitLead = () => {
-    setIsSubmitted(true);
+  const submitLead = async () => {
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    const searchParams =
+      typeof window !== "undefined"
+        ? new URLSearchParams(window.location.search)
+        : null;
+    const payloadFormData = {
+      ...formData,
+      ...selected,
+      service: "Geração de Demanda",
+      utm_source: searchParams?.get("utm_source") || "",
+      utm_medium: searchParams?.get("utm_medium") || "",
+      utm_campaign: searchParams?.get("utm_campaign") || "",
+      utm_content: searchParams?.get("utm_content") || "",
+      utm_term: searchParams?.get("utm_term") || "",
+    };
 
     if (typeof window !== "undefined") {
-      const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer = w.dataLayer || [];
-      w.dataLayer.push({
-        event: "Lead",
-        formName: "Diagnóstico Geração de Demanda",
-        location: "servicos/geracao-de-demanda",
-        formData: { ...formData, ...selected },
+      try {
+        const w = window as Window & { dataLayer?: Record<string, unknown>[] };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: "Lead",
+          formName: "Diagnóstico Geração de Demanda",
+          location: "servicos/geracao-de-demanda",
+          formData: payloadFormData,
+        });
+      } catch {
+        // Tracking nao pode bloquear o envio do lead para a RD.
+      }
+    }
+
+    try {
+      const response = await fetch("/api/rd-conversion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formName: "Diagnóstico Geração de Demanda",
+          pagePath: "/servicos/geracao-de-demanda",
+          pageUrl:
+            typeof window !== "undefined"
+              ? window.location.href
+              : "https://www.updo.com.br/servicos/geracao-de-demanda",
+          formData: payloadFormData,
+        }),
       });
 
-      const message = `Olá! Vim pela página de Geração de Demanda da UPDO:
+      if (!response.ok) {
+        throw new Error("Falha ao enviar o formulario.");
+      }
 
-*Nome:* ${formData.nome}
-*Empresa:* ${formData.empresa}
-*E-mail:* ${formData.email}
-*Telefone:* ${formData.telefone}
-*Budget mensal:* ${selected.budget}
-*Canais ativos:* ${selected.channels}
-*Tipo de negócio:* ${selected.businessType}
-*Principal dor:* ${selected.mainPain}
-
-Quero estruturar minha geração de demanda.`;
-
-      const whatsappUrl = `https://wa.me/5541987112003?text=${encodeURIComponent(message)}`;
-      setWhatsAppUrl(whatsappUrl);
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Não conseguimos enviar agora. Tente novamente em alguns segundos.",
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitLead();
-  };
-
-  const handleSubmitClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const form = event.currentTarget.form;
-    if (form && !form.reportValidity()) return;
-    submitLead();
+    await submitLead();
   };
 
   return (
@@ -414,8 +443,8 @@ Quero estruturar minha geração de demanda.`;
         <div className="absolute inset-0 -z-10 bg-[#07111F]">
           <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         </div>
-        <div className="absolute top-0 right-0 h-[700px] w-[700px] rounded-full bg-[#6575FF]/[0.12] blur-[140px]" />
-        <div className="absolute bottom-0 left-0 h-[500px] w-[500px] rounded-full bg-accent/[0.08] blur-[120px]" />
+        <div className="pointer-events-none absolute top-0 right-0 h-[700px] w-[700px] rounded-full bg-[#6575FF]/[0.12] blur-[140px]" />
+        <div className="pointer-events-none absolute bottom-0 left-0 h-[500px] w-[500px] rounded-full bg-accent/[0.08] blur-[120px]" />
 
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
@@ -558,7 +587,7 @@ Quero estruturar minha geração de demanda.`;
         <div className="absolute inset-0 -z-10 bg-[#07111F]">
           <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         </div>
-        <div className="absolute top-1/2 left-1/2 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6575FF]/[0.12] blur-[100px]" />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6575FF]/[0.12] blur-[100px]" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-12 max-w-xl">
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
@@ -756,13 +785,18 @@ Quero estruturar minha geração de demanda.`;
                     Com base nas suas respostas, preparamos um diagnóstico mais preciso da aquisição.
                   </p>
                   <button
-                    type="button"
-                    onClick={handleSubmitClick}
-                    className="mx-auto inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:max-w-none sm:px-10"
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="mx-auto inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:max-w-none sm:px-10"
                   >
-                    Diagnosticar minha demanda
+                    {isSubmitting ? "Enviando..." : "Diagnosticar minha demanda"}
                     <ArrowRight className="h-4 w-4" />
                   </button>
+                  {submitError && (
+                    <p className="text-center text-xs font-semibold text-red-300">
+                      {submitError}
+                    </p>
+                  )}
                   <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
                     <TrustItem icon={ShieldCheck} text="Sem spam" />
                     <TrustItem icon={Clock} text="Resposta em até 1 dia útil" />
@@ -779,17 +813,6 @@ Quero estruturar minha geração de demanda.`;
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/55">
                   Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento inicial.
                 </p>
-                {whatsAppUrl && (
-                  <Link
-                    href={whatsAppUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-accent px-5 text-sm font-bold text-accent-foreground transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] active:scale-95"
-                  >
-                    Falar agora pelo WhatsApp
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                )}
               </div>
             )}
           </div>

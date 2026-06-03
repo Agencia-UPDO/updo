@@ -72,6 +72,13 @@ const cases = [
   },
 ];
 
+const proofStats = [
+  { value: "4", label: "setores com cases dedicados" },
+  { value: "20x", label: "ROAS em educação" },
+  { value: "+6.900%", label: "crescimento em e-commerce" },
+  { value: "1.527%", label: "ROI em indústria" },
+];
+
 export function CasesIndexClient() {
   const [activeFilter, setActiveFilter] = useState("Todos");
   const visibleCases =
@@ -81,9 +88,10 @@ export function CasesIndexClient() {
 
   return (
     <main className="bg-background">
-      <section className="relative overflow-hidden bg-[#F7F9FF] pt-20 pb-16 lg:pt-28 lg:pb-20">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-        <div className="absolute top-0 right-0 h-[480px] w-[480px] rounded-full bg-accent/[0.06] blur-[120px]" />
+      <section className="relative isolate overflow-hidden bg-[#07111F] pt-20 pb-16 lg:pt-32 lg:pb-24">
+        <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="pointer-events-none absolute top-0 right-0 -z-10 h-[560px] w-[560px] rounded-full bg-[#6575FF]/[0.12] blur-[140px]" />
+        <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[420px] w-[420px] rounded-full bg-accent/[0.07] blur-[120px]" />
 
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -92,16 +100,32 @@ export function CasesIndexClient() {
             transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="mx-auto max-w-3xl text-center"
           >
-            <span className="inline-flex items-center rounded-full border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-accent">
+            <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
               Cases reais
             </span>
-            <h1 className="mt-5 font-heading text-4xl font-black leading-[1.08] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-heading text-4xl font-black leading-[1.08] tracking-tight text-white md:text-5xl lg:text-6xl">
               Resultados com método, dados e execução.
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/55 md:text-lg">
               Histórias reais de empresas que cresceram quando marketing,
               vendas e operação passaram a trabalhar com mais clareza.
             </p>
+
+            <div className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-3 md:grid-cols-4">
+              {proofStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-left"
+                >
+                  <p className="font-heading text-2xl font-black tracking-tight text-white">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-[10px] font-medium leading-tight text-white/40">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
@@ -117,8 +141,8 @@ export function CasesIndexClient() {
                 onClick={() => setActiveFilter(filter)}
                 className={`rounded-full border px-4 py-2 text-xs font-bold transition-all duration-200 ${
                   activeFilter === filter
-                    ? "border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] text-accent"
-                    : "border-border/70 bg-white text-muted-foreground hover:border-[var(--color-accent-border)] hover:bg-[var(--color-accent-soft)] hover:text-accent"
+                    ? "border-[#6575FF]/45 bg-[#6575FF]/15 text-white shadow-[0_12px_34px_rgba(101,117,255,0.20)]"
+                    : "border-white/12 bg-white/[0.04] text-white/50 hover:border-[#6575FF]/35 hover:bg-[#6575FF]/10 hover:text-white"
                 }`}
               >
                 {filter}
@@ -128,8 +152,17 @@ export function CasesIndexClient() {
         </div>
       </section>
 
-      <section id="todos" className="py-16 lg:py-20">
+      <section id="todos" className="bg-[var(--surface-soft)] py-18 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
+          <div className="mb-12 max-w-2xl">
+            <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
+              Por setor
+            </span>
+            <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
+              Escolha o case mais próximo do seu cenário.
+            </h2>
+          </div>
+
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {visibleCases.map((item, index) => (
               <motion.article
@@ -146,13 +179,13 @@ export function CasesIndexClient() {
               >
                 <Link
                   href={item.href}
-                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border/60 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-accent-border)] hover:shadow-2xl"
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#6575FF]/30 hover:shadow-[0_18px_44px_rgba(101,117,255,0.12)]"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <span className="inline-flex items-center rounded-full border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-accent">
+                    <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
                       {item.tag}
                     </span>
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] text-accent">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/20 bg-[#6575FF]/10 text-[#6575FF]">
                       <item.icon className="h-5 w-5" />
                     </div>
                   </div>
@@ -167,9 +200,9 @@ export function CasesIndexClient() {
                     {item.description}
                   </p>
 
-                  <div className="mt-8 grid grid-cols-3 gap-3 border-t border-border/40 pt-6">
+                  <div className="mt-8 grid grid-cols-1 gap-3 border-t border-border/40 pt-6 sm:grid-cols-3">
                     {item.metrics.map((metric) => (
-                      <div key={metric.label}>
+                      <div key={metric.label} className="rounded-2xl border border-border/70 bg-[var(--surface-soft)] p-4">
                         <p className="font-heading text-xl font-black tracking-tight text-foreground">
                           {metric.value}
                         </p>
@@ -180,7 +213,7 @@ export function CasesIndexClient() {
                     ))}
                   </div>
 
-                  <div className="mt-auto flex items-center gap-2 pt-7 text-sm font-bold text-accent">
+                  <div className="mt-auto flex items-center gap-2 pt-7 text-sm font-bold text-[#6575FF]">
                     Ver case completo
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </div>

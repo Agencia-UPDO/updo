@@ -178,6 +178,8 @@ const labelClass = "text-[10px] font-black uppercase tracking-[0.25em] text-whit
 export function EcommerceLanding() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState("");
   const [formData, setFormData] = React.useState({
     nome: "",
     empresa: "",
@@ -198,36 +200,70 @@ export function EcommerceLanding() {
     return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsSubmitted(true);
+
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    const searchParams =
+      typeof window !== "undefined"
+        ? new URLSearchParams(window.location.search)
+        : null;
+    const payloadFormData = {
+      ...formData,
+      ...selected,
+      sector: "E-commerce",
+      utm_source: searchParams?.get("utm_source") || "",
+      utm_medium: searchParams?.get("utm_medium") || "",
+      utm_campaign: searchParams?.get("utm_campaign") || "",
+      utm_content: searchParams?.get("utm_content") || "",
+      utm_term: searchParams?.get("utm_term") || "",
+    };
 
     if (typeof window !== "undefined") {
-      const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer = w.dataLayer || [];
-      w.dataLayer.push({
-        event: "Lead",
-        formName: "Diagnóstico E-commerce",
-        location: "marketing-para-ecommerce",
-        formData: { ...formData, ...selected },
+      try {
+        const w = window as Window & { dataLayer?: Record<string, unknown>[] };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: "Lead",
+          formName: "Diagnóstico E-commerce",
+          location: "marketing-para-ecommerce",
+          formData: payloadFormData,
+        });
+      } catch {
+        // Tracking nao pode bloquear o envio do lead para a RD.
+      }
+    }
+
+    try {
+      const response = await fetch("/api/rd-conversion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formName: "Diagnóstico E-commerce",
+          pagePath: "/marketing-para-ecommerce",
+          pageUrl:
+            typeof window !== "undefined"
+              ? window.location.href
+              : "https://www.updo.com.br/marketing-para-ecommerce",
+          formData: payloadFormData,
+        }),
       });
 
-      const message = `Olá! Vim pela página de marketing para e-commerce da UPDO:
+      if (!response.ok) {
+        throw new Error("Falha ao enviar o formulario.");
+      }
 
-*Nome:* ${formData.nome}
-*Empresa:* ${formData.empresa}
-*E-mail:* ${formData.email}
-*Telefone:* ${formData.telefone}
-*Plataforma:* ${selected.platform}
-*Faturamento mensal:* ${selected.revenue}
-*Principal gargalo:* ${selected.challenge}
-*Investimento em mídia:* ${selected.investment}
-
-Quero diagnosticar minha loja virtual.`;
-
-      setTimeout(() => {
-        window.open(`https://wa.me/5541987112003?text=${encodeURIComponent(message)}`, "_blank");
-      }, 1200);
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Não conseguimos enviar agora. Tente novamente em alguns segundos.",
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -335,7 +371,7 @@ Quero diagnosticar minha loja virtual.`;
 
       <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
         <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6575FF]/[0.10] blur-[100px]" />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6575FF]/[0.10] blur-[100px]" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
@@ -428,6 +464,8 @@ Quero diagnosticar minha loja virtual.`;
 
       <ContactSection
         isSubmitted={isSubmitted}
+        isSubmitting={isSubmitting}
+        submitError={submitError}
         formData={formData}
         selected={selected}
         setFormData={setFormData}
@@ -520,6 +558,8 @@ function FunnelVisual() {
 
 function ContactSection({
   isSubmitted,
+  isSubmitting,
+  submitError,
   formData,
   selected,
   setFormData,
@@ -528,6 +568,8 @@ function ContactSection({
   handleSubmit,
 }: {
   isSubmitted: boolean;
+  isSubmitting: boolean;
+  submitError: string;
   formData: { nome: string; empresa: string; email: string; telefone: string };
   selected: { platform: string; revenue: string; challenge: string; investment: string };
   setFormData: React.Dispatch<React.SetStateAction<{ nome: string; empresa: string; email: string; telefone: string }>>;
@@ -538,7 +580,7 @@ function ContactSection({
   return (
     <section id="contato" className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-      <div className="absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-0 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[#6575FF]/[0.08] blur-[120px]" />
       <div className="container mx-auto px-4 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <div className="mb-12 text-center">
@@ -590,10 +632,15 @@ function ContactSection({
                 <p className="text-center text-sm leading-relaxed text-white/45">
                   Com base nas suas respostas, preparamos um diagnóstico mais preciso da loja.
                 </p>
-                <button type="submit" className="mx-auto inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:max-w-none sm:px-10">
-                  Diagnosticar minha loja
+                <button type="submit" disabled={isSubmitting} className="mx-auto inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:max-w-none sm:px-10">
+                  {isSubmitting ? "Enviando..." : "Diagnosticar minha loja"}
                   <ArrowRight className="h-4 w-4" />
                 </button>
+                {submitError && (
+                  <p className="text-center text-xs font-semibold text-red-300">
+                    {submitError}
+                  </p>
+                )}
                 <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
                   <TrustItem icon={ShieldCheck} text="Sem spam" />
                   <TrustItem icon={Clock} text="Resposta em até 1 dia útil" />
@@ -608,7 +655,7 @@ function ContactSection({
               </div>
               <h3 className="font-heading text-2xl font-black tracking-tight text-white">Formulário enviado.</h3>
               <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/55">
-                Estamos abrindo o WhatsApp para continuar o diagnóstico.
+                Recebemos seus dados e vamos analisar o cenário da loja para retornar com os próximos passos.
               </p>
             </div>
           )}

@@ -139,14 +139,6 @@ const storeTypes = [
   "Outro",
 ];
 
-const revenueRanges = [
-  "Até R$100 mil/mês",
-  "R$100 mil a R$300 mil/mês",
-  "R$300 mil a R$800 mil/mês",
-  "R$800 mil a R$2M/mês",
-  "Acima de R$2M/mês",
-];
-
 const retailChallenges = [
   "Baixo fluxo na loja",
   "WhatsApp não converte",
@@ -177,6 +169,8 @@ const labelClass =
 export function RetailLanding() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState("");
   const [formData, setFormData] = React.useState({
     nome: "",
     empresa: "",
@@ -185,7 +179,6 @@ export function RetailLanding() {
   });
   const [selected, setSelected] = React.useState({
     storeType: "",
-    revenue: "",
     challenge: "",
     investment: "",
   });
@@ -199,37 +192,71 @@ export function RetailLanding() {
     return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2, 7)}-${phoneNumber.slice(7, 11)}`;
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsSubmitted(true);
+
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    const searchParams =
+      typeof window !== "undefined"
+        ? new URLSearchParams(window.location.search)
+        : null;
+    const payloadFormData = {
+      ...formData,
+      ...selected,
+      sector: "Varejo",
+      utm_source: searchParams?.get("utm_source") || "",
+      utm_medium: searchParams?.get("utm_medium") || "",
+      utm_campaign: searchParams?.get("utm_campaign") || "",
+      utm_content: searchParams?.get("utm_content") || "",
+      utm_term: searchParams?.get("utm_term") || "",
+    };
 
     if (typeof window !== "undefined") {
-      const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer = w.dataLayer || [];
-      w.dataLayer.push({
-        event: "Lead",
-        formName: "Diagnóstico Varejo",
-        location: "marketing-para-varejo",
-        formData: { ...formData, ...selected },
-      });
+      try {
+        const w = window as Window & { dataLayer?: Record<string, unknown>[] };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: "Lead",
+          formName: "Diagnóstico Varejo",
+          location: "marketing-para-varejo",
+          formData: payloadFormData,
+        });
+      } catch {
+        // Tracking nao pode bloquear o envio do lead para a RD.
+      }
     }
 
-    const message = `Olá! Vim pela página de marketing para varejo da UPDO:
+    try {
+      const response = await fetch("/api/rd-conversion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formName: "Diagnóstico Varejo",
+          pagePath: "/marketing-para-varejo",
+          pageUrl:
+            typeof window !== "undefined"
+              ? window.location.href
+              : "https://www.updo.com.br/marketing-para-varejo",
+          formData: payloadFormData,
+        }),
+      });
 
-*Nome:* ${formData.nome}
-*Empresa:* ${formData.empresa}
-*E-mail:* ${formData.email}
-*Telefone:* ${formData.telefone}
-*Tipo de operação:* ${selected.storeType}
-*Faturamento mensal:* ${selected.revenue}
-*Principal gargalo:* ${selected.challenge}
-*Investimento em mídia:* ${selected.investment}
+      if (!response.ok) {
+        throw new Error("Falha ao enviar o formulario.");
+      }
 
-Quero diagnosticar minha operação de varejo.`;
-
-    setTimeout(() => {
-      window.open(`https://wa.me/5541987112003?text=${encodeURIComponent(message)}`, "_blank");
-    }, 1200);
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Não conseguimos enviar agora. Tente novamente em alguns segundos.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -434,7 +461,7 @@ Quero diagnosticar minha operação de varejo.`;
 
       <section className="relative overflow-hidden bg-[#07111F] py-18 lg:py-28">
         <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6575FF]/[0.10] blur-[100px]" />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6575FF]/[0.10] blur-[100px]" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-center">
             <div>
@@ -498,7 +525,7 @@ Quero diagnosticar minha operação de varejo.`;
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/45">
                 Preencha os dados para analisarmos fluxo, canais, atendimento,
-                ticket, recompra e previsibilidade.
+                recompra e previsibilidade.
               </p>
             </div>
 
@@ -524,23 +551,25 @@ Quero diagnosticar minha operação de varejo.`;
                   <FormField label="Tipo de operação" htmlFor="storeType" icon={Store}>
                     <SelectField id="storeType" value={selected.storeType} placeholder="Selecione o tipo..." options={storeTypes} onChange={(value) => setSelected((prev) => ({ ...prev, storeType: value }))} />
                   </FormField>
-                  <FormField label="Faturamento mensal" htmlFor="revenue" icon={BarChart3}>
-                    <SelectField id="revenue" value={selected.revenue} placeholder="Selecione a faixa..." options={revenueRanges} onChange={(value) => setSelected((prev) => ({ ...prev, revenue: value }))} />
-                  </FormField>
-                </div>
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <FormField label="Principal gargalo" htmlFor="challenge" icon={Target}>
                     <SelectField id="challenge" value={selected.challenge} placeholder="Selecione o gargalo..." options={retailChallenges} onChange={(value) => setSelected((prev) => ({ ...prev, challenge: value }))} />
                   </FormField>
+                </div>
+                <div className="mx-auto w-full max-w-md">
                   <FormField label="Investimento em mídia" htmlFor="investment" icon={CreditCard}>
                     <SelectField id="investment" value={selected.investment} placeholder="Selecione o investimento..." options={mediaInvestment} onChange={(value) => setSelected((prev) => ({ ...prev, investment: value }))} />
                   </FormField>
                 </div>
                 <div className="flex flex-col items-center border-t border-white/[0.08] pt-6">
-                  <button type="submit" className="mx-auto inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:max-w-none sm:px-10">
-                    Diagnosticar meu varejo
+                  <button type="submit" disabled={isSubmitting} className="mx-auto inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:max-w-none sm:px-10">
+                    {isSubmitting ? "Enviando..." : "Diagnosticar meu varejo"}
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </button>
+                  {submitError && (
+                    <p className="mt-3 text-center text-xs font-semibold text-red-300">
+                      {submitError}
+                    </p>
+                  )}
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
                     <TrustItem icon={ShieldCheck} text="Sem spam" />
                     <TrustItem icon={Clock} text="Resposta em até 1 dia útil" />
@@ -557,11 +586,8 @@ Quero diagnosticar minha operação de varejo.`;
                   Formulário enviado.
                 </h3>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/55">
-                  Estamos abrindo o WhatsApp para continuar o diagnóstico do
-                  seu varejo.
-                </p>
-                <p className="mt-6 text-sm font-bold text-[#6575FF]">
-                  Redirecionando...
+                  Recebemos seus dados e vamos analisar o cenário do varejo
+                  para retornar com os próximos passos.
                 </p>
               </div>
             )}

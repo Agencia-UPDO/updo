@@ -66,6 +66,8 @@ const ChevronIcon = () => (
 
 export function HomeContact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState({
     nome: "",
     empresa: "",
@@ -93,42 +95,70 @@ export function HomeContact() {
     setFormData((prev) => ({ ...prev, telefone: formatPhone(e.target.value) }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    const searchParams =
+      typeof window !== "undefined"
+        ? new URLSearchParams(window.location.search)
+        : null;
+    const payloadFormData = {
+      ...formData,
+      ...selected,
+      service: "Diagnóstico Estratégico",
+      utm_source: searchParams?.get("utm_source") || "",
+      utm_medium: searchParams?.get("utm_medium") || "",
+      utm_campaign: searchParams?.get("utm_campaign") || "",
+      utm_content: searchParams?.get("utm_content") || "",
+      utm_term: searchParams?.get("utm_term") || "",
+    };
 
     if (typeof window !== "undefined") {
-      const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      if (w.dataLayer) {
+      try {
+        const w = window as Window & { dataLayer?: Record<string, unknown>[] };
+        w.dataLayer = w.dataLayer || [];
         w.dataLayer.push({
           event: "Lead",
           formName: "Diagnóstico Institucional",
           location: "home",
-          formData: {
-            ...formData,
-            ...selected,
-          },
+          formData: payloadFormData,
         });
+      } catch {
+        // Tracking nao pode bloquear o envio do lead para a RD.
       }
     }
 
-    const message = `Olá! Acabei de preencher o formulário no site:
+    try {
+      const response = await fetch("/api/rd-conversion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formName: "Diagnóstico Institucional",
+          pagePath: "/",
+          pageUrl:
+            typeof window !== "undefined"
+              ? window.location.href
+              : "https://www.updo.com.br",
+          formData: payloadFormData,
+        }),
+      });
 
-*Nome:* ${formData.nome}
-*Empresa:* ${formData.empresa}
-*E-mail:* ${formData.email}
-*Telefone:* ${formData.telefone}
-*Setor:* ${selected.sector}
-*Desafio:* ${selected.challenge}
-*Investimento:* ${selected.investment}
+      if (!response.ok) {
+        throw new Error("Falha ao enviar o formulario.");
+      }
 
-Gostaria de agendar meu diagnóstico estratégico!`;
-
-    const whatsappUrl = `https://wa.me/5541987112003?text=${encodeURIComponent(message)}`;
-
-    setTimeout(() => {
-      window.open(whatsappUrl, "_blank");
-    }, 1500);
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Não conseguimos enviar agora. Tente novamente em alguns segundos.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -408,13 +438,25 @@ Gostaria de agendar meu diagnóstico estratégico!`;
                     <div className="flex justify-center">
                       <button
                         type="submit"
-                        className="mx-auto inline-flex h-13 w-full max-w-xs items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:max-w-none sm:px-10 cursor-pointer"
+                        disabled={isSubmitting}
+                        className="mx-auto inline-flex h-13 w-full max-w-xs items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:max-w-none sm:px-10 cursor-pointer"
                       >
-                        <span className="sm:hidden">Quero meu diagnóstico</span>
-                        <span className="hidden sm:inline">Quero meu diagnóstico estratégico</span>
+                        <span className="sm:hidden">
+                          {isSubmitting ? "Enviando..." : "Quero meu diagnóstico"}
+                        </span>
+                        <span className="hidden sm:inline">
+                          {isSubmitting
+                            ? "Enviando..."
+                            : "Quero meu diagnóstico estratégico"}
+                        </span>
                         <ArrowRight className="h-4 w-4" />
                       </button>
                     </div>
+                    {submitError && (
+                      <p className="text-center text-xs font-semibold text-red-300">
+                        {submitError}
+                      </p>
+                    )}
                     <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
                       <span className="flex items-center gap-1.5 text-[10px] font-medium text-white/20">
                         <ShieldCheck className="h-3 w-3" /> Sem spam
@@ -443,12 +485,9 @@ Gostaria de agendar meu diagnóstico estratégico!`;
                     Formulário enviado com sucesso!
                   </h3>
                   <p className="text-white/60 max-w-sm mb-8">
-                    Recebemos seus dados e estamos te redirecionando agora
-                    mesmo para o WhatsApp para iniciarmos seu diagnóstico.
+                    Recebemos suas informações e vamos analisar o cenário para
+                    retornar com um direcionamento inicial.
                   </p>
-                  <div className="flex items-center gap-2 text-accent font-bold text-sm animate-pulse">
-                    Redirecionando...
-                  </div>
                 </motion.div>
               )}
             </AnimatePresence>

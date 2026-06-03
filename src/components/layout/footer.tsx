@@ -223,23 +223,25 @@ export function Footer() {
               </div>
 
               <div className="mt-2 flex flex-col gap-4 border-t border-white/5 pt-4">
-                {siteConfig.addresses.map((addr) => (
-                  <div key={addr.label} className="flex items-start gap-3">
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/5 bg-white/5 text-white/30 mt-0.5">
-                      <MapPin className="h-3.5 w-3.5" />
+                {siteConfig.addresses.map((addr) => {
+                  const [street, district] = addr.street.split(" · ");
+
+                  return (
+                    <div key={addr.label} className="flex items-start gap-3">
+                      <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/5 bg-white/5 text-white/30">
+                        <MapPin className="h-3.5 w-3.5" />
+                      </div>
+                      <div className="flex flex-col gap-0.5">
+                        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">
+                          {addr.label}
+                        </p>
+                        <p className="text-xs leading-relaxed text-white/45">
+                          {[street, district, addr.city].filter(Boolean).join(" · ")}
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex flex-col gap-0.5">
-                      <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">
-                        {addr.label}
-                      </p>
-                      <p className="text-xs leading-relaxed text-white/45">
-                        {addr.street}
-                        <br />
-                        {addr.city}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
