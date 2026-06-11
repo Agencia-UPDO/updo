@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "Agentes de IA que qualificam leads, respondem no WhatsApp, fazem follow-up, agendam reuniões e integram dados ao CRM.",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Equipe UPDO trabalhando com inteligência artificial para vendas",

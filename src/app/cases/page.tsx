@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Cases de Marketing e Vendas | UPDO",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Cases de Marketing e Vendas | Resultados por Setor",
     description:
       "Cases em educação, e-commerce, varejo e indústria, com resultados de ROAS, faturamento, leads, tráfego e ROI gerados por marketing e vendas.",
-    images: ["/Imagens/sala-cheia.jpg"],
+    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

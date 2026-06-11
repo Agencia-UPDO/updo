@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "Tráfego local, Google Maps, WhatsApp, catálogo, recompra, equipe comercial e dados para varejo físico e digital.",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Marketing para Varejo UPDO",

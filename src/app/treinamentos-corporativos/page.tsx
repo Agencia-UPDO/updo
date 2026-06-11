@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Rodrigo Bueno conduzindo treinamento corporativo",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Treinamentos Corporativos | Vendas, Neurovendas e IA",
     description:
       "Workshops, palestras e programas in company em vendas, neurovendas, IA, atendimento, CRM e rotina comercial com Rodrigo Bueno.",
-    images: ["/Imagens/sala-cheia.jpg"],
+    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

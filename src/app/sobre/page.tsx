@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "UPDO | Agência de Marketing, Vendas, Dados e IA em Curitiba",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Sobre a UPDO | Agência de Marketing, Vendas e IA",
     description:
       "Agência de marketing, vendas, dados e IA em Curitiba. Desde 2017, unimos comportamento do consumidor, mídia e processo comercial.",
-    images: ["/Imagens/sala-cheia.jpg"],
+    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

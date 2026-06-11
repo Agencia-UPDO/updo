@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Case de Marketing Industrial | ROI 1.527% em Mídia Paga",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Case de Marketing Industrial | ROI 1.527% em Mídia Paga",
     description:
       "R$350 mil em faturamento digital com R$21,5 mil de mídia paga, ROI de 1.527% e leitura clara para diretoria.",
-    images: ["/Imagens/sala-cheia.jpg"],
+    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 
@@ -42,7 +42,7 @@ const articleSchema = {
   description:
     "Case de marketing industrial: R$350 mil em faturamento digital com R$21,5 mil de mídia paga, ROI de 1.527% e leitura clara para diretoria.",
   url: "https://updo.com.br/cases/industria",
-  image: "https://updo.com.br/Imagens/sala-cheia.jpg",
+  image: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
   author: {
     "@type": "Organization",
     name: "UPDO",

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "UPDO | Agência de Marketing, Vendas, Dados e IA",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "UPDO | Agência de Marketing, Vendas, Dados e IA",
     description:
       "Estratégia, mídia, dados, IA e processo comercial para empresas que precisam crescer com previsibilidade.",
-    images: ["/Imagens/sala-cheia.jpg"],
+    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

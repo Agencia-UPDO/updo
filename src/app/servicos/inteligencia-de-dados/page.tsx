@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "Coleta, dashboard unificado, BI, atribuição multi-touch, KPIs, CAC, ROAS e leitura por canal para marketing e vendas.",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Equipe UPDO analisando dashboards de marketing e inteligência de dados",

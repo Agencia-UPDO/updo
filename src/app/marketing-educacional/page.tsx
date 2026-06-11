@@ -22,7 +22,7 @@ export const metadata: Metadata = {
       "Mídia, landing pages, CRM e processo comercial para faculdades, pós-graduações e escolas captarem alunos com previsibilidade.",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Estratégia de Marketing Educacional UPDO",

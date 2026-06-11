@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, SEO e GEO para gerar leads qualificados e presença em buscadores e respostas de IA.",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Equipe UPDO gerenciando campanhas de geração de demanda e mídia paga",

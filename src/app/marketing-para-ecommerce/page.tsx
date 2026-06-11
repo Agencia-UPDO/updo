@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "Google Ads, Meta Ads, TikTok Ads, CRO, dados, checkout e recompra para e-commerces venderem mais sem perder margem.",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Marketing para E-commerce UPDO",

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
       "Posicionamento, geração de demanda, qualificação de leads, CRM e processo comercial para empresas de serviços venderem sem depender só de indicação.",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Marketing para Empresas de Serviços UPDO",

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Case de Marketing para Varejo | +87% de Faturamento",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Case de Marketing para Varejo | +87% de Faturamento",
     description:
       "+87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022 para uma operação varejista.",
-    images: ["/Imagens/sala-cheia.jpg"],
+    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 
@@ -42,7 +42,7 @@ const articleSchema = {
   description:
     "Case de marketing para varejo: +87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022 para uma operação varejista.",
   url: "https://updo.com.br/cases/varejo",
-  image: "https://updo.com.br/Imagens/sala-cheia.jpg",
+  image: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
   author: {
     "@type": "Organization",
     name: "UPDO",

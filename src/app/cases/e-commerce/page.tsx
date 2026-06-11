@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Case de Marketing para E-commerce | +6.900% em Vendas",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Case de Marketing para E-commerce | +6.900% em Vendas",
     description:
       "Loja virtual saiu de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS 4.7x e conversão de 4,45%.",
-    images: ["/Imagens/sala-cheia.jpg"],
+    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 
@@ -42,7 +42,7 @@ const articleSchema = {
   description:
     "Case de marketing para e-commerce: loja virtual saiu de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS 4.7x e conversão de 4,45%.",
   url: "https://updo.com.br/cases/e-commerce",
-  image: "https://updo.com.br/Imagens/sala-cheia.jpg",
+  image: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
   author: {
     "@type": "Organization",
     name: "UPDO",

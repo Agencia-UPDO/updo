@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Case de Marketing Educacional | ROAS 20x e +211% de Leads",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Case de Marketing Educacional | ROAS 20x e +211% de Leads",
     description:
       "ROAS 20x, +211% de leads e prêmio RD Station 2024 para instituição de ensino superior atendida pela UPDO.",
-    images: ["/Imagens/sala-cheia.jpg"],
+    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 
@@ -42,7 +42,7 @@ const articleSchema = {
   description:
     "Case de marketing educacional com ROAS 20x, +211% de leads e prêmio RD Station 2024 para instituição de ensino superior atendida pela UPDO.",
   url: "https://updo.com.br/cases/educacao",
-  image: "https://updo.com.br/Imagens/sala-cheia.jpg",
+  image: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
   author: {
     "@type": "Organization",
     name: "UPDO",

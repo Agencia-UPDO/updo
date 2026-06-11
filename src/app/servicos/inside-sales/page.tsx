@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "Playbook, pipeline, CRM, SLA, treinamento de vendas e rotina de gestão para transformar leads em receita previsível.",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Equipe UPDO estruturando processo de inside sales e vendas consultivas",

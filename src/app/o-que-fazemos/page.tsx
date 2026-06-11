@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Como Trabalhamos | Método UPDO para Marketing e Vendas",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Como Trabalhamos | Método UPDO para Marketing e Vendas",
     description:
       "Como conectamos planejamento, mídia, dados, CRM, vendas e IA em ciclos de execução com responsáveis, métricas e entregáveis claros.",
-    images: ["/Imagens/sala-cheia.jpg"],
+    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

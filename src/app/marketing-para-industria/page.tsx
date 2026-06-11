@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "Google Search, LinkedIn Ads, conteúdo técnico, CRM, inside sales e pipeline para indústrias com vendas complexas e ciclos longos.",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Marketing para Indústria UPDO",

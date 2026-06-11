@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "Auditoria de jornada, copy, formulário, CTA, heatmap e testes A/B para aumentar a taxa de conversão de landing pages, sites e e-commerce.",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Equipe UPDO realizando auditoria de UX e testes de CRO em landing pages",

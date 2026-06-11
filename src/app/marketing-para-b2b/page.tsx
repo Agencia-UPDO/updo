@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "ICP, LinkedIn Ads, outbound, CRM, inside sales e pipeline previsível para SaaS, tecnologia e serviços corporativos.",
     images: [
       {
-        url: "/Imagens/sala-cheia.jpg",
+        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
         alt: "Marketing B2B UPDO",
