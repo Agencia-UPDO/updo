@@ -1,9 +1,19 @@
+const productionSiteUrl = "https://www.updo.com.br";
+const publicSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
+const isLocalSiteUrl =
+  !publicSiteUrl ||
+  publicSiteUrl.includes("localhost") ||
+  publicSiteUrl.includes("127.0.0.1") ||
+  publicSiteUrl.includes("[::1]");
+
+const siteUrl = isLocalSiteUrl ? productionSiteUrl : publicSiteUrl;
+
 export const siteConfig = {
   name: "UPDO",
   description:
     "Agência de marketing, vendas, dados e IA em Curitiba para empresas que querem gerar demanda, estruturar funil comercial e crescer com previsibilidade.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://updo.com.br",
-  ogImage: "https://updo.com.br/og.jpg",
+  url: siteUrl,
+  ogImage: `${siteUrl}/og.jpg`,
   links: {
     twitter: "https://twitter.com/updo",
     github: "https://github.com/updo",
