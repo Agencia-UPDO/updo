@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "UPDO",
   description:
     "Agência de marketing, vendas, dados e IA em Curitiba para empresas que querem gerar demanda, estruturar funil comercial e crescer com previsibilidade.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://updo.com.br",
   ogImage: "https://updo.com.br/og.jpg",
   links: {
     twitter: "https://twitter.com/updo",
