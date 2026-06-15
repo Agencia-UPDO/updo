@@ -367,7 +367,7 @@ export function DemandaLanding() {
     return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
   };
 
-  const submitLead = async () => {
+  const submitLead = async (honeypot = "") => {
     setIsSubmitting(true);
     setSubmitError("");
 
@@ -384,6 +384,7 @@ export function DemandaLanding() {
       utm_campaign: searchParams?.get("utm_campaign") || "",
       utm_content: searchParams?.get("utm_content") || "",
       utm_term: searchParams?.get("utm_term") || "",
+      companyWebsite: honeypot,
     };
 
     if (typeof window !== "undefined") {
@@ -434,7 +435,16 @@ export function DemandaLanding() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await submitLead();
+    const honeypot = String(
+      new FormData(event.currentTarget).get("companyWebsite") || "",
+    ).trim();
+
+    if (honeypot) {
+      setIsSubmitted(true);
+      return;
+    }
+
+    await submitLead(honeypot);
   };
 
   return (
@@ -691,6 +701,21 @@ export function DemandaLanding() {
             </div>
             {!isSubmitted ? (
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden opacity-0"
+                >
+                  <label htmlFor="demanda-companyWebsite">
+                    Site da empresa
+                  </label>
+                  <input
+                    id="demanda-companyWebsite"
+                    type="text"
+                    name="companyWebsite"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
                 <div className="grid gap-4 md:grid-cols-2">
                   <FormField label="Nome" htmlFor="nome">
                     <input

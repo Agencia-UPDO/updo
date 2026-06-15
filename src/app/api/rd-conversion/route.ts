@@ -7,6 +7,10 @@ type ConversionPayload = {
   formData?: Record<string, unknown>;
 };
 
+const rateLimitWindowMs = 60_000;
+const maxRequestsPerWindow = 5;
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
+
 const fieldMappings: Record<string, string> = {
   sector: "cf_setor_de_empresa",
   challenge: "cf_principal_desafio",
@@ -49,7 +53,35 @@ const reservedFields = new Set([
   "utm_campaign",
   "utm_content",
   "utm_term",
+  "companyWebsite",
+  "website",
 ]);
+
+const getClientIp = (request: Request) => {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  if (forwardedFor) return forwardedFor.split(",")[0]?.trim() || "unknown";
+
+  return (
+    request.headers.get("x-real-ip") ||
+    request.headers.get("cf-connecting-ip") ||
+    "unknown"
+  );
+};
+
+const isRateLimited = (request: Request) => {
+  const ip = getClientIp(request);
+  const now = Date.now();
+  const current = rateLimitStore.get(ip);
+
+  if (!current || current.resetAt <= now) {
+    rateLimitStore.set(ip, { count: 1, resetAt: now + rateLimitWindowMs });
+    return false;
+  }
+
+  current.count += 1;
+  rateLimitStore.set(ip, current);
+  return current.count > maxRequestsPerWindow;
+};
 
 const normalizeCustomField = (field: string) =>
   `cf_${field
@@ -62,8 +94,26 @@ const normalizeCustomField = (field: string) =>
 const toText = (value: unknown) => {
   if (value === undefined || value === null) return "";
   if (Array.isArray(value)) return value.filter(Boolean).join(", ");
-  return String(value).trim();
+  return String(value)
+    .replace(/<[^>]*>/g, " ")
+    .replace(/[<>]/g, "")
+    .replace(/[\u0000-\u001F\u007F]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 500);
 };
+
+const normalizeEmail = (value: unknown) =>
+  toText(value).toLowerCase().slice(0, 254);
+
+const normalizePhone = (value: unknown) => {
+  const phone = toText(value);
+  const digits = phone.replace(/\D/g, "").slice(0, 15);
+  return digits || phone.slice(0, 30);
+};
+
+const isValidEmail = (email: string) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 const slugify = (value: string) =>
   value
@@ -94,20 +144,43 @@ export async function POST(request: Request) {
     );
   }
 
-  const body = (await request.json()) as ConversionPayload;
-  const formData = body.formData ?? {};
-  const email = toText(formData.email);
-
-  if (!email) {
+  if (isRateLimited(request)) {
     return NextResponse.json(
-      { error: "E-mail e obrigatorio para enviar a conversao." },
+      { error: "Muitas tentativas. Tente novamente em alguns instantes." },
+      { status: 429 },
+    );
+  }
+
+  let body: ConversionPayload;
+
+  try {
+    body = (await request.json()) as ConversionPayload;
+  } catch {
+    return NextResponse.json(
+      { error: "Payload invalido." },
       { status: 400 },
     );
   }
 
-  const formName = body.formName || "Formulario UPDO";
+  const formData = body.formData ?? {};
+  const honeypot = toText(formData.companyWebsite || formData.website);
+
+  if (honeypot) {
+    return NextResponse.json({ ok: true, ignored: true });
+  }
+
+  const email = normalizeEmail(formData.email);
+
+  if (!email || !isValidEmail(email)) {
+    return NextResponse.json(
+      { error: "E-mail valido e obrigatorio para enviar a conversao." },
+      { status: 400 },
+    );
+  }
+
+  const formName = toText(body.formName) || "Formulario UPDO";
   const name = toText(formData.nome || formData.name);
-  const phone = toText(formData.telefone || formData.phone);
+  const phone = normalizePhone(formData.telefone || formData.phone);
   const companyName = toText(formData.empresa || formData.company);
 
   const cf: Record<string, string> = {};

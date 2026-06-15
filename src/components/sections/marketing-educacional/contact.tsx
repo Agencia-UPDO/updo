@@ -77,6 +77,16 @@ export function Contact() {
     setIsSubmitting(true);
     setSubmitError("");
 
+    const honeypot = String(
+      new FormData(e.currentTarget).get("companyWebsite") || "",
+    ).trim();
+
+    if (honeypot) {
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+      return;
+    }
+
     const payloadFormData = {
       nome: formData.nome,
       empresa: formData.empresa,
@@ -106,6 +116,7 @@ export function Contact() {
         typeof window !== "undefined"
           ? new URLSearchParams(window.location.search).get("utm_term") || ""
           : "",
+      companyWebsite: honeypot,
     };
 
     if (typeof window !== "undefined") {
@@ -204,6 +215,21 @@ export function Contact() {
                   className="flex flex-col gap-8"
                   onSubmit={handleSubmit}
                 >
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden opacity-0"
+                  >
+                    <label htmlFor="educacao-companyWebsite">
+                      Site da empresa
+                    </label>
+                    <input
+                      id="educacao-companyWebsite"
+                      type="text"
+                      name="companyWebsite"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-2">
                       <label className={labelClass}>Nome</label>

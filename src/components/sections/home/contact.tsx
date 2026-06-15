@@ -100,6 +100,17 @@ export function HomeContact() {
     setIsSubmitting(true);
     setSubmitError("");
 
+    const formElement = e.currentTarget;
+    const honeypot = String(
+      new FormData(formElement).get("companyWebsite") || "",
+    ).trim();
+
+    if (honeypot) {
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+      return;
+    }
+
     const searchParams =
       typeof window !== "undefined"
         ? new URLSearchParams(window.location.search)
@@ -113,6 +124,7 @@ export function HomeContact() {
       utm_campaign: searchParams?.get("utm_campaign") || "",
       utm_content: searchParams?.get("utm_content") || "",
       utm_term: searchParams?.get("utm_term") || "",
+      companyWebsite: honeypot,
     };
 
     if (typeof window !== "undefined") {
@@ -210,6 +222,22 @@ export function HomeContact() {
                   className="flex flex-col gap-8"
                   onSubmit={handleSubmit}
                 >
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden opacity-0"
+                  >
+                    <label htmlFor="companyWebsite">
+                      Site da empresa
+                    </label>
+                    <input
+                      id="companyWebsite"
+                      type="text"
+                      name="companyWebsite"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   {/* Nome + Empresa */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-2">

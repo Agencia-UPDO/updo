@@ -206,6 +206,16 @@ export function EcommerceLanding() {
     setIsSubmitting(true);
     setSubmitError("");
 
+    const honeypot = String(
+      new FormData(event.currentTarget).get("companyWebsite") || "",
+    ).trim();
+
+    if (honeypot) {
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+      return;
+    }
+
     const searchParams =
       typeof window !== "undefined"
         ? new URLSearchParams(window.location.search)
@@ -219,6 +229,7 @@ export function EcommerceLanding() {
       utm_campaign: searchParams?.get("utm_campaign") || "",
       utm_content: searchParams?.get("utm_content") || "",
       utm_term: searchParams?.get("utm_term") || "",
+      companyWebsite: honeypot,
     };
 
     if (typeof window !== "undefined") {
@@ -596,6 +607,19 @@ function ContactSection({
           </div>
           {!isSubmitted ? (
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden opacity-0"
+                >
+                  <label htmlFor="ecommerce-companyWebsite">Site da empresa</label>
+                  <input
+                    id="ecommerce-companyWebsite"
+                    type="text"
+                    name="companyWebsite"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
               <div className="grid gap-4 md:grid-cols-2">
                 <FormField label="Nome" htmlFor="nome">
                   <input id="nome" required value={formData.nome} onChange={(event) => setFormData((prev) => ({ ...prev, nome: event.target.value }))} placeholder="Como prefere ser chamado" className={inputClass} />
