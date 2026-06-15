@@ -5,13 +5,13 @@ const quickLinks = [
   {
     href: "/",
     title: "Voltar para a home",
-    description: "Veja a visao geral da UPDO e os principais caminhos do site.",
+    description: "Veja a visão geral da UPDO e os principais caminhos do site.",
     icon: Home,
   },
   {
     href: "/diagnostico",
-    title: "Agendar diagnostico",
-    description: "Ir direto para a pagina de diagnostico estrategico.",
+    title: "Agendar diagnóstico",
+    description: "Ir direto para a página de diagnóstico estratégico.",
     icon: Compass,
   },
   {
@@ -38,12 +38,12 @@ export default function NotFound() {
             </span>
 
             <h1 className="mt-6 font-heading text-4xl font-black leading-[1.02] tracking-tight text-foreground md:text-6xl">
-              Esta pagina saiu da rota, mas a proxima acao esta logo aqui.
+              Esta página saiu da rota, mas a próxima ação está logo aqui.
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              O endereco que voce tentou acessar nao existe mais ou mudou de
-              lugar. Organizamos abaixo os caminhos mais uteis para voce seguir
+              O endereço que você tentou acessar não existe mais ou mudou de
+              lugar. Organizamos abaixo os caminhos mais úteis para você seguir
               sem perder contexto.
             </p>
 
@@ -53,7 +53,7 @@ export default function NotFound() {
                 className="group/button relative isolate inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full border border-transparent bg-accent bg-clip-padding px-6 text-sm font-bold whitespace-nowrap text-accent-foreground shadow-[0_10px_24px_rgba(86,254,213,0.22)] transition-all duration-300 outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_14px_34px_rgba(86,254,213,0.34)] active:scale-95 sm:w-auto"
               >
                 <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[#56FED5]" />
-                Agendar diagnostico
+                Agendar diagnóstico
                 <ArrowRight className="h-4 w-4 transition-transform group-hover/button:translate-x-0.5" />
               </Link>
               <Link
