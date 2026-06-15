@@ -91,7 +91,7 @@ export function HomeRodrigo() {
             <p className="mt-4 text-base leading-relaxed text-white/68 max-w-xl">
               É professor de educação executiva e de pós-graduação na PUCPR,
               professor de pós-graduação na Faculdade IBRATE, professor de MBA
-              na UFPR e na Universidade Positivo.
+              na UFPR, e na Universidade Positivo.
             </p>
 
             <div className="mt-8 max-w-xl rounded-2xl border border-white/10 bg-white/[0.04] p-5">

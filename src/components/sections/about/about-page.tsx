@@ -100,7 +100,7 @@ const partners = [
     role: "CEO & Fundador",
     photo: "/Imagens/Rodrigo-Bueno-Fundador-UPDO.jpg",
     bio: "Estrategista de marketing e vendas há mais de uma década. Foi um dos primeiros profissionais no Brasil a levar comportamento do consumidor e neuromarketing para a rotina de mídia, páginas e processo comercial.",
-    bio2: "Professor de educação executiva na PUCPR, professor de pós-graduação na PUCPR e Faculdade IBRATE, e professor de MBA na UFPR e na Universidade Positivo.",
+    bio2: "Professor de educação executiva na PUCPR, professor de pós-graduação na PUCPR e Faculdade IBRATE, e professor de MBA na UFPR, e na Universidade Positivo.",
     badges: [
       { icon: Briefcase, label: "+300 empresas atendidas" },
       { icon: Award, label: "3x finalista RD Station" },
