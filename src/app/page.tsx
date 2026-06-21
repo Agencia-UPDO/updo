@@ -15,17 +15,17 @@ import { HomeContact } from "@/components/sections/home/contact";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "UPDO | Agência de Marketing, Vendas, Dados e IA",
+    absolute: "UPDO | Estruturação de Marketing, Vendas, CRM e Dados",
   },
   description:
-    "Agência de marketing, vendas, dados e IA em Curitiba. Estruturamos demanda, funil comercial, CRM e performance para empresas crescerem com previsibilidade.",
+    "Estruturação de marketing, vendas, CRM, dados e IA em Curitiba para empresas que querem crescer com previsibilidade comercial.",
   alternates: {
     canonical: "https://updo.com.br",
   },
   openGraph: {
-    title: "UPDO | Agência de Marketing, Vendas, Dados e IA",
+    title: "UPDO | Estruturação de Marketing, Vendas, CRM e Dados",
     description:
-      "Estratégia, mídia, dados, IA e processo comercial para empresas que precisam crescer com previsibilidade.",
+      "Estratégia, CRM, dados, IA e processo comercial para empresas que precisam crescer com previsibilidade.",
     url: "https://updo.com.br",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -35,15 +35,15 @@ export const metadata: Metadata = {
         url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
-        alt: "UPDO | Agência de Marketing, Vendas, Dados e IA",
+        alt: "UPDO | Estruturação de Marketing, Vendas, CRM e Dados",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "UPDO | Agência de Marketing, Vendas, Dados e IA",
+    title: "UPDO | Estruturação de Marketing, Vendas, CRM e Dados",
     description:
-      "Estratégia, mídia, dados, IA e processo comercial para empresas que precisam crescer com previsibilidade.",
+      "Estratégia, CRM, dados, IA e processo comercial para empresas que precisam crescer com previsibilidade.",
     images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
@@ -63,10 +63,10 @@ const organizationSchema = {
     addressCountry: "BR",
   },
   sameAs: [
-    "https://www.linkedin.com/company/agencia-updo/",
-    "https://www.instagram.com/agenciaupdo/",
-    "https://www.facebook.com/agenciaupdo",
-    "https://www.youtube.com/@agenciaupdo",
+    "https://www.linkedin.com/company/updogrowth/",
+    "https://www.instagram.com/updogrowth/",
+    "https://www.facebook.com/updogrowth",
+    "https://www.youtube.com/@updogrowth",
   ],
 };
 

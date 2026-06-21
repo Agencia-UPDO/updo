@@ -34,8 +34,9 @@ const sections = [
       <>
         <p>
           A <strong>UPDO Agência de Marketing Ltda.</strong>, CNPJ
-          30.119.930/0001-20, é uma empresa de marketing, vendas, dados e IA,
-          com sede em Curitiba / PR e atuação em todo o Brasil.
+          30.119.930/0001-20, é uma empresa especializada em estruturação de
+          marketing, vendas, CRM, dados e IA, com sede em Curitiba / PR e
+          atuação em todo o Brasil.
         </p>
       </>
     ),
@@ -64,7 +65,9 @@ const sections = [
         <ul>
           <li>Apresentar serviços, setores atendidos, cases e conteúdos;</li>
           <li>Receber solicitações de diagnóstico, contato e treinamento;</li>
-          <li>Compartilhar informações sobre marketing, vendas, dados e IA;</li>
+          <li>
+            Compartilhar informações sobre marketing, vendas, CRM, dados e IA;
+          </li>
           <li>Mensurar campanhas e melhorar a experiência de navegação.</li>
         </ul>
       </>

@@ -26,7 +26,7 @@ const cases = [
     client: "Instituição de Ensino Superior",
     segment: "Educação · Área da Saúde",
     challenge:
-      "Platô de crescimento com time comercial sem ferramentas e marketing sem direção estratégica. A agência anterior não entregava performance, e a comunicação entre áreas gerava retrabalho.",
+      "Platô de crescimento com time comercial sem ferramentas e marketing sem direção estratégica. O modelo anterior não entregava performance, e a comunicação entre áreas gerava retrabalho.",
     strategy:
       "Diagnóstico de 6 meses, implementação de CRM e RD Station, playbooks de vendas e gestão 360° do marketing. Aplicamos regressão linear para projetar resultados e ajustar rotas com precisão.",
     results: [

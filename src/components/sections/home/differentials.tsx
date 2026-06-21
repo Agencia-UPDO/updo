@@ -45,9 +45,9 @@ export function HomeDifferentials() {
             O que só a UPDO entrega.
           </h2>
           <p className="mt-5 text-muted-foreground text-base leading-relaxed">
-            Não somos agência de execução. Somos uma agência com método
-            próprio, sistemas exclusivos e governança real validados por uma
-            década.
+            Não operamos como execução isolada. Estruturamos crescimento com
+            método próprio, sistemas exclusivos e governança real validados por
+            uma década.
           </p>
         </motion.div>
 

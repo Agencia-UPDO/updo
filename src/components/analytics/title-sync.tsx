@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const titles: Record<string, string> = {
-  "/": "UPDO | Agência de Marketing, Vendas, Dados e IA",
-  "/sobre": "Sobre | Agência de Marketing, Vendas e IA | UPDO",
+  "/": "UPDO | Estruturação de Marketing, Vendas, CRM e Dados",
+  "/sobre": "Sobre | Consultoria de Crescimento, CRM e Inteligência Comercial | UPDO",
   "/o-que-fazemos": "Como Trabalhamos | Método de Marketing e Vendas | UPDO",
   "/diagnostico": "Diagnóstico de Marketing e Vendas | UPDO",
   "/treinamentos-corporativos": "Treinamentos Corporativos | Vendas, Neurovendas e IA | UPDO",
@@ -43,14 +43,23 @@ export function TitleSync() {
       }
     };
 
-    const timer = window.setTimeout(syncTitle, 0);
+    syncTitle();
+
+    const timers = [
+      window.setTimeout(syncTitle, 0),
+      window.setTimeout(syncTitle, 60),
+      window.setTimeout(syncTitle, 180),
+    ];
+
+    const frame = window.requestAnimationFrame(syncTitle);
 
     window.addEventListener("focus", syncTitle);
     window.addEventListener("pageshow", syncTitle);
     document.addEventListener("visibilitychange", syncTitle);
 
     return () => {
-      window.clearTimeout(timer);
+      timers.forEach((timer) => window.clearTimeout(timer));
+      window.cancelAnimationFrame(frame);
       window.removeEventListener("focus", syncTitle);
       window.removeEventListener("pageshow", syncTitle);
       document.removeEventListener("visibilitychange", syncTitle);

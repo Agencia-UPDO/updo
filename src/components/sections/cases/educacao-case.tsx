@@ -319,7 +319,7 @@ export function CaseEducacaoClient() {
                   referência na área da saúde no Sul do Brasil, enfrentava um
                   platô de crescimento. TimeComercial operava sem ferramentas
                   adequadas e o marketing não possuía direcionamento estratégico
-                  claro. A agência anterior não entregava a performance
+                  claro. A operação anterior não entregava a performance
                   esperada, tornando a troca inevitável.
                 </p>
               </div>

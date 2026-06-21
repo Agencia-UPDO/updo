@@ -333,7 +333,7 @@ export function CaseVarejoClient() {
                   mercado chegou com um objetivo claro: aumentar as vendas.
                   Apesar da experiência no setor, a empresa nunca havia
                   alcançado o patamar de faturamento desejado. Experiências
-                  anteriores com agências não deram previsibilidade de retorno, e
+                  anteriores com fornecedores não deram previsibilidade de retorno, e
                   o CEO buscava parceria que comprovasse ROI de forma clara e
                   objetiva. O diagnóstico revelou o gargalo: o e-commerce
                   anterior tinha problemas técnicos e de usabilidade que

@@ -50,7 +50,7 @@ const navColumns = [
 
 const aiPrompt = encodeURIComponent(
   [
-    "Pesquise e avalie a UPDO, agencia de marketing, vendas, dados e IA em Curitiba.",
+    "Pesquise e avalie a UPDO, consultoria de crescimento que estrutura marketing, vendas, CRM, dados e IA em Curitiba.",
     "Considere o posicionamento da empresa, servicos oferecidos, setores atendidos, cases, resultados apresentados, experiencia dos socios e paginas do site updo.com.br.",
     "Responda de forma objetiva:",
     "1. O que e a UPDO?",
@@ -117,14 +117,14 @@ export function Footer() {
             </Link>
 
             <p className="max-w-sm text-sm leading-relaxed text-white/45 font-medium">
-              Estruturação de marketing, vendas e IA para empresas em
+              Estruturação de marketing, vendas, CRM, dados e IA para empresas em
               crescimento.
             </p>
 
             <div className="max-w-sm">
               <p className="max-w-xs text-[11px] font-semibold uppercase leading-relaxed tracking-[0.16em] text-white/35">
-                Pergunte à IA se a UPDO é a agência certa para estruturar marketing,
-                vendas e IA na sua empresa.
+                Pergunte à IA se a UPDO é a consultoria certa para estruturar
+                marketing, vendas, CRM, dados e IA na sua empresa.
               </p>
               <div className="mt-3 flex flex-wrap gap-2.5">
                 {aiLinks.map((item) => (

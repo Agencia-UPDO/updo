@@ -49,7 +49,7 @@ const timeline = [
   {
     year: "2017",
     title: "A UPDO nasce em Curitiba",
-    body: "Rodrigo Bueno e Juliana Scottini criaram uma agência para unir estratégia, criação e execução com uma leitura incomum no mercado: entender como o consumidor decide antes de comprar mídia.",
+    body: "Rodrigo Bueno e Juliana Scottini criaram a UPDO para unir estratégia, comportamento do consumidor e operação comercial com uma leitura incomum no mercado: entender como a decisão acontece antes da mídia entrar no ar.",
     icon: Briefcase,
   },
   {
@@ -200,7 +200,7 @@ export function AboutPage() {
               </span>
 
               <h1 className="mt-6 font-heading text-4xl font-black leading-[1.08] tracking-tight text-white md:text-6xl">
-                A agência que conecta marketing, vendas e dados ao número.
+                A consultoria que conecta marketing, vendas, CRM e dados à receita.
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/68 md:text-lg">

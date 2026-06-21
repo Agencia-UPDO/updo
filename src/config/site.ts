@@ -11,7 +11,7 @@ const siteUrl = isLocalSiteUrl ? productionSiteUrl : publicSiteUrl;
 export const siteConfig = {
   name: "UPDO",
   description:
-    "Agência de marketing, vendas, dados e IA em Curitiba para empresas que querem gerar demanda, estruturar funil comercial e crescer com previsibilidade.",
+    "Estruturação de marketing, vendas, CRM, dados e IA em Curitiba para empresas que querem gerar demanda, organizar o funil comercial e crescer com previsibilidade.",
   url: siteUrl,
   ogImage: `${siteUrl}/og.jpg`,
   links: {
@@ -36,10 +36,10 @@ export const siteConfig = {
     },
   ],
   social: {
-    linkedin: "https://www.linkedin.com/company/agencia-updo/",
-    instagram: "https://www.instagram.com/agenciaupdo/",
-    facebook: "https://www.facebook.com/agenciaupdo",
-    youtube: "https://www.youtube.com/@agenciaupdo",
+    linkedin: "https://www.linkedin.com/company/updogrowth/",
+    instagram: "https://www.instagram.com/updogrowth/",
+    facebook: "https://www.facebook.com/updogrowth",
+    youtube: "https://www.youtube.com/@updogrowth",
   },
   cnpj: "30.119.930/0001-20",
   mainNav: [

@@ -29,7 +29,7 @@ const problems = [
     label: "ROI",
     title: "Você investe, mas não sabe no quê",
     description:
-      "Posts, anúncios, agência, consultoria. Você testa, gasta e espera. Mas quando alguém pergunta o que trouxe resultado, você não tem uma resposta precisa.",
+      "Posts, anúncios, ferramentas, consultoria. Você testa, gasta e espera. Mas quando alguém pergunta o que trouxe resultado, você não tem uma resposta precisa.",
     consequence:
       "Sem medir o que funciona, você repete o que parece certo e não o que é eficiente. E continua financiando estratégias que não entregam.",
     insight: "Marketing sem dado não é investimento. É aposta.",

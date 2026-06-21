@@ -134,7 +134,7 @@ const businessTypes = [
   "SaaS / Plataforma",
   "Consultoria",
   "Serviços profissionais (RH, jurídico, financeiro)",
-  "Agência / Marketing",
+  "Marketing / Comercial",
   "Tecnologia / TI",
   "Educação corporativa",
   "Outro",

@@ -302,7 +302,9 @@ export function OQueFazemosPage() {
               Três níveis de atuação para nenhuma lacuna entre estratégia e resultado.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-              A maioria das agências atua só no operacional: cria campanha, entrega relatório. Nós atuamos nos três níveis ao mesmo tempo, com responsabilidade sobre o número, não só sobre a entrega.
+              Atuamos nos níveis estratégico, tático e operacional ao mesmo
+              tempo, conectando planejamento, execução e leitura de resultado
+              com responsabilidade sobre o número, não só sobre a entrega.
             </p>
           </div>
 

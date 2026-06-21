@@ -3,16 +3,16 @@ import Script from "next/script";
 import { AboutPage } from "@/components/sections/about/about-page";
 
 export const metadata: Metadata = {
-  title: "Sobre | Agência de Marketing, Vendas e IA",
+  title: "Sobre | Consultoria de Crescimento, CRM e Inteligência Comercial",
   description:
-    "Conheça a UPDO, agência de marketing, vendas, dados e IA em Curitiba. Desde 2017, unimos comportamento do consumidor, mídia e processo comercial.",
+    "Conheça a UPDO, consultoria de crescimento em Curitiba. Desde 2017, unimos comportamento do consumidor, marketing, CRM, dados e processo comercial.",
   alternates: {
     canonical: "https://updo.com.br/sobre",
   },
   openGraph: {
-    title: "Sobre a UPDO | Agência de Marketing, Vendas e IA",
+    title: "Sobre a UPDO | Consultoria de Crescimento, CRM e Inteligência Comercial",
     description:
-      "Agência de marketing, vendas, dados e IA em Curitiba. Desde 2017, unimos comportamento do consumidor, mídia e processo comercial.",
+      "Consultoria de crescimento em Curitiba. Desde 2017, unimos comportamento do consumidor, marketing, CRM, dados e processo comercial.",
     url: "https://updo.com.br/sobre",
     siteName: "UPDO",
     locale: "pt_BR",
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
         url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
-        alt: "UPDO | Agência de Marketing, Vendas, Dados e IA em Curitiba",
+        alt: "UPDO | Consultoria de Crescimento, CRM e Inteligência Comercial",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sobre a UPDO | Agência de Marketing, Vendas e IA",
+    title: "Sobre a UPDO | Consultoria de Crescimento, CRM e Inteligência Comercial",
     description:
-      "Agência de marketing, vendas, dados e IA em Curitiba. Desde 2017, unimos comportamento do consumidor, mídia e processo comercial.",
+      "Consultoria de crescimento em Curitiba. Desde 2017, unimos comportamento do consumidor, marketing, CRM, dados e processo comercial.",
     images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
@@ -57,10 +57,10 @@ const aboutPageSchema = {
       addressCountry: "BR",
     },
     sameAs: [
-      "https://www.linkedin.com/company/agencia-updo/",
-      "https://www.instagram.com/agenciaupdo/",
-      "https://www.facebook.com/agenciaupdo",
-      "https://www.youtube.com/@agenciaupdo",
+      "https://www.linkedin.com/company/updogrowth/",
+      "https://www.instagram.com/updogrowth/",
+      "https://www.facebook.com/updogrowth",
+      "https://www.youtube.com/@updogrowth",
     ],
   },
 };

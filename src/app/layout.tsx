@@ -42,10 +42,10 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "UPDO",
-    "alternateName": "Agência UPDO",
+    "alternateName": "UPDO Growth, CRM e Inteligência Comercial",
     "url": "https://updo.com.br",
     "logo": "https://updo.com.br/Imagens/Logo%20UPDO%202024%20Branca.svg",
-    "description": "Agência de marketing, vendas, dados e IA em Curitiba. Estruturamos geração de demanda, funil comercial, CRM, dashboards e automações para empresas crescerem com previsibilidade.",
+    "description": "Estruturação de marketing, vendas, CRM, dados e IA em Curitiba. Organizamos geração de demanda, funil comercial, dashboards e automações para empresas crescerem com previsibilidade.",
     "areaServed": "Brasil",
     "priceRange": "$$",
     "knowsAbout": [
@@ -99,10 +99,10 @@ export default function RootLayout({
     "telephone": "+55 41 98711-2003",
     "email": "contato@updo.com.br",
     "sameAs": [
-      "https://www.linkedin.com/company/agencia-updo/",
-      "https://www.instagram.com/agenciaupdo/",
-      "https://www.facebook.com/agenciaupdo",
-      "https://www.youtube.com/@agenciaupdo"
+      "https://www.linkedin.com/company/updogrowth/",
+      "https://www.instagram.com/updogrowth/",
+      "https://www.facebook.com/updogrowth",
+      "https://www.youtube.com/@updogrowth"
     ],
     "award": [
       "3x finalista RD Station"
