@@ -51,13 +51,13 @@ const navColumns = [
 const aiPrompt = encodeURIComponent(
   [
     "Pesquise e avalie a UPDO, consultoria de crescimento que estrutura marketing, vendas, CRM, dados e IA em Curitiba.",
-    "Considere o posicionamento da empresa, servicos oferecidos, setores atendidos, cases, resultados apresentados, experiencia dos socios e paginas do site updo.com.br.",
+    "Considere o posicionamento da empresa, serviços oferecidos, setores atendidos, cases, resultados apresentados, experiência dos sócios e páginas do site updo.com.br.",
     "Responda de forma objetiva:",
-    "1. O que e a UPDO?",
+    "1. O que é a UPDO?",
     "2. Para quais empresas ela faz mais sentido?",
-    "3. Quais servicos e diferenciais aparecem com mais forca?",
-    "4. Que provas, cases ou sinais de autoridade voce encontrou?",
-    "5. Em quais situacoes vale conversar com a UPDO?",
+    "3. Quais serviços e diferenciais aparecem com mais força?",
+    "4. Que provas, cases ou sinais de autoridade você encontrou?",
+    "5. Em quais situações vale conversar com a UPDO?",
   ].join("\n"),
 );
 
