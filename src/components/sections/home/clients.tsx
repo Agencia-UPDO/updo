@@ -45,13 +45,21 @@ const DESKTOP_SPEED = 32;
 
 export function HomeClients() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<number>(0);
+  const mobileAnimRef = useRef<number>(0);
   const lastTimeRef = useRef<number>(0);
+  const mobileLastTimeRef = useRef<number>(0);
   const pausedRef = useRef(false);
+  const mobilePausedRef = useRef(false);
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mobileResumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isDraggingRef = useRef(false);
+  const isTouchDraggingRef = useRef(false);
   const dragStartXRef = useRef(0);
+  const touchStartXRef = useRef(0);
   const dragScrollStartRef = useRef(0);
+  const touchScrollStartRef = useRef(0);
   const [dragging, setDragging] = useState(false);
 
   useEffect(() => {
@@ -79,6 +87,31 @@ export function HomeClients() {
     return () => cancelAnimationFrame(animRef.current);
   }, []);
 
+  useEffect(() => {
+    const container = mobileScrollRef.current;
+    if (!container) return;
+
+    const animate = (time: number) => {
+      if (!mobilePausedRef.current) {
+        if (mobileLastTimeRef.current) {
+          const delta = time - mobileLastTimeRef.current;
+          const loopWidth = container.scrollWidth / 2;
+          if (loopWidth > 0) {
+            container.scrollLeft += (DESKTOP_SPEED * delta) / 1000;
+            if (container.scrollLeft >= loopWidth) {
+              container.scrollLeft -= loopWidth;
+            }
+          }
+        }
+        mobileLastTimeRef.current = time;
+      }
+      mobileAnimRef.current = requestAnimationFrame(animate);
+    };
+
+    mobileAnimRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(mobileAnimRef.current);
+  }, []);
+
   const pause = () => {
     pausedRef.current = true;
     lastTimeRef.current = 0;
@@ -90,6 +123,20 @@ export function HomeClients() {
     resumeTimerRef.current = setTimeout(() => {
       pausedRef.current = false;
       lastTimeRef.current = 0;
+    }, delay);
+  };
+
+  const pauseMobile = () => {
+    mobilePausedRef.current = true;
+    mobileLastTimeRef.current = 0;
+    if (mobileResumeTimerRef.current) clearTimeout(mobileResumeTimerRef.current);
+  };
+
+  const resumeMobile = (delay = 0) => {
+    if (mobileResumeTimerRef.current) clearTimeout(mobileResumeTimerRef.current);
+    mobileResumeTimerRef.current = setTimeout(() => {
+      mobilePausedRef.current = false;
+      mobileLastTimeRef.current = 0;
     }, delay);
   };
 
@@ -123,6 +170,26 @@ export function HomeClients() {
     isDraggingRef.current = false;
     setDragging(false);
     resume(300);
+  };
+
+  const onTouchStart = (event: React.TouchEvent) => {
+    if (!mobileScrollRef.current) return;
+    isTouchDraggingRef.current = true;
+    touchStartXRef.current = event.touches[0].clientX;
+    touchScrollStartRef.current = mobileScrollRef.current.scrollLeft;
+    pauseMobile();
+  };
+
+  const onTouchMove = (event: React.TouchEvent) => {
+    if (!isTouchDraggingRef.current || !mobileScrollRef.current) return;
+    const delta = event.touches[0].clientX - touchStartXRef.current;
+    mobileScrollRef.current.scrollLeft = touchScrollStartRef.current - delta;
+  };
+
+  const onTouchEnd = () => {
+    if (!isTouchDraggingRef.current) return;
+    isTouchDraggingRef.current = false;
+    resumeMobile(600);
   };
 
   return (
@@ -219,7 +286,15 @@ export function HomeClients() {
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#F7F9FF] to-transparent lg:w-24" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#F7F9FF] to-transparent lg:w-24" />
 
-          <div className="client-marquee flex w-max items-center gap-8 py-3 lg:gap-10">
+          <div
+            ref={mobileScrollRef}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+            onTouchCancel={onTouchEnd}
+            className="flex items-center gap-8 overflow-x-scroll py-3 touch-pan-x select-none [&::-webkit-scrollbar]:hidden"
+            style={{ scrollbarWidth: "none" }}
+          >
             {track.map((client, index) => (
               <div
                 key={`${client.name}-${index}`}

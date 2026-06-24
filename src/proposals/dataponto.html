@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proposta Comercial | UPDO × Dataponto</title>
+    <meta
+      name="description"
+      content="Proposta estratégica de arquitetura de crescimento comercial da UPDO para a Dataponto."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --surface: #f5f7fc;
+        --surface-2: #eef2f8;
+        --navy: #0f1b3d;
+        --navy-2: #1a2d5a;
+        --text: #5a6480;
+        --text-soft: #9aa3bc;
+        --line: #e2e6f0;
+        --line-2: #c8cfe4;
+        --teal: #2eddb0;
+        --teal-2: #1ab890;
+        --purple: #8b7ff5;
+        --purple-2: #6e63d4;
+        --page-bg: #e4e8f1;
+        --shadow: 0 20px 40px rgba(15, 27, 61, 0.08), 0 4px 12px rgba(15, 27, 61, 0.04);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--page-bg);
+        background-image: linear-gradient(to bottom, var(--navy) 0px, var(--navy) 280px, transparent 280px);
+        background-repeat: no-repeat;
+        color: var(--navy);
+        font-family: "Inter", sans-serif;
+        font-size: 15.5px;
+        line-height: 1.65;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 60px 20px;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        position: relative;
+        overflow: hidden;
+        width: min(100%, 980px);
+        margin: 0 auto;
+        padding: 68px 68px;
+        border-radius: 16px;
+        background: var(--bg);
+        box-shadow: var(--shadow);
+      }
+
+      .page::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 8px;
+        background: linear-gradient(180deg, var(--teal) 0%, var(--purple) 100%);
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-bottom: 32px;
+        margin-bottom: 48px;
+        border-bottom: 1.5px solid var(--line-2);
+      }
+
+      .header-sep {
+        padding: 0 10px;
+        color: var(--teal);
+        opacity: 0.45;
+        font-family: "Sora", sans-serif;
+        font-size: 24px;
+      }
+
+      .logo-wrap img {
+        height: 48px;
+        object-fit: contain;
+      }
+
+      .logo-client {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        border-radius: 10px;
+      }
+
+      .logo-client img {
+        height: 38px;
+      }
+
+      .hero {
+        margin-bottom: 52px;
+      }
+
+      .hero-eyebrow,
+      .section-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 28px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: var(--navy);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .hero-eyebrow {
+        margin-bottom: 18px;
+      }
+
+      .hero-eyebrow::before,
+      .section-pill::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--teal);
+      }
+
+      .hero h1 {
+        font-family: "Sora", sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+        line-height: 1.12;
+        color: var(--navy);
+        margin-bottom: 18px;
+      }
+
+      .hero h1 span {
+        color: var(--purple);
+      }
+
+      .hero-sub {
+        max-width: 620px;
+        color: var(--text);
+        font-size: 16px;
+        line-height: 1.8;
+      }
+
+      .hero-meta {
+        display: flex;
+        width: fit-content;
+        margin-top: 32px;
+        border: 1.5px solid var(--line-2);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .meta-item {
+        padding: 14px 26px;
+        border-right: 1px solid var(--line);
+      }
+
+      .meta-item:last-child {
+        border-right: none;
+      }
+
+      .meta-label {
+        margin-bottom: 3px;
+        color: var(--text-soft);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .meta-value {
+        color: var(--navy);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .section {
+        margin-bottom: 52px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .section-title {
+        flex-shrink: 0;
+        color: var(--navy);
+        font-family: "Sora", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .section-line {
+        flex: 1;
+        height: 1px;
+        background: var(--line);
+      }
+
+      .strategy-text {
+        max-width: 740px;
+        margin-bottom: 16px;
+        color: var(--text);
+        line-height: 1.82;
+      }
+
+      .strategy-text strong,
+      .strategy-highlight-text strong,
+      .budget-note strong,
+      .validity-text strong {
+        color: var(--navy);
+      }
+
+      .strategy-highlight {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-top: 4px;
+        padding: 16px 20px;
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--teal);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .strategy-highlight-icon {
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      .strategy-highlight-text {
+        color: var(--text);
+        font-size: 13.5px;
+        line-height: 1.7;
+      }
+
+      .growth-flow {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .growth-step {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: linear-gradient(180deg, #ffffff 0%, #f7f9fd 100%);
+        color: var(--navy);
+        font-size: 12px;
+        font-weight: 700;
+        text-align: center;
+        line-height: 1.35;
+      }
+
+      .growth-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--teal-2);
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .frente-group {
+        margin-bottom: 24px;
+      }
+
+      .frente-title {
+        margin-bottom: 12px;
+        color: var(--navy);
+        font-family: "Sora", sans-serif;
+        font-size: 14.5px;
+        font-weight: 700;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .product-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        transition: border-color 0.18s ease, background 0.18s ease;
+      }
+
+      .product-item:hover {
+        border-color: var(--teal);
+        background: #f0fdf9;
+      }
+
+      .product-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--teal);
+        flex-shrink: 0;
+      }
+
+      .product-name {
+        color: var(--navy);
+        font-size: 12.5px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .scope-note {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        margin-top: 14px;
+        padding: 12px 16px;
+        border: 1px solid #d6d0ff;
+        border-radius: 8px;
+        background: #f3f0ff;
+        color: var(--purple-2);
+        font-size: 13.5px;
+        font-weight: 500;
+      }
+
+      .site-note {
+        margin-top: 14px;
+        padding: 16px 18px;
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--purple);
+        border-radius: 8px;
+        background: #f8f7ff;
+        color: var(--text);
+        font-size: 13px;
+        line-height: 1.72;
+      }
+
+      .site-note strong {
+        color: var(--navy);
+      }
+
+      .budget-note {
+        margin-top: 16px;
+        padding: 16px 20px;
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--purple);
+        border-radius: 8px;
+        background: var(--surface);
+        color: var(--text);
+        font-size: 13px;
+        line-height: 1.72;
+      }
+
+      .plans-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .investment-context {
+        margin-bottom: 24px;
+        padding: 20px 22px;
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--teal);
+        border-radius: 10px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      }
+
+      .investment-context strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--navy);
+        font-family: "Sora", sans-serif;
+        font-size: 18px;
+        line-height: 1.25;
+      }
+
+      .investment-context p {
+        color: var(--text);
+        font-size: 14px;
+        line-height: 1.72;
+      }
+
+      .plan-card {
+        overflow: hidden;
+        border: 1.5px solid var(--line-2);
+        border-radius: 12px;
+      }
+
+      .plan-card.is-primary {
+        border-color: var(--teal);
+      }
+
+      .plan-card-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 20px;
+        padding: 28px 32px;
+        background: var(--navy);
+        color: #fff;
+      }
+
+      .plan-copy {
+        min-width: 0;
+      }
+
+      .plan-card.is-secondary .plan-card-header {
+        background: var(--purple);
+      }
+
+      .plan-card-eyebrow {
+        margin-bottom: 6px;
+        color: var(--teal);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .plan-card.is-secondary .plan-card-eyebrow {
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .plan-card-title {
+        color: #fff;
+        font-family: "Sora", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.22;
+      }
+
+      .plan-card-desc {
+        max-width: 320px;
+        margin-top: 6px;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 13px;
+        line-height: 1.65;
+      }
+
+      .plan-price {
+        flex-shrink: 0;
+        min-width: 0;
+        text-align: right;
+      }
+
+      .price-prefix {
+        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .price-value {
+        color: var(--teal);
+        font-family: "Sora", sans-serif;
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 0.95;
+        letter-spacing: -1.4px;
+        white-space: nowrap;
+      }
+
+      .plan-card.is-secondary .price-value {
+        color: #fff;
+      }
+
+      .price-suffix {
+        margin-top: 8px;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 12px;
+      }
+
+      .plan-card-body {
+        padding: 28px 32px;
+        background: var(--bg);
+      }
+
+      .plan-objective {
+        margin-bottom: 18px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .plan-objective-label {
+        margin-bottom: 8px;
+        color: var(--text-soft);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .plan-objective-text {
+        color: var(--text);
+        font-size: 13.5px;
+        line-height: 1.72;
+      }
+
+      .plan-benefits {
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+      }
+
+      .plan-benefits-label {
+        margin-bottom: 8px;
+        color: var(--text-soft);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .plan-benefits-text {
+        color: var(--text);
+        font-size: 13.5px;
+        line-height: 1.72;
+      }
+
+      .training-note {
+        margin-top: 20px;
+        padding: 16px 18px;
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--teal);
+        border-radius: 8px;
+        background: #f5fcfa;
+      }
+
+      .training-note-label {
+        margin-bottom: 8px;
+        color: var(--text-soft);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .training-note-text {
+        color: var(--text);
+        font-size: 13.5px;
+        line-height: 1.72;
+      }
+
+      .training-note-text strong {
+        color: var(--navy);
+      }
+
+      .deliverables-list {
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .deliverables-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        color: var(--navy);
+        font-size: 13.5px;
+        line-height: 1.5;
+      }
+
+      .check {
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 1px;
+        border-radius: 4px;
+        background: var(--teal);
+      }
+
+      .plan-card.is-secondary .check {
+        background: var(--purple);
+      }
+
+      .gantt-wrapper {
+        margin-top: 16px;
+        padding: 24px;
+        overflow-x: auto;
+        border: 1.5px solid var(--line);
+        border-radius: 12px;
+        background: var(--surface);
+      }
+
+      .gantt-grid {
+        min-width: 640px;
+      }
+
+      .gantt-row {
+        display: grid;
+        grid-template-columns: 220px repeat(4, 1fr);
+        gap: 12px;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px dashed var(--line);
+      }
+
+      .gantt-row:last-child {
+        border-bottom: none;
+      }
+
+      .gantt-header {
+        padding-bottom: 12px;
+        border-bottom: 1.5px solid var(--line-2);
+        color: var(--text-soft);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .gantt-label {
+        color: var(--navy);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .gantt-cell-center {
+        text-align: center;
+      }
+
+      .gantt-bar {
+        display: flex;
+        align-items: center;
+        height: 28px;
+        padding: 0 12px;
+        border-radius: 6px;
+        background: var(--teal);
+        color: var(--navy);
+        font-size: 11px;
+        font-weight: 700;
+        white-space: nowrap;
+        box-shadow: 0 2px 6px rgba(46, 221, 176, 0.2);
+      }
+
+      .bar-purple {
+        background: var(--purple);
+        color: #fff;
+        box-shadow: 0 2px 6px rgba(139, 127, 245, 0.2);
+      }
+
+      .bar-light {
+        background: var(--line-2);
+        color: var(--navy);
+        box-shadow: none;
+      }
+
+      .validity-box {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 48px;
+        padding: 20px 26px;
+        border: 1.5px solid var(--line-2);
+        border-radius: 10px;
+        background: var(--surface);
+      }
+
+      .validity-icon {
+        flex-shrink: 0;
+        font-size: 24px;
+      }
+
+      .validity-text {
+        color: var(--text);
+        font-size: 13px;
+        line-height: 1.65;
+      }
+
+      .cta-block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 20px;
+        padding: 24px 28px;
+        border-radius: 12px;
+        background: var(--navy);
+      }
+
+      .cta-title {
+        margin-bottom: 4px;
+        color: #fff;
+        font-family: "Sora", sans-serif;
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      .cta-sub {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        padding: 13px 24px;
+        border-radius: 999px;
+        background: #25d366;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        white-space: nowrap;
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+        transition: background 0.18s ease, transform 0.15s ease;
+      }
+
+      .whatsapp-btn:hover {
+        background: #1db954;
+        transform: translateY(-1px);
+      }
+
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 26px;
+        border-top: 1px solid var(--line);
+      }
+
+      .footer-logo img {
+        height: 22px;
+        opacity: 0.62;
+        filter: brightness(1.14);
+      }
+
+      .footer-info {
+        color: var(--text-soft);
+        font-size: 12px;
+        line-height: 1.65;
+        text-align: right;
+      }
+
+      .footer-info a {
+        color: var(--teal-2);
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 20px 10px;
+          background-image: none;
+          background-color: var(--navy);
+        }
+
+        .page {
+          padding: 32px 20px;
+          border-radius: 12px;
+        }
+
+        .page::before {
+          width: 5px;
+        }
+
+        .header {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero h1 {
+          font-size: 28px;
+        }
+
+        .hero-meta {
+          width: 100%;
+          flex-direction: column;
+        }
+
+        .meta-item {
+          padding: 12px 20px;
+          border-right: none;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .meta-item:last-child {
+          border-bottom: none;
+        }
+
+        .products-grid,
+        .plans-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .growth-flow {
+          grid-template-columns: 1fr;
+        }
+
+        .growth-arrow {
+          transform: rotate(90deg);
+        }
+
+        .plan-card-header {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-block,
+        .footer {
+          flex-direction: column;
+        }
+
+        .plan-price,
+        .footer-info {
+          text-align: left;
+        }
+
+        .footer {
+          align-items: flex-start;
+        }
+      }
+
+      @media print {
+        body {
+          background: none;
+          padding: 0;
+        }
+
+        .page {
+          max-width: 100%;
+          padding: 0;
+          border-radius: 0;
+          box-shadow: none;
+        }
+
+        .page::before {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="logo-wrap logo-updo">
+          <img
+            src="https://www.updo.com.br/Imagens/Agencia-UPDO.svg?dpl=dpl_3cuvxnNsrsj3EeH5758YNthapZoz"
+            onerror="this.outerHTML='<span style=&quot;font-family:Sora,sans-serif;font-size:22px;font-weight:800;color:#0f1b3d&quot;>updo</span>'"
+            alt="UPDO"
+          />
+        </div>
+        <span class="header-sep">×</span>
+        <div class="logo-wrap logo-client">
+          <img
+            src="https://dataponto.com.br/images/logo.png"
+            onerror="this.outerHTML='<span style=&quot;font-family:Inter,sans-serif;font-size:16px;font-weight:700;color:#0f1b3d;letter-spacing:0.04em&quot;>DATAPONTO</span>'"
+            alt="Dataponto"
+          />
+        </div>
+      </header>
+
+      <section class="hero">
+        <span class="hero-eyebrow">Proposta Comercial</span>
+        <h1>Arquitetura de crescimento comercial para a <span>Dataponto</span></h1>
+        <p class="hero-sub">
+          Construindo uma operação mais previsível de aquisição, conversão, CRM,
+          dados e receita para sustentar crescimento com mais clareza comercial.
+        </p>
+        <div class="hero-meta">
+          <div class="meta-item">
+            <div class="meta-label">Elaborado por</div>
+            <div class="meta-value">Rodrigo Bueno · UPDO</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Destinatário</div>
+            <div class="meta-value">Adilson · Dataponto</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Data</div>
+            <div class="meta-value">Junho de 2026</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <span class="section-pill">01</span>
+          <h2 class="section-title">Contexto atual</h2>
+          <div class="section-line"></div>
+        </div>
+        <p class="strategy-text">
+          A Dataponto já tem mercado, reputação e uma entrega relevante. O próximo
+          passo não é adicionar novas iniciativas isoladas. É construir uma
+          arquitetura capaz de conectar aquisição, conversão, CRM, atendimento e
+          inteligência comercial em um sistema único de crescimento.
+        </p>
+        <p class="strategy-text">
+          Quando fornecedores, canais e áreas operam de forma fragmentada, a empresa
+          perde velocidade, previsibilidade e clareza sobre o que realmente gera
+          oportunidade, proposta e receita.
+        </p>
+        <div class="strategy-highlight">
+          <div class="strategy-highlight-icon">◆</div>
+          <div class="strategy-highlight-text">
+            <strong>Ponto central da proposta:</strong> a UPDO entra para desenhar a
+            arquitetura de crescimento comercial e conectar marketing, vendas, CRM,
+            automações e inteligência operacional em um único sistema.
+          </div>
+        </div>
+        <div class="growth-flow">
+          <div class="growth-step">Aquisição</div>
+          <div class="growth-arrow">→</div>
+          <div class="growth-step">Conversão</div>
+          <div class="growth-arrow">→</div>
+          <div class="growth-step">CRM</div>
+          <div class="growth-arrow">→</div>
+          <div class="growth-step">Automação</div>
+          <div class="growth-arrow">→</div>
+          <div class="growth-step">Dados</div>
+          <div class="growth-arrow">→</div>
+          <div class="growth-step">Inteligência comercial</div>
+          <div class="growth-arrow">→</div>
+          <div class="growth-step">Previsibilidade</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <span class="section-pill">02</span>
+          <h2 class="section-title">As 5 frentes do projeto</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="frente-group">
+          <div class="frente-title">1. Arquitetura de crescimento</div>
+          <div class="products-grid">
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Diagnóstico operacional</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Mapeamento da jornada comercial</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Definição de KPIs</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Roadmap de 12 meses</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Governança de execução</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Integração marketing e vendas</span></div>
+          </div>
+        </div>
+
+        <div class="frente-group">
+          <div class="frente-title">2. Novo ecossistema digital</div>
+          <div class="products-grid">
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Novo site institucional e comercial</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">SEO, GEO e estrutura para indexação em IAs</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">UX executivo</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">CRO e arquitetura de conversão</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Analytics e tracking</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Landing pages, ramificações e integrações</span></div>
+          </div>
+          <div class="site-note">
+            <strong>O papel do site aqui é estratégico:</strong> não é só redesign. Vamos estudar as buscas que já existem hoje no mercado da Dataponto para definir como o site deve se ramificar em páginas principais, páginas por intenção e páginas de apoio. A ideia é construir uma base preparada para ranquear no Google, ampliar cobertura semântica e aumentar a chance de indexação nas IAs. Também entra nesse projeto a <strong>migração do blog atual</strong>, preservando conteúdo útil e reorganizando o que fizer sentido dentro da nova arquitetura.
+          </div>
+        </div>
+
+        <div class="frente-group">
+          <div class="frente-title">3. Growth marketing</div>
+          <div class="products-grid">
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Google Ads</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Meta Ads</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">LinkedIn Ads</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Remarketing</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Conteúdo estratégico</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Leitura contínua de canal</span></div>
+          </div>
+        </div>
+
+        <div class="frente-group">
+          <div class="frente-title">4. CRM e RevOps</div>
+          <div class="products-grid">
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">RD Station Marketing</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">CRM comercial</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Lead scoring</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Automações e cadências</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Dashboards</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">SLA marketing × vendas</span></div>
+          </div>
+        </div>
+
+        <div class="frente-group">
+          <div class="frente-title">5. Performance comercial</div>
+          <div class="products-grid">
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Treinamento do time</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Processos e playbooks</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Indicadores de rotina</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Rituais de acompanhamento</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Governança de execução</span></div>
+            <div class="product-item"><span class="product-dot"></span><span class="product-name">Otimização contínua</span></div>
+          </div>
+        </div>
+
+        <div class="scope-note">
+          <span>✦</span>
+          Escopo modular: a implantação pode começar pelo desenho estratégico e evoluir
+          por fases até a operação contínua.
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <span class="section-pill">03</span>
+          <h2 class="section-title">Investimento</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="investment-context">
+          <strong>O cenário hoje pede estrutura antes de escala.</strong>
+          <p>
+            Identificamos uma oportunidade de fortalecer as bases de aquisição e
+            gestão comercial antes de acelerar investimentos em geração de demanda,
+            garantindo que o crescimento aconteça de forma mais sustentável,
+            mensurável e previsível.
+          </p>
+        </div>
+
+        <div class="budget-note" style="margin-top: 0; margin-bottom: 24px;">
+          <strong>Lógica comercial da proposta:</strong> separar o projeto estrutural
+          do fee mensal deixa clara a diferença entre construção da base e operação
+          contínua de crescimento.
+        </div>
+
+        <div class="plans-grid">
+          <article class="plan-card is-primary">
+            <div class="plan-card-header">
+              <div class="plan-copy">
+                <div class="plan-card-eyebrow">Operação contínua</div>
+                <div class="plan-card-title">Growth Partner</div>
+                <div class="plan-card-desc">
+                  A UPDO conduzindo mídia, CRM, inteligência comercial, otimização e
+                  evolução mensal da operação.
+                </div>
+              </div>
+              <div class="plan-price">
+                <div class="price-prefix">Fee mensal</div>
+                <div class="price-value">R$ 12.500</div>
+                <div class="price-suffix">Contrato mínimo de 12 meses</div>
+              </div>
+            </div>
+            <div class="plan-card-body">
+              <div class="plan-objective">
+                <div class="plan-objective-label">Objetivo da assessoria</div>
+                <div class="plan-objective-text">
+                  Acompanhar marketing e vendas de forma próxima e contínua para
+                  garantir execução, leitura de dados, alinhamento com a equipe e
+                  evolução prática da operação ao longo do mês.
+                </div>
+              </div>
+              <ul class="deliverables-list">
+                <li><span class="check"><svg viewBox="0 0 12 12" width="11" height="11" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f1b3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Planejamento de campanhas e estratégias de marketing e vendas</li>
+                <li><span class="check"><svg viewBox="0 0 12 12" width="11" height="11" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f1b3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Gestão de aquisição em Google Ads, Meta Ads e LinkedIn Ads</li>
+                <li><span class="check"><svg viewBox="0 0 12 12" width="11" height="11" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f1b3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Operação de CRM, automações, scoring e treinamento de uso do processo</li>
+                <li><span class="check"><svg viewBox="0 0 12 12" width="11" height="11" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f1b3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Definição de funis, dashboards e acompanhamento dos indicadores</li>
+                <li><span class="check"><svg viewBox="0 0 12 12" width="11" height="11" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f1b3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Reuniões online quinzenais de até 1 hora para alinhamento, análise e próximos passos</li>
+                <li><span class="check"><svg viewBox="0 0 12 12" width="11" height="11" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f1b3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Otimização contínua das campanhas e da operação com base em dados</li>
+              </ul>
+              <div class="training-note">
+                <div class="training-note-label">Kickoff de implantação</div>
+                <div class="training-note-text">
+                  No início do projeto, entra um <strong>treinamento tático com a equipe</strong>
+                  para alinhar linguagem comercial, fundamentos de neuromarketing,
+                  neurovendas e leitura prática do novo processo de marketing e vendas.
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="plan-card is-secondary">
+            <div class="plan-card-header">
+              <div class="plan-copy">
+                <div class="plan-card-eyebrow">Projeto estrutural</div>
+                <div class="plan-card-title">Novo site + implantação</div>
+                <div class="plan-card-desc">
+                  Construção do novo ecossistema digital com arquitetura comercial,
+                  estudo de ramificação de páginas, migração do blog, tracking e
+                  integrações para sustentar crescimento.
+                </div>
+              </div>
+              <div class="plan-price">
+                <div class="price-prefix">Taxa única</div>
+                <div class="price-value">R$ 15.000</div>
+                <div class="price-suffix">50% na aprovação + 50% em 30 dias</div>
+              </div>
+            </div>
+            <div class="plan-card-body">
+              <div class="plan-objective">
+                <div class="plan-objective-label">Objetivo do projeto</div>
+                <div class="plan-objective-text">
+                  Desenvolver um site institucional e comercial 100% personalizado,
+                  com hierarquia de páginas, estrutura técnica e organização de
+                  conteúdo pensadas para ampliar presença digital e sustentar a
+                  geração de demanda.
+                </div>
+              </div>
+              <ul class="deliverables-list">
+                <li><span class="check"><svg viewBox="0 0 12 12" width="11" height="11" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Layout personalizado, domínio único, navegação completa e rodapé institucional</li>
+                <li><span class="check"><svg viewBox="0 0 12 12" width="11" height="11" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>SEO, GEO e arquitetura de páginas por intenção de busca com hierarquia bem estruturada</li>
+                <li><span class="check"><svg viewBox="0 0 12 12" width="11" height="11" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Google Analytics, Search Console, formulários por página e integração com CRM e marketing</li>
+                <li><span class="check"><svg viewBox="0 0 12 12" width="11" height="11" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Blog migrado, páginas de agradecimento, responsividade, performance e proteção anti-spam</li>
+              </ul>
+              <div class="plan-benefits">
+                <div class="plan-benefits-label">Benefícios esperados</div>
+                <div class="plan-benefits-text">
+                  Aumentar visibilidade, fortalecer autoridade da marca, melhorar a
+                  leitura comercial do negócio e gerar mais leads qualificados ao
+                  longo do tempo.
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <span class="section-pill">04</span>
+          <h2 class="section-title">Cronograma executivo</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="gantt-wrapper">
+          <div class="gantt-grid">
+            <div class="gantt-row gantt-header">
+              <div>Frente de trabalho</div>
+              <div class="gantt-cell-center">Mês 1</div>
+              <div class="gantt-cell-center">Mês 2</div>
+              <div class="gantt-cell-center">Mês 3</div>
+              <div class="gantt-cell-center">Contínuo</div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-label">Diagnóstico e arquitetura</div>
+              <div><span class="gantt-bar">Semanas 1 e 2</span></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-label">Setup de CRM e automações</div>
+              <div><span class="gantt-bar">Semanas 3 e 4</span></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-label">Desenvolvimento do novo site</div>
+              <div><span class="gantt-bar bar-purple">Início do projeto</span></div>
+              <div><span class="gantt-bar bar-purple">Entrega e refinamento</span></div>
+              <div></div>
+              <div></div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-label">Campanhas, SEO e ativação</div>
+              <div><span class="gantt-bar bar-light">Planejamento</span></div>
+              <div><span class="gantt-bar">Aceleração</span></div>
+              <div><span class="gantt-bar">Escala</span></div>
+              <div></div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-label">RevOps e governança</div>
+              <div></div>
+              <div></div>
+              <div><span class="gantt-bar">Operação assistida</span></div>
+              <div><span class="gantt-bar">Otimização contínua</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="validity-box">
+        <div class="validity-icon">⏳</div>
+        <div class="validity-text">
+          Esta proposta é confidencial e os valores são válidos por
+          <strong>15 dias</strong> a partir da data de emissão.
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="footer-logo">
+          <img
+            src="https://www.updo.com.br/Imagens/Agencia-UPDO.svg?dpl=dpl_3cuvxnNsrsj3EeH5758YNthapZoz"
+            onerror="this.outerHTML='<span style=&quot;font-weight:800;font-size:13px;color:#9aa3bc&quot;>UPDO</span>'"
+            alt="UPDO"
+          />
+        </div>
+        <div class="footer-info">
+          <a href="https://www.updo.com.br" target="_blank" rel="noreferrer">updo.com.br</a>
+          · Proposta confidencial Dataponto
+        </div>
+      </footer>
+
+      <div class="cta-block">
+        <div>
+          <div class="cta-title">Construindo uma operação comercial previsível para a Dataponto.</div>
+          <div class="cta-sub">
+            Se fizer sentido seguir, o próximo passo é validar escopo, investimento e
+            início da primeira fase.
+          </div>
+        </div>
+        <a
+          class="whatsapp-btn"
+          href="https://wa.me/5541988797301?text=Ol%C3%A1%2C%20Rodrigo%2C%20aqui%20%C3%A9%20da%20Data%20Ponto%20e%20gostar%C3%ADamos%20de%20seguir%20com%20o%20projeto."
+          target="_blank"
+          rel="noreferrer"
+        >
+          Vamos iniciar esta jornada
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
