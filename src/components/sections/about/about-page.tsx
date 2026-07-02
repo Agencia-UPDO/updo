@@ -200,7 +200,7 @@ export function AboutPage() {
               </span>
 
               <h1 className="mt-6 font-heading text-4xl font-black leading-[1.08] tracking-tight text-white md:text-6xl">
-                A consultoria que conecta marketing, vendas, CRM e dados à receita.
+                A agência que conecta marketing, vendas, CRM e dados à receita.
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/68 md:text-lg">

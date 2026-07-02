@@ -36,10 +36,10 @@ export const siteConfig = {
     },
   ],
   social: {
-    linkedin: "https://www.linkedin.com/company/updogrowth/",
-    instagram: "https://www.instagram.com/updogrowth/",
-    facebook: "https://www.facebook.com/updogrowth",
-    youtube: "https://www.youtube.com/@updogrowth",
+    linkedin: "https://www.linkedin.com/company/agencia-updo/",
+    instagram: "https://www.instagram.com/agenciaupdo/",
+    facebook: "https://www.facebook.com/agenciaupdo",
+    youtube: "https://www.youtube.com/@agenciaupdo",
   },
   cnpj: "30.119.930/0001-20",
   mainNav: [
