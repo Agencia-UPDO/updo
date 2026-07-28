@@ -27,6 +27,7 @@ import {
   ArrowRight,
   Database,
   Eye,
+  SearchCheck,
   GraduationCap,
   ShoppingBag,
   Store,
@@ -161,6 +162,13 @@ const serviceItems = [
     description: "Google, Meta, LinkedIn e SEO integrados",
     href: "/servicos/geracao-de-demanda",
     icon: Target,
+    iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
+  },
+  {
+    title: "Cliente Oculto",
+    description: "Atendimento real, follow-up e leitura de concorrência",
+    href: "/servicos/cliente-oculto",
+    icon: SearchCheck,
     iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
   },
 ];

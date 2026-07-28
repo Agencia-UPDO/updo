@@ -15,6 +15,7 @@ import {
   Eye,
   RefreshCw,
   Search,
+  SearchCheck,
   Target,
   TrendingUp,
   Users,
@@ -54,6 +55,14 @@ const pillars = [
     icon: RefreshCw,
     description:
       "Dados em tempo real, dashboards e reuniões semanais que alimentam decisão, ajuste de rota e crescimento composto ao longo do tempo.",
+  },
+  {
+    icon: SearchCheck,
+    title: "Cliente Oculto",
+    description: "Contato real com sua empresa e seus concorrentes para avaliar resposta, follow-up, argumento comercial e percepção de valor.",
+    href: "/servicos/cliente-oculto",
+    bg: "bg-[#6575FF]/10 border-[#6575FF]/20",
+    color: "text-[#6575FF]",
   },
 ];
 
@@ -363,7 +372,7 @@ export function OQueFazemosPage() {
               Áreas de entrega
             </span>
             <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
-              Seis especialidades que funcionam como um sistema único.
+              Sete especialidades que funcionam como um sistema único.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground">
               Cada área tem squad dedicado, metodologia própria e meta de resultado. O que diferencia é que todas comunicam entre si, sem silo, sem ruído e sem perda de contexto entre etapas.

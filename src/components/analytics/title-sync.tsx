@@ -26,6 +26,7 @@ const titles: Record<string, string> = {
   "/servicos/funil-e-automacao": "Funil e Automação de Marketing | Lead Scoring, CRM e WhatsApp | UPDO",
   "/servicos/ux-cro": "UX e CRO | Otimização de Landing Pages e Conversão | UPDO",
   "/servicos/geracao-de-demanda": "Geração de Demanda | Google Ads, Meta, LinkedIn, SEO e GEO | UPDO",
+  "/servicos/cliente-oculto": "Cliente Oculto | Atendimento, Follow-up e Análise Competitiva | UPDO",
   "/politica-de-privacidade": "Política de Privacidade | LGPD e Dados Pessoais | UPDO",
   "/termos-de-uso": "Termos de Uso | Regras do Site e Serviços | UPDO",
 };

@@ -22,6 +22,7 @@ const routes = [
   { path: "/servicos/ia-para-vendas", priority: 0.8 },
   { path: "/servicos/inside-sales", priority: 0.8 },
   { path: "/servicos/inteligencia-de-dados", priority: 0.8 },
+  { path: "/servicos/cliente-oculto", priority: 0.8 },
   { path: "/servicos/funil-e-automacao", priority: 0.8 },
   { path: "/servicos/ux-cro", priority: 0.8 },
   { path: "/servicos/geracao-de-demanda", priority: 0.8 },
@@ -30,7 +31,7 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-06-01");
+  const lastModified = new Date("2026-07-28");
 
   return routes.map((route) => ({
     url: `${baseUrl}${route.path}`,
