@@ -334,6 +334,20 @@ export function Footer() {
                     className="h-9 w-auto grayscale opacity-40 transition-all duration-500 hover:grayscale-0 hover:opacity-100"
                   />
                 </a>
+                <a
+                  href="https://www.kommo.com/br/?utm_source=updo&utm_medium=footer&utm_campaign=site-updo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Kommo"
+                >
+                  <Image
+                    src="/Imagens/Badge dark Kommo.svg"
+                    alt="Kommo"
+                    width={132}
+                    height={45}
+                    className="h-9 w-auto grayscale opacity-40 transition-all duration-500 hover:grayscale-0 hover:opacity-100"
+                  />
+                </a>
               </div>
             </div>
 
