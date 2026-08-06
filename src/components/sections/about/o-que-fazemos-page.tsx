@@ -160,6 +160,14 @@ const deliverables = [
     bg: "bg-[#6575FF]/10 border-[#6575FF]/20",
     color: "text-[#6575FF]",
   },
+  {
+    icon: SearchCheck,
+    title: "Cliente Oculto",
+    description: "Avaliação real do atendimento, follow-up, argumento comercial e percepção de valor da sua empresa e dos concorrentes.",
+    href: "/servicos/cliente-oculto",
+    bg: "bg-[#6575FF]/10 border-[#6575FF]/20",
+    color: "text-[#6575FF]",
+  },
 ];
 
 /* ─── Component ─── */
@@ -290,38 +298,6 @@ export function OQueFazemosPage() {
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-10 flex flex-col gap-6 border-t border-white/10 pt-8 lg:flex-row lg:items-center lg:justify-between"
-          >
-            <div className="flex max-w-3xl items-start gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/12 text-[#6575FF]">
-                <SearchCheck className="h-5 w-5" />
-              </div>
-              <div>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#6575FF]">
-                  Camada complementar
-                </span>
-                <h3 className="mt-1 font-heading text-lg font-black tracking-tight text-white">
-                  Validação da experiência com Cliente Oculto.
-                </h3>
-                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/50">
-                  Quando o cenário pede evidência real, avaliamos sua empresa e os concorrentes para revelar falhas de resposta, follow-up, argumento comercial e percepção de valor.
-                </p>
-              </div>
-            </div>
-
-            <Link
-              href="/servicos/cliente-oculto"
-              className="group inline-flex items-center gap-2 self-start text-sm font-bold text-[#6575FF] transition-opacity hover:opacity-80 lg:self-center"
-            >
-              Conhecer Cliente Oculto
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </motion.div>
         </div>
       </section>
 
