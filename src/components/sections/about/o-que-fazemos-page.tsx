@@ -16,6 +16,7 @@ import {
   RefreshCw,
   Search,
   SearchCheck,
+  MessageSquareText,
   Target,
   TrendingUp,
   Users,
@@ -165,6 +166,14 @@ const deliverables = [
     title: "Cliente Oculto",
     description: "Avaliação real do atendimento, follow-up, argumento comercial e percepção de valor da sua empresa e dos concorrentes.",
     href: "/servicos/cliente-oculto",
+    bg: "bg-[#6575FF]/10 border-[#6575FF]/20",
+    color: "text-[#6575FF]",
+  },
+  {
+    icon: MessageSquareText,
+    title: "ChatGPT Ads",
+    description: "Campanhas por intenção conversacional integradas a landing pages, tracking, SEO e GEO para gerar presença nas decisões em IA.",
+    href: "/servicos/chatgpt-ads",
     bg: "bg-[#6575FF]/10 border-[#6575FF]/20",
     color: "text-[#6575FF]",
   },
@@ -373,7 +382,7 @@ export function OQueFazemosPage() {
               Áreas de entrega
             </span>
             <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
-              Sete especialidades que funcionam como um sistema único.
+              Oito especialidades que funcionam como um sistema único.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground">
               Cada área tem squad dedicado, metodologia própria e meta de resultado. O que diferencia é que todas comunicam entre si, sem silo, sem ruído e sem perda de contexto entre etapas.

@@ -28,6 +28,7 @@ import {
   Database,
   Eye,
   SearchCheck,
+  MessageSquareText,
   GraduationCap,
   ShoppingBag,
   Store,
@@ -162,6 +163,13 @@ const serviceItems = [
     description: "Google, Meta, LinkedIn e SEO integrados",
     href: "/servicos/geracao-de-demanda",
     icon: Target,
+    iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
+  },
+  {
+    title: "ChatGPT Ads",
+    description: "Anúncios, SEO e GEO para decisões em IA",
+    href: "/servicos/chatgpt-ads",
+    icon: MessageSquareText,
     iconBg: "bg-[#6575FF]/10 text-[#6575FF]",
   },
   {

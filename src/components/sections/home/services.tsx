@@ -11,6 +11,7 @@ import {
   Activity,
   Bot,
   SearchCheck,
+  MessageSquareText,
   ArrowRight,
   ChevronRight,
 } from "lucide-react";
@@ -108,6 +109,21 @@ const services = [
   },
   {
     id: 6,
+    icon: MessageSquareText,
+    tag: "Aquisição em IA",
+    title: "ChatGPT Ads e presença em IA",
+    problem:
+      "Seu cliente já usa o ChatGPT para pesquisar, comparar opções e decidir, mas sua marca ainda não participa desses momentos de intenção.",
+    solution:
+      "Campanhas no ChatGPT conectadas a contexto conversacional, anúncios, landing pages, tracking, SEO e GEO para gerar presença paga e aprendizado orgânico.",
+    results: [
+      "Presença em um novo momento de decisão",
+      "Mensagens orientadas por contexto, não só palavra-chave",
+      "Aprendizado integrado entre mídia, SEO e GEO",
+    ],
+  },
+  {
+    id: 7,
     icon: SearchCheck,
     tag: "Cliente Oculto",
     title: "Cliente oculto e análise competitiva",

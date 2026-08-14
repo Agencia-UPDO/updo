@@ -26,12 +26,13 @@ const routes = [
   { path: "/servicos/funil-e-automacao", priority: 0.8 },
   { path: "/servicos/ux-cro", priority: 0.8 },
   { path: "/servicos/geracao-de-demanda", priority: 0.8 },
+  { path: "/servicos/chatgpt-ads", priority: 0.85 },
   { path: "/politica-de-privacidade", priority: 0.3 },
   { path: "/termos-de-uso", priority: 0.3 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-07-28");
+  const lastModified = new Date("2026-08-13");
 
   return routes.map((route) => ({
     url: `${baseUrl}${route.path}`,

@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   BarChart3,
-  BookOpen,
   Briefcase,
   CheckCircle2,
   Clock,
@@ -29,126 +28,120 @@ const EASE = [0.21, 0.47, 0.32, 0.98] as const;
 const blockers = [
   {
     icon: Filter,
-    title: "Lead entra sem fit comercial",
+    title: "A marca não aparece na hora da decisão",
     description:
-      "A campanha gera volume, mas o comercial perde tempo com gente fora do ICP. O problema não é só CPL, é quem entra no funil.",
+      "O cliente usa o ChatGPT para comparar opções, entender diferenças e escolher caminhos, mas sua empresa ainda não participa dessa conversa.",
   },
   {
     icon: Layers,
-    title: "Dependência de um canal só",
+    title: "Campanha pensada como busca tradicional",
     description:
-      "Quando tudo depende de Google, Meta ou indicação, qualquer mudança de leilão, algoritmo ou mercado mexe direto no caixa.",
+      "ChatGPT Ads não funciona apenas por palavra-chave. Contexto, intenção conversacional, oferta e landing page precisam conversar entre si.",
   },
   {
     icon: BarChart3,
-    title: "Relatório mostra clique, não receita",
+    title: "Presença paga sem autoridade orgânica",
     description:
-      "Impressão, CTR e lead não bastam. A decisão de verba precisa enxergar qualidade, oportunidade, venda e CAC por canal.",
+      "Comprar mídia sem estruturar SEO e GEO gera tráfego, mas não ajuda a marca a ser compreendida e citada pelas IAs no longo prazo.",
   },
 ];
 
 const deliverables = [
   {
     icon: Target,
-    title: "Estratégia de canal por ICP",
+    title: "Mapeamento de intenção conversacional",
     description:
-      "Definição de público, canal, oferta, orçamento e meta antes da campanha entrar no ar.",
+      "Identificamos dúvidas, comparações, problemas e momentos de decisão em que sua solução pode ser realmente útil.",
   },
   {
     icon: Search,
-    title: "Google Ads",
+    title: "Estrutura de campanhas e context hints",
     description:
-      "Busca, Performance Max e remarketing com intenção clara, termos negativos e leitura de qualidade do lead.",
+      "Organizamos campanhas, grupos de anúncios, objetivos, orçamento e sinais de contexto para orientar a relevância.",
   },
   {
     icon: Megaphone,
-    title: "Meta Ads",
+    title: "Anúncios úteis e específicos",
     description:
-      "Campanhas para Facebook e Instagram com criativos, públicos e retargeting alinhados ao estágio do funil.",
+      "Criamos variações de títulos, textos e imagens com benefício claro, sem frases genéricas ou promessas artificiais.",
   },
   {
     icon: Briefcase,
-    title: "LinkedIn Ads e B2B",
+    title: "Landing pages orientadas à conversa",
     description:
-      "Segmentação por cargo, setor e empresa para ciclos mais longos, decisores específicos e tickets maiores.",
+      "A página responde ao contexto que trouxe o clique, explica a oferta e conduz a próxima ação sem quebra de expectativa.",
   },
   {
     icon: Globe2,
-    title: "SEO, GEO e conteúdo",
+    title: "SEO, GEO e autoridade em IA",
     description:
-      "Arquitetura de conteúdo para buscadores e respostas de IA, capturando demanda orgânica de alta intenção.",
-  },
-  {
-    icon: BookOpen,
-    title: "ChatGPT Ads",
-    description:
-      "Campanhas orientadas por intenção conversacional, conectadas a landing pages, tracking e aprendizado de GEO.",
+      "Transformamos perguntas e aprendizados da mídia em páginas e conteúdos compreensíveis por buscadores e modelos de IA.",
   },
   {
     icon: BarChart3,
-    title: "CPL, CAC e qualidade por canal",
+    title: "Tracking, conversão e otimização",
     description:
-      "Relatório que conecta investimento, lead, oportunidade e venda para realocar verba com mais segurança.",
+      "Acompanhamos impressões, cliques, CPC, conversões e qualidade comercial com UTMs, analytics, CRM e Ads Manager.",
   },
 ];
 
 const matrix = [
   {
     icon: Target,
-    label: "ICP",
-    role: "O canal parte do perfil de cliente, não da ferramenta que está na moda.",
-    score: "Lead certo",
+    label: "Intenção",
+    role: "Mapeamos o que o cliente está tentando entender, comparar ou resolver.",
+    score: "Momento certo",
   },
   {
     icon: MousePointerClick,
-    label: "Oferta",
-    role: "Anúncio e página filtram intenção antes do lead chegar ao comercial.",
-    score: "Mais qualidade",
+    label: "Contexto",
+    role: "Usamos sinais que aproximam a oferta das conversas em que ela é relevante.",
+    score: "Mais relevância",
   },
   {
     icon: Layers,
-    label: "Canais",
-    role: "Pago, orgânico, GEO e remarketing trabalham com papéis diferentes na jornada.",
-    score: "Menos risco",
+    label: "Experiência",
+    role: "Anúncio e landing page mantêm clareza, utilidade e continuidade da conversa.",
+    score: "Menos atrito",
   },
   {
     icon: BarChart3,
-    label: "Receita",
-    role: "CPL só importa quando conversa com oportunidade, venda e CAC real.",
-    score: "Decisão melhor",
+    label: "Aprendizado",
+    role: "A mídia revela perguntas e ofertas que também fortalecem SEO, GEO e conteúdo.",
+    score: "Evolução contínua",
   },
 ];
 
 const faqs = [
   {
-    question: "Vocês fazem gestão de mídia ou só estratégia?",
+    question: "O que é ChatGPT Ads?",
     answer:
-      "Fazemos os dois. Planejamos canal, oferta, campanha, criativo, landing page e leitura de performance. O mesmo time que pensa acompanha a execução.",
+      "É a plataforma de anúncios da OpenAI. Os anúncios aparecem separados das respostas e podem alcançar pessoas enquanto elas exploram opções, comparam alternativas e tomam decisões dentro do ChatGPT.",
   },
   {
-    question: "Quais canais entram na geração de demanda?",
+    question: "ChatGPT Ads funciona como Google Ads?",
     answer:
-      "Depende do ICP e do ciclo de venda. Normalmente avaliamos Google Ads, Meta Ads, LinkedIn Ads, ChatGPT Ads, SEO, GEO, conteúdo, remarketing e, quando faz sentido, TikTok Ads.",
+      "Não exatamente. Há objetivos, orçamento, lances e anúncios, mas a entrega considera o contexto e a intenção da conversa, além do anúncio e da landing page. Os context hints ajudam a orientar a relevância, mas não funcionam como palavras-chave exatas.",
   },
   {
-    question: "TikTok Ads faz sentido para todo negócio?",
+    question: "Quais modelos de cobrança estão disponíveis?",
     answer:
-      "Não. TikTok pode funcionar muito bem para awareness, demanda latente e alguns produtos B2C, mas precisa de criativo, oferta e público adequados. Não é canal obrigatório.",
+      "A plataforma oferece campanhas por CPM, CPC e, quando disponível para a conta, otimização para conversão. A escolha depende do objetivo, da maturidade do tracking e do volume de dados.",
   },
   {
-    question: "Como vocês qualificam o lead antes do comercial?",
+    question: "A UPDO cria e gerencia as campanhas?",
     answer:
-      "A qualificação começa no anúncio, passa pela oferta, landing page, formulário e, quando necessário, automação de WhatsApp ou e-mail antes do handoff.",
+      "Sim. Fazemos diagnóstico, estrutura de campanha, contextos, anúncios, criativos, landing pages, configuração de mensuração, acompanhamento e otimização.",
   },
   {
-    question: "SEO e GEO entram junto com mídia paga?",
+    question: "Por que combinar ChatGPT Ads com SEO e GEO?",
     answer:
-      "Sim. Mídia paga acelera aquisição; SEO e GEO constroem demanda de longo prazo em buscadores e respostas de IA. O ideal é que os canais compartilhem aprendizados de palavra-chave, oferta, pergunta e intenção.",
+      "ChatGPT Ads gera presença paga e dados mais rápidos. SEO e GEO estruturam páginas, entidades, respostas e provas para ampliar a presença orgânica da marca em buscadores e sistemas de IA. Uma frente acelera aprendizado; a outra constrói autoridade.",
   },
   {
-    question: "Quanto tempo para ver resultado?",
+    question: "O serviço serve para qualquer empresa?",
     answer:
-      "Mídia paga começa a gerar sinais nas primeiras semanas. Otimização de qualidade e CAC costuma amadurecer entre 4 e 8 semanas. SEO e GEO normalmente pedem 90 a 180 dias.",
+      "Não automaticamente. Avaliamos elegibilidade da categoria, disponibilidade da plataforma, clareza da oferta, qualidade da landing page e capacidade de medir conversão antes de recomendar investimento.",
   },
 ];
 
@@ -160,10 +153,9 @@ const budgetRanges = [
 ];
 
 const activeChannelsOptions = [
-  "Só Google Ads",
-  "Só Meta Ads",
-  "Google + Meta",
-  "Vários canais ativos",
+  "Já anuncio no ChatGPT",
+  "Tenho conta, mas ainda não anunciei",
+  "Uso Google e/ou Meta Ads",
   "Não tenho mídia ativa",
 ];
 
@@ -177,11 +169,11 @@ const businessTypes = [
 ];
 
 const mainPains = [
-  "Lead sem qualidade",
-  "CPL alto demais",
-  "Dependência de um canal",
-  "Sem leitura de CAC",
-  "Verba sem retorno claro",
+  "Começar no ChatGPT Ads",
+  "Otimizar campanhas existentes",
+  "Criar landing pages para a mídia",
+  "Estruturar tracking e conversão",
+  "Integrar ChatGPT Ads, SEO e GEO",
 ];
 
 const inputClass =
@@ -278,12 +270,12 @@ function SuccessIcon() {
   );
 }
 
-function DemandVisual() {
-  const channels = [
-    ["Google Ads", "R$ 94", "42%"],
-    ["Meta Ads", "R$ 118", "28%"],
-    ["SEO / GEO", "Orgânico", "20%"],
-    ["LinkedIn Ads", "R$ 204", "10%"],
+function ChatGptAdsVisual() {
+  const journey = [
+    ["Conversa", "Problema e intenção"],
+    ["Contexto", "Sinais de relevância"],
+    ["Anúncio", "Oferta útil e específica"],
+    ["Landing page", "Continuidade e conversão"],
   ];
 
   return (
@@ -291,44 +283,47 @@ function DemandVisual() {
       <div className="border-b border-white/10 pb-5">
         <div className="flex items-center justify-between gap-4">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-white/40">
-            Performance por canal
+            Aquisição nativa em IA
           </p>
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#6575FF]/25 bg-[#6575FF]/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-widest text-[#6575FF]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#6575FF]" />
-            30 dias
+            Operação ativa
           </span>
         </div>
         <h3 className="mt-2 font-heading text-2xl font-black tracking-tight text-white">
-          Canal certo, lead certo, verba melhor alocada.
+          Da intenção na conversa até a conversão.
         </h3>
       </div>
 
       <div className="mt-5 flex flex-col gap-4">
-        {channels.map(([name, cpl, width], index) => (
+        {journey.map(([name, detail], index) => (
           <motion.div
             key={name}
             initial={{ opacity: 0, x: -12 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.08, duration: 0.45 }}
-            className="flex flex-col gap-1.5"
+            className="relative flex items-center gap-4 rounded-xl border border-white/[0.08] bg-white/[0.035] p-3.5"
           >
-            <div className="flex items-center justify-between text-xs">
-              <span className="font-medium text-white/45">{name}</span>
-              <span className="font-black text-white">{cpl}</span>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/25 bg-[#6575FF]/12 text-[11px] font-black text-[#6575FF]">
+              0{index + 1}
+            </span>
+            <div className="min-w-0">
+              <p className="text-sm font-black text-white">{name}</p>
+              <p className="mt-0.5 text-xs text-white/40">{detail}</p>
             </div>
-            <div className="h-2 rounded-full bg-white/10">
-              <div className="h-2 rounded-full bg-[#6575FF]" style={{ width }} />
-            </div>
+            {index < journey.length - 1 ? (
+              <span className="absolute -bottom-[17px] left-[29px] h-4 w-px bg-[#6575FF]/35" />
+            ) : null}
           </motion.div>
         ))}
       </div>
 
       <div className="mt-6 grid grid-cols-3 divide-x divide-white/10 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
         {[
-          ["Leads", "438"],
-          ["CPL médio", "R$112"],
-          ["Qualificados", "64%"],
+          ["Mídia", "CPC / CPM"],
+          ["Orgânico", "SEO + GEO"],
+          ["Leitura", "CRM + Dados"],
         ].map(([label, value]) => (
           <div key={label} className="flex flex-col gap-0.5 px-4 py-3">
             <span className="text-[10px] text-white/40">{label}</span>
@@ -339,15 +334,15 @@ function DemandVisual() {
 
       <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4">
         <p className="text-sm font-medium leading-relaxed text-white/55">
-          Gerar demanda não é comprar clique. É entender qual canal traz intenção
-          real e qual lead merece chegar ao comercial.
+          ChatGPT Ads não substitui SEO ou Google Ads. Ele abre um novo ponto de
+          contato com pessoas que já estão explicando o que precisam.
         </p>
       </div>
     </div>
   );
 }
 
-export function DemandaLanding() {
+export function ChatGptAdsLanding() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -383,7 +378,7 @@ export function DemandaLanding() {
     const payloadFormData = {
       ...formData,
       ...selected,
-      service: "Geração de Demanda",
+      service: "ChatGPT Ads e Presença em IA",
       utm_source: searchParams?.get("utm_source") || "",
       utm_medium: searchParams?.get("utm_medium") || "",
       utm_campaign: searchParams?.get("utm_campaign") || "",
@@ -398,8 +393,8 @@ export function DemandaLanding() {
         w.dataLayer = w.dataLayer || [];
         w.dataLayer.push({
           event: "Lead",
-          formName: "Diagnóstico Geração de Demanda",
-          location: "servicos/geracao-de-demanda",
+          formName: "Diagnóstico ChatGPT Ads",
+          location: "servicos/chatgpt-ads",
           formData: payloadFormData,
         });
       } catch {
@@ -414,12 +409,12 @@ export function DemandaLanding() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          formName: "Diagnóstico Geração de Demanda",
-          pagePath: "/servicos/geracao-de-demanda",
+          formName: "Diagnóstico ChatGPT Ads",
+          pagePath: "/servicos/chatgpt-ads",
           pageUrl:
             typeof window !== "undefined"
               ? window.location.href
-              : "https://www.updo.com.br/servicos/geracao-de-demanda",
+              : "https://www.updo.com.br/servicos/chatgpt-ads",
           formData: payloadFormData,
         }),
       });
@@ -470,21 +465,20 @@ export function DemandaLanding() {
               className="flex flex-col gap-6"
             >
               <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
-                Geração de Demanda · Serviço UPDO
+                ChatGPT Ads · Serviço UPDO
               </span>
               <h1 className="font-heading text-4xl font-black leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
-                Geração de demanda para atrair o lead certo, não só mais leads.
+                ChatGPT Ads para aparecer quando o cliente está decidindo.
               </h1>
               <p className="max-w-xl text-base leading-relaxed text-white/55">
-                Estruturamos Google Ads, Meta Ads, LinkedIn Ads, SEO, GEO e
-                conteúdo com ICP, oferta e leitura de CAC para sua verba comprar
-                oportunidade, não só tráfego.
+                Planejamos e operamos campanhas no ChatGPT conectando intenção
+                conversacional, anúncios, landing pages, tracking, SEO e GEO.
               </p>
               <div className="grid gap-3">
                 {[
-                  "Canais definidos por ICP, intenção e ciclo de venda",
-                  "Qualificação desde o anúncio até a landing page",
-                  "CPL, CAC e qualidade do lead por canal",
+                  "Contextos definidos por intenção e momento de decisão",
+                  "Anúncios e landing pages com continuidade de mensagem",
+                  "Mídia paga integrada a SEO, GEO, analytics e CRM",
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-3 text-sm font-medium text-white/55">
                     <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/20 bg-[#6575FF]/10">
@@ -499,7 +493,7 @@ export function DemandaLanding() {
                   href="#contato"
                   className="group inline-flex h-13 w-full items-center justify-center gap-3 rounded-full bg-accent px-7 text-sm font-bold text-accent-foreground shadow-[0_10px_24px_rgba(86,254,213,0.22)] transition-all duration-300 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_14px_34px_rgba(86,254,213,0.34)] active:scale-95 sm:w-auto"
                 >
-                  Estruturar minha demanda
+                  Quero anunciar no ChatGPT
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
@@ -517,7 +511,7 @@ export function DemandaLanding() {
               transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
               className="hidden lg:block"
             >
-              <DemandVisual />
+              <ChatGptAdsVisual />
             </motion.div>
           </div>
         </div>
@@ -530,7 +524,7 @@ export function DemandaLanding() {
               O problema
             </span>
             <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
-              Onde a aquisição gasta verba antes de gerar receita.
+              Por que simplesmente replicar campanhas antigas não basta.
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
@@ -561,11 +555,11 @@ export function DemandaLanding() {
               O que entregamos
             </span>
             <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
-              Sete frentes para gerar demanda com mais qualidade.
+              O que entregamos em ChatGPT Ads e presença em IA.
             </h2>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
-              A entrega conecta canal, oferta, mídia, SEO, GEO, landing page e
-              leitura comercial para o lead chegar com mais contexto.
+              A operação conecta campanha, contexto, criativo, landing page,
+              conversão e autoridade orgânica em um mesmo aprendizado.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -591,7 +585,7 @@ export function DemandaLanding() {
               href="#contato"
               className="group inline-flex h-13 w-full items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 sm:w-auto sm:px-10"
             >
-              Quero melhorar minha aquisição
+              Quero estruturar ChatGPT Ads
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
@@ -606,14 +600,14 @@ export function DemandaLanding() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-12 max-w-xl">
             <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
-              Sistema de aquisição
+              Método UPDO
             </span>
             <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-white md:text-5xl">
-              Os quatro pilares da geração de demanda.
+              Quatro camadas para transformar conversa em aquisição.
             </h2>
             <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/45">
-              ICP, oferta, canais e receita precisam ser lidos juntos. Sem isso,
-              o time otimiza clique enquanto o comercial briga com lead ruim.
+              A plataforma é nova, mas o fundamento continua rigoroso: relevância,
+              experiência, mensuração e aprendizado comercial.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -642,30 +636,30 @@ export function DemandaLanding() {
             <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-16">
               <div className="flex-1">
                 <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
-                  Resultado real
+                  Canal emergente
                 </span>
                 <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
-                  CPL menor e mais lead qualificado sem depender de um canal.
+                  Entrar cedo exige teste controlado, não aposta cega.
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  Operação B2B com verba concentrada em Google Ads e baixa
-                  qualificação. Após ICP, landing page, remarketing e LinkedIn Ads,
-                  a aquisição ficou mais previsível e menos vulnerável ao leilão.
+                  A UPDO já opera campanhas na plataforma e usa os primeiros dados
+                  para ajustar contexto, mensagem, página e mensuração. Começamos
+                  com hipóteses claras, orçamento controlado e critério de escala.
                 </p>
                 <Link
                   href="#contato"
                   className="group mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#6575FF] transition-all hover:opacity-80"
                 >
-                  Quero esse resultado na minha aquisição
+                  Quero avaliar esse canal para minha empresa
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
               <div className="grid grid-cols-2 gap-4 lg:w-56 lg:shrink-0">
                 {[
-                  ["R$89", "CPL médio"],
-                  ["3x", "leads qualificados"],
-                  ["64%", "qualificação"],
-                  ["31%", "demanda orgânica"],
+                  ["CPC", "custo por clique"],
+                  ["CTR", "taxa de cliques"],
+                  ["Conversões", "ações geradas"],
+                  ["CPA", "custo por conversão"],
                 ].map(([value, label]) => (
                   <div
                     key={label}
@@ -697,11 +691,11 @@ export function DemandaLanding() {
                 Diagnóstico gratuito
               </span>
               <h2 className="mt-4 font-heading text-3xl font-black leading-[1.1] tracking-tight text-white md:text-5xl">
-                Vamos entender como está sua geração de demanda.
+                Vamos avaliar ChatGPT Ads para sua empresa.
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/45">
-                Preencha para analisarmos canais, CPL, CAC, qualidade do lead e
-                oportunidades de realocação de verba.
+                Preencha para analisarmos oferta, categoria, estrutura digital,
+                investimento e capacidade de medir conversões.
               </p>
             </div>
             {!isSubmitted ? (
@@ -710,11 +704,11 @@ export function DemandaLanding() {
                   aria-hidden="true"
                   className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden opacity-0"
                 >
-                  <label htmlFor="demanda-companyWebsite">
+                  <label htmlFor="chatgpt-ads-companyWebsite">
                     Site da empresa
                   </label>
                   <input
-                    id="demanda-companyWebsite"
+                    id="chatgpt-ads-companyWebsite"
                     type="text"
                     name="companyWebsite"
                     tabIndex={-1}
@@ -780,11 +774,11 @@ export function DemandaLanding() {
                       onChange={(value) => setSelected((prev) => ({ ...prev, budget: value }))}
                     />
                   </FormField>
-                  <FormField label="Canais ativos" htmlFor="channels" icon={Layers}>
+                  <FormField label="Experiência com mídia" htmlFor="channels" icon={Layers}>
                     <SelectField
                       id="channels"
                       value={selected.channels}
-                      placeholder="Quais canais usa?"
+                      placeholder="Como está sua operação?"
                       options={activeChannelsOptions}
                       onChange={(value) => setSelected((prev) => ({ ...prev, channels: value }))}
                     />
@@ -800,11 +794,11 @@ export function DemandaLanding() {
                       onChange={(value) => setSelected((prev) => ({ ...prev, businessType: value }))}
                     />
                   </FormField>
-                  <FormField label="Principal dor" htmlFor="mainPain" icon={TrendingUp}>
+                  <FormField label="Objetivo principal" htmlFor="mainPain" icon={TrendingUp}>
                     <SelectField
                       id="mainPain"
                       value={selected.mainPain}
-                      placeholder="Onde está o gargalo?"
+                      placeholder="O que quer estruturar?"
                       options={mainPains}
                       onChange={(value) => setSelected((prev) => ({ ...prev, mainPain: value }))}
                     />
@@ -812,14 +806,14 @@ export function DemandaLanding() {
                 </div>
                 <div className="flex flex-col gap-5 border-t border-white/[0.07] pt-4">
                   <p className="text-center text-sm leading-relaxed text-white/45">
-                    Com base nas suas respostas, preparamos um diagnóstico mais preciso da aquisição.
+                    Com base nas respostas, avaliamos se o canal faz sentido e qual estrutura precisa entrar primeiro.
                   </p>
                   <button
                     type="submit"
                     disabled={isSubmitting}
                     className="mx-auto inline-flex h-13 w-full max-w-xs cursor-pointer items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-center text-sm font-bold text-accent-foreground shadow-[0_0_24px_rgba(86,254,213,0.35)] transition-all duration-200 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_0_36px_rgba(86,254,213,0.55)] active:scale-95 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:max-w-none sm:px-10"
                   >
-                    {isSubmitting ? "Enviando..." : "Diagnosticar minha demanda"}
+                    {isSubmitting ? "Enviando..." : "Avaliar ChatGPT Ads"}
                     <ArrowRight className="h-4 w-4" />
                   </button>
                   {submitError && (
@@ -857,15 +851,15 @@ export function DemandaLanding() {
                 Dúvidas frequentes
               </span>
               <h2 className="mt-6 font-heading text-3xl font-black leading-[1.1] tracking-tight text-foreground md:text-5xl">
-                Dúvidas sobre geração de demanda e mídia paga.
+                Dúvidas sobre anúncios no ChatGPT.
               </h2>
               <p className="mt-8 max-w-sm leading-relaxed text-muted-foreground">
-                Antes de aumentar verba, vale entender se o problema está no
-                canal, na oferta, no ICP ou no que acontece depois do clique.
+                A plataforma ainda está evoluindo. Por isso, estratégia, política,
+                tracking e clareza da oferta importam tanto quanto a campanha.
               </p>
               <div className="mt-12 hidden rounded-2xl border border-border/70 bg-[var(--surface-soft)] p-6 lg:block">
                 <p className="text-sm font-medium italic text-slate-500">
-                  &ldquo;O melhor canal não salva uma oferta fraca. E o menor CPL não vale muito se o lead não vira conversa comercial.&rdquo;
+                  &ldquo;Entrar cedo pode gerar vantagem, desde que o teste produza aprendizado comercial e não apenas novidade.&rdquo;
                 </p>
               </div>
             </div>
