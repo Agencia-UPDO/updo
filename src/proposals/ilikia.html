@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autoridade Digital e Demanda B2B2C | UPDO x Ilikia</title>
+    <meta name="description" content="Proposta da UPDO para ampliar a autoridade digital, a preferência de marca e a geração de demanda B2B2C da Ilikia." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <link rel="icon" href="/Imagens/favicon%20agencia%20updo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <style>
+      :root {
+        --navy: #0b1427;
+        --navy-2: #17223b;
+        --ink: #182133;
+        --text: #46536b;
+        --muted: #738096;
+        --line: #dde3ec;
+        --surface: #f4f7fa;
+        --white: #fff;
+        --teal: #56fed5;
+        --teal-dark: #009a75;
+        --purple: #6575ff;
+        --client: #12a980;
+        --client-soft: #ebfaf5;
+        --page-bg: #e8edf4;
+        --shadow: 0 28px 70px rgba(11, 20, 39, 0.13);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        min-width: 320px;
+        padding: 56px 18px;
+        background: linear-gradient(180deg, var(--navy) 0 310px, transparent 310px), var(--page-bg);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        font-size: 16.5px;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      a { color: inherit; text-decoration: none; }
+      img { display: block; max-width: 100%; }
+      h1, h2, h3, h4 { font-family: "Sora", sans-serif; letter-spacing: 0; }
+
+      .proposal {
+        position: relative;
+        width: min(100%, 1120px);
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 18px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+      .proposal::before {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 7px;
+        background: linear-gradient(180deg, var(--teal), var(--purple) 46%, var(--client));
+        content: "";
+      }
+      .inner { padding: 62px 68px; }
+
+      .header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 30px; border-bottom: 1px solid var(--line); }
+      .brand-pair { display: flex; align-items: center; gap: 22px; }
+      .logo-updo { width: 126px; }
+      .brand-separator { color: var(--muted); font-family: "Sora", sans-serif; font-size: 24px; }
+      .client-logo-wrap { display: flex; align-items: center; min-width: 132px; min-height: 54px; padding: 9px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); }
+      .logo-client { width: 118px; max-height: 38px; object-fit: contain; }
+      .document-status { text-align: right; }
+      .document-status strong, .document-status span { display: block; }
+      .document-status strong { color: var(--navy); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+      .document-status span { margin-top: 3px; color: var(--muted); font-size: 13px; }
+
+      .hero { padding: 64px 0 52px; }
+      .badge { display: inline-flex; align-items: center; gap: 8px; min-height: 30px; padding: 0 14px; border-radius: 999px; background: var(--navy); color: var(--teal); font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+      .badge::before { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); content: ""; }
+      h1 { max-width: 870px; margin-top: 20px; color: var(--navy); font-size: clamp(38px, 5.2vw, 58px); font-weight: 800; line-height: 1.08; }
+      h1 span { color: var(--client); }
+      .hero-lead { max-width: 810px; margin-top: 22px; color: var(--text); font-size: 19px; line-height: 1.72; }
+      .hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 36px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; }
+      .meta-item { padding: 15px 20px; border-right: 1px solid var(--line); }
+      .meta-item:last-child { border-right: 0; }
+      .meta-label { color: var(--muted); font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+      .meta-value { margin-top: 4px; color: var(--navy); font-size: 14px; font-weight: 700; }
+      .hero-visual { position: relative; height: 310px; margin-top: 32px; overflow: hidden; border-radius: 12px; background: var(--navy); }
+      .hero-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+      .hero-visual::after { position: absolute; inset: auto 0 0; height: 42%; background: linear-gradient(180deg, transparent, rgba(11,20,39,.82)); content: ""; }
+      .hero-visual-caption { position: absolute; z-index: 1; left: 26px; bottom: 22px; max-width: 560px; color: var(--white); font-family: "Sora", sans-serif; font-size: 15px; font-weight: 600; line-height: 1.45; }
+
+      .executive-summary { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 12px; margin-bottom: 66px; }
+      .summary-item { min-height: 120px; padding: 21px 22px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+      .summary-item:first-child { border-color: rgba(86, 254, 213, 0.62); background: var(--navy); }
+      .summary-label { color: var(--purple); font-size: 10px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
+      .summary-item:first-child .summary-label { color: var(--teal); }
+      .summary-value { margin-top: 8px; color: var(--navy); font-family: "Sora", sans-serif; font-size: 18px; font-weight: 700; line-height: 1.35; }
+      .summary-item:first-child .summary-value { color: var(--white); }
+      .summary-note { margin-top: 6px; color: var(--text); font-size: 14px; line-height: 1.6; }
+      .summary-item:first-child .summary-note { color: rgba(255,255,255,.62); }
+
+      .section { margin-bottom: 68px; }
+      .section-heading { display: flex; align-items: center; gap: 13px; margin-bottom: 26px; }
+      .section-number { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 30px; border-radius: 999px; background: var(--navy); color: var(--teal); font-size: 10.5px; font-weight: 800; letter-spacing: .12em; }
+      .section-title { color: var(--navy); font-size: 24px; font-weight: 700; }
+      .section-line { flex: 1; height: 1px; background: var(--line); }
+      .section-intro { max-width: 840px; margin-bottom: 24px; color: var(--text); font-size: 16.5px; line-height: 1.82; }
+      .section-intro strong { color: var(--navy); }
+
+      .opportunity { display: grid; grid-template-columns: 1.08fr .92fr; gap: 14px; }
+      .opportunity-card { padding: 25px; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); }
+      .opportunity-card.emphasis { border-color: rgba(18,169,128,.34); background: linear-gradient(145deg, #fff, var(--client-soft)); }
+      .kicker { color: var(--client); font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+      .opportunity-card h3 { margin-top: 8px; color: var(--navy); font-size: 19px; line-height: 1.35; }
+      .opportunity-card p { margin-top: 10px; color: var(--text); font-size: 14.5px; line-height: 1.72; }
+      .positioning { margin-top: 15px; padding: 18px 20px; border-left: 3px solid var(--client); border-radius: 8px; background: #fff; color: var(--text); font-size: 14.5px; line-height: 1.72; }
+      .positioning strong { color: var(--navy); }
+
+      .journey { margin-top: 24px; padding: 24px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+      .journey-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; }
+      .journey-stage { position: relative; display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: start; min-height: 132px; padding: 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--white); }
+      .journey-stage:not(:last-child)::after { position: absolute; top: 50%; right: -27px; width: 18px; height: 2px; background: var(--client); content: ""; }
+      .journey-stage:not(:last-child)::before { position: absolute; z-index: 1; top: calc(50% - 4px); right: -28px; width: 8px; height: 8px; border-top: 2px solid var(--client); border-right: 2px solid var(--client); transform: rotate(45deg); content: ""; }
+      .journey-icon { display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: var(--teal); }
+      .journey-icon svg { width: 21px; height: 21px; stroke-width: 1.8; }
+      .journey-step { display: block; color: var(--client); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+      .journey-stage strong { display: block; margin-top: 4px; color: var(--navy); font-family: "Sora", sans-serif; font-size: 15px; line-height: 1.35; }
+      .journey-stage p { margin-top: 7px; color: var(--text); font-size: 14px; line-height: 1.62; }
+      .journey-bridge { position: relative; display: flex; align-items: center; justify-content: center; min-height: 72px; margin: 4px 0; }
+      .journey-bridge::before { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--client); content: ""; }
+      .journey-bridge span { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; background: var(--navy); color: var(--white); font-size: 12.5px; font-weight: 700; }
+      .journey-bridge svg { width: 15px; height: 15px; color: var(--teal); }
+      .journey-row.outcome .journey-stage { border-color: rgba(18,169,128,.35); background: linear-gradient(145deg, var(--white), var(--client-soft)); }
+      .journey-row.outcome .journey-stage:last-child { border-color: var(--teal); background: var(--navy); }
+      .journey-row.outcome .journey-stage:last-child .journey-icon { background: var(--teal); color: var(--navy); }
+      .journey-row.outcome .journey-stage:last-child strong { color: var(--white); }
+      .journey-row.outcome .journey-stage:last-child p { color: rgba(255,255,255,.7); }
+
+      .audit-panel { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+      .audit-head { padding: 27px 30px; background: var(--navy); }
+      .audit-head .kicker { color: var(--teal); }
+      .audit-head h3 { max-width: 760px; margin-top: 8px; color: var(--white); font-size: 22px; line-height: 1.35; }
+      .audit-head p { max-width: 820px; margin-top: 9px; color: rgba(255,255,255,.66); font-size: 14px; line-height: 1.7; }
+      .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 25px 28px 12px; }
+      .metric { padding: 18px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); }
+      .metric-value { color: var(--client); font-family: "Sora", sans-serif; font-size: 23px; font-weight: 800; line-height: 1.1; }
+      .metric-label { margin-top: 7px; color: var(--navy); font-size: 14px; font-weight: 700; line-height: 1.45; }
+      .metric-note { margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+      .findings { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px 28px 28px; }
+      .finding { padding: 17px 18px; border: 1px solid var(--line); border-radius: 8px; }
+      .finding strong { display: block; color: var(--navy); font-size: 15.5px; }
+      .finding p { margin-top: 7px; color: var(--text); font-size: 15px; line-height: 1.68; }
+      .source-note { padding: 2px 28px 26px; color: var(--muted); font-size: 13.5px; line-height: 1.68; }
+
+      .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; }
+      .pillar { min-height: 176px; padding: 21px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+      .pillar-number { color: var(--purple); font-family: "Sora", sans-serif; font-size: 12px; font-weight: 800; }
+      .pillar h3 { margin-top: 10px; color: var(--navy); font-size: 17px; line-height: 1.35; }
+      .pillar p { margin-top: 8px; color: var(--text); font-size: 14.5px; line-height: 1.7; }
+      .pillar.featured { border-color: rgba(18,169,128,.32); background: var(--client-soft); }
+
+      .editorial { display: grid; grid-template-columns: .86fr 1.14fr; gap: 14px; }
+      .editorial-main { padding: 28px; border-radius: 12px; background: var(--navy); }
+      .editorial-main .kicker { color: var(--teal); }
+      .editorial-main h3 { margin-top: 8px; color: var(--white); font-size: 22px; line-height: 1.35; }
+      .editorial-main p { margin-top: 11px; color: rgba(255,255,255,.7); font-size: 14px; line-height: 1.72; }
+      .editorial-number { margin-top: 25px; color: var(--teal); font-family: "Sora", sans-serif; font-size: 44px; font-weight: 800; line-height: 1; }
+      .editorial-label { margin-top: 7px; color: rgba(255,255,255,.76); font-size: 14px; }
+      .editorial-steps { display: grid; gap: 9px; }
+      .editorial-step { display: grid; grid-template-columns: 32px 1fr; gap: 13px; align-items: start; padding: 15px 17px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); }
+      .editorial-step span { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--client); color: var(--white); font-size: 11px; font-weight: 800; }
+      .editorial-step strong { display: block; color: var(--navy); font-size: 14.5px; }
+      .editorial-step p { margin-top: 4px; color: var(--text); font-size: 14px; line-height: 1.62; }
+
+      .deliverables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .deliverable { min-height: 98px; display: flex; align-items: flex-start; gap: 11px; padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--navy); font-size: 14.5px; font-weight: 600; line-height: 1.55; }
+      .deliverable::before { flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: var(--client); content: ""; }
+
+      .gantt-wrapper { padding: 24px; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+      .gantt { min-width: 880px; }
+      .gantt-row { display: grid; grid-template-columns: 205px repeat(4,1fr); gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+      .gantt-row:last-child { border-bottom: 0; }
+      .gantt-header { color: var(--muted); font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-align: center; text-transform: uppercase; }
+      .gantt-header div:first-child { text-align: left; }
+      .gantt-label { color: var(--navy); font-size: 14px; font-weight: 700; }
+      .gantt-bar { display: flex; align-items: center; justify-content: center; min-height: 36px; padding: 7px 8px; border-radius: 6px; background: var(--teal); color: var(--navy); font-size: 12.5px; font-weight: 700; line-height: 1.25; text-align: center; }
+      .gantt-bar.purple { background: var(--purple); color: var(--white); }
+      .gantt-bar.client { background: var(--client); color: var(--white); }
+      .gantt-bar.light { background: #dfe5ee; }
+
+      .measurement { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+      .measure { padding: 19px 17px; border: 1px solid var(--line); border-radius: 8px; }
+      .measure h3 { color: var(--navy); font-size: 16px; }
+      .measure ul { margin: 11px 0 0 17px; color: var(--text); font-size: 14.5px; line-height: 1.72; }
+      .guardrail { margin-top: 17px; padding: 19px 21px; border-left: 3px solid var(--purple); border-radius: 8px; background: #f3f2ff; color: var(--text); font-size: 15px; line-height: 1.72; }
+      .guardrail strong { color: var(--navy); }
+
+      .investment-stack { display: grid; gap: 16px; }
+      .plan-card { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+      .plan-head { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 28px; align-items: start; padding: 29px 32px; background: var(--navy); color: var(--white); }
+      .plan-card.project .plan-head { background: var(--client); }
+      .plan-label { color: var(--teal); font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+      .plan-card.project .plan-label { color: rgba(255,255,255,.72); }
+      .plan-name { margin-top: 7px; font-family: "Sora", sans-serif; font-size: 25px; font-weight: 700; line-height: 1.25; }
+      .plan-description { max-width: 590px; margin-top: 9px; color: rgba(255,255,255,.7); font-size: 14px; line-height: 1.68; }
+      .price { min-width: 195px; text-align: right; }
+      .price-label { color: rgba(255,255,255,.62); font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+      .price-value { margin-top: 5px; color: var(--teal); font-family: "Sora", sans-serif; font-size: 37px; font-weight: 800; line-height: 1.05; white-space: nowrap; }
+      .plan-card.project .price-value { color: var(--white); }
+      .price-note { margin-top: 7px; color: rgba(255,255,255,.7); font-size: 13.5px; }
+      .plan-body { padding: 27px 32px; }
+      .check-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 11px 20px; list-style: none; }
+      .check-list li { position: relative; padding-left: 27px; color: var(--ink); font-size: 14px; line-height: 1.58; }
+      .check-list li::before { position: absolute; top: 2px; left: 0; display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 5px; background: var(--teal); color: var(--navy); content: "✓"; font-size: 11px; font-weight: 800; }
+      .condition { margin-top: 20px; padding: 17px 19px; border-left: 3px solid var(--purple); border-radius: 7px; background: #f2f1ff; color: var(--text); font-size: 14.5px; line-height: 1.72; }
+      .condition strong { color: var(--navy); }
+
+      .premises { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+      .premise { padding: 19px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 15px; line-height: 1.68; }
+      .premise strong { display: block; margin-bottom: 5px; color: var(--navy); font-size: 15.5px; }
+      .validity { display: flex; align-items: center; gap: 15px; margin: 9px 0 56px; padding: 19px 21px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); color: var(--text); font-size: 14.5px; line-height: 1.65; }
+      .validity-mark { width: 13px; height: 13px; border: 3px solid var(--client); border-radius: 50%; }
+      .validity strong { color: var(--navy); }
+
+      .leader-card { display: grid; grid-template-columns: 180px 1fr; gap: 30px; align-items: center; padding: 26px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+      .leader-photo { overflow: hidden; border-radius: 9px; aspect-ratio: 4/5; }
+      .leader-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+      .leader-name { margin-top: 5px; color: var(--navy); font-family: "Sora", sans-serif; font-size: 25px; font-weight: 700; }
+      .leader-role { margin-top: 3px; color: var(--text); font-size: 14px; font-weight: 600; }
+      .leader-text { margin-top: 12px; color: var(--text); font-size: 14.5px; line-height: 1.72; }
+      .leader-points { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+      .leader-point { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); color: var(--navy); font-size: 12.5px; font-weight: 600; }
+
+      .cta { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-top: 54px; padding: 29px 31px; border-radius: 12px; background: var(--navy); }
+      .cta h2 { color: var(--white); font-size: 19px; line-height: 1.35; }
+      .cta p { max-width: 590px; margin-top: 7px; color: rgba(255,255,255,.68); font-size: 14.5px; line-height: 1.65; }
+      .cta-button { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; border-radius: 999px; background: var(--teal); color: var(--navy); font-size: 14px; font-weight: 800; white-space: nowrap; transition: transform .18s ease, background .18s ease; }
+      .cta-button:hover { transform: translateY(-2px); background: var(--white); }
+      .footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--line); }
+      .footer img { width: 88px; opacity: .64; }
+      .footer p { color: var(--muted); font-size: 12.5px; line-height: 1.6; text-align: right; }
+
+      @media (max-width: 820px) {
+        body { padding: 18px 10px; background: var(--navy); }
+        .proposal { border-radius: 12px; }
+        .inner { padding: 34px 24px; }
+        .header { align-items: flex-start; }
+        .document-status { display: none; }
+        .logo-updo { width: 92px; }
+        .client-logo-wrap { min-width: 104px; min-height: 46px; padding: 7px 11px; }
+        .logo-client { width: 91px; }
+        .hero { padding: 46px 0 40px; }
+        .hero-visual { height: 250px; }
+        h1 { font-size: 38px; }
+        .hero-lead { font-size: 16px; }
+        .executive-summary, .opportunity, .editorial { grid-template-columns: 1fr; }
+        .metrics, .measurement { grid-template-columns: repeat(2,1fr); }
+        .pillars, .deliverables { grid-template-columns: repeat(2,1fr); }
+        .plan-head { grid-template-columns: 1fr; }
+        .price { text-align: left; }
+        .leader-card { grid-template-columns: 145px 1fr; }
+        .journey { padding: 18px; }
+        .journey-row { gap: 24px; }
+        .journey-stage { grid-template-columns: 40px 1fr; gap: 11px; padding: 16px; }
+        .journey-icon { width: 39px; height: 39px; }
+      }
+
+      @media (max-width: 560px) {
+        .inner { padding: 28px 19px 34px; }
+        .header { padding-bottom: 22px; }
+        .brand-pair { gap: 10px; }
+        .logo-updo { width: 78px; }
+        .brand-separator { font-size: 17px; }
+        .client-logo-wrap { min-width: 88px; padding: 6px 9px; }
+        .logo-client { width: 76px; }
+        h1 { font-size: 32px; }
+        .hero-visual { height: 190px; }
+        .hero-visual-caption { left: 18px; right: 18px; bottom: 16px; font-size: 14px; }
+        .hero-meta, .executive-summary, .metrics, .findings, .pillars, .deliverables, .measurement, .premises, .check-list { grid-template-columns: 1fr; }
+        .meta-item { border-right: 0; border-bottom: 1px solid var(--line); }
+        .meta-item:last-child { border-bottom: 0; }
+        .journey-row { grid-template-columns: 1fr; gap: 24px; }
+        .journey-stage { min-height: 0; }
+        .journey-stage:not(:last-child)::after { top: auto; right: auto; bottom: -15px; left: 50%; width: 2px; height: 12px; }
+        .journey-stage:not(:last-child)::before { top: auto; right: auto; bottom: -16px; left: calc(50% - 3px); transform: rotate(135deg); }
+        .journey-bridge { min-height: 62px; }
+        .plan-head, .plan-body { padding: 23px 20px; }
+        .price-value { font-size: 32px; }
+        .leader-card { grid-template-columns: 1fr; }
+        .leader-photo { width: 140px; }
+        .cta { align-items: flex-start; flex-direction: column; }
+        .cta-button { width: 100%; }
+        .footer { align-items: flex-start; flex-direction: column; }
+        .footer p { text-align: left; }
+      }
+
+      @media print {
+        body { padding: 0; background: #fff; }
+        .proposal { width: 100%; border-radius: 0; box-shadow: none; }
+        .inner { padding: 38px 44px; }
+        .section, .plan-card, .audit-panel, .leader-card { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="proposal">
+      <div class="inner">
+        <header class="header">
+          <div class="brand-pair">
+            <img class="logo-updo" src="/Imagens/Agencia-UPDO.svg" alt="UPDO" />
+            <span class="brand-separator">×</span>
+            <span class="client-logo-wrap"><img class="logo-client" src="https://ilikia.com/wp-content/uploads/2025/12/ilikia-logo.webp" alt="Ilikia" /></span>
+          </div>
+          <div class="document-status"><strong>Proposta estratégica</strong><span>Setembro de 2026</span></div>
+        </header>
+
+        <section class="hero">
+          <span class="badge">Autoridade digital e geração de demanda</span>
+          <h1>Transformar busca em <span>preferência de marca.</span></h1>
+          <p class="hero-lead">Uma estratégia B2B2C para fazer consumidores conhecerem e desejarem as tecnologias da Ilikia, enquanto profissionais e clínicas encontram conteúdo científico, produtos e suporte para adotá-las.</p>
+          <div class="hero-meta">
+            <div class="meta-item"><div class="meta-label">Elaborado por</div><div class="meta-value">Rodrigo Bueno · UPDO</div></div>
+            <div class="meta-item"><div class="meta-label">Preparado para</div><div class="meta-value">Nicole Fagones · Ilikia &amp; Co.</div></div>
+            <div class="meta-item"><div class="meta-label">Horizonte estratégico</div><div class="meta-value">12 meses</div></div>
+          </div>
+          <figure class="hero-visual">
+            <img src="https://ilikia.com/wp-content/webp-express/webp-images/uploads/elementor/thumbs/banner-topo-ilikia-rrk8m8k3a75wghwqn8r6oabvfkrqjtjhsmdgekjb64.jpeg.webp" alt="Imagem institucional da Ilikia" />
+            <figcaption class="hero-visual-caption">Uma marca construída sobre ciência e inovação, preparada para transformar presença digital em preferência.</figcaption>
+          </figure>
+        </section>
+
+        <div class="executive-summary">
+          <article class="summary-item"><div class="summary-label">Objetivo central</div><div class="summary-value">Construir demanda pela marca na ponta.</div><div class="summary-note">Do interesse do consumidor à adoção pelo profissional.</div></article>
+          <article class="summary-item"><div class="summary-label">Primeira fase</div><div class="summary-value">Fundação SEO, GEO e mensuração</div><div class="summary-note">Tecnologia, arquitetura e prioridades em 45–60 dias.</div></article>
+          <article class="summary-item"><div class="summary-label">Operação contínua</div><div class="summary-value">Conteúdo com profundidade</div><div class="summary-note">Especialistas, produtos, problemas e jornadas de busca.</div></article>
+        </div>
+
+        <section class="section">
+          <div class="section-heading"><span class="section-number">01</span><h2 class="section-title">A oportunidade</h2><div class="section-line"></div></div>
+          <p class="section-intro">A Ilikia comercializa para profissionais e clínicas, mas pode ampliar sua força ao influenciar quem está na ponta. <strong>Quando o consumidor conhece uma tecnologia, entende seus diferenciais e passa a perguntar por ela, a preferência digital começa a produzir valor para toda a cadeia.</strong></p>
+          <div class="opportunity">
+            <article class="opportunity-card"><div class="kicker">Modelo comercial</div><h3>A venda acontece no B2B.</h3><p>Profissionais, clínicas e distribuidores precisam de segurança, evidência, capacitação, suporte e argumentos para incorporar as soluções da Ilikia.</p></article>
+            <article class="opportunity-card emphasis"><div class="kicker">Geração de demanda</div><h3>A preferência pode começar no B2C.</h3><p>Consumidores pesquisam problemas, procedimentos e tecnologias. O site pode transformar essa busca em reconhecimento e intenção pela marca.</p></article>
+          </div>
+          <div class="positioning"><strong>Direção recomendada: B2B2C.</strong> Conteúdo para educar e gerar preferência no consumidor, conectado a páginas e jornadas que aproximem essa demanda de profissionais habilitados e parceiros comerciais.</div>
+          <div class="journey" id="jornada-b2b2c" aria-label="Jornada B2B2C da Ilikia">
+            <div class="journey-row">
+              <article class="journey-stage"><div class="journey-icon"><i data-lucide="circle-help"></i></div><div><span class="journey-step">01 · Necessidade</span><strong>Uma dúvida inicia a jornada</strong><p>O consumidor procura entender um problema, resultado ou procedimento.</p></div></article>
+              <article class="journey-stage"><div class="journey-icon"><i data-lucide="search"></i></div><div><span class="journey-step">02 · Descoberta</span><strong>Busca e respostas de IA</strong><p>Google e assistentes conectam perguntas a marcas, métodos e tecnologias.</p></div></article>
+              <article class="journey-stage"><div class="journey-icon"><i data-lucide="book-open"></i></div><div><span class="journey-step">03 · Educação</span><strong>Conteúdo Ilikia gera clareza</strong><p>Informação científica traduzida ajuda a construir segurança e interesse.</p></div></article>
+            </div>
+            <div class="journey-bridge"><span><i data-lucide="arrow-down"></i> Da descoberta à preferência</span></div>
+            <div class="journey-row outcome">
+              <article class="journey-stage"><div class="journey-icon"><i data-lucide="badge-check"></i></div><div><span class="journey-step">04 · Confiança</span><strong>A tecnologia ganha preferência</strong><p>A marca passa a fazer parte da decisão e da conversa sobre o tratamento.</p></div></article>
+              <article class="journey-stage"><div class="journey-icon"><i data-lucide="messages-square"></i></div><div><span class="journey-step">05 · Intenção</span><strong>O consumidor pede pela marca</strong><p>O interesse chega ao profissional, à clínica ou à rede de atendimento.</p></div></article>
+              <article class="journey-stage"><div class="journey-icon"><i data-lucide="trending-up"></i></div><div><span class="journey-step">06 · Resultado</span><strong>Demanda gera valor para a rede</strong><p>Preferência na ponta fortalece adoção, relacionamento e oportunidade comercial.</p></div></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="section-number">02</span><h2 class="section-title">Diagnóstico inicial</h2><div class="section-line"></div></div>
+          <div class="audit-panel">
+            <div class="audit-head"><div class="kicker">Leitura externa · setembro de 2026</div><h3>Uma marca robusta ainda pouco representada na busca não relacionada à marca.</h3><p>O site já possui portfólio, conhecimento e presença institucional. O ganho está em organizar essa autoridade para que mecanismos de busca, IAs, consumidores e profissionais compreendam melhor cada tema e produto.</p></div>
+            <div class="metrics">
+              <article class="metric"><div class="metric-value">≈ 2,5 mil</div><div class="metric-label">visitas mensais estimadas</div><div class="metric-note">Referência externa; validar no GA4.</div></article>
+              <article class="metric"><div class="metric-value">35%</div><div class="metric-label">tráfego orgânico estimado</div><div class="metric-note">Participação aproximada no desktop.</div></article>
+              <article class="metric"><div class="metric-value">10,9 s</div><div class="metric-label">LCP móvel observado</div><div class="metric-note">Experiência real abaixo do recomendado.</div></article>
+              <article class="metric"><div class="metric-value">≈ 29</div><div class="metric-label">palavras orgânicas estimadas</div><div class="metric-note">Predominância atual de marca.</div></article>
+            </div>
+            <div class="findings">
+              <article class="finding"><strong>Base WordPress flexível</strong><p>Hello Elementor, tema filho e Elementor Pro permitem evolução sem reconstrução imediata, desde que o carregamento seja racionalizado.</p></article>
+              <article class="finding"><strong>SEO básico inconsistente</strong><p>Títulos genéricos, descrições ausentes, imagens sem texto alternativo e oportunidades de dados estruturados e links internos.</p></article>
+              <article class="finding"><strong>Conteúdo com pouco encadeamento</strong><p>Artigos e páginas de produto ainda não formam clusters claros entre problema, procedimento, evidência, tecnologia e conversão.</p></article>
+              <article class="finding"><strong>Experiência internacional a revisar</strong><p>Versões traduzidas apresentam trechos inconsistentes, o que afeta percepção, rastreamento e confiança fora do Brasil.</p></article>
+            </div>
+            <p class="source-note">Dados de terceiros e testes públicos são referências diagnósticas, não substituem GA4, Google Search Console, histórico comercial e levantamento de palavras-chave. A linha de base oficial será consolidada na implantação.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="section-number">03</span><h2 class="section-title">Arquitetura da estratégia</h2><div class="section-line"></div></div>
+          <p class="section-intro">O trabalho combina tecnologia, conteúdo, autoridade e conversão. O objetivo não é produzir volume editorial genérico, mas construir ativos que ajudem a Ilikia a ser encontrada, compreendida, citada e desejada.</p>
+          <div class="pillars">
+            <article class="pillar"><div class="pillar-number">01</div><h3>Fundação técnica</h3><p>Performance, indexação, arquitetura, templates, metadados, schema, imagens, links internos e mensuração.</p></article>
+            <article class="pillar featured"><div class="pillar-number">02</div><h3>Jornadas B2B2C</h3><p>Separação clara entre consumidor, profissional e parceiro, com conteúdo e chamadas adequadas a cada intenção.</p></article>
+            <article class="pillar"><div class="pillar-number">03</div><h3>Conteúdo especialista</h3><p>Entrevistas com profissionais, evidências, perguntas reais e produção editorial com revisão humana e técnica.</p></article>
+            <article class="pillar"><div class="pillar-number">04</div><h3>Produtos e soluções</h3><p>Páginas que conectam benefício, indicação, segurança, diferenciais, conteúdo complementar e próximo passo.</p></article>
+            <article class="pillar"><div class="pillar-number">05</div><h3>GEO e presença em IA</h3><p>Conteúdo claro, citável, atualizado e contextualizado para ampliar elegibilidade em respostas generativas.</p></article>
+            <article class="pillar"><div class="pillar-number">06</div><h3>Conversão e inteligência</h3><p>Eventos, formulários, encaminhamentos, painéis e leitura do caminho entre descoberta e oportunidade.</p></article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="section-number">04</span><h2 class="section-title">Conteúdo que nasce da experiência</h2><div class="section-line"></div></div>
+          <div class="editorial">
+            <article class="editorial-main"><div class="kicker">Cadência editorial</div><h3>Conhecimento real, transformado em ativo digital.</h3><p>A IA apoia pesquisa, transcrição e estrutura. A originalidade vem das entrevistas, dos especialistas, dos estudos e da experiência clínica ou comercial da Ilikia.</p><div class="editorial-number">6</div><div class="editorial-label">conteúdos estratégicos por mês</div><p>Quatro conteúdos aprofundados para construir autoridade e dois conteúdos táticos orientados por dúvidas, produtos, tendências e oportunidades de busca.</p></article>
+            <div class="editorial-steps">
+              <article class="editorial-step"><span>01</span><div><strong>Pauta orientada por demanda</strong><p>Busca, jornada, produtos, objeções, sazonalidade e prioridades da marca.</p></div></article>
+              <article class="editorial-step"><span>02</span><div><strong>Entrevista gravada</strong><p>Conversas com especialistas, equipe técnica, profissionais e lideranças.</p></div></article>
+              <article class="editorial-step"><span>03</span><div><strong>Produção e arquitetura</strong><p>Texto, hierarquia, fontes, links, imagens, perguntas e marcação adequada.</p></div></article>
+              <article class="editorial-step"><span>04</span><div><strong>Revisão e publicação</strong><p>Validação técnica e regulatória da Ilikia antes da publicação no WordPress.</p></div></article>
+              <article class="editorial-step"><span>05</span><div><strong>Distribuição e evolução</strong><p>Integração com páginas, campanhas, redes, CRM e atualização com base em desempenho.</p></div></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="section-number">05</span><h2 class="section-title">Entregas previstas</h2><div class="section-line"></div></div>
+          <div class="deliverables">
+            <div class="deliverable">Diagnóstico de GA4, Search Console, indexação e conversões</div>
+            <div class="deliverable">Pesquisa de demanda por marcas, produtos, problemas e procedimentos</div>
+            <div class="deliverable">Mapa de conteúdo e arquitetura B2B2C priorizada</div>
+            <div class="deliverable">Otimização técnica do WordPress e Elementor</div>
+            <div class="deliverable">Metadados, dados estruturados e links internos</div>
+            <div class="deliverable">Otimização contínua de páginas existentes</div>
+            <div class="deliverable">Seis conteúdos por mês: quatro aprofundados e dois táticos</div>
+            <div class="deliverable">Criação e evolução de páginas conforme demanda e prioridades alinhadas</div>
+            <div class="deliverable">Entrevistas, transcrição e organização do conhecimento</div>
+            <div class="deliverable">Monitoramento de buscas, concorrentes e presença em IA</div>
+            <div class="deliverable">Painel de SEO com Search Console, GA4 e conversões orgânicas</div>
+            <div class="deliverable">Reunião online semanal de até uma hora</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="section-number">06</span><h2 class="section-title">Cronograma de evolução</h2><div class="section-line"></div></div>
+          <p class="section-intro">SEO, autoridade e presença em IA são construções cumulativas. A implantação organiza a base; a recorrência cria profundidade, distribuição e aprendizado.</p>
+          <div class="gantt-wrapper">
+            <div class="gantt">
+              <div class="gantt-row gantt-header"><div>Frente</div><div>0–60 dias</div><div>3–4 meses</div><div>5–8 meses</div><div>9–12 meses</div></div>
+              <div class="gantt-row"><div class="gantt-label">Diagnóstico e mensuração</div><div><span class="gantt-bar client">Linha de base</span></div><div><span class="gantt-bar light">Ajustes</span></div><div></div><div></div></div>
+              <div class="gantt-row"><div class="gantt-label">Performance e SEO técnico</div><div><span class="gantt-bar purple">Implantação</span></div><div><span class="gantt-bar purple">Validação</span></div><div><span class="gantt-bar light">Evolução</span></div><div><span class="gantt-bar light">Evolução</span></div></div>
+              <div class="gantt-row"><div class="gantt-label">Conteúdo e páginas</div><div><span class="gantt-bar">Início</span></div><div><span class="gantt-bar">Clusters</span></div><div><span class="gantt-bar">Escala</span></div><div><span class="gantt-bar">Autoridade</span></div></div>
+              <div class="gantt-row"><div class="gantt-label">GEO e presença em IA</div><div><span class="gantt-bar light">Linha de base</span></div><div><span class="gantt-bar client">Monitoramento</span></div><div><span class="gantt-bar client">Otimização</span></div><div><span class="gantt-bar client">Participação</span></div></div>
+              <div class="gantt-row"><div class="gantt-label">Conversão B2B2C</div><div><span class="gantt-bar light">Desenho</span></div><div><span class="gantt-bar purple">Ativação</span></div><div><span class="gantt-bar purple">Aprendizado</span></div><div><span class="gantt-bar purple">Otimização</span></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="section-number">07</span><h2 class="section-title">Como o resultado será medido</h2><div class="section-line"></div></div>
+          <div class="measurement">
+            <article class="measure"><h3>Saúde técnica</h3><ul><li>Core Web Vitals</li><li>Indexação e erros</li><li>Qualidade das páginas</li></ul></article>
+            <article class="measure"><h3>Descoberta</h3><ul><li>Impressões sem termos de marca</li><li>Posições e cliques</li><li>Novas consultas</li></ul></article>
+            <article class="measure"><h3>Autoridade</h3><ul><li>Menções e citações</li><li>Presença em respostas de IA</li><li>Engajamento com conteúdo</li></ul></article>
+            <article class="measure"><h3>Negócio</h3><ul><li>Leads e encaminhamentos</li><li>Interesse por produto</li><li>Demanda por marca</li></ul></article>
+          </div>
+          <div class="guardrail"><strong>Metas quantitativas após o diagnóstico.</strong> O volume de busca disponível e a linha de base oficial serão definidos com Google Ads, Search Console, GA4 e dados comerciais. A primeira revisão executiva acontece em 90 dias; ganhos consistentes são esperados a partir do sexto mês e consolidados ao longo de 12 meses.</div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="section-number">08</span><h2 class="section-title">Investimento</h2><div class="section-line"></div></div>
+          <div class="investment-stack">
+            <article class="plan-card project">
+              <div class="plan-head"><div><div class="plan-label">Projeto inicial · 45–60 dias</div><div class="plan-name">Fundação SEO, GEO e B2B2C</div><p class="plan-description">Diagnóstico, pesquisa, arquitetura, mensuração e correções prioritárias para preparar o ecossistema digital para a operação contínua.</p></div><div class="price"><div class="price-label">Investimento</div><div class="price-value">R$ 24.000</div><div class="price-note">50% na entrada + 50% em 30 dias</div></div></div>
+              <div class="plan-body"><ul class="check-list"><li>Diagnóstico técnico, editorial e de conversão</li><li>Pesquisa inicial de palavras-chave e jornadas</li><li>Arquitetura B2B2C e mapa de prioridades</li><li>Configuração e revisão da mensuração</li><li>Otimizações técnicas prioritárias no WordPress</li><li>Plano editorial e painel de linha de base</li></ul></div>
+            </article>
+            <article class="plan-card">
+              <div class="plan-head"><div><div class="plan-label">Operação contínua · contrato mínimo de 12 meses</div><div class="plan-name">Autoridade e Demanda Digital</div><p class="plan-description">Estratégia, produção especializada, otimização contínua, novas páginas, GEO, análise de dados e governança com a equipe Ilikia.</p></div><div class="price"><div class="price-label">Investimento mensal</div><div class="price-value">R$ 16.500</div><div class="price-note">Contrato mínimo de 12 meses</div></div></div>
+              <div class="plan-body"><ul class="check-list"><li>Seis conteúdos mensais: quatro aprofundados e dois táticos</li><li>Criação e evolução de páginas conforme demanda, prioridades e capacidade mensal</li><li>Entrevistas e produção com apoio de especialistas</li><li>SEO, GEO, links internos e otimizações contínuas</li><li>Painel com Search Console, GA4, conversões e recomendações</li><li>Reunião online semanal de até uma hora</li></ul><div class="condition"><strong>Escopo de páginas:</strong> as demandas serão priorizadas em conjunto. Novos módulos, integrações, funcionalidades ou páginas de maior complexidade poderão ser orçados separadamente. <strong>Investimentos externos não inclusos:</strong> mídia, ferramentas pagas, hospedagem, banco de imagens, produção audiovisual e tradução especializada.</div></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="section-number">09</span><h2 class="section-title">Premissas para o projeto</h2><div class="section-line"></div></div>
+          <div class="premises">
+            <article class="premise"><strong>Acessos e histórico</strong>A Ilikia disponibilizará WordPress, hospedagem, GA4, Search Console, Tag Manager e dados comerciais necessários.</article>
+            <article class="premise"><strong>Validação técnica e regulatória</strong>Conteúdos clínicos, científicos e de produto serão publicados após aprovação dos responsáveis indicados pela Ilikia.</article>
+            <article class="premise"><strong>Disponibilidade de especialistas</strong>Entrevistas e fontes internas serão organizadas em agenda conjunta para sustentar originalidade e profundidade.</article>
+            <article class="premise"><strong>Prazo de aprovação</strong>O cronograma pressupõe retornos da Ilikia em até três dias úteis para conteúdos, páginas e decisões prioritárias.</article>
+            <article class="premise"><strong>Resultados orgânicos</strong>Posições, tráfego e citações em IA dependem de algoritmos, concorrência e demanda; portanto, não há garantia de ranking específico.</article>
+            <article class="premise"><strong>Escopo WordPress</strong>Inclui otimizações compatíveis com a estrutura atual. Reconstruções, integrações ou módulos extensos serão orçados separadamente.</article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="section-number">10</span><h2 class="section-title">Liderança do projeto</h2><div class="section-line"></div></div>
+          <div class="leader-card">
+            <div class="leader-photo"><img src="/Imagens/Rodrigo-Bueno-Fundador-UPDO.jpg" alt="Rodrigo Bueno" /></div>
+            <div><div class="kicker">Responsável pela condução estratégica</div><div class="leader-name">Rodrigo Bueno</div><div class="leader-role">Fundador da UPDO · Marketing, vendas e comportamento do consumidor</div><p class="leader-text">Rodrigo acompanha a arquitetura da estratégia, a pauta executiva e a evolução do projeto, conectando busca, conteúdo, experiência, dados e geração de demanda.</p><div class="leader-points"><span class="leader-point">Professor de Educação executiva e pós-graduação na PUCPR e Faculdade IBRATE</span><span class="leader-point">Professor de MBA na UFPR</span><span class="leader-point">Professor de MBA em Gestão Comercial na Universidade Positivo</span><span class="leader-point">Palestrante em neuromarketing, vendas e marketing digital</span></div></div>
+          </div>
+        </section>
+
+        <div class="validity"><span class="validity-mark"></span><span>Proposta válida por <strong>15 dias</strong>. O início será reservado após aprovação, assinatura e pagamento da primeira parcela do projeto inicial.</span></div>
+
+        <section class="cta">
+          <div><h2>Da autoridade científica à preferência de marca.</h2><p>O próximo passo é validar a direção B2B2C, acessar os dados oficiais e priorizar a primeira fase da arquitetura digital da Ilikia.</p></div>
+          <a class="cta-button" href="https://wa.me/5541988797301?text=Ol%C3%A1%2C%20Rodrigo.%20Gostar%C3%ADamos%20de%20conversar%20sobre%20a%20proposta%20de%20SEO%2C%20GEO%20e%20gera%C3%A7%C3%A3o%20de%20demanda%20para%20a%20Ilikia." target="_blank" rel="noreferrer">Conversar sobre a proposta</a>
+        </section>
+
+        <footer class="footer"><img src="/Imagens/Agencia-UPDO.svg" alt="UPDO" /><p>UPDO · Marketing, vendas, CRM, dados e IA<br />Documento confidencial preparado para Nicole Fagones · Ilikia &amp; Co.</p></footer>
+      </div>
+    </main>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        if (window.lucide) window.lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>
