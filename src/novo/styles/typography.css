@@ -2,7 +2,7 @@
 Default Body and Typography styles
 =========================== */
 body {
-  @apply font-inter-tight antialiased;
+  @apply font-texto antialiased;
 }
 
 /* =========================
@@ -15,7 +15,7 @@ Font base styles
   h4,
   h5,
   h6 {
-    @apply font-inter-tight text-black font-normal;
+    @apply font-titulo text-black font-normal;
   }
 
   h1 {

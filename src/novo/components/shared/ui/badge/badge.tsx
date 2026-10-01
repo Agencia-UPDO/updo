@@ -19,7 +19,7 @@ const Badge = ({ text, tone = 'light', className, ...props }: BadgeProps) => {
       <span className="bg-primary-500 ring-primary-500/30 block size-2 shrink-0 rounded-full ring-4" />
       <span
         className={cn(
-          'font-inter-tight text-tagline-2 font-medium',
+          'font-texto text-tagline-2 font-medium',
           tone === 'light' ? 'text-secondary' : 'text-white'
         )}
       >

@@ -63,7 +63,8 @@ const themeColors = [
 
 /** Theme fonts from styles/variable.css */
 const themeFonts = [
-  'inter-tight',
+  'texto',
+  'titulo',
   'ibm-plex-mono',
   'instrument-serif',
   'manrope',

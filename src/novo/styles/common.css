@@ -80,7 +80,7 @@
   }
 
   p {
-    @apply font-inter-tight text-tagline-2 not-last:mb-5;
+    @apply font-texto text-tagline-2 not-last:mb-5;
   }
 
   h3 {
@@ -96,7 +96,7 @@
   }
 
   ul li {
-    @apply font-inter-tight text-tagline-2 text-background-14/90;
+    @apply font-texto text-tagline-2 text-background-14/90;
   }
 }
 
@@ -109,7 +109,7 @@
   }
 
   p {
-    @apply font-inter-tight text-tagline-2 font-normal;
+    @apply font-texto text-tagline-2 font-normal;
   }
 
   h3 + p {
@@ -129,7 +129,7 @@
   }
 
   ul > li {
-    @apply font-inter-tight text-tagline-2 text-secondary/60 before:bg-secondary flex items-center gap-x-2 font-normal before:block before:size-1.5 before:rounded-full before:content-[''];
+    @apply font-texto text-tagline-2 text-secondary/60 before:bg-secondary flex items-center gap-x-2 font-normal before:block before:size-1.5 before:rounded-full before:content-[''];
   }
 
   hr {
@@ -144,7 +144,7 @@
   }
 
   p {
-    @apply font-inter-tight text-tagline-1 text-background-14/60 mt-8 font-normal md:mt-17.5;
+    @apply font-texto text-tagline-1 text-background-14/60 mt-8 font-normal md:mt-17.5;
   }
 
   h3 + p {
@@ -162,7 +162,7 @@
     @apply space-y-2;
 
     li {
-      @apply font-inter-tight text-tagline-2 text-background-14/90 before:bg-background-14 flex items-center gap-x-2 font-normal before:block before:size-1.5 before:rounded-full before:content-[''];
+      @apply font-texto text-tagline-2 text-background-14/90 before:bg-background-14 flex items-center gap-x-2 font-normal before:block before:size-1.5 before:rounded-full before:content-[''];
     }
   }
 }

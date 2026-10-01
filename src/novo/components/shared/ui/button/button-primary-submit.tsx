@@ -12,7 +12,7 @@ const ButtonPrimarySubmit = ({ text, className, ...props }: ButtonPrimarySubmitP
       type="submit"
       data-button-wrapper
       className={cn(
-        'group border-stroke-1 font-inter-tight text-tagline-1 font-medium text-secondary ease-bouncy h-16 cursor-pointer rounded-full border p-1.5 transition-transform duration-400 active:scale-[0.98]',
+        'group border-stroke-1 font-texto text-tagline-1 font-medium text-secondary ease-bouncy h-16 cursor-pointer rounded-full border p-1.5 transition-transform duration-400 active:scale-[0.98]',
         className
       )}
       {...props}

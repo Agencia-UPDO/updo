@@ -28,7 +28,7 @@ const AccordionContent = ({ children, className }: AccordionContentProps) => {
           registerText(index, node);
         }}
         className={cn(
-          'font-inter-tight text-tagline-2 w-[90%] cursor-text pb-6 text-black/60',
+          'font-texto text-tagline-2 w-[90%] cursor-text pb-6 text-black/60',
           className
         )}
       >

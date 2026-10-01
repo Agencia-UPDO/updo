@@ -12,3 +12,8 @@ html {
 body {
   @apply bg-background-13 text-secondary;
 }
+
+@theme inline {
+  --font-texto: var(--font-texto-src), sans-serif;
+  --font-titulo: var(--font-titulo-src), sans-serif;
+}

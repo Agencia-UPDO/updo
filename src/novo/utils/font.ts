@@ -1,8 +1,13 @@
-import { Inter_Tight } from 'next/font/google';
+import { Funnel_Display, Inter } from 'next/font/google';
 
-export const interTight = Inter_Tight({
-  variable: '--font-inter-tight',
+export const texto = Inter({
+  variable: '--font-texto-src',
   subsets: ['latin'],
 });
 
-export const fontVariables = interTight.variable;
+export const titulo = Funnel_Display({
+  variable: '--font-titulo-src',
+  subsets: ['latin'],
+});
+
+export const fontVariables = `${texto.variable} ${titulo.variable}`;

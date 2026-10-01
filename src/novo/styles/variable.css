@@ -3,7 +3,6 @@ All the variables are added here
 =========================== */
 @theme {
   /* =============== FONTS =============== */
-  --font-inter-tight: var(--font-inter-tight), "Inter Tight", sans-serif;
   --font-ibm-plex-mono: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
   --font-instrument-serif: var(--font-instrument-serif), "Instrument Serif", serif;
   --font-manrope: var(--font-manrope), "Manrope", sans-serif;

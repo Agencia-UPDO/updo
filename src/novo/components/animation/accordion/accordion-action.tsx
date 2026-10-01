@@ -28,7 +28,7 @@ const AccordionAction = ({ children, className }: AccordionActionProps) => {
     >
       {Children.map(children, (child) =>
         typeof child === 'string' ? (
-          <span className="font-inter-tight text-tagline-new text-black">{child}</span>
+          <span className="font-texto text-tagline-new text-black">{child}</span>
         ) : (
           child
         )

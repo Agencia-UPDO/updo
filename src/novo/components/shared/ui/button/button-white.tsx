@@ -10,7 +10,7 @@ const ButtonWhite = ({ text, className, ...props }: ButtonWhiteProps) => {
   return (
     <span
       className={cn(
-        'group border-stroke-1 font-inter-tight text-tagline-1 text-secondary ease-bouncy inline-flex h-16 cursor-pointer items-center rounded-full border p-1.5 transition-transform duration-400 active:scale-[0.98]',
+        'group border-stroke-1 font-texto text-tagline-1 text-secondary ease-bouncy inline-flex h-16 cursor-pointer items-center rounded-full border p-1.5 transition-transform duration-400 active:scale-[0.98]',
         className
       )}
       data-button-wrapper
