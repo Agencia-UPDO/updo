@@ -1,20 +1,20 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
-import {
-  FacebookIcon,
-  InstagramIcon,
-  LinkedinIcon,
-  YoutubeIcon,
-} from '@/novo/components/shared/icons';
+import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { rodapeColunas } from '@/novo/data/navegacao';
 import { siteConfig } from '@/config/site';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const sociais = [
-  { label: 'LinkedIn', href: siteConfig.social.linkedin, icon: LinkedinIcon },
-  { label: 'Instagram', href: siteConfig.social.instagram, icon: InstagramIcon },
-  { label: 'Facebook', href: siteConfig.social.facebook, icon: FacebookIcon },
-  { label: 'YouTube', href: siteConfig.social.youtube, icon: YoutubeIcon },
+  { label: 'LinkedIn', href: siteConfig.social.linkedin, icon: Linkedin, cor: 'bg-[#0A66C2]' },
+  {
+    label: 'Instagram',
+    href: siteConfig.social.instagram,
+    icon: Instagram,
+    cor: 'bg-[radial-gradient(circle_at_30%_107%,#fdf497_0%,#fd5949_45%,#d6249f_60%,#285AEB_90%)]',
+  },
+  { label: 'Facebook', href: siteConfig.social.facebook, icon: Facebook, cor: 'bg-[#1877F2]' },
+  { label: 'YouTube', href: siteConfig.social.youtube, icon: Youtube, cor: 'bg-[#FF0000]' },
 ];
 
 const selos = [
@@ -59,16 +59,16 @@ const Footer = () => {
               </ul>
 
               <div className="mt-8 flex items-center gap-3">
-                {sociais.map(({ label, href, icon: Icon }) => (
+                {sociais.map(({ label, href, icon: Icon, cor }) => (
                   <a
                     key={label}
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex size-10 items-center justify-center rounded-full border border-white/15 text-white transition-transform duration-300 hover:-translate-y-1 [&_path]:fill-white"
+                    className={`flex size-11 items-center justify-center rounded-full text-white transition-transform duration-300 hover:-translate-y-1 ${cor}`}
                   >
                     <span className="sr-only">{label}</span>
-                    <Icon className="size-5" aria-hidden="true" />
+                    <Icon className="size-5" strokeWidth={2} aria-hidden="true" />
                   </a>
                 ))}
               </div>
