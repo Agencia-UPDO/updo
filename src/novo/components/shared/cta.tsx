@@ -1,3 +1,4 @@
+import { balance } from '@/novo/utils/balance';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import Badge from '@/novo/components/shared/ui/badge/badge';
@@ -27,7 +28,7 @@ const Cta = ({
             </RevealAnimation>
             <div className="space-y-4">
               <TextReveal delay={0.2}>
-                <h2 className="text-white">{title}</h2>
+                <h2 style={balance} className="text-white">{title}</h2>
               </TextReveal>
               <TextReveal delay={0.3}>
                 <p className="mx-auto max-w-[600px] text-white/60">{description}</p>

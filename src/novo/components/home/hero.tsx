@@ -1,3 +1,4 @@
+import { balance } from '@/novo/utils/balance';
 import CounterNumberOnScroll from '@/novo/components/animation/counter-number-on-scroll';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
@@ -24,7 +25,7 @@ const Hero = () => {
           <div className="space-y-8 lg:w-[64%]">
             <div className="space-y-5 text-center md:text-left">
               <TextReveal delay={0.1}>
-                <h1>
+                <h1 style={balance}>
                   Marketing, vendas e dados para sua empresa crescer com{' '}
                   <span className="box-decoration-clone bg-[linear-gradient(transparent_60%,var(--color-primary-500)_60%,var(--color-primary-500)_92%,transparent_92%)] px-1">
                     previsibilidade
