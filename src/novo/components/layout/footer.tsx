@@ -6,15 +6,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const sociais = [
-  { label: 'LinkedIn', href: siteConfig.social.linkedin, icon: Linkedin, cor: 'bg-[#0A66C2]' },
-  {
-    label: 'Instagram',
-    href: siteConfig.social.instagram,
-    icon: Instagram,
-    cor: 'bg-[radial-gradient(circle_at_30%_107%,#fdf497_0%,#fd5949_45%,#d6249f_60%,#285AEB_90%)]',
-  },
-  { label: 'Facebook', href: siteConfig.social.facebook, icon: Facebook, cor: 'bg-[#1877F2]' },
-  { label: 'YouTube', href: siteConfig.social.youtube, icon: Youtube, cor: 'bg-[#FF0000]' },
+  { label: 'LinkedIn', href: siteConfig.social.linkedin, icon: Linkedin },
+  { label: 'Instagram', href: siteConfig.social.instagram, icon: Instagram },
+  { label: 'Facebook', href: siteConfig.social.facebook, icon: Facebook },
+  { label: 'YouTube', href: siteConfig.social.youtube, icon: Youtube },
 ];
 
 const selos = [
@@ -59,13 +54,13 @@ const Footer = () => {
               </ul>
 
               <div className="mt-8 flex items-center gap-3">
-                {sociais.map(({ label, href, icon: Icon, cor }) => (
+                {sociais.map(({ label, href, icon: Icon }) => (
                   <a
                     key={label}
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex size-11 items-center justify-center rounded-full text-white transition-transform duration-300 hover:-translate-y-1 ${cor}`}
+                    className="flex size-11 items-center justify-center bg-primary-500 text-secondary hover:bg-lilas-500 rounded-full transition-all duration-300 hover:-translate-y-1 hover:text-white"
                   >
                     <span className="sr-only">{label}</span>
                     <Icon className="size-5" strokeWidth={2} aria-hidden="true" />
