@@ -1,17 +1,17 @@
 import { Metadata } from "next";
 import Script from "next/script";
-import { HomeHero } from "@/components/sections/home/hero";
-import { HomeClients } from "@/components/sections/home/clients";
-import { HomeSectors } from "@/components/sections/home/sectors";
-import { HomeMethodology } from "@/components/sections/home/methodology";
-import { HomeServices } from "@/components/sections/home/services";
-import { HomeCases } from "@/components/sections/home/cases";
-import { HomeTestimonials } from "@/components/sections/home/testimonials";
-import { HomeDifferentials } from "@/components/sections/home/differentials";
-import { HomeRodrigo } from "@/components/sections/home/rodrigo";
-import { HomeInsights } from "@/components/sections/home/insights";
-import { HomeFAQ } from "@/components/sections/home/faq";
-import { HomeContact } from "@/components/sections/home/contact";
+import Hero from "@/novo/components/home/hero";
+import Setores from "@/novo/components/home/setores";
+import Servicos from "@/novo/components/home/servicos";
+import Metodo from "@/novo/components/home/metodo";
+import Cases from "@/novo/components/home/cases";
+import Diferenciais from "@/novo/components/home/diferenciais";
+import Depoimentos from "@/novo/components/home/depoimentos";
+import Fundador from "@/novo/components/home/fundador";
+import Insights from "@/novo/components/home/insights";
+import Faq from "@/novo/components/shared/faq";
+import Cta from "@/novo/components/shared/cta";
+import { faqHome } from "@/novo/data/home";
 
 export const metadata: Metadata = {
   title: {
@@ -98,18 +98,17 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
-      <HomeHero />
-      <HomeClients />
-      <HomeSectors />
-      <HomeMethodology />
-      <HomeServices />
-      <HomeCases />
-      <HomeTestimonials />
-      <HomeDifferentials />
-      <HomeRodrigo />
-      <HomeInsights />
-      <HomeContact />
-      <HomeFAQ />
+      <Hero />
+      <Setores />
+      <Servicos />
+      <Metodo />
+      <Cases />
+      <Diferenciais />
+      <Depoimentos />
+      <Fundador />
+      <Insights />
+      <Faq items={faqHome} />
+      <Cta />
     </div>
   );
 }

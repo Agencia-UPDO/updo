@@ -1,3 +1,9 @@
+import type { Metadata } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
+import "./globals.css";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { SiteHead, GtmNoscript } from "@/components/layout/site-tracking";
 import Link from "next/link";
 import { ArrowRight, Compass, FileSearch, Home, Layers3 } from "lucide-react";
 
@@ -22,7 +28,7 @@ const quickLinks = [
   },
 ];
 
-export default function NotFound() {
+function NotFoundContent() {
   return (
     <main className="relative isolate overflow-hidden bg-background">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:40px_40px]" />
@@ -112,5 +118,37 @@ export default function NotFound() {
         </div>
       </section>
     </main>
+  );
+}
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Página não encontrada | UPDO",
+  robots: { index: false },
+  icons: { icon: "/Imagens/favicon agencia updo.png" },
+};
+
+export default function GlobalNotFound() {
+  return (
+    <html lang="pt-BR" suppressHydrationWarning>
+      <SiteHead />
+      <body
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased min-h-screen flex flex-col`}
+      >
+        <GtmNoscript />
+        <Navbar />
+        <NotFoundContent />
+        <Footer />
+      </body>
+    </html>
   );
 }

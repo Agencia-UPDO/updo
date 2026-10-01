@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+@import '../../novo/styles/common.css';
+@import '../../novo/styles/variable.css';
+@import '../../novo/styles/typography.css';
+
+@source '../../novo';
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  @apply bg-background-13 text-secondary;
+}
