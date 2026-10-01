@@ -1,3 +1,15 @@
+import {
+  BarChart3,
+  Briefcase,
+  Filter,
+  Globe2,
+  Layers,
+  Megaphone,
+  MessageSquareText,
+  MousePointerClick,
+  Search,
+  Target,
+} from 'lucide-react';
 import type { ServicoConteudo } from '@/novo/components/servicos/servico-template';
 
 export const geracaoDeDemanda: ServicoConteudo = {
@@ -29,16 +41,19 @@ export const geracaoDeDemanda: ServicoConteudo = {
     title: 'Onde a aquisição gasta verba antes de gerar receita',
     items: [
       {
+        icon: Filter,
         title: 'Lead entra sem fit comercial',
         description:
           'A campanha gera volume, mas o comercial gasta tempo com gente fora do perfil de cliente ideal. O custo real aparece depois do CPL.',
       },
       {
+        icon: Layers,
         title: 'Dependência de um canal só',
         description:
           'Quando tudo depende de Google, Meta ou indicação, qualquer mudança de leilão, algoritmo ou mercado mexe direto no caixa.',
       },
       {
+        icon: BarChart3,
         title: 'Relatório que para no clique',
         description:
           'Impressão, CTR e lead contam pouco sozinhos. A decisão de verba precisa enxergar qualidade, oportunidade, venda e CAC por canal.',
@@ -51,36 +66,43 @@ export const geracaoDeDemanda: ServicoConteudo = {
       'A entrega conecta canal, oferta, mídia, SEO, GEO, landing page e leitura comercial para o lead chegar com mais contexto.',
     items: [
       {
+        icon: Target,
         title: 'Estratégia de canal por ICP',
         description:
           'Definição de público, canal, oferta, orçamento e meta antes da campanha entrar no ar.',
       },
       {
+        icon: Search,
         title: 'Google Ads',
         description:
           'Busca, Performance Max e remarketing com intenção clara, termos negativos e leitura de qualidade do lead.',
       },
       {
+        icon: Megaphone,
         title: 'Meta Ads',
         description:
           'Campanhas para Facebook e Instagram com criativos, públicos e retargeting alinhados à etapa do funil.',
       },
       {
+        icon: Briefcase,
         title: 'LinkedIn Ads e B2B',
         description:
           'Segmentação por cargo, setor e empresa para ciclos longos, decisores específicos e tickets maiores.',
       },
       {
+        icon: Globe2,
         title: 'SEO, GEO e conteúdo',
         description:
           'Arquitetura de conteúdo para buscadores e respostas de IA, capturando demanda orgânica de alta intenção.',
       },
       {
+        icon: MessageSquareText,
         title: 'ChatGPT Ads',
         description:
           'Campanhas orientadas por intenção conversacional, conectadas a landing pages, tracking e aprendizado de GEO.',
       },
       {
+        icon: BarChart3,
         title: 'CPL, CAC e qualidade por canal',
         description:
           'Relatório que conecta investimento, lead, oportunidade e venda para realocar verba com segurança.',
@@ -93,21 +115,25 @@ export const geracaoDeDemanda: ServicoConteudo = {
       'ICP, oferta, canais e receita precisam ser lidos juntos. Quando isso falha, o time otimiza clique enquanto o comercial recebe lead ruim.',
     items: [
       {
+        icon: Target,
         label: 'ICP',
         description: 'O canal é escolhido a partir do perfil de cliente que mais compra.',
         resultado: 'Lead certo',
       },
       {
+        icon: MousePointerClick,
         label: 'Oferta',
         description: 'Anúncio e página filtram intenção antes do lead chegar ao comercial.',
         resultado: 'Mais qualidade',
       },
       {
+        icon: Layers,
         label: 'Canais',
         description: 'Pago, orgânico, GEO e remarketing têm papéis diferentes na jornada.',
         resultado: 'Menos risco',
       },
       {
+        icon: BarChart3,
         label: 'Receita',
         description: 'CPL só importa quando conversa com oportunidade, venda e CAC real.',
         resultado: 'Decisão melhor',

@@ -2,6 +2,7 @@
 
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import { ArrowDownIcon } from '@/novo/components/shared/icons';
+import IconChip, { type IconChipTone } from '@/novo/components/shared/icon-chip';
 import ButtonPrimaryV2 from '@/novo/components/shared/ui/button/button-primary-v2';
 import { menuPrincipal, servicos, setores, type NavLink } from '@/novo/data/navegacao';
 import { useNavbarScroll } from '@/novo/hooks/useScrollHeader';
@@ -12,7 +13,15 @@ import { useState } from 'react';
 
 const isExternal = (href: string) => href.startsWith('http');
 
-const MegaColumn = ({ title, links }: { title: string; links: NavLink[] }) => (
+const MegaColumn = ({
+  title,
+  links,
+  tone,
+}: {
+  title: string;
+  links: NavLink[];
+  tone: IconChipTone;
+}) => (
   <div>
     <p className="text-tagline-3 text-secondary/50 mb-3 px-3 font-medium">{title}</p>
     <ul className="grid grid-cols-2 gap-1">
@@ -20,14 +29,17 @@ const MegaColumn = ({ title, links }: { title: string; links: NavLink[] }) => (
         <li key={link.href}>
           <Link
             href={link.href}
-            className="hover:bg-background-3 block rounded-xl px-3 py-2.5 transition-colors"
+            className="hover:bg-background-3 flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors"
           >
+            {link.icon && <IconChip icon={link.icon} tone={tone} size="sm" />}
+            <span className="min-w-0">
             <span className="text-tagline-1 text-secondary block font-medium">{link.title}</span>
             {link.description && (
               <span className="text-tagline-3 text-secondary/55 mt-0.5 line-clamp-1 block">
                 {link.description}
               </span>
             )}
+            </span>
           </Link>
         </li>
       ))}
@@ -120,8 +132,8 @@ const Navbar = () => {
               )}
             >
               <div className="shadow-3 border-stroke-4 grid grid-cols-2 gap-8 rounded-3xl border bg-white p-6">
-                <MegaColumn title="Serviços" links={servicos} />
-                <MegaColumn title="Setores" links={setores} />
+                <MegaColumn title="Serviços" links={servicos} tone="menta" />
+                <MegaColumn title="Setores" links={setores} tone="lilas" />
               </div>
             </div>
           </div>

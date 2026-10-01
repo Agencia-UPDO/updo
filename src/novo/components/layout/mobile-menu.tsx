@@ -45,9 +45,10 @@ const MobileMenu = () => {
             <Link
               href={link.href}
               onClick={close}
-              className="text-tagline-1 text-secondary block"
+              className="text-tagline-1 text-secondary flex items-center gap-2.5"
               target={link.href.startsWith('http') ? '_blank' : undefined}
             >
+              {link.icon && <link.icon className="text-lilas-500 size-4.5 shrink-0" strokeWidth={1.75} />}
               {link.title}
             </Link>
           </li>

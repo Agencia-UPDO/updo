@@ -1,13 +1,17 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import { ArrowRightIcon } from '@/novo/components/shared/icons';
+import IconChip from '@/novo/components/shared/icon-chip';
 import SectionHeading from '@/novo/components/shared/section-heading';
 import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
 import { servicosHome } from '@/novo/data/home';
+import { servicos } from '@/novo/data/navegacao';
 import Link from 'next/link';
+
+const icones = Object.fromEntries(servicos.map((servico) => [servico.href, servico.icon]));
 
 const Servicos = () => {
   return (
-    <section id="servicos" className="bg-white py-18 md:py-28 xl:py-32">
+    <section id="servicos" className="bg-lilas-50 py-18 md:py-28 xl:py-32">
       <div className="main-container space-y-12 md:space-y-16">
         <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -33,12 +37,21 @@ const Servicos = () => {
             >
               <Link
                 href={servico.href}
-                className="group bg-background-13 hover:bg-secondary flex h-full min-h-[300px] flex-col rounded-2xl p-7 transition-colors duration-500"
+                className="group hover:bg-secondary flex h-full min-h-[320px] bg-white shadow-2 flex-col rounded-2xl p-7 transition-colors duration-500"
               >
-                <span className="text-tagline-2 text-secondary/45 transition-colors duration-500 group-hover:text-white/50">
-                  ({String(index + 1).padStart(2, '0')}) {servico.tag}
-                </span>
-                <h3 className="text-heading-6 md:text-heading-5 mt-3 font-normal transition-colors duration-500 group-hover:text-white">
+                <div className="flex items-center justify-between gap-4">
+                  {icones[servico.href] && (
+                    <IconChip
+                      icon={icones[servico.href]!}
+                      tone={index % 2 === 0 ? 'menta' : 'lilas'}
+                      className="transition-colors duration-500 group-hover:bg-white/10 group-hover:text-primary-500"
+                    />
+                  )}
+                  <span className="text-tagline-3 bg-background-13 text-secondary/60 rounded-full px-3 py-1 transition-colors duration-500 group-hover:bg-white/10 group-hover:text-white/60">
+                    {servico.tag}
+                  </span>
+                </div>
+                <h3 className="text-heading-6 md:text-heading-5 mt-6 font-normal transition-colors duration-500 group-hover:text-white">
                   {servico.title}
                 </h3>
                 <p className="text-tagline-2 mt-3 transition-colors duration-500 group-hover:text-white/65">

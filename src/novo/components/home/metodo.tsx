@@ -1,6 +1,7 @@
 'use client';
 
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import IconChip from '@/novo/components/shared/icon-chip';
 import SectionHeading from '@/novo/components/shared/section-heading';
 import { etapasMetodo } from '@/novo/data/home';
 import { useMediaQuery } from '@/novo/hooks/useMediaQuery';
@@ -36,14 +37,17 @@ const Metodo = () => {
                       : 'border-stroke-3 bg-white lg:flex-1'
                   )}
                 >
-                  <span
-                    className={cn(
-                      'text-heading-3 font-normal transition-colors duration-500',
-                      aberta ? 'text-primary-500' : 'text-secondary/25'
-                    )}
-                  >
-                    {etapa.step}
-                  </span>
+                  <div className="flex items-start justify-between gap-4">
+                    <IconChip icon={etapa.icon} tone={aberta ? 'claro' : 'lilas'} size="lg" />
+                    <span
+                      className={cn(
+                        'text-heading-5 font-normal transition-colors duration-500',
+                        aberta ? 'text-white/40' : 'text-secondary/25'
+                      )}
+                    >
+                      {etapa.step}
+                    </span>
+                  </div>
                   <div className="mt-10 space-y-3 lg:mt-0">
                     <h3
                       className={cn(

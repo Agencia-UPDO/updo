@@ -39,7 +39,7 @@ const Cases = () => {
                   href={item.href}
                   className={cn(
                     'group flex h-full flex-col justify-between gap-12 rounded-3xl p-7 md:p-9',
-                    escuro ? 'bg-secondary' : 'bg-background-13'
+                    escuro ? 'bg-secondary' : index === 1 ? 'bg-primary-50' : 'bg-lilas-50'
                   )}
                 >
                   <div className="flex items-start justify-between gap-6">

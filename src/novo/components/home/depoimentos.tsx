@@ -1,6 +1,8 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import VideoDepoimento from '@/novo/components/home/video-depoimento';
 import SectionHeading from '@/novo/components/shared/section-heading';
+import { cn } from '@/novo/utils/cn';
+import { Quote } from 'lucide-react';
 import { depoimentosTexto, depoimentosVideo } from '@/novo/data/home';
 
 const Depoimentos = () => {
@@ -36,12 +38,23 @@ const Depoimentos = () => {
         <div className="columns-1 gap-4 md:columns-2 md:gap-6 xl:columns-3">
           {depoimentosTexto.map((depoimento, index) => (
             <RevealAnimation key={depoimento.name + index} delay={0.1 + (index % 3) * 0.1}>
-              <figure className="border-stroke-3 mb-4 break-inside-avoid rounded-2xl border p-7 md:mb-6">
+              <figure
+                className={cn(
+                  'mb-4 break-inside-avoid rounded-2xl p-7 md:mb-6',
+                  ['bg-lilas-50', 'bg-primary-50', 'bg-background-13'][index % 3]
+                )}
+              >
+                <Quote className="text-lilas-500 mb-4 size-7" strokeWidth={1.5} aria-hidden="true" />
                 <blockquote className="text-tagline-1 text-secondary/80">
-                  “{depoimento.quote}”
+                  {depoimento.quote}
                 </blockquote>
                 <figcaption className="mt-6 flex items-center gap-3">
-                  <span className="bg-primary-500 text-secondary flex size-10 shrink-0 items-center justify-center rounded-full font-medium">
+                  <span
+                    className={cn(
+                      'flex size-10 shrink-0 items-center justify-center rounded-full font-medium',
+                      index % 2 === 0 ? 'bg-lilas-500 text-white' : 'bg-primary-500 text-secondary'
+                    )}
+                  >
                     {depoimento.name.charAt(0)}
                   </span>
                   <span>

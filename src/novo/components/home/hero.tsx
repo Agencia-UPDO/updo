@@ -1,9 +1,11 @@
 import CounterNumberOnScroll from '@/novo/components/animation/counter-number-on-scroll';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
+import IconChip from '@/novo/components/shared/icon-chip';
 import ClientesMarquee from '@/novo/components/home/clientes-marquee';
 import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
 import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
+import { Award, CalendarCheck, TrendingUp, Users } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -22,7 +24,12 @@ const Hero = () => {
           <div className="space-y-8 lg:w-[64%]">
             <div className="space-y-5 text-center md:text-left">
               <TextReveal delay={0.1}>
-                <h1>Marketing, vendas e dados para sua empresa crescer com previsibilidade</h1>
+                <h1>
+                  Marketing, vendas e dados para sua empresa crescer com{' '}
+                  <span className="box-decoration-clone bg-[linear-gradient(transparent_60%,var(--color-primary-500)_60%,var(--color-primary-500)_92%,transparent_92%)] px-1">
+                    previsibilidade
+                  </span>
+                </h1>
               </TextReveal>
               <TextReveal delay={0.2}>
                 <p className="max-w-[560px] max-md:mx-auto">
@@ -48,25 +55,29 @@ const Hero = () => {
           <RevealAnimation delay={0.4} direction="right">
             <div className="lg:w-[36%]">
               <div className="border-stroke-3 grid grid-cols-2 gap-y-8 border-t pt-8 lg:border-t-0 lg:pt-0">
-                <div className="space-y-1">
+                <div className="space-y-2">
+                  <IconChip icon={Users} tone="menta" size="sm" />
                   <p className="text-heading-4 text-secondary">
                     +<CounterNumberOnScroll value={300} />
                   </p>
                   <p className="text-tagline-2">empresas atendidas</p>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-2">
+                  <IconChip icon={TrendingUp} tone="lilas" size="sm" />
                   <p className="text-heading-4 text-secondary">
                     R$ <CounterNumberOnScroll value={750} />M
                   </p>
                   <p className="text-tagline-2">em vendas geradas para clientes</p>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-2">
+                  <IconChip icon={CalendarCheck} tone="lilas" size="sm" />
                   <p className="text-heading-4 text-secondary">
                     +<CounterNumberOnScroll value={10} /> anos
                   </p>
                   <p className="text-tagline-2">estruturando operações comerciais</p>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-2">
+                  <IconChip icon={Award} tone="menta" size="sm" />
                   <p className="text-heading-4 text-secondary">3x</p>
                   <p className="text-tagline-2">finalista do prêmio RD Station</p>
                 </div>
@@ -93,7 +104,7 @@ const Hero = () => {
           </RevealAnimation>
 
           <RevealAnimation delay={0.4} className="col-span-12 md:col-span-7">
-            <div className="bg-secondary flex h-full min-h-[340px] flex-col justify-between rounded-3xl p-7 md:h-[460px] md:p-9">
+            <div className="bg-lilas-700 flex h-full min-h-[340px] flex-col justify-between rounded-3xl p-7 md:h-[460px] md:p-9">
               <div className="flex items-start justify-between gap-6">
                 <p className="text-heading-6 max-w-[320px] text-white">
                   Alguns resultados de clientes
@@ -107,9 +118,9 @@ const Hero = () => {
               </div>
               <ul className="grid grid-cols-2 gap-x-6 gap-y-8">
                 {destaques.map((destaque) => (
-                  <li key={destaque.label} className="space-y-1 border-t border-white/10 pt-4">
+                  <li key={destaque.label} className="space-y-1 border-t border-white/20 pt-4">
                     <p className="text-heading-4 md:text-heading-3 text-white">{destaque.value}</p>
-                    <p className="text-tagline-2 text-white/55">{destaque.label}</p>
+                    <p className="text-tagline-2 text-white/75">{destaque.label}</p>
                   </li>
                 ))}
               </ul>

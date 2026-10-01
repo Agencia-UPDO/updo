@@ -1,3 +1,5 @@
+import { Activity, Compass, Search, TrendingUp, Zap } from 'lucide-react';
+
 export const clientes = [
   { name: 'PUCPR', src: '/Clientes/Logo PUCPR.png' },
   { name: 'Unimed', src: '/Clientes/Logo Unimed.png' },
@@ -80,26 +82,31 @@ export const etapasMetodo = [
   {
     step: '01',
     title: 'Diagnóstico',
+    icon: Search,
     description: 'Matriz CSD, leitura de funil e auditoria de canais, processos e dados.',
   },
   {
     step: '02',
     title: 'Estratégia',
+    icon: Compass,
     description: 'Cliente ideal, posicionamento, oferta, mensagem e plano de canais.',
   },
   {
     step: '03',
     title: 'Execução',
+    icon: Zap,
     description: 'Mídia paga, landing pages, automação, CRM e processo comercial rodando.',
   },
   {
     step: '04',
     title: 'Inteligência',
+    icon: Activity,
     description: 'Dashboards, BI e Radar UPDO para ler a operação de ponta a ponta.',
   },
   {
     step: '05',
     title: 'Otimização',
+    icon: TrendingUp,
     description: 'Testes e ajustes semanais a partir dos números, com ganho que se acumula.',
   },
 ];

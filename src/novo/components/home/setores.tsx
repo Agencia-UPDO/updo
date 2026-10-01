@@ -1,5 +1,6 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import { ArrowUpRightIcon } from '@/novo/components/shared/icons';
+import IconChip from '@/novo/components/shared/icon-chip';
 import SectionHeading from '@/novo/components/shared/section-heading';
 import { setores } from '@/novo/data/navegacao';
 import Link from 'next/link';
@@ -23,12 +24,12 @@ const Setores = () => {
             >
               <Link
                 href={setor.href}
-                className="group border-stroke-3 hover:border-secondary flex h-full min-h-[220px] flex-col justify-between rounded-2xl border bg-white p-7 transition-colors duration-300"
+                className="group border-stroke-3 hover:border-lilas-200 hover:bg-lilas-50 flex h-full min-h-[240px] flex-col justify-between rounded-2xl border bg-white p-7 transition-colors duration-300"
               >
                 <div className="flex items-start justify-between gap-6">
-                  <span className="text-tagline-2 text-secondary/40">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
+                  {setor.icon && (
+                    <IconChip icon={setor.icon} tone={index % 2 === 0 ? 'lilas' : 'menta'} size="lg" />
+                  )}
                   <span className="bg-background-3 group-hover:bg-primary-500 flex size-10 items-center justify-center rounded-full transition-colors duration-300">
                     <ArrowUpRightIcon className="size-5 stroke-black transition-transform duration-300 group-hover:rotate-45" />
                   </span>

@@ -8,9 +8,13 @@ import Badge from '@/novo/components/shared/ui/badge/badge';
 import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
 import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
 import { servicos } from '@/novo/data/navegacao';
+import { cn } from '@/novo/utils/cn';
 import Link from 'next/link';
+import type { LucideIcon } from 'lucide-react';
+import IconChip from '@/novo/components/shared/icon-chip';
 
 interface Item {
+  icon?: LucideIcon;
   title: string;
   description: string;
 }
@@ -34,7 +38,7 @@ export interface ServicoConteudo {
   pilares: {
     title: string;
     description: string;
-    items: { label: string; description: string; resultado: string }[];
+    items: { icon?: LucideIcon; label: string; description: string; resultado: string }[];
   };
   formulario: {
     title: string;
@@ -96,15 +100,15 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
             </div>
 
             <RevealAnimation delay={0.4} direction="right" className="col-span-12 lg:col-span-5">
-              <div className="bg-secondary rounded-3xl p-7 md:p-9">
-                <p className="text-tagline-2 text-primary-500">Resultado de cliente</p>
+              <div className="bg-lilas-700 rounded-3xl p-7 md:p-9">
+                <p className="text-tagline-2 text-primary-300">Resultado de cliente</p>
                 <p className="text-heading-6 mt-3 text-white">{resultado.title}</p>
-                <p className="text-tagline-2 mt-3 text-white/55">{resultado.description}</p>
+                <p className="text-tagline-2 mt-3 text-white/75">{resultado.description}</p>
                 <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-6">
                   {resultado.metrics.map((metric) => (
-                    <li key={metric.label} className="border-t border-white/10 pt-4">
+                    <li key={metric.label} className="border-t border-white/20 pt-4">
                       <p className="text-heading-4 text-white">{metric.value}</p>
-                      <p className="text-tagline-2 text-white/55">{metric.label}</p>
+                      <p className="text-tagline-2 text-white/75">{metric.label}</p>
                     </li>
                   ))}
                 </ul>
@@ -124,8 +128,15 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
                 delay={0.1 + index * 0.1}
                 className="col-span-12 md:col-span-4"
               >
-                <div className="bg-background-13 flex h-full flex-col gap-10 rounded-2xl p-7">
-                  <span className="text-heading-4 text-secondary/20">0{index + 1}</span>
+                <div
+                  className={cn(
+                    'flex h-full flex-col gap-10 rounded-2xl p-7',
+                    ['bg-lilas-50', 'bg-primary-50', 'bg-background-13'][index % 3]
+                  )}
+                >
+                  {item.icon && (
+                    <IconChip icon={item.icon} tone={index % 2 === 0 ? 'lilas' : 'menta'} size="lg" />
+                  )}
                   <div className="space-y-2">
                     <h3 className="text-heading-6 font-normal">{item.title}</h3>
                     <p className="text-tagline-2">{item.description}</p>
@@ -158,10 +169,14 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
               <ul className="border-stroke-3 divide-stroke-3 divide-y border-y">
                 {entregas.items.map((item, index) => (
                   <RevealAnimation key={item.title} delay={0.05 * index}>
-                    <li className="grid grid-cols-[48px_1fr] gap-4 py-7">
-                      <span className="text-tagline-2 text-secondary/40 pt-1">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
+                    <li className="grid grid-cols-[48px_1fr] items-start gap-5 py-7">
+                      {item.icon ? (
+                        <IconChip icon={item.icon} tone={index % 2 === 0 ? 'menta' : 'lilas'} />
+                      ) : (
+                        <span className="text-tagline-2 text-secondary/40 pt-1">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                      )}
                       <div className="space-y-1.5">
                         <h3 className="text-heading-6 font-normal">{item.title}</h3>
                         <p className="text-tagline-1">{item.description}</p>
@@ -192,6 +207,9 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
               >
                 <div className="flex h-full flex-col justify-between gap-12 rounded-2xl border border-white/10 p-7">
                   <div className="space-y-3">
+                    {pilar.icon && (
+                      <IconChip icon={pilar.icon} tone={index % 2 === 0 ? 'claro' : 'lilas'} className="mb-6" />
+                    )}
                     <p className="text-heading-5 text-white">{pilar.label}</p>
                     <p className="text-tagline-2 text-white/60">{pilar.description}</p>
                   </div>

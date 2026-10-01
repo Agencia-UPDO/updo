@@ -3,6 +3,8 @@ import TextReveal from '@/novo/components/animation/text-reveal';
 import Badge from '@/novo/components/shared/ui/badge/badge';
 import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
 import { siteConfig } from '@/config/site';
+import IconChip from '@/novo/components/shared/icon-chip';
+import { GraduationCap } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -52,7 +54,8 @@ const Fundador = () => {
             <RevealAnimation delay={0.4}>
               <ul className="border-stroke-3 divide-stroke-3 divide-y border-y">
                 {credenciais.map((item) => (
-                  <li key={item} className="text-tagline-1 text-secondary py-3.5">
+                  <li key={item} className="text-tagline-1 text-secondary flex items-center gap-3 py-3.5">
+                    <IconChip icon={GraduationCap} tone="lilas" size="sm" />
                     {item}
                   </li>
                 ))}
