@@ -37,6 +37,15 @@ Font base styles
     @apply text-heading-6;
   }
   p {
-    @apply text-tagline-2 sm:text-tagline-1 text-background-14/60 font-normal;
+    @apply text-tagline-2 sm:text-tagline-1 text-background-14/70 font-normal;
+  }
+}
+
+@layer base {
+  @media (min-width: 64rem) {
+    p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+    }
   }
 }

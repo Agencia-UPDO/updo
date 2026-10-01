@@ -11,15 +11,15 @@ const ClientesMarquee = () => {
       <div className="from-background-13 pointer-events-none absolute top-0 right-0 z-10 h-full w-16 bg-linear-to-l to-transparent" />
 
       <FastMarquee autoFill speed={35} gradient={false} pauseOnHover>
-        <div className="flex w-max items-center gap-x-14 pl-14">
+        <div className="flex w-max items-center gap-x-12 pl-12">
           {clientes.map((cliente) => (
-            <figure key={cliente.name} className="relative h-12 w-28 shrink-0">
+            <figure key={cliente.name} className="relative h-16 w-36 shrink-0 md:h-20 md:w-44">
               <Image
                 src={cliente.src}
                 alt={cliente.name}
                 fill
-                sizes="112px"
-                className="object-contain opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                sizes="176px"
+                className="object-contain"
               />
             </figure>
           ))}
