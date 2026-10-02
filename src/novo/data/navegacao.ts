@@ -8,6 +8,9 @@ import {
   Filter,
   GraduationCap,
   Handshake,
+  Landmark,
+  Presentation,
+  Workflow,
   Megaphone,
   MessageSquareText,
   MousePointerClick,
@@ -90,6 +93,62 @@ export const setores: NavLink[] = siteConfig.sectors.map((sector) => ({
   description: sector.description,
   icon: iconesSetor[sector.slug],
 }));
+
+export interface CasoMenu extends NavLink {
+  metrica: string;
+}
+
+export const casesMenu: CasoMenu[] = [
+  {
+    title: 'Educação',
+    href: '/cases/educacao',
+    icon: GraduationCap,
+    metrica: '+211%',
+    description: 'leads para uma instituição de ensino',
+  },
+  {
+    title: 'E-commerce',
+    href: '/cases/e-commerce',
+    icon: ShoppingBag,
+    metrica: '+6.900%',
+    description: 'vendas mensais em moda infantil',
+  },
+  {
+    title: 'Varejo',
+    href: '/cases/varejo',
+    icon: Store,
+    metrica: '+87%',
+    description: 'faturamento de um varejista em 2 anos',
+  },
+  {
+    title: 'Indústria',
+    href: '/cases/industria',
+    icon: Factory,
+    metrica: '1.527%',
+    description: 'ROI de mídia em bens de consumo',
+  },
+];
+
+export const empresaMenu: NavLink[] = [
+  {
+    title: 'Sobre a UPDO',
+    href: '/sobre',
+    icon: Landmark,
+    description: 'Mais de uma década estruturando crescimento',
+  },
+  {
+    title: 'Como trabalhamos',
+    href: '/o-que-fazemos',
+    icon: Workflow,
+    description: 'O método em cinco etapas, na prática',
+  },
+  {
+    title: 'Treinamentos corporativos',
+    href: '/treinamentos-corporativos',
+    icon: Presentation,
+    description: 'Vendas, neurovendas e IA para times comerciais',
+  },
+];
 
 export const menuPrincipal: NavLink[] = [
   { title: 'Sobre', href: '/sobre' },

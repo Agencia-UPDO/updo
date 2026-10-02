@@ -2,7 +2,7 @@
 
 import { CloseIcon } from '@/novo/components/shared/icons';
 import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
-import { menuPrincipal, servicos, setores, type NavLink } from '@/novo/data/navegacao';
+import { casesMenu, empresaMenu, servicos, setores, type NavLink } from '@/novo/data/navegacao';
 import { useMediaQuery } from '@/novo/hooks/useMediaQuery';
 import { cn } from '@/novo/utils/cn';
 import Image from 'next/image';
@@ -102,9 +102,13 @@ const MobileMenu = () => {
           className="flex min-h-0 flex-1 flex-col gap-8 overflow-y-auto overscroll-contain p-6"
           aria-label="Menu"
         >
-          {renderGroup('Navegação', menuPrincipal)}
           {renderGroup('Serviços', servicos)}
           {renderGroup('Setores', setores)}
+          {renderGroup('Cases', casesMenu)}
+          {renderGroup('A UPDO', [
+            ...empresaMenu,
+            { title: 'Insights', href: 'https://insights.updo.com.br' },
+          ])}
         </nav>
 
         <div className="border-stroke-1 border-t p-6">
