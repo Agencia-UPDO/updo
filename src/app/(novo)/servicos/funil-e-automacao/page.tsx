@@ -1,42 +1,42 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
-import { geracaoDeDemanda } from "@/novo/data/servicos/geracao-de-demanda";
+import { funilEAutomacao } from "@/novo/data/servicos/funil-e-automacao";
 
 export const metadata: Metadata = {
-  title: "Geração de Demanda | Ads, SEO, GEO e ChatGPT",
+  title: "Funil e Automação | Lead Scoring, CRM e WhatsApp",
   description:
-    "Geração de demanda com Google Ads, Meta Ads, LinkedIn Ads, ChatGPT Ads, SEO, GEO e AEO para gerar leads qualificados e aparecer em buscadores e IAs.",
+    "Funil e automação de marketing com nutrição de leads, lead scoring, CRM, WhatsApp, e-mail e passagem de oportunidades qualificadas para vendas.",
   alternates: {
-    canonical: "https://updo.com.br/servicos/geracao-de-demanda",
+    canonical: "https://updo.com.br/servicos/funil-e-automacao",
   },
   openGraph: {
-    title: "Geração de Demanda | Ads, SEO, GEO e ChatGPT",
+    title: "Funil e Automação de Marketing | Lead Scoring, CRM e WhatsApp",
     description:
-      "Google Ads, Meta Ads, LinkedIn Ads, ChatGPT Ads, TikTok Ads, SEO e GEO para gerar leads qualificados e presença em buscadores e respostas de IA.",
+      "Nutrição de leads, lead scoring, CRM, WhatsApp, e-mail e passagem de oportunidades qualificadas para vendas.",
     images: [
       {
         url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
         width: 1200,
         height: 800,
-        alt: "Equipe UPDO gerenciando campanhas de geração de demanda e mídia paga",
+        alt: "Equipe UPDO configurando funil de nutrição e automação de marketing",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Geração de Demanda | Ads, SEO, GEO e ChatGPT",
+    title: "Funil e Automação de Marketing | Lead Scoring, CRM e WhatsApp",
     description:
-      "Google Ads, Meta Ads, LinkedIn Ads, ChatGPT Ads, TikTok Ads, SEO e GEO para gerar leads qualificados e presença em buscadores e respostas de IA.",
+      "Nutrição de leads, lead scoring, CRM, WhatsApp, e-mail e passagem de oportunidades qualificadas para vendas.",
   },
 };
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Geração de Demanda",
+  name: "Funil e Automação",
   description:
-    "Estratégia de canal, gestão de Google Ads, Meta Ads, LinkedIn Ads, ChatGPT Ads, SEO e GEO para gerar leads qualificados e presença em buscadores e respostas de IA.",
+    "Estruturação de jornada do cliente, funil de nutrição segmentado, lead scoring automático e integração com CRM e WhatsApp para qualificar leads antes do contato comercial.",
   provider: {
     "@type": "Organization",
     name: "UPDO",
@@ -50,7 +50,7 @@ const serviceSchema = {
     },
   },
   areaServed: "Brasil",
-  serviceType: "Geração de Demanda e Gestão de Mídia Paga",
+  serviceType: "Automação de Marketing e Nutrição de Leads",
 };
 
 const breadcrumbSchema = {
@@ -72,26 +72,26 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       position: 3,
-      name: "Geração de Demanda",
-      item: "https://updo.com.br/servicos/geracao-de-demanda",
+      name: "Funil e Automação",
+      item: "https://updo.com.br/servicos/funil-e-automacao",
     },
   ],
 };
 
-export default function GeracaoDeDemandaPage() {
+export default function FunilEAutomacaoPage() {
   return (
     <>
       <Script
-        id="schema-service-demanda"
+        id="schema-service-funil"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <Script
-        id="schema-breadcrumb-demanda"
+        id="schema-breadcrumb-funil"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <ServicoTemplate conteudo={geracaoDeDemanda} />
+      <ServicoTemplate conteudo={funilEAutomacao} />
     </>
   );
 }

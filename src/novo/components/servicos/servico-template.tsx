@@ -44,6 +44,7 @@ export interface ServicoConteudo {
   mudanca?: { title: string; sem: string[]; com: string[] };
   entregas: { title: string; description: string; items: Item[] };
   pilares: {
+    badge?: string;
     title: string;
     description: string;
     items: { icon?: LucideIcon; label: string; description: string; resultado: string }[];
@@ -258,7 +259,7 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
         <div className="main-container space-y-12 md:space-y-16">
           <SectionHeading
             tone="dark"
-            badge="Sistema de aquisição"
+            badge={pilares.badge ?? 'Sistema de aquisição'}
             title={pilares.title}
             description={pilares.description}
           />
