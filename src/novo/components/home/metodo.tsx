@@ -43,7 +43,11 @@ const Metodo = () => {
   const Icone = etapa.icon;
 
   return (
-    <section id="metodologia" className="overflow-hidden py-18 md:py-28 xl:py-32">
+    <section id="metodologia" className="relative isolate overflow-hidden py-18 md:py-28 xl:py-32">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(circle,var(--color-lilas-200)_1px,transparent_1.5px)] bg-size-[26px_26px] mask-[radial-gradient(ellipse_55%_50%_at_32%_62%,#000_15%,transparent_75%)] opacity-70 max-lg:mask-[radial-gradient(ellipse_80%_45%_at_50%_55%,#000_15%,transparent_75%)]"
+      />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Método UPDO"
@@ -57,7 +61,11 @@ const Metodo = () => {
             onMouseEnter={() => setPausado(true)}
             onMouseLeave={() => setPausado(false)}
           >
-            <div className="relative mx-auto aspect-square w-full max-w-[560px] lg:col-span-7">
+            <div className="relative isolate mx-auto aspect-square w-full max-w-[560px] lg:col-span-7">
+              <div
+                aria-hidden="true"
+                className="bg-primary-500/25 absolute inset-[18%] -z-10 rounded-full blur-3xl"
+              />
               <svg viewBox="0 0 500 500" className="absolute inset-0 size-full" aria-hidden="true">
                 <defs>
                   <marker
