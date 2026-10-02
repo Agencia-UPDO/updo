@@ -1,11 +1,11 @@
-import { Funnel_Display, Inter } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 
 export const texto = Inter({
   variable: '--font-texto-src',
   subsets: ['latin'],
 });
 
-export const titulo = Funnel_Display({
+export const titulo = Plus_Jakarta_Sans({
   variable: '--font-titulo-src',
   subsets: ['latin'],
 });

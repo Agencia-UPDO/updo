@@ -111,7 +111,7 @@ const LeadForm = ({
     return (
       <div className="flex flex-col items-center gap-4 rounded-3xl bg-white p-10 text-center">
         <CheckCircleIcon className="size-12" />
-        <p className="text-heading-5 text-secondary">Formulário enviado com sucesso.</p>
+        <p className="font-titulo font-medium text-heading-5 text-secondary">Formulário enviado com sucesso.</p>
         <p className="max-w-[420px]">
           Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento
           inicial.

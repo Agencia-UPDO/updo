@@ -183,7 +183,7 @@ const Metodo = () => {
                     <p className="text-tagline-2 text-lilas-500 font-medium">
                       Etapa {etapa.step} de 0{TOTAL}
                     </p>
-                    <p className="font-titulo text-heading-5 text-secondary">{etapa.title}</p>
+                    <p className="font-titulo font-medium text-heading-5 text-secondary">{etapa.title}</p>
                   </div>
                 </div>
                 <p className="text-tagline-1 mt-5">{etapa.description}</p>

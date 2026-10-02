@@ -103,12 +103,12 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
             <RevealAnimation delay={0.4} direction="right" className="col-span-12 lg:col-span-5">
               <div className="bg-lilas-700 rounded-3xl p-7 md:p-9">
                 <p className="text-tagline-2 text-primary-300">Resultado de cliente</p>
-                <p className="text-heading-6 mt-3 text-white">{resultado.title}</p>
+                <p className="font-titulo font-medium text-heading-6 mt-3 text-white">{resultado.title}</p>
                 <p className="text-tagline-2 mt-3 text-white/75">{resultado.description}</p>
                 <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-6">
                   {resultado.metrics.map((metric) => (
                     <li key={metric.label} className="border-t border-white/20 pt-4">
-                      <p className="text-heading-4 text-white">{metric.value}</p>
+                      <p className="font-titulo font-medium text-heading-4 text-white">{metric.value}</p>
                       <p className="text-tagline-2 text-white/75">{metric.label}</p>
                     </li>
                   ))}
@@ -211,7 +211,7 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
                     {pilar.icon && (
                       <IconChip icon={pilar.icon} tone={index % 2 === 0 ? 'claro' : 'lilas'} className="mb-6" />
                     )}
-                    <p className="text-heading-5 text-white">{pilar.label}</p>
+                    <p className="font-titulo font-medium text-heading-5 text-white">{pilar.label}</p>
                     <p className="text-tagline-2 text-white/60">{pilar.description}</p>
                   </div>
                   <p className="text-tagline-2 text-primary-500 border-t border-white/10 pt-4">

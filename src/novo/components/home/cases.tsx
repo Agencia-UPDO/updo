@@ -86,7 +86,7 @@ const Cases = () => {
                       <div key={metric.label} className="space-y-1">
                         <p
                           className={cn(
-                            'text-heading-6 md:text-heading-5',
+                            'font-titulo font-medium text-heading-6 md:text-heading-5',
                             escuro ? 'text-white' : 'text-secondary'
                           )}
                         >

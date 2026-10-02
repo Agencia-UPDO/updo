@@ -91,28 +91,28 @@ const Hero = () => {
               <div className="border-stroke-3 grid grid-cols-2 gap-y-8 border-t pt-8 lg:border-t-0 lg:pt-0">
                 <div className="space-y-2">
                   <IconChip icon={Users} tone="menta" size="sm" />
-                  <p className="text-heading-4 text-secondary">
+                  <p className="font-titulo font-medium text-heading-4 text-secondary">
                     +<CounterNumberOnScroll value={300} />
                   </p>
                   <p className="text-tagline-2">empresas atendidas</p>
                 </div>
                 <div className="space-y-2">
                   <IconChip icon={TrendingUp} tone="lilas" size="sm" />
-                  <p className="text-heading-4 text-secondary">
+                  <p className="font-titulo font-medium text-heading-4 text-secondary">
                     R$ <CounterNumberOnScroll value={750} />M
                   </p>
                   <p className="text-tagline-2">em vendas geradas para clientes</p>
                 </div>
                 <div className="space-y-2">
                   <IconChip icon={CalendarCheck} tone="lilas" size="sm" />
-                  <p className="text-heading-4 text-secondary">
+                  <p className="font-titulo font-medium text-heading-4 text-secondary">
                     +<CounterNumberOnScroll value={10} /> anos
                   </p>
                   <p className="text-tagline-2">estruturando operações comerciais</p>
                 </div>
                 <div className="space-y-2">
                   <IconChip icon={Award} tone="menta" size="sm" />
-                  <p className="text-heading-4 text-secondary">3x</p>
+                  <p className="font-titulo font-medium text-heading-4 text-secondary">3x</p>
                   <p className="text-tagline-2">finalista do prêmio RD Station</p>
                 </div>
               </div>
@@ -140,7 +140,7 @@ const Hero = () => {
           <RevealAnimation delay={0.4} className="col-span-12 md:col-span-7">
             <div className="bg-lilas-700 flex h-full min-h-[340px] flex-col justify-between rounded-3xl p-7 md:h-[460px] md:p-9">
               <div className="flex items-start justify-between gap-6">
-                <p className="text-heading-6 max-w-[320px] text-white">
+                <p className="font-titulo font-medium text-heading-6 max-w-[320px] text-white">
                   Alguns resultados de clientes
                 </p>
                 <Link
@@ -160,7 +160,7 @@ const Hero = () => {
                         </span>
                         {destaque.setor}
                       </span>
-                      <p className="text-heading-4 md:text-heading-3 pt-2 text-white">{destaque.value}</p>
+                      <p className="font-titulo font-medium text-heading-4 md:text-heading-3 pt-2 text-white">{destaque.value}</p>
                       <p className="text-tagline-2 text-white/75">{destaque.label}</p>
                     </Link>
                   </li>
