@@ -55,3 +55,9 @@ body {
     stroke-dashoffset: 0;
   }
 }
+
+/* Folga para descendentes (g, p, ç) não serem cortados pela máscara do TextReveal */
+.line-mask {
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
