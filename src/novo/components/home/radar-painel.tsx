@@ -10,33 +10,33 @@ import { useEffect, useState } from 'react';
 const kpis = [
   { icon: UserPlus, label: 'Leads', valor: 2400, sufixo: '', variacao: '+54%' },
   { icon: CalendarCheck, label: 'Reuniões', valor: 610, sufixo: '', variacao: '+38%' },
-  { icon: Handshake, label: 'Vendas', valor: 180, sufixo: '', variacao: '+150%' },
+  { icon: Handshake, label: 'Vendas', valor: 264, sufixo: '', variacao: '+150%' },
 ];
 
 const funil = [
   { etapa: 'Sessões', valor: '35 mil', largura: 100, cor: 'bg-primary-500' },
   { etapa: 'Leads', valor: '2,4 mil', largura: 78, cor: 'bg-primary-600' },
   { etapa: 'Reuniões', valor: '610', largura: 56, cor: 'bg-lilas-500' },
-  { etapa: 'Vendas', valor: '180', largura: 38, cor: 'bg-lilas-700' },
+  { etapa: 'Vendas', valor: '264', largura: 44, cor: 'bg-lilas-700' },
 ];
 
 // Vendas (barras) e receita (linha) por mês, só ilustrativo
 const meses = [
-  { rotulo: 'Abr', vendas: 72, receita: 260 },
-  { rotulo: 'Mai', vendas: 88, receita: 310 },
-  { rotulo: 'Jun', vendas: 101, receita: 365 },
-  { rotulo: 'Jul', vendas: 119, receita: 430 },
-  { rotulo: 'Ago', vendas: 146, receita: 520 },
-  { rotulo: 'Set', vendas: 180, receita: 647 },
+  { rotulo: 'Abr', vendas: 106, receita: 260 },
+  { rotulo: 'Mai', vendas: 129, receita: 310 },
+  { rotulo: 'Jun', vendas: 148, receita: 365 },
+  { rotulo: 'Jul', vendas: 175, receita: 430 },
+  { rotulo: 'Ago', vendas: 214, receita: 520 },
+  { rotulo: 'Set', vendas: 264, receita: 647 },
 ];
 
 const GRAF_L = 440;
 const GRAF_A = 100;
-const MAX_VENDAS = 200;
+const MAX_VENDAS = 290;
 const MAX_RECEITA = 700;
 const passo = GRAF_L / meses.length;
 const centroX = (i: number) => passo * i + passo / 2;
-const yReceita = (v: number) => GRAF_A - (v / MAX_RECEITA) * (GRAF_A - 14);
+const yReceita = (v: number) => GRAF_A - (v / MAX_RECEITA) * (GRAF_A - 36);
 const linhaReceita = meses
   .map((s, i) => `${i === 0 ? 'M' : 'L'} ${centroX(i).toFixed(1)} ${yReceita(s.receita).toFixed(1)}`)
   .join(' ');
@@ -128,7 +128,7 @@ const RadarPainel = () => {
           </span>
         </div>
         <div className="relative mt-3">
-          <svg viewBox={`0 0 ${GRAF_L} ${GRAF_A + 16}`} className="h-32 w-full overflow-visible" aria-hidden="true">
+          <svg viewBox={`0 0 ${GRAF_L} ${GRAF_A + 16}`} className="h-36 w-full overflow-visible" aria-hidden="true">
             <defs>
               <linearGradient id="radar-barra" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0" stopColor="var(--color-lilas-500)" />
@@ -149,7 +149,7 @@ const RadarPainel = () => {
             ))}
 
             {meses.map((s, i) => {
-              const altura = (s.vendas / MAX_VENDAS) * (GRAF_A - 14);
+              const altura = (s.vendas / MAX_VENDAS) * (GRAF_A - 36);
               const ultimaBarra = i === meses.length - 1;
               return (
                 <g key={s.rotulo}>
@@ -212,7 +212,7 @@ const RadarPainel = () => {
               top: `${(yReceita(meses[meses.length - 1].receita) / (GRAF_A + 16)) * 100}%`,
             }}
             className={cn(
-              'bg-primary-500 text-secondary text-tagline-3 absolute -translate-x-[112%] translate-y-[10%] rounded-lg px-2 py-1 font-medium whitespace-nowrap shadow-lg transition-all delay-[2400ms] duration-500',
+              'bg-primary-500 text-secondary text-tagline-3 absolute -translate-x-[108%] -translate-y-[140%] rounded-lg px-2 py-1 font-medium whitespace-nowrap shadow-lg transition-all delay-[2400ms] duration-500',
               ativo ? "opacity-100" : "opacity-0"
             )}
           >
