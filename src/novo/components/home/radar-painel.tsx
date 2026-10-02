@@ -20,6 +20,12 @@ const funil = [
   { etapa: 'Vendas', valor: '180', largura: 38, cor: 'bg-lilas-700' },
 ];
 
+const indicadores = [
+  { label: 'Conversão', valor: '7,5%', variacao: 'lead → venda', cor: 'bg-primary-500' },
+  { label: 'CAC Google', valor: 'R$ 312', variacao: '-22%', cor: 'bg-updo-blue' },
+  { label: 'CAC Meta', valor: 'R$ 248', variacao: '-31%', cor: 'bg-lilas-500' },
+];
+
 const pontos = [12, 18, 15, 26, 22, 34, 30, 41, 38, 52, 47, 63];
 
 const caminho = (altura: number, largura: number) => {
@@ -103,12 +109,27 @@ const RadarPainel = () => {
         ))}
       </div>
 
-      <div className="mt-5 rounded-2xl bg-white/5 p-3">
+      <div className="mt-5 grid grid-cols-3 gap-2.5">
+        {indicadores.map((item) => (
+          <div key={item.label} className="rounded-2xl bg-white/5 p-3">
+            <span className="text-tagline-3 flex items-center gap-1.5 text-white/55">
+              <span className={cn('size-2 rounded-full', item.cor)} />
+              {item.label}
+            </span>
+            <p className="font-titulo mt-1.5 text-[1.125rem] leading-none font-medium text-white">
+              {item.valor}
+            </p>
+            <p className="text-tagline-3 text-primary-500 mt-1">{item.variacao}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-2.5 rounded-2xl bg-white/5 p-3">
         <div className="flex items-center justify-between">
           <span className="text-tagline-3 text-white/55">Vendas por semana</span>
           <span className="text-tagline-3 text-primary-500 font-medium">+150%</span>
         </div>
-        <svg viewBox="0 0 300 70" className="mt-2 h-16 w-full overflow-visible" aria-hidden="true">
+        <svg viewBox="0 0 300 70" className="mt-2 h-12 w-full overflow-visible" aria-hidden="true">
           <defs>
             <linearGradient id="radar-area" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stopColor="var(--color-primary-500)" stopOpacity="0.35" />
