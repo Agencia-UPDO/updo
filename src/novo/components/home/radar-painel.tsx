@@ -235,11 +235,11 @@ const RadarPainel = () => {
               top: `${(yReceita(semanas[semanas.length - 1].receita) / (GRAF_A + 16)) * 100}%`,
             }}
             className={cn(
-              'bg-primary-500 text-secondary text-tagline-3 absolute -translate-x-[112%] -translate-y-1/2 rounded-lg px-2 py-1 font-medium whitespace-nowrap shadow-lg transition-all delay-[2400ms] duration-500',
+              'bg-primary-500 text-secondary text-tagline-3 absolute -translate-x-[112%] translate-y-[10%] rounded-lg px-2 py-1 font-medium whitespace-nowrap shadow-lg transition-all delay-[2400ms] duration-500',
               ativo ? "opacity-100" : "opacity-0"
             )}
           >
-            R$ 186 mil · +150%
+            R$ 647 mil · +150%
           </div>
         </div>
       </div>
