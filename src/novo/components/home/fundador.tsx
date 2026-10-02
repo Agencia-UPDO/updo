@@ -3,7 +3,6 @@ import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import Badge from '@/novo/components/shared/ui/badge/badge';
 import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
-import { siteConfig } from '@/config/site';
 import IconChip from '@/novo/components/shared/icon-chip';
 import { GraduationCap } from 'lucide-react';
 import Image from 'next/image';
@@ -78,14 +77,6 @@ const Fundador = () => {
                 <Link href="/treinamentos-corporativos" className="inline-flex">
                   <ButtonWhite text="Treinamentos corporativos" className="w-full" />
                 </Link>
-                <a
-                  href={siteConfig.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex"
-                >
-                  <ButtonWhite text="UPDO no LinkedIn" className="w-full" />
-                </a>
               </div>
             </RevealAnimation>
           </div>
