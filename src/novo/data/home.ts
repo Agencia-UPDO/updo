@@ -232,7 +232,7 @@ export const faqHome = [
 
 export const selosParceiros = [
   { src: '/Imagens/logo-rd-gold-UPDO-2025.png', alt: 'Parceiro Gold RD Station' },
-  { src: '/Imagens/Google-Partner-UPDO.png', alt: 'Google Partner' },
+  { src: '/Imagens/Google-Search-UPDO.png', alt: 'Google Ads Search Certified' },
   { src: '/Imagens/meta-ads-partner.webp', alt: 'Meta Business Partner' },
   { src: '/Imagens/Parceiro-oficial-Amazon-ADS-UPDO.png', alt: 'Parceiro oficial Amazon Ads' },
   { src: '/Imagens/Badge dark Kommo.svg', alt: 'Parceiro oficial Kommo' },

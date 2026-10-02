@@ -195,7 +195,7 @@ const Hero = () => {
                   height={56}
                   className={cn(
                     'max-h-11 w-auto max-w-[128px] object-contain',
-                    selo.alt === 'Google Partner' && 'max-h-14'
+                    selo.alt === 'Google Ads Search Certified' && 'max-h-14'
                   )}
                 />
               </li>
