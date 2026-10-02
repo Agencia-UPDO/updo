@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/novo/utils/cn';
-import { FlaskConical, GitBranch, Kanban } from 'lucide-react';
+import { BarChart3, FlaskConical, GitBranch, Kanban } from 'lucide-react';
 import { type ReactNode, useEffect, useState } from 'react';
 
 // Visuais do topo das páginas de serviço. Cada serviço mantém a ideia da página atual,
@@ -54,7 +54,7 @@ const Indicadores = ({ itens }: { itens: [string, string][] }) => (
     {itens.map(([label, valor]) => (
       <div key={label} className="rounded-2xl bg-white/5 p-3">
         <span className="text-tagline-3 text-white/55">{label}</span>
-        <p className="font-titulo mt-1.5 text-[1.375rem] leading-none font-medium text-white">
+        <p className="font-titulo mt-1.5 text-[1.125rem] leading-none font-medium whitespace-nowrap text-white md:text-[1.375rem]">
           {valor}
         </p>
       </div>
@@ -293,10 +293,83 @@ export const VisualTesteAB = () => {
   );
 };
 
+// Inteligência de Dados: dashboard com receita atribuída por canal.
+const CORES_CANAIS = ['#56fed5', '#6575ff', '#2ee8bd', '#4b57d8', 'rgb(255 255 255 / 0.25)'];
+const canais = [
+  { label: 'Google Ads', valor: 38 },
+  { label: 'Meta Ads', valor: 27 },
+  { label: 'E-mail', valor: 18 },
+  { label: 'Orgânico / SEO', valor: 11 },
+  { label: 'Outros', valor: 6 },
+];
+
+export const VisualDashboard = () => {
+  const ativo = useAtivo();
+
+  return (
+    <Moldura
+      icone={<BarChart3 className="size-4" strokeWidth={2} aria-hidden="true" />}
+      rotulo="Dashboard de marketing"
+      status="ao vivo"
+      titulo="Receita atribuída por canal"
+    >
+      <Indicadores
+        itens={[
+          ['CAC médio', 'R$ 184'],
+          ['LTV médio', 'R$ 4,2k'],
+          ['ROI total', '22,8x'],
+        ]}
+      />
+      <div className="mt-5 flex items-center gap-5">
+        <svg viewBox="0 0 120 120" className="size-32 shrink-0 -rotate-90" aria-hidden="true">
+          {canais.map((canal, index) => {
+            const antes = canais.slice(0, index).reduce((soma, c) => soma + c.valor, 0);
+            const circ = 2 * Math.PI * 48;
+            return (
+              <circle
+                key={canal.label}
+                cx="60"
+                cy="60"
+                r="48"
+                fill="none"
+                strokeWidth="16"
+                stroke={CORES_CANAIS[index]}
+                strokeDasharray={`${ativo ? (canal.valor / 100) * circ : 0} ${circ}`}
+                strokeDashoffset={-(antes / 100) * circ}
+                style={{
+                  transition: 'stroke-dasharray 900ms ease-out',
+                  transitionDelay: `${index * 150}ms`,
+                }}
+              />
+            );
+          })}
+        </svg>
+        <ul className="min-w-0 flex-1 space-y-2">
+          {canais.map((canal, index) => (
+            <li key={canal.label} className="text-tagline-3 flex items-center justify-between gap-3">
+              <span className="flex items-center gap-2 text-white/60">
+                <span
+                  className="size-2 shrink-0 rounded-full"
+                  style={{
+                    backgroundColor: CORES_CANAIS[index],
+                  }}
+                />
+                {canal.label}
+              </span>
+              <span className="font-medium text-white">{canal.valor}%</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Moldura>
+  );
+};
+
 const visuais = {
   automacao: VisualAutomacao,
   pipeline: VisualPipeline,
   'teste-ab': VisualTesteAB,
+  dashboard: VisualDashboard,
 };
 
 export type VisualServico = keyof typeof visuais;
