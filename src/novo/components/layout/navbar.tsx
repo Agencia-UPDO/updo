@@ -7,7 +7,7 @@ import ButtonPrimaryV2 from '@/novo/components/shared/ui/button/button-primary-v
 import { casesMenu, empresaMenu, servicos, setores, type NavLink } from '@/novo/data/navegacao';
 import { useNavbarScroll } from '@/novo/hooks/useScrollHeader';
 import { cn } from '@/novo/utils/cn';
-import { CheckCircle2, ClipboardCheck } from 'lucide-react';
+import { CheckCircle2, Funnel } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
@@ -92,7 +92,7 @@ const CardDestaque = ({
           ))}
         </span>
         <span className="bg-secondary text-primary-500 flex size-16 items-center justify-center rounded-2xl transition-transform duration-500 group-hover:rotate-6">
-          <ClipboardCheck className="size-8" strokeWidth={1.5} aria-hidden="true" />
+          <Funnel className="size-8" strokeWidth={1.5} aria-hidden="true" />
         </span>
       </span>
     )}
