@@ -24,7 +24,7 @@ const Setores = () => {
             >
               <Link
                 href={setor.href}
-                className="group border-stroke-3 hover:border-lilas-200 hover:bg-lilas-50 flex h-full min-h-[240px] flex-col justify-between rounded-2xl border bg-white p-7 transition-colors duration-300"
+                className="group border-stroke-3 hover:border-lilas-200 hover:bg-lilas-50 flex h-full min-h-[240px] flex-col rounded-2xl border bg-white p-7 transition-colors duration-300"
               >
                 <div className="flex items-start justify-between gap-6">
                   {setor.icon && (
@@ -34,7 +34,7 @@ const Setores = () => {
                     <ArrowUpRightIcon className="size-5 stroke-black transition-transform duration-300 group-hover:rotate-45" />
                   </span>
                 </div>
-                <div className="space-y-2">
+                <div className="mt-10 space-y-2">
                   <h3 className="text-heading-5 font-normal">{setor.title}</h3>
                   <p className="text-tagline-2">{setor.description}</p>
                 </div>

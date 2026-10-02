@@ -59,7 +59,9 @@ const RadarPainel = () => {
           </span>
           <div>
             <p className="text-tagline-2 font-medium text-white">Radar UPDO</p>
-            <p className="text-tagline-3 text-white/45">Funil de vendas · últimos 30 dias</p>
+            <p className="text-tagline-3 text-white/45">
+              <span className="hidden sm:inline">Funil de vendas · </span>últimos 30 dias
+            </p>
           </div>
         </div>
         <span className="text-tagline-3 flex shrink-0 items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 whitespace-nowrap text-white/70">
@@ -171,7 +173,7 @@ const RadarPainel = () => {
                     x={centroX(i)}
                     y={GRAF_A + 13}
                     textAnchor="middle"
-                    className="fill-white/40 text-[9px]"
+                    className="fill-white/40 text-[17px] sm:text-[9px]"
                   >
                     {s.rotulo}
                   </text>

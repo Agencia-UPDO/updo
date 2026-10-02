@@ -23,29 +23,29 @@ import Link from 'next/link';
 
 const destaques = [
   {
-    value: '+211%',
-    label: 'leads em uma instituição de ensino',
+    value: '+166%',
+    label: 'conversão comercial em uma instituição de ensino',
     setor: 'Educação',
     icon: GraduationCap,
     href: '/cases/educacao',
   },
   {
-    value: '+6.900%',
-    label: 'vendas mensais em um e-commerce',
+    value: '4,7x',
+    label: 'ROAS geral em um e-commerce',
     setor: 'E-commerce',
     icon: ShoppingBag,
     href: '/cases/e-commerce',
   },
   {
-    value: '+87%',
-    label: 'faturamento de um varejista em 2 anos',
+    value: '+1.400%',
+    label: 'tráfego mensal de um varejista',
     setor: 'Varejo',
     icon: Store,
     href: '/cases/varejo',
   },
   {
-    value: '1.527%',
-    label: 'ROI de mídia para uma indústria',
+    value: 'R$ 350 mil',
+    label: 'em receita gerada para uma indústria',
     setor: 'Indústria',
     icon: Factory,
     href: '/cases/industria',
@@ -162,7 +162,7 @@ const Hero = () => {
                         </span>
                         {destaque.setor}
                       </span>
-                      <p className="font-titulo font-medium text-heading-4 md:text-heading-3 pt-2 text-white">{destaque.value}</p>
+                      <p className="font-titulo font-medium text-heading-5 md:text-heading-3 pt-2 whitespace-nowrap text-white">{destaque.value}</p>
                       <p className="text-tagline-2 text-white/75">{destaque.label}</p>
                     </Link>
                   </li>
