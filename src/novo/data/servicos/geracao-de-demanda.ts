@@ -209,7 +209,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
     description:
       'Preencha para analisarmos canais, CPL, CAC, qualidade do lead e oportunidades de realocação de verba.',
     formName: 'Diagnóstico Geração de Demanda',
-    submitText: 'Diagnosticar minha demanda',
+    submitText: 'Quero meu diagnóstico',
     selects: [
       {
         id: 'budget',
