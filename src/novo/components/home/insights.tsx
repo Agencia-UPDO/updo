@@ -4,6 +4,7 @@ import SectionHeading from '@/novo/components/shared/section-heading';
 import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
 import { fetchRSSPosts } from '@/lib/rss';
 import Image from 'next/image';
+import NewsletterInsights from '@/novo/components/home/newsletter-insights';
 
 const FEED_URL = 'https://insights.updo.com.br/feed';
 
@@ -72,6 +73,10 @@ const Insights = async () => {
             </RevealAnimation>
           ))}
         </div>
+
+        <RevealAnimation delay={0.2}>
+          <NewsletterInsights />
+        </RevealAnimation>
       </div>
     </section>
   );

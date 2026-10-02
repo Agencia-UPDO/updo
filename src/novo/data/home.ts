@@ -229,3 +229,10 @@ export const faqHome = [
       'É uma conversa de cerca de 45 minutos com nossos especialistas. Analisamos o marketing e o time de vendas, mapeamos onde o funil perde oportunidades e entregamos um plano de ações práticas. Não há compromisso de contratação.',
   },
 ];
+
+export const selosParceiros = [
+  { src: '/Imagens/logo-rd-gold-UPDO-2025.png', alt: 'Parceiro Gold RD Station' },
+  { src: '/Imagens/Google-Partner-UPDO.png', alt: 'Google Partner' },
+  { src: '/Imagens/meta-ads-partner.webp', alt: 'Meta Business Partner' },
+  { src: '/Imagens/Parceiro-oficial-Amazon-ADS-UPDO.png', alt: 'Parceiro oficial Amazon Ads' },
+];
