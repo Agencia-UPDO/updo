@@ -22,15 +22,25 @@ const Fundador = () => {
       <div className="main-container">
         <div className="grid grid-cols-12 items-center gap-y-10 lg:gap-x-16">
           <RevealAnimation delay={0.2} className="col-span-12 lg:col-span-5">
-            <figure className="relative mx-auto aspect-[530/600] w-full max-w-[480px] overflow-hidden rounded-3xl">
-              <Image
-                src="/Imagens/Rodrigo-Bueno-Fundador-UPDO.jpg"
-                alt="Rodrigo Bueno, fundador da UPDO"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
+            <div className="relative mx-auto w-full max-w-[480px] pb-4 pl-4 md:pb-5 md:pl-5">
+              <span
+                aria-hidden="true"
+                className="border-primary-500 absolute top-10 right-10 bottom-0 left-0 rounded-[2rem] border-b-[3px] border-l-[3px]"
               />
-            </figure>
+              <span
+                aria-hidden="true"
+                className="bg-lilas-500/15 absolute -top-4 -right-4 size-28 rounded-3xl md:-top-5 md:-right-5"
+              />
+              <figure className="relative aspect-[530/600] w-full overflow-hidden rounded-3xl">
+                <Image
+                  src="/Imagens/Rodrigo-Bueno-Fundador-UPDO.jpg"
+                  alt="Rodrigo Bueno, fundador da UPDO"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                />
+              </figure>
+            </div>
           </RevealAnimation>
 
           <div className="col-span-12 space-y-8 lg:col-span-7">
