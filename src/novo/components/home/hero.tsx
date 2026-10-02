@@ -1,8 +1,11 @@
+import SimboloUpdo from '@/novo/components/shared/simbolo-updo';
 import { balance } from '@/novo/utils/balance';
 import CounterNumberOnScroll from '@/novo/components/animation/counter-number-on-scroll';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import IconChip from '@/novo/components/shared/icon-chip';
+import HeroFundo from '@/novo/components/home/hero-fundo';
+import NotificacoesFunil from '@/novo/components/home/notificacoes-funil';
 import ClientesMarquee from '@/novo/components/home/clientes-marquee';
 import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
 import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
@@ -52,7 +55,8 @@ const destaques = [
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-18 md:pt-40 lg:pt-48 xl:pb-28">
+    <section className="relative isolate pt-32 pb-18 md:pt-40 lg:pt-48 xl:pb-28">
+      <HeroFundo />
       <div className="main-container">
         <div className="flex flex-col gap-x-16 gap-y-12 lg:flex-row lg:items-end xl:gap-x-28">
           <div className="space-y-8 lg:w-[64%]">
@@ -131,6 +135,7 @@ const Hero = () => {
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover object-[60%_center]"
               />
+              <NotificacoesFunil />
               <figcaption className="text-tagline-2 absolute right-4 bottom-4 left-4 rounded-2xl bg-white/90 px-4 py-3 text-secondary backdrop-blur">
                 Treinamentos e workshops para times comerciais e de marketing
               </figcaption>
@@ -138,7 +143,10 @@ const Hero = () => {
           </RevealAnimation>
 
           <RevealAnimation delay={0.4} className="col-span-12 md:col-span-7">
-            <div className="bg-lilas-700 flex h-full min-h-[340px] flex-col justify-between rounded-3xl p-7 md:h-[460px] md:p-9">
+            <div className="bg-lilas-700 relative isolate flex h-full min-h-[340px] flex-col justify-between overflow-hidden rounded-3xl p-7 md:h-[460px] md:p-9">
+              <div className="pointer-events-none absolute animate-[simbolo-flutua_10s_ease-in-out_infinite] motion-reduce:animate-none -top-20 -right-20 -z-10" aria-hidden="true">
+                <SimboloUpdo contorno animado className="size-80 text-white/15" />
+              </div>
               <div className="flex items-start justify-between gap-6">
                 <p className="font-titulo font-medium text-heading-6 max-w-[320px] text-white">
                   Alguns resultados de clientes
