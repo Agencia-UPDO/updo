@@ -1,4 +1,3 @@
-import SimboloUpdo from '@/novo/components/shared/simbolo-updo';
 import { balance } from '@/novo/utils/balance';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
@@ -52,9 +51,6 @@ const Cta = ({
             </RevealAnimation>
           </div>
           <div className="bg-primary-500/15 pointer-events-none absolute -right-24 -bottom-40 size-96 rounded-full blur-3xl" />
-          <div className="pointer-events-none absolute animate-[simbolo-flutua_10s_ease-in-out_infinite] motion-reduce:animate-none -top-24 -left-24" aria-hidden="true">
-            <SimboloUpdo contorno animado className="size-96 text-white/10" />
-          </div>
         </div>
       </div>
     </section>

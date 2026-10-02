@@ -1,4 +1,3 @@
-import SimboloUpdo from '@/novo/components/shared/simbolo-updo';
 import { balance } from '@/novo/utils/balance';
 import CounterNumberOnScroll from '@/novo/components/animation/counter-number-on-scroll';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
@@ -144,9 +143,6 @@ const Hero = () => {
 
           <RevealAnimation delay={0.4} className="col-span-12 md:col-span-7">
             <div className="bg-lilas-700 relative isolate flex h-full min-h-[340px] flex-col justify-between overflow-hidden rounded-3xl p-7 md:h-[460px] md:p-9">
-              <div className="pointer-events-none absolute animate-[simbolo-flutua_10s_ease-in-out_infinite] motion-reduce:animate-none -top-20 -right-20 -z-10" aria-hidden="true">
-                <SimboloUpdo contorno animado className="size-80 text-white/15" />
-              </div>
               <div className="flex items-start justify-between gap-6">
                 <p className="font-titulo font-medium text-heading-6 max-w-[320px] text-white">
                   Alguns resultados de clientes

@@ -44,22 +44,12 @@ body {
   }
 }
 
-@keyframes simbolo-flutua {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-18px) rotate(2deg);
-  }
-}
 
-@keyframes simbolo-sobe {
-  0%,
-  100% {
-    transform: translateY(0);
+@keyframes hero-linha {
+  from {
+    stroke-dashoffset: 1140;
   }
-  50% {
-    transform: translateY(-4px);
+  to {
+    stroke-dashoffset: 0;
   }
 }

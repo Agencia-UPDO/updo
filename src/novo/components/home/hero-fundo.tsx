@@ -1,52 +1,69 @@
-'use client';
+import { cn } from '@/novo/utils/cn';
 
-import SimboloUpdo from '@/novo/components/shared/simbolo-updo';
-import { useEffect, useRef } from 'react';
+// Linhas finas que partem de baixo do hero e se abrem para cima, com um brilho
+// percorrendo cada uma. Inspirado no fundo animado da demo ai-marketing do tema,
+// redesenhado em SVG + CSS nas cores da UPDO.
+const destinos = [-80, 160, 420, 720, 1020, 1280, 1520];
 
-// Fundo do hero: textura de pontos e o símbolo da UPDO grande, que flutua
-// e acompanha levemente o mouse.
-const HeroFundo = () => {
-  const simboloRef = useRef<HTMLDivElement>(null);
+const linhas = destinos.map((x, index) => ({
+  d: `M720 980 C720 640 ${x} 520 ${x} -40`,
+  duracao: 4.5 + (index % 3) * 1.3,
+  atraso: index * 0.7,
+  cor: index % 2 === 0 ? 'url(#hero-brilho-menta)' : 'url(#hero-brilho-lilas)',
+}));
 
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (!window.matchMedia('(hover: hover)').matches) return;
+const HeroFundo = ({ className }: { className?: string }) => (
+  <div
+    className={cn('pointer-events-none absolute inset-0 -z-10 overflow-hidden', className)}
+    aria-hidden="true"
+  >
+    <svg
+      viewBox="0 0 1440 900"
+      preserveAspectRatio="xMidYMid slice"
+      className="absolute inset-0 size-full mask-[linear-gradient(to_bottom,transparent,#000_25%,#000_75%,transparent)]"
+    >
+      <defs>
+        <linearGradient id="hero-brilho-menta" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stopColor="var(--color-primary-500)" stopOpacity="0" />
+          <stop offset="1" stopColor="var(--color-primary-600)" />
+        </linearGradient>
+        <linearGradient id="hero-brilho-lilas" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stopColor="var(--color-lilas-500)" stopOpacity="0" />
+          <stop offset="1" stopColor="var(--color-lilas-500)" />
+        </linearGradient>
+      </defs>
 
-    let frame = 0;
-    const onMove = (event: MouseEvent) => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const x = (event.clientX / window.innerWidth - 0.5) * 30;
-        const y = (event.clientY / window.innerHeight - 0.5) * 30;
-        if (simboloRef.current) {
-          simboloRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        }
-      });
-    };
+      {linhas.map((linha) => (
+        <path
+          key={`base-${linha.d}`}
+          d={linha.d}
+          fill="none"
+          strokeWidth="1"
+          className="stroke-lilas-200/70"
+        />
+      ))}
 
-    window.addEventListener('mousemove', onMove);
-    return () => {
-      window.removeEventListener('mousemove', onMove);
-      cancelAnimationFrame(frame);
-    };
-  }, []);
+      {linhas.map((linha) => (
+        <path
+          key={`brilho-${linha.d}`}
+          d={linha.d}
+          fill="none"
+          pathLength={1000}
+          stroke={linha.cor}
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeDasharray="140 1000"
+          style={{
+            animationDuration: `${linha.duracao}s`,
+            animationDelay: `${linha.atraso}s`,
+          }}
+          className="animate-[hero-linha_5s_linear_infinite] motion-reduce:hidden"
+        />
+      ))}
+    </svg>
 
-  return (
-    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-      <div className="absolute inset-0 bg-[radial-gradient(circle,var(--color-lilas-200)_1px,transparent_1.5px)] bg-size-[26px_26px] mask-[radial-gradient(ellipse_70%_60%_at_70%_30%,#000_20%,transparent_75%)] opacity-70" />
-
-      <div
-        ref={simboloRef}
-        className="absolute top-20 -right-48 opacity-60 transition-transform duration-700 ease-out md:top-6 md:-right-40 lg:-right-32"
-      >
-        <div className="animate-[simbolo-flutua_9s_ease-in-out_infinite] motion-reduce:animate-none">
-          <SimboloUpdo contorno animado className="text-lilas-200 size-[460px] md:size-[680px]" />
-        </div>
-      </div>
-
-      <div className="bg-primary-500/25 absolute top-24 right-[18%] size-40 animate-[simbolo-flutua_7s_ease-in-out_infinite_reverse] rounded-full blur-3xl motion-reduce:animate-none" />
-    </div>
-  );
-};
+    <div className="bg-primary-500/20 absolute -bottom-24 left-1/2 h-64 w-[640px] -translate-x-1/2 rounded-full blur-3xl" />
+  </div>
+);
 
 export default HeroFundo;

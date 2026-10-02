@@ -1,4 +1,3 @@
-import SimboloUpdo from '@/novo/components/shared/simbolo-updo';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import { CheckIcon } from '@/novo/components/shared/icons';
 import SectionHeading from '@/novo/components/shared/section-heading';
@@ -36,9 +35,6 @@ const radarItens = [
 const Diferenciais = () => {
   return (
     <section className="bg-secondary relative isolate overflow-hidden py-18 md:py-28 xl:py-32">
-      <div className="pointer-events-none absolute animate-[simbolo-flutua_10s_ease-in-out_infinite] motion-reduce:animate-none top-10 -left-40 -z-10" aria-hidden="true">
-        <SimboloUpdo contorno animado className="size-[560px] text-white/[0.06]" />
-      </div>
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           tone="dark"
