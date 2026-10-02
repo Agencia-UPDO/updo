@@ -11,7 +11,7 @@ import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
 import { servicos } from '@/novo/data/navegacao';
 import { cn } from '@/novo/utils/cn';
 import Link from 'next/link';
-import type { LucideIcon } from 'lucide-react';
+import { Check, X, type LucideIcon } from 'lucide-react';
 import IconChip from '@/novo/components/shared/icon-chip';
 import HeroFundo from '@/novo/components/home/hero-fundo';
 import ProvaSocial from '@/novo/components/shared/prova-social';
@@ -38,7 +38,9 @@ export interface ServicoConteudo {
     metrics: { value: string; label: string }[];
   };
   painel?: PainelServicoDados;
-  problemas: { title: string; items: Item[] };
+  problemas: { title: string; description?: string; items: Item[] };
+  plano?: { title: string; description: string; passos: { title: string; description: string }[] };
+  mudanca?: { title: string; sem: string[]; com: string[] };
   entregas: { title: string; description: string; items: Item[] };
   pilares: {
     title: string;
@@ -56,7 +58,8 @@ export interface ServicoConteudo {
 }
 
 const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
-  const { hero, resultado, painel, problemas, entregas, pilares, formulario, faq } = conteudo;
+  const { hero, resultado, painel, problemas, plano, mudanca, entregas, pilares, formulario, faq } =
+    conteudo;
   const outrosServicos = servicos.filter((servico) => !servico.href.endsWith(conteudo.slug));
 
   return (
@@ -138,7 +141,11 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
 
       <section className="bg-white py-18 md:py-28 xl:py-32">
         <div className="main-container space-y-12 md:space-y-16">
-          <SectionHeading badge="O problema" title={problemas.title} />
+          <SectionHeading
+            badge="O problema"
+            title={problemas.title}
+            description={problemas.description}
+          />
           <div className="grid grid-cols-12 gap-4 md:gap-6">
             {problemas.items.map((item, index) => (
               <RevealAnimation
@@ -165,6 +172,44 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
           </div>
         </div>
       </section>
+
+      {plano && (
+        <section className="bg-white pb-18 md:pb-28 xl:pb-32">
+          <div className="main-container space-y-12 md:space-y-16">
+            <SectionHeading badge="Como funciona" title={plano.title} description={plano.description} />
+            <ol className="relative grid grid-cols-12 gap-4 md:gap-6">
+              <span
+                aria-hidden="true"
+                className="border-stroke-3 absolute top-10 right-[16%] left-[16%] hidden border-t-2 border-dashed md:block"
+              />
+              {plano.passos.map((passo, index) => (
+                <RevealAnimation
+                  key={passo.title}
+                  delay={0.1 + index * 0.1}
+                  className="col-span-12 md:col-span-4"
+                >
+                  <li className="relative flex h-full flex-col items-center gap-5 text-center">
+                    <span className="bg-secondary text-primary-500 font-titulo flex size-20 items-center justify-center rounded-full text-[1.75rem] font-medium shadow-lg ring-8 ring-white">
+                      {index + 1}
+                    </span>
+                    <div className="space-y-2">
+                      <h3 className="text-heading-6 font-normal">{passo.title}</h3>
+                      <p className="text-tagline-2 mx-auto max-w-[340px]">{passo.description}</p>
+                    </div>
+                  </li>
+                </RevealAnimation>
+              ))}
+            </ol>
+            <RevealAnimation delay={0.4}>
+              <div className="flex justify-center">
+                <Link href="#contato" className="inline-flex">
+                  <ButtonPrimary text={hero.ctaText} />
+                </Link>
+              </div>
+            </RevealAnimation>
+          </div>
+        </section>
+      )}
 
       <section className="py-18 md:py-28 xl:py-32">
         <div className="main-container">
@@ -240,6 +285,46 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
           </div>
         </div>
       </section>
+
+      {mudanca && (
+        <section className="bg-white py-18 md:py-28 xl:py-32">
+          <div className="main-container space-y-12 md:space-y-16">
+            <SectionHeading badge="O que está em jogo" title={mudanca.title} />
+            <div className="grid grid-cols-12 gap-4 md:gap-6">
+              <RevealAnimation delay={0.1} className="col-span-12 md:col-span-6">
+                <div className="bg-background-13 h-full rounded-3xl p-7 md:p-9">
+                  <p className="text-tagline-1 text-secondary/60 font-medium">Do jeito que está</p>
+                  <ul className="mt-6 space-y-4">
+                    {mudanca.sem.map((item) => (
+                      <li key={item} className="text-tagline-1 flex items-start gap-3">
+                        <span className="bg-secondary/10 mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full">
+                          <X className="text-secondary/60 size-3.5" strokeWidth={2.5} aria-hidden="true" />
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </RevealAnimation>
+              <RevealAnimation delay={0.2} className="col-span-12 md:col-span-6">
+                <div className="bg-secondary h-full rounded-3xl p-7 md:p-9">
+                  <p className="text-tagline-1 text-primary-500 font-medium">Com a UPDO</p>
+                  <ul className="mt-6 space-y-4">
+                    {mudanca.com.map((item) => (
+                      <li key={item} className="text-tagline-1 flex items-start gap-3 text-white">
+                        <span className="bg-primary-500 mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full">
+                          <Check className="text-secondary size-3.5" strokeWidth={2.5} aria-hidden="true" />
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </RevealAnimation>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section id="contato" className="scroll-mt-28 py-18 md:py-28 xl:py-32">
         <div className="main-container">

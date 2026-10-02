@@ -65,6 +65,8 @@ export const geracaoDeDemanda: ServicoConteudo = {
   },
   problemas: {
     title: 'Onde a aquisição gasta verba antes de gerar receita',
+    description:
+      'Se o seu time recebe lead e vende pouco, o problema raramente é só a campanha. Costuma estar em um destes três pontos.',
     items: [
       {
         icon: Filter,
@@ -84,6 +86,42 @@ export const geracaoDeDemanda: ServicoConteudo = {
         description:
           'Impressão, CTR e lead contam pouco sozinhos. A decisão de verba precisa enxergar qualidade, oportunidade, venda e CAC por canal.',
       },
+    ],
+  },
+  plano: {
+    title: 'Como trabalhamos a sua geração de demanda',
+    description: 'Três etapas, com reunião semanal e o mesmo time do começo ao fim.',
+    passos: [
+      {
+        title: 'Diagnóstico de canais',
+        description:
+          'Analisamos campanhas, CPL, qualidade do lead e o que já vira venda. Você recebe o mapa do que cortar, manter e testar.',
+      },
+      {
+        title: 'Estrutura e lançamento',
+        description:
+          'Definimos ICP, oferta e papel de cada canal, ajustamos landing pages e tracking e colocamos as campanhas no ar.',
+      },
+      {
+        title: 'Otimização semanal',
+        description:
+          'Toda semana revisamos CPL, qualidade e CAC por canal com o seu time e movemos verba para o que gera venda.',
+      },
+    ],
+  },
+  mudanca: {
+    title: 'O que muda quando a demanda tem estrutura',
+    sem: [
+      'Parte da verba continua indo para lead fora do perfil',
+      'O CPL sobe a cada mudança de leilão ou algoritmo',
+      'O comercial gasta horas filtrando contato sem fit',
+      'A verba é decidida pelo clique, não pela venda',
+    ],
+    com: [
+      'Cada canal tem papel, meta e CAC acompanhados',
+      'O comercial recebe lead com perfil e contexto',
+      'SEO, GEO e AEO reduzem a dependência de mídia paga',
+      'A verba vai para o que vira venda, com leitura semanal',
     ],
   },
   entregas: {
