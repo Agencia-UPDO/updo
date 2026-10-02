@@ -1,8 +1,8 @@
+import { cn } from '@/novo/utils/cn';
+import RadarPainel from '@/novo/components/home/radar-painel';
 import { balance } from '@/novo/utils/balance';
-import CounterNumberOnScroll from '@/novo/components/animation/counter-number-on-scroll';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
-import IconChip from '@/novo/components/shared/icon-chip';
 import HeroFundo from '@/novo/components/home/hero-fundo';
 import NotificacoesFunil from '@/novo/components/home/notificacoes-funil';
 import ClientesMarquee from '@/novo/components/home/clientes-marquee';
@@ -52,13 +52,20 @@ const destaques = [
   },
 ];
 
+const numeros = [
+  { icon: Users, valor: '+300', label: 'empresas atendidas', cor: 'text-primary-700' },
+  { icon: TrendingUp, valor: 'R$ 750M', label: 'em vendas geradas', cor: 'text-lilas-500' },
+  { icon: CalendarCheck, valor: '+10 anos', label: 'de operação', cor: 'text-lilas-500' },
+  { icon: Award, valor: '3x', label: 'finalista RD Station', cor: 'text-primary-700' },
+];
+
 const Hero = () => {
   return (
     <section className="relative isolate pt-32 pb-18 md:pt-40 lg:pt-48 xl:pb-28">
       <HeroFundo />
       <div className="main-container">
-        <div className="flex flex-col gap-x-16 gap-y-12 lg:flex-row lg:items-center xl:gap-x-28">
-          <div className="space-y-8 lg:w-[64%]">
+        <div className="flex flex-col gap-x-12 gap-y-12 lg:flex-row lg:items-center xl:gap-x-16">
+          <div className="space-y-8 lg:w-[56%]">
             <div className="space-y-5 text-center md:text-left">
               <TextReveal delay={0.1}>
                 <h1 style={balance}>
@@ -87,38 +94,29 @@ const Hero = () => {
                 </Link>
               </div>
             </RevealAnimation>
+
+            <RevealAnimation delay={0.4}>
+              <ul className="border-stroke-3 grid grid-cols-2 gap-x-6 gap-y-5 border-t pt-6 sm:grid-cols-4">
+                {numeros.map((numero) => (
+                  <li key={numero.label} className="space-y-1">
+                    <p className="font-titulo text-heading-5 text-secondary flex items-center gap-2 font-medium">
+                      <numero.icon
+                        className={cn('size-4.5 shrink-0', numero.cor)}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                      {numero.valor}
+                    </p>
+                    <p className="text-tagline-3 text-secondary/60">{numero.label}</p>
+                  </li>
+                ))}
+              </ul>
+            </RevealAnimation>
           </div>
 
           <RevealAnimation delay={0.4} direction="right">
-            <div className="lg:w-[36%]">
-              <div className="border-stroke-3 grid grid-cols-2 gap-y-8 border-t pt-8 lg:border-t-0 lg:pt-0">
-                <div className="space-y-2">
-                  <IconChip icon={Users} tone="menta" size="sm" />
-                  <p className="font-titulo font-medium text-heading-4 text-secondary">
-                    +<CounterNumberOnScroll value={300} />
-                  </p>
-                  <p className="text-tagline-2">empresas atendidas</p>
-                </div>
-                <div className="space-y-2">
-                  <IconChip icon={TrendingUp} tone="lilas" size="sm" />
-                  <p className="font-titulo font-medium text-heading-4 text-secondary">
-                    R$ <CounterNumberOnScroll value={750} />M
-                  </p>
-                  <p className="text-tagline-2">em vendas geradas para clientes</p>
-                </div>
-                <div className="space-y-2">
-                  <IconChip icon={CalendarCheck} tone="lilas" size="sm" />
-                  <p className="font-titulo font-medium text-heading-4 text-secondary">
-                    +<CounterNumberOnScroll value={10} /> anos
-                  </p>
-                  <p className="text-tagline-2">estruturando operações comerciais</p>
-                </div>
-                <div className="space-y-2">
-                  <IconChip icon={Award} tone="menta" size="sm" />
-                  <p className="font-titulo font-medium text-heading-4 text-secondary">3x</p>
-                  <p className="text-tagline-2">finalista do prêmio RD Station</p>
-                </div>
-              </div>
+            <div className="w-full lg:w-[44%]">
+              <RadarPainel />
             </div>
           </RevealAnimation>
         </div>
