@@ -37,10 +37,12 @@ const VideoDepoimento = ({ videoId, name }: VideoDepoimentoProps) => {
         className="size-full object-cover"
       />
       <span className="bg-secondary/20 absolute inset-0 transition-colors duration-300 group-hover:bg-secondary/35" />
-      <span className="bg-primary-500 absolute top-1/2 left-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-lg transition-transform duration-300 group-hover:scale-110">
-        <svg viewBox="0 0 24 24" className="fill-secondary ml-1 size-6" aria-hidden="true">
-          <path d="M8 5v14l11-7z" />
-        </svg>
+      <span className="absolute top-1/2 left-1/2 flex size-[4.5rem] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 ring-1 ring-white/40 backdrop-blur-md transition-transform duration-300 group-hover:scale-110">
+        <span className="flex size-[3.25rem] items-center justify-center rounded-full bg-white shadow-lg transition-colors duration-300 group-hover:bg-primary-500">
+          <svg viewBox="0 0 24 24" className="fill-secondary stroke-secondary ml-0.5 size-5" aria-hidden="true">
+            <path d="M8 6.5v11a1 1 0 0 0 1.5.86l9-5.5a1 1 0 0 0 0-1.72l-9-5.5A1 1 0 0 0 8 6.5z" strokeWidth="1.5" strokeLinejoin="round" />
+          </svg>
+        </span>
       </span>
     </button>
   );
