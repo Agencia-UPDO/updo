@@ -182,7 +182,7 @@ const Hero = () => {
 
         <div className="mt-10 flex flex-col items-center gap-5 md:mt-12">
           <p className="text-tagline-2 text-center">Parceiros certificados</p>
-          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <ul className="flex flex-wrap justify-center gap-3">
             {selosParceiros.map((selo) => (
               <li
                 key={selo.src}

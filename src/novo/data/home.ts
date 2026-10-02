@@ -235,4 +235,5 @@ export const selosParceiros = [
   { src: '/Imagens/Google-Partner-UPDO.png', alt: 'Google Partner' },
   { src: '/Imagens/meta-ads-partner.webp', alt: 'Meta Business Partner' },
   { src: '/Imagens/Parceiro-oficial-Amazon-ADS-UPDO.png', alt: 'Parceiro oficial Amazon Ads' },
+  { src: '/Imagens/Badge dark Kommo.svg', alt: 'Parceiro oficial Kommo' },
 ];
