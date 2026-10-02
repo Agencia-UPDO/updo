@@ -20,32 +20,24 @@ const funil = [
   { etapa: 'Vendas', valor: '180', largura: 38, cor: 'bg-lilas-700' },
 ];
 
-const indicadores = [
-  { label: 'Conversão', valor: '7,5%', variacao: 'lead → venda', cor: 'bg-primary-500' },
-  { label: 'CAC Google', valor: 'R$ 312', variacao: '-22%', cor: 'bg-updo-blue' },
-  { label: 'CAC Meta', valor: 'R$ 248', variacao: '-31%', cor: 'bg-lilas-500' },
-];
-
-// Vendas (barras) e receita acumulada (linha) por semana, só ilustrativo
-const semanas = [
-  { rotulo: 'S1', vendas: 22, receita: 18 },
-  { rotulo: 'S2', vendas: 31, receita: 24 },
-  { rotulo: 'S3', vendas: 27, receita: 29 },
-  { rotulo: 'S4', vendas: 38, receita: 36 },
-  { rotulo: 'S5', vendas: 35, receita: 41 },
-  { rotulo: 'S6', vendas: 46, receita: 49 },
-  { rotulo: 'S7', vendas: 52, receita: 57 },
-  { rotulo: 'S8', vendas: 64, receita: 68 },
+// Vendas (barras) e receita (linha) por mês, só ilustrativo
+const meses = [
+  { rotulo: 'Abr', vendas: 72, receita: 260 },
+  { rotulo: 'Mai', vendas: 88, receita: 310 },
+  { rotulo: 'Jun', vendas: 101, receita: 365 },
+  { rotulo: 'Jul', vendas: 119, receita: 430 },
+  { rotulo: 'Ago', vendas: 146, receita: 520 },
+  { rotulo: 'Set', vendas: 180, receita: 647 },
 ];
 
 const GRAF_L = 440;
 const GRAF_A = 100;
-const MAX_VENDAS = 70;
-const MAX_RECEITA = 75;
-const passo = GRAF_L / semanas.length;
+const MAX_VENDAS = 200;
+const MAX_RECEITA = 700;
+const passo = GRAF_L / meses.length;
 const centroX = (i: number) => passo * i + passo / 2;
 const yReceita = (v: number) => GRAF_A - (v / MAX_RECEITA) * (GRAF_A - 14);
-const linhaReceita = semanas
+const linhaReceita = meses
   .map((s, i) => `${i === 0 ? 'M' : 'L'} ${centroX(i).toFixed(1)} ${yReceita(s.receita).toFixed(1)}`)
   .join(' ');
 
@@ -121,24 +113,9 @@ const RadarPainel = () => {
         ))}
       </div>
 
-      <div className="mt-5 grid grid-cols-3 gap-2.5">
-        {indicadores.map((item) => (
-          <div key={item.label} className="rounded-2xl bg-white/5 p-3">
-            <span className="text-tagline-3 flex items-center gap-1.5 text-white/55">
-              <span className={cn('size-2 rounded-full', item.cor)} />
-              {item.label}
-            </span>
-            <p className="font-titulo mt-1.5 text-[1.125rem] leading-none font-medium text-white">
-              {item.valor}
-            </p>
-            <p className="text-tagline-3 text-primary-500 mt-1">{item.variacao}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-2.5 rounded-2xl bg-white/5 p-3">
+      <div className="mt-5 rounded-2xl bg-white/5 p-3">
         <div className="flex items-center justify-between">
-          <span className="text-tagline-3 text-white/55">Vendas por semana</span>
+          <span className="text-tagline-3 text-white/55">Vendas por mês</span>
           <span className="text-tagline-3 flex items-center gap-3 text-white/55">
             <span className="flex items-center gap-1.5">
               <span className="bg-lilas-500 size-2 rounded-sm" />
@@ -171,14 +148,14 @@ const RadarPainel = () => {
               />
             ))}
 
-            {semanas.map((s, i) => {
+            {meses.map((s, i) => {
               const altura = (s.vendas / MAX_VENDAS) * (GRAF_A - 14);
-              const ultimaBarra = i === semanas.length - 1;
+              const ultimaBarra = i === meses.length - 1;
               return (
                 <g key={s.rotulo}>
                   <rect
-                    x={centroX(i) - passo * 0.28}
-                    width={passo * 0.56}
+                    x={centroX(i) - passo * 0.22}
+                    width={passo * 0.44}
                     y={GRAF_A - altura}
                     height={altura}
                     rx="4"
@@ -213,12 +190,12 @@ const RadarPainel = () => {
               strokeDashoffset={ativo ? 0 : 1}
               className="stroke-primary-500 transition-[stroke-dashoffset] delay-[900ms] duration-[1600ms] ease-out"
             />
-            {semanas.map((s, i) => (
+            {meses.map((s, i) => (
               <circle
                 key={`p-${s.rotulo}`}
                 cx={centroX(i)}
                 cy={yReceita(s.receita)}
-                r={i === semanas.length - 1 ? 4.5 : 2.5}
+                r={i === meses.length - 1 ? 4.5 : 2.5}
                 className={cn(
                   'fill-secondary stroke-primary-500 transition-opacity duration-300',
                   ativo ? 'opacity-100' : 'opacity-0'
@@ -231,8 +208,8 @@ const RadarPainel = () => {
 
           <div
             style={{
-              left: `${(centroX(semanas.length - 1) / GRAF_L) * 100}%`,
-              top: `${(yReceita(semanas[semanas.length - 1].receita) / (GRAF_A + 16)) * 100}%`,
+              left: `${(centroX(meses.length - 1) / GRAF_L) * 100}%`,
+              top: `${(yReceita(meses[meses.length - 1].receita) / (GRAF_A + 16)) * 100}%`,
             }}
             className={cn(
               'bg-primary-500 text-secondary text-tagline-3 absolute -translate-x-[112%] translate-y-[10%] rounded-lg px-2 py-1 font-medium whitespace-nowrap shadow-lg transition-all delay-[2400ms] duration-500',
