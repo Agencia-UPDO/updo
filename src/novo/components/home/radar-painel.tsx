@@ -134,9 +134,6 @@ const RadarPainel = () => {
         </svg>
       </div>
 
-      <p className="text-tagline-3 mt-3 text-center text-white/35">
-        Exemplo ilustrativo com números arredondados
-      </p>
     </div>
   );
 };
