@@ -6,15 +6,48 @@ import IconChip from '@/novo/components/shared/icon-chip';
 import ClientesMarquee from '@/novo/components/home/clientes-marquee';
 import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
 import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
-import { Award, CalendarCheck, TrendingUp, Users } from 'lucide-react';
+import {
+  Award,
+  CalendarCheck,
+  Factory,
+  GraduationCap,
+  ShoppingBag,
+  Store,
+  TrendingUp,
+  Users,
+} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const destaques = [
-  { value: '+211%', label: 'leads em uma instituição de ensino' },
-  { value: '+6.900%', label: 'vendas mensais em um e-commerce' },
-  { value: '+87%', label: 'faturamento de um varejista em 2 anos' },
-  { value: '1.527%', label: 'ROI de mídia para uma indústria' },
+  {
+    value: '+211%',
+    label: 'leads em uma instituição de ensino',
+    setor: 'Educação',
+    icon: GraduationCap,
+    href: '/cases/educacao',
+  },
+  {
+    value: '+6.900%',
+    label: 'vendas mensais em um e-commerce',
+    setor: 'E-commerce',
+    icon: ShoppingBag,
+    href: '/cases/e-commerce',
+  },
+  {
+    value: '+87%',
+    label: 'faturamento de um varejista em 2 anos',
+    setor: 'Varejo',
+    icon: Store,
+    href: '/cases/varejo',
+  },
+  {
+    value: '1.527%',
+    label: 'ROI de mídia para uma indústria',
+    setor: 'Indústria',
+    icon: Factory,
+    href: '/cases/industria',
+  },
 ];
 
 const Hero = () => {
@@ -119,9 +152,17 @@ const Hero = () => {
               </div>
               <ul className="grid grid-cols-2 gap-x-6 gap-y-8">
                 {destaques.map((destaque) => (
-                  <li key={destaque.label} className="space-y-1 border-t border-white/20 pt-4">
-                    <p className="text-heading-4 md:text-heading-3 text-white">{destaque.value}</p>
-                    <p className="text-tagline-2 text-white/75">{destaque.label}</p>
+                  <li key={destaque.label} className="border-t border-white/20 pt-4">
+                    <Link href={destaque.href} className="group block space-y-1">
+                      <span className="text-tagline-3 flex items-center gap-2 text-white/80">
+                        <span className="text-primary-500 flex size-8 items-center justify-center rounded-lg bg-white/10 transition-colors duration-300 group-hover:bg-white/20">
+                          <destaque.icon className="size-4" strokeWidth={1.75} aria-hidden="true" />
+                        </span>
+                        {destaque.setor}
+                      </span>
+                      <p className="text-heading-4 md:text-heading-3 pt-2 text-white">{destaque.value}</p>
+                      <p className="text-tagline-2 text-white/75">{destaque.label}</p>
+                    </Link>
                   </li>
                 ))}
               </ul>
