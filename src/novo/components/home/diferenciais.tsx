@@ -1,5 +1,4 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
-import { CheckIcon } from '@/novo/components/shared/icons';
 import SectionHeading from '@/novo/components/shared/section-heading';
 import Image from 'next/image';
 import { Bot, Brain, Radar, ShieldCheck } from 'lucide-react';
@@ -26,12 +25,6 @@ const pilares = [
   },
 ];
 
-const radarItens = [
-  'Panorama unificado e atualizado',
-  'Retorno por canal, produto e etapa do funil',
-  'Independente do CRM que você usa',
-];
-
 const Diferenciais = () => {
   return (
     <section className="bg-secondary relative isolate overflow-hidden py-18 md:py-28 xl:py-32">
@@ -52,21 +45,10 @@ const Diferenciais = () => {
               </div>
               <h3 className="text-heading-4 mt-4 font-normal text-white">Radar UPDO</h3>
               <p className="text-tagline-1 mt-3 max-w-[520px] text-white/60">
-                Um BI que conecta mídia, funil e comercial em um painel só, para que cada decisão
-                parta do número de vendas.
+                Um BI que conecta mídia, funil e comercial em um painel só, com qualquer CRM, para que
+                cada decisão parta do número de vendas.
               </p>
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {radarItens.map((item) => (
-                  <li
-                    key={item}
-                    className="text-tagline-2 flex items-center gap-2 rounded-full border border-white/10 px-3.5 py-2 text-white/80"
-                  >
-                    <CheckIcon className="size-4 [&_path]:stroke-primary-500" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl">
+              <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl lg:aspect-auto lg:min-h-[320px] lg:flex-1">
                 <Image
                   src="/Imagens/radar de matrículas.jpeg"
                   alt="Tela do Radar UPDO"
