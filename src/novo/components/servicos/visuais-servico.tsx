@@ -1,7 +1,18 @@
 'use client';
 
 import { cn } from '@/novo/utils/cn';
-import { BarChart3, FlaskConical, GitBranch, Kanban } from 'lucide-react';
+import {
+  BarChart3,
+  Bot,
+  Clock3,
+  FlaskConical,
+  GitBranch,
+  Kanban,
+  MessageSquareMore,
+  SearchCheck,
+  Sparkles,
+  Tag,
+} from 'lucide-react';
 import { type ReactNode, useEffect, useState } from 'react';
 
 // Visuais do topo das páginas de serviço. Cada serviço mantém a ideia da página atual,
@@ -365,11 +376,257 @@ export const VisualDashboard = () => {
   );
 };
 
+// IA para Vendas: conversa do agente no WhatsApp, com as mensagens chegando em sequência.
+const mensagens = [
+  { de: 'lead', texto: 'Oi, vi o anúncio de vocês. Tenho interesse.' },
+  {
+    de: 'ia',
+    texto:
+      'Olá! Para eu te direcionar melhor: qual é o principal desafio que vocês enfrentam hoje em vendas?',
+  },
+  { de: 'lead', texto: 'A gente gera bastante lead, mas o time não dá conta de atender todos.' },
+  { de: 'ia', texto: 'Entendido. Qual é o volume médio de leads que vocês recebem por mês?' },
+  { de: 'lead', texto: 'Umas 300 a 400 por mês.' },
+  {
+    de: 'ia',
+    texto:
+      'Perfeito. Posso agendar uma sessão de diagnóstico com nosso time ainda esta semana. Qual horário funciona melhor?',
+  },
+];
+
+export const VisualConversa = () => {
+  const [visiveis, setVisiveis] = useState(1);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setVisiveis(mensagens.length);
+      return;
+    }
+    const timer = window.setInterval(
+      () => setVisiveis((n) => (n >= mensagens.length ? 1 : n + 1)),
+      1500
+    );
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="bg-secondary shadow-6 relative overflow-hidden rounded-3xl">
+      <div className="flex items-center gap-3 border-b border-white/10 px-5 py-4">
+        <span className="bg-primary-500 text-secondary flex size-9 items-center justify-center rounded-full">
+          <Bot className="size-4.5" strokeWidth={2} aria-hidden="true" />
+        </span>
+        <div>
+          <p className="text-tagline-2 font-medium text-white">Agente UPDO</p>
+          <p className="text-tagline-3 flex items-center gap-1.5 text-white/50">
+            <span className="bg-primary-500 size-1.5 animate-pulse rounded-full" />
+            online agora
+          </p>
+        </div>
+        <span className="text-tagline-3 ml-auto rounded-full bg-white/10 px-2.5 py-1 text-white/70">
+          WhatsApp
+        </span>
+      </div>
+
+      <div className="flex h-[360px] flex-col justify-end gap-2.5 overflow-hidden p-5 mask-[linear-gradient(to_bottom,transparent,#000_18%)]">
+        {mensagens.slice(0, visiveis).map((msg, index) => (
+          <div
+            key={index}
+            className={cn(
+              'text-tagline-2 max-w-[82%] animate-[metodo-entra_400ms_ease-out] rounded-2xl px-4 py-2.5',
+              msg.de === 'lead'
+                ? 'bg-primary-500 text-secondary self-end rounded-br-md'
+                : 'self-start rounded-bl-md bg-white/[0.08] text-white/85'
+            )}
+          >
+            {msg.texto}
+          </div>
+        ))}
+        {visiveis < mensagens.length && mensagens[visiveis].de === 'ia' && (
+          <div className="flex gap-1 self-start rounded-2xl rounded-bl-md bg-white/[0.08] px-4 py-3">
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                style={{ animationDelay: `${i * 150}ms` }}
+                className="size-1.5 animate-bounce rounded-full bg-white/50"
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="border-t border-white/10 px-5 pb-5">
+        <Indicadores
+          itens={[
+            ['Resposta', '28s'],
+            ['Atendimento', '+3x'],
+            ['Agendamento', '+40%'],
+          ]}
+        />
+      </div>
+    </div>
+  );
+};
+
+// ChatGPT Ads: jornada da intenção na conversa até a conversão.
+const jornadaIa = [
+  { label: 'Conversa', detalhe: 'Problema e intenção' },
+  { label: 'Contexto', detalhe: 'Sinais de relevância' },
+  { label: 'Anúncio', detalhe: 'Oferta útil e específica' },
+  { label: 'Landing page', detalhe: 'Continuidade e conversão' },
+];
+
+export const VisualJornadaIa = () => {
+  const [atual, setAtual] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setAtual(jornadaIa.length - 1);
+      return;
+    }
+    const timer = window.setInterval(() => setAtual((i) => (i + 1) % jornadaIa.length), 1500);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <Moldura
+      icone={<Sparkles className="size-4" strokeWidth={2} aria-hidden="true" />}
+      rotulo="Aquisição nativa em IA"
+      status="operação ativa"
+      titulo="Da intenção na conversa até a conversão"
+    >
+      <div className="mt-5 rounded-2xl bg-white/5 p-4">
+        <p className="text-tagline-3 text-white/45">Pergunta no ChatGPT</p>
+        <p className="text-tagline-2 mt-1.5 text-white/85">
+          “Qual agência ajuda a estruturar marketing e vendas para uma empresa B2B?”
+        </p>
+      </div>
+      <ol className="mt-4 grid grid-cols-2 gap-2.5">
+        {jornadaIa.map((etapa, index) => {
+          const acesa = index <= atual;
+          return (
+            <li
+              key={etapa.label}
+              className={cn(
+                'rounded-2xl border p-3 transition-all duration-500',
+                acesa ? 'border-primary-500/40 bg-primary-500/10' : 'border-white/10 bg-white/[0.03]'
+              )}
+            >
+              <span
+                className={cn(
+                  'font-titulo text-tagline-3 flex size-6 items-center justify-center rounded-full transition-colors duration-500',
+                  acesa ? 'bg-primary-500 text-secondary' : 'bg-white/10 text-white/50'
+                )}
+              >
+                {index + 1}
+              </span>
+              <p
+                className={cn(
+                  'text-tagline-2 mt-2.5 font-medium transition-colors duration-500',
+                  acesa ? 'text-white' : 'text-white/55'
+                )}
+              >
+                {etapa.label}
+              </p>
+              <p className="text-tagline-3 mt-0.5 text-white/45">{etapa.detalhe}</p>
+            </li>
+          );
+        })}
+      </ol>
+      <Indicadores
+        itens={[
+          ['Mídia', 'CPC/CPM'],
+          ['Orgânico', 'SEO+GEO'],
+          ['Leitura', 'CRM'],
+        ]}
+      />
+      <p className="text-tagline-2 mt-2.5 rounded-2xl bg-white/5 p-4 text-white/60">
+        ChatGPT Ads não substitui SEO ou Google Ads. Ele abre um novo ponto de contato com pessoas
+        que já estão explicando o que precisam.
+      </p>
+    </Moldura>
+  );
+};
+
+// Cliente Oculto: o que a auditoria lê no seu atendimento e no do concorrente.
+const leituras = [
+  {
+    icone: Clock3,
+    titulo: 'Tempo de resposta',
+    detalhe: 'Quanto tempo a empresa demora para reagir à oportunidade',
+  },
+  {
+    icone: MessageSquareMore,
+    titulo: 'Condução comercial',
+    detalhe: 'Se a conversa avança ou morre em mensagem pronta',
+  },
+  {
+    icone: Tag,
+    titulo: 'Percepção de oferta',
+    detalhe: 'Como preço, design e clareza influenciam confiança',
+  },
+  {
+    icone: SearchCheck,
+    titulo: 'Força do concorrente',
+    detalhe: 'Onde ele parece mais claro, mais rápido ou mais desejável',
+  },
+];
+
+export const VisualClienteOculto = () => {
+  const [atual, setAtual] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const timer = window.setInterval(() => setAtual((i) => (i + 1) % leituras.length), 1800);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <Moldura
+      icone={<SearchCheck className="size-4" strokeWidth={2} aria-hidden="true" />}
+      rotulo="Leitura real da experiência"
+      status="em campo"
+      titulo="O que o cliente vive no seu atendimento e no do concorrente"
+    >
+      <ul className="mt-5 space-y-2.5">
+        {leituras.map((item, index) => {
+          const ativa = index === atual;
+          const Icone = item.icone;
+          return (
+            <li
+              key={item.titulo}
+              className={cn(
+                'flex items-start gap-3.5 rounded-2xl border p-4 transition-all duration-500',
+                ativa ? 'border-primary-500/40 bg-primary-500/10' : 'border-transparent bg-white/5'
+              )}
+            >
+              <span
+                className={cn(
+                  'flex size-9 shrink-0 items-center justify-center rounded-xl transition-colors duration-500',
+                  ativa ? 'bg-primary-500 text-secondary' : 'bg-white/10 text-white/60'
+                )}
+              >
+                <Icone className="size-4" strokeWidth={1.75} aria-hidden="true" />
+              </span>
+              <div>
+                <p className="text-tagline-2 font-medium text-white">{item.titulo}</p>
+                <p className="text-tagline-3 mt-0.5 text-white/50">{item.detalhe}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </Moldura>
+  );
+};
+
 const visuais = {
   automacao: VisualAutomacao,
   pipeline: VisualPipeline,
   'teste-ab': VisualTesteAB,
   dashboard: VisualDashboard,
+  conversa: VisualConversa,
+  'jornada-ia': VisualJornadaIa,
+  'cliente-oculto': VisualClienteOculto,
 };
 
 export type VisualServico = keyof typeof visuais;

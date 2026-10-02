@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { ClienteOcultoLanding } from "@/components/sections/services/cliente-oculto-landing";
+import ServicoTemplate from "@/novo/components/servicos/servico-template";
+import { clienteOculto } from "@/novo/data/servicos/cliente-oculto";
 
 export const metadata: Metadata = {
   title: "Cliente Oculto e Análise Competitiva",
@@ -55,53 +56,6 @@ const serviceSchema = {
   serviceType: "Cliente Oculto e Análise Competitiva",
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Vocês analisam só o meu atendimento ou também os concorrentes?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Podemos avaliar apenas o seu time, apenas os concorrentes ou comparar os dois lados na mesma leitura.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Esse serviço serve só para varejo?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Não. Funciona para varejo, educação, saúde, serviços, e-commerce e operações comerciais em geral. O ponto é entender como a empresa atende e como o cliente percebe essa experiência.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "O que vocês avaliam no concorrente?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Preço, apresentação da oferta, design, clareza da informação, prova social, jornada de contato, qualidade da resposta, tempo de retorno e percepção geral da experiência.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Recebo só um relatório ou também orientação prática?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Você recebe os dois. O relatório mostra evidências e comparativos. A recomendação prática organiza o que deve ser corrigido primeiro em script, tempo de resposta, processo, design ou posicionamento.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Isso pode virar treinamento para o time?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Sim. O Cliente Oculto gera material real para desenvolver atendimento, comercial, recepção e liderança com base no que o cliente vive hoje.",
-      },
-    },
-  ],
-};
-
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -110,19 +64,19 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://www.updo.com.br",
+      item: "https://updo.com.br",
     },
     {
       "@type": "ListItem",
       position: 2,
-      name: "O que fazemos",
-      item: "https://www.updo.com.br/o-que-fazemos",
+      name: "Serviços",
+      item: "https://updo.com.br/servicos",
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "Cliente Oculto",
-      item: "https://www.updo.com.br/servicos/cliente-oculto",
+      item: "https://updo.com.br/servicos/cliente-oculto",
     },
   ],
 };
@@ -136,16 +90,11 @@ export default function ClienteOcultoPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <Script
-        id="schema-faq-cliente-oculto"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Script
         id="schema-breadcrumb-cliente-oculto"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <ClienteOcultoLanding />
+      <ServicoTemplate conteudo={clienteOculto} />
     </>
   );
 }

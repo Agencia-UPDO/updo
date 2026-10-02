@@ -34,7 +34,8 @@ const FluxoPilares = ({ itens }: { itens: Pilar[] }) => {
       {/* Trilho horizontal (desktop) */}
       <div
         aria-hidden="true"
-        className="absolute top-8 right-[12.5%] left-[12.5%] hidden h-0.5 rounded-full bg-white/10 md:block"
+        style={{ left: `${50 / total}%`, right: `${50 / total}%` }}
+        className="absolute top-8 hidden h-0.5 rounded-full bg-white/10 md:block"
       >
         <div
           style={{ width: `${progresso}%` }}
@@ -67,7 +68,10 @@ const FluxoPilares = ({ itens }: { itens: Pilar[] }) => {
         ))}
       </div>
 
-      <ol className="relative grid gap-10 md:grid-cols-4 md:gap-6">
+      <ol
+        style={{ ['--colunas' as string]: total }}
+        className="relative grid gap-10 md:grid-cols-[repeat(var(--colunas),minmax(0,1fr))] md:gap-6"
+      >
         {itens.map((item, index) => {
           const acesa = index <= ativa;
           const atual = index === ativa;
