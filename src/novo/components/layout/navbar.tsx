@@ -7,6 +7,7 @@ import ButtonPrimaryV2 from '@/novo/components/shared/ui/button/button-primary-v
 import { casesMenu, empresaMenu, servicos, setores, type NavLink } from '@/novo/data/navegacao';
 import { useNavbarScroll } from '@/novo/hooks/useScrollHeader';
 import { cn } from '@/novo/utils/cn';
+import { CheckCircle2, ClipboardCheck } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
@@ -48,29 +49,53 @@ const CardDestaque = ({
   href,
   imagem,
   imagemAlt,
+  imagemPosicao = 'object-[center_25%]',
   rotulo,
   titulo,
   texto,
   cta,
 }: {
   href: string;
-  imagem: string;
-  imagemAlt: string;
+  imagem?: string;
+  imagemAlt?: string;
+  imagemPosicao?: string;
   rotulo: string;
   titulo: string;
   texto: string;
   cta: string;
 }) => (
   <Link href={href} className="group bg-secondary flex flex-col overflow-hidden rounded-2xl">
-    <span className="relative block h-32 overflow-hidden">
-      <Image
-        src={imagem}
-        alt={imagemAlt}
-        fill
-        sizes="300px"
-        className="object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105"
-      />
-    </span>
+    {imagem ? (
+      <span className="relative block h-32 overflow-hidden">
+        <Image
+          src={imagem}
+          alt={imagemAlt ?? ''}
+          fill
+          sizes="300px"
+          className={cn(
+            'object-cover transition-transform duration-700 group-hover:scale-105',
+            imagemPosicao
+          )}
+        />
+      </span>
+    ) : (
+      <span className="bg-primary-500 relative flex h-32 items-center justify-between overflow-hidden px-5">
+        <span className="space-y-1.5">
+          {['Funil', 'Canais', 'Comercial'].map((item) => (
+            <span
+              key={item}
+              className="text-tagline-3 text-secondary flex items-center gap-1.5 font-medium"
+            >
+              <CheckCircle2 className="size-3.5" strokeWidth={2} aria-hidden="true" />
+              {item}
+            </span>
+          ))}
+        </span>
+        <span className="bg-secondary text-primary-500 flex size-16 items-center justify-center rounded-2xl transition-transform duration-500 group-hover:rotate-6">
+          <ClipboardCheck className="size-8" strokeWidth={1.5} aria-hidden="true" />
+        </span>
+      </span>
+    )}
     <span className="flex flex-1 flex-col gap-1.5 p-5">
       <span className="text-tagline-3 text-primary-500 font-medium">{rotulo}</span>
       <span className="font-titulo text-tagline-1 font-medium text-white">{titulo}</span>
@@ -209,8 +234,6 @@ const Navbar = () => {
                 </div>
                 <CardDestaque
                   href="/diagnostico"
-                  imagem="/Imagens/sala-cheia.jpg"
-                  imagemAlt="Rodrigo Bueno em um treinamento da UPDO"
                   rotulo="Gratuito"
                   titulo="Diagnóstico estratégico"
                   texto="45 minutos para mapear onde seu marketing e seu comercial perdem vendas."
