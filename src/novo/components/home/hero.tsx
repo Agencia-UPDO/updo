@@ -57,7 +57,7 @@ const Hero = () => {
     <section className="relative isolate pt-32 pb-18 md:pt-40 lg:pt-48 xl:pb-28">
       <HeroFundo />
       <div className="main-container">
-        <div className="flex flex-col gap-x-16 gap-y-12 lg:flex-row lg:items-end xl:gap-x-28">
+        <div className="flex flex-col gap-x-16 gap-y-12 lg:flex-row lg:items-center xl:gap-x-28">
           <div className="space-y-8 lg:w-[64%]">
             <div className="space-y-5 text-center md:text-left">
               <TextReveal delay={0.1}>

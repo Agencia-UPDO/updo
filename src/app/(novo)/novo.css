@@ -45,11 +45,21 @@ body {
 }
 
 
-@keyframes hero-linha {
+
+@keyframes feixe-x {
   from {
-    stroke-dashoffset: 1140;
+    transform: translateX(-10rem);
   }
   to {
-    stroke-dashoffset: 0;
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes feixe-y {
+  from {
+    transform: translateY(-10rem);
+  }
+  to {
+    transform: translateY(110vh);
   }
 }
