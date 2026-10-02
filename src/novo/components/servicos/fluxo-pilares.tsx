@@ -13,13 +13,6 @@ interface Pilar {
 const INTERVALO = 1800;
 const LEADS = [0, 1.2, 2.4];
 
-// Degradê do lilás ao menta, acompanhando a linha: o lead esquenta até virar receita.
-const CORES = ['#6575ff', '#5b9cf2', '#3fd8c8', '#56fed5'];
-const TEXTO_ESCURO = [false, false, true, true];
-
-const corDaEtapa = (index: number, total: number) =>
-  CORES[Math.round((index / Math.max(total - 1, 1)) * (CORES.length - 1))];
-
 // Pilares como um fluxo: leads percorrem a linha e cada etapa acende quando o fluxo chega nela.
 const FluxoPilares = ({ itens }: { itens: Pilar[] }) => {
   const total = itens.length;
@@ -78,38 +71,25 @@ const FluxoPilares = ({ itens }: { itens: Pilar[] }) => {
         {itens.map((item, index) => {
           const acesa = index <= ativa;
           const atual = index === ativa;
-          const cor = corDaEtapa(index, total);
-          const escuro = TEXTO_ESCURO[CORES.indexOf(cor)];
           return (
             <li
               key={item.label}
               className="flex gap-5 md:flex-col md:items-center md:gap-6 md:text-center"
             >
               <span
-                style={
-                  acesa
-                    ? {
-                        backgroundColor: cor,
-                        borderColor: cor,
-                        boxShadow: atual ? `0 0 0 8px ${cor}1f, 0 0 32px ${cor}73` : undefined,
-                      }
-                    : undefined
-                }
                 className={cn(
                   'relative flex size-16 shrink-0 items-center justify-center rounded-full border transition-all duration-500',
                   acesa
-                    ? escuro
-                      ? 'text-secondary'
-                      : 'text-white'
-                    : 'border-white/15 bg-[#0d1424] text-white/50'
+                    ? 'bg-primary-500 text-secondary border-primary-500'
+                    : 'border-white/15 bg-[#0d1424] text-white/50',
+                  atual && 'shadow-[0_0_0_8px_rgb(86_254_213/0.12),0_0_32px_rgb(86_254_213/0.45)]'
                 )}
               >
                 {item.icone}
                 <span
-                  style={acesa ? { color: cor } : undefined}
                   className={cn(
                     'font-titulo absolute -top-1 -right-1 flex size-6 items-center justify-center rounded-full text-[0.75rem] font-medium transition-colors duration-500',
-                    acesa ? 'bg-secondary' : 'bg-white/10 text-white/60'
+                    acesa ? 'bg-secondary text-primary-500' : 'bg-white/10 text-white/60'
                   )}
                 >
                   {index + 1}
@@ -129,14 +109,11 @@ const FluxoPilares = ({ itens }: { itens: Pilar[] }) => {
                   {item.description}
                 </p>
                 <span
-                  style={
-                    acesa
-                      ? { color: cor, borderColor: `${cor}66`, backgroundColor: `${cor}1a` }
-                      : undefined
-                  }
                   className={cn(
                     'text-tagline-3 inline-flex rounded-full border px-3 py-1 font-medium transition-all duration-500',
-                    !acesa && 'border-white/10 text-white/40'
+                    acesa
+                      ? 'border-primary-500/40 bg-primary-500/10 text-primary-500'
+                      : 'border-white/10 text-white/40'
                   )}
                 >
                   {item.resultado}
