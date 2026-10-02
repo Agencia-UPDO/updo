@@ -18,7 +18,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
   hero: {
     title: 'Geração de demanda para atrair o lead que tem perfil de compra',
     description:
-      'Estruturamos Google Ads, Meta Ads, LinkedIn Ads, SEO, GEO e conteúdo a partir do seu cliente ideal, da oferta e do CAC, para a verba virar oportunidade de venda.',
+      'Estruturamos Google Ads, Meta Ads, LinkedIn Ads, SEO, GEO, AEO e conteúdo a partir do seu cliente ideal, da oferta e do CAC, para a verba virar oportunidade de venda.',
     bullets: [
       'Canais definidos por cliente ideal, intenção e ciclo de venda',
       'Qualificação desde o anúncio até a landing page',
@@ -89,7 +89,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
   entregas: {
     title: 'Sete frentes para gerar demanda com mais qualidade',
     description:
-      'A entrega conecta canal, oferta, mídia, SEO, GEO, landing page e leitura comercial para o lead chegar com mais contexto.',
+      'A entrega conecta canal, oferta, mídia, SEO, GEO, AEO, landing page e leitura comercial para o lead chegar com mais contexto.',
     items: [
       {
         icon: Target,
@@ -117,9 +117,9 @@ export const geracaoDeDemanda: ServicoConteudo = {
       },
       {
         icon: Globe2,
-        title: 'SEO, GEO e conteúdo',
+        title: 'SEO, GEO, AEO e conteúdo',
         description:
-          'Arquitetura de conteúdo para buscadores e respostas de IA, capturando demanda orgânica de alta intenção.',
+          'Arquitetura de conteúdo para buscadores, motores de resposta e IAs como ChatGPT e Gemini, capturando demanda orgânica de alta intenção.',
       },
       {
         icon: MessageSquareText,

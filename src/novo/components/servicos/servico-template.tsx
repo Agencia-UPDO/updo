@@ -63,6 +63,10 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
     <>
       <section className="relative isolate pt-32 pb-18 md:pt-40 lg:pt-48 xl:pb-28">
         <HeroFundo />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle,var(--color-lilas-200)_1px,transparent_1.5px)] bg-size-[26px_26px] mask-[radial-gradient(ellipse_55%_45%_at_25%_30%,#000_15%,transparent_75%)] opacity-60"
+        />
         <div className="main-container">
           <div className="grid grid-cols-12 items-center gap-y-12 lg:gap-x-16">
             <div className="col-span-12 space-y-8 lg:col-span-7">
