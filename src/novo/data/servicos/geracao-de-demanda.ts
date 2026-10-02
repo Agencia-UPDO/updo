@@ -37,6 +37,32 @@ export const geracaoDeDemanda: ServicoConteudo = {
       { value: '31%', label: 'demanda orgânica' },
     ],
   },
+  painel: {
+    titulo: 'Aquisição por canal',
+    subtitulo: 'Case de cliente B2B',
+    kpis: [
+      { label: 'CPL médio', valor: 'R$ 89', variacao: '-38%' },
+      { label: 'Leads', valor: '3x', variacao: '+200%' },
+      { label: 'Qualificação', valor: '64%', variacao: '+29 p.p.' },
+    ],
+    barrasTitulo: 'Leads qualificados por canal',
+    barras: [
+      { label: 'Google Ads', valor: '38%', largura: 100 },
+      { label: 'SEO e GEO', valor: '31%', largura: 82 },
+      { label: 'LinkedIn Ads', valor: '21%', largura: 55 },
+      { label: 'Meta Ads', valor: '10%', largura: 28 },
+    ],
+    serieTitulo: 'Leads qualificados por mês',
+    serie: [
+      { rotulo: 'Abr', valor: 42 },
+      { rotulo: 'Mai', valor: 58 },
+      { rotulo: 'Jun', valor: 71 },
+      { rotulo: 'Jul', valor: 89 },
+      { rotulo: 'Ago', valor: 104 },
+      { rotulo: 'Set', valor: 126 },
+    ],
+    destaque: '126 leads · 3x',
+  },
   problemas: {
     title: 'Onde a aquisição gasta verba antes de gerar receita',
     items: [

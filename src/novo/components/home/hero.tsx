@@ -5,10 +5,9 @@ import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import HeroFundo from '@/novo/components/home/hero-fundo';
 import NotificacoesFunil from '@/novo/components/home/notificacoes-funil';
-import ClientesMarquee from '@/novo/components/home/clientes-marquee';
+import ProvaSocial from '@/novo/components/shared/prova-social';
 import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
 import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
-import { selosParceiros } from '@/novo/data/home';
 import {
   Award,
   CalendarCheck,
@@ -173,35 +172,7 @@ const Hero = () => {
           </RevealAnimation>
         </div>
 
-        <div className="mt-14 md:mt-18">
-          <p className="text-tagline-2 mb-6 text-center">
-            Empresas que já estruturaram o crescimento com a UPDO
-          </p>
-          <ClientesMarquee />
-        </div>
-
-        <div className="mt-10 flex flex-col items-center gap-5 md:mt-12">
-          <p className="text-tagline-2 text-center">Parceiros certificados</p>
-          <ul className="flex flex-wrap justify-center gap-3">
-            {selosParceiros.map((selo) => (
-              <li
-                key={selo.src}
-                className="border-stroke-3 flex h-18 w-40 items-center justify-center rounded-2xl border bg-white px-4 shadow-sm"
-              >
-                <Image
-                  src={selo.src}
-                  alt={selo.alt}
-                  width={140}
-                  height={56}
-                  className={cn(
-                    'max-h-11 w-auto max-w-[128px] object-contain',
-                    selo.alt === 'Google Ads Search Certified' && 'max-h-14'
-                  )}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ProvaSocial className="mt-14 md:mt-18" />
       </div>
     </section>
   );

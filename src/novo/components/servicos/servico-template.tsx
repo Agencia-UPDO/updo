@@ -13,6 +13,9 @@ import { cn } from '@/novo/utils/cn';
 import Link from 'next/link';
 import type { LucideIcon } from 'lucide-react';
 import IconChip from '@/novo/components/shared/icon-chip';
+import HeroFundo from '@/novo/components/home/hero-fundo';
+import ProvaSocial from '@/novo/components/shared/prova-social';
+import PainelServico, { type PainelServicoDados } from '@/novo/components/servicos/painel-servico';
 
 interface Item {
   icon?: LucideIcon;
@@ -34,6 +37,7 @@ export interface ServicoConteudo {
     description: string;
     metrics: { value: string; label: string }[];
   };
+  painel?: PainelServicoDados;
   problemas: { title: string; items: Item[] };
   entregas: { title: string; description: string; items: Item[] };
   pilares: {
@@ -52,14 +56,15 @@ export interface ServicoConteudo {
 }
 
 const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
-  const { hero, resultado, problemas, entregas, pilares, formulario, faq } = conteudo;
+  const { hero, resultado, painel, problemas, entregas, pilares, formulario, faq } = conteudo;
   const outrosServicos = servicos.filter((servico) => !servico.href.endsWith(conteudo.slug));
 
   return (
     <>
-      <section className="pt-32 pb-18 md:pt-40 lg:pt-48 xl:pb-28">
+      <section className="relative isolate pt-32 pb-18 md:pt-40 lg:pt-48 xl:pb-28">
+        <HeroFundo />
         <div className="main-container">
-          <div className="grid grid-cols-12 items-end gap-y-12 lg:gap-x-16">
+          <div className="grid grid-cols-12 items-center gap-y-12 lg:gap-x-16">
             <div className="col-span-12 space-y-8 lg:col-span-7">
               <div className="space-y-5">
                 <RevealAnimation delay={0.1}>
@@ -101,6 +106,11 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
             </div>
 
             <RevealAnimation delay={0.4} direction="right" className="col-span-12 lg:col-span-5">
+              {painel ? (
+                <div>
+                  <PainelServico dados={painel} />
+                </div>
+              ) : (
               <div className="bg-lilas-700 rounded-3xl p-7 md:p-9">
                 <p className="text-tagline-2 text-primary-300">Resultado de cliente</p>
                 <p className="font-titulo font-medium text-heading-6 mt-3 text-white">{resultado.title}</p>
@@ -114,8 +124,11 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
                   ))}
                 </ul>
               </div>
+              )}
             </RevealAnimation>
           </div>
+
+          <ProvaSocial className="mt-16 md:mt-20" />
         </div>
       </section>
 
