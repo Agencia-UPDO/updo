@@ -15,6 +15,7 @@ import { Check, X, type LucideIcon } from 'lucide-react';
 import IconChip from '@/novo/components/shared/icon-chip';
 import HeroFundo from '@/novo/components/home/hero-fundo';
 import ProvaSocial from '@/novo/components/shared/prova-social';
+import FluxoPilares from '@/novo/components/servicos/fluxo-pilares';
 import PainelServico, { type PainelServicoDados } from '@/novo/components/servicos/painel-servico';
 
 interface Item {
@@ -261,28 +262,18 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
             title={pilares.title}
             description={pilares.description}
           />
-          <div className="grid grid-cols-12 gap-4 md:gap-6">
-            {pilares.items.map((pilar, index) => (
-              <RevealAnimation
-                key={pilar.label}
-                delay={0.1 + index * 0.08}
-                className="col-span-12 sm:col-span-6 xl:col-span-3"
-              >
-                <div className="flex h-full flex-col justify-between gap-12 rounded-2xl border border-white/10 p-7">
-                  <div className="space-y-3">
-                    {pilar.icon && (
-                      <IconChip icon={pilar.icon} tone={index % 2 === 0 ? 'claro' : 'lilas'} className="mb-6" />
-                    )}
-                    <p className="font-titulo font-medium text-heading-5 text-white">{pilar.label}</p>
-                    <p className="text-tagline-2 text-white/60">{pilar.description}</p>
-                  </div>
-                  <p className="text-tagline-2 text-primary-500 border-t border-white/10 pt-4">
-                    {pilar.resultado}
-                  </p>
-                </div>
-              </RevealAnimation>
-            ))}
-          </div>
+          <RevealAnimation delay={0.2}>
+            <div>
+              <FluxoPilares
+                itens={pilares.items.map(({ icon: Icone, ...pilar }) => ({
+                  ...pilar,
+                  icone: Icone ? (
+                    <Icone className="size-6" strokeWidth={1.75} aria-hidden="true" />
+                  ) : null,
+                }))}
+              />
+            </div>
+          </RevealAnimation>
         </div>
       </section>
 

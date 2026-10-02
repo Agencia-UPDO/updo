@@ -16,6 +16,23 @@ body {
 @theme inline {
   --font-texto: var(--font-texto-src), sans-serif;
   --font-titulo: var(--font-titulo-src), sans-serif;
+  --animate-fluxo-lead-x: fluxo-lead-x 3.6s linear infinite;
+  --animate-fluxo-lead-y: fluxo-lead-y 3.6s linear infinite;
+}
+
+/* Leads percorrendo o fluxo dos pilares nas páginas de serviço */
+@keyframes fluxo-lead-x {
+  0% { left: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+@keyframes fluxo-lead-y {
+  0% { top: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
 }
 
 @keyframes metodo-fluxo {
