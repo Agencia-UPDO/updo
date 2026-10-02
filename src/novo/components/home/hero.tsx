@@ -44,8 +44,8 @@ const destaques = [
     href: '/cases/varejo',
   },
   {
-    value: 'R$ 350 mil',
-    label: 'em receita gerada para uma indústria',
+    value: '+R$ 350 mil',
+    label: 'em receita nova para uma indústria',
     setor: 'Indústria',
     icon: Factory,
     href: '/cases/industria',
