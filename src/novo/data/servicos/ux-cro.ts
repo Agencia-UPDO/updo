@@ -36,31 +36,7 @@ export const uxCro: ServicoConteudo = {
       { value: '14d', label: 'ciclo de teste' },
     ],
   },
-  painel: {
-    titulo: 'Teste A/B',
-    subtitulo: 'Case de cliente · landing page',
-    kpis: [
-      { label: 'Uplift', valor: '+78%', variacao: 'conversão' },
-      { label: 'Custo', valor: '-31%', variacao: 'por lead' },
-      { label: 'Taxa final', valor: '4,1%', variacao: 'era 2,3%' },
-    ],
-    barrasTitulo: 'Taxa de conversão por versão',
-    barras: [
-      { label: 'Variante B', valor: '4,1%', largura: 100 },
-      { label: 'Variante A', valor: '3,2%', largura: 78 },
-      { label: 'Original', valor: '2,3%', largura: 56 },
-    ],
-    serieTitulo: 'Taxa de conversão por mês',
-    serie: [
-      { rotulo: 'Abr', valor: 2.3 },
-      { rotulo: 'Mai', valor: 2.5 },
-      { rotulo: 'Jun', valor: 3 },
-      { rotulo: 'Jul', valor: 3.4 },
-      { rotulo: 'Ago', valor: 3.8 },
-      { rotulo: 'Set', valor: 4.1 },
-    ],
-    destaque: '4,1% · +78%',
-  },
+  visual: 'teste-ab',
   problemas: {
     title: 'Onde a página perde conversão sem aparecer no relatório',
     description:

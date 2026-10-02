@@ -34,32 +34,7 @@ export const insideSales: ServicoConteudo = {
       { value: '< 30d', label: 'onboarding' },
     ],
   },
-  painel: {
-    titulo: 'Pipeline comercial',
-    subtitulo: 'Case de cliente de serviços',
-    kpis: [
-      { label: 'Conversão', valor: '15%', variacao: 'era 8%' },
-      { label: 'Ciclo', valor: '-30%', variacao: 'mais curto' },
-      { label: 'Previsão', valor: '85%', variacao: 'de acerto' },
-    ],
-    barrasTitulo: 'Oportunidades por etapa',
-    barras: [
-      { label: 'Qualificadas', valor: '220', largura: 100 },
-      { label: 'Reunião', valor: '150', largura: 68 },
-      { label: 'Proposta', valor: '74', largura: 34 },
-      { label: 'Fechadas', valor: '33', largura: 18 },
-    ],
-    serieTitulo: 'Conversão comercial por mês',
-    serie: [
-      { rotulo: 'Abr', valor: 8 },
-      { rotulo: 'Mai', valor: 9.2 },
-      { rotulo: 'Jun', valor: 10.5 },
-      { rotulo: 'Jul', valor: 12 },
-      { rotulo: 'Ago', valor: 13.6 },
-      { rotulo: 'Set', valor: 15 },
-    ],
-    destaque: '15% · era 8%',
-  },
+  visual: 'pipeline',
   problemas: {
     title: 'Onde o processo comercial perde receita todo mês',
     description:

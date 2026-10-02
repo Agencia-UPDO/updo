@@ -16,6 +16,7 @@ import IconChip from '@/novo/components/shared/icon-chip';
 import HeroFundo from '@/novo/components/home/hero-fundo';
 import ProvaSocial from '@/novo/components/shared/prova-social';
 import FluxoPilares from '@/novo/components/servicos/fluxo-pilares';
+import VisualDoServico, { type VisualServico } from '@/novo/components/servicos/visuais-servico';
 import PainelServico, { type PainelServicoDados } from '@/novo/components/servicos/painel-servico';
 
 interface Item {
@@ -39,6 +40,7 @@ export interface ServicoConteudo {
     metrics: { value: string; label: string }[];
   };
   painel?: PainelServicoDados;
+  visual?: VisualServico;
   problemas: { title: string; description?: string; items: Item[] };
   plano?: { title: string; description: string; passos: { title: string; description: string }[] };
   mudanca?: { title: string; sem: string[]; com: string[] };
@@ -60,7 +62,7 @@ export interface ServicoConteudo {
 }
 
 const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
-  const { hero, resultado, painel, problemas, plano, mudanca, entregas, pilares, formulario, faq } =
+  const { hero, resultado, painel, visual, problemas, plano, mudanca, entregas, pilares, formulario, faq } =
     conteudo;
   const outrosServicos = servicos.filter((servico) => !servico.href.endsWith(conteudo.slug));
 
@@ -115,7 +117,11 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
             </div>
 
             <RevealAnimation delay={0.4} direction="right" className="col-span-12 lg:col-span-5">
-              {painel ? (
+              {visual ? (
+                <div>
+                  <VisualDoServico tipo={visual} />
+                </div>
+              ) : painel ? (
                 <div>
                   <PainelServico dados={painel} />
                 </div>

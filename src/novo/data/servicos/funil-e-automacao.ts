@@ -36,32 +36,7 @@ export const funilEAutomacao: ServicoConteudo = {
       { value: '-18%', label: 'lead perdido' },
     ],
   },
-  painel: {
-    titulo: 'Funil automatizado',
-    subtitulo: 'Case de cliente B2B',
-    kpis: [
-      { label: 'Resposta', valor: '-42%', variacao: 'no tempo' },
-      { label: 'Oportunid.', valor: '+31%', variacao: 'no período' },
-      { label: 'Reuniões', valor: '+24%', variacao: 'taxa' },
-    ],
-    barrasTitulo: 'Leads por etapa do funil',
-    barras: [
-      { label: 'Captados', valor: '1.200', largura: 100 },
-      { label: 'Nutridos', valor: '860', largura: 72 },
-      { label: 'Com score', valor: '410', largura: 40 },
-      { label: 'Oportunid.', valor: '168', largura: 22 },
-    ],
-    serieTitulo: 'Oportunidades por mês',
-    serie: [
-      { rotulo: 'Abr', valor: 98 },
-      { rotulo: 'Mai', valor: 103 },
-      { rotulo: 'Jun', valor: 109 },
-      { rotulo: 'Jul', valor: 116 },
-      { rotulo: 'Ago', valor: 122 },
-      { rotulo: 'Set', valor: 128 },
-    ],
-    destaque: '128 oportunidades · +31%',
-  },
+  visual: 'automacao',
   problemas: {
     title: 'Onde o funil deixa oportunidade esfriar',
     description:
