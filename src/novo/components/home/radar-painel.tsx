@@ -26,15 +26,28 @@ const indicadores = [
   { label: 'CAC Meta', valor: 'R$ 248', variacao: '-31%', cor: 'bg-lilas-500' },
 ];
 
-const pontos = [12, 18, 15, 26, 22, 34, 30, 41, 38, 52, 47, 63];
+// Vendas (barras) e receita acumulada (linha) por semana, só ilustrativo
+const semanas = [
+  { rotulo: 'S1', vendas: 22, receita: 18 },
+  { rotulo: 'S2', vendas: 31, receita: 24 },
+  { rotulo: 'S3', vendas: 27, receita: 29 },
+  { rotulo: 'S4', vendas: 38, receita: 36 },
+  { rotulo: 'S5', vendas: 35, receita: 41 },
+  { rotulo: 'S6', vendas: 46, receita: 49 },
+  { rotulo: 'S7', vendas: 52, receita: 57 },
+  { rotulo: 'S8', vendas: 64, receita: 68 },
+];
 
-const caminho = (altura: number, largura: number) => {
-  const max = Math.max(...pontos);
-  const passo = largura / (pontos.length - 1);
-  return pontos
-    .map((p, i) => `${i === 0 ? 'M' : 'L'} ${(i * passo).toFixed(1)} ${(altura - (p / max) * (altura - 6)).toFixed(1)}`)
-    .join(' ');
-};
+const GRAF_L = 440;
+const GRAF_A = 100;
+const MAX_VENDAS = 70;
+const MAX_RECEITA = 75;
+const passo = GRAF_L / semanas.length;
+const centroX = (i: number) => passo * i + passo / 2;
+const yReceita = (v: number) => GRAF_A - (v / MAX_RECEITA) * (GRAF_A - 14);
+const linhaReceita = semanas
+  .map((s, i) => `${i === 0 ? 'M' : 'L'} ${centroX(i).toFixed(1)} ${yReceita(s.receita).toFixed(1)}`)
+  .join(' ');
 
 const RadarPainel = () => {
   const [ativo, setAtivo] = useState(false);
@@ -44,7 +57,6 @@ const RadarPainel = () => {
     return () => window.clearTimeout(timer);
   }, []);
 
-  const linha = caminho(70, 300);
 
   return (
     <div className="bg-secondary shadow-6 relative overflow-hidden rounded-3xl p-5 md:p-6">
@@ -127,34 +139,110 @@ const RadarPainel = () => {
       <div className="mt-2.5 rounded-2xl bg-white/5 p-3">
         <div className="flex items-center justify-between">
           <span className="text-tagline-3 text-white/55">Vendas por semana</span>
-          <span className="text-tagline-3 text-primary-500 font-medium">+150%</span>
+          <span className="text-tagline-3 flex items-center gap-3 text-white/55">
+            <span className="flex items-center gap-1.5">
+              <span className="bg-lilas-500 size-2 rounded-sm" />
+              vendas
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="bg-primary-500 h-0.5 w-3 rounded-full" />
+              receita
+            </span>
+          </span>
         </div>
-        <svg viewBox="0 0 300 70" className="mt-2 h-12 w-full overflow-visible" aria-hidden="true">
-          <defs>
-            <linearGradient id="radar-area" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="var(--color-primary-500)" stopOpacity="0.35" />
-              <stop offset="1" stopColor="var(--color-primary-500)" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <path
-            d={`${linha} L 300 70 L 0 70 Z`}
-            fill="url(#radar-area)"
-            className={cn('transition-opacity delay-700 duration-1000', ativo ? 'opacity-100' : 'opacity-0')}
-          />
-          <path
-            d={linha}
-            fill="none"
-            pathLength={1}
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeDasharray="1"
-            strokeDashoffset={ativo ? 0 : 1}
-            className="stroke-primary-500 transition-[stroke-dashoffset] delay-300 duration-[1800ms] ease-out"
-          />
-        </svg>
-      </div>
+        <div className="relative mt-3">
+          <svg viewBox={`0 0 ${GRAF_L} ${GRAF_A + 16}`} className="h-32 w-full overflow-visible" aria-hidden="true">
+            <defs>
+              <linearGradient id="radar-barra" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="var(--color-lilas-500)" />
+                <stop offset="1" stopColor="var(--color-lilas-700)" stopOpacity="0.5" />
+              </linearGradient>
+            </defs>
 
+            {[0.25, 0.5, 0.75].map((f) => (
+              <line
+                key={f}
+                x1="0"
+                x2={GRAF_L}
+                y1={GRAF_A * f}
+                y2={GRAF_A * f}
+                strokeDasharray="2 4"
+                className="stroke-white/10"
+              />
+            ))}
+
+            {semanas.map((s, i) => {
+              const altura = (s.vendas / MAX_VENDAS) * (GRAF_A - 14);
+              const ultimaBarra = i === semanas.length - 1;
+              return (
+                <g key={s.rotulo}>
+                  <rect
+                    x={centroX(i) - passo * 0.28}
+                    width={passo * 0.56}
+                    y={GRAF_A - altura}
+                    height={altura}
+                    rx="4"
+                    fill={ultimaBarra ? 'var(--color-primary-500)' : 'url(#radar-barra)'}
+                    style={{
+                      transform: ativo ? 'scaleY(1)' : 'scaleY(0)',
+                      transformOrigin: `0 ${GRAF_A}px`,
+                      transition: 'transform 900ms cubic-bezier(0.34, 1.3, 0.64, 1)',
+                      transitionDelay: `${300 + i * 90}ms`,
+                    }}
+                  />
+                  <text
+                    x={centroX(i)}
+                    y={GRAF_A + 13}
+                    textAnchor="middle"
+                    className="fill-white/40 text-[9px]"
+                  >
+                    {s.rotulo}
+                  </text>
+                </g>
+              );
+            })}
+
+            <path
+              d={linhaReceita}
+              fill="none"
+              pathLength={1}
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeDasharray="1"
+              strokeDashoffset={ativo ? 0 : 1}
+              className="stroke-primary-500 transition-[stroke-dashoffset] delay-[900ms] duration-[1600ms] ease-out"
+            />
+            {semanas.map((s, i) => (
+              <circle
+                key={`p-${s.rotulo}`}
+                cx={centroX(i)}
+                cy={yReceita(s.receita)}
+                r={i === semanas.length - 1 ? 4.5 : 2.5}
+                className={cn(
+                  'fill-secondary stroke-primary-500 transition-opacity duration-300',
+                  ativo ? 'opacity-100' : 'opacity-0'
+                )}
+                strokeWidth="2"
+                style={{ transitionDelay: `${1000 + i * 180}ms` }}
+              />
+            ))}
+          </svg>
+
+          <div
+            style={{
+              left: `${(centroX(semanas.length - 1) / GRAF_L) * 100}%`,
+              top: `${(yReceita(semanas[semanas.length - 1].receita) / (GRAF_A + 16)) * 100}%`,
+            }}
+            className={cn(
+              'bg-primary-500 text-secondary text-tagline-3 absolute -translate-x-[112%] -translate-y-1/2 rounded-lg px-2 py-1 font-medium whitespace-nowrap shadow-lg transition-all delay-[2400ms] duration-500',
+              ativo ? "opacity-100" : "opacity-0"
+            )}
+          >
+            R$ 186 mil · +150%
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
