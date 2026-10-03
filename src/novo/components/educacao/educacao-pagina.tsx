@@ -50,7 +50,7 @@ const barreiras = [
 const metricasCase = [
   { valor: "+211%", label: "na geração de leads" },
   { valor: "+166%", label: "na conversão comercial" },
-  { valor: "450 -> 1.400", label: "leads por mês" },
+  { valor: "450 → 1.400", label: "leads por mês" },
 ];
 
 export const faqEducacao = [
@@ -275,60 +275,54 @@ const EducacaoPagina = () => (
       </div>
     </section>
 
+    {/* Autoridade */}
+    <section className="bg-secondary pt-18 md:pt-28 xl:pt-32">
+      <div className="main-container">
+        <SectionHeading
+          tone="dark"
+          badge="Autoridade"
+          title="Prova real antes de falar em escala."
+          description="Captação educacional precisa conectar mídia, atendimento e leitura do funil para virar matrícula."
+        />
+      </div>
+    </section>
+
     {/* Case */}
-    <section className="bg-secondary py-18 md:py-28 xl:py-32">
-      <div className="main-container space-y-12 md:space-y-16">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading
-            tone="dark"
-            align="left"
-            badge="Autoridade"
-            title="Prova real antes de falar em escala."
-          />
-          <p className="text-tagline-1 max-w-[340px] text-white/60 lg:text-right">
-            Captação educacional precisa conectar mídia, atendimento e leitura
-            do funil para virar matrícula.
-          </p>
-        </div>
-        <div className="grid grid-cols-12 items-center gap-y-12 lg:gap-x-16">
-          <div className="col-span-12 space-y-6 lg:col-span-6">
-            <SectionHeading
-              tone="dark"
-              align="left"
-              badge="Case educacional"
-              title="Instituição de Ensino Superior: mais leads, mais processo, mais matrícula."
-              description="A UPDO reorganizou a captação com estratégia, automação e processo comercial para transformar interesse em resultado."
-            />
-            <RevealAnimation delay={0.3}>
-              <p className="text-tagline-2 flex items-center gap-3 rounded-2xl bg-white/5 p-4 text-white/70">
-                <span className="bg-primary-500 text-secondary flex size-9 shrink-0 items-center justify-center rounded-xl">
-                  <TrendingUp
-                    className="size-4"
-                    strokeWidth={2}
-                    aria-hidden="true"
-                  />
-                </span>
-                Resultado acompanhado da geração do lead até a conversão
-                comercial.
-              </p>
-            </RevealAnimation>
+    <section className="bg-secondary pt-12 pb-18 md:pt-16 md:pb-28 xl:pb-32">
+      <div className="main-container space-y-12">
+        <RevealAnimation delay={0.2}>
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-7 md:p-12">
+            <div className="grid grid-cols-12 items-center gap-y-10 lg:gap-x-16">
+              <div className="col-span-12 space-y-6 lg:col-span-5">
+                <span className="text-tagline-2 text-primary-500 font-medium">Case educacional</span>
+                <h3 className="text-heading-5 font-normal text-white">
+                  Instituição de Ensino Superior: mais leads, mais processo, mais matrícula.
+                </h3>
+                <p className="text-tagline-1 text-white/65">
+                  A UPDO reorganizou a captação com estratégia, automação e processo comercial
+                  para transformar interesse em resultado.
+                </p>
+                <p className="text-tagline-2 flex items-center gap-3 rounded-2xl bg-white/5 p-4 text-white/70">
+                  <span className="bg-primary-500 text-secondary flex size-9 shrink-0 items-center justify-center rounded-xl">
+                    <TrendingUp className="size-4" strokeWidth={2} aria-hidden="true" />
+                  </span>
+                  Resultado acompanhado da geração do lead até a conversão comercial.
+                </p>
+              </div>
+              <ul className="col-span-12 grid gap-4 sm:grid-cols-3 lg:col-span-7">
+                {metricasCase.map((item) => (
+                  <li key={item.label} className="rounded-2xl bg-white/5 p-6">
+                    <p className="font-titulo text-heading-5 text-primary-500 font-medium whitespace-nowrap">
+                      {item.valor}
+                    </p>
+                    <p className="text-tagline-2 mt-2 text-white/60">{item.label}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="col-span-12 grid gap-4 sm:grid-cols-3 lg:col-span-6 lg:grid-cols-1">
-            {metricasCase.map((item, index) => (
-              <RevealAnimation key={item.label} delay={0.2 + index * 0.1}>
-                <div className="rounded-2xl border border-white/10 p-6">
-                  <p className="font-titulo text-heading-4 text-primary-500 font-medium">
-                    {item.valor}
-                  </p>
-                  <p className="text-tagline-2 mt-1 text-white/60">
-                    {item.label}
-                  </p>
-                </div>
-              </RevealAnimation>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col items-center gap-6 border-t border-white/10 pt-12 text-center">
+        </RevealAnimation>
+        <div className="flex flex-col items-center gap-6 text-center">
           <p className="text-heading-6 font-normal text-white">
             Quer descobrir o que hoje limita a sua captação de alunos?
           </p>
