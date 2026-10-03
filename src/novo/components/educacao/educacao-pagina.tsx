@@ -203,14 +203,14 @@ const EducacaoPagina = () => (
             {instituicoes.map((logo) => (
               <li
                 key={logo.name}
-                className="relative flex h-16 items-center justify-center px-3"
+                className="relative flex h-20 items-center justify-center px-2"
               >
-                <div className="relative h-10 w-full">
+                <div className="relative h-16 w-full md:h-14">
                   <Image
                     src={logo.src}
                     alt={logo.name}
                     fill
-                    sizes="160px"
+                    sizes="200px"
                     className="object-contain"
                   />
                 </div>
@@ -223,14 +223,14 @@ const EducacaoPagina = () => (
               {selosParceiros.map((selo) => (
                 <span
                   key={selo.src}
-                  className="border-stroke-3 flex h-14 w-32 items-center justify-center rounded-xl border bg-white px-3"
+                  className="border-stroke-3 flex h-18 w-40 items-center justify-center rounded-2xl shadow-sm border bg-white px-3"
                 >
                   <Image
                     src={selo.src}
                     alt={selo.alt}
-                    width={110}
-                    height={44}
-                    className="max-h-9 w-auto max-w-[100px] object-contain"
+                    width={140}
+                    height={56}
+                    className="max-h-11 w-auto max-w-[128px] object-contain"
                   />
                 </span>
               ))}

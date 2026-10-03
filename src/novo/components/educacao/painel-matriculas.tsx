@@ -76,9 +76,8 @@ const PainelMatriculas = () => {
       </div>
 
       <div className="mt-5 rounded-2xl bg-white/5 p-3">
-        <div className="text-tagline-3 flex items-center justify-between text-white/55">
-          <span>Matrículas em 2025</span>
-          <span className="flex items-center gap-3">
+        <div className="text-tagline-3 flex items-center justify-end text-white/55">
+          <span className="flex items-center gap-4 whitespace-nowrap">
             <span className="flex items-center gap-1.5">
               <span className="bg-primary-500 h-0.5 w-3 rounded-full" />
               Matrículas Realizadas
