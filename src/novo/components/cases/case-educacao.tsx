@@ -178,7 +178,7 @@ const CaseEducacao = () => (
         <SectionHeading
           tone="dark"
           badge="Estratégia"
-          title="Da consultoria à escala, em duas fases"
+          title="Da consultoria à escala, em três fases"
           description="Três pilares estruturais que transformaram os resultados."
         />
         <RevealAnimation delay={0.2}>
