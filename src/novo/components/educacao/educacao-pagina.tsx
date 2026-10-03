@@ -148,11 +148,11 @@ const EducacaoPagina = () => (
         {/* Instituições */}
         <div className="mt-16 md:mt-20">
           <p className="text-tagline-2 mb-6 text-center">Instituições que confiam na UPDO</p>
-          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4 lg:grid-cols-7">
             {instituicoes.map((logo) => (
               <li
                 key={logo.name}
-                className="border-stroke-3 relative flex h-20 items-center justify-center rounded-2xl border bg-white px-4"
+                className="relative flex h-16 items-center justify-center px-3 opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0"
               >
                 <div className="relative h-10 w-full">
                   <Image src={logo.src} alt={logo.name} fill sizes="160px" className="object-contain" />
@@ -160,21 +160,24 @@ const EducacaoPagina = () => (
               </li>
             ))}
           </ul>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            {selosParceiros.map((selo) => (
-              <span
-                key={selo.src}
-                className="border-stroke-3 flex h-14 w-32 items-center justify-center rounded-xl border bg-white px-3"
-              >
-                <Image
-                  src={selo.src}
-                  alt={selo.alt}
-                  width={110}
-                  height={44}
-                  className="max-h-9 w-auto max-w-[100px] object-contain"
-                />
-              </span>
-            ))}
+          <div className="border-stroke-3 mt-10 flex flex-col items-center gap-5 border-t pt-10 md:mt-12 md:pt-12">
+            <p className="text-tagline-2 text-center">Parceiros certificados</p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {selosParceiros.map((selo) => (
+                <span
+                  key={selo.src}
+                  className="border-stroke-3 flex h-14 w-32 items-center justify-center rounded-xl border bg-white px-3"
+                >
+                  <Image
+                    src={selo.src}
+                    alt={selo.alt}
+                    width={110}
+                    height={44}
+                    className="max-h-9 w-auto max-w-[100px] object-contain"
+                  />
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

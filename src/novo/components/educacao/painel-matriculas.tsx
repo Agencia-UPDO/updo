@@ -26,8 +26,23 @@ const MIN = 380000;
 const MAX = 860000;
 const x = (i: number) => (L / (meses.length - 1)) * i;
 const y = (v: number) => A - ((v - MIN) / (MAX - MIN)) * A;
-const caminho = (campo: 'realizado' | 'meta') =>
-  meses.map((m, i) => `${i === 0 ? 'M' : 'L'} ${x(i).toFixed(1)} ${y(m[campo]).toFixed(1)}`).join(' ');
+// Curva suave passando por todos os pontos (Catmull-Rom convertido em Bézier)
+const caminho = (campo: 'realizado' | 'meta') => {
+  const p = meses.map((m, i) => [x(i), y(m[campo])]);
+  let d = `M ${p[0][0].toFixed(1)} ${p[0][1].toFixed(1)}`;
+  for (let i = 0; i < p.length - 1; i++) {
+    const p0 = p[i - 1] ?? p[i];
+    const p1 = p[i];
+    const p2 = p[i + 1];
+    const p3 = p[i + 2] ?? p2;
+    const c1x = p1[0] + (p2[0] - p0[0]) / 6;
+    const c1y = p1[1] + (p2[1] - p0[1]) / 6;
+    const c2x = p2[0] - (p3[0] - p1[0]) / 6;
+    const c2y = p2[1] - (p3[1] - p1[1]) / 6;
+    d += ` C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+  }
+  return d;
+};
 
 const PainelMatriculas = () => {
   const [ativo, setAtivo] = useState(false);
