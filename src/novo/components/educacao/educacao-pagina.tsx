@@ -203,7 +203,7 @@ const EducacaoPagina = () => (
             {instituicoes.map((logo) => (
               <li
                 key={logo.name}
-                className="relative flex h-16 items-center justify-center px-3 opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0"
+                className="relative flex h-16 items-center justify-center px-3"
               >
                 <div className="relative h-10 w-full">
                   <Image
