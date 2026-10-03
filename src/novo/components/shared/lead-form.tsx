@@ -16,6 +16,8 @@ interface LeadFormProps {
   pagePath: string;
   selects: LeadFormSelect[];
   submitText?: string;
+  /** Campos fixos enviados junto com o lead, como o setor da página. */
+  extraFields?: Record<string, string>;
 }
 
 const inputClass =
@@ -36,6 +38,7 @@ const LeadForm = ({
   pagePath,
   selects,
   submitText = 'Enviar',
+  extraFields,
 }: LeadFormProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -61,6 +64,7 @@ const LeadForm = ({
     const payloadFormData = {
       ...formData,
       ...selected,
+      ...extraFields,
       service,
       utm_source: searchParams.get('utm_source') || '',
       utm_medium: searchParams.get('utm_medium') || '',

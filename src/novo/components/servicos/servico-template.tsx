@@ -349,7 +349,8 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
               <div>
                 <LeadForm
                   formName={formulario.formName}
-                  service={conteudo.nome}
+                  service={ehSetor ? '' : conteudo.nome}
+                  extraFields={ehSetor ? { sector: conteudo.nome } : undefined}
                   pagePath={caminho}
                   selects={formulario.selects}
                   submitText={formulario.submitText}
