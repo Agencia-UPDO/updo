@@ -129,8 +129,8 @@ const ServicosEducacao = () => {
               ))}
             </div>
 
-            <div key={ativo} className="col-span-12 animate-[metodo-entra_400ms_ease-out] lg:col-span-8">
-              <div className="grid h-full gap-4 rounded-3xl bg-white p-7 md:grid-cols-2 md:p-9">
+            <div key={ativo} className="col-span-12 min-w-0 animate-[metodo-entra_400ms_ease-out] lg:col-span-8">
+              <div className="grid h-full grid-cols-1 gap-4 rounded-3xl bg-white p-5 md:grid-cols-2 md:p-9 [&>*]:min-w-0">
                 <div className="space-y-6">
                   <div>
                     <p className="text-tagline-3 text-lilas-500 font-medium">O problema</p>
@@ -153,10 +153,13 @@ const ServicosEducacao = () => {
                       </li>
                     ))}
                   </ul>
-                  <Link href="#contato" className="mt-6 inline-flex">
-                    <ButtonPrimary text="Quero estruturar isso no meu negócio" />
-                  </Link>
                 </div>
+                <Link href="#contato" className="flex w-full md:col-span-2 md:inline-flex md:w-auto">
+                  <ButtonPrimary
+                    text="Quero estruturar isso no meu negócio"
+                    className="max-md:text-tagline-2 h-auto min-h-16 w-full md:w-auto max-md:[&_[data-button-lower-text]]:hidden max-md:[&_[data-button-upper-text]]:text-wrap"
+                  />
+                </Link>
               </div>
             </div>
           </div>
