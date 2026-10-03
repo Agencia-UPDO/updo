@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { CaseEducacaoClient } from "@/components/sections/cases/educacao-case";
+import CaseEducacao from "@/novo/components/cases/case-educacao";
 
 export const metadata: Metadata = {
   title: "Case de Marketing Educacional | ROAS 20x e +211% de Leads",
@@ -67,7 +67,7 @@ export default function CaseEducacaoPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <CaseEducacaoClient />
+      <CaseEducacao />
     </>
   );
 }
