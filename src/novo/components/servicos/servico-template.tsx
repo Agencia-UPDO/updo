@@ -8,7 +8,7 @@ import SectionHeading from '@/novo/components/shared/section-heading';
 import Badge from '@/novo/components/shared/ui/badge/badge';
 import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
 import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
-import { servicos } from '@/novo/data/navegacao';
+import { servicos, setores } from '@/novo/data/navegacao';
 import { cn } from '@/novo/utils/cn';
 import Link from 'next/link';
 import { Check, X, type LucideIcon } from 'lucide-react';
@@ -17,6 +17,7 @@ import HeroFundo from '@/novo/components/home/hero-fundo';
 import ProvaSocial from '@/novo/components/shared/prova-social';
 import FluxoPilares from '@/novo/components/servicos/fluxo-pilares';
 import VisualDoServico, { type VisualServico } from '@/novo/components/servicos/visuais-servico';
+import VisualCartao, { type CartaoDados } from '@/novo/components/servicos/visual-cartao';
 import PainelServico, { type PainelServicoDados } from '@/novo/components/servicos/painel-servico';
 
 interface Item {
@@ -28,6 +29,8 @@ interface Item {
 export interface ServicoConteudo {
   slug: string;
   nome: string;
+  /** 'setor' muda o selo, o caminho do formulário e os links do fim da página. */
+  tipo?: 'servico' | 'setor';
   hero: {
     title: string;
     description: string;
@@ -41,6 +44,7 @@ export interface ServicoConteudo {
   };
   painel?: PainelServicoDados;
   visual?: VisualServico;
+  cartao?: CartaoDados;
   problemas: { title: string; description?: string; items: Item[] };
   plano?: { title: string; description: string; passos: { title: string; description: string }[] };
   mudanca?: { title: string; sem: string[]; com: string[] };
@@ -62,9 +66,11 @@ export interface ServicoConteudo {
 }
 
 const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
-  const { hero, resultado, painel, visual, problemas, plano, mudanca, entregas, pilares, formulario, faq } =
+  const { hero, resultado, painel, visual, cartao, problemas, plano, mudanca, entregas, pilares, formulario, faq } =
     conteudo;
-  const outrosServicos = servicos.filter((servico) => !servico.href.endsWith(conteudo.slug));
+  const ehSetor = conteudo.tipo === 'setor';
+  const caminho = ehSetor ? `/${conteudo.slug}` : `/servicos/${conteudo.slug}`;
+  const outrosLinks = (ehSetor ? setores : servicos).filter((link) => !link.href.endsWith(conteudo.slug));
 
   return (
     <>
@@ -80,7 +86,7 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
               <div className="space-y-5">
                 <RevealAnimation delay={0.1}>
                   <div>
-                    <Badge text={`Serviço · ${conteudo.nome}`} />
+                    <Badge text={`${ehSetor ? 'Setor' : 'Serviço'} · ${conteudo.nome}`} />
                   </div>
                 </RevealAnimation>
                 <TextReveal delay={0.15}>
@@ -120,6 +126,10 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
               {visual ? (
                 <div>
                   <VisualDoServico tipo={visual} />
+                </div>
+              ) : cartao ? (
+                <div>
+                  <VisualCartao dados={cartao} />
                 </div>
               ) : painel ? (
                 <div>
@@ -340,7 +350,7 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
                 <LeadForm
                   formName={formulario.formName}
                   service={conteudo.nome}
-                  pagePath={`/servicos/${conteudo.slug}`}
+                  pagePath={caminho}
                   selects={formulario.selects}
                   submitText={formulario.submitText}
                 />
@@ -360,9 +370,12 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
 
       <section className="py-18 md:py-28">
         <div className="main-container space-y-10">
-          <SectionHeading badge="Outros serviços" title="Integre com o resto da operação" />
+          <SectionHeading
+            badge={ehSetor ? 'Outros setores' : 'Outros serviços'}
+            title={ehSetor ? 'Veja como atuamos em outros mercados' : 'Integre com o resto da operação'}
+          />
           <div className="flex flex-wrap justify-center gap-3">
-            {outrosServicos.map((servico) => (
+            {outrosLinks.map((servico) => (
               <Link
                 key={servico.href}
                 href={servico.href}
