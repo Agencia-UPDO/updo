@@ -8,8 +8,12 @@ import Badge from '@/novo/components/shared/ui/badge/badge';
 import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
 import { balance } from '@/novo/utils/balance';
 import { cn } from '@/novo/utils/cn';
+import FluxoPilares from '@/novo/components/servicos/fluxo-pilares';
 import {
   ArrowLeft,
+  Compass,
+  LineChart,
+  Rocket,
   BookOpen,
   Database,
   Handshake,
@@ -30,19 +34,19 @@ const metricas = [
 
 const solucao = [
   {
-    step: '01',
+    icon: Compass,
     title: 'Consultoria: A Fundação',
     description:
       'Diagnóstico de 6 meses com implementação das ferramentas certas: RD Station Marketing e CRM. Desenvolvemos playbooks de vendas, padronizamos processos e ministramos treinamentos de Neuromarketing e Neurovendas para alinhar as equipes.',
   },
   {
-    step: '02',
+    icon: Rocket,
     title: 'Gestão 360°: A Aceleração',
     description:
       'Assumimos toda a operação de marketing. Estruturamos e otimizamos campanhas de anúncios, criamos materiais gráficos e de endomarketing, e estabelecemos reuniões semanais de alinhamento para garantir foco no objetivo: vender mais.',
   },
   {
-    step: '03',
+    icon: LineChart,
     title: 'Inteligência de Dados: O Timão',
     description:
       'Aplicamos modelos de regressão linear para projetar resultados e ajustar a rota. A parceria próxima nos permitiu usar dados de forma estratégica, garantindo crescimento previsível e sustentável.',
@@ -169,28 +173,26 @@ const CaseEducacao = () => (
     </section>
 
     {/* Estratégia */}
-    <section className="py-18 md:py-28 xl:py-32">
+    <section className="bg-secondary py-18 md:py-28 xl:py-32">
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
+          tone="dark"
           badge="Estratégia"
           title="Da consultoria à escala, em duas fases"
           description="Três pilares estruturais que transformaram os resultados."
         />
-        <ol className="grid grid-cols-12 gap-4 md:gap-6">
-          {solucao.map((s, index) => (
-            <RevealAnimation key={s.step} delay={0.1 + index * 0.1} className="col-span-12 md:col-span-4">
-              <li className="flex h-full flex-col gap-6 rounded-3xl bg-white p-7">
-                <span className="bg-secondary text-primary-500 font-titulo flex size-14 items-center justify-center rounded-2xl text-[1.25rem] font-medium">
-                  {s.step}
-                </span>
-                <div className="space-y-2">
-                  <h3 className="text-heading-6 font-normal">{s.title}</h3>
-                  <p className="text-tagline-2">{s.description}</p>
-                </div>
-              </li>
-            </RevealAnimation>
-          ))}
-        </ol>
+        <RevealAnimation delay={0.2}>
+          <div>
+            <FluxoPilares
+              itens={solucao.map((s) => ({
+                icone: <s.icon className="size-6" strokeWidth={1.75} aria-hidden="true" />,
+                label: s.title,
+                description: s.description,
+                resultado: '',
+              }))}
+            />
+          </div>
+        </RevealAnimation>
       </div>
     </section>
 

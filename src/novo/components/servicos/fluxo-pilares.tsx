@@ -109,7 +109,7 @@ const FluxoPilares = ({ itens }: { itens: Pilar[] }) => {
                 >
                   {item.label}
                 </p>
-                <p className="text-tagline-2 text-white/60 md:mx-auto md:max-w-[240px]">
+                <p className="text-tagline-2 text-white/60 md:mx-auto md:max-w-[300px]">
                   {item.description}
                 </p>
                 {item.resultado && (
