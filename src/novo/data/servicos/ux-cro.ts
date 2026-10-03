@@ -24,6 +24,7 @@ export const uxCro: ServicoConteudo = {
       'Landing pages e formulários otimizados para conversão',
     ],
     ctaText: 'Otimizar minha conversão',
+    ctaSecundario: { text: 'Ver diagnóstico', href: '/diagnostico' },
   },
   resultado: {
     title: 'Mais conversão sem aumentar a verba de mídia',
@@ -99,6 +100,7 @@ export const uxCro: ServicoConteudo = {
     ],
   },
   entregas: {
+    ctaText: 'Quero melhorar minha página',
     title: 'O que analisamos antes de mexer na página',
     description:
       'A entrega conecta análise de comportamento, hipótese, design, copy, formulário e teste para cada mudança ter motivo e medição.',
@@ -181,7 +183,8 @@ export const uxCro: ServicoConteudo = {
     description:
       'Preencha para analisarmos tráfego, comportamento, taxa atual e oportunidade de melhoria antes da reunião.',
     formName: 'Diagnóstico UX e CRO',
-    submitText: 'Quero meu diagnóstico',
+    submitText: 'Diagnosticar minha página',
+    nota: 'Com base nas suas respostas, preparamos um diagnóstico mais preciso da experiência e conversão.',
     selects: [
       {
         id: 'pageType',
@@ -207,7 +210,7 @@ export const uxCro: ServicoConteudo = {
       },
       {
         id: 'currentRate',
-        label: 'Taxa de conversão atual',
+        label: 'Taxa atual',
         options: ['Não sei minha taxa', 'Abaixo de 1%', '1% a 3%', '3% a 6%', 'Acima de 6%'],
       },
       {
@@ -222,6 +225,27 @@ export const uxCro: ServicoConteudo = {
         ],
       },
     ],
+  },
+  caso: {
+    badge: 'Resultado real',
+    title: 'Mais conversão sem aumentar a verba de mídia.',
+    description:
+      'Landing page com tráfego pago constante e formulário pouco acionado. Após análise de comportamento, nova hierarquia e teste de variante, a página converteu mais usando a mesma verba.',
+    ctaText: 'Quero esse resultado na minha página',
+    metrics: [
+      { value: '+78%', label: 'uplift de conversão' },
+      { value: '-31%', label: 'custo por lead' },
+      { value: '4,1%', label: 'taxa final' },
+      { value: '14d', label: 'ciclo de teste' },
+    ],
+  },
+  faqTexto: {
+    badge: 'Dúvidas frequentes',
+    title: 'Dúvidas sobre UX, CRO e otimização de conversão.',
+    description:
+      'Antes de comprar mais tráfego, vale entender quanto do tráfego atual está sendo perdido por fricção na página.',
+    citacao:
+      'Conversão não melhora só deixando a página mais bonita. Melhora quando a próxima ação fica óbvia.',
   },
   faq: [
     {

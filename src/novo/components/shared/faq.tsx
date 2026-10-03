@@ -13,10 +13,15 @@ interface FaqProps {
   items: { question: string; answer: string }[];
   title?: string;
   description?: string;
+  badge?: string;
+  /** Frase de destaque exibida abaixo do título. */
+  citacao?: string;
 }
 
 const Faq = ({
   items,
+  badge = 'FAQ',
+  citacao,
   title = 'Perguntas frequentes',
   description = 'O que costumam nos perguntar antes do primeiro diagnóstico.',
 }: FaqProps) => {
@@ -41,11 +46,18 @@ const Faq = ({
           <div className="col-span-12 space-y-8 lg:col-span-5">
             <SectionHeading
               align="left"
-              badge="FAQ"
+              badge={badge}
               title={title}
               description={description}
               className="max-lg:text-center [&_div]:max-lg:justify-center [&_p]:max-lg:mx-auto"
             />
+            {citacao && (
+              <RevealAnimation delay={0.25}>
+                <p className="text-tagline-1 text-secondary/70 bg-lilas-50 rounded-2xl p-6 italic max-lg:text-center">
+                  “{citacao}”
+                </p>
+              </RevealAnimation>
+            )}
             <RevealAnimation delay={0.3}>
               <div className="flex justify-center lg:justify-start">
                 <Link href="/diagnostico" className="inline-flex">

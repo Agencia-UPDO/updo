@@ -63,11 +63,11 @@ const PainelMatriculas = () => {
             <span className="bg-primary-500 text-secondary flex size-8 items-center justify-center rounded-lg">
               <TrendingUp className="size-4" strokeWidth={2} aria-hidden="true" />
             </span>
-            <p className="text-tagline-2 font-medium text-white">Performance de captação</p>
+            <p className="text-tagline-2 font-medium text-white">Performance de Captação</p>
           </div>
           <span className="text-tagline-3 flex shrink-0 items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 whitespace-nowrap text-white/70">
             <span className="bg-primary-500 size-1.5 animate-pulse rounded-full" />
-            case real
+            Estudo de Caso Real
           </span>
         </div>
         <p className="font-titulo text-heading-6 mt-4 font-medium text-white">
@@ -81,11 +81,11 @@ const PainelMatriculas = () => {
           <span className="flex items-center gap-3">
             <span className="flex items-center gap-1.5">
               <span className="bg-primary-500 h-0.5 w-3 rounded-full" />
-              realizado
+              Matrículas Realizadas
             </span>
             <span className="flex items-center gap-1.5">
               <span className="h-0 w-3 border-t border-dashed border-white/40" />
-              meta
+              Projeção de Matrículas
             </span>
           </span>
         </div>
@@ -128,12 +128,15 @@ const PainelMatriculas = () => {
             </text>
           ))}
         </svg>
+        <p className="text-tagline-3 mt-2 text-center text-white/45">
+          Previsibilidade de matrículas vem de estrutura, não de sorte.
+        </p>
       </div>
 
       <div className="mt-2.5 grid grid-cols-2 gap-2.5">
         {[
-          { icone: Target, label: 'Meta de matrículas', valor: '104%', detalhe: 'meta batida em out/25' },
-          { icone: TrendingUp, label: 'Custo por matrícula', valor: '-15%', detalhe: 'vs. 2024' },
+          { icone: Target, label: 'Meta de Matrículas', valor: '104%', detalhe: 'Meta Batida Out/25' },
+          { icone: TrendingUp, label: 'Custo por Matrícula', valor: '-15%', detalhe: 'Otimização vs 2024' },
         ].map((item) => (
           <div key={item.label} className="rounded-2xl bg-white/5 p-4">
             <span className="text-tagline-3 flex items-center gap-1.5 text-white/55">

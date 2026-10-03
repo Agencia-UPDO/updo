@@ -18,6 +18,10 @@ interface LeadFormProps {
   submitText?: string;
   /** Campos fixos enviados junto com o lead, como o setor da página. */
   extraFields?: Record<string, string>;
+  /** Frase exibida acima do botão de envio. */
+  nota?: string;
+  /** Texto de confirmação depois do envio. */
+  sucesso?: string;
 }
 
 const inputClass =
@@ -39,6 +43,8 @@ const LeadForm = ({
   selects,
   submitText = 'Enviar',
   extraFields,
+  nota,
+  sucesso,
 }: LeadFormProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -117,8 +123,8 @@ const LeadForm = ({
         <CheckCircleIcon className="size-12" />
         <p className="font-titulo font-medium text-heading-5 text-secondary">Formulário enviado com sucesso.</p>
         <p className="max-w-[420px]">
-          Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento
-          inicial.
+          {sucesso ??
+            'Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento inicial.'}
         </p>
       </div>
     );
@@ -223,13 +229,25 @@ const LeadForm = ({
         ))}
       </div>
 
+      {nota && <p className="text-tagline-2 text-secondary/60 border-stroke-3 border-t pt-5">{nota}</p>}
+
       {submitError && <p className="text-tagline-2 text-red-600">{submitError}</p>}
 
-      <ButtonPrimarySubmit
-        text={isSubmitting ? 'Enviando...' : submitText}
-        disabled={isSubmitting}
-        className="w-full md:w-auto"
-      />
+      <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+        <ButtonPrimarySubmit
+          text={isSubmitting ? 'Enviando...' : submitText}
+          disabled={isSubmitting}
+          className="w-full md:w-auto"
+        />
+        <ul className="text-tagline-3 text-secondary/55 flex flex-wrap gap-x-4 gap-y-1.5">
+          {['Sem spam', 'Resposta em até 1 dia útil', 'Dados usados só no diagnóstico'].map((item) => (
+            <li key={item} className="flex items-center gap-1.5">
+              <span className="bg-primary-500 size-1.5 rounded-full" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
     </form>
   );
 };

@@ -36,6 +36,10 @@ export interface ServicoConteudo {
     description: string;
     bullets: string[];
     ctaText: string;
+    /** Botão secundário do topo. Sem ele, o botão leva para /cases. */
+    ctaSecundario?: { text: string; href: string };
+    /** Números exibidos logo abaixo dos botões do topo. */
+    metricas?: { label: string; value: string; detail?: string }[];
   };
   resultado: {
     title: string;
@@ -45,17 +49,41 @@ export interface ServicoConteudo {
   painel?: PainelServicoDados;
   visual?: VisualServico;
   cartao?: CartaoDados;
-  problemas: { title: string; description?: string; items: Item[] };
+  problemas: { badge?: string; title: string; description?: string; items: Item[] };
   plano?: { title: string; description: string; passos: { title: string; description: string }[] };
   mudanca?: { title: string; sem: string[]; com: string[] };
-  entregas: { title: string; description: string; items: Item[] };
+  entregas: { badge?: string; title: string; description: string; ctaText?: string; items: Item[] };
+  /** Seção extra da página atual, exibida depois das entregas. */
+  extra?: {
+    badge: string;
+    title: string;
+    description?: string;
+    bullets?: string[];
+    items: { icon?: LucideIcon; title: string; description?: string; tag?: string }[];
+  };
+  /** Bloco de case real com o resultado do cliente. */
+  caso?: {
+    badge: string;
+    title: string;
+    description: string;
+    metrics: { value: string; label: string }[];
+    ctaText: string;
+    link?: { text: string; href: string };
+  };
   pilares: {
     badge?: string;
     title: string;
     description: string;
+    /** Lista exibida abaixo do título, como na página atual. */
+    lista?: string[];
     items: { icon?: LucideIcon; label: string; description: string; resultado: string }[];
   };
   formulario: {
+    badge?: string;
+    /** Frase exibida acima do botão de envio. */
+    nota?: string;
+    /** Texto de confirmação depois do envio. */
+    sucesso?: string;
     title: string;
     description: string;
     formName: string;
@@ -63,11 +91,27 @@ export interface ServicoConteudo {
     selects: LeadFormSelect[];
   };
   faq: { question: string; answer: string }[];
+  faqTexto?: { badge?: string; title: string; description: string; citacao?: string };
 }
 
 const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
-  const { hero, resultado, painel, visual, cartao, problemas, plano, mudanca, entregas, pilares, formulario, faq } =
-    conteudo;
+  const {
+    hero,
+    resultado,
+    painel,
+    visual,
+    cartao,
+    problemas,
+    plano,
+    mudanca,
+    entregas,
+    extra,
+    caso,
+    pilares,
+    formulario,
+    faq,
+    faqTexto,
+  } = conteudo;
   const ehSetor = conteudo.tipo === 'setor';
   const caminho = ehSetor ? `/${conteudo.slug}` : `/servicos/${conteudo.slug}`;
   const outrosLinks = (ehSetor ? setores : servicos).filter((link) => !link.href.endsWith(conteudo.slug));
@@ -115,11 +159,25 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
                   <Link href="#contato" className="inline-flex w-full sm:w-auto">
                     <ButtonPrimary text={hero.ctaText} className="w-full" />
                   </Link>
-                  <Link href="/cases" className="inline-flex w-full sm:w-auto">
-                    <ButtonWhite text="Ver cases" className="w-full" />
+                  <Link href={hero.ctaSecundario?.href ?? '/cases'} className="inline-flex w-full sm:w-auto">
+                    <ButtonWhite text={hero.ctaSecundario?.text ?? 'Ver cases'} className="w-full" />
                   </Link>
                 </div>
               </RevealAnimation>
+
+              {hero.metricas && (
+                <RevealAnimation delay={0.5}>
+                  <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                    {hero.metricas.map((metrica) => (
+                      <li key={metrica.label} className="border-stroke-3 rounded-2xl border bg-white p-4">
+                        <p className="font-titulo text-heading-6 text-secondary font-medium">{metrica.value}</p>
+                        <p className="text-tagline-3 text-secondary mt-1 font-medium">{metrica.label}</p>
+                        {metrica.detail && <p className="text-tagline-3 text-secondary/55 mt-0.5">{metrica.detail}</p>}
+                      </li>
+                    ))}
+                  </ul>
+                </RevealAnimation>
+              )}
             </div>
 
             <RevealAnimation delay={0.4} direction="right" className="col-span-12 lg:col-span-5">
@@ -160,7 +218,7 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
       <section className="bg-white py-18 md:py-28 xl:py-32">
         <div className="main-container space-y-12 md:space-y-16">
           <SectionHeading
-            badge="O problema"
+            badge={problemas.badge ?? 'O problema'}
             title={problemas.title}
             description={problemas.description}
           />
@@ -235,13 +293,13 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
             <div className="col-span-12 space-y-8 lg:sticky lg:top-32 lg:col-span-5 lg:self-start">
               <SectionHeading
                 align="left"
-                badge="O que entregamos"
+                badge={entregas.badge ?? 'O que entregamos'}
                 title={entregas.title}
                 description={entregas.description}
               />
               <RevealAnimation delay={0.3}>
                 <Link href="#contato" className="inline-flex">
-                  <ButtonPrimary text={hero.ctaText} />
+                  <ButtonPrimary text={entregas.ctaText ?? hero.ctaText} />
                 </Link>
               </RevealAnimation>
             </div>
@@ -271,6 +329,57 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
         </div>
       </section>
 
+      {extra && (
+        <section className="bg-white py-18 md:py-28 xl:py-32">
+          <div className="main-container space-y-12 md:space-y-16">
+            <SectionHeading badge={extra.badge} title={extra.title} description={extra.description} />
+            {extra.bullets && (
+              <ul className="flex flex-wrap justify-center gap-3">
+                {extra.bullets.map((bullet) => (
+                  <li
+                    key={bullet}
+                    className="text-tagline-2 text-secondary bg-background-13 flex items-center gap-2 rounded-full px-4 py-2"
+                  >
+                    <CheckIcon className="size-4 [&_path]:stroke-primary-700" />
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <div className="grid grid-cols-12 gap-4 md:gap-6">
+              {extra.items.map((item, index) => (
+                <RevealAnimation
+                  key={item.title}
+                  delay={0.05 * index}
+                  className={cn('col-span-12 md:col-span-6', extra.items.length % 3 === 0 && 'lg:col-span-4')}
+                >
+                  <div className="border-stroke-3 flex h-full flex-col gap-5 rounded-2xl border p-7">
+                    <div className="flex items-start justify-between gap-4">
+                      {item.icon ? (
+                        <IconChip icon={item.icon} tone={index % 2 === 0 ? 'lilas' : 'menta'} />
+                      ) : (
+                        <span className="bg-primary-500 flex size-6 shrink-0 items-center justify-center rounded-full">
+                          <CheckIcon className="size-3.5" />
+                        </span>
+                      )}
+                      {item.tag && (
+                        <span className="text-tagline-3 bg-lilas-50 text-lilas-700 rounded-full px-3 py-1 font-medium">
+                          {item.tag}
+                        </span>
+                      )}
+                    </div>
+                    <div className="space-y-1.5">
+                      <h3 className="text-heading-6 font-normal">{item.title}</h3>
+                      {item.description && <p className="text-tagline-2">{item.description}</p>}
+                    </div>
+                  </div>
+                </RevealAnimation>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="bg-secondary py-18 md:py-28 xl:py-32">
         <div className="main-container space-y-12 md:space-y-16">
           <SectionHeading
@@ -279,6 +388,18 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
             title={pilares.title}
             description={pilares.description}
           />
+          {pilares.lista && (
+            <ul className="mx-auto grid max-w-[960px] gap-3 md:grid-cols-2">
+              {pilares.lista.map((item) => (
+                <li key={item} className="text-tagline-2 flex items-start gap-3 rounded-2xl bg-white/5 p-4 text-white/80">
+                  <span className="bg-primary-500 mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full">
+                    <Check className="text-secondary size-3" strokeWidth={2.5} aria-hidden="true" />
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
           <RevealAnimation delay={0.2}>
             <div>
               <FluxoPilares
@@ -293,6 +414,41 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
           </RevealAnimation>
         </div>
       </section>
+
+      {caso && (
+        <section className="py-18 md:py-28 xl:py-32">
+          <div className="main-container">
+            <div className="bg-lilas-700 relative isolate overflow-hidden rounded-3xl p-7 md:p-12">
+              <div className="bg-primary-500/20 pointer-events-none absolute -top-24 -right-24 -z-10 size-80 rounded-full blur-3xl" />
+              <div className="grid grid-cols-12 items-center gap-y-10 lg:gap-x-12">
+                <div className="col-span-12 space-y-5 lg:col-span-6">
+                  <span className="text-tagline-2 text-primary-300 font-medium">{caso.badge}</span>
+                  <h2 className="text-heading-4 font-normal text-white">{caso.title}</h2>
+                  <p className="text-tagline-1 text-white/75">{caso.description}</p>
+                  <div className="flex flex-col gap-4 pt-2 sm:flex-row">
+                    <Link href="#contato" className="inline-flex">
+                      <ButtonPrimary text={caso.ctaText} />
+                    </Link>
+                    {caso.link && (
+                      <Link href={caso.link.href} className="inline-flex">
+                        <ButtonWhite text={caso.link.text} />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+                <ul className="col-span-12 grid grid-cols-2 gap-x-6 gap-y-8 lg:col-span-6">
+                  {caso.metrics.map((metric) => (
+                    <li key={metric.label} className="border-t border-white/20 pt-4">
+                      <p className="font-titulo text-heading-4 font-medium text-white">{metric.value}</p>
+                      <p className="text-tagline-2 text-white/75">{metric.label}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {mudanca && (
         <section className="bg-white py-18 md:py-28 xl:py-32">
@@ -340,7 +496,7 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
             <div className="col-span-12 lg:col-span-5">
               <SectionHeading
                 align="left"
-                badge="Diagnóstico gratuito"
+                badge={formulario.badge ?? 'Diagnóstico gratuito'}
                 title={formulario.title}
                 description={formulario.description}
               />
@@ -354,6 +510,8 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
                   pagePath={caminho}
                   selects={formulario.selects}
                   submitText={formulario.submitText}
+                  nota={formulario.nota}
+                  sucesso={formulario.sucesso}
                 />
               </div>
             </RevealAnimation>
@@ -364,8 +522,12 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
       <div className="bg-white">
         <Faq
           items={faq}
-          title={`Dúvidas sobre ${conteudo.nome.toLowerCase()}`}
-          description="Respostas diretas para as perguntas que mais recebemos sobre este serviço."
+          badge={faqTexto?.badge}
+          title={faqTexto?.title ?? `Dúvidas sobre ${conteudo.nome.toLowerCase()}`}
+          description={
+            faqTexto?.description ?? 'Respostas diretas para as perguntas que mais recebemos sobre este serviço.'
+          }
+          citacao={faqTexto?.citacao}
         />
       </div>
 

@@ -24,6 +24,7 @@ export const funilEAutomacao: ServicoConteudo = {
       'Handoff entre marketing, WhatsApp e CRM',
     ],
     ctaText: 'Estruturar meu funil',
+    ctaSecundario: { text: 'Ver diagnóstico', href: '/diagnostico' },
   },
   resultado: {
     title: 'Mais velocidade entre lead, resposta e oportunidade',
@@ -99,6 +100,7 @@ export const funilEAutomacao: ServicoConteudo = {
     ],
   },
   entregas: {
+    ctaText: 'Quero automatizar meu funil',
     title: 'Seis frentes para transformar intenção em oportunidade',
     description:
       'A entrega conecta estratégia, conteúdo, automação e rotina comercial para o lead avançar sem depender de acompanhamento manual.',
@@ -179,11 +181,12 @@ export const funilEAutomacao: ServicoConteudo = {
     description:
       'Preencha para analisarmos jornada, base, automações, WhatsApp e CRM antes da reunião.',
     formName: 'Diagnóstico Funil e Automação',
-    submitText: 'Quero meu diagnóstico',
+    submitText: 'Diagnosticar meu funil',
+    nota: 'Com base nas suas respostas, preparamos um diagnóstico mais preciso da maturidade do funil.',
     selects: [
       {
         id: 'platform',
-        label: 'Ferramenta atual',
+        label: 'Plataforma atual',
         options: [
           'RD Station',
           'HubSpot',
@@ -227,6 +230,27 @@ export const funilEAutomacao: ServicoConteudo = {
         ],
       },
     ],
+  },
+  caso: {
+    badge: 'Resultado real',
+    title: 'Mais velocidade entre lead, resposta e oportunidade.',
+    description:
+      'Operação B2B com RD Station, WhatsApp e CRM desalinhados. Após segmentação, scoring e alertas por etapa, o comercial passou a receber menos lead frio e mais oportunidade com contexto.',
+    ctaText: 'Quero esse resultado no meu funil',
+    metrics: [
+      { value: '-42%', label: 'tempo de resposta' },
+      { value: '+31%', label: 'oportunidades' },
+      { value: '+24%', label: 'taxa de reunião' },
+      { value: '-18%', label: 'lead perdido' },
+    ],
+  },
+  faqTexto: {
+    badge: 'Dúvidas frequentes',
+    title: 'Dúvidas sobre funil de nutrição e automação.',
+    description:
+      'Antes de contratar mais ferramenta, vale entender se jornada, base, CRM e WhatsApp estão organizados para converter.',
+    citacao:
+      'Automação boa não aumenta barulho. Ela entrega contexto para a próxima ação acontecer no momento certo.',
   },
   faq: [
     {

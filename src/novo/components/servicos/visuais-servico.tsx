@@ -382,15 +382,19 @@ const mensagens = [
   {
     de: 'ia',
     texto:
-      'Olá! Para eu te direcionar melhor: qual é o principal desafio que vocês enfrentam hoje em vendas?',
+      'Olá! Fico feliz que tenha chegado até nós.\nPara eu te direcionar melhor: qual é o principal desafio que vocês estão enfrentando hoje em vendas?',
   },
-  { de: 'lead', texto: 'A gente gera bastante lead, mas o time não dá conta de atender todos.' },
-  { de: 'ia', texto: 'Entendido. Qual é o volume médio de leads que vocês recebem por mês?' },
+  { de: 'lead', texto: 'A gente gera bastante lead mas o time não dá conta de atender todos.' },
+  {
+    de: 'ia',
+    texto:
+      'Entendido. Esse é exatamente o problema que resolvemos.\nQual é o volume médio de leads que vocês recebem por mês?',
+  },
   { de: 'lead', texto: 'Umas 300 a 400 por mês.' },
   {
     de: 'ia',
     texto:
-      'Perfeito. Posso agendar uma sessão de diagnóstico com nosso time ainda esta semana. Qual horário funciona melhor?',
+      'Perfeito. Já tenho o contexto necessário para uma conversa produtiva.\nPosso agendar uma sessão de diagnóstico gratuita com nosso time ainda esta semana. Qual horário funciona melhor para você?',
   },
 ];
 
@@ -432,7 +436,7 @@ export const VisualConversa = () => {
           <div
             key={index}
             className={cn(
-              'text-tagline-2 max-w-[82%] animate-[metodo-entra_400ms_ease-out] rounded-2xl px-4 py-2.5',
+              'text-tagline-2 max-w-[82%] animate-[metodo-entra_400ms_ease-out] rounded-2xl px-4 py-2.5 whitespace-pre-line',
               msg.de === 'lead'
                 ? 'bg-primary-500 text-secondary self-end rounded-br-md'
                 : 'self-start rounded-bl-md bg-white/[0.08] text-white/85'
@@ -454,7 +458,10 @@ export const VisualConversa = () => {
         )}
       </div>
 
-      <div className="border-t border-white/10 px-5 pb-5">
+      <p className="text-tagline-3 border-t border-white/10 px-5 pt-4 text-white/40">
+        Resposta automática · Configurado para o processo da sua empresa
+      </p>
+      <div className="px-5 pb-5">
         <Indicadores
           itens={[
             ['Resposta', '28s'],
@@ -585,7 +592,7 @@ export const VisualClienteOculto = () => {
       icone={<SearchCheck className="size-4" strokeWidth={2} aria-hidden="true" />}
       rotulo="Leitura real da experiência"
       status="em campo"
-      titulo="O que o cliente vive no seu atendimento e no do concorrente"
+      titulo="O que o cliente vive no seu atendimento e no atendimento do concorrente."
     >
       <ul className="mt-5 space-y-2.5">
         {leituras.map((item, index) => {

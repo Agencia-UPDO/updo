@@ -17,48 +17,48 @@ export const iaParaVendas: ServicoConteudo = {
   hero: {
     title: 'Seu time de vendas nunca mais vai perder uma janela de compra',
     description:
-      'Implantamos agentes de IA que qualificam, respondem e agendam pelo WhatsApp, integrados ao seu CRM, com o tom da sua marca. Sem substituir o vendedor, só livrando ele do trabalho que não precisa ser humano.',
-    bullets: [
-      'Configurado para o seu processo',
-      'Integração com seu CRM',
-      'Sem substituir o time',
+      'Implantamos agentes de IA que qualificam, respondem e agendam pelo WhatsApp, integrados ao seu CRM, com o tom da sua marca, sem substituir o vendedor. Só livrar ele do trabalho que não precisa ser humano.',
+    bullets: ['Configurado para o seu processo', 'Integração com seu CRM', 'Sem substituir o time'],
+    ctaText: 'Quero implantar IA nas minhas vendas',
+    metricas: [
+      { label: 'Tempo de resposta', value: '< 30s', detail: '24h por dia, 7 dias por semana' },
+      { label: 'Qualificação manual', value: '-65%', detail: 'tempo do time em triagem' },
+      { label: 'Capacidade de atendimento', value: '+3x', detail: 'sem aumentar headcount' },
+      { label: 'Leads sem resposta', value: '0', detail: 'todos recebem retorno imediato' },
     ],
-    ctaText: 'Implantar IA nas vendas',
   },
   resultado: {
-    title: 'De 4h de espera para resposta em segundos, sem aumentar o time',
+    title: 'De 4h de espera para resposta em segundos, sem aumentar o time.',
     description:
-      'Empresa de serviços B2B com 300 a 400 leads por mês e time comercial de 3 pessoas. O tempo médio de primeiro atendimento era de 4 horas. Após o agente de qualificação via WhatsApp integrado ao RD Station, o time passou a atender todos os leads.',
+      'Empresa de serviços B2B com 300 a 400 leads/mês e time comercial de 3 pessoas. O tempo médio de primeiro atendimento era de 4 horas. Leads frios, CAC alto, vendedores frustrados. Após implantação do agente de qualificação via WhatsApp integrado ao RD Station:',
     metrics: [
-      { value: '28s', label: 'tempo médio de resposta' },
-      { value: '+3x', label: 'capacidade de atendimento' },
-      { value: '-58%', label: 'tempo em triagem manual' },
-      { value: '+40%', label: 'taxa de agendamento' },
+      { value: '28s', label: 'Tempo médio de resposta' },
+      { value: '+3x', label: 'Capacidade de atendimento' },
+      { value: '-58%', label: 'Tempo em triagem manual' },
+      { value: '+40%', label: 'Taxa de agendamento' },
     ],
   },
   visual: 'conversa',
   problemas: {
-    title: 'O que está custando vendas agora mesmo',
-    description:
-      'Se o lead espera horas pela primeira resposta, a venda costuma ir para quem respondeu primeiro.',
+    title: 'O que está custando vendas agora mesmo.',
     items: [
       {
         icon: Clock,
         title: 'A janela de compra fecha antes do humano responder',
         description:
-          'Pesquisas mostram que lead respondido em até 5 minutos tem 21x mais chance de converter do que após 30 minutos. Seu time demora horas, às vezes dias. O lead esfria e vai para o concorrente.',
+          'Pesquisas mostram que lead respondido em até 5 minutos tem 21x mais chance de converter do que após 30 minutos. Seu time demora horas, às vezes dias. O lead esfria, vai para o concorrente e você nem sabe.',
       },
       {
         icon: Users,
         title: 'Vendedor qualificado desperdiçando tempo em lead frio',
         description:
-          'O comercial atende todo mundo porque não tem filtro. Gasta energia com quem nunca vai comprar e chega cansado na oportunidade real. O CAC sobe e a conversão cai.',
+          'O comercial atende todo mundo porque não tem filtro. Gasta energia com quem nunca vai comprar e chega cansado na oportunidade real. CAC sobe, moral cai, taxa de conversão despenca.',
       },
       {
         icon: RefreshCw,
         title: 'Follow-up que depende de memória e boa vontade',
         description:
-          'A proposta foi enviada e o lead sumiu. Ninguém fez follow-up porque não teve tempo. Cada venda não fechada é uma sequência de ações que não aconteceu.',
+          "Proposta foi, lead sumiu. Ninguém fez follow-up porque 'não teve tempo'. Cada venda não fechada é uma sequência de ações que não aconteceu, e isso está custando receita todo mês.",
       },
     ],
   },
@@ -99,90 +99,103 @@ export const iaParaVendas: ServicoConteudo = {
     ],
   },
   entregas: {
-    title: 'Seis implementações que transformam velocidade em venda',
-    description:
-      'Cada agente é configurado para o seu processo, conectado ao CRM e acompanhado com métricas de conversa e qualificação.',
+    title: 'Seis implementações que transformam velocidade em venda.',
+    description: '',
     items: [
       {
         icon: MessageSquare,
         title: 'Agente de qualificação via WhatsApp',
         description:
-          'IA que recepciona o lead, faz as perguntas certas do seu processo e agenda reunião pelo WhatsApp, com o tom de voz da sua marca.',
+          'IA que recepciona o lead, faz as perguntas certas do seu processo e agenda reunião, tudo pelo WhatsApp, com o tom de voz da sua marca.',
       },
       {
         icon: RefreshCw,
         title: 'Follow-up automático pós-proposta',
         description:
-          'Sequência ativa de mensagens que acompanha o lead após a proposta, sem precisar de ação humana e sem deixar a oportunidade esfriar.',
+          'Sequência ativa de mensagens que acompanha o lead após proposta enviada. Sem precisar de ação humana, sem deixar oportunidade esfriar.',
       },
       {
         icon: Bot,
         title: 'Atendimento pré-venda 24/7',
         description:
-          'Responde dúvidas frequentes, apresenta serviços e captura dados qualificados fora do horário comercial.',
+          'Responde dúvidas frequentes, apresenta serviços e captura dados qualificados fora do horário comercial, sem nenhum lead perdido por falta de cobertura.',
       },
       {
         icon: DatabaseZap,
         title: 'Integração com CRM e RD Station',
         description:
-          'O lead qualificado pela IA entra no CRM com dados preenchidos, etapa correta e histórico de conversa.',
+          'Lead qualificado pela IA já entra no CRM com dados preenchidos, etapa correta e histórico de conversa. Zero trabalho manual de registro.',
       },
       {
         icon: Workflow,
         title: 'Handoff inteligente para o humano',
         description:
-          'A IA reconhece o momento de passar para o vendedor: lead qualificado, interesse confirmado ou objeção que precisa de humano.',
+          'A IA reconhece o momento de passar para o vendedor: lead qualificado, interesse confirmado, objeção que precisa de humano. O comercial entra só quando vale a pena.',
       },
       {
         icon: BarChart3,
         title: 'Dashboard de performance dos agentes',
         description:
-          'Métricas de conversa, taxa de qualificação, tempo médio de resposta e leads gerados pela automação.',
+          'Métricas de conversação, taxa de qualificação, tempo médio de resposta e leads gerados pela automação, com visibilidade total do que a IA está fazendo.',
       },
     ],
   },
   pilares: {
-    badge: 'Stack de IA',
-    title: 'A stack que roda o sistema',
+    badge: 'Como funciona',
+    title: 'A stack que roda o sistema.',
     description:
       'Não escolhemos a ferramenta preferida: escolhemos o que encaixa no seu processo. A IA serve ao método, não o contrário.',
     items: [
       {
         icon: MessageSquare,
         label: 'WhatsApp Business API',
-        description: 'Qualificação e atendimento pelo canal preferido do brasileiro.',
+        description: 'Qualificação e atendimento pelo canal preferido do brasileiro',
         resultado: 'Alta conversão',
       },
       {
         icon: BrainCircuit,
-        label: 'IA generativa',
-        description: 'Modelos configurados com seu processo, tom e base de conhecimento.',
+        label: 'IA generativa (GPT / Claude)',
+        description: 'Modelos configurados com seu processo, tom e base de conhecimento',
         resultado: 'Personalizado',
       },
       {
         icon: DatabaseZap,
         label: 'CRM e automação',
-        description: 'Integração com RD Station, HubSpot, Salesforce e similares.',
+        description: 'Integração com RD Station, HubSpot, Salesforce e similares',
         resultado: 'Zero atrito',
       },
       {
         icon: Workflow,
         label: 'Orquestração e fluxo',
-        description: 'Lógica de roteamento, handoff e escalada para o time humano.',
+        description: 'Lógica de roteamento, handoff e escalada para o time humano',
         resultado: 'Controle total',
       },
     ],
   },
+  caso: {
+    badge: 'Resultado real',
+    title: 'De 4h de espera para resposta em segundos, sem aumentar o time.',
+    description:
+      'Empresa de serviços B2B com 300 a 400 leads/mês e time comercial de 3 pessoas. O tempo médio de primeiro atendimento era de 4 horas. Leads frios, CAC alto, vendedores frustrados. Após implantação do agente de qualificação via WhatsApp integrado ao RD Station:',
+    ctaText: 'Quero esse resultado na minha empresa',
+    metrics: [
+      { value: '28s', label: 'Tempo médio de resposta' },
+      { value: '+3x', label: 'Capacidade de atendimento' },
+      { value: '-58%', label: 'Tempo em triagem manual' },
+      { value: '+40%', label: 'Taxa de agendamento' },
+    ],
+  },
   formulario: {
-    title: 'Descubra se IA para vendas faz sentido para o seu negócio',
+    title: 'Descubra se IA para vendas faz sentido para o seu negócio.',
     description:
       'Preencha os dados para entendermos seu processo, volume e onde a automação gera mais impacto, antes de recomendar qualquer coisa.',
     formName: 'Diagnóstico IA para Vendas',
-    submitText: 'Quero meu diagnóstico',
+    submitText: 'Quero o diagnóstico gratuito',
+    nota: 'Com base nas suas respostas, avaliamos onde a IA pode gerar impacto real no seu processo comercial.',
     selects: [
       {
         id: 'businessType',
-        label: 'Tipo de negócio',
+        label: 'Setor da empresa',
         options: [
           'E-commerce / Varejo',
           'Educação',
@@ -195,7 +208,7 @@ export const iaParaVendas: ServicoConteudo = {
       },
       {
         id: 'leadVolume',
-        label: 'Volume de leads',
+        label: 'Volume de leads por mês',
         options: [
           'Menos de 50 leads/mês',
           '50 a 200 leads/mês',
@@ -211,7 +224,7 @@ export const iaParaVendas: ServicoConteudo = {
       },
       {
         id: 'mainPain',
-        label: 'Principal dor',
+        label: 'Principal dor hoje',
         options: [
           'Demora no primeiro atendimento',
           'Qualificação manual tomando tempo do time',
@@ -222,26 +235,34 @@ export const iaParaVendas: ServicoConteudo = {
       },
     ],
   },
+  faqTexto: {
+    badge: 'Dúvidas frequentes',
+    title: 'Dúvidas sobre IA aplicada a vendas e atendimento.',
+    description:
+      'Antes de implantar qualquer agente, vale entender o processo, o volume e onde a automação realmente gera impacto.',
+    citacao:
+      'A IA não substitui o vendedor. Ela garante que nenhum lead esfrie antes de o vendedor ter a chance de atender.',
+  },
   faq: [
     {
       question: 'É um chatbot genérico ou personalizado para o meu negócio?',
       answer:
-        'Personalizado. Antes de qualquer implementação, mapeamos sua jornada de venda, as perguntas de qualificação do seu ICP, o tom de voz da marca e as objeções mais comuns. O agente é treinado com esse contexto, não é um bot de FAQ que responde igual para todo mundo.',
+        '100% personalizado. Antes de qualquer implementação, mapeamos sua jornada de venda, as perguntas de qualificação do seu ICP, o tom de voz da marca e as objeções mais comuns. O agente é treinado com esse contexto, não é um bot de FAQ que responde igual para todo mundo.',
     },
     {
       question: 'A IA substitui meu time de vendas?',
       answer:
-        'Não, ela libera o time para fechar. A IA cuida da triagem, qualificação, agendamento e follow-up. O vendedor entra só quando o lead está aquecido, qualificado e pronto para conversa real.',
+        'Não, ela libera o time para fechar. A IA cuida da triagem, qualificação, agendamento e follow-up. O vendedor entra só quando o lead está aquecido, qualificado e pronto para conversa real. O resultado é mais tempo para oportunidades de verdade.',
     },
     {
       question: 'Quais ferramentas e plataformas vocês usam?',
       answer:
-        'Depende do seu stack atual. Trabalhamos com WhatsApp Business API, integração com RD Station, HubSpot e Salesforce, e modelos de IA como GPT e Claude. A escolha da ferramenta segue o que faz mais sentido para o seu processo.',
+        'Depende do seu stack atual. Trabalhamos com WhatsApp Business API, integração com RD Station, HubSpot e Salesforce, e modelos de IA como GPT-4 e Claude. A escolha da ferramenta segue o que faz mais sentido para o seu processo, não o contrário.',
     },
     {
       question: 'Quanto tempo leva para implantar?',
       answer:
-        'Em média de 3 a 6 semanas para o primeiro agente em produção. O tempo depende da complexidade do processo, das integrações necessárias e da disponibilidade da equipe para os alinhamentos.',
+        'Em média de 3 a 6 semanas para o primeiro agente em produção. O tempo depende da complexidade do processo, das integrações necessárias e da disponibilidade da equipe para os alinhamentos de configuração.',
     },
     {
       question: 'Funciona com o CRM que já usamos?',
@@ -251,7 +272,7 @@ export const iaParaVendas: ServicoConteudo = {
     {
       question: 'Como fica o handoff da IA para o vendedor?',
       answer:
-        'Definimos com você os gatilhos de escalada: lead que atingiu determinado score, objeção específica, pedido de falar com humano ou agendamento confirmado. Quando o gatilho dispara, o vendedor recebe o resumo da conversa e entra com contexto.',
+        'Definimos junto com você os gatilhos de escalada: lead que atingiu determinado score de qualificação, objeção específica, pedido de falar com humano, agendamento confirmado. Quando o gatilho dispara, o vendedor recebe notificação com o resumo da conversa e pode entrar de forma contextualizada.',
     },
   ],
 };

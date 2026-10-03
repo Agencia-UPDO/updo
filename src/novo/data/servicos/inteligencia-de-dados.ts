@@ -23,6 +23,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
       'KPIs com alerta quando a meta é ameaçada',
     ],
     ctaText: 'Estruturar meus dados',
+    ctaSecundario: { text: 'Ver diagnóstico', href: '/diagnostico' },
   },
   resultado: {
     title: 'De 12% para 94% de receita rastreada',
@@ -98,6 +99,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
     ],
   },
   entregas: {
+    ctaText: 'Quero estruturar meus dados',
     title: 'Seis frentes para decidir com dado confiável',
     description:
       'A entrega conecta infraestrutura, visualização, governança e rotina para o dado sair da planilha e entrar na decisão.',
@@ -176,7 +178,8 @@ export const inteligenciaDeDados: ServicoConteudo = {
     description:
       'Preencha para analisarmos coleta, atribuição, dashboards e governança antes da reunião.',
     formName: 'Diagnóstico Inteligência de Dados',
-    submitText: 'Quero meu diagnóstico',
+    submitText: 'Diagnosticar meus dados',
+    nota: 'Com base nas suas respostas, preparamos um diagnóstico mais preciso da maturidade dos seus dados.',
     selects: [
       {
         id: 'businessType',
@@ -219,6 +222,26 @@ export const inteligenciaDeDados: ServicoConteudo = {
         ],
       },
     ],
+  },
+  caso: {
+    badge: 'Resultado real',
+    title: 'De 12% para 94% de receita rastreada.',
+    description:
+      'Empresa B2B com verba em seis canais, UTMs inconsistentes e relatório manual. Após coleta, dashboard e atribuição, a verba deixou de seguir percepção e passou a seguir receita.',
+    ctaText: 'Quero esse resultado nos meus dados',
+    metrics: [
+      { value: '94%', label: 'receita rastreada' },
+      { value: '-35%', label: 'CAC' },
+      { value: '2,8x', label: 'ROI' },
+      { value: '< 5min', label: 'relatório semanal' },
+    ],
+  },
+  faqTexto: {
+    badge: 'Dúvidas frequentes',
+    title: 'Dúvidas sobre dados e analytics de marketing.',
+    description:
+      'Antes de contratar ferramenta ou analista, vale entender onde está o gargalo real dos seus dados.',
+    citacao: 'Dado errado é pior que dado nenhum, porque a equipe passa a confiar na direção errada.',
   },
   faq: [
     {

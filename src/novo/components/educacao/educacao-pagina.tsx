@@ -1,83 +1,85 @@
-import RevealAnimation from '@/novo/components/animation/reveal-animation';
-import TextReveal from '@/novo/components/animation/text-reveal';
-import HeroFundo from '@/novo/components/home/hero-fundo';
-import VideoDepoimento from '@/novo/components/home/video-depoimento';
-import PainelMatriculas from '@/novo/components/educacao/painel-matriculas';
-import ServicosEducacao from '@/novo/components/educacao/servicos-educacao';
-import { CheckIcon } from '@/novo/components/shared/icons';
-import Faq from '@/novo/components/shared/faq';
-import IconChip from '@/novo/components/shared/icon-chip';
-import LeadForm from '@/novo/components/shared/lead-form';
-import SectionHeading from '@/novo/components/shared/section-heading';
-import { selosParceiros } from '@/novo/data/home';
-import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
-import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
-import Badge from '@/novo/components/shared/ui/badge/badge';
-import { balance } from '@/novo/utils/balance';
-import { cn } from '@/novo/utils/cn';
-import { BarChart3, GraduationCap, TrendingUp, UsersRound } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import RevealAnimation from "@/novo/components/animation/reveal-animation";
+import TextReveal from "@/novo/components/animation/text-reveal";
+import HeroFundo from "@/novo/components/home/hero-fundo";
+import VideoDepoimento from "@/novo/components/home/video-depoimento";
+import PainelMatriculas from "@/novo/components/educacao/painel-matriculas";
+import ServicosEducacao from "@/novo/components/educacao/servicos-educacao";
+import { CheckIcon } from "@/novo/components/shared/icons";
+import Faq from "@/novo/components/shared/faq";
+import IconChip from "@/novo/components/shared/icon-chip";
+import LeadForm from "@/novo/components/shared/lead-form";
+import SectionHeading from "@/novo/components/shared/section-heading";
+import { selosParceiros } from "@/novo/data/home";
+import ButtonPrimary from "@/novo/components/shared/ui/button/button-primary";
+import ButtonWhite from "@/novo/components/shared/ui/button/button-white";
+import Badge from "@/novo/components/shared/ui/badge/badge";
+import { balance } from "@/novo/utils/balance";
+import { cn } from "@/novo/utils/cn";
+import { BarChart3, GraduationCap, TrendingUp, UsersRound } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const instituicoes = [
-  { name: 'PUCPR', src: '/Clientes/Logo PUCPR.png' },
-  { name: 'CNA', src: '/Clientes/Logo CNA.png' },
-  { name: 'Faculdade IBRATE', src: '/Clientes/Logo Faculdade Ibrate.png' },
-  { name: 'Instituto Equilibra', src: '/Clientes/Logo Instituto Equilibra.png' },
-  { name: 'Veta Pós-graduação', src: '/Clientes/Logo Veta Pós Graduação.png' },
-  { name: 'UniCV', src: '/Clientes/Logo UniCV.png' },
-  { name: 'Interpret 2B', src: '/Clientes/Logo Interpret 2B.png' },
+  { name: "PUCPR", src: "/Clientes/Logo PUCPR.png" },
+  { name: "CNA", src: "/Clientes/Logo CNA.png" },
+  { name: "Faculdade IBRATE", src: "/Clientes/Logo Faculdade Ibrate.png" },
+  {
+    name: "Instituto Equilibra",
+    src: "/Clientes/Logo Instituto Equilibra.png",
+  },
+  { name: "Veta Pós-graduação", src: "/Clientes/Logo Veta Pós Graduação.png" },
+  { name: "UniCV", src: "/Clientes/Logo UniCV.png" },
+  { name: "Interpret 2B", src: "/Clientes/Logo Interpret 2B.png" },
 ];
 
 const barreiras = [
   {
     icon: UsersRound,
-    title: 'Leads que não viram matrícula',
-    description: 'A campanha gera contato, mas o interessado esfria antes de falar com a equipe.',
+    title: "Leads que não viram matrícula",
   },
   {
     icon: GraduationCap,
-    title: 'Turmas com baixa previsibilidade',
-    description: 'A instituição só descobre se a turma fecha quando o prazo já está acabando.',
+    title: "Turmas com baixa previsibilidade",
   },
   {
     icon: BarChart3,
-    title: 'Mídia sem leitura do funil',
-    description: 'A verba é decidida pelo lead e pelo clique, sem enxergar a matrícula no fim.',
+    title: "Mídia sem leitura do funil",
   },
 ];
 
 const metricasCase = [
-  { valor: '+211%', label: 'na geração de leads' },
-  { valor: '+166%', label: 'na conversão comercial' },
-  { valor: '450 → 1.400', label: 'leads por mês' },
+  { valor: "+211%", label: "na geração de leads" },
+  { valor: "+166%", label: "na conversão comercial" },
+  { valor: "450 -> 1.400", label: "leads por mês" },
 ];
 
 export const faqEducacao = [
   {
-    question: 'Como poderei acompanhar o desempenho das campanhas?',
+    question: "Como poderei acompanhar o desempenho das campanhas?",
     answer:
-      'Transparência é um dos nossos pilares. Além do acesso em tempo real ao dashboard do Radar de Matrículas, fazemos reuniões semanais de performance para alinhar métricas, ajustar rotas e garantir que a meta de captação esteja no caminho certo.',
+      "Transparência é um dos nossos pilares. Além do acesso em tempo real ao Dashboard do seu Radar de Matrículas™, realizamos reuniões semanais de performance para alinhar métricas, ajustar rotas e garantir que a meta de captação esteja no caminho certo.",
   },
   {
-    question: 'A UPDO substitui o meu time de marketing ou agência atual?',
+    question: "A UPDO substitui o meu time de marketing ou agência atual?",
     answer:
-      'Não necessariamente. Atuamos como uma camada de inteligência estratégica e performance. Podemos trabalhar com seu time interno, trazendo a engenharia de dados e o neuromarketing que equipes generalistas muitas vezes não dominam.',
+      "Não necessariamente. Atuamos como uma camada de inteligência estratégica e alta performance. Podemos trabalhar em conjunto com seu time interno, fornecendo a engenharia de dados e o neuromarketing que muitas vezes as equipes generalistas não dominam.",
   },
   {
-    question: 'Quanto tempo leva para o sistema começar a gerar leads qualificados?',
+    question:
+      "Quanto tempo leva para o sistema começar a gerar leads qualificados?",
     answer:
-      'O onboarding e o setup levam, em média, de 10 a 15 dias. Depois que as campanhas entram no ar, é comum ver os primeiros leads qualificados nas primeiras 48 a 72 horas.',
+      "Nosso processo de on-boarding e setup leva, em média, de 10 a 15 dias. Após o 'go-live', é comum começarmos a ver os primeiros leads qualificados nas primeiras 48 a 72 horas de campanha ativa.",
   },
   {
-    question: 'O Radar de Matrículas se integra ao meu CRM atual?',
+    question: "O Radar de Matrículas™ se integra ao meu CRM atual?",
     answer:
-      'O Radar de Matrículas é um sistema próprio da UPDO e funciona de forma independente. Ele não depende de integração com o CRM para entregar um panorama estratégico e visual de todas as matrículas da instituição.',
+      "O Radar de Matrículas™ é um sistema próprio e exclusivo da UPDO, desenvolvido para funcionar de forma independente. Ele não depende da integração com o seu CRM para entregar o que propõe: um panorama estratégico e visual completo de todas as matrículas da sua instituição, permitindo uma tomada de decisão rápida que os CRMs convencionais não oferecem.",
   },
   {
-    question: 'Além da gestão de tráfego, quais outras entregas a UPDO realiza?',
+    question:
+      "Além da gestão de tráfego, quais outras entregas a UPDO realiza?",
     answer:
-      'Além da performance, entregamos o Treinamento de Neuromarketing para a equipe comercial e o Playbook de Vendas Educacional, um guia prático e replicável que padroniza o processo de matrícula.',
+      "Nossa consultoria é 360º. Além da performance, entregamos o Treinamento de Neuromarketing para sua equipe comercial e o Desenvolvimento do Playbook de Vendas Educacional: um guia prático e replicável que padroniza o seu processo de matrículas para garantir escala.",
   },
 ];
 
@@ -96,29 +98,34 @@ const EducacaoPagina = () => (
             <div className="space-y-5">
               <RevealAnimation delay={0.1}>
                 <div>
-                  <Badge text="Setor · Educação" />
+                  <Badge text="Para faculdades, pós-graduações e instituições de ensino" />
                 </div>
               </RevealAnimation>
               <TextReveal delay={0.15}>
                 <h1 style={balance} className="xl:text-heading-2!">
-                  Capte mais alunos e transforme leads em matrículas com mais previsibilidade
+                  Capte mais alunos e transforme leads em matrículas com mais
+                  previsibilidade.
                 </h1>
               </TextReveal>
               <TextReveal delay={0.25}>
                 <p className="max-w-[580px]">
-                  Unimos mídia, landing pages, dados e processo comercial para faculdades,
-                  pós-graduações e instituições de ensino captarem alunos com previsibilidade.
+                  Unimos mídia, landing pages, dados e processo comercial para
+                  sua instituição captar alunos com mais previsibilidade e
+                  transformar demanda em matrícula.
                 </p>
               </TextReveal>
             </div>
             <RevealAnimation delay={0.3}>
               <ul className="space-y-3">
                 {[
-                  'Leads com mais intenção de matrícula',
-                  'Mais previsibilidade para fechar turmas',
-                  'Marketing e comercial conectados ao resultado',
+                  "Leads com mais intenção de matrícula",
+                  "Mais previsibilidade para fechar turmas",
+                  "Marketing e comercial conectados ao resultado",
                 ].map((item) => (
-                  <li key={item} className="text-tagline-1 text-secondary flex items-center gap-3">
+                  <li
+                    key={item}
+                    className="text-tagline-1 text-secondary flex items-center gap-3"
+                  >
                     <span className="bg-primary-500 flex size-6 shrink-0 items-center justify-center rounded-full">
                       <CheckIcon className="size-3.5" />
                     </span>
@@ -128,17 +135,36 @@ const EducacaoPagina = () => (
               </ul>
             </RevealAnimation>
             <RevealAnimation delay={0.4} direction="left">
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <Link href="#contato" className="inline-flex w-full sm:w-auto">
-                  <ButtonPrimary text="Analisar minha captação" className="w-full" />
-                </Link>
-                <Link href="/cases/educacao" className="inline-flex w-full sm:w-auto">
-                  <ButtonWhite text="Ver case" className="w-full" />
-                </Link>
+              <div>
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <Link
+                    href="#contato"
+                    className="inline-flex w-full sm:w-auto"
+                  >
+                    <ButtonPrimary
+                      text="Quero analisar minha captação"
+                      className="w-full"
+                    />
+                  </Link>
+                  <Link
+                    href="/cases/educacao"
+                    className="inline-flex w-full sm:w-auto"
+                  >
+                    <ButtonWhite text="Ver case" className="w-full" />
+                  </Link>
+                </div>
+                <p className="text-tagline-2 text-secondary/55 mt-4">
+                  Diagnóstico inicial para mapear gargalos de mídia, lead e
+                  matrícula.
+                </p>
               </div>
             </RevealAnimation>
           </div>
-          <RevealAnimation delay={0.4} direction="right" className="col-span-12 lg:col-span-5">
+          <RevealAnimation
+            delay={0.4}
+            direction="right"
+            className="col-span-12 lg:col-span-5"
+          >
             <div>
               <PainelMatriculas />
             </div>
@@ -147,7 +173,32 @@ const EducacaoPagina = () => (
 
         {/* Instituições */}
         <div className="mt-16 md:mt-20">
-          <p className="text-tagline-2 mb-6 text-center">Instituições que confiam na UPDO</p>
+          <div className="mb-8 flex flex-col items-center gap-6 md:flex-row md:justify-between">
+            <div className="text-center md:text-left">
+              <p className="text-tagline-2 text-lilas-500 font-medium">
+                Autoridade Educacional
+              </p>
+              <h2 className="text-heading-5 mt-2 font-normal">
+                Instituições que confiam na UPDO.
+              </h2>
+            </div>
+            <div className="flex gap-8">
+              <div>
+                <p className="font-titulo text-heading-5 font-medium">+1.2M</p>
+                <p className="text-tagline-2 text-secondary/60">
+                  leads gerados
+                </p>
+              </div>
+              <div>
+                <p className="font-titulo text-heading-5 font-medium">
+                  +R$ 450M
+                </p>
+                <p className="text-tagline-2 text-secondary/60">
+                  em matrículas geradas
+                </p>
+              </div>
+            </div>
+          </div>
           <ul className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4 lg:grid-cols-7">
             {instituicoes.map((logo) => (
               <li
@@ -155,7 +206,13 @@ const EducacaoPagina = () => (
                 className="relative flex h-16 items-center justify-center px-3 opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0"
               >
                 <div className="relative h-10 w-full">
-                  <Image src={logo.src} alt={logo.name} fill sizes="160px" className="object-contain" />
+                  <Image
+                    src={logo.src}
+                    alt={logo.name}
+                    fill
+                    sizes="160px"
+                    className="object-contain"
+                  />
                 </div>
               </li>
             ))}
@@ -188,23 +245,29 @@ const EducacaoPagina = () => (
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Captação educacional"
-          title="O que costuma travar a captação"
-          description="Se a instituição gera lead e a turma não fecha, o problema costuma estar entre a mídia, o atendimento e a leitura do funil."
+          title="O que costuma travar a captação."
         />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
           {barreiras.map((item, index) => (
-            <RevealAnimation key={item.title} delay={0.1 + index * 0.1} className="col-span-12 md:col-span-4">
+            <RevealAnimation
+              key={item.title}
+              delay={0.1 + index * 0.1}
+              className="col-span-12 md:col-span-4"
+            >
               <div
                 className={cn(
-                  'flex h-full flex-col gap-10 rounded-2xl p-7',
-                  ['bg-lilas-50', 'bg-primary-50', 'bg-background-13'][index % 3]
+                  "flex h-full flex-col gap-10 rounded-2xl p-7",
+                  ["bg-lilas-50", "bg-primary-50", "bg-background-13"][
+                    index % 3
+                  ],
                 )}
               >
-                <IconChip icon={item.icon} tone={index % 2 === 0 ? 'lilas' : 'menta'} size="lg" />
-                <div className="space-y-2">
-                  <h3 className="text-heading-6 font-normal">{item.title}</h3>
-                  <p className="text-tagline-2">{item.description}</p>
-                </div>
+                <IconChip
+                  icon={item.icon}
+                  tone={index % 2 === 0 ? "lilas" : "menta"}
+                  size="lg"
+                />
+                <h3 className="text-heading-6 font-normal">{item.title}</h3>
               </div>
             </RevealAnimation>
           ))}
@@ -214,22 +277,39 @@ const EducacaoPagina = () => (
 
     {/* Case */}
     <section className="bg-secondary py-18 md:py-28 xl:py-32">
-      <div className="main-container">
+      <div className="main-container space-y-12 md:space-y-16">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <SectionHeading
+            tone="dark"
+            align="left"
+            badge="Autoridade"
+            title="Prova real antes de falar em escala."
+          />
+          <p className="text-tagline-1 max-w-[340px] text-white/60 lg:text-right">
+            Captação educacional precisa conectar mídia, atendimento e leitura
+            do funil para virar matrícula.
+          </p>
+        </div>
         <div className="grid grid-cols-12 items-center gap-y-12 lg:gap-x-16">
           <div className="col-span-12 space-y-6 lg:col-span-6">
             <SectionHeading
               tone="dark"
               align="left"
               badge="Case educacional"
-              title="Mais leads, mais processo, mais matrícula"
-              description="Em uma instituição de ensino superior, a UPDO reorganizou a captação com estratégia, automação e processo comercial para transformar interesse em matrícula."
+              title="Instituição de Ensino Superior: mais leads, mais processo, mais matrícula."
+              description="A UPDO reorganizou a captação com estratégia, automação e processo comercial para transformar interesse em resultado."
             />
             <RevealAnimation delay={0.3}>
               <p className="text-tagline-2 flex items-center gap-3 rounded-2xl bg-white/5 p-4 text-white/70">
                 <span className="bg-primary-500 text-secondary flex size-9 shrink-0 items-center justify-center rounded-xl">
-                  <TrendingUp className="size-4" strokeWidth={2} aria-hidden="true" />
+                  <TrendingUp
+                    className="size-4"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
                 </span>
-                Resultado acompanhado da geração do lead até a conversão comercial.
+                Resultado acompanhado da geração do lead até a conversão
+                comercial.
               </p>
             </RevealAnimation>
           </div>
@@ -237,12 +317,24 @@ const EducacaoPagina = () => (
             {metricasCase.map((item, index) => (
               <RevealAnimation key={item.label} delay={0.2 + index * 0.1}>
                 <div className="rounded-2xl border border-white/10 p-6">
-                  <p className="font-titulo text-heading-4 text-primary-500 font-medium">{item.valor}</p>
-                  <p className="text-tagline-2 mt-1 text-white/60">{item.label}</p>
+                  <p className="font-titulo text-heading-4 text-primary-500 font-medium">
+                    {item.valor}
+                  </p>
+                  <p className="text-tagline-2 mt-1 text-white/60">
+                    {item.label}
+                  </p>
                 </div>
               </RevealAnimation>
             ))}
           </div>
+        </div>
+        <div className="flex flex-col items-center gap-6 border-t border-white/10 pt-12 text-center">
+          <p className="text-heading-6 font-normal text-white">
+            Quer descobrir o que hoje limita a sua captação de alunos?
+          </p>
+          <Link href="#contato" className="inline-flex">
+            <ButtonPrimary text="Quero analisar minha captação" />
+          </Link>
         </div>
       </div>
     </section>
@@ -260,13 +352,17 @@ const EducacaoPagina = () => (
             />
             <RevealAnimation delay={0.3}>
               <p className="text-tagline-2 bg-lilas-50 text-secondary/80 rounded-2xl p-5">
-                Reconhecidos como destaque nacional pela RD Station com cases no segmento educacional.
+                Reconhecidos como destaque nacional pela RD Station com cases no
+                segmento educacional.
               </p>
             </RevealAnimation>
           </div>
           <RevealAnimation delay={0.2} className="col-span-12 lg:col-span-7">
             <div className="bg-background-13 relative aspect-video overflow-hidden rounded-3xl shadow-lg">
-              <VideoDepoimento videoId="2cE9ycBnLVg" name="cliente do setor educacional" />
+              <VideoDepoimento
+                videoId="2cE9ycBnLVg"
+                name="cliente do setor educacional"
+              />
             </div>
           </RevealAnimation>
         </div>
@@ -285,8 +381,8 @@ const EducacaoPagina = () => (
           <div className="col-span-12 lg:col-span-5">
             <SectionHeading
               align="left"
-              badge="Diagnóstico gratuito"
-              title="Receba um diagnóstico gratuito da sua captação de alunos"
+              badge="Análise da captação"
+              title="Receba um diagnóstico gratuito da sua captação de alunos."
               description="Vamos analisar onde sua captação perde alunos e indicar os próximos passos para gerar matrículas com mais previsibilidade."
             />
           </div>
@@ -296,29 +392,31 @@ const EducacaoPagina = () => (
                 formName="Diagnóstico Educacional"
                 service=""
                 pagePath="/marketing-educacional"
-                extraFields={{ sector: 'Educação' }}
-                submitText="Quero meu diagnóstico"
+                extraFields={{ sector: "Educação" }}
+                submitText="Quero meu diagnóstico gratuito"
+                nota="Com base nas suas respostas, preparamos um diagnóstico inicial mais preciso."
+                sucesso="Recebemos seus dados. Nossa equipe vai analisar as informações e retornar com os próximos passos."
                 selects={[
                   {
-                    id: 'challenge',
-                    label: 'Principal desafio hoje',
+                    id: "challenge",
+                    label: "Principal desafio hoje",
                     options: [
-                      'Baixa conversão de leads',
-                      'Turmas que não fecham',
-                      'Dependência de indicação',
-                      'Custo por matrícula alto',
-                      'Equipe comercial sem processo',
-                      'Falta de previsibilidade na captação',
+                      "Baixa conversão de leads",
+                      "Turmas que não fecham",
+                      "Dependência de indicação",
+                      "Custo por matrícula alto",
+                      "Equipe comercial sem processo",
+                      "Falta de previsibilidade na captação",
                     ],
                   },
                   {
-                    id: 'investment',
-                    label: 'Investimento em marketing',
+                    id: "investment",
+                    label: "Investimento em marketing",
                     options: [
-                      'Ainda não invisto',
-                      'Até R$5 mil/mês',
-                      'R$5 mil a R$20 mil/mês',
-                      'Acima de R$20 mil/mês',
+                      "Ainda não invisto",
+                      "Até R$5 mil/mês",
+                      "R$5 mil a R$20 mil/mês",
+                      "Acima de R$20 mil/mês",
                     ],
                   },
                 ]}
@@ -332,8 +430,10 @@ const EducacaoPagina = () => (
     <div className="bg-white">
       <Faq
         items={faqEducacao}
-        title="Dúvidas sobre captação de alunos"
-        description="Respostas diretas para as perguntas que mais recebemos de instituições de ensino."
+        badge="Dúvidas Frequentes"
+        title="Objeções matam suas matrículas."
+        description="Transparência e clareza são fundamentais para uma parceria de longo prazo. Aqui estão as respostas para os questionamentos mais comuns de nossos parceiros."
+        citacao="Ainda tem alguma dúvida específica? Nosso diagnóstico gratuito serve justamente para sanar cada detalhe do seu projeto."
       />
     </div>
   </>

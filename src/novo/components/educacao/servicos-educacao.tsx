@@ -4,21 +4,23 @@ import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import SectionHeading from '@/novo/components/shared/section-heading';
 import { cn } from '@/novo/utils/cn';
 import { Bot, Check, GitMerge, LayoutGrid, Megaphone, Search } from 'lucide-react';
+import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
+import Link from 'next/link';
 import { useState } from 'react';
 
 const servicos = [
   {
     icon: Search,
     tag: 'Fundação',
-    title: 'Matriz CSD e diagnóstico estratégico',
+    title: 'Matriz CSD & Diagnóstico Estratégico',
     problem:
-      'Muitos gestores investem em marketing com base em suposições sobre o que o aluno realmente quer, gerando desperdício e frustração.',
+      "A maioria dos gestores investe em marketing baseados em 'achismos' ou suposições sobre o que o seu aluno realmente quer, gerando desperdício e frustração.",
     solution:
-      'Aplicamos a Matriz CSD (Certezas, Suposições e Dúvidas) no início do projeto, transformando hipóteses em dados para guiar cada ação do plano de captação.',
+      'Aplicamos a Matriz CSD (Certezas, Suposições e Dúvidas) no Discovery do seu projeto, transformando hipóteses em dados reais para guiar cada ação do seu plano de captação.',
     results: [
       'Estratégia baseada em fatos, não em palpites',
-      'Menos risco logo no início do investimento',
-      'Clareza sobre os objetivos de negócio',
+      'Redução de risco logo no início do investimento',
+      'Clareza total sobre os objetivos de negócio',
     ],
   },
   {
@@ -26,12 +28,12 @@ const servicos = [
     tag: 'Atração',
     title: 'Geração de demanda qualificada',
     problem:
-      'A instituição investe em anúncios, mas atrai curiosos e gera muitos leads que não viram matrícula.',
+      'Sua instituição investe em anúncios mas atrai apenas curiosos, gerando um volume alto de leads que não convertem em matrículas reais.',
     solution:
-      'Criamos e gerimos campanhas no Google, Meta e LinkedIn com foco em alunos com intenção real e perfil para o curso.',
+      'Criamos e gerimos campanhas estruturadas no Google, Meta e LinkedIn com foco em atrair alunos com real intenção de compra e perfil para o seu curso.',
     results: [
-      'Leads com mais interesse e perfil para o curso',
-      'Custo por matrícula menor',
+      'Leads com maior poder aquisitivo e interesse real',
+      'Redução drástica do custo por matrícula (CAC)',
       'Campanhas otimizadas por curso e unidade',
     ],
   },
@@ -40,13 +42,13 @@ const servicos = [
     tag: 'Conversão',
     title: 'Funil de captação e automação',
     problem:
-      'O interessado chega, se perde em um site confuso ou demora para ser atendido e procura a concorrência.',
+      'O interessado chega mas se perde em um site confuso ou demora para ser atendido, fazendo com que ele procure a concorrência.',
     solution:
-      'Desenvolvemos landing pages de conversão e fluxos de automação (CRM, e-mail e WhatsApp) que mantêm o lead engajado até a matrícula.',
+      'Desenvolvemos landing pages de alta conversão e fluxos de automação (CRM/E-mail/WhatsApp) que mantêm o lead engajado até o fechamento.',
     results: [
-      'Mais agendamentos de visita',
+      'Aumento na taxa de agendamento de visitas',
       'Nutrição automática de leads em dúvida',
-      'Rastreamento da jornada do aluno',
+      'Rastreamento total da jornada do aluno',
     ],
   },
   {
@@ -54,13 +56,13 @@ const servicos = [
     tag: 'Vendas',
     title: 'Estruturação do processo comercial',
     problem:
-      'A equipe não tem script claro, não faz follow-up e perde matrículas por falhas básicas de atendimento.',
+      'Sua equipe de vendas não tem um script claro, não faz follow-up e acaba perdendo matrículas por falhas básicas de atendimento.',
     solution:
-      'Desenvolvemos o Playbook de Vendas Educacional e aplicamos o Treinamento de Neuromarketing para a equipe comercial, com atendimento focado em fechamento.',
+      'Desenvolvemos o seu Playbook de Vendas Educacional e aplicamos o Treinamento de Neuromarketing para sua equipe comercial, padronizando um atendimento focado em fechamento.',
     results: [
-      'Mais conversão comercial',
-      'Playbook de vendas replicável',
-      'Equipe treinada em neuromarketing',
+      'Aumento real na taxa de conversão comercial',
+      'Playbook de Vendas replicável e escalável',
+      'Equipe treinada em gatilhos de neuromarketing',
     ],
   },
   {
@@ -68,13 +70,13 @@ const servicos = [
     tag: 'Inteligência',
     title: 'Inteligência de dados e performance',
     problem:
-      'A instituição não sabe qual canal traz mais retorno ou qual curso está mais caro de captar, e decide no escuro.',
+      'Você não sabe qual canal traz mais lucro ou qual curso está sendo mais caro captar. As decisões são tomadas no escuro.',
     solution:
-      'Acesso ao Radar de Matrículas, nosso sistema próprio que oferece um panorama estratégico que o CRM não alcança.',
+      'Acesso ao Radar de Matrículas™, nosso sistema próprio e independente que oferece um panorama estratégico real que o seu CRM não alcança.',
     results: [
-      'ROI por curso e campanha',
-      'Panorama unificado da instituição',
-      'Decisões rápidas com dados próprios',
+      'Visão clara do ROI real por curso e campanha',
+      'Panorama estratégico unificado da sua instituição',
+      'Decisões rápidas baseadas em dados exclusivos',
     ],
   },
 ];
@@ -88,8 +90,8 @@ const ServicosEducacao = () => {
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Serviços"
-          title="O que você recebe na prática"
-          description="Não vendemos só tráfego. Implementamos um sistema que organiza a captação do anúncio à matrícula."
+          title="O que você recebe na prática."
+          description="Nós não vendemos apenas tráfego. Implementamos um sistema completo que organiza sua captação do anúncio à matrícula."
         />
 
         <RevealAnimation delay={0.2}>
@@ -140,7 +142,7 @@ const ServicosEducacao = () => {
                   </div>
                 </div>
                 <div className="bg-background-13 rounded-2xl p-6">
-                  <p className="text-tagline-2 text-secondary font-medium">O que muda</p>
+                  <p className="text-tagline-2 text-secondary font-medium">Resultados esperados</p>
                   <ul className="mt-4 space-y-3">
                     {atual.results.map((resultado) => (
                       <li key={resultado} className="text-tagline-2 text-secondary flex items-start gap-3">
@@ -151,6 +153,9 @@ const ServicosEducacao = () => {
                       </li>
                     ))}
                   </ul>
+                  <Link href="#contato" className="mt-6 inline-flex">
+                    <ButtonPrimary text="Quero estruturar isso no meu negócio" />
+                  </Link>
                 </div>
               </div>
             </div>

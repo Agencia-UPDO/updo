@@ -17,16 +17,17 @@ export const chatgptAds: ServicoConteudo = {
   hero: {
     title: 'ChatGPT Ads para aparecer quando o cliente está decidindo',
     description:
-      'Planejamos e operamos campanhas no ChatGPT conectando intenção conversacional, anúncios, landing pages, tracking, SEO, GEO e AEO.',
+      'Planejamos e operamos campanhas no ChatGPT conectando intenção conversacional, anúncios, landing pages, tracking, SEO e GEO.',
     bullets: [
       'Contextos definidos por intenção e momento de decisão',
       'Anúncios e landing pages com continuidade de mensagem',
       'Mídia paga integrada a SEO, GEO, analytics e CRM',
     ],
     ctaText: 'Quero anunciar no ChatGPT',
+    ctaSecundario: { text: 'Ver diagnóstico', href: '/diagnostico' },
   },
   resultado: {
-    title: 'Entrar cedo exige teste controlado, não aposta cega',
+    title: 'Entrar cedo exige teste controlado, não aposta cega.',
     description:
       'A UPDO já opera campanhas na plataforma e usa os primeiros dados para ajustar contexto, mensagem, página e mensuração. Começamos com hipóteses claras, orçamento controlado e critério de escala.',
     metrics: [
@@ -38,9 +39,7 @@ export const chatgptAds: ServicoConteudo = {
   },
   visual: 'jornada-ia',
   problemas: {
-    title: 'Por que simplesmente replicar campanhas antigas não basta',
-    description:
-      'Se o cliente já compara opções dentro do ChatGPT, a marca que não aparece nessa conversa fica fora da decisão.',
+    title: 'Por que simplesmente replicar campanhas antigas não basta.',
     items: [
       {
         icon: Filter,
@@ -99,6 +98,7 @@ export const chatgptAds: ServicoConteudo = {
     ],
   },
   entregas: {
+    ctaText: 'Quero estruturar ChatGPT Ads',
     title: 'O que entregamos em ChatGPT Ads e presença em IA',
     description:
       'A operação conecta campanha, contexto, criativo, landing page, conversão e autoridade orgânica em um mesmo aprendizado.',
@@ -129,7 +129,7 @@ export const chatgptAds: ServicoConteudo = {
       },
       {
         icon: Globe2,
-        title: 'SEO, GEO, AEO e autoridade em IA',
+        title: 'SEO, GEO e autoridade em IA',
         description:
           'Transformamos perguntas e aprendizados da mídia em páginas e conteúdos compreensíveis por buscadores e modelos de IA.',
       },
@@ -181,7 +181,8 @@ export const chatgptAds: ServicoConteudo = {
     description:
       'Preencha para analisarmos oferta, categoria, estrutura digital, investimento e capacidade de medir conversões.',
     formName: 'Diagnóstico ChatGPT Ads',
-    submitText: 'Quero meu diagnóstico',
+    submitText: 'Avaliar ChatGPT Ads',
+    nota: 'Com base nas respostas, avaliamos se o canal faz sentido e qual estrutura precisa entrar primeiro.',
     selects: [
       {
         id: 'budget',
@@ -195,7 +196,7 @@ export const chatgptAds: ServicoConteudo = {
       },
       {
         id: 'channels',
-        label: 'Mídia atual',
+        label: 'Experiência com mídia',
         options: [
           'Já anuncio no ChatGPT',
           'Tenho conta, mas ainda não anunciei',
@@ -227,6 +228,27 @@ export const chatgptAds: ServicoConteudo = {
         ],
       },
     ],
+  },
+  caso: {
+    badge: 'Canal emergente',
+    title: 'Entrar cedo exige teste controlado, não aposta cega.',
+    description:
+      'A UPDO já opera campanhas na plataforma e usa os primeiros dados para ajustar contexto, mensagem, página e mensuração. Começamos com hipóteses claras, orçamento controlado e critério de escala.',
+    ctaText: 'Quero avaliar esse canal para minha empresa',
+    metrics: [
+      { value: 'CPC', label: 'custo por clique' },
+      { value: 'CTR', label: 'taxa de cliques' },
+      { value: 'Conversões', label: 'ações geradas' },
+      { value: 'CPA', label: 'custo por conversão' },
+    ],
+  },
+  faqTexto: {
+    badge: 'Dúvidas frequentes',
+    title: 'Dúvidas sobre anúncios no ChatGPT.',
+    description:
+      'A plataforma ainda está evoluindo. Por isso, estratégia, política, tracking e clareza da oferta importam tanto quanto a campanha.',
+    citacao:
+      'Entrar cedo pode gerar vantagem, desde que o teste produza aprendizado comercial e não apenas novidade.',
   },
   faq: [
     {

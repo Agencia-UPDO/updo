@@ -112,16 +112,18 @@ const FluxoPilares = ({ itens }: { itens: Pilar[] }) => {
                 <p className="text-tagline-2 text-white/60 md:mx-auto md:max-w-[240px]">
                   {item.description}
                 </p>
-                <span
-                  className={cn(
-                    'text-tagline-3 inline-flex rounded-full border px-3 py-1 font-medium transition-all duration-500',
-                    acesa
-                      ? 'border-primary-500/40 bg-primary-500/10 text-primary-500'
-                      : 'border-white/10 text-white/40'
-                  )}
-                >
-                  {item.resultado}
-                </span>
+                {item.resultado && (
+                  <span
+                    className={cn(
+                      'text-tagline-3 inline-flex rounded-full border px-3 py-1 font-medium transition-all duration-500',
+                      acesa
+                        ? 'border-primary-500/40 bg-primary-500/10 text-primary-500'
+                        : 'border-white/10 text-white/40'
+                    )}
+                  >
+                    {item.resultado}
+                  </span>
+                )}
               </div>
             </li>
           );

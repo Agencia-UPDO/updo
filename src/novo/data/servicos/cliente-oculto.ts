@@ -27,29 +27,29 @@ export const clienteOculto: ServicoConteudo = {
       'Recomendações práticas para script, processo e posicionamento',
     ],
     ctaText: 'Solicitar diagnóstico',
+    ctaSecundario: { text: 'Ver diagnóstico estratégico', href: '/diagnostico' },
   },
   resultado: {
-    title: 'O que muda na prática',
+    title: 'O que muda na prática.',
     description:
-      'O Cliente Oculto revela se o gargalo está no tempo, na linguagem, no processo, na apresentação do produto ou na força de percepção do concorrente.',
+      'O Cliente Oculto revela se o gargalo está no tempo, na linguagem, no processo, na apresentação do produto ou na força de percepção do concorrente. Isso encurta decisão e melhora a execução da equipe.',
     metrics: [
       { value: 'Tempo', label: 'de resposta comparado com o mercado' },
       { value: 'Script', label: 'real da equipe e qualidade da abordagem' },
       { value: 'Percepção', label: 'de preço, valor, design e clareza' },
-      { value: 'Prioridade', label: 'do que corrigir primeiro' },
+      { value: 'Prioridade', label: 'do que corrigir primeiro para vender melhor' },
     ],
   },
   visual: 'cliente-oculto',
   problemas: {
-    title: 'Onde a venda escapa',
-    description:
-      'Muitas empresas acham que perdem por preço quando, na prática, perdem por demora, mensagem pronta ou falta de condução.',
+    badge: 'Onde a receita escapa',
+    title: 'Onde a venda escapa.',
     items: [
       {
         icon: Clock3,
         title: 'Atendimento lento e sem follow-up',
         description:
-          'O lead chama, espera, recebe resposta morna e some. A venda se perde antes de chegar na proposta.',
+          'O lead chama, espera, recebe resposta morna e some. Muitas empresas acham que perdem por preço quando, na prática, perdem por demora e falta de condução.',
       },
       {
         icon: MessageSquareMore,
@@ -61,7 +61,7 @@ export const clienteOculto: ServicoConteudo = {
         icon: Search,
         title: 'Concorrente parece melhor do que é',
         description:
-          'Preço, design, clareza de oferta, prova social e experiência moldam percepção. Sem benchmark, a empresa ajusta campanha sem entender onde a experiência perde força.',
+          'Preço, design, clareza de oferta, prova social e experiência moldam percepção. Sem benchmark, a empresa ajusta campanha sem entender onde a experiência realmente perde força.',
       },
     ],
   },
@@ -80,10 +80,11 @@ export const clienteOculto: ServicoConteudo = {
       'Prioridade do que corrigir primeiro para vender melhor',
     ],
   },
+
   entregas: {
-    title: 'O que você recebe',
-    description:
-      'Evidência real do seu atendimento e do concorrente, com prioridade clara do que corrigir primeiro.',
+    title: 'O que você recebe.',
+    description: '',
+    ctaText: 'Quero avaliar meu atendimento',
     items: [
       {
         icon: PhoneCall,
@@ -101,72 +102,92 @@ export const clienteOculto: ServicoConteudo = {
         icon: FileSearch,
         title: 'Relatório com evidências reais',
         description:
-          'Prints, tempos de resposta, pontos de ruptura, comparativos e leitura prática do que está funcionando ou travando a conversão.',
+          'Você recebe prints, tempos de resposta, pontos de ruptura, comparativos e leitura prática do que está funcionando ou travando a conversão.',
       },
       {
         icon: RefreshCcw,
         title: 'Roteiro de correção',
         description:
-          'O diagnóstico vira prioridade prática: script, follow-up, padrão de atendimento, apresentação do produto e ajustes de processo.',
+          'Transformamos o diagnóstico em prioridade prática: script, follow-up, padrão de atendimento, apresentação do produto e ajustes de processo.',
       },
       {
         icon: Eye,
         title: 'Leitura de percepção',
         description:
-          'Como sua empresa é percebida frente ao concorrente em valor, clareza, desejo, confiança e facilidade de compra.',
+          'Mostramos como sua empresa é percebida frente ao concorrente em valor, clareza, desejo, confiança e facilidade de compra.',
       },
       {
         icon: Users,
         title: 'Base para treinamento da equipe',
         description:
-          'O Cliente Oculto vira insumo para desenvolver atendimento, recepção, comercial e liderança com base em situações reais.',
+          'O Cliente Oculto também vira insumo para desenvolver atendimento, recepção, comercial e liderança com base em situações reais.',
       },
     ],
   },
   pilares: {
     badge: 'Método Cliente Oculto',
-    title: 'Da simulação ao plano de ação',
+    title: 'Da simulação ao plano de ação.',
     description:
       'Entramos na jornada, registramos a experiência e transformamos os achados em prioridades claras para atendimento, oferta e processo.',
     items: [
       {
         icon: Target,
         label: 'Definição do cenário',
-        description: 'Canais, perfis de cliente, pontos de contato e concorrentes da leitura.',
-        resultado: 'Escopo claro',
+        description:
+          'Mapeamos canais, perfis de cliente, pontos de contato e concorrentes que entram na leitura.',
+        resultado: '',
       },
       {
         icon: PhoneCall,
         label: 'Execução oculta',
-        description: 'Entramos como cliente real e registramos tempo, linguagem e follow-up.',
-        resultado: 'Evidência real',
+        description:
+          'Entramos na jornada como cliente real e registramos atendimento, tempo, linguagem, condução e follow-up.',
+        resultado: '',
       },
       {
         icon: ScanSearch,
         label: 'Benchmark competitivo',
-        description: 'Comparamos sua experiência com a dos principais concorrentes.',
-        resultado: 'Comparativo',
+        description:
+          'Comparamos sua experiência com a experiência entregue pelos principais concorrentes.',
+        resultado: '',
       },
       {
         icon: BarChart3,
         label: 'Prioridade de impacto',
-        description: 'Achados organizados por risco comercial e impacto em conversão.',
-        resultado: 'Foco certo',
+        description:
+          'Organizamos os achados por risco comercial, perda de confiança e impacto em conversão.',
+        resultado: '',
       },
       {
         icon: ListChecks,
         label: 'Plano de ajuste',
-        description: 'Recomendações para atendimento, processo, produto e posicionamento.',
-        resultado: 'Próximos passos',
+        description:
+          'Entregamos recomendações práticas para atendimento, processo, apresentação de produto e posicionamento.',
+        resultado: '',
       },
     ],
   },
+  caso: {
+    badge: 'Resultados',
+    title: 'O que muda na prática.',
+    description:
+      'O Cliente Oculto revela se o gargalo está no tempo, na linguagem, no processo, na apresentação do produto ou na força de percepção do concorrente. Isso encurta decisão e melhora a execução da equipe.',
+    ctaText: 'Diagnosticar meu atendimento',
+    metrics: [
+      { value: 'Tempo', label: 'de resposta comparado com o mercado' },
+      { value: 'Script', label: 'real da equipe e qualidade da abordagem' },
+      { value: 'Percepção', label: 'de preço, valor, design e clareza' },
+      { value: 'Prioridade', label: 'do que corrigir primeiro para vender melhor' },
+    ],
+  },
   formulario: {
-    title: 'Vamos auditar sua experiência comercial',
+    title: 'Vamos auditar sua experiência comercial.',
     description:
       'Preencha os dados para entendermos o canal, o foco da auditoria e onde faz mais sentido aplicar Cliente Oculto na sua operação.',
     formName: 'Diagnóstico Cliente Oculto',
-    submitText: 'Quero meu diagnóstico',
+    submitText: 'Diagnosticar meu atendimento',
+    nota: 'Vamos avaliar seu atendimento, a força do concorrente e os pontos que merecem correção primeiro para proteger a conversão.',
+    sucesso: 'Vamos analisar o cenário e entender onde faz mais sentido aplicar Cliente Oculto na sua operação.',
     selects: [
       {
         id: 'sector',
@@ -210,6 +231,12 @@ export const clienteOculto: ServicoConteudo = {
       },
     ],
   },
+  faqTexto: {
+    badge: 'Dúvidas frequentes',
+    title: 'Dúvidas frequentes.',
+    description:
+      'Antes de revisar script, preço ou campanha, vale entender a experiência real que o cliente vive hoje.',
+  },
   faq: [
     {
       question: 'Vocês analisam só o meu atendimento ou também os concorrentes?',
@@ -229,7 +256,7 @@ export const clienteOculto: ServicoConteudo = {
     {
       question: 'Recebo só um relatório ou também orientação prática?',
       answer:
-        'Os dois. O relatório mostra evidências e comparativos. A recomendação prática organiza o que deve ser corrigido primeiro em script, tempo de resposta, processo, design ou posicionamento.',
+        'Você recebe os dois. O relatório mostra evidências e comparativos. A recomendação prática organiza o que deve ser corrigido primeiro em script, tempo de resposta, processo, design ou posicionamento.',
     },
     {
       question: 'Isso pode virar treinamento para o time?',

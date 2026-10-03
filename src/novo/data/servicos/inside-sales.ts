@@ -2,9 +2,13 @@ import {
   BarChart3,
   BookOpen,
   Brain,
+  Briefcase,
   FileText,
+  Mic,
+  RefreshCw,
   Target,
   Users,
+  Video,
   Zap,
 } from 'lucide-react';
 import type { ServicoConteudo } from '@/novo/components/servicos/servico-template';
@@ -22,11 +26,12 @@ export const insideSales: ServicoConteudo = {
       'Treinamento de vendas e neurovendas',
     ],
     ctaText: 'Estruturar meu comercial',
+    ctaSecundario: { text: 'Ver como funciona', href: '/diagnostico' },
   },
   resultado: {
     title: 'De 8% para 15% de conversão, sem contratar mais vendedores',
     description:
-      'Empresa de serviços com cinco vendedores, ticket médio de R$ 18 mil e pipeline no Excel. Após playbook, CRM estruturado e rotina semanal, o time passou a vender com mais previsibilidade.',
+      'Empresa de serviços com cinco vendedores, ticket médio de R$18 mil e pipeline no Excel. Após playbook, CRM estruturado e rotina semanal, o time passou a vender com mais previsibilidade.',
     metrics: [
       { value: '8% → 15%', label: 'conversão comercial' },
       { value: '-30%', label: 'ciclo de venda' },
@@ -97,6 +102,7 @@ export const insideSales: ServicoConteudo = {
     ],
   },
   entregas: {
+    ctaText: 'Quero estruturar meu processo comercial',
     title: 'Seis frentes que organizam o comercial',
     description:
       'A entrega conecta processo, treinamento, tecnologia e rotina para a venda depender de sistema, não de improviso.',
@@ -176,7 +182,8 @@ export const insideSales: ServicoConteudo = {
     description:
       'Preencha os dados para analisarmos processo, pipeline, conversão e ciclo de venda com mais contexto.',
     formName: 'Diagnóstico Inside Sales',
-    submitText: 'Quero meu diagnóstico',
+    submitText: 'Diagnosticar meu processo comercial',
+    nota: 'Com base nas suas respostas, preparamos um diagnóstico inicial mais preciso do processo comercial.',
     selects: [
       {
         id: 'teamSize',
@@ -202,7 +209,7 @@ export const insideSales: ServicoConteudo = {
       },
       {
         id: 'salesCycle',
-        label: 'Ciclo de venda',
+        label: 'Ciclo médio',
         options: [
           'Menos de 1 semana',
           '1 a 4 semanas',
@@ -223,6 +230,75 @@ export const insideSales: ServicoConteudo = {
         ],
       },
     ],
+  },
+  extra: {
+    badge: 'Treinamento de vendas',
+    title: 'Playbook na cabeça do time, não só na gaveta.',
+    description:
+      'Documentar o processo não basta. O treinamento coloca o método na prática com simulação, feedback e acompanhamento.',
+    bullets: ['Role-play com objeções reais', 'Feedback de pitches e chamadas', 'Onboarding de vendedores'],
+    items: [
+      {
+        icon: Mic,
+        title: 'Script de descoberta',
+        description:
+          'Perguntas de situação, problema, implicação e necessidade aplicadas ao seu processo.',
+        tag: 'Role-play',
+      },
+      {
+        icon: Video,
+        title: 'Coaching de pitch',
+        description:
+          'Análise de apresentações reais: estrutura, ritmo, linguagem e resposta a objeções.',
+        tag: 'Feedback individual',
+      },
+      {
+        icon: Brain,
+        title: 'Neurovendas',
+        description: 'Gatilhos de influência, ancoragem e prova social sem virar discurso artificial.',
+        tag: 'Workshop aplicado',
+      },
+      {
+        icon: Target,
+        title: 'Gestão de objeções',
+        description:
+          'Mapeamento das objeções do mercado e criação de respostas testadas em simulação.',
+        tag: 'Script + prática',
+      },
+      {
+        icon: Briefcase,
+        title: 'Proposta comercial',
+        description: 'Modelo de proposta que posiciona valor antes de preço e melhora o fechamento.',
+        tag: 'Modelo pronto',
+      },
+      {
+        icon: RefreshCw,
+        title: 'Follow-up',
+        description:
+          'Cadência por estágio para reativar lead parado sem depender da memória do vendedor.',
+        tag: 'Cadência',
+      },
+    ],
+  },
+  caso: {
+    badge: 'Resultado real',
+    title: 'De 8% para 15% de conversão, sem contratar mais vendedores.',
+    description:
+      'Empresa de serviços com cinco vendedores, ticket médio de R$18 mil e pipeline no Excel. Após playbook, CRM estruturado e rotina semanal, o time passou a vender com mais previsibilidade.',
+    ctaText: 'Quero esse resultado no meu comercial',
+    metrics: [
+      { value: '+38%', label: 'conversão comercial' },
+      { value: '-30%', label: 'ciclo de venda' },
+      { value: '85%', label: 'previsão de fechamento' },
+      { value: '< 30d', label: 'onboarding' },
+    ],
+  },
+  faqTexto: {
+    badge: 'Dúvidas frequentes',
+    title: 'Dúvidas sobre processo comercial e inside sales.',
+    description: 'Antes de contratar mais vendedor, vale entender onde o processo está perdendo receita.',
+    citacao:
+      'Venda não é talento, é processo. Quando o processo está certo, o time inteiro enxerga melhor o próximo passo.',
   },
   faq: [
     {

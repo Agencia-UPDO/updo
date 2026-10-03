@@ -1,11 +1,11 @@
 import {
   BarChart3,
+  BookOpen,
   Briefcase,
   Filter,
   Globe2,
   Layers,
   Megaphone,
-  MessageSquareText,
   MousePointerClick,
   Search,
   Target,
@@ -16,63 +16,53 @@ export const geracaoDeDemanda: ServicoConteudo = {
   slug: 'geracao-de-demanda',
   nome: 'Geração de Demanda',
   hero: {
-    title: 'Geração de demanda para atrair o lead que tem perfil de compra',
+    title: 'Geração de demanda para atrair o lead certo, não só mais leads',
     description:
-      'Estruturamos Google Ads, Meta Ads, LinkedIn Ads, SEO, GEO, AEO e conteúdo a partir do seu cliente ideal, da oferta e do CAC, para a verba virar oportunidade de venda.',
+      'Estruturamos Google Ads, Meta Ads, LinkedIn Ads, SEO, GEO, AEO e conteúdo com ICP, oferta e leitura de CAC para sua verba comprar oportunidade, não só tráfego.',
     bullets: [
-      'Canais definidos por cliente ideal, intenção e ciclo de venda',
+      'Canais definidos por ICP, intenção e ciclo de venda',
       'Qualificação desde o anúncio até a landing page',
-      'CPL, CAC e qualidade do lead acompanhados por canal',
+      'CPL, CAC e qualidade do lead por canal',
     ],
     ctaText: 'Estruturar minha demanda',
+    ctaSecundario: { text: 'Ver diagnóstico', href: '/diagnostico' },
   },
   resultado: {
-    title: 'CPL menor e mais lead qualificado sem depender de um canal',
+    title: 'CPL menor e mais lead qualificado sem depender de um canal.',
     description:
-      'Operação B2B com verba concentrada em Google Ads e baixa qualificação. Depois de ICP, landing page, remarketing e LinkedIn Ads, a aquisição ficou mais previsível e menos exposta ao leilão.',
+      'Operação B2B com verba concentrada em Google Ads e baixa qualificação. Após ICP, landing page, remarketing e LinkedIn Ads, a aquisição ficou mais previsível e menos vulnerável ao leilão.',
     metrics: [
-      { value: 'R$ 89', label: 'CPL médio' },
+      { value: 'R$89', label: 'CPL médio' },
       { value: '3x', label: 'leads qualificados' },
-      { value: '64%', label: 'taxa de qualificação' },
+      { value: '64%', label: 'qualificação' },
       { value: '31%', label: 'demanda orgânica' },
     ],
   },
-  painel: {
-    titulo: 'Aquisição por canal',
-    subtitulo: 'Case de cliente B2B',
-    kpis: [
-      { label: 'CPL médio', valor: 'R$ 89', variacao: '-38%' },
-      { label: 'Leads', valor: '3x', variacao: '+200%' },
-      { label: 'Qualificação', valor: '64%', variacao: '+29 p.p.' },
-    ],
-    barrasTitulo: 'Leads qualificados por canal',
+  cartao: {
+    rotulo: 'Performance por canal',
+    status: '30 dias',
+    titulo: 'Canal certo, lead certo, verba melhor alocada.',
     barras: [
-      { label: 'Google Ads', valor: '38%', largura: 100 },
-      { label: 'SEO e GEO', valor: '31%', largura: 82 },
-      { label: 'LinkedIn Ads', valor: '21%', largura: 55 },
-      { label: 'Meta Ads', valor: '10%', largura: 28 },
+      { label: 'Google Ads', valor: 'R$ 94', largura: 42 },
+      { label: 'Meta Ads', valor: 'R$ 118', largura: 28 },
+      { label: 'SEO / GEO', valor: 'Orgânico', largura: 20 },
+      { label: 'LinkedIn Ads', valor: 'R$ 204', largura: 10 },
     ],
-    serieTitulo: 'Leads qualificados por mês',
-    serie: [
-      { rotulo: 'Abr', valor: 42 },
-      { rotulo: 'Mai', valor: 58 },
-      { rotulo: 'Jun', valor: 71 },
-      { rotulo: 'Jul', valor: 89 },
-      { rotulo: 'Ago', valor: 104 },
-      { rotulo: 'Set', valor: 126 },
+    indicadores: [
+      { label: 'Leads', valor: '438' },
+      { label: 'CPL médio', valor: 'R$112' },
+      { label: 'Qualificados', valor: '64%' },
     ],
-    destaque: '126 leads · 3x',
+    nota: 'Gerar demanda não é comprar clique. É entender qual canal traz intenção real e qual lead merece chegar ao comercial.',
   },
   problemas: {
-    title: 'Onde a aquisição gasta verba antes de gerar receita',
-    description:
-      'Se o seu time recebe lead e vende pouco, o problema raramente é só a campanha. Costuma estar em um destes três pontos.',
+    title: 'Onde a aquisição gasta verba antes de gerar receita.',
     items: [
       {
         icon: Filter,
         title: 'Lead entra sem fit comercial',
         description:
-          'A campanha gera volume, mas o comercial gasta tempo com gente fora do perfil de cliente ideal. O custo real aparece depois do CPL.',
+          'A campanha gera volume, mas o comercial perde tempo com gente fora do ICP. O problema não é só CPL, é quem entra no funil.',
       },
       {
         icon: Layers,
@@ -82,9 +72,9 @@ export const geracaoDeDemanda: ServicoConteudo = {
       },
       {
         icon: BarChart3,
-        title: 'Relatório que para no clique',
+        title: 'Relatório mostra clique, não receita',
         description:
-          'Impressão, CTR e lead contam pouco sozinhos. A decisão de verba precisa enxergar qualidade, oportunidade, venda e CAC por canal.',
+          'Impressão, CTR e lead não bastam. A decisão de verba precisa enxergar qualidade, oportunidade, venda e CAC por canal.',
       },
     ],
   },
@@ -125,9 +115,10 @@ export const geracaoDeDemanda: ServicoConteudo = {
     ],
   },
   entregas: {
-    title: 'Sete frentes para gerar demanda com mais qualidade',
+    title: 'Sete frentes para gerar demanda com mais qualidade.',
     description:
       'A entrega conecta canal, oferta, mídia, SEO, GEO, AEO, landing page e leitura comercial para o lead chegar com mais contexto.',
+    ctaText: 'Quero melhorar minha aquisição',
     items: [
       {
         icon: Target,
@@ -145,22 +136,22 @@ export const geracaoDeDemanda: ServicoConteudo = {
         icon: Megaphone,
         title: 'Meta Ads',
         description:
-          'Campanhas para Facebook e Instagram com criativos, públicos e retargeting alinhados à etapa do funil.',
+          'Campanhas para Facebook e Instagram com criativos, públicos e retargeting alinhados ao estágio do funil.',
       },
       {
         icon: Briefcase,
         title: 'LinkedIn Ads e B2B',
         description:
-          'Segmentação por cargo, setor e empresa para ciclos longos, decisores específicos e tickets maiores.',
+          'Segmentação por cargo, setor e empresa para ciclos mais longos, decisores específicos e tickets maiores.',
       },
       {
         icon: Globe2,
         title: 'SEO, GEO, AEO e conteúdo',
         description:
-          'Arquitetura de conteúdo para buscadores, motores de resposta e IAs como ChatGPT e Gemini, capturando demanda orgânica de alta intenção.',
+          'Arquitetura de conteúdo para buscadores e respostas de IA, capturando demanda orgânica de alta intenção.',
       },
       {
-        icon: MessageSquareText,
+        icon: BookOpen,
         title: 'ChatGPT Ads',
         description:
           'Campanhas orientadas por intenção conversacional, conectadas a landing pages, tracking e aprendizado de GEO.',
@@ -169,19 +160,20 @@ export const geracaoDeDemanda: ServicoConteudo = {
         icon: BarChart3,
         title: 'CPL, CAC e qualidade por canal',
         description:
-          'Relatório que conecta investimento, lead, oportunidade e venda para realocar verba com segurança.',
+          'Relatório que conecta investimento, lead, oportunidade e venda para realocar verba com mais segurança.',
       },
     ],
   },
   pilares: {
-    title: 'Os quatro pilares da geração de demanda',
+    badge: 'Sistema de aquisição',
+    title: 'Os quatro pilares da geração de demanda.',
     description:
-      'ICP, oferta, canais e receita precisam ser lidos juntos. Quando isso falha, o time otimiza clique enquanto o comercial recebe lead ruim.',
+      'ICP, oferta, canais e receita precisam ser lidos juntos. Sem isso, o time otimiza clique enquanto o comercial briga com lead ruim.',
     items: [
       {
         icon: Target,
         label: 'ICP',
-        description: 'O canal é escolhido a partir do perfil de cliente que mais compra.',
+        description: 'O canal parte do perfil de cliente, não da ferramenta que está na moda.',
         resultado: 'Lead certo',
       },
       {
@@ -193,7 +185,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
       {
         icon: Layers,
         label: 'Canais',
-        description: 'Pago, orgânico, GEO e remarketing têm papéis diferentes na jornada.',
+        description: 'Pago, orgânico, GEO e remarketing trabalham com papéis diferentes na jornada.',
         resultado: 'Menos risco',
       },
       {
@@ -204,12 +196,26 @@ export const geracaoDeDemanda: ServicoConteudo = {
       },
     ],
   },
+  caso: {
+    badge: 'Resultado real',
+    title: 'CPL menor e mais lead qualificado sem depender de um canal.',
+    description:
+      'Operação B2B com verba concentrada em Google Ads e baixa qualificação. Após ICP, landing page, remarketing e LinkedIn Ads, a aquisição ficou mais previsível e menos vulnerável ao leilão.',
+    ctaText: 'Quero esse resultado na minha aquisição',
+    metrics: [
+      { value: 'R$89', label: 'CPL médio' },
+      { value: '3x', label: 'leads qualificados' },
+      { value: '64%', label: 'qualificação' },
+      { value: '31%', label: 'demanda orgânica' },
+    ],
+  },
   formulario: {
     title: 'Vamos entender como está sua geração de demanda',
     description:
       'Preencha para analisarmos canais, CPL, CAC, qualidade do lead e oportunidades de realocação de verba.',
     formName: 'Diagnóstico Geração de Demanda',
-    submitText: 'Quero meu diagnóstico',
+    submitText: 'Diagnosticar minha demanda',
+    nota: 'Com base nas suas respostas, preparamos um diagnóstico mais preciso da aquisição.',
     selects: [
       {
         id: 'budget',
@@ -257,6 +263,14 @@ export const geracaoDeDemanda: ServicoConteudo = {
       },
     ],
   },
+  faqTexto: {
+    badge: 'Dúvidas frequentes',
+    title: 'Dúvidas sobre geração de demanda e mídia paga.',
+    description:
+      'Antes de aumentar verba, vale entender se o problema está no canal, na oferta, no ICP ou no que acontece depois do clique.',
+    citacao:
+      'O melhor canal não salva uma oferta fraca. E o menor CPL não vale muito se o lead não vira conversa comercial.',
+  },
   faq: [
     {
       question: 'Vocês fazem gestão de mídia ou só estratégia?',
@@ -271,22 +285,22 @@ export const geracaoDeDemanda: ServicoConteudo = {
     {
       question: 'TikTok Ads faz sentido para todo negócio?',
       answer:
-        'Não. TikTok pode funcionar muito bem para awareness, demanda latente e alguns produtos B2C, mas precisa de criativo, oferta e público adequados. É um canal opcional.',
+        'Não. TikTok pode funcionar muito bem para awareness, demanda latente e alguns produtos B2C, mas precisa de criativo, oferta e público adequados. Não é canal obrigatório.',
     },
     {
       question: 'Como vocês qualificam o lead antes do comercial?',
       answer:
-        'A qualificação começa no anúncio, passa pela oferta, landing page, formulário e, quando necessário, automação de WhatsApp ou e-mail antes do repasse ao time comercial.',
+        'A qualificação começa no anúncio, passa pela oferta, landing page, formulário e, quando necessário, automação de WhatsApp ou e-mail antes do handoff.',
     },
     {
       question: 'SEO e GEO entram junto com mídia paga?',
       answer:
-        'Sim. Mídia paga acelera a aquisição; SEO e GEO constroem demanda de longo prazo em buscadores e respostas de IA. O ideal é que os canais compartilhem aprendizados de palavra-chave, oferta, pergunta e intenção.',
+        'Sim. Mídia paga acelera aquisição; SEO e GEO constroem demanda de longo prazo em buscadores e respostas de IA. O ideal é que os canais compartilhem aprendizados de palavra-chave, oferta, pergunta e intenção.',
     },
     {
       question: 'Quanto tempo para ver resultado?',
       answer:
-        'Mídia paga começa a gerar sinais nas primeiras semanas. A otimização de qualidade e CAC costuma amadurecer entre 4 e 8 semanas. SEO e GEO normalmente pedem de 90 a 180 dias.',
+        'Mídia paga começa a gerar sinais nas primeiras semanas. Otimização de qualidade e CAC costuma amadurecer entre 4 e 8 semanas. SEO e GEO normalmente pedem 90 a 180 dias.',
     },
   ],
 };
