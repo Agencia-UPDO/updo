@@ -30,6 +30,8 @@ export interface CaseConteudo {
   /** Seções visuais do case (funil, gráficos), na ordem em que aparecem. */
   secoes: { badge: string; title: string; description?: string; conteudo: ReactNode; fundo?: 'branco' | 'claro' }[];
   destaques: { titulo: string; texto: string }[];
+  /** Bloco opcional de parceria contínua, com os anos de recorde. */
+  parceria?: { title: string; description: string; anos: string[] };
   aprendizados: { icon: LucideIcon; text: string }[];
   chamada: { title: string; description: string; secundario?: { text: string; href: string } };
 }
@@ -180,6 +182,29 @@ const CaseTemplate = ({ c }: { c: CaseConteudo }) => (
         </div>
       </section>
     ))}
+
+    {c.parceria && (
+      <section className="bg-secondary py-18 md:py-28 xl:py-32">
+        <div className="main-container space-y-12">
+          <SectionHeading
+            tone="dark"
+            badge="Parceria contínua"
+            title={c.parceria.title}
+            description={c.parceria.description}
+          />
+          <ol className="relative mx-auto grid max-w-[880px] grid-cols-2 gap-4 md:grid-cols-4">
+            {c.parceria.anos.map((ano, index) => (
+              <RevealAnimation key={ano} delay={0.1 + index * 0.1}>
+                <li className="flex flex-col items-center gap-2 rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+                  <span className="font-titulo text-heading-5 text-primary-500 font-medium">{ano}</span>
+                  <span className="text-tagline-3 rounded-full bg-white/10 px-3 py-1 text-white/70">Recorde</span>
+                </li>
+              </RevealAnimation>
+            ))}
+          </ol>
+        </div>
+      </section>
+    )}
 
     {/* Aprendizados */}
     <section className="py-18 md:py-28 xl:py-32">

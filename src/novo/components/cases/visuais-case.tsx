@@ -35,6 +35,8 @@ export interface SerieGrafico {
 }
 
 const formatar = (valor: number, formato: SerieGrafico['formato']) => {
+  if (formato === 'moeda' && valor >= 1000000)
+    return `R$ ${(valor / 1000000).toLocaleString('pt-BR', { maximumFractionDigits: 2 })} mi`;
   if (formato === 'moeda' && valor >= 1000)
     return `R$ ${(valor / 1000).toLocaleString('pt-BR', { maximumFractionDigits: 1 })} mil`;
   if (formato === 'moeda')
@@ -58,13 +60,19 @@ export const GraficoBarras = ({
   titulo,
   series,
   grupos,
+  escalaUnica = false,
 }: {
   titulo: string;
   series: SerieGrafico[];
   grupos: GrupoGrafico[];
+  /** Todas as séries na mesma escala (ex.: meta x realizado). */
+  escalaUnica?: boolean;
 }) => {
   const { ref, visivel } = useVisivel();
-  const maximos = series.map((_, s) => Math.max(...grupos.map((g) => g.valores[s])));
+  const maxGeral = Math.max(...grupos.flatMap((g) => g.valores));
+  const maximos = series.map((_, s) =>
+    escalaUnica ? maxGeral : Math.max(...grupos.map((g) => g.valores[s]))
+  );
 
   return (
     <div ref={ref} className="border-stroke-3 h-full rounded-3xl border bg-white p-7">
@@ -72,14 +80,14 @@ export const GraficoBarras = ({
         <span className="bg-lilas-500 size-1.5 rounded-full" />
         {titulo}
       </p>
-      <div className="mt-6 grid gap-4" style={{ gridTemplateColumns: `repeat(${grupos.length}, minmax(0, 1fr))` }}>
+      <div className="mt-6 grid gap-2 sm:gap-4" style={{ gridTemplateColumns: `repeat(${grupos.length}, minmax(0, 1fr))` }}>
         {grupos.map((grupo, g) => (
           <div key={grupo.rotulo} className="flex flex-col items-center">
-            <div className="flex h-52 items-end gap-2.5">
+            <div className="flex h-52 w-full items-end justify-center gap-1.5 sm:gap-2.5">
               {grupo.valores.map((valor, s) => {
                 const ordem = g * series.length + s;
                 return (
-                  <div key={series[s].nome} className="flex h-full w-12 flex-col items-center justify-end gap-2 sm:w-14">
+                  <div key={series[s].nome} className="flex h-full w-full max-w-14 min-w-0 flex-col items-center justify-end gap-2">
                     <span
                       className={cn(
                         'text-[0.6875rem] sm:text-tagline-3 text-secondary text-center leading-tight font-medium sm:whitespace-nowrap transition-opacity duration-500',
@@ -175,5 +183,92 @@ export const FunilAnimado = ({ etapas }: { etapas: EtapaFunil[] }) => {
         </li>
       ))}
     </ol>
+  );
+};
+
+export interface MesMeta {
+  mes: string;
+  meta: number;
+  realizado: number;
+}
+
+/** Realizado x meta por mês: barra do realizado, traço da meta e percentual atingido. */
+export const GraficoMeta = ({ titulo, meses }: { titulo: string; meses: MesMeta[] }) => {
+  const { ref, visivel } = useVisivel();
+  const valores = meses.flatMap((m) => [m.meta, m.realizado]);
+  const piso = Math.min(...valores) * 0.8;
+  const teto = Math.max(...valores);
+  const altura = (v: number) => `${((v - piso) / (teto - piso)) * 80 + 10}%`;
+  const reais = (v: number) => `R$ ${Math.round(v / 1000).toLocaleString('pt-BR')} mil`;
+
+  return (
+    <div ref={ref} className="border-stroke-3 h-full rounded-3xl border bg-white p-7">
+      <p className="text-tagline-2 text-secondary/60 flex items-center gap-2 font-medium">
+        <span className="bg-lilas-500 size-1.5 rounded-full" />
+        {titulo}
+      </p>
+      <div className="mt-6 flex h-56 items-end justify-between gap-2 sm:gap-4">
+        {meses.map((m, i) => {
+          const pct = Math.round((m.realizado / m.meta) * 100);
+          const acima = pct >= 100;
+          return (
+            <div
+              key={m.mes}
+              className="relative flex h-full flex-1 flex-col items-center justify-end"
+              title={`Meta ${reais(m.meta)} · Realizado ${reais(m.realizado)}`}
+            >
+              <span
+                className={cn(
+                  'text-tagline-3 mb-2 font-medium transition-opacity duration-500',
+                  acima ? 'text-primary-700' : 'text-red-500',
+                  visivel ? 'opacity-100' : 'opacity-0'
+                )}
+                style={{ transitionDelay: `${800 + i * 120}ms` }}
+              >
+                {pct}%
+              </span>
+              <div className="relative w-full max-w-14" style={{ height: altura(m.realizado) }}>
+                <div
+                  className={cn(
+                    'absolute inset-x-0 bottom-0 rounded-t-xl transition-[height] duration-1000 ease-out',
+                    acima ? 'bg-primary-500' : 'bg-red-300'
+                  )}
+                  style={{ height: visivel ? '100%' : '0%', transitionDelay: `${i * 120}ms` }}
+                />
+              </div>
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'border-secondary/60 absolute inset-x-0 mx-auto max-w-16 border-t-2 border-dashed transition-opacity duration-500',
+                  visivel ? 'opacity-100' : 'opacity-0'
+                )}
+                style={{ bottom: altura(m.meta), transitionDelay: `${1000 + i * 120}ms` }}
+              />
+            </div>
+          );
+        })}
+      </div>
+      <div className="mt-2 flex justify-between gap-2 sm:gap-4">
+        {meses.map((m) => (
+          <span key={m.mes} className="text-tagline-3 text-secondary/55 flex-1 text-center">
+            {m.mes}
+          </span>
+        ))}
+      </div>
+      <div className="text-tagline-3 text-secondary/60 mt-5 flex flex-wrap justify-center gap-5">
+        <span className="flex items-center gap-1.5">
+          <span className="border-secondary/60 w-4 border-t-2 border-dashed" />
+          Meta
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="bg-primary-500 size-2.5 rounded-full" />
+          Superado
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="size-2.5 rounded-full bg-red-300" />
+          Abaixo
+        </span>
+      </div>
+    </div>
   );
 };

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { CaseVarejoClient } from "@/components/sections/cases/varejo-case";
+import CaseVarejo from "@/novo/components/cases/case-varejo";
 
 export const metadata: Metadata = {
   title: "Case de Marketing para Varejo | +87% de Faturamento",
@@ -67,7 +67,7 @@ export default function CaseVarejoPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <CaseVarejoClient />
+      <CaseVarejo />
     </>
   );
 }

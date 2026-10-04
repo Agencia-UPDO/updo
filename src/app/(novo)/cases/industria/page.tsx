@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { CaseIndustriaClient } from "@/components/sections/cases/industria-case";
+import CaseIndustria from "@/novo/components/cases/case-industria";
 
 export const metadata: Metadata = {
   title: "Case de Marketing Industrial | ROI 1.527% em Mídia Paga",
@@ -67,7 +67,7 @@ export default function CaseIndustriaPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <CaseIndustriaClient />
+      <CaseIndustria />
     </>
   );
 }
