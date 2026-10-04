@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DiagnosticPage } from "@/components/sections/diagnostico/diagnostic-page";
+import DiagnosticoPagina from "@/novo/components/diagnostico/diagnostico-pagina";
 
 export const metadata: Metadata = {
   title: "Diagnóstico de Marketing e Vendas",
@@ -26,5 +26,5 @@ export const metadata: Metadata = {
 };
 
 export default function Diagnostico() {
-  return <DiagnosticPage />;
+  return <DiagnosticoPagina />;
 }

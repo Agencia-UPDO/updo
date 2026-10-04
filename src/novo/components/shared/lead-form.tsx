@@ -8,6 +8,8 @@ export interface LeadFormSelect {
   id: string;
   label: string;
   options: string[];
+  /** Nome curto usado na mensagem de WhatsApp. */
+  curto?: string;
 }
 
 interface LeadFormProps {
@@ -22,6 +24,8 @@ interface LeadFormProps {
   nota?: string;
   /** Texto de confirmação depois do envio. */
   sucesso?: string;
+  /** Mostra o botão de WhatsApp depois do envio, com os dados preenchidos. */
+  whatsapp?: { numero: string; intro: string; fim: string };
 }
 
 const inputClass =
@@ -45,10 +49,12 @@ const LeadForm = ({
   extraFields,
   nota,
   sucesso,
+  whatsapp,
 }: LeadFormProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [whatsAppUrl, setWhatsAppUrl] = useState('');
   const [formData, setFormData] = useState({ nome: '', empresa: '', email: '', telefone: '' });
   const [selected, setSelected] = useState<Record<string, string>>(
     Object.fromEntries(selects.map((select) => [select.id, '']))
@@ -93,6 +99,19 @@ const LeadForm = ({
       // Tracking nao pode bloquear o envio do lead para a RD.
     }
 
+    if (whatsapp) {
+      const linhas = [
+        whatsapp.intro,
+        `*Nome:* ${formData.nome}`,
+        `*Empresa:* ${formData.empresa}`,
+        `*E-mail:* ${formData.email}`,
+        `*Telefone:* ${formData.telefone}`,
+        ...selects.map((select) => `*${select.curto ?? select.label}:* ${selected[select.id]}`),
+        whatsapp.fim,
+      ];
+      setWhatsAppUrl(`https://wa.me/${whatsapp.numero}?text=${encodeURIComponent(linhas.join('\n'))}`);
+    }
+
     try {
       const response = await fetch('/api/rd-conversion', {
         method: 'POST',
@@ -126,6 +145,16 @@ const LeadForm = ({
           {sucesso ??
             'Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento inicial.'}
         </p>
+        {whatsAppUrl && (
+          <a
+            href={whatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary-500 text-secondary text-tagline-1 mt-2 inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium transition-transform hover:scale-[1.02]"
+          >
+            Falar agora pelo WhatsApp
+          </a>
+        )}
       </div>
     );
   }
@@ -237,7 +266,7 @@ const LeadForm = ({
         <ButtonPrimarySubmit
           text={isSubmitting ? 'Enviando...' : submitText}
           disabled={isSubmitting}
-          className="w-full md:w-auto"
+          className="max-md:text-tagline-2 h-auto min-h-16 w-full md:w-auto max-md:[&_[data-button-lower-text]]:hidden max-md:[&_[data-button-upper-text]]:text-wrap"
         />
         <ul className="text-tagline-3 text-secondary/55 flex flex-wrap gap-x-4 gap-y-1.5">
           {['Sem spam', 'Resposta em até 1 dia útil', 'Dados usados só no diagnóstico'].map((item) => (
