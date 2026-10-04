@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { CaseEcommerceClient } from "@/components/sections/cases/ecommerce-case";
+import CaseEcommerce from "@/novo/components/cases/case-ecommerce";
 
 export const metadata: Metadata = {
   title: "Case de Marketing para E-commerce | +6.900% em Vendas",
@@ -67,7 +67,7 @@ export default function CaseEcommercePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <CaseEcommerceClient />
+      <CaseEcommerce />
     </>
   );
 }
