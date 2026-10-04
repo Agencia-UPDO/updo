@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { CasesIndexClient } from "@/components/sections/cases/cases-index";
+import CasesIndice from "@/novo/components/cases/cases-indice";
 
 export const metadata: Metadata = {
   title: "Cases de Marketing e Vendas | Resultados por Setor",
@@ -84,7 +84,7 @@ export default function CasesPage() {
           __html: JSON.stringify(collectionPageSchema),
         }}
       />
-      <CasesIndexClient />
+      <CasesIndice />
     </>
   );
 }
