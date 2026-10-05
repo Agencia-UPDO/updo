@@ -17,7 +17,7 @@ const Servicos = () => {
           <SectionHeading
             align="left"
             badge="Serviços"
-            title="Do anúncio ao caixa, cada etapa com dono e meta"
+            title="Do anúncio ao caixa, cada etapa com *dono e meta*"
             description="Você contrata o que a operação precisa agora e integra o resto quando fizer sentido. Tudo conversa com o mesmo funil e os mesmos números."
             className="max-lg:text-center [&_div]:max-lg:justify-center [&_p]:max-lg:mx-auto"
           />
@@ -37,7 +37,7 @@ const Servicos = () => {
             >
               <Link
                 href={servico.href}
-                className="group hover:bg-secondary flex h-full min-h-[320px] bg-white shadow-2 flex-col rounded-2xl p-7 transition-colors duration-500"
+                className="group hover:bg-secondary flex h-full bg-white shadow-2 flex-col rounded-2xl p-5 sm:min-h-[320px] sm:p-7 transition-colors duration-500"
               >
                 <div className="flex items-center justify-between gap-4">
                   {icones[servico.href] && (
@@ -57,7 +57,7 @@ const Servicos = () => {
                 <p className="text-tagline-2 mt-3 transition-colors duration-500 group-hover:text-white/65">
                   {servico.description}
                 </p>
-                <span className="text-tagline-2 text-secondary group-hover:text-primary-500 mt-auto flex items-center gap-2 pt-8 font-medium transition-colors duration-500">
+                <span className="text-tagline-2 text-secondary group-hover:text-primary-500 mt-auto flex items-center gap-2 pt-5 font-medium sm:pt-8 transition-colors duration-500">
                   Conhecer serviço
                   <ArrowRightIcon className="size-4 stroke-current transition-transform duration-300 group-hover:translate-x-1" />
                 </span>

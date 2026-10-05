@@ -69,7 +69,7 @@ export const setorIndustria: ServicoConteudo = {
   problemas: {
     badge: "Gargalos da venda industrial",
     title:
-      "Onde a indústria perde venda entre demanda, decisores e ciclo longo.",
+      "Onde a indústria *perde venda* entre demanda, decisores e ciclo longo.",
     items: [
       {
         icon: Factory,
@@ -92,7 +92,7 @@ export const setorIndustria: ServicoConteudo = {
     ],
   },
   plano: {
-    title: "Como estruturamos o crescimento da sua indústria",
+    title: "Como estruturamos o *crescimento* da sua indústria",
     description:
       "Três etapas. Os primeiros leads qualificados costumam aparecer entre 60 e 90 dias.",
     passos: [
@@ -114,7 +114,7 @@ export const setorIndustria: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: "O que muda quando a venda industrial tem estrutura",
+    title: "O que muda quando a venda industrial *tem estrutura*",
     sem: [
       "O pipeline depende de indicação e feira",
       "A abordagem fala só com um dos decisores",
@@ -129,7 +129,7 @@ export const setorIndustria: ServicoConteudo = {
     ],
   },
   entregas: {
-    title: "Da geração de demanda ao pipeline com previsibilidade real.",
+    title: "Da geração de demanda ao pipeline com *previsibilidade real*.",
     description:
       "O trabalho conecta marketing, processo comercial e dados para que a indústria cresça com leitura de oportunidade, não com dependência de indicação ou prospecção no escuro.",
     ctaText: "Quero diagnosticar minha indústria",
@@ -174,7 +174,7 @@ export const setorIndustria: ServicoConteudo = {
   },
   pilares: {
     badge: "Sistema de crescimento",
-    title: "Do Google ao inside sales: o que precisa estar conectado.",
+    title: "Do Google ao inside sales: o que precisa estar *conectado*.",
     description:
       "A venda industrial não começa no vendedor. Começa na busca, no LinkedIn, no conteúdo técnico. E só converte quando processo comercial, CRM e follow-up funcionam juntos ao longo do ciclo.",
     items: [
@@ -220,7 +220,7 @@ export const setorIndustria: ServicoConteudo = {
   },
   formulario: {
     badge: "Diagnóstico indústria",
-    title: "Vamos entender onde sua operação industrial perde pipeline.",
+    title: "Vamos entender onde sua operação industrial *perde pipeline*.",
     description:
       "Preencha os dados para analisarmos segmento, ticket, ciclo de venda e processo comercial com mais contexto.",
     formName: "Diagnóstico Indústria",
@@ -279,7 +279,7 @@ export const setorIndustria: ServicoConteudo = {
   },
   faqTexto: {
     badge: "Dúvidas frequentes",
-    title: "Dúvidas sobre marketing industrial e venda B2B.",
+    title: "*Dúvidas* sobre marketing industrial e venda B2B.",
     description:
       "Antes de investir em mais visitas técnicas ou prospecção no escuro, vale entender canal, processo, CRM e qualificação de oportunidade.",
     citacao:

@@ -68,7 +68,7 @@ export const setorB2b: ServicoConteudo = {
   },
   problemas: {
     badge: "Gargalos do B2B",
-    title: "Onde o B2B perde receita entre ICP, pipeline e processo comercial.",
+    title: "Onde o B2B *perde receita* entre ICP, pipeline e processo comercial.",
     items: [
       {
         icon: Users,
@@ -91,7 +91,7 @@ export const setorB2b: ServicoConteudo = {
     ],
   },
   plano: {
-    title: "Como estruturamos o seu crescimento B2B",
+    title: "Como estruturamos o seu *crescimento B2B*",
     description:
       "Três etapas, com reunião semanal e pipeline visível do começo ao fim.",
     passos: [
@@ -113,7 +113,7 @@ export const setorB2b: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: "O que muda quando o B2B tem canal e processo",
+    title: "O que muda quando o B2B tem *canal e processo*",
     sem: [
       "O crescimento depende de indicação",
       "O pitch tenta falar com todo mundo",
@@ -128,7 +128,7 @@ export const setorB2b: ServicoConteudo = {
     ],
   },
   entregas: {
-    title: "Do ICP ao MRR: estrutura para crescer com previsibilidade.",
+    title: "Do ICP ao MRR: estrutura para crescer com *previsibilidade*.",
     description:
       "A entrega conecta posicionamento, geração de demanda, funil e processo comercial. O objetivo é que o B2B pare de depender de indicação e comece a crescer com canal e sistema.",
     ctaText: "Quero diagnosticar meu B2B",
@@ -173,7 +173,7 @@ export const setorB2b: ServicoConteudo = {
   },
   pilares: {
     badge: "Sistema de crescimento",
-    title: "Do LinkedIn ao contrato: o que precisa estar conectado.",
+    title: "Do LinkedIn ao contrato: o que precisa estar *conectado*.",
     description:
       "O B2B não cresce só com mais verba em anúncio. Cresce quando ICP, canal, conteúdo, funil, demo e processo comercial apontam para a mesma meta de receita.",
     items: [
@@ -218,7 +218,7 @@ export const setorB2b: ServicoConteudo = {
   },
   formulario: {
     badge: "Diagnóstico B2B",
-    title: "Vamos entender onde seu B2B perde receita.",
+    title: "Vamos entender onde seu B2B *perde receita*.",
     description:
       "Preencha os dados para analisarmos ICP, canal, ciclo de venda e processo comercial com mais contexto.",
     formName: "Diagnóstico B2B",
@@ -276,7 +276,7 @@ export const setorB2b: ServicoConteudo = {
   },
   faqTexto: {
     badge: "Dúvidas frequentes",
-    title: "Dúvidas sobre marketing B2B, LinkedIn e processo comercial.",
+    title: "*Dúvidas* sobre marketing B2B, LinkedIn e processo comercial.",
     description:
       "Antes de aumentar verba ou contratar mais SDR, vale entender ICP, canal, funil, processo e métricas de receita.",
     citacao:

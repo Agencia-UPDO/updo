@@ -535,7 +535,7 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
         <div className="main-container space-y-10">
           <SectionHeading
             badge={ehSetor ? 'Outros setores' : 'Outros serviços'}
-            title={ehSetor ? 'Veja como atuamos em outros mercados' : 'Integre com o resto da operação'}
+            title={ehSetor ? 'Veja como atuamos em *outros mercados*' : 'Integre com o *resto da operação*'}
           />
           <div className="flex flex-wrap justify-center gap-3">
             {outrosLinks.map((servico) => (

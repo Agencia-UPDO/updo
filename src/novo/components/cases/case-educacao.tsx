@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import { GraficoEficiencia, GraficoLeads } from '@/novo/components/cases/graficos-educacao';
 import HeroFundo from '@/novo/components/home/hero-fundo';
@@ -145,7 +146,7 @@ const CaseEducacao = () => (
     {/* Contexto */}
     <section className="bg-white py-18 md:py-28 xl:py-32">
       <div className="main-container space-y-12 md:space-y-16">
-        <SectionHeading badge="Contexto" title="O problema de negócio" />
+        <SectionHeading badge="Contexto" title="O *problema* de negócio" />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
           <RevealAnimation delay={0.1} className="col-span-12 md:col-span-6">
             <div className="bg-background-13 h-full rounded-3xl p-7 md:p-9">
@@ -178,7 +179,7 @@ const CaseEducacao = () => (
         <SectionHeading
           tone="dark"
           badge="Estratégia"
-          title="Da consultoria à escala, em três fases"
+          title="Da consultoria à escala, em *três fases*"
           description="Três pilares estruturais que transformaram os resultados."
         />
         <RevealAnimation delay={0.2}>
@@ -201,7 +202,7 @@ const CaseEducacao = () => (
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Resultados visuais"
-          title="A transformação em números"
+          title="A transformação *em números*"
           description="Antes e depois da parceria com a UPDO."
         />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -238,7 +239,7 @@ const CaseEducacao = () => (
           <SectionHeading
             tone="dark"
             badge="Reconhecimento"
-            title="Vencedores do Prêmio RD Station 2024"
+            title="Vencedores do *Prêmio RD Station* 2024"
             description="A parceria chegou à final em 2023 e conquistou o prêmio em 2024. Como parceiros Gold da plataforma, esse reconhecimento mostra que processo comercial, mídia e dados bem conectados geram resultado mensurável em captação educacional."
           />
           <RevealAnimation delay={0.3}>
@@ -262,7 +263,7 @@ const CaseEducacao = () => (
     {/* Aprendizados */}
     <section className="py-18 md:py-28 xl:py-32">
       <div className="main-container space-y-12 md:space-y-16">
-        <SectionHeading badge="Aprendizados" title="O que esse case ensina" />
+        <SectionHeading badge="Aprendizados" title="O que esse case *ensina*" />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
           {aprendizados.map((item, index) => (
             <RevealAnimation key={item.text} delay={0.1 + index * 0.1} className="col-span-12 md:col-span-4">
@@ -282,7 +283,7 @@ const CaseEducacao = () => (
         <div className="bg-lilas-700 relative isolate overflow-hidden rounded-3xl px-7 py-14 text-center md:px-12 md:py-20">
           <div className="bg-primary-500/20 pointer-events-none absolute -top-24 -right-24 -z-10 size-80 rounded-full blur-3xl" />
           <h2 style={balance} className="text-heading-3 mx-auto max-w-[760px] font-normal text-white">
-            Sua instituição pode captar com mais previsibilidade.
+            {realce('Sua instituição pode captar com mais *previsibilidade*.', 'dark')}
           </h2>
           <p className="text-tagline-1 mx-auto mt-4 max-w-[520px] text-white/75">
             Vamos entender o seu negócio antes de propor qualquer coisa.

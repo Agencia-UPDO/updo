@@ -10,13 +10,15 @@ const ButtonPrimary = ({ text, className, ...props }: ButtonPrimaryProps) => {
   return (
     <span
       className={cn(
-        'group border-stroke-1 font-texto text-tagline-1 font-medium text-secondary ease-bouncy inline-flex h-16 cursor-pointer items-center rounded-full border p-1.5 transition-transform duration-400 active:scale-[0.98]',
+        'group border-stroke-1 font-texto text-tagline-1 font-medium text-secondary ease-bouncy inline-flex h-16 max-w-full cursor-pointer items-center rounded-full border p-1.5 transition-transform duration-400 active:scale-[0.98] max-md:h-auto max-md:min-h-16',
+        // No celular o texto quebra em vez de vazar do botão.
+        'max-md:[&_[data-button-lower-text]]:hidden max-md:[&_[data-button-upper-text]]:text-wrap',
         className
       )}
       data-button-wrapper
       {...props}
     >
-      <span className="bg-primary-500 flex h-full w-full min-w-0 items-center justify-between gap-x-4 rounded-full py-1.5 pr-[6px] pl-6">
+      <span className="bg-primary-500 flex h-full w-full min-w-0 items-center justify-between gap-x-4 rounded-full py-1.5 pr-[6px] pl-6 max-md:min-h-[50px] max-md:pl-5">
         <span className="relative inline-block overflow-hidden leading-[1.2]">
           <span
             data-button-upper-text

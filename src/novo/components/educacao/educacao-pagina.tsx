@@ -245,7 +245,7 @@ const EducacaoPagina = () => (
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Captação educacional"
-          title="O que costuma travar a captação."
+          title="O que costuma *travar* a captação."
         />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
           {barreiras.map((item, index) => (
@@ -281,7 +281,7 @@ const EducacaoPagina = () => (
         <SectionHeading
           tone="dark"
           badge="Autoridade"
-          title="Prova real antes de falar em escala."
+          title="*Prova real* antes de falar em escala."
           description="Captação educacional precisa conectar mídia, atendimento e leitura do funil para virar matrícula."
         />
       </div>
@@ -341,7 +341,7 @@ const EducacaoPagina = () => (
             <SectionHeading
               align="left"
               badge="Depoimento"
-              title="Resultado real também precisa parecer real"
+              title="Resultado real também precisa *parecer real*"
               description="Veja como a UPDO estrutura a captação de alunos com parceiros do mercado educacional e transforma previsibilidade em rotina de performance."
             />
             <RevealAnimation delay={0.3}>
@@ -376,7 +376,7 @@ const EducacaoPagina = () => (
             <SectionHeading
               align="left"
               badge="Análise da captação"
-              title="Receba um diagnóstico gratuito da sua captação de alunos."
+              title="Receba um *diagnóstico gratuito* da sua captação de alunos."
               description="Vamos analisar onde sua captação perde alunos e indicar os próximos passos para gerar matrículas com mais previsibilidade."
             />
           </div>
@@ -425,7 +425,7 @@ const EducacaoPagina = () => (
       <Faq
         items={faqEducacao}
         badge="Dúvidas Frequentes"
-        title="Objeções matam suas matrículas."
+        title="Objeções *matam* suas matrículas."
         description="Transparência e clareza são fundamentais para uma parceria de longo prazo. Aqui estão as respostas para os questionamentos mais comuns de nossos parceiros."
         citacao="Ainda tem alguma dúvida específica? Nosso diagnóstico gratuito serve justamente para sanar cada detalhe do seu projeto."
       />

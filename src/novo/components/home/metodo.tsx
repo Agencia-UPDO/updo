@@ -51,7 +51,7 @@ const Metodo = () => {
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Método UPDO"
-          title="Um ciclo de cinco etapas, da hipótese ao caixa"
+          title="Um ciclo de *cinco etapas*, da hipótese ao caixa"
           description="Cada volta do ciclo gera dados que alimentam a próxima. Você acompanha o que está sendo feito e por quê em reuniões semanais."
         />
 

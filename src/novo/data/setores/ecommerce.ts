@@ -82,7 +82,7 @@ export const setorEcommerce: ServicoConteudo = {
   },
   problemas: {
     badge: "Gargalos comuns",
-    title: "Onde sua loja virtual perde margem.",
+    title: "Onde sua loja virtual *perde margem*.",
     items: [
       {
         icon: MousePointerClick,
@@ -105,7 +105,7 @@ export const setorEcommerce: ServicoConteudo = {
     ],
   },
   plano: {
-    title: "Como fazemos sua loja crescer com margem",
+    title: "Como fazemos sua loja *crescer com margem*",
     description: "Três etapas, com leitura semanal de canal, oferta e funil.",
     passos: [
       {
@@ -126,7 +126,7 @@ export const setorEcommerce: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: "O que muda quando a loja cresce com método",
+    title: "O que muda quando a loja *cresce com método*",
     sem: [
       "A verba vai para clique sem intenção de compra",
       "O pedido trava no frete, no carrinho ou no checkout",
@@ -141,7 +141,7 @@ export const setorEcommerce: ServicoConteudo = {
     ],
   },
   entregas: {
-    title: "Gestão de crescimento para vender mais com margem.",
+    title: "Gestão de crescimento para *vender mais* com margem.",
     description:
       "A entrega conecta canal, criativo, oferta, checkout e recompra. O objetivo é fazer a loja crescer com leitura de negócio, não só com mais verba em anúncio.",
     ctaText: "Quero diagnosticar minha loja",
@@ -186,7 +186,7 @@ export const setorEcommerce: ServicoConteudo = {
   },
   pilares: {
     badge: "Sistema de crescimento",
-    title: "Do anúncio ao checkout: o que precisa estar conectado.",
+    title: "Do anúncio ao checkout: o que precisa estar *conectado*.",
     description:
       "Escala saudável vem quando campanha, página de produto, carrinho, checkout, pós-compra e dados apontam para a mesma meta.",
     lista: [
@@ -237,7 +237,7 @@ export const setorEcommerce: ServicoConteudo = {
   },
   formulario: {
     badge: "Diagnóstico e-commerce",
-    title: "Vamos entender onde sua loja perde venda.",
+    title: "Vamos entender onde sua loja *perde venda*.",
     description:
       "Preencha para analisarmos plataforma, faturamento, mídia, conversão e recompra com mais contexto.",
     formName: "Diagnóstico E-commerce",
@@ -298,7 +298,7 @@ export const setorEcommerce: ServicoConteudo = {
   },
   faqTexto: {
     badge: "Dúvidas frequentes",
-    title: "Dúvidas travam decisões de escala.",
+    title: "Dúvidas *travam* decisões de escala.",
     description:
       "Antes de aumentar verba, vale entender canal, margem, oferta, checkout e recompra.",
     citacao: "O diagnóstico existe para separar impressão de evidência.",

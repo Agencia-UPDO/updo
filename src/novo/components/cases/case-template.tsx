@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import HeroFundo from '@/novo/components/home/hero-fundo';
 import FluxoPilares from '@/novo/components/servicos/fluxo-pilares';
@@ -110,7 +111,7 @@ const CaseTemplate = ({ c }: { c: CaseConteudo }) => (
     {/* Contexto */}
     <section className="bg-white py-18 md:py-28 xl:py-32">
       <div className="main-container space-y-12 md:space-y-16">
-        <SectionHeading badge="Contexto" title="O problema de negócio" />
+        <SectionHeading badge="Contexto" title="O *problema* de negócio" />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
           <RevealAnimation delay={0.1} className="col-span-12 md:col-span-6">
             <div className="bg-background-13 h-full rounded-3xl p-7 md:p-9">
@@ -209,7 +210,7 @@ const CaseTemplate = ({ c }: { c: CaseConteudo }) => (
     {/* Aprendizados */}
     <section className="py-18 md:py-28 xl:py-32">
       <div className="main-container space-y-12 md:space-y-16">
-        <SectionHeading badge="Aprendizados" title="O que esse case ensina" />
+        <SectionHeading badge="Aprendizados" title="O que esse case *ensina*" />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
           {c.aprendizados.map((item, index) => (
             <RevealAnimation key={item.text} delay={0.1 + index * 0.1} className="col-span-12 md:col-span-4">
@@ -229,7 +230,7 @@ const CaseTemplate = ({ c }: { c: CaseConteudo }) => (
         <div className="bg-lilas-700 relative isolate overflow-hidden rounded-3xl px-7 py-14 text-center md:px-12 md:py-20">
           <div className="bg-primary-500/20 pointer-events-none absolute -top-24 -right-24 -z-10 size-80 rounded-full blur-3xl" />
           <h2 style={balance} className="text-heading-3 mx-auto max-w-[760px] font-normal text-white">
-            {c.chamada.title}
+            {realce(c.chamada.title, 'dark')}
           </h2>
           <p className="text-tagline-1 mx-auto mt-4 max-w-[520px] text-white/75">{c.chamada.description}</p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

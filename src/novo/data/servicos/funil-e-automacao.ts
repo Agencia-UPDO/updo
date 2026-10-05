@@ -39,7 +39,7 @@ export const funilEAutomacao: ServicoConteudo = {
   },
   visual: 'automacao',
   problemas: {
-    title: 'Onde o funil deixa oportunidade esfriar',
+    title: 'Onde o funil deixa *oportunidade esfriar*',
     description:
       'Se o comercial reclama que o lead chega frio, o problema costuma estar no caminho entre a conversão e o primeiro contato.',
     items: [
@@ -64,7 +64,7 @@ export const funilEAutomacao: ServicoConteudo = {
     ],
   },
   plano: {
-    title: 'Como estruturamos o seu funil',
+    title: 'Como estruturamos o seu *funil*',
     description: 'Três etapas. A primeira versão costuma entrar no ar entre 3 e 5 semanas.',
     passos: [
       {
@@ -85,7 +85,7 @@ export const funilEAutomacao: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: 'O que muda quando o funil tem estrutura',
+    title: 'O que muda quando o funil *tem estrutura*',
     sem: [
       'O lead esfria esperando o primeiro contato',
       'A base inteira recebe a mesma mensagem',
@@ -101,7 +101,7 @@ export const funilEAutomacao: ServicoConteudo = {
   },
   entregas: {
     ctaText: 'Quero automatizar meu funil',
-    title: 'Seis frentes para transformar intenção em oportunidade',
+    title: '*Seis frentes* para transformar intenção em oportunidade',
     description:
       'A entrega conecta estratégia, conteúdo, automação e rotina comercial para o lead avançar sem depender de acompanhamento manual.',
     items: [
@@ -145,7 +145,7 @@ export const funilEAutomacao: ServicoConteudo = {
   },
   pilares: {
     badge: 'Sistema de automação',
-    title: 'Os quatro pilares do funil automatizado',
+    title: 'Os *quatro pilares* do funil automatizado',
     description:
       'Jornada, segmentação, automação e leitura precisam operar juntos. Quando uma parte quebra, o lead para no caminho.',
     items: [
@@ -177,7 +177,7 @@ export const funilEAutomacao: ServicoConteudo = {
     ],
   },
   formulario: {
-    title: 'Vamos entender onde seu funil perde lead qualificado',
+    title: 'Vamos entender onde seu funil *perde lead* qualificado',
     description:
       'Preencha para analisarmos jornada, base, automações, WhatsApp e CRM antes da reunião.',
     formName: 'Diagnóstico Funil e Automação',
@@ -246,7 +246,7 @@ export const funilEAutomacao: ServicoConteudo = {
   },
   faqTexto: {
     badge: 'Dúvidas frequentes',
-    title: 'Dúvidas sobre funil de nutrição e automação.',
+    title: '*Dúvidas* sobre funil de nutrição e automação.',
     description:
       'Antes de contratar mais ferramenta, vale entender se jornada, base, CRM e WhatsApp estão organizados para converter.',
     citacao:

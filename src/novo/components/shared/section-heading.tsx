@@ -1,4 +1,5 @@
 import { balance } from '@/novo/utils/balance';
+import { realce } from '@/novo/components/shared/realce';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import Badge from '@/novo/components/shared/ui/badge/badge';
@@ -37,7 +38,7 @@ const SectionHeading = ({
             style={balance}
             className={cn(centered && 'mx-auto max-w-[820px]', tone === 'dark' && 'text-white')}
           >
-            {title}
+            {realce(title, tone)}
           </h2>
         </TextReveal>
         {description && (

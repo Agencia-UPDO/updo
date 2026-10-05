@@ -38,7 +38,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
   },
   visual: 'dashboard',
   problemas: {
-    title: 'Onde a leitura dos dados costuma quebrar',
+    title: 'Onde a leitura dos dados *costuma quebrar*',
     description:
       'Se cada ferramenta mostra um número diferente, a decisão de verba volta a ser opinião.',
     items: [
@@ -63,7 +63,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
     ],
   },
   plano: {
-    title: 'Como estruturamos os seus dados',
+    title: 'Como estruturamos os seus *dados*',
     description: 'Três etapas. A primeira versão do dashboard costuma ficar pronta entre 2 e 4 semanas.',
     passos: [
       {
@@ -84,7 +84,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: 'O que muda quando os dados têm estrutura',
+    title: 'O que muda quando os dados *têm estrutura*',
     sem: [
       'Cada ferramenta mostra um número diferente',
       'O último clique leva o crédito da venda',
@@ -100,7 +100,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
   },
   entregas: {
     ctaText: 'Quero estruturar meus dados',
-    title: 'Seis frentes para decidir com dado confiável',
+    title: '*Seis frentes* para decidir com dado confiável',
     description:
       'A entrega conecta infraestrutura, visualização, governança e rotina para o dado sair da planilha e entrar na decisão.',
     items: [
@@ -143,7 +143,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
   },
   pilares: {
     badge: 'Sistema de dados',
-    title: 'Os quatro pilares da inteligência de dados UPDO',
+    title: 'Os *quatro pilares* da inteligência de dados UPDO',
     description:
       'Coleta, visualização, atribuição e alerta trabalhando juntos para a decisão ser tomada com dado real.',
     items: [
@@ -174,7 +174,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
     ],
   },
   formulario: {
-    title: 'Vamos entender como estão seus dados',
+    title: 'Vamos entender como estão seus *dados*',
     description:
       'Preencha para analisarmos coleta, atribuição, dashboards e governança antes da reunião.',
     formName: 'Diagnóstico Inteligência de Dados',
@@ -238,7 +238,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
   },
   faqTexto: {
     badge: 'Dúvidas frequentes',
-    title: 'Dúvidas sobre dados e analytics de marketing.',
+    title: '*Dúvidas* sobre dados e analytics de marketing.',
     description:
       'Antes de contratar ferramenta ou analista, vale entender onde está o gargalo real dos seus dados.',
     citacao: 'Dado errado é pior que dado nenhum, porque a equipe passa a confiar na direção errada.',

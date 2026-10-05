@@ -11,7 +11,7 @@ const Setores = () => {
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Setores"
-          title="Cada mercado compra de um jeito"
+          title="Cada mercado *compra de um jeito*"
           description="Começamos pelo funcionamento do seu setor: ciclo de venda, ticket, sazonalidade e quem decide a compra."
         />
 
@@ -24,7 +24,7 @@ const Setores = () => {
             >
               <Link
                 href={setor.href}
-                className="group border-stroke-3 hover:border-lilas-200 hover:bg-lilas-50 flex h-full min-h-[240px] flex-col rounded-2xl border bg-white p-7 transition-colors duration-300"
+                className="group border-stroke-3 hover:border-lilas-200 hover:bg-lilas-50 flex h-full flex-col rounded-2xl border bg-white p-5 md:min-h-[240px] md:p-7 transition-colors duration-300"
               >
                 <div className="flex items-start justify-between gap-6">
                   {setor.icon && (
@@ -34,7 +34,7 @@ const Setores = () => {
                     <ArrowUpRightIcon className="size-5 stroke-black transition-transform duration-300 group-hover:rotate-45" />
                   </span>
                 </div>
-                <div className="mt-10 space-y-2">
+                <div className="mt-5 space-y-2 md:mt-10">
                   <h3 className="text-heading-5 font-normal">{setor.title}</h3>
                   <p className="text-tagline-2">{setor.description}</p>
                 </div>

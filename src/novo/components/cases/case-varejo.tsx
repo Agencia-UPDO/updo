@@ -21,7 +21,7 @@ const CaseVarejo = () => (
       hipotese:
         'Organizando catálogo, CRM e leitura de dados antes de escalar planejamento baseado em dados e sazonalidade, conseguiríamos superar o faturamento histórico com mais controle sobre metas, campanhas e atendimento comercial.',
       estrategia: {
-        title: 'Estratégia, dados e execução',
+        title: 'Estratégia, dados e *execução*',
         description: 'Três frentes que conectaram catálogo, mídia e comercial.',
         passos: [
           {
@@ -47,7 +47,7 @@ const CaseVarejo = () => (
       secoes: [
         {
           badge: 'Resultados visuais',
-          title: 'A transformação em números',
+          title: 'A transformação *em números*',
           description: 'Crescimento anual e superação de metas em 2025.',
           fundo: 'branco',
           conteudo: (
@@ -94,7 +94,7 @@ const CaseVarejo = () => (
         },
       ],
       parceria: {
-        title: 'Uma parceria iniciada em 2022, com recordes ano após ano.',
+        title: 'Uma parceria iniciada em 2022, com *recordes* ano após ano.',
         description:
           'O trabalho começou com correções de estrutura e virou rotina de crescimento. Com acompanhamento semanal, o cliente passou a revisar metas, campanhas e atendimento com base nos números de cada ciclo.',
         anos: ['2022', '2023', '2024', '2025'],
@@ -114,7 +114,7 @@ const CaseVarejo = () => (
         },
       ],
       chamada: {
-        title: 'Seu varejo pode crescer com mais leitura comercial.',
+        title: 'Seu varejo pode *crescer* com mais leitura comercial.',
         description:
           'Vamos entender onde catálogo, mídia e atendimento podem melhorar receita sem depender apenas de mais tráfego.',
         secundario: { text: 'Ver outros cases', href: '/cases' },

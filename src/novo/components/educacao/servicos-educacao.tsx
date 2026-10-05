@@ -90,7 +90,7 @@ const ServicosEducacao = () => {
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Serviços"
-          title="O que você recebe na prática."
+          title="O que você recebe *na prática*."
           description="Nós não vendemos apenas tráfego. Implementamos um sistema completo que organiza sua captação do anúncio à matrícula."
         />
 

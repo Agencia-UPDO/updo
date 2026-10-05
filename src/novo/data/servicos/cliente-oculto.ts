@@ -43,7 +43,7 @@ export const clienteOculto: ServicoConteudo = {
   visual: 'cliente-oculto',
   problemas: {
     badge: 'Onde a receita escapa',
-    title: 'Onde a venda escapa.',
+    title: 'Onde a venda *escapa*.',
     items: [
       {
         icon: Clock3,
@@ -66,7 +66,7 @@ export const clienteOculto: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: 'O que você passa a enxergar com o Cliente Oculto',
+    title: 'O que você passa a *enxergar* com o Cliente Oculto',
     sem: [
       'A empresa acha que perde por preço, sem saber o motivo',
       'Ninguém sabe quanto tempo o time leva para responder',
@@ -82,7 +82,7 @@ export const clienteOculto: ServicoConteudo = {
   },
 
   entregas: {
-    title: 'O que você recebe.',
+    title: 'O que você *recebe*.',
     description: '',
     ctaText: 'Quero avaliar meu atendimento',
     items: [
@@ -126,7 +126,7 @@ export const clienteOculto: ServicoConteudo = {
   },
   pilares: {
     badge: 'Método Cliente Oculto',
-    title: 'Da simulação ao plano de ação.',
+    title: 'Da simulação ao *plano de ação*.',
     description:
       'Entramos na jornada, registramos a experiência e transformamos os achados em prioridades claras para atendimento, oferta e processo.',
     items: [
@@ -181,7 +181,7 @@ export const clienteOculto: ServicoConteudo = {
     ],
   },
   formulario: {
-    title: 'Vamos auditar sua experiência comercial.',
+    title: 'Vamos auditar sua *experiência comercial*.',
     description:
       'Preencha os dados para entendermos o canal, o foco da auditoria e onde faz mais sentido aplicar Cliente Oculto na sua operação.',
     formName: 'Diagnóstico Cliente Oculto',
@@ -233,7 +233,7 @@ export const clienteOculto: ServicoConteudo = {
   },
   faqTexto: {
     badge: 'Dúvidas frequentes',
-    title: 'Dúvidas frequentes.',
+    title: '*Dúvidas* frequentes.',
     description:
       'Antes de revisar script, preço ou campanha, vale entender a experiência real que o cliente vive hoje.',
   },

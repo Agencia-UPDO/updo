@@ -40,7 +40,7 @@ export const iaParaVendas: ServicoConteudo = {
   },
   visual: 'conversa',
   problemas: {
-    title: 'O que está custando vendas agora mesmo.',
+    title: 'O que está *custando vendas* agora mesmo.',
     items: [
       {
         icon: Clock,
@@ -63,7 +63,7 @@ export const iaParaVendas: ServicoConteudo = {
     ],
   },
   plano: {
-    title: 'Como implantamos a IA nas suas vendas',
+    title: 'Como implantamos a *IA* nas suas vendas',
     description: 'Três etapas. O primeiro agente costuma entrar em produção entre 3 e 6 semanas.',
     passos: [
       {
@@ -84,7 +84,7 @@ export const iaParaVendas: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: 'O que muda com um agente de IA no atendimento',
+    title: 'O que muda com um *agente de IA* no atendimento',
     sem: [
       'O lead espera horas pela primeira resposta',
       'O vendedor gasta o dia com lead sem perfil',
@@ -99,7 +99,7 @@ export const iaParaVendas: ServicoConteudo = {
     ],
   },
   entregas: {
-    title: 'Seis implementações que transformam velocidade em venda.',
+    title: '*Seis implementações* que transformam velocidade em venda.',
     description: '',
     items: [
       {
@@ -142,7 +142,7 @@ export const iaParaVendas: ServicoConteudo = {
   },
   pilares: {
     badge: 'Como funciona',
-    title: 'A stack que roda o sistema.',
+    title: 'A *stack* que roda o sistema.',
     description:
       'Não escolhemos a ferramenta preferida: escolhemos o que encaixa no seu processo. A IA serve ao método, não o contrário.',
     items: [
@@ -186,7 +186,7 @@ export const iaParaVendas: ServicoConteudo = {
     ],
   },
   formulario: {
-    title: 'Descubra se IA para vendas faz sentido para o seu negócio.',
+    title: 'Descubra se IA para vendas *faz sentido* para o seu negócio.',
     description:
       'Preencha os dados para entendermos seu processo, volume e onde a automação gera mais impacto, antes de recomendar qualquer coisa.',
     formName: 'Diagnóstico IA para Vendas',
@@ -237,7 +237,7 @@ export const iaParaVendas: ServicoConteudo = {
   },
   faqTexto: {
     badge: 'Dúvidas frequentes',
-    title: 'Dúvidas sobre IA aplicada a vendas e atendimento.',
+    title: '*Dúvidas* sobre IA aplicada a vendas e atendimento.',
     description:
       'Antes de implantar qualquer agente, vale entender o processo, o volume e onde a automação realmente gera impacto.',
     citacao:

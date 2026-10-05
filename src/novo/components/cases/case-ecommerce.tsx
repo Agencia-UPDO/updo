@@ -30,7 +30,7 @@ const CaseEcommerce = () => (
       hipotese:
         'Aplicando uma metodologia focada em análise de persona para otimizar o funil de conversão, conseguiríamos ROAS superior a 4x e taxa de conversão 200% acima da média do mercado em 60 dias.',
       estrategia: {
-        title: 'Como chegamos lá',
+        title: 'Como *chegamos lá*',
         description: 'Três pilares estruturais que transformaram os resultados.',
         passos: [
           {
@@ -56,7 +56,7 @@ const CaseEcommerce = () => (
       secoes: [
         {
           badge: 'Funil de Conversão',
-          title: 'O funil de compra em números',
+          title: 'O funil de compra *em números*',
           description: 'Da primeira impressão até a venda, cada etapa medida e otimizada.',
           conteudo: (
             <FunilAnimado
@@ -73,7 +73,7 @@ const CaseEcommerce = () => (
         },
         {
           badge: 'Performance por canal',
-          title: 'Google vs Meta: eficiência comparada',
+          title: 'Google vs Meta: *eficiência* comparada',
           description: 'Canais diferentes, papéis diferentes no funil.',
           conteudo: (
             <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -134,7 +134,7 @@ const CaseEcommerce = () => (
         },
       ],
       chamada: {
-        title: 'Seu e-commerce pode vender mais sem perder margem.',
+        title: 'Seu e-commerce pode *vender mais* sem perder margem.',
         description: 'Vamos entender o seu negócio antes de propor qualquer coisa.',
         secundario: { text: 'Ver outros cases', href: '/cases' },
       },

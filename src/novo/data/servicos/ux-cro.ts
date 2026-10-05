@@ -39,7 +39,7 @@ export const uxCro: ServicoConteudo = {
   },
   visual: 'teste-ab',
   problemas: {
-    title: 'Onde a página perde conversão sem aparecer no relatório',
+    title: 'Onde a página *perde conversão* sem aparecer no relatório',
     description:
       'Se a campanha traz visita e o formulário não recebe contato, o problema costuma estar na página, não no anúncio.',
     items: [
@@ -64,7 +64,7 @@ export const uxCro: ServicoConteudo = {
     ],
   },
   plano: {
-    title: 'Como otimizamos a sua página',
+    title: 'Como *otimizamos* a sua página',
     description: 'Três etapas em ciclo. Resultados consistentes costumam aparecer entre 30 e 60 dias.',
     passos: [
       {
@@ -85,7 +85,7 @@ export const uxCro: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: 'O que muda quando a página é otimizada com método',
+    title: 'O que muda quando a página é *otimizada com método*',
     sem: [
       'A verba de mídia compra visita que não converte',
       'A página muda pelo gosto de quem está na reunião',
@@ -101,7 +101,7 @@ export const uxCro: ServicoConteudo = {
   },
   entregas: {
     ctaText: 'Quero melhorar minha página',
-    title: 'O que analisamos antes de mexer na página',
+    title: 'O que *analisamos* antes de mexer na página',
     description:
       'A entrega conecta análise de comportamento, hipótese, design, copy, formulário e teste para cada mudança ter motivo e medição.',
     items: [
@@ -145,7 +145,7 @@ export const uxCro: ServicoConteudo = {
   },
   pilares: {
     badge: 'Método CRO',
-    title: 'Os quatro pilares da otimização de conversão',
+    title: 'Os *quatro pilares* da otimização de conversão',
     description:
       'Diagnóstico, hipótese, experimento e iteração. Sem esse ciclo, redesign vira aposta bonita e difícil de medir.',
     items: [
@@ -179,7 +179,7 @@ export const uxCro: ServicoConteudo = {
     ],
   },
   formulario: {
-    title: 'Vamos entender onde sua página perde conversão',
+    title: 'Vamos entender onde sua página *perde conversão*',
     description:
       'Preencha para analisarmos tráfego, comportamento, taxa atual e oportunidade de melhoria antes da reunião.',
     formName: 'Diagnóstico UX e CRO',
@@ -241,7 +241,7 @@ export const uxCro: ServicoConteudo = {
   },
   faqTexto: {
     badge: 'Dúvidas frequentes',
-    title: 'Dúvidas sobre UX, CRO e otimização de conversão.',
+    title: '*Dúvidas* sobre UX, CRO e otimização de conversão.',
     description:
       'Antes de comprar mais tráfego, vale entender quanto do tráfego atual está sendo perdido por fricção na página.',
     citacao:

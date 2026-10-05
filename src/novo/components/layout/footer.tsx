@@ -64,10 +64,10 @@ const Footer = () => {
             </div>
           </RevealAnimation>
 
-          <div className="col-span-12 grid grid-cols-12 gap-y-10 xl:col-span-8">
+          <div className="col-span-12 grid grid-cols-12 gap-x-6 gap-y-10 xl:col-span-8">
             {rodapeColunas.map((coluna, index) => (
               <RevealAnimation key={coluna.title} delay={(index + 2) / 10}>
-                <div className="col-span-12 sm:col-span-4">
+                <div className="col-span-6 last:col-span-12 sm:col-span-4 sm:last:col-span-4">
                   <p className="text-tagline-1 mb-6 font-medium text-white">{coluna.title}</p>
                   <ul className="space-y-3.5">
                     {coluna.links.map((link) => (

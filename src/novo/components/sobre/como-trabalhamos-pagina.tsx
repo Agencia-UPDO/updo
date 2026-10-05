@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import HeroFundo from '@/novo/components/home/hero-fundo';
 import FluxoPilares from '@/novo/components/servicos/fluxo-pilares';
@@ -232,7 +233,7 @@ const ComoTrabalhamosPagina = () => (
         <SectionHeading
           tone="dark"
           badge="Os 4 pilares"
-          title="Um ciclo contínuo que conecta planejamento, execução e resultado."
+          title="Um *ciclo contínuo* que conecta planejamento, execução e resultado."
           description="Cada projeto passa pelos mesmos quatro pilares, sem pular etapa, sem depender de intuição e sem perder o fio entre estratégia e entrega."
         />
         <RevealAnimation delay={0.2}>
@@ -255,7 +256,7 @@ const ComoTrabalhamosPagina = () => (
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Como atuamos"
-          title="Três níveis de atuação para nenhuma lacuna entre estratégia e resultado."
+          title="*Três níveis* de atuação para nenhuma lacuna entre estratégia e resultado."
           description="Atuamos nos níveis estratégico, tático e operacional ao mesmo tempo, conectando planejamento, execução e leitura de resultado com responsabilidade sobre o número, não só sobre a entrega."
         />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -299,7 +300,7 @@ const ComoTrabalhamosPagina = () => (
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Áreas de entrega"
-          title="Oito especialidades que funcionam como um sistema único."
+          title="Oito especialidades que funcionam como um *sistema único*."
           description="Cada área tem squad dedicado, metodologia própria e meta de resultado. O que diferencia é que todas comunicam entre si, sem silo, sem ruído e sem perda de contexto entre etapas."
         />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -358,7 +359,7 @@ const ComoTrabalhamosPagina = () => (
           <div className="bg-primary-500/20 pointer-events-none absolute -top-24 -right-24 -z-10 size-80 rounded-full blur-3xl" />
           <p className="text-tagline-2 text-primary-300 font-medium">Próximo passo</p>
           <h2 style={balance} className="text-heading-3 mx-auto mt-3 max-w-[760px] font-normal text-white">
-            Qual é o desafio da sua empresa?
+            {realce('Qual é o *desafio* da sua empresa?', 'dark')}
           </h2>
           <p className="text-tagline-1 mx-auto mt-4 max-w-[600px] text-white/75">
             O diagnóstico gratuito mapeia onde sua empresa perde receita: em geração de demanda,

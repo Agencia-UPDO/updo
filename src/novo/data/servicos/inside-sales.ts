@@ -41,7 +41,7 @@ export const insideSales: ServicoConteudo = {
   },
   visual: 'pipeline',
   problemas: {
-    title: 'Onde o processo comercial perde receita todo mês',
+    title: 'Onde o processo comercial *perde receita* todo mês',
     description:
       'Se o lead chega bom e a venda não fecha, o problema costuma estar no método, no pipeline ou na gestão do time.',
     items: [
@@ -66,7 +66,7 @@ export const insideSales: ServicoConteudo = {
     ],
   },
   plano: {
-    title: 'Como estruturamos o seu comercial',
+    title: 'Como estruturamos o seu *comercial*',
     description: 'Três etapas. Os primeiros sinais costumam aparecer entre 30 e 60 dias.',
     passos: [
       {
@@ -87,7 +87,7 @@ export const insideSales: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: 'O que muda quando o comercial tem processo',
+    title: 'O que muda quando o comercial *tem processo*',
     sem: [
       'O resultado depende de um ou dois vendedores',
       'A objeção principal derruba a venda sem resposta',
@@ -103,7 +103,7 @@ export const insideSales: ServicoConteudo = {
   },
   entregas: {
     ctaText: 'Quero estruturar meu processo comercial',
-    title: 'Seis frentes que organizam o comercial',
+    title: '*Seis frentes* que organizam o comercial',
     description:
       'A entrega conecta processo, treinamento, tecnologia e rotina para a venda depender de sistema, não de improviso.',
     items: [
@@ -147,7 +147,7 @@ export const insideSales: ServicoConteudo = {
   },
   pilares: {
     badge: 'Sistema de vendas',
-    title: 'Os quatro pilares do processo comercial UPDO',
+    title: 'Os *quatro pilares* do processo comercial UPDO',
     description:
       'Método, tecnologia, rotina e gestão operando juntos para o comercial parar de depender de talento individual.',
     items: [
@@ -178,7 +178,7 @@ export const insideSales: ServicoConteudo = {
     ],
   },
   formulario: {
-    title: 'Vamos entender onde seu comercial perde receita',
+    title: 'Vamos entender onde seu comercial *perde receita*',
     description:
       'Preencha os dados para analisarmos processo, pipeline, conversão e ciclo de venda com mais contexto.',
     formName: 'Diagnóstico Inside Sales',
@@ -233,7 +233,7 @@ export const insideSales: ServicoConteudo = {
   },
   extra: {
     badge: 'Treinamento de vendas',
-    title: 'Playbook na cabeça do time, não só na gaveta.',
+    title: 'Playbook na *cabeça do time*, não só na gaveta.',
     description:
       'Documentar o processo não basta. O treinamento coloca o método na prática com simulação, feedback e acompanhamento.',
     bullets: ['Role-play com objeções reais', 'Feedback de pitches e chamadas', 'Onboarding de vendedores'],
@@ -295,7 +295,7 @@ export const insideSales: ServicoConteudo = {
   },
   faqTexto: {
     badge: 'Dúvidas frequentes',
-    title: 'Dúvidas sobre processo comercial e inside sales.',
+    title: '*Dúvidas* sobre processo comercial e inside sales.',
     description: 'Antes de contratar mais vendedor, vale entender onde o processo está perdendo receita.',
     citacao:
       'Venda não é talento, é processo. Quando o processo está certo, o time inteiro enxerga melhor o próximo passo.',

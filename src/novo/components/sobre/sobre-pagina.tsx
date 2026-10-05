@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import HeroFundo from '@/novo/components/home/hero-fundo';
 import IconChip from '@/novo/components/shared/icon-chip';
@@ -242,7 +243,7 @@ const SobrePagina = () => (
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="A história"
-          title="A UPDO nasceu conectando comportamento do consumidor ao funil de vendas."
+          title="A UPDO nasceu conectando *comportamento do consumidor* ao funil de vendas."
           description="A UPDO foi criada para resolver uma separação comum: marketing olhando para lead, vendas olhando para meta e diretoria olhando para caixa. Nosso trabalho é juntar as três leituras."
         />
         <ol className="relative grid gap-6 md:grid-cols-3">
@@ -278,7 +279,7 @@ const SobrePagina = () => (
     {/* Quem lidera */}
     <section className="py-18 md:py-28 xl:py-32">
       <div className="main-container space-y-12 md:space-y-16">
-        <SectionHeading badge="Quem lidera" title="Estratégia de quem também responde pela execução." />
+        <SectionHeading badge="Quem lidera" title="Estratégia de quem também *responde pela execução*." />
         <div className="grid grid-cols-12 gap-6">
           {socios.map((p, index) => (
             <RevealAnimation key={p.name} delay={0.1 + index * 0.12} className="col-span-12 lg:col-span-6">
@@ -324,7 +325,7 @@ const SobrePagina = () => (
         <SectionHeading
           tone="dark"
           badge="Manifesto"
-          title="Marketing precisa continuar depois do lead."
+          title="Marketing precisa *continuar depois* do lead."
           description="A UPDO acompanha o que acontece entre o clique e a venda: página, formulário, WhatsApp, CRM, atendimento, proposta e fechamento. É nesse caminho que aparecem os ajustes que realmente mudam o resultado."
         />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -348,7 +349,7 @@ const SobrePagina = () => (
       <div className="main-container">
         <div className="grid grid-cols-12 gap-y-12 lg:gap-x-16">
           <div className="col-span-12 lg:sticky lg:top-32 lg:col-span-5 lg:self-start">
-            <SectionHeading align="left" badge="Valores" title="O jeito UPDO de tocar projeto." />
+            <SectionHeading align="left" badge="Valores" title="O *jeito UPDO* de tocar projeto." />
           </div>
           <ol className="border-stroke-3 divide-stroke-3 col-span-12 divide-y border-y lg:col-span-7">
             {valores.map((v, index) => (
@@ -374,7 +375,7 @@ const SobrePagina = () => (
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="O que fazemos"
-          title="Marketing, vendas, dados e IA para corrigir o funil inteiro."
+          title="Marketing, vendas, dados e IA para corrigir o *funil inteiro*."
           description="A UPDO atua onde a receita costuma escapar: aquisição, conversão da página, atendimento, CRM, processo comercial, dashboards e automações."
         />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -410,7 +411,7 @@ const SobrePagina = () => (
           <div className="bg-primary-500/20 pointer-events-none absolute -top-24 -right-24 -z-10 size-80 rounded-full blur-3xl" />
           <p className="text-tagline-2 text-primary-300 font-medium">Próximo passo</p>
           <h2 style={balance} className="text-heading-3 mx-auto mt-3 max-w-[760px] font-normal text-white">
-            Vamos descobrir onde o funil está perdendo dinheiro?
+            {realce('Vamos descobrir onde o funil está perdendo *dinheiro*?', 'dark')}
           </h2>
           <p className="text-tagline-1 mx-auto mt-4 max-w-[560px] text-white/75">
             O diagnóstico separa problema de canal, mensagem, página, atendimento, CRM e venda para

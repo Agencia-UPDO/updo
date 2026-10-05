@@ -56,7 +56,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
     nota: 'Gerar demanda não é comprar clique. É entender qual canal traz intenção real e qual lead merece chegar ao comercial.',
   },
   problemas: {
-    title: 'Onde a aquisição gasta verba antes de gerar receita.',
+    title: 'Onde a aquisição *gasta verba* antes de gerar receita.',
     items: [
       {
         icon: Filter,
@@ -79,7 +79,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
     ],
   },
   plano: {
-    title: 'Como trabalhamos a sua geração de demanda',
+    title: 'Como trabalhamos a sua *geração de demanda*',
     description: 'Três etapas, com reunião semanal e o mesmo time do começo ao fim.',
     passos: [
       {
@@ -100,7 +100,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: 'O que muda quando a demanda tem estrutura',
+    title: 'O que muda quando a demanda *tem estrutura*',
     sem: [
       'Parte da verba continua indo para lead fora do perfil',
       'O CPL sobe a cada mudança de leilão ou algoritmo',
@@ -115,7 +115,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
     ],
   },
   entregas: {
-    title: 'Sete frentes para gerar demanda com mais qualidade.',
+    title: '*Sete frentes* para gerar demanda com mais qualidade.',
     description:
       'A entrega conecta canal, oferta, mídia, SEO, GEO, AEO, landing page e leitura comercial para o lead chegar com mais contexto.',
     ctaText: 'Quero melhorar minha aquisição',
@@ -166,7 +166,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
   },
   pilares: {
     badge: 'Sistema de aquisição',
-    title: 'Os quatro pilares da geração de demanda.',
+    title: 'Os *quatro pilares* da geração de demanda.',
     description:
       'ICP, oferta, canais e receita precisam ser lidos juntos. Sem isso, o time otimiza clique enquanto o comercial briga com lead ruim.',
     items: [
@@ -210,7 +210,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
     ],
   },
   formulario: {
-    title: 'Vamos entender como está sua geração de demanda',
+    title: 'Vamos entender como está sua *geração de demanda*',
     description:
       'Preencha para analisarmos canais, CPL, CAC, qualidade do lead e oportunidades de realocação de verba.',
     formName: 'Diagnóstico Geração de Demanda',
@@ -265,7 +265,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
   },
   faqTexto: {
     badge: 'Dúvidas frequentes',
-    title: 'Dúvidas sobre geração de demanda e mídia paga.',
+    title: '*Dúvidas* sobre geração de demanda e mídia paga.',
     description:
       'Antes de aumentar verba, vale entender se o problema está no canal, na oferta, no ICP ou no que acontece depois do clique.',
     citacao:

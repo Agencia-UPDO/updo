@@ -30,7 +30,7 @@ const CaseIndustria = () => (
       hipotese:
         'Com leitura de mercado, separação clara entre Google e Meta e acompanhamento semanal de ROI, seria possível comprovar o papel do digital sem depender de percepção ou métricas que não explicam receita.',
       estrategia: {
-        title: 'Nossa metodologia em 4 etapas',
+        title: 'Nossa metodologia em *4 etapas*',
         description: 'Pesquisa, canal, execução e leitura financeira.',
         passos: [
           {
@@ -62,7 +62,7 @@ const CaseIndustria = () => (
       secoes: [
         {
           badge: 'Resultados visuais',
-          title: 'A transformação em números',
+          title: 'A transformação *em números*',
           description: 'Investimento versus retorno por canal, lado a lado.',
           fundo: 'branco',
           conteudo: (
@@ -124,7 +124,7 @@ const CaseIndustria = () => (
         },
       ],
       chamada: {
-        title: 'Sua indústria pode medir melhor o retorno do digital.',
+        title: 'Sua indústria pode *medir melhor* o retorno do digital.',
         description:
           'Vamos avaliar onde mídia, oferta e leitura comercial podem gerar receita mensurável para a sua operação.',
         secundario: { text: 'Ver outros cases', href: '/cases' },

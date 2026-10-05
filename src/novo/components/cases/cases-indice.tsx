@@ -1,6 +1,7 @@
 'use client';
 
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import HeroFundo from '@/novo/components/home/hero-fundo';
 import SectionHeading from '@/novo/components/shared/section-heading';
@@ -137,7 +138,7 @@ const CasesIndice = () => {
       {/* Lista */}
       <section className="bg-white py-18 md:py-28 xl:py-32">
         <div className="main-container space-y-10 md:space-y-12">
-          <SectionHeading badge="Por setor" title="Escolha o case mais próximo do seu cenário." />
+          <SectionHeading badge="Por setor" title="Escolha o case mais *próximo* do seu cenário." />
           <div className="flex flex-wrap justify-center gap-2.5">
             {filtros.map((f) => (
               <button
@@ -219,7 +220,7 @@ const CasesIndice = () => {
             <div className="bg-primary-500/20 pointer-events-none absolute -top-24 -right-24 -z-10 size-80 rounded-full blur-3xl" />
             <p className="text-tagline-2 text-primary-300 font-medium">Próximo passo</p>
             <h2 style={balance} className="text-heading-3 mx-auto mt-3 max-w-[760px] font-normal text-white">
-              Quer entender qual case se parece com o seu cenário?
+              {realce('Quer entender qual case se parece com o seu *cenário*?', 'dark')}
             </h2>
             <p className="text-tagline-1 mx-auto mt-4 max-w-[560px] text-white/75">
               O diagnóstico ajuda a mapear onde sua operação perde performance e quais movimentos

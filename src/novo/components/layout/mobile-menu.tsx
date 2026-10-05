@@ -1,17 +1,30 @@
 'use client';
 
+import { siteConfig } from '@/config/site';
 import { CloseIcon } from '@/novo/components/shared/icons';
-import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
 import { casesMenu, empresaMenu, servicos, setores, type NavLink } from '@/novo/data/navegacao';
 import { useMediaQuery } from '@/novo/hooks/useMediaQuery';
 import { cn } from '@/novo/utils/cn';
+import { ArrowUpRight, ChevronDown, House, MessageCircle } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+
+type GrupoId = 'servicos' | 'setores' | 'cases' | 'empresa';
+
+const grupos: { id: GrupoId; titulo: string; links: NavLink[]; tone: 'menta' | 'lilas' }[] = [
+  { id: 'servicos', titulo: 'Serviços', links: servicos, tone: 'menta' },
+  { id: 'setores', titulo: 'Setores', links: setores, tone: 'lilas' },
+  { id: 'cases', titulo: 'Cases', links: casesMenu, tone: 'menta' },
+  { id: 'empresa', titulo: 'Sobre', links: empresaMenu, tone: 'lilas' },
+];
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [grupoAberto, setGrupoAberto] = useState<GrupoId | null>(null);
   const isDesktop = useMediaQuery('(min-width: 1280px)');
+  const pathname = usePathname();
 
   useEffect(() => {
     const onOpen = () => setIsOpen(true);
@@ -28,34 +41,21 @@ const MobileMenu = () => {
     };
   }, []);
 
+  // Abre já o grupo da página atual.
+  useEffect(() => {
+    if (!isOpen) return;
+    const atual = grupos.find((grupo) => grupo.links.some((link) => link.href === pathname));
+    setGrupoAberto(atual?.id ?? null);
+  }, [isOpen, pathname]);
+
   const aberto = isOpen && !isDesktop;
 
   useEffect(() => {
     document.body.style.overflow = aberto ? 'hidden' : '';
+    document.body.classList.toggle('menu-aberto', aberto);
   }, [aberto]);
 
   const close = () => setIsOpen(false);
-
-  const renderGroup = (title: string, links: NavLink[]) => (
-    <div className="space-y-3">
-      <p className="text-tagline-3 text-secondary/50 font-medium">{title}</p>
-      <ul className="space-y-2.5">
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              onClick={close}
-              className="text-tagline-1 text-secondary flex items-center gap-2.5"
-              target={link.href.startsWith('http') ? '_blank' : undefined}
-            >
-              {link.icon && <link.icon className="text-lilas-500 size-4.5 shrink-0" strokeWidth={1.75} />}
-              {link.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
 
   return (
     <>
@@ -65,7 +65,7 @@ const MobileMenu = () => {
         tabIndex={-1}
         onClick={close}
         className={cn(
-          'bg-secondary/40 fixed inset-0 z-60 transition-opacity duration-300 xl:hidden',
+          'bg-secondary/40 fixed inset-0 z-60 backdrop-blur-[2px] transition-opacity duration-300 xl:hidden',
           aberto ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         )}
       />
@@ -73,11 +73,11 @@ const MobileMenu = () => {
       <aside
         aria-hidden={!aberto}
         className={cn(
-          'fixed top-0 right-0 z-70 flex h-dvh w-full flex-col bg-white shadow-xl transition-transform duration-500 ease-in-out md:w-[min(100vw,24rem)] xl:hidden',
+          'bg-background-13 fixed top-0 right-0 z-70 flex h-dvh w-full flex-col shadow-xl transition-transform duration-500 ease-in-out md:w-[min(100vw,26rem)] xl:hidden',
           aberto ? 'visible translate-x-0' : 'invisible translate-x-full'
         )}
       >
-        <div className="border-stroke-1 flex items-center justify-between border-b px-6 py-5">
+        <div className="flex items-center justify-between px-5 pt-5 pb-3">
           <Link href="/" onClick={close}>
             <span className="sr-only">UPDO, página inicial</span>
             <Image
@@ -92,29 +92,135 @@ const MobileMenu = () => {
             type="button"
             aria-label="Fechar menu"
             onClick={close}
-            className="text-secondary hover:bg-background-4 flex size-9 cursor-pointer items-center justify-center rounded-md"
+            className="bg-secondary flex size-11 cursor-pointer items-center justify-center rounded-full text-white"
           >
             <CloseIcon className="size-5 stroke-current" />
           </button>
         </div>
 
         <nav
-          className="flex min-h-0 flex-1 flex-col gap-8 overflow-y-auto overscroll-contain p-6"
+          className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto overscroll-contain px-4 py-3"
           aria-label="Menu"
         >
-          {renderGroup('Serviços', servicos)}
-          {renderGroup('Setores', setores)}
-          {renderGroup('Cases', casesMenu)}
-          {renderGroup('A UPDO', [
-            ...empresaMenu,
-            { title: 'Insights', href: 'https://insights.updo.com.br' },
-          ])}
+          <Link
+            href="/"
+            onClick={close}
+            className={cn(
+              'font-titulo text-heading-6 text-secondary flex items-center justify-between rounded-2xl bg-white px-5 py-4 font-medium',
+              pathname === '/' && 'ring-primary-500 ring-2'
+            )}
+          >
+            Home
+            <House className="text-secondary/40 size-5" strokeWidth={1.75} aria-hidden="true" />
+          </Link>
+
+          {grupos.map((grupo) => {
+            const expandido = grupoAberto === grupo.id;
+            return (
+              <div key={grupo.id} className="rounded-2xl bg-white">
+                <button
+                  type="button"
+                  aria-expanded={expandido}
+                  onClick={() => setGrupoAberto(expandido ? null : grupo.id)}
+                  className="font-titulo text-heading-6 text-secondary flex w-full cursor-pointer items-center justify-between px-5 py-4 text-left font-medium"
+                >
+                  {grupo.titulo}
+                  <span
+                    className={cn(
+                      'flex size-8 items-center justify-center rounded-full transition-colors duration-300',
+                      expandido ? 'bg-primary-500' : 'bg-background-4'
+                    )}
+                  >
+                    <ChevronDown
+                      className={cn('size-4 transition-transform duration-300', expandido && 'rotate-180')}
+                      aria-hidden="true"
+                    />
+                  </span>
+                </button>
+                <div
+                  className={cn(
+                    'grid transition-[grid-template-rows] duration-300 ease-out',
+                    expandido ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                  )}
+                >
+                  <ul className="min-h-0 overflow-hidden px-2">
+                    {grupo.links.map((link, index) => {
+                      const externo = link.href.startsWith('http');
+                      const ativo = pathname === link.href;
+                      return (
+                        <li key={link.href} className={cn(index === grupo.links.length - 1 && 'pb-2')}>
+                          <Link
+                            href={link.href}
+                            onClick={close}
+                            target={externo ? '_blank' : undefined}
+                            tabIndex={expandido ? undefined : -1}
+                            className={cn(
+                              'flex items-center gap-3 rounded-xl px-3 py-2.5',
+                              ativo ? 'bg-background-4' : 'active:bg-background-4'
+                            )}
+                          >
+                            {link.icon && (
+                              <span
+                                className={cn(
+                                  'flex size-9 shrink-0 items-center justify-center rounded-lg',
+                                  grupo.tone === 'menta'
+                                    ? 'bg-primary-500/25 text-secondary'
+                                    : 'bg-lilas-500/12 text-lilas-500'
+                                )}
+                              >
+                                <link.icon className="size-4.5" strokeWidth={1.75} aria-hidden="true" />
+                              </span>
+                            )}
+                            <span className="min-w-0">
+                              <span className="text-tagline-1 text-secondary block font-medium">
+                                {link.title}
+                              </span>
+                              {link.description && (
+                                <span className="text-tagline-3 text-secondary/55 block truncate">
+                                  {link.description}
+                                </span>
+                              )}
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            );
+          })}
+
+          <a
+            href="https://insights.updo.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
+            className="font-titulo text-heading-6 text-secondary flex items-center justify-between rounded-2xl bg-white px-5 py-4 font-medium"
+          >
+            Insights
+            <ArrowUpRight className="text-secondary/40 size-5" strokeWidth={1.75} aria-hidden="true" />
+          </a>
         </nav>
 
-        <div className="border-stroke-1 border-t p-6">
-          <Link href="/diagnostico" onClick={close} className="block">
-            <ButtonPrimary text="Agendar diagnóstico" className="w-full" />
+        <div className="space-y-2.5 px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
+          <Link
+            href="/diagnostico"
+            onClick={close}
+            className="bg-primary-500 text-secondary text-tagline-1 flex h-13 items-center justify-center rounded-full font-medium"
+          >
+            Agendar diagnóstico gratuito
           </Link>
+          <a
+            href={`https://wa.me/${siteConfig.contact.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
+            className="bg-secondary text-tagline-1 flex h-13 items-center justify-center gap-2 rounded-full font-medium text-white"
+          >
+            <MessageCircle className="size-4.5" strokeWidth={1.75} aria-hidden="true" />
+            Falar no WhatsApp
+          </a>
         </div>
       </aside>
     </>

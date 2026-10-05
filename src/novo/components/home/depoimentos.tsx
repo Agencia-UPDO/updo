@@ -11,16 +11,16 @@ const Depoimentos = () => {
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Depoimentos"
-          title="Quem acompanhou o processo de dentro"
+          title="Quem acompanhou o processo *de dentro*"
           description="Clientes de educação, tecnologia, serviços e varejo contando como foi trabalhar com a UPDO."
         />
 
-        <div className="grid grid-cols-12 gap-4 md:gap-6">
+        <div className="max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-3 max-md:overflow-x-auto max-md:px-4 max-md:pb-2 max-md:[scrollbar-width:none] md:grid md:grid-cols-12 md:gap-6">
           {depoimentosVideo.map((video, index) => (
             <RevealAnimation
               key={video.videoId}
               delay={0.1 + index * 0.1}
-              className="col-span-12 md:col-span-4"
+              className="col-span-12 max-md:w-[82%] max-md:shrink-0 max-md:snap-start md:col-span-4"
             >
               <div className="bg-background-13 overflow-hidden rounded-2xl">
                 <div className="relative aspect-video">
@@ -35,12 +35,16 @@ const Depoimentos = () => {
           ))}
         </div>
 
-        <div className="columns-1 gap-4 md:columns-2 md:gap-6 xl:columns-3">
+        <div className="max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-3 max-md:overflow-x-auto max-md:px-4 max-md:pb-2 max-md:[scrollbar-width:none] md:columns-2 md:gap-6 xl:columns-3">
           {depoimentosTexto.map((depoimento, index) => (
-            <RevealAnimation key={depoimento.name + index} delay={0.1 + (index % 3) * 0.1}>
+            <RevealAnimation
+              key={depoimento.name + index}
+              delay={0.1 + (index % 3) * 0.1}
+              className="max-md:w-[82%] max-md:shrink-0 max-md:snap-start"
+            >
               <figure
                 className={cn(
-                  'mb-4 break-inside-avoid rounded-2xl p-7 md:mb-6',
+                  'break-inside-avoid rounded-2xl p-6 max-md:h-full md:mb-6 md:p-7',
                   ['bg-lilas-50', 'bg-primary-50', 'bg-background-13'][index % 3]
                 )}
               >

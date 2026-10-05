@@ -223,7 +223,7 @@ const DiagnosticoPagina = () => (
         <SectionHeading
           tone="dark"
           badge="Como conduzimos"
-          title="Diagnóstico antes de recomendação."
+          title="*Diagnóstico* antes de recomendação."
           description="A conversa existe para entender contexto, prioridade e potencial de crescimento. A proposta vem depois da leitura correta do cenário."
         />
         <ol className="grid grid-cols-12 gap-4 md:gap-6">

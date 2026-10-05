@@ -78,3 +78,8 @@ body {
   padding-bottom: 0.14em;
   margin-bottom: -0.14em;
 }
+
+/* Esconde o chat da Leadster enquanto o menu do celular está aberto. */
+body.menu-aberto .nld-chatbot {
+  display: none !important;
+}

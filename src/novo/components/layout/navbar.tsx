@@ -167,6 +167,14 @@ const Navbar = () => {
 
             <nav className="hidden items-center xl:flex" aria-label="Principal">
               <ul className="flex items-center">
+                <li className="py-2.5" onMouseEnter={() => setMenuAberto(null)}>
+                  <Link
+                    href="/"
+                    className="text-tagline-1 text-secondary/70 hover:border-stroke-2 hover:text-secondary flex items-center rounded-full border border-transparent px-4 py-2 transition-all duration-200"
+                  >
+                    Home
+                  </Link>
+                </li>
                 {itensMenu.map((item) => (
                   <li
                     key={item.id}
@@ -213,16 +221,24 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <button
-              type="button"
-              className="bg-background-4 flex size-12 cursor-pointer flex-col items-center justify-center gap-[5px] rounded-full xl:hidden"
-              onClick={() => window.dispatchEvent(new Event('mobile-menu:open'))}
-              aria-label="Abrir menu"
-            >
-              <span className="bg-secondary block h-0.5 w-6" />
-              <span className="bg-secondary block h-0.5 w-6" />
-              <span className="bg-secondary block h-0.5 w-6" />
-            </button>
+            <div className="flex items-center gap-2 xl:hidden">
+              <Link
+                href="/diagnostico"
+                className="bg-primary-500 text-secondary text-tagline-2 hidden h-11 items-center rounded-full px-4 font-medium min-[360px]:inline-flex"
+              >
+                Diagnóstico
+              </Link>
+              <button
+                type="button"
+                className="bg-secondary flex size-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded-full"
+                onClick={() => window.dispatchEvent(new Event('mobile-menu:open'))}
+                aria-label="Abrir menu"
+              >
+                <span className="block h-0.5 w-5 rounded-full bg-white" />
+                <span className="block h-0.5 w-5 rounded-full bg-white" />
+                <span className="block h-0.5 w-3.5 translate-x-[3px] rounded-full bg-white" />
+              </button>
+            </div>
 
             <Painel aberto={menuAberto === 'servicos'}>
               <div className="grid grid-cols-[1fr_280px] gap-5">

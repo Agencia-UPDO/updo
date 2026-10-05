@@ -65,7 +65,7 @@ export const setorVarejo: ServicoConteudo = {
   problemas: {
     badge: "Gargalos do varejo",
     title:
-      "Onde o marketing para varejo perde vendas entre anúncio, WhatsApp e loja física.",
+      "Onde o marketing para varejo *perde vendas* entre anúncio, WhatsApp e loja física.",
     items: [
       {
         icon: MapPin,
@@ -88,7 +88,7 @@ export const setorVarejo: ServicoConteudo = {
     ],
   },
   plano: {
-    title: "Como fazemos seu varejo vender mais",
+    title: "Como fazemos seu varejo *vender mais*",
     description:
       "Três etapas, com calendário comercial e leitura semanal de canal e atendimento.",
     passos: [
@@ -110,7 +110,7 @@ export const setorVarejo: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: "O que muda quando o varejo opera conectado",
+    title: "O que muda quando o varejo *opera conectado*",
     sem: [
       "A campanha traz gente que não compra",
       "O cliente pergunta preço no WhatsApp e some",
@@ -126,7 +126,7 @@ export const setorVarejo: ServicoConteudo = {
   },
   entregas: {
     title:
-      "Marketing para loja física e varejo digital com mais fluxo, atendimento e recompra.",
+      "Marketing para loja física e varejo digital com *mais fluxo*, atendimento e recompra.",
     description: "",
     ctaText: "Quero diagnosticar meu varejo",
     items: [
@@ -188,7 +188,7 @@ export const setorVarejo: ServicoConteudo = {
   },
   pilares: {
     badge: "Sistema de crescimento",
-    title: "Da busca local ao WhatsApp: o que precisa estar conectado.",
+    title: "Da busca local ao WhatsApp: o que precisa estar *conectado*.",
     description:
       "A venda no varejo não acontece em um único canal. O cliente pesquisa, chama no WhatsApp, compara, visita a loja e volta em datas sazonais. A estratégia precisa enxergar esse caminho.",
     items: [
@@ -234,7 +234,7 @@ export const setorVarejo: ServicoConteudo = {
   },
   formulario: {
     badge: "Diagnóstico varejo",
-    title: "Vamos entender onde seu varejo perde venda.",
+    title: "Vamos entender onde seu varejo *perde venda*.",
     description:
       "Preencha os dados para analisarmos fluxo, canais, atendimento, recompra e previsibilidade.",
     formName: "Diagnóstico Varejo",
@@ -282,7 +282,7 @@ export const setorVarejo: ServicoConteudo = {
   },
   faqTexto: {
     badge: "Dúvidas frequentes",
-    title: "Dúvidas sobre marketing para varejo, tráfego local e WhatsApp.",
+    title: "*Dúvidas* sobre marketing para varejo, tráfego local e WhatsApp.",
     description:
       "Antes de colocar mais verba no varejo, vale entender fluxo, atendimento, loja física, WhatsApp, estoque e recompra.",
     citacao:

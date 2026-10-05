@@ -243,7 +243,7 @@ const TreinamentosPagina = () => (
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Temas dos treinamentos"
-          title="Conteúdo para melhorar venda, atendimento e tomada de decisão."
+          title="Conteúdo para *melhorar venda*, atendimento e tomada de decisão."
           description="A pauta não nasce de um slide pronto. Ela parte do que o time precisa fazer melhor na rotina comercial."
         />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -267,7 +267,7 @@ const TreinamentosPagina = () => (
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Formatos"
-          title="O formato depende do que precisa mudar na rotina."
+          title="O formato depende do que precisa *mudar na rotina*."
           description="Depois do briefing, definimos se faz mais sentido uma palestra, um workshop prático ou um programa em módulos para liderança, comercial, atendimento ou marketing."
         />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -294,7 +294,7 @@ const TreinamentosPagina = () => (
         <SectionHeading
           tone="dark"
           badge="Como funciona"
-          title="A aula entra no contexto da operação."
+          title="A aula entra no *contexto da operação*."
           description="O encontro precisa deixar critérios, linguagem e rotina para o time usar depois, não apenas uma apresentação bonita."
         />
         <RevealAnimation delay={0.2}>
@@ -336,7 +336,7 @@ const TreinamentosPagina = () => (
             <SectionHeading
               align="left"
               badge="Quem conduz"
-              title="Treinamento conduzido por quem trabalha com funil, mídia e vendas."
+              title="Treinamento conduzido por quem *trabalha com funil*, mídia e vendas."
               description="Fundador da UPDO, Rodrigo atua com comportamento do consumidor, marketing, vendas, neurovendas e IA aplicada a negócios. É professor de educação executiva na PUCPR, professor de pós-graduação na PUCPR e Faculdade IBRATE, e professor de MBA na UFPR."
             />
             <RevealAnimation delay={0.3}>
@@ -364,7 +364,7 @@ const TreinamentosPagina = () => (
             <SectionHeading
               align="left"
               badge="Solicitar treinamento"
-              title="Conte o contexto da equipe."
+              title="Conte o *contexto* da equipe."
               description="Antes de fechar a agenda, fazemos um briefing para entender a empresa, o público, o time e o objetivo do treinamento."
             />
           </div>
@@ -417,7 +417,7 @@ const TreinamentosPagina = () => (
       <Faq
         items={faqTreinamentos}
         badge="Dúvidas frequentes"
-        title="Antes de levar o treinamento para o time."
+        title="*Antes* de levar o treinamento para o time."
         description="A conversa inicial define o objetivo, o público e o nível de profundidade. Assim o treinamento não vira palestra genérica."
       />
     </div>

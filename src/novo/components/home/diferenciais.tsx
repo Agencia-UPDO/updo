@@ -32,7 +32,7 @@ const Diferenciais = () => {
         <SectionHeading
           tone="dark"
           badge="Por que a UPDO"
-          title="Método próprio, sistema próprio e uma década de operação"
+          title="Método próprio, sistema próprio e *uma década* de operação"
           description="Trabalhamos como parte da sua estrutura de crescimento, com processo, tecnologia e acompanhamento próximo."
         />
 
@@ -63,7 +63,7 @@ const Diferenciais = () => {
           <div className="col-span-12 grid gap-4 md:gap-6 lg:col-span-5">
             {pilares.map((pilar, index) => (
               <RevealAnimation key={pilar.title} delay={0.3 + index * 0.1}>
-                <div className="flex flex-col justify-between gap-10 rounded-3xl border border-white/10 p-7">
+                <div className="flex flex-col justify-between gap-5 rounded-3xl border border-white/10 p-6 md:gap-10 md:p-7">
                   <IconChip icon={pilar.icon} tone={index === 1 ? 'lilas' : 'claro'} />
                   <div className="space-y-2">
                     <h3 className="text-heading-6 font-normal text-white">{pilar.title}</h3>

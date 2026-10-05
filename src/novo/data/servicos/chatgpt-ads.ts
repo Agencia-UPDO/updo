@@ -39,7 +39,7 @@ export const chatgptAds: ServicoConteudo = {
   },
   visual: 'jornada-ia',
   problemas: {
-    title: 'Por que simplesmente replicar campanhas antigas não basta.',
+    title: 'Por que simplesmente *replicar campanhas* antigas não basta.',
     items: [
       {
         icon: Filter,
@@ -62,7 +62,7 @@ export const chatgptAds: ServicoConteudo = {
     ],
   },
   plano: {
-    title: 'Como começamos no ChatGPT Ads',
+    title: 'Como começamos no *ChatGPT Ads*',
     description: 'Três etapas, com orçamento controlado e critério claro para escalar.',
     passos: [
       {
@@ -83,7 +83,7 @@ export const chatgptAds: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: 'O que muda quando a marca entra na conversa',
+    title: 'O que muda quando a marca *entra na conversa*',
     sem: [
       'O concorrente aparece na conversa e a sua marca não',
       'A campanha é copiada da busca tradicional',
@@ -99,7 +99,7 @@ export const chatgptAds: ServicoConteudo = {
   },
   entregas: {
     ctaText: 'Quero estruturar ChatGPT Ads',
-    title: 'O que entregamos em ChatGPT Ads e presença em IA',
+    title: 'O que entregamos em ChatGPT Ads e *presença em IA*',
     description:
       'A operação conecta campanha, contexto, criativo, landing page, conversão e autoridade orgânica em um mesmo aprendizado.',
     items: [
@@ -143,7 +143,7 @@ export const chatgptAds: ServicoConteudo = {
   },
   pilares: {
     badge: 'Método UPDO',
-    title: 'Quatro camadas para transformar conversa em aquisição',
+    title: '*Quatro camadas* para transformar conversa em aquisição',
     description:
       'A plataforma é nova, mas o fundamento continua rigoroso: relevância, experiência, mensuração e aprendizado comercial.',
     items: [
@@ -177,7 +177,7 @@ export const chatgptAds: ServicoConteudo = {
     ],
   },
   formulario: {
-    title: 'Vamos avaliar ChatGPT Ads para sua empresa',
+    title: 'Vamos avaliar *ChatGPT Ads* para sua empresa',
     description:
       'Preencha para analisarmos oferta, categoria, estrutura digital, investimento e capacidade de medir conversões.',
     formName: 'Diagnóstico ChatGPT Ads',
@@ -244,7 +244,7 @@ export const chatgptAds: ServicoConteudo = {
   },
   faqTexto: {
     badge: 'Dúvidas frequentes',
-    title: 'Dúvidas sobre anúncios no ChatGPT.',
+    title: '*Dúvidas* sobre anúncios no ChatGPT.',
     description:
       'A plataforma ainda está evoluindo. Por isso, estratégia, política, tracking e clareza da oferta importam tanto quanto a campanha.',
     citacao:

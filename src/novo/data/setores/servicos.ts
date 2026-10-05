@@ -51,7 +51,7 @@ export const setorServicos: ServicoConteudo = {
   problemas: {
     badge: "Gargalos do setor",
     title:
-      "Onde as empresas de serviços perdem receita antes de chegar ao comercial.",
+      "Onde as empresas de serviços *perdem receita* antes de chegar ao comercial.",
     items: [
       {
         icon: Award,
@@ -74,7 +74,7 @@ export const setorServicos: ServicoConteudo = {
     ],
   },
   plano: {
-    title: "Como estruturamos o crescimento da sua empresa de serviços",
+    title: "Como estruturamos o *crescimento* da sua empresa de serviços",
     description:
       "Três etapas. As primeiras oportunidades costumam aparecer entre 30 e 60 dias.",
     passos: [
@@ -96,7 +96,7 @@ export const setorServicos: ServicoConteudo = {
     ],
   },
   mudanca: {
-    title: "O que muda quando o serviço tem canal e processo",
+    title: "O que muda quando o serviço tem *canal e processo*",
     sem: [
       "O crescimento depende de indicação",
       "O diferencial não fica claro no digital",
@@ -112,7 +112,7 @@ export const setorServicos: ServicoConteudo = {
   },
   entregas: {
     title:
-      "Do posicionamento ao contrato: estrutura para crescer com previsibilidade.",
+      "Do posicionamento ao contrato: estrutura para crescer com *previsibilidade*.",
     description:
       "A entrega conecta clareza de diferencial, geração de demanda, qualificação e processo comercial. O objetivo é que a empresa de serviços pare de depender de indicação e comece a crescer com canal e sistema.",
     ctaText: "Quero diagnosticar minha empresa de serviços",
@@ -158,7 +158,7 @@ export const setorServicos: ServicoConteudo = {
   pilares: {
     badge: "Sistema de crescimento",
     title:
-      "O que precisa estar conectado para o serviço crescer com consistência.",
+      "O que precisa estar *conectado* para o serviço crescer com consistência.",
     description:
       "Empresa de serviços não cresce só com mais verba em anúncio. Cresce quando posicionamento, canal, qualificação e processo comercial apontam para a mesma meta de receita.",
     items: [
@@ -203,7 +203,7 @@ export const setorServicos: ServicoConteudo = {
   },
   formulario: {
     badge: "Diagnóstico gratuito",
-    title: "Vamos entender onde sua empresa de serviços perde receita.",
+    title: "Vamos entender onde sua empresa de serviços *perde receita*.",
     description:
       "Preencha os dados para analisarmos posicionamento, canal, qualificação e ciclo de venda com mais contexto.",
     formName: "Diagnóstico Empresa de Serviços",
@@ -262,7 +262,7 @@ export const setorServicos: ServicoConteudo = {
   faqTexto: {
     badge: "Dúvidas frequentes",
     title:
-      "Dúvidas sobre marketing para planos de saúde, consultorias e outros serviços.",
+      "*Dúvidas* sobre marketing para planos de saúde, consultorias e outros serviços.",
     description:
       "Antes de aumentar verba ou contratar mais representantes, vale entender posicionamento, canal, qualificação e processo.",
     citacao:
