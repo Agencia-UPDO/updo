@@ -5,10 +5,8 @@ import type { ReactNode } from 'react';
 export const realceClass =
   'box-decoration-clone bg-[linear-gradient(transparent_60%,var(--color-primary-500)_60%,var(--color-primary-500)_92%,transparent_92%)] px-1';
 
-// No fundo escuro a faixa cobre a palavra inteira e o texto fica escuro,
-// porque a faixa só embaixo deixava o branco ilegível.
-const realceEscuroClass =
-  'box-decoration-clone text-secondary bg-[linear-gradient(transparent_14%,var(--color-primary-500)_14%,var(--color-primary-500)_94%,transparent_94%)] px-1.5';
+// Mesma faixa no fundo claro e no escuro.
+const realceEscuroClass = realceClass;
 
 const Faixa = ({
   children,
