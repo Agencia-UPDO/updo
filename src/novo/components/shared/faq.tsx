@@ -1,4 +1,5 @@
 import Accordion from '@/novo/components/animation/accordion/accordion';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import AccordionAction from '@/novo/components/animation/accordion/accordion-action';
 import AccordionContent from '@/novo/components/animation/accordion/accordion-content';
 import AccordionIcon from '@/novo/components/animation/accordion/accordion-icon';
@@ -14,6 +15,10 @@ interface FaqProps {
   title?: string;
   description?: string;
   badge?: string;
+  /** Contador de seção, ex.: "08 / 08". */
+  contador?: string;
+  /** Moldura de grade atrás da seção. */
+  moldura?: boolean;
   /** Frase de destaque exibida abaixo do título. */
   citacao?: string;
 }
@@ -21,6 +26,8 @@ interface FaqProps {
 const Faq = ({
   items,
   badge = 'FAQ',
+  contador,
+  moldura,
   citacao,
   title = '*Perguntas* frequentes',
   description = 'O que costumam nos perguntar antes do primeiro diagnóstico.',
@@ -36,7 +43,8 @@ const Faq = ({
   };
 
   return (
-    <section className="py-18 md:py-28 xl:py-32">
+    <section className="relative isolate py-18 md:py-28 xl:py-32">
+      {moldura && <MolduraGrade />}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -47,6 +55,7 @@ const Faq = ({
             <SectionHeading
               align="left"
               badge={badge}
+              contador={contador}
               title={title}
               description={description}
               className="max-lg:text-center [&_div]:max-lg:justify-center [&_p]:max-lg:mx-auto"

@@ -1,4 +1,5 @@
 import { balance } from '@/novo/utils/balance';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { realce } from '@/novo/components/shared/realce';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
@@ -18,7 +19,8 @@ const credenciais = [
 
 const Fundador = () => {
   return (
-    <section className="py-18 md:py-28 xl:py-32">
+    <section className="relative isolate py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container">
         <div className="grid grid-cols-12 items-center gap-y-10 lg:gap-x-16">
           <RevealAnimation delay={0.2} className="col-span-12 lg:col-span-5">

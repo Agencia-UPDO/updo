@@ -16,6 +16,7 @@ body {
 @theme inline {
   --font-texto: var(--font-texto-src), sans-serif;
   --font-titulo: var(--font-titulo-src), sans-serif;
+  --font-mono: var(--font-mono-src), ui-monospace, monospace;
   --animate-fluxo-lead-x: fluxo-lead-x 3.6s linear infinite;
   --animate-fluxo-lead-y: fluxo-lead-y 3.6s linear infinite;
 }

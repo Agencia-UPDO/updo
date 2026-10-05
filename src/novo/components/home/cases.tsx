@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { ArrowUpRightIcon } from '@/novo/components/shared/icons';
 import SectionHeading from '@/novo/components/shared/section-heading';
 import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
@@ -8,12 +9,14 @@ import Link from 'next/link';
 
 const Cases = () => {
   return (
-    <section id="cases" className="bg-white py-18 md:py-28 xl:py-32">
+    <section id="cases" className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             align="left"
             badge="Cases"
+          contador="04 / 08"
             title="Resultados com *nome de setor*, período e número"
             description="Cada case mostra o ponto de partida, o que foi feito e o que mudou nos números do cliente."
             className="max-lg:text-center [&_div]:max-lg:justify-center [&_p]:max-lg:mx-auto"

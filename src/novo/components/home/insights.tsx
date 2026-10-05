@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { ArrowUpRightIcon } from '@/novo/components/shared/icons';
 import SectionHeading from '@/novo/components/shared/section-heading';
 import ButtonWhite from '@/novo/components/shared/ui/button/button-white';
@@ -13,12 +14,14 @@ const Insights = async () => {
   if (posts.length === 0) return null;
 
   return (
-    <section className="bg-white py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             align="left"
             badge="Insights"
+          contador="07 / 08"
             title="O que estamos *estudando* e publicando"
             description="Análises e estratégias escritas pela equipe da UPDO para quem decide marketing e vendas."
             className="max-lg:text-center [&_div]:max-lg:justify-center [&_p]:max-lg:mx-auto"

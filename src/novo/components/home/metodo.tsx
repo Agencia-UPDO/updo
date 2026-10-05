@@ -1,6 +1,7 @@
 'use client';
 
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import SectionHeading from '@/novo/components/shared/section-heading';
 import { etapasMetodo } from '@/novo/data/home';
 import { cn } from '@/novo/utils/cn';
@@ -44,6 +45,7 @@ const Metodo = () => {
 
   return (
     <section id="metodologia" className="relative isolate overflow-hidden py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-[radial-gradient(circle,var(--color-lilas-200)_1px,transparent_1.5px)] bg-size-[26px_26px] mask-[radial-gradient(ellipse_55%_50%_at_32%_62%,#000_15%,transparent_75%)] opacity-70 max-lg:mask-[radial-gradient(ellipse_80%_45%_at_50%_55%,#000_15%,transparent_75%)]"
@@ -51,6 +53,7 @@ const Metodo = () => {
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Método UPDO"
+          contador="03 / 08"
           title="Um ciclo de *cinco etapas*, da hipótese ao caixa"
           description="Cada volta do ciclo gera dados que alimentam a próxima. Você acompanha o que está sendo feito e por quê em reuniões semanais."
         />

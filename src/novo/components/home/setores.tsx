@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { ArrowUpRightIcon } from '@/novo/components/shared/icons';
 import IconChip from '@/novo/components/shared/icon-chip';
 import SectionHeading from '@/novo/components/shared/section-heading';
@@ -7,10 +8,12 @@ import Link from 'next/link';
 
 const Setores = () => {
   return (
-    <section id="setores" className="pt-6 pb-18 md:pb-28 xl:pb-32">
+    <section id="setores" className="relative isolate pt-6 pb-18 md:pb-28 xl:pb-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Setores"
+          contador="01 / 08"
           title="Cada mercado *compra de um jeito*"
           description="Começamos pelo funcionamento do seu setor: ciclo de venda, ticket, sazonalidade e quem decide a compra."
         />
@@ -34,9 +37,9 @@ const Setores = () => {
                     <ArrowUpRightIcon className="size-5 stroke-black transition-transform duration-300 group-hover:rotate-45" />
                   </span>
                 </div>
-                <div className="mt-5 space-y-2 md:mt-10">
-                  <h3 className="text-heading-5 font-normal">{setor.title}</h3>
-                  <p className="text-tagline-2">{setor.description}</p>
+                <div className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] mt-5 md:mt-10">
+                  <h3 className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] text-secondary inline font-medium">{setor.title}.</h3>{' '}
+                  <p className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] text-secondary/50 inline">{setor.description}</p>
                 </div>
               </Link>
             </RevealAnimation>

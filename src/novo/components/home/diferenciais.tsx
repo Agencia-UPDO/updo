@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import SectionHeading from '@/novo/components/shared/section-heading';
 import Image from 'next/image';
 import { Bot, Brain, Radar, ShieldCheck } from 'lucide-react';
@@ -28,10 +29,12 @@ const pilares = [
 const Diferenciais = () => {
   return (
     <section className="bg-secondary relative isolate overflow-hidden py-18 md:py-28 xl:py-32">
+      <MolduraGrade tone="dark" />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           tone="dark"
           badge="Por que a UPDO"
+          contador="05 / 08"
           title="Método próprio, sistema próprio e *uma década* de operação"
           description="Trabalhamos como parte da sua estrutura de crescimento, com processo, tecnologia e acompanhamento próximo."
         />
@@ -65,9 +68,9 @@ const Diferenciais = () => {
               <RevealAnimation key={pilar.title} delay={0.3 + index * 0.1}>
                 <div className="flex flex-col justify-between gap-5 rounded-3xl border border-white/10 p-6 md:gap-10 md:p-7">
                   <IconChip icon={pilar.icon} tone={index === 1 ? 'lilas' : 'claro'} />
-                  <div className="space-y-2">
-                    <h3 className="text-heading-6 font-normal text-white">{pilar.title}</h3>
-                    <p className="text-tagline-2 text-white/60">{pilar.description}</p>
+                  <div className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem]">
+                    <h3 className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] inline font-medium text-white">{pilar.title}.</h3>{' '}
+                    <p className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] inline text-white/50">{pilar.description}</p>
                   </div>
                 </div>
               </RevealAnimation>

@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import VideoDepoimento from '@/novo/components/home/video-depoimento';
 import SectionHeading from '@/novo/components/shared/section-heading';
 import { cn } from '@/novo/utils/cn';
@@ -7,10 +8,12 @@ import { depoimentosTexto, depoimentosVideo } from '@/novo/data/home';
 
 const Depoimentos = () => {
   return (
-    <section className="bg-white py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Depoimentos"
+          contador="06 / 08"
           title="Quem acompanhou o processo *de dentro*"
           description="Clientes de educação, tecnologia, serviços e varejo contando como foi trabalhar com a UPDO."
         />

@@ -13,6 +13,8 @@ interface SectionHeadingProps {
   align?: 'center' | 'left';
   tone?: 'light' | 'dark';
   className?: string;
+  /** Contador técnico no lugar do selo, ex.: "01 / 08". */
+  contador?: string;
 }
 
 const SectionHeading = ({
@@ -22,6 +24,7 @@ const SectionHeading = ({
   align = 'center',
   tone = 'light',
   className,
+  contador,
 }: SectionHeadingProps) => {
   const centered = align === 'center';
 
@@ -29,7 +32,20 @@ const SectionHeading = ({
     <div className={cn('space-y-5', centered && 'text-center', className)}>
       <RevealAnimation delay={0.1}>
         <div className={cn('flex', centered ? 'justify-center' : 'justify-start')}>
-          <Badge text={badge} tone={tone} />
+          {contador ? (
+            <p
+              className={cn(
+                'font-mono text-xs tracking-[0.14em] uppercase',
+                tone === 'dark' ? 'text-white/60' : 'text-secondary/60'
+              )}
+            >
+              [ <span className="text-lilas-500 font-medium">{contador.split('/')[0].trim()}</span>
+              {' / '}
+              {contador.split('/')[1]?.trim()} ] <span className="mx-1.5">·</span> {badge}
+            </p>
+          ) : (
+            <Badge text={badge} tone={tone} />
+          )}
         </div>
       </RevealAnimation>
       <div className="space-y-3">

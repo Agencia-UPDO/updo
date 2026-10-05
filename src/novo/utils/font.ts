@@ -1,4 +1,4 @@
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 
 export const texto = Inter({
   variable: '--font-texto-src',
@@ -10,4 +10,11 @@ export const titulo = Plus_Jakarta_Sans({
   subsets: ['latin'],
 });
 
-export const fontVariables = `${texto.variable} ${titulo.variable}`;
+// Rótulos técnicos, como o contador de seção.
+export const mono = JetBrains_Mono({
+  variable: '--font-mono-src',
+  subsets: ['latin'],
+  weight: ['400', '500'],
+});
+
+export const fontVariables = `${texto.variable} ${titulo.variable} ${mono.variable}`;
