@@ -61,10 +61,10 @@ const jsonLd = {
   "telephone": "+55 41 98711-2003",
   "email": "contato@updo.com.br",
   "sameAs": [
-    "https://www.linkedin.com/company/updogrowth/",
+    "https://www.linkedin.com/company/agencia-updo/",
     "https://www.instagram.com/agenciaupdo/",
-    "https://www.facebook.com/updogrowth",
-    "https://www.youtube.com/@updogrowth"
+    "https://www.facebook.com/agenciaupdo",
+    "https://www.youtube.com/@agenciaupdo"
   ],
   "award": [
     "3x finalista RD Station"

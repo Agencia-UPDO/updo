@@ -52,7 +52,7 @@ const Diferenciais = () => {
               </p>
               <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl lg:aspect-auto lg:min-h-[320px] lg:flex-1">
                 <Image
-                  src="/Imagens/radar de matrículas.jpeg"
+                  src="/Imagens/radar-de-matriculas.jpeg"
                   alt="Tela do Radar UPDO"
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"

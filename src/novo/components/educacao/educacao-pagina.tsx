@@ -29,7 +29,7 @@ const instituicoes = [
     name: "Instituto Equilibra",
     src: "/Clientes/Logo Instituto Equilibra.png",
   },
-  { name: "Veta Pós-graduação", src: "/Clientes/Logo Veta Pós Graduação.png" },
+  { name: "Veta Pós-graduação", src: "/Clientes/Logo-Veta-Pos-Graduacao.png" },
   { name: "UniCV", src: "/Clientes/Logo UniCV.png" },
   { name: "Interpret 2B", src: "/Clientes/Logo Interpret 2B.png" },
 ];

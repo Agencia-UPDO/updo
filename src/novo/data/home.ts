@@ -13,10 +13,10 @@ export const clientes = [
   { name: 'UniCV', src: '/Clientes/Logo UniCV.png' },
   { name: 'Nextcard', src: '/Clientes/Logo Nextcard.png' },
   { name: 'Teloos', src: '/Clientes/Logo Teloos.png' },
-  { name: 'Veta Pós Graduação', src: '/Clientes/Logo Veta Pós Graduação.png' },
+  { name: 'Veta Pós Graduação', src: '/Clientes/Logo-Veta-Pos-Graduacao.png' },
   { name: 'Instituto Equilibra', src: '/Clientes/Logo Instituto Equilibra.png' },
   { name: 'Madeiras Lane', src: '/Clientes/Logo Madeiras Lane.png' },
-  { name: 'Trevisan Comunicação Visual', src: '/Clientes/Logo Trevisan Comunicação Visual.png' },
+  { name: 'Trevisan Comunicação Visual', src: '/Clientes/Logo-Trevisan-Comunicacao-Visual.png' },
 ];
 
 export const servicosHome = [
