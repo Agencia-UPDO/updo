@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { OQueFazemosPage } from "@/components/sections/about/o-que-fazemos-page";
+import ComoTrabalhamosPagina from "@/novo/components/sobre/como-trabalhamos-pagina";
 
 export const metadata: Metadata = {
   title: "Como Trabalhamos | Método de Marketing e Vendas",
@@ -57,7 +57,7 @@ export default function OQueFazemosRoute() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <OQueFazemosPage />
+      <ComoTrabalhamosPagina />
     </>
   );
 }
