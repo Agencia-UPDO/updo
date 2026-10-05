@@ -99,7 +99,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
     ],
   },
   entregas: {
-    ctaText: 'Quero estruturar meus dados',
+    ctaText: 'Estruturar meus dados',
     title: '*Seis frentes* para decidir com dado confiável',
     description:
       'A entrega conecta infraestrutura, visualização, governança e rotina para o dado sair da planilha e entrar na decisão.',

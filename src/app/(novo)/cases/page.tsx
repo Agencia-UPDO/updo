@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import CasesIndice from "@/novo/components/cases/cases-indice";
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/cases",
   },
   openGraph: {
+    images: [imagemOg("Resultados com método, dados e execução", "Cases")],
     title: "Cases de Marketing e Vendas | Resultados por Setor",
     description:
       "Cases em educação, e-commerce, varejo e indústria, com resultados de ROAS, faturamento, leads, tráfego e ROI gerados por marketing e vendas.",
@@ -17,21 +19,13 @@ export const metadata: Metadata = {
     siteName: "UPDO",
     locale: "pt_BR",
     type: "website",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Cases de Marketing e Vendas | UPDO",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Resultados com método, dados e execução", "Cases").url],
     card: "summary_large_image",
     title: "Cases de Marketing e Vendas | Resultados por Setor",
     description:
       "Cases em educação, e-commerce, varejo e indústria, com resultados de ROAS, faturamento, leads, tráfego e ROI gerados por marketing e vendas.",
-    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

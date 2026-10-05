@@ -128,7 +128,7 @@ export const setorVarejo: ServicoConteudo = {
     title:
       "Marketing para loja física e varejo digital com *mais fluxo*, atendimento e recompra.",
     description: "",
-    ctaText: "Quero diagnosticar meu varejo",
+    ctaText: "Diagnosticar meu varejo",
     items: [
       {
         icon: Megaphone,

@@ -100,7 +100,7 @@ export const uxCro: ServicoConteudo = {
     ],
   },
   entregas: {
-    ctaText: 'Quero melhorar minha página',
+    ctaText: 'Melhorar minha página',
     title: 'O que *analisamos* antes de mexer na página',
     description:
       'A entrega conecta análise de comportamento, hipótese, design, copy, formulário e teste para cada mudança ter motivo e medição.',

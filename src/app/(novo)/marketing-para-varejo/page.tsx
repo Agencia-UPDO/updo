@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { setorVarejo } from "@/novo/data/setores/varejo";
@@ -11,19 +12,13 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/marketing-para-varejo",
   },
   openGraph: {
+    images: [imagemOg("Marketing para varejo que conecta tráfego local, WhatsApp e venda", "Setor · Varejo")],
     title: "Marketing para Varejo | Tráfego Local, WhatsApp e Recompra",
     description:
       "Tráfego local, Google Maps, WhatsApp, catálogo, recompra, equipe comercial e dados para varejo físico e digital.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Marketing para Varejo UPDO",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Marketing para varejo que conecta tráfego local, WhatsApp e venda", "Setor · Varejo").url],
     card: "summary_large_image",
     title: "Marketing para Varejo | Tráfego Local, WhatsApp e Recompra",
     description:

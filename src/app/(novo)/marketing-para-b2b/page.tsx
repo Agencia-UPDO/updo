@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { setorB2b } from "@/novo/data/setores/b2b";
@@ -11,19 +12,13 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/marketing-para-b2b",
   },
   openGraph: {
+    images: [imagemOg("Marketing B2B que gera pipeline qualificado sem depender de indicação", "Setor · B2B")],
     title: "Marketing B2B | LinkedIn Ads, ICP e Pipeline Comercial",
     description:
       "ICP, LinkedIn Ads, outbound, CRM, inside sales e pipeline previsível para SaaS, tecnologia e serviços corporativos.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Marketing B2B UPDO",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Marketing B2B que gera pipeline qualificado sem depender de indicação", "Setor · B2B").url],
     card: "summary_large_image",
     title: "Marketing B2B | LinkedIn Ads, ICP e Pipeline Comercial",
     description:

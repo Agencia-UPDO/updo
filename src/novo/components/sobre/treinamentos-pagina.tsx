@@ -316,7 +316,7 @@ const TreinamentosPagina = () => (
         </RevealAnimation>
         <div className="flex justify-center">
           <Link href="#contato" className="inline-flex">
-            <ButtonPrimary text="Conversar sobre treinamento" />
+            <ButtonPrimary text="Falar sobre treinamento" />
           </Link>
         </div>
       </div>
@@ -381,7 +381,7 @@ const TreinamentosPagina = () => (
                 formName="Treinamentos Corporativos"
                 service="Treinamentos Corporativos"
                 pagePath="/treinamentos-corporativos"
-                submitText="Solicitar proposta de treinamento"
+                submitText="Solicitar proposta"
                 nota="Com base nas suas respostas, marcamos o briefing inicial e direcionamos o melhor formato para a equipe."
                 selects={[
                   {

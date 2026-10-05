@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import { Mail, MapPin, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import LegalPagina, { type SecaoLegal } from "@/novo/components/legal/legal-pagina";
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/politica-de-privacidade",
   },
   openGraph: {
+    images: [imagemOg("Política de Privacidade", "Privacidade e LGPD")],
     title: "Política de Privacidade | LGPD e Dados Pessoais | UPDO",
     description:
       "Como a UPDO coleta, usa e protege dados pessoais em formulários, analytics e campanhas, em conformidade com a LGPD.",
@@ -20,7 +22,8 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
+    images: [imagemOg("Política de Privacidade", "Privacidade e LGPD").url],
+    card: "summary_large_image",
     title: "Política de Privacidade | LGPD e Dados Pessoais | UPDO",
     description:
       "Como a UPDO coleta, usa e protege dados pessoais em formulários, analytics e campanhas, em conformidade com a LGPD.",

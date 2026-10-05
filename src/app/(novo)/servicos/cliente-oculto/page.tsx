@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { clienteOculto } from "@/novo/data/servicos/cliente-oculto";
@@ -11,22 +12,16 @@ export const metadata: Metadata = {
     canonical: "https://www.updo.com.br/servicos/cliente-oculto",
   },
   openGraph: {
+    images: [imagemOg("Veja como sua empresa atende na prática", "Serviço")],
     title: "Cliente Oculto e Análise Competitiva | UPDO",
     description:
       "Auditamos atendimento, follow-up e concorrentes para revelar gaps de experiência, clareza e percepção que derrubam conversão.",
     url: "https://www.updo.com.br/servicos/cliente-oculto",
     siteName: "UPDO",
     type: "website",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Serviço de Cliente Oculto da UPDO",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Veja como sua empresa atende na prática", "Serviço").url],
     card: "summary_large_image",
     title: "Cliente Oculto e Análise Competitiva | UPDO",
     description:

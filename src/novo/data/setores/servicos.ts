@@ -115,7 +115,7 @@ export const setorServicos: ServicoConteudo = {
       "Do posicionamento ao contrato: estrutura para crescer com *previsibilidade*.",
     description:
       "A entrega conecta clareza de diferencial, geração de demanda, qualificação e processo comercial. O objetivo é que a empresa de serviços pare de depender de indicação e comece a crescer com canal e sistema.",
-    ctaText: "Quero diagnosticar minha empresa de serviços",
+    ctaText: "Diagnosticar minha empresa",
     items: [
       {
         icon: Award,
@@ -207,7 +207,7 @@ export const setorServicos: ServicoConteudo = {
     description:
       "Preencha os dados para analisarmos posicionamento, canal, qualificação e ciclo de venda com mais contexto.",
     formName: "Diagnóstico Empresa de Serviços",
-    submitText: "Diagnosticar minha empresa de serviços",
+    submitText: "Diagnosticar minha empresa",
     sucesso:
       "Recebemos suas informações e vamos analisar o cenário para retornar com um direcionamento inicial.",
     selects: [

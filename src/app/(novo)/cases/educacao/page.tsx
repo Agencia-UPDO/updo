@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import CaseEducacao from "@/novo/components/cases/case-educacao";
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/cases/educacao",
   },
   openGraph: {
+    images: [imagemOg("ROAS 20x e +211% de leads gerados", "Case · Educação")],
     title: "Case de Marketing Educacional | ROAS 20x e +211% de Leads",
     description:
       "ROAS 20x, +211% de leads e prêmio RD Station 2024 para instituição de ensino superior atendida pela UPDO.",
@@ -17,21 +19,13 @@ export const metadata: Metadata = {
     siteName: "UPDO",
     locale: "pt_BR",
     type: "article",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Case de Marketing Educacional | ROAS 20x e +211% de Leads",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("ROAS 20x e +211% de leads gerados", "Case · Educação").url],
     card: "summary_large_image",
     title: "Case de Marketing Educacional | ROAS 20x e +211% de Leads",
     description:
       "ROAS 20x, +211% de leads e prêmio RD Station 2024 para instituição de ensino superior atendida pela UPDO.",
-    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

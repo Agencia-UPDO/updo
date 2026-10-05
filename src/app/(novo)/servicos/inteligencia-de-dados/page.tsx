@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { inteligenciaDeDados } from "@/novo/data/servicos/inteligencia-de-dados";
@@ -11,19 +12,13 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/servicos/inteligencia-de-dados",
   },
   openGraph: {
+    images: [imagemOg("Decisão baseada em dado, não em feeling ou planilha", "Serviço")],
     title: "Inteligência de Dados e Dashboards | BI, Atribuição e KPIs",
     description:
       "Coleta, dashboard unificado, BI, atribuição multi-touch, KPIs, CAC, ROAS e leitura por canal para marketing e vendas.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Equipe UPDO analisando dashboards de marketing e inteligência de dados",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Decisão baseada em dado, não em feeling ou planilha", "Serviço").url],
     card: "summary_large_image",
     title: "Inteligência de Dados e Dashboards | BI, Atribuição e KPIs",
     description:

@@ -1,5 +1,6 @@
 import EducacaoPagina from "@/novo/components/educacao/educacao-pagina";
 import { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -10,19 +11,13 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/marketing-educacional",
   },
   openGraph: {
+    images: [imagemOg("Capte mais alunos e transforme leads em matrículas com previsibilidade", "Setor · Educação")],
     title: "Marketing Educacional | Captação de Alunos e Matrículas",
     description:
       "Mídia, landing pages, CRM e processo comercial para faculdades, pós-graduações e escolas captarem alunos com previsibilidade.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Estratégia de Marketing Educacional UPDO",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Capte mais alunos e transforme leads em matrículas com previsibilidade", "Setor · Educação").url],
     card: "summary_large_image",
     title: "Marketing Educacional | Captação de Alunos e Matrículas",
     description:

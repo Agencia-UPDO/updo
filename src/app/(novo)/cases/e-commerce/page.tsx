@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import CaseEcommerce from "@/novo/components/cases/case-ecommerce";
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/cases/e-commerce",
   },
   openGraph: {
+    images: [imagemOg("+6.900% em vendas em 60 dias", "Case · E-commerce")],
     title: "Case de Marketing para E-commerce | +6.900% em Vendas",
     description:
       "Loja virtual saiu de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS 4.7x e conversão de 4,45%.",
@@ -17,21 +19,13 @@ export const metadata: Metadata = {
     siteName: "UPDO",
     locale: "pt_BR",
     type: "article",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Case de Marketing para E-commerce | +6.900% em Vendas",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("+6.900% em vendas em 60 dias", "Case · E-commerce").url],
     card: "summary_large_image",
     title: "Case de Marketing para E-commerce | +6.900% em Vendas",
     description:
       "Loja virtual saiu de R$3k para R$211k de faturamento mensal em 60 dias, com ROAS 4.7x e conversão de 4,45%.",
-    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

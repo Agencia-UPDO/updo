@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { chatgptAds } from "@/novo/data/servicos/chatgpt-ads";
@@ -11,22 +12,16 @@ export const metadata: Metadata = {
     canonical: "https://www.updo.com.br/servicos/chatgpt-ads",
   },
   openGraph: {
+    images: [imagemOg("ChatGPT Ads para aparecer quando o cliente está decidindo", "Serviço")],
     title: "ChatGPT Ads e Presença em IA | UPDO",
     description:
       "Campanhas no ChatGPT integradas a landing pages, conversão, SEO e GEO para alcançar pessoas enquanto exploram, comparam e decidem.",
     url: "https://www.updo.com.br/servicos/chatgpt-ads",
     siteName: "UPDO",
     type: "website",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Serviço de ChatGPT Ads, SEO e GEO da UPDO",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("ChatGPT Ads para aparecer quando o cliente está decidindo", "Serviço").url],
     card: "summary_large_image",
     title: "ChatGPT Ads e Presença em IA | UPDO",
     description:

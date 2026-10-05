@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { setorIndustria } from "@/novo/data/setores/industria";
@@ -11,19 +12,13 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/marketing-para-industria",
   },
   openGraph: {
+    images: [imagemOg("Marketing industrial que gera pipeline previsível em venda complexa", "Setor · Indústria")],
     title: "Marketing para Indústria | Demanda B2B e Vendas Complexas",
     description:
       "Google Search, LinkedIn Ads, conteúdo técnico, CRM, inside sales e pipeline para indústrias com vendas complexas e ciclos longos.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Marketing para Indústria UPDO",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Marketing industrial que gera pipeline previsível em venda complexa", "Setor · Indústria").url],
     card: "summary_large_image",
     title: "Marketing para Indústria | Demanda B2B e Vendas Complexas",
     description:

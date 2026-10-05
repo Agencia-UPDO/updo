@@ -144,7 +144,7 @@ export const setorEcommerce: ServicoConteudo = {
     title: "Gestão de crescimento para *vender mais* com margem.",
     description:
       "A entrega conecta canal, criativo, oferta, checkout e recompra. O objetivo é fazer a loja crescer com leitura de negócio, não só com mais verba em anúncio.",
-    ctaText: "Quero diagnosticar minha loja",
+    ctaText: "Diagnosticar minha loja",
     items: [
       {
         icon: ShoppingCart,

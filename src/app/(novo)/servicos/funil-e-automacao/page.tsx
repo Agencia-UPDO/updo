@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { funilEAutomacao } from "@/novo/data/servicos/funil-e-automacao";
@@ -11,19 +12,13 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/servicos/funil-e-automacao",
   },
   openGraph: {
+    images: [imagemOg("Funil de vendas e automação para o lead certo chegar na hora certa", "Serviço")],
     title: "Funil e Automação de Marketing | Lead Scoring, CRM e WhatsApp",
     description:
       "Nutrição de leads, lead scoring, CRM, WhatsApp, e-mail e passagem de oportunidades qualificadas para vendas.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Equipe UPDO configurando funil de nutrição e automação de marketing",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Funil de vendas e automação para o lead certo chegar na hora certa", "Serviço").url],
     card: "summary_large_image",
     title: "Funil e Automação de Marketing | Lead Scoring, CRM e WhatsApp",
     description:

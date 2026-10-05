@@ -132,7 +132,7 @@ export const setorIndustria: ServicoConteudo = {
     title: "Da geração de demanda ao pipeline com *previsibilidade real*.",
     description:
       "O trabalho conecta marketing, processo comercial e dados para que a indústria cresça com leitura de oportunidade, não com dependência de indicação ou prospecção no escuro.",
-    ctaText: "Quero diagnosticar minha indústria",
+    ctaText: "Diagnosticar minha indústria",
     items: [
       {
         icon: Target,

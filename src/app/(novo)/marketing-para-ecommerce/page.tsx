@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { setorEcommerce } from "@/novo/data/setores/ecommerce";
@@ -11,19 +12,13 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/marketing-para-ecommerce",
   },
   openGraph: {
+    images: [imagemOg("Marketing para e-commerce que conecta tráfego, checkout e recompra", "Setor · E-commerce")],
     title: "Marketing para E-commerce | Google Ads, CRO, ROAS e Recompra",
     description:
       "Google Ads, Meta Ads, TikTok Ads, CRO, dados, checkout e recompra para e-commerces venderem mais sem perder margem.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Marketing para E-commerce UPDO",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Marketing para e-commerce que conecta tráfego, checkout e recompra", "Setor · E-commerce").url],
     card: "summary_large_image",
     title: "Marketing para E-commerce | Google Ads, CRO, ROAS e Recompra",
     description:

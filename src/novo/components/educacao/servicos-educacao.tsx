@@ -158,8 +158,8 @@ const ServicosEducacao = () => {
                 </div>
                 <Link href="#contato" className="flex w-full md:col-span-2 md:inline-flex md:w-auto">
                   <ButtonPrimary
-                    text="Quero estruturar isso no meu negócio"
-                    className="max-md:text-tagline-2 h-auto min-h-16 w-full md:w-auto max-md:[&_[data-button-lower-text]]:hidden max-md:[&_[data-button-upper-text]]:text-wrap"
+                    text="Quero estruturar isso"
+                    className="max-md:text-tagline-2 h-auto min-h-16 w-full md:w-auto max-md:[&_[data-button-lower-text]]:hidden"
                   />
                 </Link>
               </div>

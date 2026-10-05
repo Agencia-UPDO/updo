@@ -241,7 +241,7 @@ const CaseTemplate = ({ c }: { c: CaseConteudo }) => (
           <p className="text-tagline-1 mx-auto mt-4 max-w-[520px] text-white/75">{c.chamada.description}</p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link href="/diagnostico" className="inline-flex">
-              <ButtonPrimary text="Solicitar diagnóstico gratuito" />
+              <ButtonPrimary text="Solicitar diagnóstico" />
             </Link>
             {c.chamada.secundario && (
               <Link href={c.chamada.secundario.href} className="inline-flex">

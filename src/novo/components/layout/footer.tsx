@@ -1,4 +1,3 @@
-import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
 import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { rodapeColunas } from '@/novo/data/navegacao';
@@ -22,7 +21,7 @@ const Footer = () => {
     <footer className="bg-secondary relative overflow-hidden">
       <div className="main-container">
         <div className="grid grid-cols-12 gap-y-14 pt-24 pb-14 lg:gap-x-10">
-          <RevealAnimation delay={0.1}>
+          {/* Rodapé sem animação de entrada: aparece junto com a página. */}
             <div className="col-span-12 xl:col-span-4">
               <Image
                 src="/Imagens/Logo UPDO 2024 Branca.svg"
@@ -64,12 +63,10 @@ const Footer = () => {
                 ))}
               </div>
             </div>
-          </RevealAnimation>
 
           <div className="col-span-12 grid grid-cols-12 gap-x-6 gap-y-10 xl:col-span-8">
-            {rodapeColunas.map((coluna, index) => (
-              <RevealAnimation key={coluna.title} delay={(index + 2) / 10}>
-                <div className="col-span-6 last:col-span-12 sm:col-span-4 sm:last:col-span-4">
+            {rodapeColunas.map((coluna) => (
+                <div key={coluna.title} className="col-span-6 last:col-span-12 sm:col-span-4 sm:last:col-span-4">
                   <p className="text-tagline-1 mb-6 font-medium text-white">{coluna.title}</p>
                   <ul className="space-y-3.5">
                     {coluna.links.map((link) => (
@@ -85,7 +82,6 @@ const Footer = () => {
                     ))}
                   </ul>
                 </div>
-              </RevealAnimation>
             ))}
           </div>
         </div>

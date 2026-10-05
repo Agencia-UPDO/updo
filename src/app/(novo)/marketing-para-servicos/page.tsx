@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { setorServicos } from "@/novo/data/setores/servicos";
@@ -11,20 +12,14 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/marketing-para-servicos",
   },
   openGraph: {
+    images: [imagemOg("Marketing para empresas de serviços que precisam de lead qualificado", "Setor · Serviços")],
     title:
       "Marketing para Empresas de Serviços | Leads e Processo Comercial",
     description:
       "Posicionamento, geração de demanda, qualificação de leads, CRM e processo comercial para empresas de serviços venderem sem depender só de indicação.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Marketing para Empresas de Serviços UPDO",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Marketing para empresas de serviços que precisam de lead qualificado", "Setor · Serviços").url],
     card: "summary_large_image",
     title:
       "Marketing para Empresas de Serviços | Leads e Processo Comercial",

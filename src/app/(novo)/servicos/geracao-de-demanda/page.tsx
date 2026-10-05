@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { geracaoDeDemanda } from "@/novo/data/servicos/geracao-de-demanda";
@@ -11,19 +12,13 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/servicos/geracao-de-demanda",
   },
   openGraph: {
+    images: [imagemOg("Geração de demanda para atrair o lead certo, não só mais leads", "Serviço")],
     title: "Geração de Demanda | Ads, SEO, GEO e ChatGPT",
     description:
       "Google Ads, Meta Ads, LinkedIn Ads, ChatGPT Ads, TikTok Ads, SEO e GEO para gerar leads qualificados e presença em buscadores e respostas de IA.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Equipe UPDO gerenciando campanhas de geração de demanda e mídia paga",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Geração de demanda para atrair o lead certo, não só mais leads", "Serviço").url],
     card: "summary_large_image",
     title: "Geração de Demanda | Ads, SEO, GEO e ChatGPT",
     description:

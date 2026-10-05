@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { iaParaVendas } from "@/novo/data/servicos/ia-para-vendas";
@@ -11,19 +12,13 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/servicos/ia-para-vendas",
   },
   openGraph: {
+    images: [imagemOg("Seu time de vendas nunca mais vai perder uma janela de compra", "Serviço")],
     title: "IA para Vendas e Atendimento | Agentes para WhatsApp e CRM",
     description:
       "Agentes de IA que qualificam leads, respondem no WhatsApp, fazem follow-up, agendam reuniões e integram dados ao CRM.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Equipe UPDO trabalhando com inteligência artificial para vendas",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Seu time de vendas nunca mais vai perder uma janela de compra", "Serviço").url],
     card: "summary_large_image",
     title: "IA para Vendas e Atendimento | Agentes para WhatsApp e CRM",
     description:

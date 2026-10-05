@@ -102,7 +102,7 @@ export const insideSales: ServicoConteudo = {
     ],
   },
   entregas: {
-    ctaText: 'Quero estruturar meu processo comercial',
+    ctaText: 'Estruturar meu comercial',
     title: '*Seis frentes* que organizam o comercial',
     description:
       'A entrega conecta processo, treinamento, tecnologia e rotina para a venda depender de sistema, não de improviso.',
@@ -182,7 +182,7 @@ export const insideSales: ServicoConteudo = {
     description:
       'Preencha os dados para analisarmos processo, pipeline, conversão e ciclo de venda com mais contexto.',
     formName: 'Diagnóstico Inside Sales',
-    submitText: 'Diagnosticar meu processo comercial',
+    submitText: 'Diagnosticar meu comercial',
     nota: 'Com base nas suas respostas, preparamos um diagnóstico inicial mais preciso do processo comercial.',
     selects: [
       {

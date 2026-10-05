@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import TreinamentosPagina from "@/novo/components/sobre/treinamentos-pagina";
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/treinamentos-corporativos",
   },
   openGraph: {
+    images: [imagemOg("Treinamentos corporativos para times que precisam vender melhor", "Treinamentos")],
     title: "Treinamentos Corporativos | Vendas, Neurovendas e IA",
     description:
       "Workshops, palestras e programas in company em vendas, neurovendas, IA, atendimento, CRM e rotina comercial com Rodrigo Bueno.",
@@ -17,21 +19,13 @@ export const metadata: Metadata = {
     siteName: "UPDO",
     locale: "pt_BR",
     type: "website",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Rodrigo Bueno conduzindo treinamento corporativo",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Treinamentos corporativos para times que precisam vender melhor", "Treinamentos").url],
     card: "summary_large_image",
     title: "Treinamentos Corporativos | Vendas, Neurovendas e IA",
     description:
       "Workshops, palestras e programas in company em vendas, neurovendas, IA, atendimento, CRM e rotina comercial com Rodrigo Bueno.",
-    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

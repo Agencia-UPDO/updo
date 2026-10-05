@@ -100,7 +100,7 @@ export const funilEAutomacao: ServicoConteudo = {
     ],
   },
   entregas: {
-    ctaText: 'Quero automatizar meu funil',
+    ctaText: 'Automatizar meu funil',
     title: '*Seis frentes* para transformar intenção em oportunidade',
     description:
       'A entrega conecta estratégia, conteúdo, automação e rotina comercial para o lead avançar sem depender de acompanhamento manual.',

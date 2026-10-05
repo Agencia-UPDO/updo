@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { uxCro } from "@/novo/data/servicos/ux-cro";
@@ -11,19 +12,13 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/servicos/ux-cro",
   },
   openGraph: {
+    images: [imagemOg("UX e CRO para converter melhor o tráfego que você já paga", "Serviço")],
     title: "UX e CRO | Otimização de Landing Pages e Conversão",
     description:
       "Auditoria de jornada, copy, formulário, CTA, heatmap e testes A/B para aumentar a taxa de conversão de landing pages, sites e e-commerce.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Equipe UPDO realizando auditoria de UX e testes de CRO em landing pages",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("UX e CRO para converter melhor o tráfego que você já paga", "Serviço").url],
     card: "summary_large_image",
     title: "UX e CRO | Otimização de Landing Pages e Conversão",
     description:

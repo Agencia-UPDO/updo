@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import SobrePagina from "@/novo/components/sobre/sobre-pagina";
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/sobre",
   },
   openGraph: {
+    images: [imagemOg("A agência que conecta marketing, vendas, CRM e dados à receita", "Sobre a UPDO")],
     title: "Sobre a UPDO | Consultoria de Crescimento, CRM e Inteligência Comercial",
     description:
       "Consultoria de crescimento em Curitiba. Desde 2017, unimos comportamento do consumidor, marketing, CRM, dados e processo comercial.",
@@ -17,21 +19,13 @@ export const metadata: Metadata = {
     siteName: "UPDO",
     locale: "pt_BR",
     type: "website",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "UPDO | Consultoria de Crescimento, CRM e Inteligência Comercial",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("A agência que conecta marketing, vendas, CRM e dados à receita", "Sobre a UPDO").url],
     card: "summary_large_image",
     title: "Sobre a UPDO | Consultoria de Crescimento, CRM e Inteligência Comercial",
     description:
       "Consultoria de crescimento em Curitiba. Desde 2017, unimos comportamento do consumidor, marketing, CRM, dados e processo comercial.",
-    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

@@ -19,7 +19,7 @@ export const iaParaVendas: ServicoConteudo = {
     description:
       'Implantamos agentes de IA que qualificam, respondem e agendam pelo WhatsApp, integrados ao seu CRM, com o tom da sua marca, sem substituir o vendedor. Só livrar ele do trabalho que não precisa ser humano.',
     bullets: ['Configurado para o seu processo', 'Integração com seu CRM', 'Sem substituir o time'],
-    ctaText: 'Quero implantar IA nas minhas vendas',
+    ctaText: 'Implantar IA nas vendas',
     metricas: [
       { label: 'Tempo de resposta', value: '< 30s', detail: '24h por dia, 7 dias por semana' },
       { label: 'Qualificação manual', value: '-65%', detail: 'tempo do time em triagem' },
@@ -190,7 +190,7 @@ export const iaParaVendas: ServicoConteudo = {
     description:
       'Preencha os dados para entendermos seu processo, volume e onde a automação gera mais impacto, antes de recomendar qualquer coisa.',
     formName: 'Diagnóstico IA para Vendas',
-    submitText: 'Quero o diagnóstico gratuito',
+    submitText: 'Quero meu diagnóstico',
     nota: 'Com base nas suas respostas, avaliamos onde a IA pode gerar impacto real no seu processo comercial.',
     selects: [
       {

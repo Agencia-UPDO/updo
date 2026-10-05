@@ -131,7 +131,7 @@ export const setorB2b: ServicoConteudo = {
     title: "Do ICP ao MRR: estrutura para crescer com *previsibilidade*.",
     description:
       "A entrega conecta posicionamento, geração de demanda, funil e processo comercial. O objetivo é que o B2B pare de depender de indicação e comece a crescer com canal e sistema.",
-    ctaText: "Quero diagnosticar meu B2B",
+    ctaText: "Diagnosticar meu B2B",
     items: [
       {
         icon: Target,

@@ -373,7 +373,7 @@ const ComoTrabalhamosPagina = () => (
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link href="/diagnostico" className="inline-flex">
-              <ButtonPrimary text="Agendar diagnóstico gratuito" />
+              <ButtonPrimary text="Agendar diagnóstico" />
             </Link>
             <Link href="/sobre" className="inline-flex">
               <ButtonWhite text="Conhecer a equipe" />

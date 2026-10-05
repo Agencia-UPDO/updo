@@ -118,7 +118,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
     title: '*Sete frentes* para gerar demanda com mais qualidade.',
     description:
       'A entrega conecta canal, oferta, mídia, SEO, GEO, AEO, landing page e leitura comercial para o lead chegar com mais contexto.',
-    ctaText: 'Quero melhorar minha aquisição',
+    ctaText: 'Melhorar minha aquisição',
     items: [
       {
         icon: Target,

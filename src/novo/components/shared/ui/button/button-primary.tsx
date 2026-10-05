@@ -11,8 +11,8 @@ const ButtonPrimary = ({ text, className, ...props }: ButtonPrimaryProps) => {
     <span
       className={cn(
         'group border-stroke-1 font-texto text-tagline-1 font-medium text-secondary ease-bouncy inline-flex h-16 max-w-full cursor-pointer items-center rounded-full border p-1.5 transition-transform duration-400 active:scale-[0.98] max-md:h-auto max-md:min-h-16',
-        // No celular o texto quebra em vez de vazar do botão.
-        'max-md:[&_[data-button-lower-text]]:hidden max-md:[&_[data-button-upper-text]]:text-wrap',
+        // No celular o texto fica numa linha só, um pouco menor, e o botão nunca passa da largura da tela.
+        'max-md:text-tagline-2 max-md:[&_[data-button-lower-text]]:hidden',
         className
       )}
       data-button-wrapper

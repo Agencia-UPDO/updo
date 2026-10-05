@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import { FileText, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
 import LegalPagina, { type SecaoLegal } from "@/novo/components/legal/legal-pagina";
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/termos-de-uso",
   },
   openGraph: {
+    images: [imagemOg("Termos de Uso", "Regras do site")],
     title: "Termos de Uso | Regras do Site e Serviços | UPDO",
     description:
       "Termos e condições de uso do site updo.com.br, incluindo responsabilidades, propriedade intelectual, formulários e limites de uso.",
@@ -20,7 +22,8 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
+    images: [imagemOg("Termos de Uso", "Regras do site").url],
+    card: "summary_large_image",
     title: "Termos de Uso | Regras do Site e Serviços | UPDO",
     description:
       "Termos e condições de uso do site updo.com.br, incluindo responsabilidades, propriedade intelectual, formulários e limites de uso.",

@@ -296,7 +296,7 @@ const CaseEducacao = () => (
           </p>
           <div className="mt-8 flex justify-center">
             <Link href="/diagnostico" className="inline-flex">
-              <ButtonPrimary text="Solicitar diagnóstico gratuito" />
+              <ButtonPrimary text="Solicitar diagnóstico" />
             </Link>
           </div>
         </div>

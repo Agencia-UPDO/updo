@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import IndicePagina from "@/novo/components/shared/indice-pagina";
 import { servicosHome } from "@/novo/data/home";
 import { servicos } from "@/novo/data/navegacao";
@@ -12,12 +13,17 @@ export const metadata: Metadata = {
   description: descricao,
   alternates: { canonical: "https://updo.com.br/servicos" },
   openGraph: {
+    images: [imagemOg("Do anúncio ao caixa, cada etapa com dono e meta", "Serviços")],
     title: `${titulo} | UPDO`,
     description: descricao,
     url: "https://updo.com.br/servicos",
     siteName: "UPDO",
     locale: "pt_BR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [imagemOg("Do anúncio ao caixa, cada etapa com dono e meta", "Serviços").url],
   },
 };
 

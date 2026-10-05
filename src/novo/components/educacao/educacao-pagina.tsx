@@ -143,7 +143,7 @@ const EducacaoPagina = () => (
                     className="inline-flex w-full sm:w-auto"
                   >
                     <ButtonPrimary
-                      text="Quero analisar minha captação"
+                      text="Analisar minha captação"
                       className="w-full"
                     />
                   </Link>
@@ -330,7 +330,7 @@ const EducacaoPagina = () => (
             Quer descobrir o que hoje limita a sua captação de alunos?
           </p>
           <Link href="#contato" className="inline-flex">
-            <ButtonPrimary text="Quero analisar minha captação" />
+            <ButtonPrimary text="Analisar minha captação" />
           </Link>
         </div>
       </div>
@@ -392,7 +392,7 @@ const EducacaoPagina = () => (
                 service=""
                 pagePath="/marketing-educacional"
                 extraFields={{ sector: "Educação" }}
-                submitText="Quero meu diagnóstico gratuito"
+                submitText="Quero meu diagnóstico"
                 nota="Com base nas suas respostas, preparamos um diagnóstico inicial mais preciso."
                 sucesso="Recebemos seus dados. Nossa equipe vai analisar as informações e retornar com os próximos passos."
                 selects={[

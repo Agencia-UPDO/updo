@@ -9,6 +9,7 @@ import SmoothScrollProvider from "@/novo/components/animation/smooth-scroll";
 import Navbar from "@/novo/components/layout/navbar";
 import MobileMenu from "@/novo/components/layout/mobile-menu";
 import ContadorSecoes from "@/novo/components/layout/contador-secoes";
+import BarraNavegacao from "@/novo/components/layout/barra-navegacao";
 import Footer from "@/novo/components/layout/footer";
 import { fontVariables } from "@/novo/utils/font";
 
@@ -40,6 +41,7 @@ export default function NovoLayout({
         <RoutePageview />
         <Suspense>
           <SmoothScrollProvider>
+            <BarraNavegacao />
             <Navbar />
             <MobileMenu />
             <main>{children}</main>

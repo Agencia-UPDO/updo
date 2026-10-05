@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import CaseVarejo from "@/novo/components/cases/case-varejo";
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/cases/varejo",
   },
   openGraph: {
+    images: [imagemOg("+122% de faturamento e +1.400% de tráfego", "Case · Varejo")],
     title: "Case de Marketing para Varejo | +87% de Faturamento",
     description:
       "+87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022 para uma operação varejista.",
@@ -17,21 +19,13 @@ export const metadata: Metadata = {
     siteName: "UPDO",
     locale: "pt_BR",
     type: "article",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Case de Marketing para Varejo | +87% de Faturamento",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("+122% de faturamento e +1.400% de tráfego", "Case · Varejo").url],
     card: "summary_large_image",
     title: "Case de Marketing para Varejo | +87% de Faturamento",
     description:
       "+87% de faturamento, +1.400% de tráfego e recordes consecutivos desde 2022 para uma operação varejista.",
-    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

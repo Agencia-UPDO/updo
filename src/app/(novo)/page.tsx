@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import Hero from "@/novo/components/home/hero";
 import Setores from "@/novo/components/home/setores";
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br",
   },
   openGraph: {
+    images: [imagemOg("Marketing, vendas e dados para sua empresa crescer com previsibilidade", "UPDO")],
     title: "UPDO | Estruturação de Marketing, Vendas, CRM e Dados",
     description:
       "Estratégia, CRM, dados, IA e processo comercial para empresas que precisam crescer com previsibilidade.",
@@ -30,21 +32,13 @@ export const metadata: Metadata = {
     siteName: "UPDO",
     locale: "pt_BR",
     type: "website",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "UPDO | Estruturação de Marketing, Vendas, CRM e Dados",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Marketing, vendas e dados para sua empresa crescer com previsibilidade", "UPDO").url],
     card: "summary_large_image",
     title: "UPDO | Estruturação de Marketing, Vendas, CRM e Dados",
     description:
       "Estratégia, CRM, dados, IA e processo comercial para empresas que precisam crescer com previsibilidade.",
-    images: ["https://www.updo.com.br/Imagens/sala-cheia.jpg"],
   },
 };
 

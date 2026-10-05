@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { imagemOg } from "@/novo/utils/og";
 import Script from "next/script";
 import ServicoTemplate from "@/novo/components/servicos/servico-template";
 import { insideSales } from "@/novo/data/servicos/inside-sales";
@@ -11,19 +12,13 @@ export const metadata: Metadata = {
     canonical: "https://updo.com.br/servicos/inside-sales",
   },
   openGraph: {
+    images: [imagemOg("Processo comercial que transforma lead em receita previsível", "Serviço")],
     title: "Inside Sales e Processo Comercial | Playbook, Pipeline e Treinamento",
     description:
       "Playbook, pipeline, CRM, SLA, treinamento de vendas e rotina de gestão para transformar leads em receita previsível.",
-    images: [
-      {
-        url: "https://www.updo.com.br/Imagens/sala-cheia.jpg",
-        width: 1200,
-        height: 800,
-        alt: "Equipe UPDO estruturando processo de inside sales e vendas consultivas",
-      },
-    ],
   },
   twitter: {
+    images: [imagemOg("Processo comercial que transforma lead em receita previsível", "Serviço").url],
     card: "summary_large_image",
     title: "Inside Sales e Processo Comercial | Playbook, Pipeline e Treinamento",
     description:

@@ -84,7 +84,7 @@ export const clienteOculto: ServicoConteudo = {
   entregas: {
     title: 'O que você *recebe*.',
     description: '',
-    ctaText: 'Quero avaliar meu atendimento',
+    ctaText: 'Avaliar meu atendimento',
     items: [
       {
         icon: PhoneCall,

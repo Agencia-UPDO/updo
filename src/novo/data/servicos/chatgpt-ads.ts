@@ -98,7 +98,7 @@ export const chatgptAds: ServicoConteudo = {
     ],
   },
   entregas: {
-    ctaText: 'Quero estruturar ChatGPT Ads',
+    ctaText: 'Estruturar ChatGPT Ads',
     title: 'O que entregamos em ChatGPT Ads e *presença em IA*',
     description:
       'A operação conecta campanha, contexto, criativo, landing page, conversão e autoridade orgânica em um mesmo aprendizado.',
@@ -234,7 +234,7 @@ export const chatgptAds: ServicoConteudo = {
     title: 'Entrar cedo exige teste controlado, não aposta cega.',
     description:
       'A UPDO já opera campanhas na plataforma e usa os primeiros dados para ajustar contexto, mensagem, página e mensuração. Começamos com hipóteses claras, orçamento controlado e critério de escala.',
-    ctaText: 'Quero avaliar esse canal para minha empresa',
+    ctaText: 'Quero avaliar esse canal',
     metrics: [
       { value: 'CPC', label: 'custo por clique' },
       { value: 'CTR', label: 'taxa de cliques' },

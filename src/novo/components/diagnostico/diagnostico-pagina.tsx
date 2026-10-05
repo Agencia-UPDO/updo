@@ -141,7 +141,7 @@ const DiagnosticoPagina = () => (
                 formName="Diagnóstico Estratégico"
                 service=""
                 pagePath="/diagnostico"
-                submitText="Quero meu diagnóstico estratégico"
+                submitText="Quero meu diagnóstico"
                 whatsapp={{
                   numero: "5541987112003",
                   intro: "Olá! Vim pela página de diagnóstico da UPDO:",

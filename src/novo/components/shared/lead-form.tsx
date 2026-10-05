@@ -268,7 +268,7 @@ const LeadForm = ({
         <ButtonPrimarySubmit
           text={isSubmitting ? 'Enviando...' : submitText}
           disabled={isSubmitting}
-          className="max-md:text-tagline-2 h-auto min-h-16 w-full md:w-auto max-md:[&_[data-button-lower-text]]:hidden max-md:[&_[data-button-upper-text]]:text-wrap"
+          className="max-md:text-tagline-2 h-auto min-h-16 w-full md:w-auto max-md:[&_[data-button-lower-text]]:hidden"
         />
         <ul className="text-tagline-3 text-secondary/55 flex flex-wrap gap-x-4 gap-y-1.5">
           {['Sem spam', 'Resposta em até 1 dia útil', 'Dados usados só no diagnóstico'].map((item) => (

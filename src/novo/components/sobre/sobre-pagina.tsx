@@ -404,7 +404,7 @@ const SobrePagina = () => (
         </div>
         <div className="flex justify-center">
           <Link href="/o-que-fazemos" className="inline-flex">
-            <ButtonWhite text="Ver detalhes de cada serviço" />
+            <ButtonWhite text="Ver cada serviço" />
           </Link>
         </div>
       </div>
@@ -425,7 +425,7 @@ const SobrePagina = () => (
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link href="/diagnostico" className="inline-flex">
-              <ButtonPrimary text="Quero meu diagnóstico gratuito" />
+              <ButtonPrimary text="Quero meu diagnóstico" />
             </Link>
             <Link href="/cases" className="inline-flex">
               <ButtonWhite text="Ver cases de resultado" />
