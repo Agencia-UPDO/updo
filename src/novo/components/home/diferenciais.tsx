@@ -28,7 +28,7 @@ const pilares = [
 
 const Diferenciais = () => {
   return (
-    <section className="bg-secondary relative isolate overflow-hidden py-18 md:py-28 xl:py-32">
+    <section className="bg-secondary relative isolate overflow-x-clip py-18 md:py-28 xl:py-32">
       <MolduraGrade tone="dark" />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading

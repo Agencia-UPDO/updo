@@ -44,7 +44,7 @@ const Metodo = () => {
   const Icone = etapa.icon;
 
   return (
-    <section id="metodologia" className="relative isolate overflow-hidden py-18 md:py-28 xl:py-32">
+    <section id="metodologia" className="relative isolate overflow-x-clip py-18 md:py-28 xl:py-32">
       <MolduraGrade />
       <div
         aria-hidden="true"
