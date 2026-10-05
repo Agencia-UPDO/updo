@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import type { ElementType, ReactNode } from "react";
+import { Mail, MapPin, ShieldCheck } from "lucide-react";
 import Link from "next/link";
-import { ArrowLeft, Mail, MapPin, ShieldCheck } from "lucide-react";
+import LegalPagina, { type SecaoLegal } from "@/novo/components/legal/legal-pagina";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade | LGPD e Dados Pessoais",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
 };
 
-const sections = [
+const sections: SecaoLegal[] = [
   {
     title: "1. Quem somos",
     content: (
@@ -202,124 +202,18 @@ const sections = [
 
 export default function PoliticaDePrivacidadePage() {
   return (
-    <main className="bg-background">
-      <LegalHero
-        eyebrow="Privacidade e LGPD"
-        title="Política de Privacidade"
-        description="Como a UPDO coleta, usa e protege os dados informados nos formulários, ferramentas de analytics, CRM e campanhas."
-      />
-
-      <section className="bg-[var(--surface-soft)] py-18 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.34fr_0.66fr] lg:gap-16">
-            <aside className="lg:sticky lg:top-28 lg:self-start">
-              <div className="rounded-2xl border border-border/70 bg-white p-6 shadow-sm">
-                <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
-                  Atualizacao
-                </span>
-                <p className="mt-4 font-heading text-2xl font-black tracking-tight text-foreground">
-                  Junho de 2026
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Esta página explica o tratamento de dados pessoais no site da
-                  UPDO.
-                </p>
-                <div className="mt-6 grid gap-3 border-t border-border/60 pt-5">
-                  <ContactRow icon={Mail} text="contato@updo.com.br" />
-                  <ContactRow icon={MapPin} text="Curitiba / PR" />
-                  <ContactRow icon={ShieldCheck} text="LGPD e dados pessoais" />
-                </div>
-              </div>
-            </aside>
-
-            <div className="grid gap-4">
-              {sections.map((section) => (
-                <article
-                  key={section.title}
-                  className="rounded-2xl border border-border/70 bg-white p-6 shadow-sm md:p-8"
-                >
-                  <h2 className="font-heading text-2xl font-black tracking-tight text-foreground">
-                    {section.title}
-                  </h2>
-                  <div className="mt-4">
-                    <Prose>{section.content}</Prose>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
-}
-
-function LegalHero({
-  eyebrow,
-  title,
-  description,
-}: {
-  eyebrow: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <section className="relative isolate overflow-hidden bg-[#07111F] pt-20 pb-16 lg:pt-32 lg:pb-24">
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-      <div className="pointer-events-none absolute top-0 right-0 -z-10 h-[560px] w-[560px] rounded-full bg-[#6575FF]/[0.12] blur-[140px]" />
-      <div className="container mx-auto px-4 lg:px-8">
-        <Link
-          href="/"
-          className="mb-10 inline-flex items-center gap-2 text-sm font-bold text-white/60 transition-colors hover:text-white"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Voltar para a home
-        </Link>
-        <div className="max-w-3xl">
-          <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
-            {eyebrow}
-          </span>
-          <h1 className="mt-5 font-heading text-4xl font-black leading-[1.08] tracking-tight text-white md:text-5xl lg:text-6xl">
-            {title}
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/55 md:text-lg">
-            {description}
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ContactRow({
-  icon: Icon,
-  text,
-}: {
-  icon: ElementType;
-  text: string;
-}) {
-  return (
-    <div className="flex items-center gap-3 text-sm font-semibold text-muted-foreground">
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#6575FF]/20 bg-[#6575FF]/10 text-[#6575FF]">
-        <Icon className="h-4 w-4" />
-      </span>
-      {text}
-    </div>
-  );
-}
-
-function Prose({ children }: { children: ReactNode }) {
-  return (
-    <div className="
-      [&>p]:mt-4 [&>p]:text-sm [&>p]:leading-relaxed [&>p]:text-muted-foreground
-      [&>p:first-child]:mt-0
-      [&>ul]:mt-4 [&>ul]:flex [&>ul]:list-disc [&>ul]:flex-col [&>ul]:gap-2 [&>ul]:pl-5
-      [&_li]:text-sm [&_li]:leading-relaxed [&_li]:text-muted-foreground
-      [&_a]:font-semibold [&_a]:text-[#6575FF] [&_a]:hover:underline
-      [&_strong]:font-bold [&_strong]:text-foreground
-      [&_em]:text-foreground
-    ">
-      {children}
-    </div>
+    <LegalPagina
+      badge="Privacidade e LGPD"
+      title="Política de *Privacidade*"
+      description="Como a UPDO coleta, usa e protege os dados informados nos formulários, ferramentas de analytics, CRM e campanhas."
+      atualizacao="Junho de 2026"
+      resumo="Esta página explica o tratamento de dados pessoais no site da UPDO."
+      contatos={[
+        { icon: Mail, text: "contato@updo.com.br" },
+        { icon: MapPin, text: "Curitiba / PR" },
+        { icon: ShieldCheck, text: "LGPD e dados pessoais" },
+      ]}
+      sections={sections}
+    />
   );
 }
