@@ -207,9 +207,10 @@ const ComoTrabalhamosPagina = () => (
             </RevealAnimation>
           </div>
           <RevealAnimation delay={0.3} direction="right" className="col-span-12 lg:col-span-5">
-            <figure className="rounded-3xl bg-white p-6 shadow-sm">
-              <figcaption className="text-tagline-2 text-secondary/60 mb-4 flex items-center gap-2 font-medium">
-                <span className="bg-lilas-500 size-1.5 rounded-full" />4 pilares UPDO
+            <figure className="bg-secondary shadow-6 relative overflow-hidden rounded-3xl p-6">
+              <div aria-hidden="true" className="bg-lilas-500/25 pointer-events-none absolute inset-[20%] rounded-full blur-3xl" />
+              <figcaption className="text-tagline-2 relative mb-4 flex items-center gap-2 font-medium text-white/70">
+                <span className="bg-primary-500 size-1.5 rounded-full" />4 pilares UPDO
               </figcaption>
               <Image
                 src="/Imagens/Infografico-Metodlogia-Updo.png"
@@ -217,7 +218,7 @@ const ComoTrabalhamosPagina = () => (
                 width={520}
                 height={545}
                 priority
-                className="mx-auto h-auto w-full max-w-[440px]"
+                className="relative mx-auto h-auto w-full max-w-[440px]"
               />
             </figure>
           </RevealAnimation>
