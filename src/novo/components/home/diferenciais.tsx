@@ -67,9 +67,9 @@ const Diferenciais = () => {
               <RevealAnimation key={pilar.title} delay={0.3 + index * 0.1}>
                 <div className="flex flex-col justify-between gap-5 rounded-3xl border border-white/10 p-6 md:gap-10 md:p-7">
                   <IconChip icon={pilar.icon} tone={index === 1 ? 'lilas' : 'claro'} />
-                  <div className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem]">
-                    <h3 className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] inline font-medium text-white">{pilar.title}.</h3>{' '}
-                    <p className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] inline text-white/50">{pilar.description}</p>
+                  <div className="space-y-2">
+                    <h3 className="text-heading-6 font-normal text-white">{pilar.title}</h3>
+                    <p className="text-tagline-2 text-white/60">{pilar.description}</p>
                   </div>
                 </div>
               </RevealAnimation>

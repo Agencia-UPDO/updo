@@ -53,14 +53,12 @@ const Servicos = () => {
                     {servico.tag}
                   </span>
                 </div>
-                <div className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] mt-6">
-                  <h3 className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] text-secondary inline font-medium transition-colors duration-500 group-hover:text-white">
-                    {servico.title}.
-                  </h3>{' '}
-                  <p className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] text-secondary/50 inline transition-colors duration-500 group-hover:text-white/60">
-                    {servico.description}
-                  </p>
-                </div>
+                <h3 className="text-heading-6 md:text-heading-5 mt-6 font-normal transition-colors duration-500 group-hover:text-white">
+                  {servico.title}
+                </h3>
+                <p className="text-tagline-2 mt-3 transition-colors duration-500 group-hover:text-white/65">
+                  {servico.description}
+                </p>
                 <span className="text-tagline-2 text-secondary group-hover:text-primary-500 mt-auto flex items-center gap-2 pt-5 font-medium sm:pt-8 transition-colors duration-500">
                   Conhecer serviço
                   <ArrowRightIcon className="size-4 stroke-current transition-transform duration-300 group-hover:translate-x-1" />

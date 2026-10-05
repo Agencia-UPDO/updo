@@ -36,9 +36,9 @@ const Setores = () => {
                     <ArrowUpRightIcon className="size-5 stroke-black transition-transform duration-300 group-hover:rotate-45" />
                   </span>
                 </div>
-                <div className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] mt-5 md:mt-10">
-                  <h3 className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] text-secondary inline font-medium">{setor.title}.</h3>{' '}
-                  <p className="font-titulo text-[1.125rem] leading-[1.45] tracking-[-0.01em] md:text-[1.25rem] text-secondary/50 inline">{setor.description}</p>
+                <div className="mt-5 space-y-2 md:mt-10">
+                  <h3 className="text-heading-5 font-normal">{setor.title}</h3>
+                  <p className="text-tagline-2">{setor.description}</p>
                 </div>
               </Link>
             </RevealAnimation>
