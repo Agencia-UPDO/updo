@@ -19,6 +19,8 @@ body {
   --font-mono: var(--font-mono-src), ui-monospace, monospace;
   --animate-fluxo-lead-x: fluxo-lead-x 3.6s linear infinite;
   --animate-fluxo-lead-y: fluxo-lead-y 3.6s linear infinite;
+  --animate-brilho-barra: brilho-barra 4.2s ease-in-out infinite;
+  --animate-lead-barra: lead-barra 3.2s ease-in-out infinite;
 }
 
 /* Leads percorrendo o fluxo dos pilares nas páginas de serviço */
@@ -85,3 +87,17 @@ body.menu-aberto .nld-chatbot {
   display: none !important;
 }
 
+
+/* Card do topo das páginas de setor: brilho passando pelas barras */
+@keyframes brilho-barra {
+  0% { transform: translateX(-120%); }
+  45%, 100% { transform: translateX(320%); }
+}
+
+/* Card do topo: lead percorrendo a barra até o fim */
+@keyframes lead-barra {
+  0% { left: 0%; opacity: 0; }
+  12% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
