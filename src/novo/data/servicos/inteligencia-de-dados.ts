@@ -228,7 +228,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
     title: 'De 12% para 94% de receita rastreada.',
     description:
       'Empresa B2B com verba em seis canais, UTMs inconsistentes e relatório manual. Após coleta, dashboard e atribuição, a verba deixou de seguir percepção e passou a seguir receita.',
-    ctaText: 'Quero esse resultado nos meus dados',
+    ctaText: 'Quero esse resultado',
     metrics: [
       { value: '94%', label: 'receita rastreada' },
       { value: '-35%', label: 'CAC' },

@@ -29,11 +29,11 @@ export const insideSales: ServicoConteudo = {
     ctaSecundario: { text: 'Ver como funciona', href: '/diagnostico' },
   },
   resultado: {
-    title: 'De 8% para 15% de conversão, sem contratar mais vendedores',
+    title: 'Mais de 38% de aumento na conversão, sem contratar mais vendedores',
     description:
       'Empresa de serviços com cinco vendedores, ticket médio de R$18 mil e pipeline no Excel. Após playbook, CRM estruturado e rotina semanal, o time passou a vender com mais previsibilidade.',
     metrics: [
-      { value: '8% → 15%', label: 'conversão comercial' },
+      { value: '+38%', label: 'conversão comercial' },
       { value: '-30%', label: 'ciclo de venda' },
       { value: '85%', label: 'previsão de fechamento' },
       { value: '< 30d', label: 'onboarding' },
@@ -282,10 +282,10 @@ export const insideSales: ServicoConteudo = {
   },
   caso: {
     badge: 'Resultado real',
-    title: 'De 8% para 15% de conversão, sem contratar mais vendedores.',
+    title: 'Mais de 38% de aumento na conversão, sem contratar mais vendedores.',
     description:
       'Empresa de serviços com cinco vendedores, ticket médio de R$18 mil e pipeline no Excel. Após playbook, CRM estruturado e rotina semanal, o time passou a vender com mais previsibilidade.',
-    ctaText: 'Quero esse resultado no meu comercial',
+    ctaText: 'Quero esse resultado',
     metrics: [
       { value: '+38%', label: 'conversão comercial' },
       { value: '-30%', label: 'ciclo de venda' },

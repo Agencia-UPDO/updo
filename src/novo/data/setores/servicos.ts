@@ -33,7 +33,7 @@ export const setorServicos: ServicoConteudo = {
     metrics: [
       { value: "+R$ 3,8M", label: "em contratos fechados" },
       { value: "+2,4x", label: "leads qualificados" },
-      { value: "-44%", label: "CPL vs. anterior" },
+      { value: "-74%", label: "CPL vs. anterior" },
     ],
   },
   cartao: {
@@ -198,7 +198,7 @@ export const setorServicos: ServicoConteudo = {
     metrics: [
       { value: "+R$ 3,8M", label: "em contratos fechados" },
       { value: "+2,4x", label: "leads qualificados" },
-      { value: "-44%", label: "CPL vs. anterior" },
+      { value: "-74%", label: "CPL vs. anterior" },
     ],
   },
   formulario: {

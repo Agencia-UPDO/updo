@@ -231,7 +231,7 @@ export const uxCro: ServicoConteudo = {
     title: 'Mais conversão sem aumentar a verba de mídia.',
     description:
       'Landing page com tráfego pago constante e formulário pouco acionado. Após análise de comportamento, nova hierarquia e teste de variante, a página converteu mais usando a mesma verba.',
-    ctaText: 'Quero esse resultado na minha página',
+    ctaText: 'Quero esse resultado',
     metrics: [
       { value: '+78%', label: 'uplift de conversão' },
       { value: '-31%', label: 'custo por lead' },

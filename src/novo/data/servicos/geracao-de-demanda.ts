@@ -201,7 +201,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
     title: 'CPL menor e mais lead qualificado sem depender de um canal.',
     description:
       'Operação B2B com verba concentrada em Google Ads e baixa qualificação. Após ICP, landing page, remarketing e LinkedIn Ads, a aquisição ficou mais previsível e menos vulnerável ao leilão.',
-    ctaText: 'Quero esse resultado na minha aquisição',
+    ctaText: 'Quero esse resultado',
     metrics: [
       { value: 'R$89', label: 'CPL médio' },
       { value: '3x', label: 'leads qualificados' },

@@ -236,7 +236,7 @@ export const funilEAutomacao: ServicoConteudo = {
     title: 'Mais velocidade entre lead, resposta e oportunidade.',
     description:
       'Operação B2B com RD Station, WhatsApp e CRM desalinhados. Após segmentação, scoring e alertas por etapa, o comercial passou a receber menos lead frio e mais oportunidade com contexto.',
-    ctaText: 'Quero esse resultado no meu funil',
+    ctaText: 'Quero esse resultado',
     metrics: [
       { value: '-42%', label: 'tempo de resposta' },
       { value: '+31%', label: 'oportunidades' },

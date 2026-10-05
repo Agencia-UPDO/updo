@@ -177,7 +177,7 @@ export const iaParaVendas: ServicoConteudo = {
     title: 'De 4h de espera para resposta em segundos, sem aumentar o time.',
     description:
       'Empresa de serviços B2B com 300 a 400 leads/mês e time comercial de 3 pessoas. O tempo médio de primeiro atendimento era de 4 horas. Leads frios, CAC alto, vendedores frustrados. Após implantação do agente de qualificação via WhatsApp integrado ao RD Station:',
-    ctaText: 'Quero esse resultado na minha empresa',
+    ctaText: 'Quero esse resultado',
     metrics: [
       { value: '28s', label: 'Tempo médio de resposta' },
       { value: '+3x', label: 'Capacidade de atendimento' },
