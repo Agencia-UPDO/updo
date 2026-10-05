@@ -152,7 +152,7 @@ const sections: SecaoLegal[] = [
         <p>
           Para exercer seus direitos, envie um e-mail para{" "}
           <a href="mailto:contato@updo.com.br">contato@updo.com.br</a> com o
-          assunto <em>"Solicitacao LGPD"</em>.
+          assunto <em>&quot;Solicitacao LGPD&quot;</em>.
         </p>
       </>
     ),
