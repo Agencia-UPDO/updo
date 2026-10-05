@@ -106,7 +106,7 @@ const sections: SecaoLegal[] = [
     ),
   },
   {
-    title: "6. Formularios e dados pessoais",
+    title: "6. Formulários e dados pessoais",
     content: (
       <>
         <p>
@@ -156,7 +156,7 @@ const sections: SecaoLegal[] = [
     ),
   },
   {
-    title: "9. Limitacao de responsabilidade",
+    title: "9. Limitação de responsabilidade",
     content: (
       <>
         <p>
@@ -169,7 +169,7 @@ const sections: SecaoLegal[] = [
     ),
   },
   {
-    title: "10. Legislacao aplicavel e foro",
+    title: "10. Legislação aplicável e foro",
     content: (
       <>
         <p>

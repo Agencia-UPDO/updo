@@ -39,7 +39,7 @@ const sections: SecaoLegal[] = [
           UPDO.
         </p>
         <p>
-          Para assuntos relacionados a privacidade e LGPD, fale com a nossa
+          Para assuntos relacionados à privacidade e LGPD, fale com a nossa
           equipe pelo e-mail{" "}
           <a href="mailto:contato@updo.com.br">contato@updo.com.br</a>.
         </p>
@@ -54,18 +54,18 @@ const sections: SecaoLegal[] = [
         <ul>
           <li>Nome, e-mail, telefone e empresa;</li>
           <li>
-            Informacoes de contexto, como setor, desafio, investimento,
-            faturamento, ticket medio, ciclo de venda, CRM, canais ativos ou
-            tema de interesse, conforme o formulario preenchido;
+            Informações de contexto, como setor, desafio, investimento,
+            faturamento, ticket médio, ciclo de venda, CRM, canais ativos ou
+            tema de interesse, conforme o formulário preenchido;
           </li>
           <li>
             Dados de origem de campanha, como UTM source, medium, campaign,
-            content e term, quando disponiveis.
+            content e term, quando disponíveis.
           </li>
         </ul>
         <p>
-          Tambem coletamos dados de navegacao de forma agregada por ferramentas
-          como Google Analytics, Google Tag Manager e pixels de midia, incluindo
+          Também coletamos dados de navegação de forma agregada por ferramentas
+          como Google Analytics, Google Tag Manager e pixels de mídia, incluindo
           páginas visitadas, eventos, origem de acesso e desempenho de
           campanhas.
         </p>
@@ -80,7 +80,7 @@ const sections: SecaoLegal[] = [
         <ul>
           <li>Responder solicitações de diagnóstico, contato ou treinamento;</li>
           <li>Personalizar o atendimento conforme o contexto informado;</li>
-          <li>Registrar conversoes em ferramentas de marketing e CRM;</li>
+          <li>Registrar conversões em ferramentas de marketing e CRM;</li>
           <li>Mensurar campanhas, desempenho do site e qualidade dos leads;</li>
           <li>Cumprir obrigações legais e regulatórias aplicáveis.</li>
         </ul>
@@ -109,16 +109,16 @@ const sections: SecaoLegal[] = [
     title: "5. Compartilhamento de dados",
     content: (
       <>
-        <p>Seus dados podem ser compartilhados com fornecedores usados pela UPDO para operacao do site, marketing, CRM e atendimento, como:</p>
+        <p>Seus dados podem ser compartilhados com fornecedores usados pela UPDO para operação do site, marketing, CRM e atendimento, como:</p>
         <ul>
-          <li>RD Station e outras ferramentas de CRM ou automacao;</li>
+          <li>RD Station e outras ferramentas de CRM ou automação;</li>
           <li>Google Analytics, Google Tag Manager e Google Ads;</li>
-          <li>Meta Ads e outros pixels de mensuracao;</li>
-          <li>Plataformas de hospedagem, infraestrutura e seguranca.</li>
+          <li>Meta Ads e outros pixels de mensuração;</li>
+          <li>Plataformas de hospedagem, infraestrutura e segurança.</li>
         </ul>
         <p>
           Esses fornecedores tratam os dados apenas para as finalidades
-          contratadas e conforme suas proprias politicas de privacidade.
+          contratadas e conforme suas próprias políticas de privacidade.
         </p>
       </>
     ),
@@ -128,9 +128,9 @@ const sections: SecaoLegal[] = [
     content: (
       <>
         <p>
-          Dados de contato e formulario podem ser armazenados por ate 5 anos
-          apos o ultimo contato, ou enquanto houver relacao comercial ativa.
-          Dados de navegacao e analytics seguem os prazos configurados nas
+          Dados de contato e formulário podem ser armazenados por até 5 anos
+          após o último contato, ou enquanto houver relação comercial ativa.
+          Dados de navegação e analytics seguem os prazos configurados nas
           respectivas ferramentas.
         </p>
       </>
@@ -142,17 +142,17 @@ const sections: SecaoLegal[] = [
       <>
         <p>Nos termos da LGPD, você pode solicitar:</p>
         <ul>
-          <li>Confirmacao de tratamento e acesso aos dados;</li>
-          <li>Correcao de dados incompletos, inexatos ou desatualizados;</li>
-          <li>Anonimizacao, bloqueio ou eliminacao de dados desnecessarios;</li>
-          <li>Portabilidade, quando aplicavel;</li>
-          <li>Informacoes sobre compartilhamento;</li>
-          <li>Revogacao do consentimento.</li>
+          <li>Confirmação de tratamento e acesso aos dados;</li>
+          <li>Correção de dados incompletos, inexatos ou desatualizados;</li>
+          <li>Anonimização, bloqueio ou eliminação de dados desnecessários;</li>
+          <li>Portabilidade, quando aplicável;</li>
+          <li>Informações sobre compartilhamento;</li>
+          <li>Revogação do consentimento.</li>
         </ul>
         <p>
           Para exercer seus direitos, envie um e-mail para{" "}
           <a href="mailto:contato@updo.com.br">contato@updo.com.br</a> com o
-          assunto <em>&quot;Solicitacao LGPD&quot;</em>.
+          assunto <em>&quot;Solicitação LGPD&quot;</em>.
         </p>
       </>
     ),
@@ -163,19 +163,19 @@ const sections: SecaoLegal[] = [
       <>
         <p>
           Utilizamos cookies e tecnologias semelhantes para funcionamento do
-          site, analise de trafego, mensuracao de campanhas e melhoria da
-          experiencia. Voce pode bloquear cookies nas configuracoes do
+          site, análise de tráfego, mensuração de campanhas e melhoria da
+          experiência. Você pode bloquear cookies nas configurações do
           navegador, mas isso pode afetar algumas funcionalidades.
         </p>
       </>
     ),
   },
   {
-    title: "9. Seguranca",
+    title: "9. Segurança",
     content: (
       <>
         <p>
-          Adotamos medidas tecnicas e organizacionais para proteger dados
+          Adotamos medidas técnicas e organizacionais para proteger dados
           pessoais contra acesso não autorizado, perda, uso indevido,
           alteração ou divulgação indevida. O site utiliza HTTPS com
           criptografia SSL/TLS.
@@ -184,7 +184,7 @@ const sections: SecaoLegal[] = [
     ),
   },
   {
-    title: "10. Atualizacoes desta politica",
+    title: "10. Atualizações desta política",
     content: (
       <>
         <p>
