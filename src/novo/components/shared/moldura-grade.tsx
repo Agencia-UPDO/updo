@@ -24,7 +24,8 @@ const MolduraGrade = ({ tone = 'light' }: { tone?: 'light' | 'dark' }) => (
     <div className="main-container h-full">
       <div
         className={cn(
-          'relative h-full border-x',
+          // Linhas afastadas do conteúdo para não encostar no texto.
+          'relative -mx-4 h-full border-x lg:-mx-8 xl:-mx-12',
           tone === 'dark' ? 'border-white/8' : 'border-secondary/8'
         )}
       >
