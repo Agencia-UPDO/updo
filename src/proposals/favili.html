@@ -121,6 +121,35 @@
   .passo p { font-size: 15px; }
   .passo .tag { display: inline-block; margin-top: 12px; font-size: 13px; border-radius: 999px; padding: 4px 12px; background: var(--lilas-claro); color: var(--lilas); font-weight: 500; }
 
+  /* Ciclo das quatro etapas */
+  .ciclo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .ciclo { position: relative; width: min(100%, 440px); aspect-ratio: 1; margin: 0 auto; }
+  .ciclo .anel { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ciclo .cometa { transform-origin: 200px 200px; animation: gira 8s linear infinite; }
+  .ciclo .pontilhado { transform-origin: 200px 200px; animation: gira 40s linear infinite reverse; }
+  @keyframes gira { to { transform: rotate(360deg); } }
+  .centro-ciclo { position: absolute; inset: 31%; border-radius: 50%; background: #fff; box-shadow: 0 20px 50px rgba(10,18,32,.08), 0 0 0 14px rgba(86,254,213,.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; font-family: 'Plus Jakarta Sans'; color: var(--texto); font-size: 15px; line-height: 1.25; }
+  .centro-ciclo img { width: 44px; height: 44px; }
+  .no { position: absolute; transform: translate(-50%, -50%); background: none; border: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px; font: inherit; }
+  .no0 { left: 50%; top: 12.5%; } .no1 { left: 87.5%; top: 50%; } .no2 { left: 50%; top: 87.5%; } .no3 { left: 12.5%; top: 50%; }
+  .no .bolinha { width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--lilas-claro); color: var(--lilas); transition: all .4s; }
+  .no .bolinha svg { width: 24px; height: 24px; }
+  .no .nome { font-size: 13px; font-weight: 500; color: var(--texto); background: #fff; border-radius: 999px; padding: 3px 12px; box-shadow: 0 4px 12px rgba(10,18,32,.06); transition: all .4s; }
+  .no.ativo .bolinha { background: var(--navy); color: var(--menta); transform: scale(1.14); box-shadow: 0 0 0 6px rgba(86,254,213,.35); }
+  .no.ativo .nome { background: var(--menta); }
+  .detalhe { position: relative; min-height: 300px; }
+  .det { position: absolute; inset: 0 0 auto 0; opacity: 0; transform: translateY(10px); transition: opacity .5s, transform .5s; pointer-events: none; background: #fff; border-radius: 28px; padding: 34px; border: 1px solid var(--linha); }
+  .det.ativo { opacity: 1; transform: none; pointer-events: auto; position: relative; }
+  .det .quando-etapa { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--lilas); }
+  .det h3 { font-size: 1.7rem; margin: 10px 0 12px; }
+  .det .tag { display: inline-block; font-size: 13px; border-radius: 999px; padding: 4px 12px; background: var(--menta-clara); color: var(--navy); font-weight: 500; margin-bottom: 14px; }
+  .progresso-ciclo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 22px; }
+  .progresso-ciclo span { height: 5px; border-radius: 999px; background: rgba(10,18,32,.08); overflow: hidden; position: relative; }
+  .progresso-ciclo span.feito { background: var(--lilas); }
+  .progresso-ciclo span.agora::after { content: ''; position: absolute; inset: 0; background: var(--menta); transform-origin: left; animation: enche 4.5s linear forwards; }
+  @keyframes enche { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .rodape-ciclo { margin-top: 16px; font-size: 15px; }
+
   /* Linha do tempo */
   .tempo { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
   .mes { border-radius: 22px; padding: 24px 22px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
@@ -161,6 +190,7 @@
   /* Fase 2 */
   .fase2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .fase2 .card { position: relative; }
+  .fase2.duas { grid-template-columns: repeat(2, 1fr); }
   .fase2 .card .depois { position: absolute; top: 24px; right: 24px; font-size: 12px; border-radius: 999px; padding: 3px 10px; background: var(--fundo); color: var(--texto-2); }
 
   /* Quem lidera */
@@ -182,15 +212,19 @@
     .topo-grid, .case, .preco, .lider { grid-template-columns: 1fr; }
     .grid-3, .grid-4, .fase2 { grid-template-columns: 1fr 1fr; }
     .tempo { grid-template-columns: 1fr 1fr; }
-    .fluxo { grid-template-columns: 1fr 1fr; row-gap: 40px; }
-    .fluxo::before { display: none; }
+    .ciclo-wrap { grid-template-columns: 1fr; gap: 32px; }
+    .fase2.duas { grid-template-columns: 1fr 1fr; }
     .lider > img { max-width: 320px; }
     .grade { display: none; }
   }
   @media (max-width: 640px) {
     body { font-size: 16px; }
     section { padding: 64px 0; }
-    .grid-3, .grid-2, .grid-4, .fase2, .tempo, .fluxo { grid-template-columns: 1fr; }
+    .grid-3, .grid-2, .grid-4, .fase2, .fase2.duas, .tempo { grid-template-columns: 1fr; }
+    .no .bolinha { width: 48px; height: 48px; }
+    .no .nome { font-size: 12px; padding: 2px 10px; }
+    .centro-ciclo { font-size: 13px; }
+    .det { padding: 26px; }
     .barra { padding: 8px 8px 8px 18px; margin-bottom: 56px; }
     .barra a.botao { display: none; }
     .marcas img { height: 28px; }
@@ -288,11 +322,65 @@
       <h2>Quatro etapas ligadas ao <span class="faixa">mesmo funil</span></h2>
       <p>Não é só ligar anúncio. Cada etapa passa o lead para a próxima, e a gente mede onde ele trava.</p>
     </div>
-    <div class="fluxo">
-      <div class="passo"><div class="num">1</div><h3>Atração</h3><p>Google para quem já está procurando faculdade e Meta para gerar desejo por curso, com público da região do Vale do Jaguaribe.</p><span class="tag">Google + Meta Ads</span></div>
-      <div class="passo"><div class="num">2</div><h3>Conversão</h3><p>Landing pages por área (Saúde, Direito e Negócios), com os cursos de cada uma, bolsas, diferenciais da Favili e formulário curto.</p><span class="tag">LPs + criativos</span></div>
-      <div class="passo"><div class="num">3</div><h3>Automação</h3><p>Lead entra no RD Station Marketing, recebe nutrição pelo curso de interesse e cai no RD Station CRM da equipe com origem, curso e interesse em bolsa.</p><span class="tag">RD Station Marketing → CRM</span></div>
-      <div class="passo"><div class="num">4</div><h3>Atendimento</h3><p>Equipe treinada para responder rápido, conduzir a conversa no WhatsApp e levar o candidato até a inscrição.</p><span class="tag">Treinamento</span></div>
+    <div class="ciclo-wrap">
+      <div class="ciclo" aria-label="Ciclo de captação em quatro etapas">
+        <svg class="anel" viewBox="0 0 400 400" aria-hidden="true">
+          <defs>
+            <linearGradient id="grad-ciclo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6575ff"/><stop offset="1" stop-color="#56fed5"/></linearGradient>
+          </defs>
+          <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(10,18,32,0.08)" stroke-width="2"/>
+          <circle cx="200" cy="200" r="150" fill="none" stroke="url(#grad-ciclo)" stroke-width="3" stroke-dasharray="60 882" stroke-linecap="round" class="cometa"/>
+          <circle cx="200" cy="200" r="174" fill="none" stroke="rgba(101,117,255,0.25)" stroke-width="1" stroke-dasharray="2 8" class="pontilhado"/>
+        </svg>
+        <div class="centro-ciclo">
+          <img src="/Imagens/favicon%20agencia%20updo.png" alt="" />
+          <span>Ciclo de<br/>captação</span>
+        </div>
+        <button class="no no0" data-i="0" aria-label="Atração">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+          <span class="nome">Atração</span>
+        </button>
+        <button class="no no1" data-i="1" aria-label="Conversão">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3z M3 9h18 M8 14h8"/></svg></span>
+          <span class="nome">Conversão</span>
+        </button>
+        <button class="no no2" data-i="2" aria-label="Automação">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16 M4 12h10 M4 18h6 M18 13a3 3 0 1 0 0 6a3 3 0 1 0 0-6"/></svg></span>
+          <span class="nome">Automação</span>
+        </button>
+        <button class="no no3" data-i="3" aria-label="Atendimento">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          <span class="nome">Atendimento</span>
+        </button>
+      </div>
+      <div class="detalhe">
+          <div class="det ativo" data-i="0">
+            <span class="quando-etapa">Etapa 01 de 04</span>
+            <h3>Atração</h3>
+            <span class="tag">Google + Meta Ads</span>
+            <p>Google para quem já está procurando faculdade e Meta para gerar desejo pelos cursos, com público da região do Vale do Jaguaribe e remarketing para quem já demonstrou interesse.</p>
+          </div>
+          <div class="det" data-i="1">
+            <span class="quando-etapa">Etapa 02 de 04</span>
+            <h3>Conversão</h3>
+            <span class="tag">LPs por área + criativos</span>
+            <p>Três landing pages por área (Saúde, Direito e Negócios) com os cursos, as bolsas, os diferenciais da Favili e um formulário curto que não deixa o interessado desistir.</p>
+          </div>
+          <div class="det" data-i="2">
+            <span class="quando-etapa">Etapa 03 de 04</span>
+            <h3>Automação</h3>
+            <span class="tag">RD Station Marketing → CRM</span>
+            <p>O lead entra no RD Station Marketing, recebe nutrição pelo curso de interesse e cai no RD Station CRM já com origem, curso, interesse em bolsa e responsável.</p>
+          </div>
+          <div class="det" data-i="3">
+            <span class="quando-etapa">Etapa 04 de 04</span>
+            <h3>Atendimento</h3>
+            <span class="tag">Equipe preparada</span>
+            <p>A equipe responde rápido, conduz a conversa no WhatsApp e leva o candidato até a inscrição e a matrícula. O que a gente aprende aqui volta para ajustar a atração.</p>
+          </div>
+        <div class="progresso-ciclo"><span></span><span></span><span></span><span></span></div>
+        <p class="rodape-ciclo">Depois do atendimento, o ciclo recomeça: o que a equipe ouve dos candidatos ajusta anúncios, páginas e ofertas.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -453,9 +541,8 @@
       <h2>Uma base para a Favili <span class="faixa">crescer o ano todo</span></h2>
       <p>A campanha resolve o vestibular 2027.1. Os dados e o processo que ela gera abrem o caminho para estruturar a operação comercial de forma permanente.</p>
     </div>
-    <div class="fase2" style="margin-bottom:96px">
+    <div class="fase2 duas" style="margin-bottom:96px">
       <div class="card"><span class="depois">próxima fase</span><div class="icone l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/></svg></div><h3>Playbook comercial</h3><p>Roteiros, etapas e regras de atendimento documentados para a equipe vender do mesmo jeito.</p></div>
-      <div class="card"><span class="depois">próxima fase</span><div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><h3>Implantação do Kommo</h3><p>CRM com funil de captação, WhatsApp integrado e visão da gestão sobre cada candidato.</p></div>
       <div class="card"><span class="depois">próxima fase</span><div class="icone l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></div><h3>Gestão comercial</h3><p>Metas, rotina semanal e indicadores para a direção acompanhar a captação ao longo do ano.</p></div>
     </div>
 
@@ -493,5 +580,31 @@
   UPDO · CNPJ 30.119.930/0001-20 · Curitiba/PR · Proposta válida por 15 dias
 </footer>
 
+
+<script>
+  // Ciclo das etapas: avança sozinho e responde ao clique.
+  (function () {
+    var nos = document.querySelectorAll('.ciclo .no');
+    var dets = document.querySelectorAll('.detalhe .det');
+    var barras = document.querySelectorAll('.progresso-ciclo span');
+    if (!nos.length) return;
+    var atual = 0, timer;
+    function mostrar(i) {
+      atual = i;
+      nos.forEach(function (n, k) { n.classList.toggle('ativo', k === i); });
+      dets.forEach(function (d, k) { d.classList.toggle('ativo', k === i); });
+      barras.forEach(function (b, k) {
+        b.classList.toggle('feito', k < i);
+        b.classList.remove('agora');
+        if (k === i) { void b.offsetWidth; b.classList.add('agora'); }
+      });
+    }
+    function proximo() { mostrar((atual + 1) % nos.length); }
+    function iniciar() { clearInterval(timer); timer = setInterval(proximo, 4500); }
+    nos.forEach(function (n, k) { n.addEventListener('click', function () { mostrar(k); iniciar(); }); });
+    mostrar(0);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) iniciar();
+  })();
+</script>
 </body>
 </html>
