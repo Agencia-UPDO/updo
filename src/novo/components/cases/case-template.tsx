@@ -61,7 +61,7 @@ const CaseTemplate = ({ c }: { c: CaseConteudo }) => (
             </div>
           </RevealAnimation>
           <TextReveal delay={0.15}>
-            <h1 style={balance}>{c.titulo}</h1>
+            <h1 style={balance}>{realce(c.titulo)}</h1>
           </TextReveal>
           <TextReveal delay={0.25}>
             <p className="mx-auto max-w-[640px]">{c.subtitulo}</p>

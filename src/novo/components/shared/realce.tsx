@@ -8,9 +8,41 @@ export const realceClass =
 const realceEscuroClass =
   'box-decoration-clone bg-[linear-gradient(transparent_78%,var(--color-primary-500)_78%,var(--color-primary-500)_90%,transparent_90%)] px-1';
 
-const Faixa = ({ children, tone }: { children: ReactNode; tone: 'light' | 'dark' }) => (
-  <span className={cn(tone === 'dark' ? realceEscuroClass : realceClass)}>{children}</span>
+const Faixa = ({
+  children,
+  tone,
+  className,
+}: {
+  children: ReactNode;
+  tone: 'light' | 'dark';
+  className?: string;
+}) => (
+  <span className={cn(tone === 'dark' ? realceEscuroClass : realceClass, className)}>{children}</span>
 );
+
+// A pontuação logo depois do destaque fica presa à última palavra,
+// para a vírgula não cair sozinha na linha de baixo.
+const Trecho = ({ texto, pontuacao, tone }: { texto: string; pontuacao: string; tone: 'light' | 'dark' }) => {
+  if (!pontuacao) return <Faixa tone={tone}>{texto}</Faixa>;
+  const corte = texto.lastIndexOf(' ');
+  const inicio = texto.slice(0, corte + 1);
+  const ultima = texto.slice(corte + 1);
+  return (
+    <>
+      {inicio && (
+        <Faixa tone={tone} className="pr-0">
+          {inicio}
+        </Faixa>
+      )}
+      <span className="whitespace-nowrap">
+        <Faixa tone={tone} className={inicio ? 'pl-0' : undefined}>
+          {ultima}
+        </Faixa>
+        {pontuacao}
+      </span>
+    </>
+  );
+};
 
 /**
  * Destaca uma palavra do título com a faixa verde.
@@ -20,13 +52,13 @@ const Faixa = ({ children, tone }: { children: ReactNode; tone: 'light' | 'dark'
 export const realce = (title: ReactNode, tone: 'light' | 'dark' = 'light'): ReactNode => {
   if (typeof title !== 'string') return title;
 
-  const marcado = title.match(/^(.*?)\*(.+?)\*(.*)$/);
+  const marcado = title.match(/^(.*?)\*(.+?)\*([.,!?:;]*)(.*)$/);
   if (marcado) {
-    const [, antes, trecho, depois] = marcado;
+    const [, antes, trecho, pontuacao, depois] = marcado;
     return (
       <>
         {antes}
-        <Faixa tone={tone}>{trecho}</Faixa>
+        <Trecho texto={trecho} pontuacao={pontuacao} tone={tone} />
         {depois}
       </>
     );
@@ -51,8 +83,7 @@ export const realce = (title: ReactNode, tone: 'light' | 'dark' = 'light'): Reac
     <>
       {antes}
       {espaco}
-      <Faixa tone={tone}>{palavra}</Faixa>
-      {pontuacao}
+      <Trecho texto={palavra} pontuacao={pontuacao} tone={tone} />
     </>
   );
 };

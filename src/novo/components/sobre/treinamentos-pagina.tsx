@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import HeroFundo from '@/novo/components/home/hero-fundo';
 import FluxoPilares from '@/novo/components/servicos/fluxo-pilares';
@@ -170,7 +171,7 @@ const TreinamentosPagina = () => (
                 </div>
               </RevealAnimation>
               <TextReveal delay={0.15}>
-                <h1 style={balance}>Treinamentos corporativos para times que precisam vender melhor.</h1>
+                <h1 style={balance}>{realce('Treinamentos corporativos para times que precisam *vender melhor*.')}</h1>
               </TextReveal>
               <TextReveal delay={0.25}>
                 <p className="max-w-[560px]">

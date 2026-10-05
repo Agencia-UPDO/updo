@@ -1,4 +1,5 @@
 import RevealAnimation from "@/novo/components/animation/reveal-animation";
+import { realce } from '@/novo/components/shared/realce';
 import TextReveal from "@/novo/components/animation/text-reveal";
 import HeroFundo from "@/novo/components/home/hero-fundo";
 import VideoDepoimento from "@/novo/components/home/video-depoimento";
@@ -103,8 +104,7 @@ const EducacaoPagina = () => (
               </RevealAnimation>
               <TextReveal delay={0.15}>
                 <h1 style={balance} className="xl:text-heading-2!">
-                  Capte mais alunos e transforme leads em matrículas com mais
-                  previsibilidade.
+                  {realce('Capte mais alunos e transforme leads em matrículas com mais *previsibilidade*.')}
                 </h1>
               </TextReveal>
               <TextReveal delay={0.25}>

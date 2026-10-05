@@ -1,4 +1,5 @@
 import { balance } from '@/novo/utils/balance';
+import { realce } from '@/novo/components/shared/realce';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import { CheckIcon } from '@/novo/components/shared/icons';
@@ -134,7 +135,7 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
                   </div>
                 </RevealAnimation>
                 <TextReveal delay={0.15}>
-                  <h1 style={balance} className="xl:text-heading-2!">{hero.title}</h1>
+                  <h1 style={balance} className="xl:text-heading-2!">{realce(hero.title)}</h1>
                 </TextReveal>
                 <TextReveal delay={0.25}>
                   <p className="max-w-[580px]">{hero.description}</p>

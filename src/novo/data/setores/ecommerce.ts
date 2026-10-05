@@ -13,7 +13,7 @@ export const setorEcommerce: ServicoConteudo = {
   nome: "E-commerce",
   tipo: "setor",
   hero: {
-    title: "Marketing para e-commerce que conecta tráfego, checkout e recompra",
+    title: "Marketing para e-commerce que conecta tráfego, *checkout e recompra*",
     description:
       "Estruturamos aquisição, criativos, oferta, CRO, dados e pós-compra para sua loja crescer sem entregar margem para o algoritmo.",
     bullets: [

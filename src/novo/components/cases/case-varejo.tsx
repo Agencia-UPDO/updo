@@ -7,7 +7,7 @@ const CaseVarejo = () => (
     c={{
       voltar: { text: 'Voltar para cases', href: '/cases' },
       badge: 'Case · Varejista Híbrido B2B/B2C',
-      titulo: '+122% de faturamento e +1.400% de tráfego',
+      titulo: '*+122%* de faturamento e +1.400% de tráfego',
       subtitulo:
         'Como um varejista paulistano com mais de 20 anos de mercado, saindo do histórico de tetos de faturamento para recordes consecutivos ano após ano.',
       metricas: [

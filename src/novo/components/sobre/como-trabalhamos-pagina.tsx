@@ -169,7 +169,7 @@ const ComoTrabalhamosPagina = () => (
               </RevealAnimation>
               <TextReveal delay={0.15}>
                 <h1 style={balance} className="xl:text-heading-2!">
-                  Do diagnóstico ao resultado: tudo conectado, nada terceirizado.
+                  {realce('Do diagnóstico ao resultado: *tudo conectado*, nada terceirizado.')}
                 </h1>
               </TextReveal>
               <TextReveal delay={0.25}>

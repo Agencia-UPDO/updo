@@ -15,7 +15,7 @@ export const chatgptAds: ServicoConteudo = {
   slug: 'chatgpt-ads',
   nome: 'ChatGPT Ads',
   hero: {
-    title: 'ChatGPT Ads para aparecer quando o cliente está decidindo',
+    title: 'ChatGPT Ads para aparecer quando o cliente *está decidindo*',
     description:
       'Planejamos e operamos campanhas no ChatGPT conectando intenção conversacional, anúncios, landing pages, tracking, SEO e GEO.',
     bullets: [

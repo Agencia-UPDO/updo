@@ -16,7 +16,7 @@ export const geracaoDeDemanda: ServicoConteudo = {
   slug: 'geracao-de-demanda',
   nome: 'Geração de Demanda',
   hero: {
-    title: 'Geração de demanda para atrair o lead certo, não só mais leads',
+    title: 'Geração de demanda para atrair o *lead certo*, não só mais leads',
     description:
       'Estruturamos Google Ads, Meta Ads, LinkedIn Ads, SEO, GEO, AEO e conteúdo com ICP, oferta e leitura de CAC para sua verba comprar oportunidade, não só tráfego.',
     bullets: [

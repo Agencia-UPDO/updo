@@ -73,10 +73,18 @@ const MobileMenu = () => {
       <aside
         aria-hidden={!aberto}
         className={cn(
-          'bg-background-13 fixed top-0 right-0 z-70 flex h-dvh w-full flex-col shadow-xl transition-transform duration-500 ease-in-out md:w-[min(100vw,26rem)] xl:hidden',
+          'bg-background-13 isolate fixed top-0 right-0 z-70 flex h-dvh overflow-hidden w-full flex-col shadow-xl transition-transform duration-500 ease-in-out md:w-[min(100vw,26rem)] xl:hidden',
           aberto ? 'visible translate-x-0' : 'invisible translate-x-full'
         )}
       >
+        {/* Fundo: pontos no topo e brilhos da marca nos cantos */}
+        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+          <div className="absolute inset-0 bg-[radial-gradient(circle,var(--color-lilas-200)_1px,transparent_1.5px)] bg-size-[22px_22px] mask-[radial-gradient(ellipse_90%_45%_at_80%_0%,#000_15%,transparent_70%)] opacity-80" />
+          <div className="bg-primary-500/35 absolute -top-28 -right-24 size-72 rounded-full blur-3xl" />
+          <div className="bg-lilas-500/20 absolute top-1/3 -left-32 size-72 rounded-full blur-3xl" />
+          <div className="bg-primary-500/25 absolute -bottom-32 left-1/2 h-64 w-[120%] -translate-x-1/2 rounded-full blur-3xl" />
+        </div>
+
         <div className="flex items-center justify-between px-5 pt-5 pb-3">
           <Link href="/" onClick={close}>
             <span className="sr-only">UPDO, página inicial</span>
@@ -106,7 +114,7 @@ const MobileMenu = () => {
             href="/"
             onClick={close}
             className={cn(
-              'font-titulo text-heading-6 text-secondary flex items-center justify-between rounded-2xl bg-white px-5 py-4 font-medium',
+              'font-titulo text-heading-6 text-secondary flex items-center justify-between rounded-2xl bg-white/85 px-5 py-4 font-medium shadow-[0_1px_2px_rgba(10,18,34,0.04)] backdrop-blur',
               pathname === '/' && 'ring-primary-500 ring-2'
             )}
           >
@@ -117,7 +125,7 @@ const MobileMenu = () => {
           {grupos.map((grupo) => {
             const expandido = grupoAberto === grupo.id;
             return (
-              <div key={grupo.id} className="rounded-2xl bg-white">
+              <div key={grupo.id} className="rounded-2xl bg-white/85 shadow-[0_1px_2px_rgba(10,18,34,0.04)] backdrop-blur">
                 <button
                   type="button"
                   aria-expanded={expandido}
@@ -196,18 +204,27 @@ const MobileMenu = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={close}
-            className="font-titulo text-heading-6 text-secondary flex items-center justify-between rounded-2xl bg-white px-5 py-4 font-medium"
+            className="font-titulo text-heading-6 text-secondary flex items-center justify-between rounded-2xl bg-white/85 px-5 py-4 font-medium shadow-[0_1px_2px_rgba(10,18,34,0.04)] backdrop-blur"
           >
             Insights
             <ArrowUpRight className="text-secondary/40 size-5" strokeWidth={1.75} aria-hidden="true" />
           </a>
         </nav>
 
-        <div className="space-y-2.5 px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
+        <div className="px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
+          <div className="bg-secondary relative space-y-2.5 overflow-hidden rounded-3xl p-4">
+            <div
+              className="bg-primary-500/25 pointer-events-none absolute -top-16 -right-10 size-40 rounded-full blur-2xl"
+              aria-hidden="true"
+            />
+            <p className="text-tagline-2 relative px-1 pb-1 text-white/70">
+              <span className="font-medium text-white">Diagnóstico gratuito.</span> 45 minutos para mapear onde
+              seu funil perde vendas.
+            </p>
           <Link
             href="/diagnostico"
             onClick={close}
-            className="bg-primary-500 text-secondary text-tagline-1 flex h-13 items-center justify-center rounded-full font-medium"
+            className="bg-primary-500 text-secondary text-tagline-1 relative flex h-13 items-center justify-center rounded-full font-medium"
           >
             Agendar diagnóstico gratuito
           </Link>
@@ -216,11 +233,12 @@ const MobileMenu = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={close}
-            className="bg-secondary text-tagline-1 flex h-13 items-center justify-center gap-2 rounded-full font-medium text-white"
+            className="text-tagline-1 relative flex h-13 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 font-medium text-white"
           >
             <MessageCircle className="size-4.5" strokeWidth={1.75} aria-hidden="true" />
             Falar no WhatsApp
           </a>
+          </div>
         </div>
       </aside>
     </>

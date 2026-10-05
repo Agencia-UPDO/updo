@@ -17,7 +17,7 @@ export const setorIndustria: ServicoConteudo = {
   tipo: "setor",
   hero: {
     title:
-      "Marketing industrial que gera pipeline previsível em venda complexa",
+      "Marketing industrial que gera *pipeline previsível* em venda complexa",
     description:
       "Estratégia para indústrias e empresas B2B que precisam gerar demanda qualificada, estruturar processo comercial e criar previsibilidade de receita no ciclo longo.",
     bullets: [

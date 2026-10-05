@@ -14,7 +14,7 @@ export const inteligenciaDeDados: ServicoConteudo = {
   slug: 'inteligencia-de-dados',
   nome: 'Inteligência de Dados',
   hero: {
-    title: 'Decisão baseada em dado, não em feeling ou planilha',
+    title: 'Decisão *baseada em dado*, não em feeling ou planilha',
     description:
       'Estruturamos coleta, dashboards, KPIs e atribuição para você enxergar quais canais geram receita, margem e previsibilidade.',
     bullets: [

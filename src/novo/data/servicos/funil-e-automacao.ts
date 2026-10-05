@@ -15,7 +15,7 @@ export const funilEAutomacao: ServicoConteudo = {
   slug: 'funil-e-automacao',
   nome: 'Funil e Automação',
   hero: {
-    title: 'Funil de vendas e automação para o lead certo chegar na hora certa',
+    title: 'Funil de vendas e automação para o lead certo chegar na *hora certa*',
     description:
       'Estruturamos jornada, lead scoring, nutrição e automações de WhatsApp, e-mail e CRM para o comercial agir com contexto e menos trabalho manual.',
     bullets: [

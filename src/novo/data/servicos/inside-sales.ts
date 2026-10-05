@@ -17,7 +17,7 @@ export const insideSales: ServicoConteudo = {
   slug: 'inside-sales',
   nome: 'Inside Sales',
   hero: {
-    title: 'Processo comercial que transforma lead em receita previsível',
+    title: 'Processo comercial que transforma lead em *receita previsível*',
     description:
       'Estruturamos playbook, pipeline, treinamento e rotina de gestão para o time vender com consistência, sem depender do talento individual de cada vendedor.',
     bullets: [

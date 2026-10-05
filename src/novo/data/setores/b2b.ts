@@ -16,7 +16,7 @@ export const setorB2b: ServicoConteudo = {
   tipo: "setor",
   hero: {
     title:
-      "Marketing B2B que gera pipeline qualificado sem depender de indicação",
+      "Marketing B2B que gera *pipeline qualificado* sem depender de indicação",
     description:
       "Estratégia para SaaS, consultorias e serviços B2B que precisam de ICP claro, canais previsíveis, processo comercial e métricas de receita, não só de leads.",
     bullets: [

@@ -18,7 +18,7 @@ export const clienteOculto: ServicoConteudo = {
   slug: 'cliente-oculto',
   nome: 'Cliente Oculto',
   hero: {
-    title: 'Veja como sua empresa atende na prática',
+    title: 'Veja como sua empresa *atende na prática*',
     description:
       'Auditamos atendimento, tempo de resposta, follow-up, clareza da oferta e percepção competitiva para mostrar onde você perde confiança, lead e receita antes mesmo da proposta.',
     bullets: [

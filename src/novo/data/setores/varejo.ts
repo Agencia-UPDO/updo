@@ -17,7 +17,7 @@ export const setorVarejo: ServicoConteudo = {
   nome: "Varejo",
   tipo: "setor",
   hero: {
-    title: "Marketing para varejo que conecta tráfego local, WhatsApp e venda",
+    title: "Marketing para varejo que conecta *tráfego local*, WhatsApp e venda",
     description:
       "Estratégia para lojas físicas e operações híbridas que precisam gerar fluxo, vender melhor no atendimento e crescer com ticket médio, recompra e previsibilidade.",
     bullets: [

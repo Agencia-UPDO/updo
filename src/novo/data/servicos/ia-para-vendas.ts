@@ -15,7 +15,7 @@ export const iaParaVendas: ServicoConteudo = {
   slug: 'ia-para-vendas',
   nome: 'IA para Vendas',
   hero: {
-    title: 'Seu time de vendas nunca mais vai perder uma janela de compra',
+    title: 'Seu time de vendas nunca mais vai perder uma *janela de compra*',
     description:
       'Implantamos agentes de IA que qualificam, respondem e agendam pelo WhatsApp, integrados ao seu CRM, com o tom da sua marca, sem substituir o vendedor. Só livrar ele do trabalho que não precisa ser humano.',
     bullets: ['Configurado para o seu processo', 'Integração com seu CRM', 'Sem substituir o time'],

@@ -184,7 +184,7 @@ const SobrePagina = () => (
                 </div>
               </RevealAnimation>
               <TextReveal delay={0.15}>
-                <h1 style={balance}>A agência que conecta marketing, vendas, CRM e dados à receita.</h1>
+                <h1 style={balance}>{realce('A agência que conecta marketing, vendas, CRM e dados à *receita*.')}</h1>
               </TextReveal>
               <TextReveal delay={0.25}>
                 <p className="max-w-[560px]">

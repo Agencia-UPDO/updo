@@ -15,7 +15,7 @@ export const uxCro: ServicoConteudo = {
   slug: 'ux-cro',
   nome: 'UX e CRO',
   hero: {
-    title: 'UX e CRO para converter melhor o tráfego que você já paga',
+    title: 'UX e CRO para *converter melhor* o tráfego que você já paga',
     description:
       'Diagnosticamos onde o usuário trava, transformamos comportamento em hipótese e testamos mudanças para aumentar conversão com dado, não com opinião.',
     bullets: [

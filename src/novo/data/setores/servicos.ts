@@ -14,7 +14,7 @@ export const setorServicos: ServicoConteudo = {
   tipo: "setor",
   hero: {
     title:
-      "Marketing para empresas de serviços que precisam de lead qualificado, não só volume",
+      "Marketing para empresas de serviços que precisam de *lead qualificado*, não só volume",
     description:
       "Posicionamento claro, canal previsível, qualificação estruturada e processo comercial para planos de saúde, consultorias, comunicação visual, seguros, contabilidade e outros serviços.",
     bullets: [

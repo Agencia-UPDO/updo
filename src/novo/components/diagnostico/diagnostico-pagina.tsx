@@ -1,4 +1,5 @@
 import RevealAnimation from "@/novo/components/animation/reveal-animation";
+import { realce } from '@/novo/components/shared/realce';
 import TextReveal from "@/novo/components/animation/text-reveal";
 import HeroFundo from "@/novo/components/home/hero-fundo";
 import { CheckIcon } from "@/novo/components/shared/icons";
@@ -68,7 +69,7 @@ const DiagnosticoPagina = () => (
               </RevealAnimation>
               <TextReveal delay={0.15}>
                 <h1 style={balance}>
-                  Descubra onde seu marketing perde receita.
+                  {realce('Descubra onde seu marketing *perde receita*.')}
                 </h1>
               </TextReveal>
               <TextReveal delay={0.25}>

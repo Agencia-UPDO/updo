@@ -99,7 +99,7 @@ const CasesIndice = () => {
               </div>
             </RevealAnimation>
             <TextReveal delay={0.15}>
-              <h1 style={balance}>Resultados com método, dados e execução.</h1>
+              <h1 style={balance}>{realce('Resultados com *método*, dados e execução.')}</h1>
             </TextReveal>
             <TextReveal delay={0.25}>
               <p className="mx-auto max-w-[620px]">

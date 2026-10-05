@@ -16,7 +16,7 @@ const CaseIndustria = () => (
     c={{
       voltar: { text: 'Voltar para cases', href: '/cases' },
       badge: 'Case · Indústria de Bens de Consumo',
-      titulo: '1.527% de ROI e R$ 350k em vendas',
+      titulo: '*1.527%* de ROI e R$ 350k em vendas',
       subtitulo:
         'Como uma operação industrial validou mídia digital com R$ 350.000 em receita atribuída a partir de R$ 21.500 investidos.',
       metricas: [

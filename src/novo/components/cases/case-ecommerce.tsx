@@ -16,7 +16,7 @@ const CaseEcommerce = () => (
     c={{
       voltar: { text: 'Voltar para cases', href: '/cases' },
       badge: 'Case · E-commerce de Moda Infantil',
-      titulo: '+6.900% em vendas em 60 dias',
+      titulo: '*+6.900%* em vendas em 60 dias',
       subtitulo:
         'Como estruturamos o marketing de um e-commerce de moda infantil para sair de R$3k para mais de R$211k de faturamento mensal, com ROAS de 4.7x.',
       metricas: [
