@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# pacote do tema original (não vai para o repositório)
+themeforest-*.zip

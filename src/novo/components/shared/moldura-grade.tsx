@@ -1,0 +1,46 @@
+import { cn } from '@/novo/utils/cn';
+
+/** Marcador em forma de estrela de quatro pontas, com os cantos internos curvos. */
+const Mais = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 12 12" // Cinza médio fixo: o marcador fica metade sobre a seção de cima, que pode ser clara ou escura.
+    className={cn('absolute size-[13px] text-[#9aa3b5]', className)} fill="currentColor" aria-hidden="true">
+    <path d="M6 0Q6.7 5.3 12 6Q6.7 6.7 6 12Q5.3 6.7 0 6Q5.3 5.3 6 0Z" />
+  </svg>
+);
+
+/**
+ * Moldura de planta atrás da seção: linhas finas nas bordas do conteúdo,
+ * uma linha no topo e "+" nos cruzamentos. A seção precisa ser relative.
+ */
+/** semTopo: só as linhas laterais, para seção que continua a anterior. */
+const MolduraGrade = ({ tone = 'light', semTopo = false }: { tone?: 'light' | 'dark'; semTopo?: boolean }) => (
+  <div
+    className={cn(
+      'pointer-events-none absolute inset-0 -z-10 hidden md:block',
+      tone === 'dark' ? 'text-white/25' : 'text-secondary/25'
+    )}
+    aria-hidden="true"
+  >
+    {!semTopo && (
+      <div className={cn('absolute inset-x-0 top-0 h-px', tone === 'dark' ? 'bg-white/8' : 'bg-secondary/8')} />
+    )}
+    <div className="main-container h-full">
+      <div
+        className={cn(
+          // Linhas afastadas do conteúdo para não encostar no texto.
+          'relative -mx-4 h-full border-x lg:-mx-8 xl:-mx-12',
+          tone === 'dark' ? 'border-white/8' : 'border-secondary/8'
+        )}
+      >
+        {!semTopo && (
+          <>
+            <Mais className="-top-[6.5px] -left-[7px]" />
+            <Mais className="-top-[6.5px] -right-[7px]" />
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+);
+
+export default MolduraGrade;

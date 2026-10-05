@@ -1,0 +1,103 @@
+@import 'tailwindcss';
+@import '../../novo/styles/common.css';
+@import '../../novo/styles/variable.css';
+@import '../../novo/styles/typography.css';
+
+@source '../../novo';
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  @apply bg-background-13 text-secondary;
+}
+
+@theme inline {
+  --font-texto: var(--font-texto-src), sans-serif;
+  --font-titulo: var(--font-titulo-src), sans-serif;
+  --font-mono: var(--font-mono-src), ui-monospace, monospace;
+  --animate-fluxo-lead-x: fluxo-lead-x 3.6s linear infinite;
+  --animate-fluxo-lead-y: fluxo-lead-y 3.6s linear infinite;
+  --animate-brilho-barra: brilho-barra 4.2s ease-in-out infinite;
+  --animate-lead-barra: lead-barra 3.2s ease-in-out infinite;
+}
+
+/* Leads percorrendo o fluxo dos pilares nas páginas de serviço */
+@keyframes fluxo-lead-x {
+  0% { left: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+@keyframes fluxo-lead-y {
+  0% { top: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes metodo-fluxo {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes metodo-progresso {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes metodo-entra {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+@keyframes hero-linha {
+  from {
+    stroke-dashoffset: 1140;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Folga para descendentes (g, p, ç) não serem cortados pela máscara do TextReveal */
+.line-mask {
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+/* Esconde o chat da Leadster enquanto o menu do celular está aberto. */
+body.menu-aberto .nld-chatbot {
+  display: none !important;
+}
+
+
+/* Card do topo das páginas de setor: brilho passando pelas barras */
+@keyframes brilho-barra {
+  0% { transform: translateX(-120%); }
+  45%, 100% { transform: translateX(320%); }
+}
+
+/* Card do topo: lead percorrendo a barra até o fim */
+@keyframes lead-barra {
+  0% { left: 0%; opacity: 0; }
+  12% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
