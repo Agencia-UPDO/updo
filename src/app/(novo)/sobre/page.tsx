@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { AboutPage } from "@/components/sections/about/about-page";
+import SobrePagina from "@/novo/components/sobre/sobre-pagina";
 
 export const metadata: Metadata = {
   title: "Sobre | Consultoria de Crescimento, CRM e Inteligência Comercial",
@@ -73,7 +73,7 @@ export default function SobrePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
       />
-      <AboutPage />
+      <SobrePagina />
     </>
   );
 }
