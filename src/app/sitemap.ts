@@ -13,6 +13,8 @@ const routes = [
   { path: "/cases/e-commerce", priority: 0.75 },
   { path: "/cases/varejo", priority: 0.75 },
   { path: "/cases/industria", priority: 0.75 },
+  { path: "/servicos", priority: 0.85 },
+  { path: "/setores", priority: 0.85 },
   { path: "/marketing-educacional", priority: 0.9 },
   { path: "/marketing-para-ecommerce", priority: 0.85 },
   { path: "/marketing-para-varejo", priority: 0.85 },

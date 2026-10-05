@@ -331,7 +331,7 @@ const ComoTrabalhamosPagina = () => (
     </section>
 
     {/* Frase do Rodrigo */}
-    <section className="relative isolate bg-white py-18 md:py-24">
+    <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
       <MolduraGrade />
       <div className="main-container">
         <RevealAnimation delay={0.1}>

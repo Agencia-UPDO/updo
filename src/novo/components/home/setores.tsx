@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const Setores = () => {
   return (
-    <section id="setores" className="relative isolate pt-6 pb-18 md:pb-28 xl:pb-32">
+    <section id="setores" className="relative isolate py-18 md:py-28 xl:py-32">
       <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading

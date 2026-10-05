@@ -23,6 +23,10 @@ const ContadorSecoes = () => {
       totais.forEach((el) => {
         if (el.textContent !== total) el.textContent = total;
       });
+      // Página com uma seção só: "[ 01 / 01 ]" não informa nada, então fica só o nome.
+      document.querySelectorAll<HTMLElement>('main [data-contador-bloco]').forEach((el) => {
+        el.style.display = numeros.length < 2 ? 'none' : '';
+      });
     };
 
     preencher();

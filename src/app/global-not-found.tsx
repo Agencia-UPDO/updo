@@ -1,135 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
-import "./globals.css";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
-import { SiteHead, GtmNoscript } from "@/components/layout/site-tracking";
 import Link from "next/link";
-import { ArrowRight, Compass, FileSearch, Home, Layers3 } from "lucide-react";
-
-const quickLinks = [
-  {
-    href: "/",
-    title: "Voltar para a home",
-    description: "Veja a visão geral da UPDO e os principais caminhos do site.",
-    icon: Home,
-  },
-  {
-    href: "/diagnostico",
-    title: "Agendar diagnóstico",
-    description: "Ir direto para a página de diagnóstico estratégico.",
-    icon: Compass,
-  },
-  {
-    href: "/cases",
-    title: "Explorar cases",
-    description: "Abrir os resultados e projetos organizados por setor.",
-    icon: FileSearch,
-  },
-];
-
-function NotFoundContent() {
-  return (
-    <main className="relative isolate overflow-hidden bg-background">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:40px_40px]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_top,rgba(86,254,213,0.16),transparent_56%)]" />
-      <div className="pointer-events-none absolute right-[-120px] top-24 h-72 w-72 rounded-full bg-[#2457e6]/10 blur-[110px]" />
-      <div className="pointer-events-none absolute left-[-80px] bottom-10 h-64 w-64 rounded-full bg-accent/12 blur-[110px]" />
-
-      <section className="container mx-auto flex min-h-[calc(100vh-10rem)] flex-col justify-center px-4 py-20 lg:px-8 lg:py-28">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
-          <div className="max-w-3xl">
-            <span className="updo-badge inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em]">
-              Erro 404
-            </span>
-
-            <h1 className="mt-6 font-heading text-4xl font-black leading-[1.02] tracking-tight text-foreground md:text-6xl">
-              Esta página saiu da rota, mas a próxima ação está logo aqui.
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              O endereço que você tentou acessar não existe mais ou mudou de
-              lugar. Organizamos abaixo os caminhos mais úteis para você seguir
-              sem perder contexto.
-            </p>
-
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/diagnostico"
-                className="group/button relative isolate inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full border border-transparent bg-accent bg-clip-padding px-6 text-sm font-bold whitespace-nowrap text-accent-foreground shadow-[0_10px_24px_rgba(86,254,213,0.22)] transition-all duration-300 outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 hover:scale-105 hover:bg-[#3eecc4] hover:shadow-[0_14px_34px_rgba(86,254,213,0.34)] active:scale-95 sm:w-auto"
-              >
-                <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[#56FED5]" />
-                Agendar diagnóstico
-                <ArrowRight className="h-4 w-4 transition-transform group-hover/button:translate-x-0.5" />
-              </Link>
-              <Link
-                href="/cases"
-                className="group/button inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 rounded-full border-2 border-border/80 bg-white/40 px-6 text-sm font-bold text-foreground whitespace-nowrap transition-all duration-300 outline-none select-none backdrop-blur-xs focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 hover:scale-105 hover:border-[#6575FF]/35 hover:bg-[#6575FF]/10 active:scale-95 sm:w-auto"
-              >
-                Ver todos os cases
-                <ArrowRight className="h-4 w-4 transition-transform group-hover/button:translate-x-0.5" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="relative rounded-[28px] border border-[#07111F]/8 bg-[#07111F] p-6 text-white shadow-[0_24px_80px_rgba(7,17,31,0.14)] md:p-7">
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-accent/35 bg-accent/10 text-accent">
-                <Layers3 className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent/90">
-                  Mapa sugerido
-                </p>
-                <p className="mt-1 font-heading text-xl font-black tracking-tight">
-                  Caminhos mais acessados
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-6 space-y-3">
-              {quickLinks.map((item) => {
-                const Icon = item.icon;
-
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="group block rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-200 hover:border-accent/30 hover:bg-white/[0.07]"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-accent">
-                        <Icon className="h-4 w-4" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="font-heading text-base font-black tracking-tight text-white">
-                          {item.title}
-                        </p>
-                        <p className="mt-1 text-sm leading-relaxed text-white/52">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
-}
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-});
+import "./(novo)/novo.css";
+import { SiteHead, GtmNoscript } from "@/components/layout/site-tracking";
+import Navbar from "@/novo/components/layout/navbar";
+import MobileMenu from "@/novo/components/layout/mobile-menu";
+import Footer from "@/novo/components/layout/footer";
+import HeroFundo from "@/novo/components/home/hero-fundo";
+import { realce } from "@/novo/components/shared/realce";
+import Badge from "@/novo/components/shared/ui/badge/badge";
+import ButtonPrimary from "@/novo/components/shared/ui/button/button-primary";
+import ButtonWhite from "@/novo/components/shared/ui/button/button-white";
+import { fontVariables } from "@/novo/utils/font";
+import { balance } from "@/novo/utils/balance";
+import { ArrowRight, BookOpen, Compass, House, Layers, Trophy } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Página não encontrada | UPDO",
@@ -137,16 +20,81 @@ export const metadata: Metadata = {
   icons: { icon: "/Imagens/favicon agencia updo.png" },
 };
 
+const caminhos = [
+  { href: "/", title: "Início", description: "Visão geral da UPDO e do método.", icon: House },
+  { href: "/servicos", title: "Serviços", description: "Do anúncio ao caixa, frente por frente.", icon: Layers },
+  { href: "/setores", title: "Setores", description: "Estratégia por mercado: educação, varejo, B2B e mais.", icon: Compass },
+  { href: "/cases", title: "Cases", description: "Resultados com nome de setor, período e número.", icon: Trophy },
+  { href: "https://insights.updo.com.br", title: "Insights", description: "Artigos sobre marketing, vendas, CRM e IA.", icon: BookOpen },
+];
+
 export default function GlobalNotFound() {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <SiteHead />
-      <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased min-h-screen flex flex-col`}
-      >
+      <body className={`${fontVariables} antialiased`}>
         <GtmNoscript />
         <Navbar />
-        <NotFoundContent />
+        <MobileMenu />
+        <main>
+          <section className="relative isolate overflow-x-clip pt-32 pb-18 md:pt-40 lg:pt-48 xl:pb-28">
+            <HeroFundo />
+            <div className="main-container">
+              <div className="grid grid-cols-12 items-center gap-y-12 lg:gap-x-16">
+                <div className="col-span-12 space-y-6 lg:col-span-6">
+                  <div>
+                    <Badge text="Erro 404" />
+                  </div>
+                  <p className="font-mono text-secondary/45 text-xs tracking-[0.14em] uppercase">
+                    [ <span className="text-lilas-500 font-medium">404</span> ] · rota não encontrada
+                  </p>
+                  <h1 style={balance}>{realce("Esta página saiu do *funil*.")}</h1>
+                  <p className="max-w-[520px]">
+                    O endereço que você tentou acessar não existe mais ou mudou de lugar. Os caminhos ao lado
+                    levam para as partes mais procuradas do site.
+                  </p>
+                  <div className="flex flex-col gap-4 sm:flex-row">
+                    <Link href="/diagnostico" className="inline-flex w-full sm:w-auto">
+                      <ButtonPrimary text="Agendar diagnóstico" className="w-full" />
+                    </Link>
+                    <Link href="/" className="inline-flex w-full sm:w-auto">
+                      <ButtonWhite text="Voltar para o início" className="w-full" />
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="col-span-12 lg:col-span-6">
+                  <div className="bg-secondary shadow-6 rounded-3xl p-5 md:p-7">
+                    <p className="text-tagline-3 text-white/50">Caminhos mais acessados</p>
+                    <ul className="mt-4 space-y-2.5">
+                      {caminhos.map(({ href, title, description, icon: Icon }) => (
+                        <li key={href}>
+                          <Link
+                            href={href}
+                            target={href.startsWith("http") ? "_blank" : undefined}
+                            className="group flex items-center gap-4 rounded-2xl border border-white/8 bg-white/[0.04] p-4 transition-colors hover:border-primary-500/40 hover:bg-white/[0.07]"
+                          >
+                            <span className="bg-primary-500/15 text-primary-500 flex size-10 shrink-0 items-center justify-center rounded-xl">
+                              <Icon className="size-4.5" strokeWidth={1.75} aria-hidden="true" />
+                            </span>
+                            <span className="min-w-0 flex-1">
+                              <span className="text-tagline-1 block font-medium text-white">{title}</span>
+                              <span className="text-tagline-2 block text-white/55">{description}</span>
+                            </span>
+                            <ArrowRight
+                              className="group-hover:text-primary-500 size-4 shrink-0 text-white/40 transition-all group-hover:translate-x-1"
+                              aria-hidden="true"
+                            />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
         <Footer />
       </body>
     </html>

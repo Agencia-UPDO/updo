@@ -38,9 +38,12 @@ const SectionHeading = ({
               tone === 'dark' ? 'text-white/60' : 'text-secondary/60'
             )}
           >
-            [ <span data-contador-n className="text-lilas-500 font-medium" />
-            {' / '}
-            <span data-contador-total>{contador ?? ''}</span> ] <span className="mx-1.5">·</span> {badge}
+            <span data-contador-bloco>
+              [ <span data-contador-n className="text-lilas-500 font-medium" />
+              {' / '}
+              <span data-contador-total>{contador ?? ''}</span> ] <span className="mx-1.5">·</span>{' '}
+            </span>
+            {badge}
           </p>
         </div>
       </RevealAnimation>

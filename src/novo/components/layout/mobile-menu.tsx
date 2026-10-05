@@ -7,7 +7,7 @@ import { useMediaQuery } from '@/novo/hooks/useMediaQuery';
 import { cn } from '@/novo/utils/cn';
 import HeroFundo from '@/novo/components/home/hero-fundo';
 import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
-import { ArrowUpRight, ChevronDown, House } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ChevronDown, House } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -152,7 +152,7 @@ const MobileMenu = () => {
                       const externo = link.href.startsWith('http');
                       const ativo = pathname === link.href;
                       return (
-                        <li key={link.href} className={cn(index === grupo.links.length - 1 && 'pb-2')}>
+                        <li key={link.href} className={cn(index === grupo.links.length - 1 && grupo.id !== 'servicos' && grupo.id !== 'setores' && 'pb-2')}>
                           <Link
                             href={link.href}
                             onClick={close}
@@ -189,6 +189,19 @@ const MobileMenu = () => {
                         </li>
                       );
                     })}
+                    {(grupo.id === 'servicos' || grupo.id === 'setores') && (
+                      <li className="pb-2">
+                        <Link
+                          href={grupo.id === 'servicos' ? '/servicos' : '/setores'}
+                          onClick={close}
+                          tabIndex={expandido ? undefined : -1}
+                          className="text-tagline-2 text-lilas-500 flex items-center gap-1.5 px-3 py-2.5 font-medium"
+                        >
+                          {grupo.id === 'servicos' ? 'Ver todos os serviços' : 'Ver todos os setores'}
+                          <ArrowRight className="size-4" aria-hidden="true" />
+                        </Link>
+                      </li>
+                    )}
                   </ul>
                 </div>
               </div>

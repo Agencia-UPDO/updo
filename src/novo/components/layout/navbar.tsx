@@ -7,7 +7,7 @@ import ButtonPrimaryV2 from '@/novo/components/shared/ui/button/button-primary-v
 import { casesMenu, empresaMenu, servicos, setores, type NavLink } from '@/novo/data/navegacao';
 import { useNavbarScroll } from '@/novo/hooks/useScrollHeader';
 import { cn } from '@/novo/utils/cn';
-import { CheckCircle2, Funnel } from 'lucide-react';
+import { CheckCircle2, Funnel, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
@@ -247,6 +247,14 @@ const Navbar = () => {
                     Do anúncio ao caixa
                   </p>
                   <ListaMenu links={servicos} tone="menta" />
+                  <Link
+                    href="/servicos"
+                    onClick={() => setMenuAberto(null)}
+                    className="text-tagline-2 text-secondary hover:text-lilas-500 mt-2 inline-flex items-center gap-1.5 px-3 font-medium transition-colors"
+                  >
+                    Ver todos os serviços
+                    <ArrowRight className="size-4" aria-hidden="true" />
+                  </Link>
                 </div>
                 <CardDestaque
                   href="/diagnostico"
@@ -265,6 +273,14 @@ const Navbar = () => {
                     Estratégias por mercado
                   </p>
                   <ListaMenu links={setores} tone="lilas" />
+                  <Link
+                    href="/setores"
+                    onClick={() => setMenuAberto(null)}
+                    className="text-tagline-2 text-secondary hover:text-lilas-500 mt-2 inline-flex items-center gap-1.5 px-3 font-medium transition-colors"
+                  >
+                    Ver todos os setores
+                    <ArrowRight className="size-4" aria-hidden="true" />
+                  </Link>
                 </div>
                 <Link
                   href={casoDestaque.href}
