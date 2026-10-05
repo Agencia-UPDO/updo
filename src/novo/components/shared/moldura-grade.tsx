@@ -1,17 +1,9 @@
 import { cn } from '@/novo/utils/cn';
 
-/** Marcador "+" com pontas arredondadas nos cruzamentos da grade. */
+/** Marcador em forma de estrela de quatro pontas, com os cantos internos curvos. */
 const Mais = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 12 12"
-    className={cn('absolute size-[13px]', className)}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.6}
-    strokeLinecap="round"
-    aria-hidden="true"
-  >
-    <path d="M6 1.5v9M1.5 6h9" />
+  <svg viewBox="0 0 12 12" className={cn('absolute size-[13px]', className)} fill="currentColor" aria-hidden="true">
+    <path d="M6 0Q6.7 5.3 12 6Q6.7 6.7 6 12Q5.3 6.7 0 6Q5.3 5.3 6 0Z" />
   </svg>
 );
 
