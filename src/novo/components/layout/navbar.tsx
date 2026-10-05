@@ -172,7 +172,7 @@ const Navbar = () => {
                     href="/"
                     className="text-tagline-1 text-secondary/70 hover:border-stroke-2 hover:text-secondary flex items-center rounded-full border border-transparent px-4 py-2 transition-all duration-200"
                   >
-                    Home
+                    Início
                   </Link>
                 </li>
                 {itensMenu.map((item) => (

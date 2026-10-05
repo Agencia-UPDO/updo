@@ -114,7 +114,7 @@ const MobileMenu = () => {
               pathname === '/' && 'ring-primary-500 ring-2'
             )}
           >
-            Home
+            Início
             <House className="text-secondary/40 size-5" strokeWidth={1.75} aria-hidden="true" />
           </Link>
 

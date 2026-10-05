@@ -49,7 +49,7 @@ const LegalPagina = ({ badge, title, description, atualizacao, resumo, contatos,
                 className="text-tagline-2 text-secondary/60 hover:text-secondary inline-flex items-center gap-2 transition-colors"
               >
                 <ArrowLeft className="size-4" aria-hidden="true" />
-                Voltar para a home
+                Voltar para o início
               </Link>
             </div>
           </RevealAnimation>
