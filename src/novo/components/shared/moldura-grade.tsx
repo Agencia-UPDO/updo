@@ -1,11 +1,18 @@
 import { cn } from '@/novo/utils/cn';
 
-/** Marcador "+" nos cruzamentos da grade. */
+/** Marcador "+" com pontas arredondadas nos cruzamentos da grade. */
 const Mais = ({ className }: { className?: string }) => (
-  <span className={cn('absolute size-[11px]', className)} aria-hidden="true">
-    <span className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2 bg-current" />
-    <span className="absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-current" />
-  </span>
+  <svg
+    viewBox="0 0 12 12"
+    className={cn('absolute size-[13px]', className)}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.6}
+    strokeLinecap="round"
+    aria-hidden="true"
+  >
+    <path d="M6 1.5v9M1.5 6h9" />
+  </svg>
 );
 
 /**
@@ -29,8 +36,8 @@ const MolduraGrade = ({ tone = 'light' }: { tone?: 'light' | 'dark' }) => (
           tone === 'dark' ? 'border-white/8' : 'border-secondary/8'
         )}
       >
-        <Mais className="-top-[5px] -left-[6px]" />
-        <Mais className="-top-[5px] -right-[6px]" />
+        <Mais className="-top-[6.5px] -left-[7px]" />
+        <Mais className="-top-[6.5px] -right-[7px]" />
       </div>
     </div>
   </div>
