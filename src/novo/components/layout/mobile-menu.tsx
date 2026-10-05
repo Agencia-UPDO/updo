@@ -79,7 +79,7 @@ const MobileMenu = () => {
           aberto ? 'visible translate-x-0' : 'invisible translate-x-full'
         )}
       >
-        <HeroFundo />
+        <HeroFundo prefixo="menu" />
 
         <div className="flex items-center justify-between px-5 pt-5 pb-3">
           <Link href="/" onClick={close}>
