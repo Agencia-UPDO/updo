@@ -21,7 +21,6 @@ const Insights = async () => {
           <SectionHeading
             align="left"
             badge="Insights"
-          contador="07 / 08"
             title="O que estamos *estudando* e publicando"
             description="Análises e estratégias escritas pela equipe da UPDO para quem decide marketing e vendas."
             className="max-lg:text-center [&_div]:max-lg:justify-center [&_p]:max-lg:mx-auto"

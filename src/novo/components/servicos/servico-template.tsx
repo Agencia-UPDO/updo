@@ -1,4 +1,5 @@
 import { balance } from '@/novo/utils/balance';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { realce } from '@/novo/components/shared/realce';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
@@ -216,7 +217,8 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
         </div>
       </section>
 
-      <section className="bg-white py-18 md:py-28 xl:py-32">
+      <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+        <MolduraGrade />
         <div className="main-container space-y-12 md:space-y-16">
           <SectionHeading
             badge={problemas.badge ?? 'O problema'}
@@ -251,7 +253,8 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
       </section>
 
       {plano && (
-        <section className="bg-white pb-18 md:pb-28 xl:pb-32">
+        <section className="relative isolate bg-white pb-18 md:pb-28 xl:pb-32">
+          <MolduraGrade semTopo />
           <div className="main-container space-y-12 md:space-y-16">
             <SectionHeading badge="Como funciona" title={plano.title} description={plano.description} />
             <ol className="relative grid grid-cols-12 gap-4 md:gap-6">
@@ -288,7 +291,8 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
         </section>
       )}
 
-      <section className="py-18 md:py-28 xl:py-32">
+      <section className="relative isolate py-18 md:py-28 xl:py-32">
+        <MolduraGrade />
         <div className="main-container">
           <div className="grid grid-cols-12 gap-y-12 lg:gap-x-16">
             <div className="col-span-12 space-y-8 lg:sticky lg:top-32 lg:col-span-5 lg:self-start">
@@ -331,7 +335,8 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
       </section>
 
       {extra && (
-        <section className="bg-white py-18 md:py-28 xl:py-32">
+        <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+          <MolduraGrade />
           <div className="main-container space-y-12 md:space-y-16">
             <SectionHeading badge={extra.badge} title={extra.title} description={extra.description} />
             {extra.bullets && (
@@ -381,7 +386,8 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
         </section>
       )}
 
-      <section className="bg-secondary py-18 md:py-28 xl:py-32">
+      <section className="relative isolate bg-secondary py-18 md:py-28 xl:py-32">
+        <MolduraGrade tone="dark" />
         <div className="main-container space-y-12 md:space-y-16">
           <SectionHeading
             tone="dark"
@@ -417,7 +423,8 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
       </section>
 
       {caso && (
-        <section className="py-18 md:py-28 xl:py-32">
+        <section className="relative isolate py-18 md:py-28 xl:py-32">
+          <MolduraGrade />
           <div className="main-container">
             <div className="bg-lilas-700 relative isolate overflow-hidden rounded-3xl p-7 md:p-12">
               <div className="bg-primary-500/20 pointer-events-none absolute -top-24 -right-24 -z-10 size-80 rounded-full blur-3xl" />
@@ -452,7 +459,8 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
       )}
 
       {mudanca && (
-        <section className="bg-white py-18 md:py-28 xl:py-32">
+        <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+          <MolduraGrade />
           <div className="main-container space-y-12 md:space-y-16">
             <SectionHeading badge="O que está em jogo" title={mudanca.title} />
             <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -491,7 +499,8 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
         </section>
       )}
 
-      <section id="contato" className="scroll-mt-28 py-18 md:py-28 xl:py-32">
+      <section id="contato" className="relative isolate scroll-mt-28 py-18 md:py-28 xl:py-32">
+        <MolduraGrade />
         <div className="main-container">
           <div className="grid grid-cols-12 gap-y-10 lg:gap-x-16">
             <div className="col-span-12 lg:col-span-5">
@@ -532,7 +541,8 @@ const ServicoTemplate = ({ conteudo }: { conteudo: ServicoConteudo }) => {
         />
       </div>
 
-      <section className="py-18 md:py-28">
+      <section className="relative isolate py-18 md:py-28">
+        <MolduraGrade />
         <div className="main-container space-y-10">
           <SectionHeading
             badge={ehSetor ? 'Outros setores' : 'Outros serviços'}

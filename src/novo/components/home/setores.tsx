@@ -13,7 +13,6 @@ const Setores = () => {
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Setores"
-          contador="01 / 08"
           title="Cada mercado *compra de um jeito*"
           description="Começamos pelo funcionamento do seu setor: ciclo de venda, ticket, sazonalidade e quem decide a compra."
         />

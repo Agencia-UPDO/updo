@@ -1,6 +1,7 @@
 'use client';
 
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import SectionHeading from '@/novo/components/shared/section-heading';
 import { cn } from '@/novo/utils/cn';
 import { Bot, Check, GitMerge, LayoutGrid, Megaphone, Search } from 'lucide-react';
@@ -86,7 +87,8 @@ const ServicosEducacao = () => {
   const atual = servicos[ativo];
 
   return (
-    <section id="servicos" className="py-18 md:py-28 xl:py-32">
+    <section id="servicos" className="relative isolate py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Serviços"

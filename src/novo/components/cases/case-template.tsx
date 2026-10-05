@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import HeroFundo from '@/novo/components/home/hero-fundo';
@@ -109,7 +110,8 @@ const CaseTemplate = ({ c }: { c: CaseConteudo }) => (
     </section>
 
     {/* Contexto */}
-    <section className="bg-white py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading badge="Contexto" title="O *problema* de negócio" />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -130,7 +132,8 @@ const CaseTemplate = ({ c }: { c: CaseConteudo }) => (
     </section>
 
     {/* Estratégia */}
-    <section className="bg-secondary py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-secondary py-18 md:py-28 xl:py-32">
+      <MolduraGrade tone="dark" />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           tone="dark"
@@ -157,8 +160,9 @@ const CaseTemplate = ({ c }: { c: CaseConteudo }) => (
     {c.secoes.map((secao, index) => (
       <section
         key={secao.title}
-        className={cn('py-18 md:py-28 xl:py-32', (secao.fundo ?? (index % 2 === 0 ? 'branco' : 'claro')) === 'branco' && 'bg-white')}
+        className={cn('relative isolate py-18 md:py-28 xl:py-32', (secao.fundo ?? (index % 2 === 0 ? 'branco' : 'claro')) === 'branco' && 'bg-white')}
       >
+        <MolduraGrade />
         <div className="main-container space-y-12 md:space-y-16">
           <SectionHeading badge={secao.badge} title={secao.title} description={secao.description} />
           <RevealAnimation delay={0.15}>
@@ -185,7 +189,8 @@ const CaseTemplate = ({ c }: { c: CaseConteudo }) => (
     ))}
 
     {c.parceria && (
-      <section className="bg-secondary py-18 md:py-28 xl:py-32">
+      <section className="relative isolate bg-secondary py-18 md:py-28 xl:py-32">
+        <MolduraGrade tone="dark" />
         <div className="main-container space-y-12">
           <SectionHeading
             tone="dark"
@@ -208,7 +213,8 @@ const CaseTemplate = ({ c }: { c: CaseConteudo }) => (
     )}
 
     {/* Aprendizados */}
-    <section className="py-18 md:py-28 xl:py-32">
+    <section className="relative isolate py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading badge="Aprendizados" title="O que esse case *ensina*" />
         <div className="grid grid-cols-12 gap-4 md:gap-6">

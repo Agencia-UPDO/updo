@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import HeroFundo from '@/novo/components/home/hero-fundo';
@@ -228,7 +229,8 @@ const ComoTrabalhamosPagina = () => (
     </section>
 
     {/* 4 pilares */}
-    <section className="bg-secondary py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-secondary py-18 md:py-28 xl:py-32">
+      <MolduraGrade tone="dark" />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           tone="dark"
@@ -252,7 +254,8 @@ const ComoTrabalhamosPagina = () => (
     </section>
 
     {/* 3 níveis */}
-    <section className="bg-white py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Como atuamos"
@@ -296,7 +299,8 @@ const ComoTrabalhamosPagina = () => (
     </section>
 
     {/* Áreas de entrega */}
-    <section id="areas" className="scroll-mt-28 py-18 md:py-28 xl:py-32">
+    <section id="areas" className="relative isolate scroll-mt-28 py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Áreas de entrega"
@@ -327,7 +331,8 @@ const ComoTrabalhamosPagina = () => (
     </section>
 
     {/* Frase do Rodrigo */}
-    <section className="bg-white py-18 md:py-24">
+    <section className="relative isolate bg-white py-18 md:py-24">
+      <MolduraGrade />
       <div className="main-container">
         <RevealAnimation delay={0.1}>
           <figure className="mx-auto flex max-w-[880px] flex-col items-center gap-6 text-center">
@@ -353,7 +358,8 @@ const ComoTrabalhamosPagina = () => (
     </section>
 
     {/* Próximo passo */}
-    <section className="py-18 md:py-28 xl:py-32">
+    <section className="relative isolate py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container">
         <div className="bg-lilas-700 relative isolate overflow-hidden rounded-3xl px-7 py-14 text-center md:px-12 md:py-20">
           <div className="bg-primary-500/20 pointer-events-none absolute -top-24 -right-24 -z-10 size-80 rounded-full blur-3xl" />

@@ -19,7 +19,6 @@ const Servicos = () => {
           <SectionHeading
             align="left"
             badge="Serviços"
-          contador="02 / 08"
             title="Do anúncio ao caixa, cada etapa com *dono e meta*"
             description="Você contrata o que a operação precisa agora e integra o resto quando fizer sentido. Tudo conversa com o mesmo funil e os mesmos números."
             className="max-lg:text-center [&_div]:max-lg:justify-center [&_p]:max-lg:mx-auto"

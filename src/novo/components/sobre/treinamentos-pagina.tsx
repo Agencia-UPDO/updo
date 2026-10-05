@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
 import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
@@ -240,7 +241,8 @@ const TreinamentosPagina = () => (
     </section>
 
     {/* Temas */}
-    <section id="temas" className="scroll-mt-28 bg-white py-18 md:py-28 xl:py-32">
+    <section id="temas" className="relative isolate scroll-mt-28 bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Temas dos treinamentos"
@@ -264,7 +266,8 @@ const TreinamentosPagina = () => (
     </section>
 
     {/* Formatos */}
-    <section className="py-18 md:py-28 xl:py-32">
+    <section className="relative isolate py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Formatos"
@@ -290,7 +293,8 @@ const TreinamentosPagina = () => (
     </section>
 
     {/* Como funciona */}
-    <section className="bg-secondary py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-secondary py-18 md:py-28 xl:py-32">
+      <MolduraGrade tone="dark" />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           tone="dark"
@@ -319,7 +323,8 @@ const TreinamentosPagina = () => (
     </section>
 
     {/* Quem conduz */}
-    <section className="bg-white py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container">
         <div className="grid grid-cols-12 items-center gap-y-10 lg:gap-x-16">
           <RevealAnimation delay={0.1} className="col-span-12 lg:col-span-5">
@@ -358,7 +363,8 @@ const TreinamentosPagina = () => (
     </section>
 
     {/* Formulário */}
-    <section id="contato" className="scroll-mt-28 py-18 md:py-28 xl:py-32">
+    <section id="contato" className="relative isolate scroll-mt-28 py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container">
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-16">
           <div className="col-span-12 lg:col-span-5">

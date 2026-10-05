@@ -107,7 +107,7 @@ export default function Home() {
       <Depoimentos />
       <Fundador />
       <Insights />
-      <Faq items={faqHome} contador="08 / 08" moldura />
+      <Faq items={faqHome} moldura />
       <Cta />
     </div>
   );

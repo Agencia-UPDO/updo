@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import { GraficoEficiencia, GraficoLeads } from '@/novo/components/cases/graficos-educacao';
@@ -144,7 +145,8 @@ const CaseEducacao = () => (
     </section>
 
     {/* Contexto */}
-    <section className="bg-white py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading badge="Contexto" title="O *problema* de negócio" />
         <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -174,7 +176,8 @@ const CaseEducacao = () => (
     </section>
 
     {/* Estratégia */}
-    <section className="bg-secondary py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-secondary py-18 md:py-28 xl:py-32">
+      <MolduraGrade tone="dark" />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           tone="dark"
@@ -198,7 +201,8 @@ const CaseEducacao = () => (
     </section>
 
     {/* Resultados */}
-    <section className="bg-white py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Resultados visuais"
@@ -233,7 +237,8 @@ const CaseEducacao = () => (
     </section>
 
     {/* Reconhecimento */}
-    <section className="bg-secondary py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-secondary py-18 md:py-28 xl:py-32">
+      <MolduraGrade tone="dark" />
       <div className="main-container">
         <div className="mx-auto flex max-w-[760px] flex-col items-center gap-6 text-center">
           <SectionHeading
@@ -261,7 +266,8 @@ const CaseEducacao = () => (
     </section>
 
     {/* Aprendizados */}
-    <section className="py-18 md:py-28 xl:py-32">
+    <section className="relative isolate py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading badge="Aprendizados" title="O que esse case *ensina*" />
         <div className="grid grid-cols-12 gap-4 md:gap-6">

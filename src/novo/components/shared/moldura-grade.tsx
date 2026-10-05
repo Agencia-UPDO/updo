@@ -11,7 +11,8 @@ const Mais = ({ className }: { className?: string }) => (
  * Moldura de planta atrás da seção: linhas finas nas bordas do conteúdo,
  * uma linha no topo e "+" nos cruzamentos. A seção precisa ser relative.
  */
-const MolduraGrade = ({ tone = 'light' }: { tone?: 'light' | 'dark' }) => (
+/** semTopo: só as linhas laterais, para seção que continua a anterior. */
+const MolduraGrade = ({ tone = 'light', semTopo = false }: { tone?: 'light' | 'dark'; semTopo?: boolean }) => (
   <div
     className={cn(
       'pointer-events-none absolute inset-0 -z-10 hidden md:block',
@@ -19,7 +20,9 @@ const MolduraGrade = ({ tone = 'light' }: { tone?: 'light' | 'dark' }) => (
     )}
     aria-hidden="true"
   >
-    <div className={cn('absolute inset-x-0 top-0 h-px', tone === 'dark' ? 'bg-white/8' : 'bg-secondary/8')} />
+    {!semTopo && (
+      <div className={cn('absolute inset-x-0 top-0 h-px', tone === 'dark' ? 'bg-white/8' : 'bg-secondary/8')} />
+    )}
     <div className="main-container h-full">
       <div
         className={cn(
@@ -28,8 +31,12 @@ const MolduraGrade = ({ tone = 'light' }: { tone?: 'light' | 'dark' }) => (
           tone === 'dark' ? 'border-white/8' : 'border-secondary/8'
         )}
       >
-        <Mais className="-top-[6.5px] -left-[7px]" />
-        <Mais className="-top-[6.5px] -right-[7px]" />
+        {!semTopo && (
+          <>
+            <Mais className="-top-[6.5px] -left-[7px]" />
+            <Mais className="-top-[6.5px] -right-[7px]" />
+          </>
+        )}
       </div>
     </div>
   </div>

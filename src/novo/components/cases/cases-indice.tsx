@@ -1,6 +1,7 @@
 'use client';
 
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import HeroFundo from '@/novo/components/home/hero-fundo';
@@ -136,7 +137,8 @@ const CasesIndice = () => {
       </section>
 
       {/* Lista */}
-      <section className="bg-white py-18 md:py-28 xl:py-32">
+      <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+        <MolduraGrade />
         <div className="main-container space-y-10 md:space-y-12">
           <SectionHeading badge="Por setor" title="Escolha o case mais *próximo* do seu cenário." />
           <div className="flex flex-wrap justify-center gap-2.5">
@@ -214,7 +216,8 @@ const CasesIndice = () => {
       </section>
 
       {/* Próximo passo */}
-      <section className="py-18 md:py-28 xl:py-32">
+      <section className="relative isolate py-18 md:py-28 xl:py-32">
+        <MolduraGrade />
         <div className="main-container">
           <div className="bg-lilas-700 relative isolate overflow-hidden rounded-3xl px-7 py-14 text-center md:px-12 md:py-20">
             <div className="bg-primary-500/20 pointer-events-none absolute -top-24 -right-24 -z-10 size-80 rounded-full blur-3xl" />

@@ -27,7 +27,7 @@ const Faq = ({
   items,
   badge = 'FAQ',
   contador,
-  moldura,
+  moldura = true,
   citacao,
   title = '*Perguntas* frequentes',
   description = 'O que costumam nos perguntar antes do primeiro diagnóstico.',

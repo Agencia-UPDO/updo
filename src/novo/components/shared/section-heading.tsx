@@ -2,7 +2,6 @@ import { balance } from '@/novo/utils/balance';
 import { realce } from '@/novo/components/shared/realce';
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import TextReveal from '@/novo/components/animation/text-reveal';
-import Badge from '@/novo/components/shared/ui/badge/badge';
 import { cn } from '@/novo/utils/cn';
 import type { ReactNode } from 'react';
 
@@ -13,7 +12,7 @@ interface SectionHeadingProps {
   align?: 'center' | 'left';
   tone?: 'light' | 'dark';
   className?: string;
-  /** Contador técnico no lugar do selo, ex.: "01 / 08". */
+  /** Total de seções inicial, antes do ContadorSecoes preencher. */
   contador?: string;
 }
 
@@ -32,20 +31,17 @@ const SectionHeading = ({
     <div className={cn('space-y-5', centered && 'text-center', className)}>
       <RevealAnimation delay={0.1}>
         <div className={cn('flex', centered ? 'justify-center' : 'justify-start')}>
-          {contador ? (
-            <p
-              className={cn(
-                'font-mono text-xs tracking-[0.14em] uppercase',
-                tone === 'dark' ? 'text-white/60' : 'text-secondary/60'
-              )}
-            >
-              [ <span className="text-lilas-500 font-medium">{contador.split('/')[0].trim()}</span>
-              {' / '}
-              {contador.split('/')[1]?.trim()} ] <span className="mx-1.5">·</span> {badge}
-            </p>
-          ) : (
-            <Badge text={badge} tone={tone} />
-          )}
+          {/* Contador técnico: número e total são preenchidos pelo ContadorSecoes. */}
+          <p
+            className={cn(
+              'font-mono text-xs tracking-[0.14em] uppercase',
+              tone === 'dark' ? 'text-white/60' : 'text-secondary/60'
+            )}
+          >
+            [ <span data-contador-n className="text-lilas-500 font-medium" />
+            {' / '}
+            <span data-contador-total>{contador ?? ''}</span> ] <span className="mx-1.5">·</span> {badge}
+          </p>
         </div>
       </RevealAnimation>
       <div className="space-y-3">

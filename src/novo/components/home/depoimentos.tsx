@@ -13,7 +13,6 @@ const Depoimentos = () => {
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Depoimentos"
-          contador="06 / 08"
           title="Quem acompanhou o processo *de dentro*"
           description="Clientes de educação, tecnologia, serviços e varejo contando como foi trabalhar com a UPDO."
         />

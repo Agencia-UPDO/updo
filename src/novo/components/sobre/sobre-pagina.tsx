@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import HeroFundo from '@/novo/components/home/hero-fundo';
@@ -239,7 +240,8 @@ const SobrePagina = () => (
     </section>
 
     {/* História */}
-    <section className="bg-white py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="A história"
@@ -277,7 +279,8 @@ const SobrePagina = () => (
     </section>
 
     {/* Quem lidera */}
-    <section className="py-18 md:py-28 xl:py-32">
+    <section className="relative isolate py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading badge="Quem lidera" title="Estratégia de quem também *responde pela execução*." />
         <div className="grid grid-cols-12 gap-6">
@@ -320,7 +323,8 @@ const SobrePagina = () => (
     </section>
 
     {/* Manifesto */}
-    <section className="bg-secondary py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-secondary py-18 md:py-28 xl:py-32">
+      <MolduraGrade tone="dark" />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           tone="dark"
@@ -345,7 +349,8 @@ const SobrePagina = () => (
     </section>
 
     {/* Valores */}
-    <section className="bg-white py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container">
         <div className="grid grid-cols-12 gap-y-12 lg:gap-x-16">
           <div className="col-span-12 lg:sticky lg:top-32 lg:col-span-5 lg:self-start">
@@ -371,7 +376,8 @@ const SobrePagina = () => (
     </section>
 
     {/* O que fazemos */}
-    <section className="py-18 md:py-28 xl:py-32">
+    <section className="relative isolate py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="O que fazemos"

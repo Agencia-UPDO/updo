@@ -1,4 +1,5 @@
 import RevealAnimation from "@/novo/components/animation/reveal-animation";
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { realce } from '@/novo/components/shared/realce';
 import TextReveal from "@/novo/components/animation/text-reveal";
 import HeroFundo from "@/novo/components/home/hero-fundo";
@@ -241,7 +242,8 @@ const EducacaoPagina = () => (
     </section>
 
     {/* Barreiras */}
-    <section className="bg-white py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-white py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           badge="Captação educacional"
@@ -288,7 +290,8 @@ const EducacaoPagina = () => (
     </section>
 
     {/* Case */}
-    <section className="bg-secondary pt-12 pb-18 md:pt-16 md:pb-28 xl:pb-32">
+    <section className="relative isolate bg-secondary pt-12 pb-18 md:pt-16 md:pb-28 xl:pb-32">
+      <MolduraGrade tone="dark" semTopo />
       <div className="main-container space-y-12">
         <RevealAnimation delay={0.2}>
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-7 md:p-12">
@@ -334,7 +337,8 @@ const EducacaoPagina = () => (
     </section>
 
     {/* Depoimento */}
-    <section className="py-18 md:py-28 xl:py-32">
+    <section className="relative isolate py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container">
         <div className="grid grid-cols-12 items-center gap-y-10 lg:gap-x-16">
           <div className="col-span-12 space-y-6 lg:col-span-5">
@@ -369,7 +373,8 @@ const EducacaoPagina = () => (
     </div>
 
     {/* Formulário */}
-    <section id="contato" className="scroll-mt-28 py-18 md:py-28 xl:py-32">
+    <section id="contato" className="relative isolate scroll-mt-28 py-18 md:py-28 xl:py-32">
+      <MolduraGrade />
       <div className="main-container">
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-16">
           <div className="col-span-12 lg:col-span-5">

@@ -34,7 +34,6 @@ const Diferenciais = () => {
         <SectionHeading
           tone="dark"
           badge="Por que a UPDO"
-          contador="05 / 08"
           title="Método próprio, sistema próprio e *uma década* de operação"
           description="Trabalhamos como parte da sua estrutura de crescimento, com processo, tecnologia e acompanhamento próximo."
         />

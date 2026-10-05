@@ -1,4 +1,5 @@
 import RevealAnimation from "@/novo/components/animation/reveal-animation";
+import MolduraGrade from '@/novo/components/shared/moldura-grade';
 import { realce } from '@/novo/components/shared/realce';
 import TextReveal from "@/novo/components/animation/text-reveal";
 import HeroFundo from "@/novo/components/home/hero-fundo";
@@ -219,7 +220,8 @@ const DiagnosticoPagina = () => (
     </section>
 
     {/* Como conduzimos */}
-    <section className="bg-secondary py-18 md:py-28 xl:py-32">
+    <section className="relative isolate bg-secondary py-18 md:py-28 xl:py-32">
+      <MolduraGrade tone="dark" />
       <div className="main-container space-y-12 md:space-y-16">
         <SectionHeading
           tone="dark"

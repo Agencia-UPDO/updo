@@ -16,7 +16,6 @@ const Cases = () => {
           <SectionHeading
             align="left"
             badge="Cases"
-          contador="04 / 08"
             title="Resultados com *nome de setor*, período e número"
             description="Cada case mostra o ponto de partida, o que foi feito e o que mudou nos números do cliente."
             className="max-lg:text-center [&_div]:max-lg:justify-center [&_p]:max-lg:mx-auto"
