@@ -64,7 +64,7 @@ const organizationSchema = {
   },
   sameAs: [
     "https://www.linkedin.com/company/updogrowth/",
-    "https://www.instagram.com/updogrowth/",
+    "https://www.instagram.com/agenciaupdo/",
     "https://www.facebook.com/updogrowth",
     "https://www.youtube.com/@updogrowth",
   ],

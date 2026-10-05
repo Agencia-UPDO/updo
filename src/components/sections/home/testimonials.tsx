@@ -64,7 +64,7 @@ const textTestimonials = [
   {
     name: "Luiz Otavio",
     role: "",
-    company: "Lucca Cafés Espaciais",
+    company: "Lucca Cafés Especiais",
     quote:
       "Serviço altamente profissional de alto nível e eficiente. Realmente faz a diferença!",
   },

@@ -197,7 +197,7 @@ export const depoimentosTexto = [
   },
   {
     name: 'Luiz Otavio',
-    role: 'Lucca Cafés Espaciais',
+    role: 'Lucca Cafés Especiais',
     quote: 'Serviço altamente profissional de alto nível e eficiente. Realmente faz a diferença!',
   },
 ];
