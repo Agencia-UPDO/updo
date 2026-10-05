@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
 import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { rodapeColunas } from '@/novo/data/navegacao';
 import { selosParceiros as selos } from '@/novo/data/home';
@@ -11,6 +12,7 @@ const sociais = [
   { label: 'Instagram', href: siteConfig.social.instagram, icon: Instagram },
   { label: 'Facebook', href: siteConfig.social.facebook, icon: Facebook },
   { label: 'YouTube', href: siteConfig.social.youtube, icon: Youtube },
+  { label: 'WhatsApp', href: `https://wa.me/${siteConfig.contact.whatsapp}`, icon: WhatsAppIcon },
 ];
 
 const Footer = () => {
@@ -57,7 +59,7 @@ const Footer = () => {
                     className="flex size-11 items-center justify-center bg-primary-500 text-secondary hover:bg-lilas-500 rounded-full transition-all duration-300 hover:-translate-y-1 hover:text-white"
                   >
                     <span className="sr-only">{label}</span>
-                    <Icon className="size-5" strokeWidth={2} aria-hidden="true" />
+                    <Icon className="size-5" color="currentColor" strokeWidth={2} aria-hidden="true" />
                   </a>
                 ))}
               </div>

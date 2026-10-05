@@ -1,6 +1,7 @@
 'use client';
 
 import ButtonPrimarySubmit from '@/novo/components/shared/ui/button/button-primary-submit';
+import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
 import { CheckCircleIcon } from '@/novo/components/shared/icons';
 import { useState, type FormEvent } from 'react';
 
@@ -152,6 +153,7 @@ const LeadForm = ({
             rel="noopener noreferrer"
             className="bg-primary-500 text-secondary text-tagline-1 mt-2 inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium transition-transform hover:scale-[1.02]"
           >
+            <WhatsAppIcon color="currentColor" className="size-5" />
             Falar agora pelo WhatsApp
           </a>
         )}

@@ -1,4 +1,5 @@
 import RevealAnimation from '@/novo/components/animation/reveal-animation';
+import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
 import { realce } from '@/novo/components/shared/realce';
 import TextReveal from '@/novo/components/animation/text-reveal';
 import HeroFundo from '@/novo/components/home/hero-fundo';
@@ -18,7 +19,6 @@ import {
   Brain,
   ClipboardCheck,
   GraduationCap,
-  MessageCircle,
   Mic2,
   PenTool,
   Presentation,
@@ -38,7 +38,7 @@ const temas = [
       'Como decisores compram, por que objeções aparecem e como conduzir uma conversa comercial com mais clareza.',
   },
   {
-    icon: MessageCircle,
+    icon: WhatsAppIcon,
     title: 'Atendimento comercial e WhatsApp',
     description:
       'Rotina de primeiro contato, follow-up, recuperação de oportunidades e linguagem para não esfriar leads prontos.',

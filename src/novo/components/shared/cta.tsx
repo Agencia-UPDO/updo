@@ -46,7 +46,7 @@ const Cta = ({
                   rel="noopener noreferrer"
                   className="inline-flex w-full sm:w-auto"
                 >
-                  <ButtonWhite text="Falar no WhatsApp" className="w-full" />
+                  <ButtonWhite text="Falar no WhatsApp" whatsapp className="w-full" />
                 </a>
               </div>
             </RevealAnimation>

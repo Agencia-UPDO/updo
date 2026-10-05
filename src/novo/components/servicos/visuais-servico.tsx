@@ -1,6 +1,7 @@
 'use client';
 
 import { cn } from '@/novo/utils/cn';
+import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
 import {
   BarChart3,
   Bot,
@@ -426,7 +427,8 @@ export const VisualConversa = () => {
             online agora
           </p>
         </div>
-        <span className="text-tagline-3 ml-auto rounded-full bg-white/10 px-2.5 py-1 text-white/70">
+        <span className="text-tagline-3 ml-auto flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-white/70">
+          <WhatsAppIcon className="size-3.5" />
           WhatsApp
         </span>
       </div>

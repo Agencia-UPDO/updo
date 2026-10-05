@@ -4,12 +4,12 @@ import {
   LayoutDashboard,
   MapPin,
   Megaphone,
-  MessageCircle,
   Palette,
   RefreshCw,
   Store,
   UserCheck,
 } from "lucide-react";
+import WhatsAppIcon from "@/novo/components/shared/whatsapp-icon";
 import type { ServicoConteudo } from "@/novo/components/servicos/servico-template";
 
 export const setorVarejo: ServicoConteudo = {
@@ -74,7 +74,7 @@ export const setorVarejo: ServicoConteudo = {
           "Campanhas levam pessoas para o site, WhatsApp ou loja, mas a jornada não deixa claro qual ação gera venda.",
       },
       {
-        icon: MessageCircle,
+        icon: WhatsAppIcon,
         title: "WhatsApp sem processo",
         description:
           "O cliente chama, pergunta preço, some e a equipe perde oportunidade por falta de roteiro, prioridade e acompanhamento.",
@@ -143,7 +143,7 @@ export const setorVarejo: ServicoConteudo = {
         description: "",
       },
       {
-        icon: MessageCircle,
+        icon: WhatsAppIcon,
         title:
           "Integração entre tráfego, WhatsApp, loja física e equipe comercial",
         description: "",
@@ -205,7 +205,7 @@ export const setorVarejo: ServicoConteudo = {
         resultado: "Presença regional",
       },
       {
-        icon: MessageCircle,
+        icon: WhatsAppIcon,
         label: "WhatsApp",
         description: "Transforma interesse em venda",
         resultado: "Atendimento",

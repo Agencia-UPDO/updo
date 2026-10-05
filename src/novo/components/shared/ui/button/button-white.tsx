@@ -1,12 +1,15 @@
 import { ArrowUpRightIcon } from '@/novo/components/shared/icons';
+import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
 import { cn } from '@/novo/utils/cn';
 import type { ComponentPropsWithoutRef } from 'react';
 
 interface ButtonWhiteProps extends ComponentPropsWithoutRef<'span'> {
   text: string;
+  /** Troca a seta pelo logo do WhatsApp. */
+  whatsapp?: boolean;
 }
 
-const ButtonWhite = ({ text, className, ...props }: ButtonWhiteProps) => {
+const ButtonWhite = ({ text, whatsapp, className, ...props }: ButtonWhiteProps) => {
   return (
     <span
       className={cn(
@@ -32,7 +35,11 @@ const ButtonWhite = ({ text, className, ...props }: ButtonWhiteProps) => {
           </span>
         </span>
         <span className="to-background-4 flex h-10 w-13.5 shrink-0 items-center justify-center rounded-full bg-linear-to-b from-white shadow-[0_8px_12px_0_rgba(0,0,0,0.16)]">
-          <ArrowUpRightIcon className="ease-bouncy size-6 stroke-black transition-transform duration-400 group-hover:rotate-45" />
+          {whatsapp ? (
+            <WhatsAppIcon className="size-5.5" />
+          ) : (
+            <ArrowUpRightIcon className="ease-bouncy size-6 stroke-black transition-transform duration-400 group-hover:rotate-45" />
+          )}
         </span>
       </span>
     </span>
