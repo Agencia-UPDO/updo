@@ -2,7 +2,8 @@ import { cn } from '@/novo/utils/cn';
 
 /** Marcador em forma de estrela de quatro pontas, com os cantos internos curvos. */
 const Mais = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 12 12" className={cn('absolute size-[13px]', className)} fill="currentColor" aria-hidden="true">
+  <svg viewBox="0 0 12 12" // Cinza médio fixo: o marcador fica metade sobre a seção de cima, que pode ser clara ou escura.
+    className={cn('absolute size-[13px] text-[#9aa3b5]', className)} fill="currentColor" aria-hidden="true">
     <path d="M6 0Q6.7 5.3 12 6Q6.7 6.7 6 12Q5.3 6.7 0 6Q5.3 5.3 6 0Z" />
   </svg>
 );
