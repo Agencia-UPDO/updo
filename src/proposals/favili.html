@@ -64,7 +64,7 @@
   .topo .brilho { position: absolute; bottom: -140px; left: 50%; transform: translateX(-50%); width: 760px; height: 300px; background: rgba(86, 254, 213, 0.22); filter: blur(70px); border-radius: 50%; z-index: -1; }
   .barra { display: flex; align-items: center; justify-content: space-between; background: #fff; border-radius: 999px; padding: 10px 12px 10px 24px; box-shadow: 0 10px 30px rgba(10, 18, 32, 0.06); margin-bottom: 88px; gap: 16px; }
   .marcas { display: flex; align-items: center; gap: 16px; }
-  .marcas img { height: 38px; width: auto; display: block; }
+  .marcas img { height: 48px; width: auto; display: block; }
   .marcas .x { color: #9aa3b5; font-size: 20px; }
   .barra a.botao { padding: 10px 20px; font-size: 15px; }
   .topo-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
@@ -155,9 +155,9 @@
   /* Logos de clientes */
   .clientes { padding: 32px 0 96px; }
   .rot-cli { text-align: center; font-size: 15px; margin-bottom: 18px; }
-  .grade-logos { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; }
+  .grade-logos { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
   .logo-cli { background: #fff; border: 1px solid var(--linha); border-radius: 18px; height: 92px; display: flex; align-items: center; justify-content: center; padding: 14px 18px; }
-  .logo-cli img { width: 100%; max-width: 160px; height: auto; object-fit: contain; }
+  .logo-cli img { width: auto; height: auto; max-width: 78%; max-height: 44px; object-fit: contain; }
   .logo-cli { padding: 8px 10px !important; transition: transform .3s, box-shadow .3s; }
   .logo-cli:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(10,18,32,.08); }
 
@@ -248,7 +248,7 @@
     .ciclo-wrap { grid-template-columns: 1fr; gap: 32px; }
     .depoimento { grid-template-columns: 1fr; gap: 24px; }
     .texto-depo { padding: 0 8px 8px; }
-    .grade-logos { grid-template-columns: repeat(4, 1fr); }
+    .grade-logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .fase2.duas { grid-template-columns: 1fr 1fr; }
     .lider > img { max-width: 320px; }
     .grade { display: none; }
@@ -258,7 +258,7 @@
     section { padding: 64px 0; }
     .grid-3, .grid-2, .grid-4, .fase2, .fase2.duas, .tempo { grid-template-columns: 1fr; }
     .no .bolinha { width: 48px; height: 48px; }
-    .grade-logos { grid-template-columns: repeat(2, 1fr); }
+    .grade-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .logo-cli:last-child { grid-column: span 2; }
     .selos img { height: 68px; }
     .clientes { padding-bottom: 64px; }
@@ -330,9 +330,9 @@
 <section class="clientes">
   <div class="container">
     <p class="rot-cli">Instituições de ensino que já cresceram com a UPDO</p>
-    <div class="revelar grade-logos"><div class="logo-cli"><img src="/Clientes/Logo%20PUCPR.png" alt="PUCPR" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20UniCV.png" alt="UniCV" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Faculdade%20Ibrate.png" alt="Faculdade Ibrate" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20CNA.png" alt="CNA" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo-Veta-Pos-Graduacao.png" alt="Veta Pós-graduação" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Instituto%20Equilibra.png" alt="Instituto Equilibra" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Interpret%202B.png" alt="Interpret 2B" loading="lazy" /></div></div>
+    <div class="revelar grade-logos"><div class="logo-cli"><img src="/Clientes/proposta/Logo-PUCPR.png" alt="PUCPR" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-UniCV.png" alt="UniCV" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Faculdade-Ibrate.png" alt="Faculdade Ibrate" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-CNA.png" alt="CNA" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Veta-Pos-Graduacao.png" alt="Veta Pós-graduação" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Instituto-Equilibra.png" alt="Instituto Equilibra" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Interpret-2B.png" alt="Interpret 2B" loading="lazy" /></div></div>
     <p class="rot-cli" style="margin-top:40px">E empresas de outros setores que confiam no nosso método</p>
-    <div class="revelar grade-logos"><div class="logo-cli"><img src="/Clientes/Logo%20Unimed.png" alt="Unimed" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Ford.png" alt="Ford" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20GMAC.png" alt="GMAC" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Andritz.png" alt="Andritz" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Ademicon.png" alt="Ademicon" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Nextcard.png" alt="Nextcard" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Madeiras%20Lane.png" alt="Madeiras Lane" loading="lazy" /></div></div>
+    <div class="revelar grade-logos"><div class="logo-cli"><img src="/Clientes/proposta/Logo-Unimed.png" alt="Unimed" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Ford.png" alt="Ford" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-GMAC.png" alt="GMAC" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Andritz.png" alt="Andritz" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Ademicon.png" alt="Ademicon" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Nextcard.png" alt="Nextcard" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Madeiras-Lane.png" alt="Madeiras Lane" loading="lazy" /></div></div>
   </div>
 </section>
 
