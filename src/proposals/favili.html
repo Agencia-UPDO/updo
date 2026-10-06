@@ -59,7 +59,7 @@
   .centro { text-align: center; margin-left: auto; margin-right: auto; }
 
   /* Topo */
-  .topo { padding: 40px 0 96px; overflow: hidden; }
+  .topo { padding: 40px 0 120px; overflow: hidden; }
   .topo::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle, rgba(101, 117, 255, 0.18) 1px, transparent 1.5px); background-size: 26px 26px; -webkit-mask-image: radial-gradient(ellipse 60% 55% at 78% 25%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 60% 55% at 78% 25%, #000 20%, transparent 75%); pointer-events: none; z-index: -1; }
   .topo .brilho { position: absolute; bottom: -140px; left: 50%; transform: translateX(-50%); width: 760px; height: 300px; background: rgba(86, 254, 213, 0.22); filter: blur(70px); border-radius: 50%; z-index: -1; }
   .barra { display: flex; align-items: center; justify-content: space-between; background: #fff; border-radius: 999px; padding: 10px 12px 10px 24px; box-shadow: 0 10px 30px rgba(10, 18, 32, 0.06); margin-bottom: 88px; gap: 16px; }
@@ -153,11 +153,34 @@
   .rodape-ciclo { margin-top: 16px; font-size: 15px; }
 
   /* Logos de clientes */
-  .clientes { padding: 0 0 96px; }
+  .clientes { padding: 32px 0 96px; }
   .rot-cli { text-align: center; font-size: 15px; margin-bottom: 18px; }
   .grade-logos { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; }
-  .logo-cli { background: #fff; border: 1px solid var(--linha); border-radius: 18px; height: 84px; display: flex; align-items: center; justify-content: center; padding: 14px 18px; }
-  .logo-cli img { max-width: 100%; max-height: 46px; object-fit: contain; }
+  .logo-cli { background: #fff; border: 1px solid var(--linha); border-radius: 18px; height: 92px; display: flex; align-items: center; justify-content: center; padding: 14px 18px; }
+  .logo-cli img { width: 100%; max-width: 160px; height: auto; object-fit: contain; }
+  .logo-cli { padding: 8px 10px !important; transition: transform .3s, box-shadow .3s; }
+  .logo-cli:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(10,18,32,.08); }
+
+  /* Depoimento em vídeo */
+  .depoimento { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; margin-top: 40px; background: #fff; border: 1px solid var(--linha); border-radius: 32px; padding: 24px; }
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; background: var(--navy); cursor: pointer; }
+  .video img, .video iframe { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; }
+  .video .play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 78px; height: 78px; border-radius: 50%; border: 0; background: var(--menta); color: var(--navy); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 0 10px rgba(86,254,213,.3); animation: pulsa-play 2s ease-in-out infinite; }
+  .video .play svg { width: 30px; height: 30px; margin-left: 4px; }
+  @keyframes pulsa-play { 50% { box-shadow: 0 0 0 18px rgba(86,254,213,.12); } }
+  .texto-depo { padding-right: 24px; }
+
+  /* Entrada suave ao rolar */
+  .revelar { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+  .revelar.visivel { opacity: 1; transform: none; }
+  .no-js .revelar { opacity: 1; transform: none; }
+  .topo h1, .topo .lead, .topo .acoes, .topo .selo, .painel { animation: sobe .9s cubic-bezier(.2,.7,.2,1) both; }
+  .topo .lead { animation-delay: .12s; } .topo .acoes { animation-delay: .22s; } .painel { animation-delay: .3s; }
+  @keyframes sobe { from { opacity: 0; transform: translateY(24px); } }
+  .painel { animation-name: sobe, flutua; animation-duration: .9s, 6s; animation-delay: .3s, 1.2s; animation-iteration-count: 1, infinite; animation-timing-function: cubic-bezier(.2,.7,.2,1), ease-in-out; }
+  @keyframes flutua { 50% { transform: translateY(-8px); } }
+  .card, .kpi, .mes { transition: transform .3s, box-shadow .3s; }
+  .card:hover, .kpi:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(10,18,32,.08); }
 
   /* Linha do tempo */
   .tempo { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
@@ -206,7 +229,8 @@
   .lider { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: center; }
   .lider > img { width: 100%; border-radius: 28px; display: block; box-shadow: 10px 10px 0 var(--menta); }
   .selos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-  .selos img { height: 46px; width: auto; background: #fff; border-radius: 12px; padding: 8px 12px; border: 1px solid var(--linha); }
+  .selos { gap: 14px !important; }
+  .selos img { height: 84px; width: auto; background: #fff; border-radius: 18px; padding: 12px 18px; border: 1px solid var(--linha); }
 
   /* Fechamento */
   .fechamento { background: var(--navy); border-radius: 32px; padding: 72px 40px; text-align: center; color: rgba(255,255,255,.7); position: relative; overflow: hidden; }
@@ -222,6 +246,8 @@
     .grid-3, .grid-4, .fase2 { grid-template-columns: 1fr 1fr; }
     .tempo { grid-template-columns: 1fr 1fr; }
     .ciclo-wrap { grid-template-columns: 1fr; gap: 32px; }
+    .depoimento { grid-template-columns: 1fr; gap: 24px; }
+    .texto-depo { padding: 0 8px 8px; }
     .grade-logos { grid-template-columns: repeat(4, 1fr); }
     .fase2.duas { grid-template-columns: 1fr 1fr; }
     .lider > img { max-width: 320px; }
@@ -234,6 +260,7 @@
     .no .bolinha { width: 48px; height: 48px; }
     .grade-logos { grid-template-columns: repeat(2, 1fr); }
     .logo-cli:last-child { grid-column: span 2; }
+    .selos img { height: 68px; }
     .clientes { padding-bottom: 64px; }
     .no .nome { font-size: 12px; padding: 2px 10px; }
     .centro-ciclo { font-size: 13px; }
@@ -302,9 +329,9 @@
 <section class="clientes">
   <div class="container">
     <p class="rot-cli">Instituições de ensino que já cresceram com a UPDO</p>
-    <div class="grade-logos"><div class="logo-cli"><img src="/Clientes/Logo%20PUCPR.png" alt="PUCPR" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20UniCV.png" alt="UniCV" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Faculdade%20Ibrate.png" alt="Faculdade Ibrate" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20CNA.png" alt="CNA" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo-Veta-Pos-Graduacao.png" alt="Veta Pós-graduação" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Instituto%20Equilibra.png" alt="Instituto Equilibra" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Interpret%202B.png" alt="Interpret 2B" loading="lazy" /></div></div>
+    <div class="revelar grade-logos"><div class="logo-cli"><img src="/Clientes/Logo%20PUCPR.png" alt="PUCPR" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20UniCV.png" alt="UniCV" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Faculdade%20Ibrate.png" alt="Faculdade Ibrate" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20CNA.png" alt="CNA" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo-Veta-Pos-Graduacao.png" alt="Veta Pós-graduação" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Instituto%20Equilibra.png" alt="Instituto Equilibra" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Interpret%202B.png" alt="Interpret 2B" loading="lazy" /></div></div>
     <p class="rot-cli" style="margin-top:40px">E empresas de outros setores que confiam no nosso método</p>
-    <div class="grade-logos"><div class="logo-cli"><img src="/Clientes/Logo%20Unimed.png" alt="Unimed" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Ford.png" alt="Ford" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20GMAC.png" alt="GMAC" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Andritz.png" alt="Andritz" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Ademicon.png" alt="Ademicon" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Nextcard.png" alt="Nextcard" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Madeiras%20Lane.png" alt="Madeiras Lane" loading="lazy" /></div></div>
+    <div class="revelar grade-logos"><div class="logo-cli"><img src="/Clientes/Logo%20Unimed.png" alt="Unimed" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Ford.png" alt="Ford" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20GMAC.png" alt="GMAC" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Andritz.png" alt="Andritz" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Ademicon.png" alt="Ademicon" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Nextcard.png" alt="Nextcard" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/Logo%20Madeiras%20Lane.png" alt="Madeiras Lane" loading="lazy" /></div></div>
   </div>
 </section>
 
@@ -312,12 +339,12 @@
 <section class="moldura">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
-    <div class="cabeca">
+    <div class="revelar cabeca">
       <span class="mono">[ <b>01</b> / 08 ] · O ponto de partida</span>
       <h2>O que entendemos do <span class="faixa">momento da Favili</span></h2>
       <p>A Faculdade Vidal tem o que importa para captar: cursos bem avaliados, corpo docente com mais de 80% de mestres e doutores e uma estrutura de mais de 15 mil m² em Limoeiro do Norte. O desafio está em transformar isso em matrícula com processo.</p>
     </div>
-    <div class="grid-3">
+    <div class="revelar grid-3">
       <div class="card lilas">
         <div class="icone l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg></div>
         <h3>Prazo curto, campanha longa</h3>
@@ -341,12 +368,12 @@
 <section class="moldura" id="estrategia">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
-    <div class="cabeca centro">
+    <div class="revelar cabeca centro">
       <span class="mono">[ <b>02</b> / 08 ] · A estratégia</span>
       <h2>Quatro etapas ligadas<br/>ao <span class="faixa">mesmo funil</span></h2>
       <p>Não é só ligar anúncio. Cada etapa passa o lead para a próxima, e a gente mede onde ele trava.</p>
     </div>
-    <div class="ciclo-wrap">
+    <div class="revelar ciclo-wrap">
       <div class="ciclo" aria-label="Ciclo de captação em quatro etapas">
         <svg class="anel" viewBox="0 0 400 400" aria-hidden="true">
           <defs>
@@ -417,12 +444,12 @@
 <section class="moldura escuro">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
-    <div class="cabeca">
+    <div class="revelar cabeca">
       <span class="mono">[ <b>03</b> / 08 ] · O que entregamos</span>
       <h2>Tudo que entra no <span class="faixa">escopo</span></h2>
       <p>Um time de especialistas da UPDO cuidando da campanha do começo ao fim, com reunião de acompanhamento e ajuste semanal.</p>
     </div>
-    <div class="grid-3">
+    <div class="revelar grid-3">
       <div class="card">
         <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
         <h3>Tráfego pago</h3>
@@ -446,9 +473,9 @@
 <section class="moldura">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
-    <div class="grid-2" style="align-items:center; gap:56px">
+    <div class="revelar grid-2" style="align-items:center; gap:56px">
       <div>
-        <div class="cabeca" style="margin-bottom:0">
+        <div class="revelar cabeca" style="margin-bottom:0">
           <span class="mono">[ <b>04</b> / 08 ] · Treinamento comercial · opcional</span>
           <h2>Lead bom precisa de <span class="faixa">atendimento rápido</span></h2>
           <p>A mídia traz o interessado. Quem transforma em matrícula é a equipe. Por isso sugerimos um treinamento de atendimento para a equipe, conduzido por quem dá aula de vendas e neurovendas em pós-graduação e MBA.</p>
@@ -472,12 +499,12 @@
 <section class="moldura escuro">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
-    <div class="cabeca">
+    <div class="revelar cabeca">
       <span class="mono">[ <b>05</b> / 08 ] · Cronograma</span>
       <h2>De 14 de outubro até <span class="faixa">fevereiro</span></h2>
       <p>A verba e a intensidade acompanham o calendário da captação: aquecimento no fim do ano, pico em janeiro e fevereiro.</p>
     </div>
-    <div class="tempo">
+    <div class="revelar tempo">
       <div class="mes"><span class="quando">Até 14/10</span><h3>Implantação</h3><p>LPs, rastreamento, fluxos no RD Station Marketing, funil no RD Station CRM e primeiros criativos.</p><div class="intensidade"><span style="width:30%"></span></div><p class="rot-int">Base pronta</p></div>
       <div class="mes"><span class="quando">Out · Nov</span><h3>Aquecimento</h3><p>Campanhas no ar, leitura dos primeiros dados e definição final dos cursos prioritários.</p><div class="intensidade"><span style="width:50%"></span></div><p class="rot-int">Aprender e ajustar</p></div>
       <div class="mes"><span class="quando">Dezembro</span><h3>Crescimento</h3><p>Verba nos cursos e públicos que respondem melhor. Remarketing para quem já demonstrou interesse.</p><div class="intensidade"><span style="width:68%"></span></div><p class="rot-int">Escalar o que funciona</p></div>
@@ -491,18 +518,18 @@
 <section class="moldura">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
-    <div class="cabeca">
+    <div class="revelar cabeca">
       <span class="mono">[ <b>06</b> / 08 ] · Como medimos</span>
       <h2>Números que a direção <span class="faixa">acompanha toda semana</span></h2>
     </div>
-    <div class="grid-4" style="margin-bottom:56px">
+    <div class="revelar grid-4" style="margin-bottom:56px">
       <div class="kpi"><span class="sigla">CPL</span><p>Custo por lead, por área, curso e canal.</p></div>
       <div class="kpi"><span class="sigla">Contato</span><p>Quanto dos leads a equipe atendeu e em quanto tempo.</p></div>
       <div class="kpi"><span class="sigla">Inscrição</span><p>Leads que viraram inscrição no vestibular.</p></div>
       <div class="kpi"><span class="sigla">CAC</span><p>Investimento por matrícula, curso a curso.</p></div>
     </div>
 
-    <div class="case">
+    <div class="revelar case">
       <div>
         <span class="rot-case">Case real · Instituição de ensino superior</span>
         <h2>O mesmo método levou uma faculdade ao Prêmio RD Station 2024.</h2>
@@ -516,6 +543,19 @@
         <div><b>450 → 1.400</b><span>leads por mês</span></div>
       </div>
     </div>
+
+    <div class="depoimento revelar">
+      <div class="video" data-id="2cE9ycBnLVg">
+        <img src="https://i.ytimg.com/vi/2cE9ycBnLVg/maxresdefault.jpg" alt="Depoimento da Dra. Naudimar" loading="lazy" />
+        <button class="play" aria-label="Assistir ao depoimento"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg></button>
+      </div>
+      <div class="texto-depo">
+        <span class="mono">Depoimento em vídeo</span>
+        <h3 class="titulo" style="font-size:1.9rem;margin:12px 0 14px">Quem acompanhou o processo <span class="faixa">de dentro</span></h3>
+        <p>A Dra. Naudimar, diretora da instituição de ensino superior do case, conta como foi estruturar a captação com a UPDO, da estratégia à equipe comercial.</p>
+        <p style="margin-top:18px"><strong style="color:var(--texto);font-weight:500">Dra. Naudimar</strong><br/>Diretora, instituição de ensino superior</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -523,11 +563,11 @@
 <section class="moldura" id="investimento">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
-    <div class="cabeca">
+    <div class="revelar cabeca">
       <span class="mono">[ <b>07</b> / 08 ] · Investimento</span>
       <h2>Investimento claro, <span class="faixa">do início ao fim</span> da campanha</h2>
     </div>
-    <div class="preco">
+    <div class="revelar preco">
       <div class="preco-principal">
         <span class="selo" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#fff">Gestão da campanha · outubro a fevereiro</span>
         <div class="valor">R$ 4.200 <small>/mês</small></div>
@@ -564,17 +604,17 @@
 <section class="moldura">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
-    <div class="cabeca">
+    <div class="revelar cabeca">
       <span class="mono">[ <b>08</b> / 08 ] · Depois da campanha</span>
       <h2>Uma base para a Favili <span class="faixa">crescer o ano todo</span></h2>
       <p>A campanha resolve o vestibular 2027.1. Os dados e o processo que ela gera abrem o caminho para estruturar a operação comercial de forma permanente.</p>
     </div>
-    <div class="fase2 duas" style="margin-bottom:96px">
+    <div class="revelar fase2 duas" style="margin-bottom:96px">
       <div class="card"><span class="depois">próxima fase</span><div class="icone l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/></svg></div><h3>Playbook comercial</h3><p>Roteiros, etapas e regras de atendimento documentados para a equipe vender do mesmo jeito.</p></div>
       <div class="card"><span class="depois">próxima fase</span><div class="icone l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></div><h3>Gestão comercial</h3><p>Metas, rotina semanal e indicadores para a direção acompanhar a captação ao longo do ano.</p></div>
     </div>
 
-    <div class="lider">
+    <div class="revelar lider">
       <img src="/Imagens/Rodrigo-Bueno-Fundador-UPDO.jpg" alt="Rodrigo Bueno" />
       <div>
         <span class="mono">Quem lidera o projeto</span>
@@ -592,7 +632,7 @@
 <!-- FECHAMENTO -->
 <section style="padding-top:0">
   <div class="container">
-    <div class="fechamento">
+    <div class="revelar fechamento">
       <span class="selo">Início em 14 de outubro</span>
       <h2>Vamos colocar a captação da Favili no ar <span class="faixa">com estrutura</span>?</h2>
       <p>Com o aceite, começamos a implantação no mesmo dia para as campanhas entrarem no ar na data combinada.</p>
@@ -632,6 +672,51 @@
     nos.forEach(function (n, k) { n.addEventListener('click', function () { mostrar(k); iniciar(); }); });
     mostrar(0);
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) iniciar();
+  })();
+</script>
+
+<script>
+  // Elementos entram suavemente ao aparecer na tela.
+  (function () {
+    var els = document.querySelectorAll('.revelar');
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (e) { e.classList.add('visivel'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('visivel'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (e) { io.observe(e); });
+
+    // Números do case contam ao aparecer.
+    var nums = document.querySelectorAll('.numeros b');
+    var ion = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        ion.unobserve(en.target);
+        var el = en.target, texto = el.textContent, m = texto.match(/\d[\d.]*/g);
+        if (!m) return;
+        var t0 = performance.now();
+        (function passo(agora) {
+          var f = Math.min((agora - t0) / 1400, 1), e = 1 - Math.pow(1 - f, 3);
+          el.textContent = texto.replace(/\d[\d.]*/g, function (n) {
+            var v = Number(n.replace(/\./g, '')), atual = Math.round(v * e);
+            return atual.toLocaleString('pt-BR');
+          });
+          if (f < 1) requestAnimationFrame(passo); else el.textContent = texto;
+        })(t0);
+      });
+    }, { threshold: 0.5 });
+    nums.forEach(function (n) { ion.observe(n); });
+
+    // Vídeo carrega só no clique.
+    document.querySelectorAll('.video').forEach(function (v) {
+      v.addEventListener('click', function () {
+        v.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + v.dataset.id + '?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Depoimento"></iframe>';
+      }, { once: true });
+    });
   })();
 </script>
 </body>
