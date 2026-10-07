@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Proposta UPDO · Tempo Saúde Digital · Mídia por nicho</title>
+<meta name="description" content="Proposta da UPDO de mídia digital por nicho e landing pages para a Tempo Saúde Digital." />
+<meta property="og:title" content="Proposta UPDO · Tempo Saúde Digital" />
+<meta property="og:description" content="Mídia digital por nicho e landing pages para empresas, operadoras, autogestões e pessoa física." />
+<meta property="og:image" content="https://www.updo.com.br/og?titulo=M%C3%ADdia%20digital%20por%20nicho%20para%20a%20Tempo%20Sa%C3%BAde%20Digital&rotulo=Proposta" />
+<link rel="icon" href="/Imagens/favicon%20agencia%20updo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0a1220;
+    --navy-2: #121b2c;
+    --menta: #56fed5;
+    --menta-escura: #1fc9a3;
+    --lilas: #6575ff;
+    --lilas-claro: #eef0ff;
+    --menta-clara: #e9fff9;
+    --fundo: #f2f5fa;
+    --texto: #0a1220;
+    --texto-2: #4b5567;
+    --linha: rgba(10, 18, 32, 0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--fundo); color: var(--texto-2); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, .titulo { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--texto); font-weight: 500; letter-spacing: -0.02em; line-height: 1.12; }
+  h1 { font-size: clamp(2.4rem, 5.4vw, 4.4rem); }
+  h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
+  h3 { font-size: 1.25rem; line-height: 1.3; }
+  a { color: inherit; }
+  .faixa { background: linear-gradient(transparent 60%, var(--menta) 60%, var(--menta) 92%, transparent 92%); padding: 0 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+  .mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(10, 18, 32, 0.55); }
+  .mono b { color: var(--lilas); font-weight: 500; }
+  .escuro .mono { color: rgba(255, 255, 255, 0.6); }
+  .selo { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--linha); background: #fff; border-radius: 999px; padding: 6px 14px; font-size: 14px; color: var(--texto); }
+  .selo::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--menta); box-shadow: 0 0 0 3px rgba(86, 254, 213, 0.25); }
+
+  /* Seções com moldura de grade, igual ao site */
+  section { position: relative; padding: 112px 0; }
+  section.moldura::before { content: ''; position: absolute; inset: 0 auto 0 0; left: 0; right: 0; border-top: 1px solid var(--linha); pointer-events: none; }
+  .grade { position: absolute; inset: 0; pointer-events: none; }
+  .grade > div { max-width: 1228px; margin: 0 auto; height: 100%; border-left: 1px solid var(--linha); border-right: 1px solid var(--linha); position: relative; }
+  .grade svg { position: absolute; top: -6.5px; width: 13px; height: 13px; color: #9aa3b5; }
+  .grade svg.e { left: -7px; } .grade svg.d { right: -7px; }
+  .escuro { background: var(--navy); color: rgba(255, 255, 255, 0.7); }
+  .escuro h2, .escuro h3 { color: #fff; }
+  .escuro .grade > div { border-color: rgba(255, 255, 255, 0.08); }
+  .cabeca { max-width: 760px; margin-bottom: 56px; }
+  .cabeca .mono { display: block; margin-bottom: 18px; }
+  .cabeca p { margin-top: 16px; font-size: 18px; }
+  .centro { text-align: center; margin-left: auto; margin-right: auto; }
+
+  /* Topo */
+  .topo { padding: 40px 0 120px; overflow: hidden; }
+  .topo::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle, rgba(101, 117, 255, 0.18) 1px, transparent 1.5px); background-size: 26px 26px; -webkit-mask-image: radial-gradient(ellipse 60% 55% at 78% 25%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 60% 55% at 78% 25%, #000 20%, transparent 75%); pointer-events: none; z-index: -1; }
+  .topo .brilho { position: absolute; bottom: -140px; left: 50%; transform: translateX(-50%); width: 760px; height: 300px; background: rgba(86, 254, 213, 0.22); filter: blur(70px); border-radius: 50%; z-index: -1; }
+  .barra { display: flex; align-items: center; justify-content: space-between; background: #fff; border-radius: 999px; padding: 10px 12px 10px 24px; box-shadow: 0 10px 30px rgba(10, 18, 32, 0.06); margin-bottom: 88px; gap: 16px; }
+  .marcas { display: flex; align-items: center; gap: 16px; }
+  .marcas img { height: 48px; width: auto; display: block; }
+  .marcas .x { color: #9aa3b5; font-size: 20px; }
+  .barra a.botao { padding: 10px 20px; font-size: 15px; }
+  .topo-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+  .topo h1 { margin: 22px 0 22px; }
+  .topo p.lead { font-size: 19px; max-width: 560px; }
+  .botao { display: inline-flex; align-items: center; gap: 10px; background: var(--menta); color: var(--navy); text-decoration: none; font-weight: 600; border-radius: 999px; padding: 15px 26px; font-size: 16px; transition: transform .2s; white-space: nowrap; }
+  .botao:hover { transform: translateY(-2px); }
+  .botao.branco { background: #fff; border: 1px solid var(--linha); }
+  .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .painel { background: var(--navy); border-radius: 28px; padding: 26px; color: #fff; box-shadow: 0 30px 60px rgba(10, 18, 32, 0.18); }
+  .painel .linha-topo { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255,255,255,.7); }
+  .painel .vivo { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.08); border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+  .painel .vivo::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--menta); animation: pulsa 1.6s infinite; }
+  @keyframes pulsa { 50% { opacity: .3; } }
+  .painel .titulo-painel { font-family: 'Plus Jakarta Sans'; font-size: 20px; font-weight: 500; margin: 14px 0 20px; }
+  .etapa-funil { margin-bottom: 14px; }
+  .etapa-funil .rot { display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 6px; }
+  .etapa-funil .rot b { color: #fff; font-weight: 500; }
+  .trilho { height: 8px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; position: relative; }
+  .trilho span { display: block; height: 100%; border-radius: 999px; background: var(--lilas); position: relative; overflow: hidden; animation: cresce 1.4s ease-out both; }
+  .trilho span::after { content: ''; position: absolute; inset: 0; width: 35%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent); animation: brilho 3.8s ease-in-out infinite; }
+  .etapa-funil:last-child .trilho span { background: var(--menta); }
+  @keyframes cresce { from { width: 0 !important; } }
+  @keyframes brilho { 0% { transform: translateX(-120%); } 50%, 100% { transform: translateX(320%); } }
+  .painel .nota { margin-top: 18px; background: rgba(255,255,255,.05); border-radius: 16px; padding: 14px 16px; font-size: 14px; color: rgba(255,255,255,.65); }
+
+  /* Cards */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .card { background: #fff; border-radius: 24px; padding: 30px; border: 1px solid var(--linha); }
+  .card h3 { margin: 18px 0 10px; }
+  .card p { font-size: 16px; }
+  .card.lilas { background: var(--lilas-claro); border-color: transparent; }
+  .card.lilas .icone, .card.menta .icone { background: #fff; }
+  .card.menta { background: var(--menta-clara); border-color: transparent; }
+  .escuro .card { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
+  .escuro .card p { color: rgba(255,255,255,.65); }
+  .icone { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: var(--menta-clara); color: var(--navy); }
+  .icone.l { background: var(--lilas-claro); color: var(--lilas); }
+  .escuro .icone { background: var(--menta); color: var(--navy); }
+  .icone svg { width: 22px; height: 22px; }
+  ul.lista { list-style: none; margin-top: 14px; }
+  ul.lista li { position: relative; padding-left: 28px; margin-top: 10px; font-size: 16px; }
+  ul.lista li::before { content: ''; position: absolute; left: 0; top: 4px; width: 18px; height: 18px; border-radius: 50%; background: var(--menta) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a1220' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/11px no-repeat; }
+  .escuro ul.lista li { color: rgba(255,255,255,.75); }
+
+  /* Fluxo do funil */
+  .fluxo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .fluxo::before { content: ''; position: absolute; top: 31px; left: 12%; right: 12%; height: 2px; background: linear-gradient(90deg, var(--lilas), var(--menta)); opacity: .5; }
+  .passo { text-align: center; padding: 0 14px; position: relative; }
+  .passo .num { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: var(--navy); color: var(--menta); font-family: 'Plus Jakarta Sans'; font-size: 22px; font-weight: 600; position: relative; z-index: 1; box-shadow: 0 0 0 8px var(--fundo); }
+  .passo h3 { margin-bottom: 8px; }
+  .passo p { font-size: 15px; }
+  .passo .tag { display: inline-block; margin-top: 12px; font-size: 13px; border-radius: 999px; padding: 4px 12px; background: var(--lilas-claro); color: var(--lilas); font-weight: 500; }
+
+  /* Ciclo das quatro etapas */
+  .ciclo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .ciclo { position: relative; width: min(100%, 440px); aspect-ratio: 1; margin: 0 auto; }
+  .ciclo .anel { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ciclo .arco { stroke-dashoffset: 0; animation: corre 1.2s linear infinite; }
+  @keyframes corre { to { stroke-dashoffset: -22; } }
+  .ciclo .cometa { transform-origin: 200px 200px; animation: gira 8s linear infinite; }
+  .ciclo .pontilhado { transform-origin: 200px 200px; animation: gira 40s linear infinite reverse; }
+  @keyframes gira { to { transform: rotate(360deg); } }
+  .centro-ciclo { position: absolute; inset: 31%; border-radius: 50%; background: #fff; box-shadow: 0 20px 50px rgba(10,18,32,.08), 0 0 0 14px rgba(86,254,213,.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; font-family: 'Plus Jakarta Sans'; color: var(--texto); font-size: 15px; line-height: 1.25; }
+  .centro-ciclo img { width: 44px; height: 44px; }
+  .no { position: absolute; transform: translate(-50%, -50%); background: none; border: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px; font: inherit; }
+  .no0 { left: 50%; top: 12.5%; } .no1 { left: 87.5%; top: 50%; } .no2 { left: 50%; top: 87.5%; } .no3 { left: 12.5%; top: 50%; }
+  .no .bolinha { width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--lilas-claro); color: var(--lilas); transition: all .4s; }
+  .no .bolinha svg { width: 24px; height: 24px; }
+  .no .nome { font-size: 13px; font-weight: 500; color: var(--texto); background: #fff; border-radius: 999px; padding: 3px 12px; box-shadow: 0 4px 12px rgba(10,18,32,.06); transition: all .4s; }
+  .no.ativo .bolinha { background: var(--navy); color: var(--menta); transform: scale(1.14); box-shadow: 0 0 0 6px rgba(86,254,213,.35); }
+  .no.ativo .nome { background: var(--menta); }
+  .detalhe { position: relative; min-height: 300px; }
+  .det { position: absolute; inset: 0 0 auto 0; opacity: 0; transform: translateY(10px); transition: opacity .5s, transform .5s; pointer-events: none; background: #fff; border-radius: 28px; padding: 34px; border: 1px solid var(--linha); }
+  .det.ativo { opacity: 1; transform: none; pointer-events: auto; position: relative; }
+  .det .quando-etapa { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--lilas); }
+  .det h3 { font-size: 1.7rem; margin: 10px 0 12px; }
+  .det .tag { display: inline-block; font-size: 13px; border-radius: 999px; padding: 4px 12px; background: var(--menta-clara); color: var(--navy); font-weight: 500; margin-bottom: 14px; }
+  .progresso-ciclo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 22px; }
+  .progresso-ciclo span { height: 5px; border-radius: 999px; background: rgba(10,18,32,.08); overflow: hidden; position: relative; }
+  .progresso-ciclo span.feito { background: var(--lilas); }
+  .progresso-ciclo span.agora::after { content: ''; position: absolute; inset: 0; background: var(--menta); transform-origin: left; animation: enche 4.5s linear forwards; }
+  @keyframes enche { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .rodape-ciclo { margin-top: 16px; font-size: 15px; }
+
+  /* Logos de clientes */
+  .clientes { padding: 32px 0 96px; }
+  .rot-cli { text-align: center; font-size: 15px; margin-bottom: 18px; }
+  .grade-logos { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
+  .logo-cli { background: #fff; border: 1px solid var(--linha); border-radius: 18px; height: 92px; display: flex; align-items: center; justify-content: center; padding: 14px 18px; }
+  .logo-cli img { width: auto; height: auto; max-width: 78%; max-height: 44px; object-fit: contain; }
+  .logo-cli { padding: 8px 10px !important; transition: transform .3s, box-shadow .3s; }
+  .logo-cli:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(10,18,32,.08); }
+
+  /* Depoimento em vídeo */
+  .depoimento { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; margin-top: 40px; background: #fff; border: 1px solid var(--linha); border-radius: 32px; padding: 24px; }
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; background: var(--navy); cursor: pointer; }
+  .video img, .video iframe { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; }
+  .video .play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 78px; height: 78px; border-radius: 50%; border: 0; background: var(--menta); color: var(--navy); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 0 10px rgba(86,254,213,.3); animation: pulsa-play 2s ease-in-out infinite; }
+  .video .play svg { width: 30px; height: 30px; margin-left: 4px; }
+  @keyframes pulsa-play { 50% { box-shadow: 0 0 0 18px rgba(86,254,213,.12); } }
+  .texto-depo { padding-right: 24px; }
+
+  /* Entrada suave ao rolar */
+  .revelar { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+  .revelar.visivel { opacity: 1; transform: none; }
+  .no-js .revelar { opacity: 1; transform: none; }
+  .topo h1, .topo .lead, .topo .acoes, .topo .selo, .painel { animation: sobe .9s cubic-bezier(.2,.7,.2,1) both; }
+  .topo .lead { animation-delay: .12s; } .topo .acoes { animation-delay: .22s; } .painel { animation-delay: .3s; }
+  @keyframes sobe { from { opacity: 0; transform: translateY(24px); } }
+  .painel { animation-name: sobe, flutua; animation-duration: .9s, 6s; animation-delay: .3s, 1.2s; animation-iteration-count: 1, infinite; animation-timing-function: cubic-bezier(.2,.7,.2,1), ease-in-out; }
+  @keyframes flutua { 50% { transform: translateY(-8px); } }
+  .card, .kpi, .mes { transition: transform .3s, box-shadow .3s; }
+  .card:hover, .kpi:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(10,18,32,.08); }
+
+  /* Linha do tempo */
+  .tempo { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .mes { border-radius: 22px; padding: 24px 22px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+  .mes .quando { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--menta); }
+  .mes h3 { font-size: 18px; margin: 10px 0 8px; }
+  .mes p { font-size: 14px; color: rgba(255,255,255,.62); }
+  .mes .intensidade { margin-top: 16px; height: 6px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+  .mes .intensidade span { display: block; height: 100%; background: linear-gradient(90deg, var(--lilas), var(--menta)); border-radius: 999px; }
+  .mes .rot-int { margin-top: 6px; font-size: 12px; color: rgba(255,255,255,.45); }
+
+  /* Indicadores */
+  .kpi { background: #fff; border-radius: 20px; padding: 22px; border: 1px solid var(--linha); }
+  .kpi .sigla { font-family: 'Plus Jakarta Sans'; font-size: 26px; color: var(--texto); font-weight: 600; }
+  .kpi p { font-size: 14px; margin-top: 6px; }
+
+  /* Case */
+  .case { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: #3f4fd6; background: linear-gradient(135deg, #4757e6, #3442c4); border-radius: 32px; padding: 56px; color: rgba(255,255,255,.8); }
+  .case h2 { color: #fff; font-size: clamp(1.7rem, 3vw, 2.4rem); }
+  .case .rot-case { color: var(--menta); font-size: 14px; font-weight: 500; margin-bottom: 12px; display: block; }
+  .numeros { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 30px; }
+  .numeros div { border-top: 1px solid rgba(255,255,255,.2); padding-top: 14px; }
+  .numeros b { display: block; font-family: 'Plus Jakarta Sans'; font-size: 36px; color: #fff; font-weight: 500; line-height: 1.1; }
+  .numeros span { font-size: 14px; }
+
+  /* Investimento */
+  .preco { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: stretch; }
+  .preco-principal { background: var(--navy); color: rgba(255,255,255,.7); border-radius: 32px; padding: 44px; position: relative; overflow: hidden; }
+  .preco-principal::after { content: ''; position: absolute; right: -80px; bottom: -120px; width: 320px; height: 320px; background: rgba(86,254,213,.18); filter: blur(60px); border-radius: 50%; }
+  .preco-principal .valor { font-family: 'Plus Jakarta Sans'; color: #fff; font-size: clamp(3rem, 6vw, 4.6rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1; margin: 18px 0 6px; }
+  .preco-principal .valor small { font-size: 22px; color: rgba(255,255,255,.6); font-weight: 400; }
+  .linha-preco { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1); font-size: 16px; }
+  .linha-preco:last-of-type { border-bottom: 0; }
+  .linha-preco b { color: #fff; font-weight: 500; white-space: nowrap; }
+  .riscado { text-decoration: line-through; color: rgba(255,255,255,.45) !important; margin-right: 8px; font-weight: 400 !important; }
+  .isento { color: var(--menta) !important; }
+  .preco-lado { display: flex; flex-direction: column; gap: 20px; }
+
+  /* Fase 2 */
+  .fase2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .fase2 .card { position: relative; }
+  .fase2.duas { grid-template-columns: repeat(2, 1fr); }
+  .fase2 .card .depois { position: absolute; top: 24px; right: 24px; font-size: 12px; border-radius: 999px; padding: 3px 10px; background: var(--fundo); color: var(--texto-2); }
+
+  /* Quem lidera */
+  .lider { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: center; }
+  .lider > img { width: 100%; border-radius: 28px; display: block; box-shadow: 10px 10px 0 var(--menta); }
+  .selos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .selos { gap: 14px !important; }
+  .selos img { height: 84px; width: auto; background: #fff; border-radius: 18px; padding: 12px 18px; border: 1px solid var(--linha); }
+
+  /* Fechamento */
+  .fechamento { background: var(--navy); border-radius: 32px; padding: 72px 40px; text-align: center; color: rgba(255,255,255,.7); position: relative; overflow: hidden; }
+  .fechamento h2 { color: #fff; max-width: 760px; margin: 18px auto 16px; }
+  .fechamento p { max-width: 600px; margin: 0 auto; }
+  .fechamento .acoes { justify-content: center; }
+  .fechamento .selo { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); color: #fff; }
+  footer { padding: 40px 0 56px; font-size: 14px; text-align: center; color: rgba(10,18,32,.5); }
+
+  @media (max-width: 960px) {
+    section { padding: 80px 0; }
+    .topo-grid, .case, .preco, .lider { grid-template-columns: 1fr; }
+    .grid-3, .grid-4, .fase2 { grid-template-columns: 1fr 1fr; }
+    .tempo { grid-template-columns: 1fr 1fr; }
+    .ciclo-wrap { grid-template-columns: 1fr; gap: 32px; }
+    .depoimento { grid-template-columns: 1fr; gap: 24px; }
+    .texto-depo { padding: 0 8px 8px; }
+    .grade-logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .fase2.duas { grid-template-columns: 1fr 1fr; }
+    .lider > img { max-width: 320px; }
+    .grade { display: none; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    section { padding: 64px 0; }
+    .grid-3, .grid-2, .grid-4, .fase2, .fase2.duas, .tempo { grid-template-columns: 1fr; }
+    .no .bolinha { width: 48px; height: 48px; }
+    .grade-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .logo-cli:last-child { grid-column: span 2; }
+    .selos img { height: 68px; }
+    .clientes { padding-bottom: 64px; }
+    .no .nome { font-size: 12px; padding: 2px 10px; }
+    .centro-ciclo { font-size: 13px; }
+    .det { padding: 26px; }
+    .barra { padding: 8px 8px 8px 18px; margin-bottom: 56px; }
+    .barra a.botao { display: none; }
+    .marcas { width: 100%; justify-content: space-between; padding-right: 10px; }
+    .marcas .x { display: none; }
+    .marcas img { height: 32px; }
+    .case, .preco-principal { padding: 32px 24px; }
+    .card { padding: 24px; }
+    .fechamento { padding: 52px 22px; }
+    .botao { width: 100%; justify-content: center; }
+    .numeros b { font-size: 30px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+
+  .marca-cliente { font-family: 'Plus Jakarta Sans'; font-weight: 600; color: var(--texto); font-size: 18px; letter-spacing: -0.01em; }
+  .marca-cliente small { display: block; font-size: 11px; font-weight: 500; color: var(--texto-2); letter-spacing: .08em; text-transform: uppercase; }
+  .publico { display: flex; flex-direction: column; }
+  .publico .canais { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .publico .canal { font-size: 12px; font-weight: 500; border-radius: 999px; padding: 4px 10px; background: var(--fundo); color: var(--texto); }
+  .publico .busca { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--linha); font-size: 14px; }
+  .publico .busca span { display: inline-block; margin: 4px 4px 0 0; font-family: 'JetBrains Mono'; font-size: 12px; background: var(--lilas-claro); color: var(--lilas); border-radius: 8px; padding: 3px 8px; }
+  .escuro .publico .canal { background: rgba(255,255,255,.08); color: #fff; }
+  .tabela-midia { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .tabela-midia td { padding: 12px 0; border-bottom: 1px solid var(--linha); font-size: 15px; }
+  .tabela-midia td:last-child { text-align: right; color: var(--texto); font-weight: 500; white-space: nowrap; }
+  .tabela-midia tr:last-child td { border-bottom: 0; font-weight: 600; color: var(--texto); }
+  .produto { border-radius: 24px; padding: 26px; background: #fff; border: 1px solid var(--linha); }
+  .produto .rotulo { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--lilas); }
+  .produto h3 { margin: 10px 0 8px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="estrela" viewBox="0 0 12 12"><path fill="currentColor" d="M6 0Q6.7 5.3 12 6Q6.7 6.7 6 12Q5.3 6.7 0 6Q5.3 5.3 6 0Z"/></symbol>
+  </defs>
+</svg>
+
+<!-- TOPO -->
+<section class="topo">
+  <div class="container">
+    <div class="barra">
+      <div class="marcas">
+        <img src="/Imagens/Agencia-UPDO.svg" alt="UPDO" />
+        <span class="x">×</span>
+        <span class="marca-cliente">Tempo<small>Saúde Digital</small></span>
+      </div>
+      <a class="botao" href="#investimento">Ver investimento</a>
+    </div>
+
+    <div class="topo-grid">
+      <div>
+        <span class="selo">Proposta · Tempo Saúde Digital</span>
+        <h1>Mídia digital <span class="faixa">por nicho</span> para cada público da Tempo</h1>
+        <p class="lead">Campanhas no Google separadas para empresas, operadoras, autogestões e pessoa física, com uma landing page para cada público e Meta Ads para acelerar a venda direta.</p>
+        <div class="acoes">
+          <a class="botao" href="#investimento">Ver investimento</a>
+          <a class="botao branco" href="#publicos">Ver os públicos</a>
+        </div>
+      </div>
+
+      <div class="painel">
+        <div class="linha-topo"><span>Plano de mídia · Tempo</span><span class="vivo">por nicho</span></div>
+        <p class="titulo-painel">Verba distribuída pelo potencial de cada público.</p>
+        <div class="etapa-funil"><div class="rot"><span>Empresas · Corpo e Mente</span><b>Google</b></div><div class="trilho"><span style="width:100%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>Operadoras de planos</span><b>Google</b></div><div class="trilho"><span style="width:62%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>Autogestões</span><b>Google</b></div><div class="trilho"><span style="width:38%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>Pessoa física</span><b>Google + Meta</b></div><div class="trilho"><span style="width:72%"></span></div></div>
+        <p class="nota">Divisão inicial sugerida. Depois das primeiras semanas, a verba segue o nicho que gera mais reunião e contrato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CLIENTES -->
+<section class="clientes">
+  <div class="container">
+    <p class="rot-cli">Empresas e instituições que já cresceram com a UPDO</p>
+    <div class="revelar grade-logos"><div class="logo-cli"><img src="/Clientes/proposta/Logo-PUCPR.png" alt="PUCPR" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-UniCV.png" alt="UniCV" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Faculdade-Ibrate.png" alt="Faculdade Ibrate" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-CNA.png" alt="CNA" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Veta-Pos-Graduacao.png" alt="Veta Pós-graduação" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Instituto-Equilibra.png" alt="Instituto Equilibra" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Interpret-2B.png" alt="Interpret 2B" loading="lazy" /></div></div>
+    <p class="rot-cli" style="margin-top:40px">Saúde, serviços, indústria e varejo</p>
+    <div class="revelar grade-logos"><div class="logo-cli"><img src="/Clientes/proposta/Logo-Unimed.png" alt="Unimed" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Ford.png" alt="Ford" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-GMAC.png" alt="GMAC" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Andritz.png" alt="Andritz" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Ademicon.png" alt="Ademicon" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Nextcard.png" alt="Nextcard" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Madeiras-Lane.png" alt="Madeiras Lane" loading="lazy" /></div></div>
+  </div>
+</section>
+
+<!-- 01 PONTO DE PARTIDA -->
+<section class="moldura">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca">
+      <span class="mono">[ <b>01</b> / 07 ] · O ponto de partida</span>
+      <h2>Uma empresa de saúde que <span class="faixa">usa tecnologia</span></h2>
+      <p>Em quase sete anos, a Tempo ficou entre as maiores de telemedicina do país sem nascer como empresa de tecnologia. É esse diferencial que a mídia precisa mostrar para cada público.</p>
+    </div>
+    <div class="revelar grid-3">
+      <div class="produto"><span class="rotulo">Produto 01</span><h3>Pronto atendimento virtual 24h</h3><p>Casos agudos atendidos a qualquer hora, sete dias por semana, evitando a ida ao pronto atendimento presencial.</p></div>
+      <div class="produto"><span class="rotulo">Produto 02</span><h3>Telespecialidades</h3><p>Consultas nas mais diversas especialidades, sem a espera de agenda e a falta de profissionais.</p></div>
+      <div class="produto"><span class="rotulo">Produto 03</span><h3>Corpo e Mente</h3><p>Pronto atendimento 24h, duas consultas de nutrição e duas de psicologia por mês. Forte para empresas e para a NR-1.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PÚBLICOS -->
+<section class="moldura escuro" id="publicos">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca">
+      <span class="mono">[ <b>02</b> / 07 ] · Campanhas por nicho</span>
+      <h2>Quatro públicos, <span class="faixa">quatro conversas</span></h2>
+      <p>Quem decide em uma operadora não procura do mesmo jeito que o RH de uma empresa ou uma pessoa física. Cada nicho tem campanha, palavra-chave e página próprias.</p>
+    </div>
+    <div class="revelar grid-2">
+      <div class="card publico">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18 M5 21V7l7-4 7 4v14 M9 9h1 M14 9h1 M9 13h1 M14 13h1 M9 17h1 M14 17h1"/></svg></div>
+        <h3>Empresas</h3>
+        <p>RH e gestores que querem cuidar dos colaboradores sem plano de saúde ou reduzir a sinistralidade do plano atual. O Corpo e Mente entra forte com a NR-1 e os riscos psicossociais.</p>
+        <div class="canais"><span class="canal">Google Ads</span><span class="canal">LinkedIn Ads (opcional)</span></div>
+        <div class="busca">Buscas de exemplo:<br/><span>telemedicina para empresas</span><span>NR-1 saúde mental</span><span>benefício saúde colaboradores</span></div>
+      </div>
+      <div class="card publico">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z M9 12l2 2 4-4"/></svg></div>
+        <h3>Operadoras de planos de saúde</h3>
+        <p>Operadoras que querem oferecer pronto atendimento virtual e telespecialidades aos beneficiários sem montar estrutura própria. Conversa de parceria, escala e redução de custo assistencial.</p>
+        <div class="canais"><span class="canal">Google Ads</span><span class="canal">LinkedIn Ads (opcional)</span></div>
+        <div class="busca">Buscas de exemplo:<br/><span>telemedicina para operadoras</span><span>parceiro de telessaúde</span><span>pronto atendimento digital</span></div>
+      </div>
+      <div class="card publico">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Autogestões</h3>
+        <p>Fundações e caixas de assistência, como as que a Tempo já atende, que buscam ampliar o cuidado com custo previsível. Público menor, de decisão técnica e ciclo mais longo.</p>
+        <div class="canais"><span class="canal">Google Ads</span><span class="canal">Remarketing</span></div>
+        <div class="busca">Buscas de exemplo:<br/><span>telemedicina autogestão</span><span>telessaúde para fundação</span></div>
+      </div>
+      <div class="card publico">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg></div>
+        <h3>Pessoa física</h3>
+        <p>A venda direta que a Tempo vai lançar. Aqui a mídia é o que tira o produto do zero: Google para quem procura consulta online agora e Meta para gerar demanda e lembrança de marca.</p>
+        <div class="canais"><span class="canal">Google Ads</span><span class="canal">Meta Ads</span></div>
+        <div class="busca">Buscas de exemplo:<br/><span>consulta médica online 24h</span><span>médico online agora</span><span>psicólogo online</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 COMO FUNCIONA -->
+<section class="moldura" id="estrategia">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca centro">
+      <span class="mono">[ <b>03</b> / 07 ] · Como funciona</span>
+      <h2>Da busca ao contrato,<br/>em <span class="faixa">quatro etapas</span></h2>
+      <p>O mesmo ciclo roda para cada nicho, e a cada volta a verba fica mais precisa.</p>
+    </div>
+    <div class="revelar ciclo-wrap">
+      <div class="ciclo" aria-label="Ciclo da campanha em quatro etapas">
+        <svg class="anel" viewBox="0 0 400 400" aria-hidden="true">
+          <defs>
+            <marker id="seta-ciclo" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#6575ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <linearGradient id="grad-ciclo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6575ff"/><stop offset="1" stop-color="#56fed5"/></linearGradient>
+          </defs>
+          <path d="M251.3 59.0 A150 150 0 0 1 341.0 148.7" fill="none" stroke="#6575ff" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round" marker-end="url(#seta-ciclo)" class="arco"/>
+          <path d="M341.0 251.3 A150 150 0 0 1 251.3 341.0" fill="none" stroke="#6575ff" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round" marker-end="url(#seta-ciclo)" class="arco"/>
+          <path d="M148.7 341.0 A150 150 0 0 1 59.0 251.3" fill="none" stroke="#6575ff" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round" marker-end="url(#seta-ciclo)" class="arco"/>
+          <path d="M59.0 148.7 A150 150 0 0 1 148.7 59.0" fill="none" stroke="#6575ff" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round" marker-end="url(#seta-ciclo)" class="arco"/>
+          <circle cx="200" cy="200" r="150" fill="none" stroke="url(#grad-ciclo)" stroke-width="3" stroke-dasharray="60 882" stroke-linecap="round" class="cometa"/>
+          <circle cx="200" cy="200" r="174" fill="none" stroke="rgba(101,117,255,0.25)" stroke-width="1" stroke-dasharray="2 8" class="pontilhado"/>
+        </svg>
+        <div class="centro-ciclo">
+          <img src="/Imagens/favicon%20agencia%20updo.png" alt="" />
+          <span>Ciclo de<br/>mídia</span>
+        </div>
+        <button class="no no0" data-i="0" aria-label="Busca">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z M21 21l-4.3-4.3"/></svg></span>
+          <span class="nome">Busca</span>
+        </button>
+        <button class="no no1" data-i="1" aria-label="Página">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3z M3 9h18 M8 14h8"/></svg></span>
+          <span class="nome">Página</span>
+        </button>
+        <button class="no no2" data-i="2" aria-label="Contato">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          <span class="nome">Contato</span>
+        </button>
+        <button class="no no3" data-i="3" aria-label="Ajuste">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18 M7 15l4-4 3 3 6-6"/></svg></span>
+          <span class="nome">Ajuste</span>
+        </button>
+      </div>
+      <div class="detalhe">
+          <div class="det ativo" data-i="0">
+            <span class="quando-etapa">Etapa 01 de 04</span>
+            <h3>Busca</h3>
+            <span class="tag">Google Ads por nicho</span>
+            <p>Campanhas separadas para RH de empresas, operadoras, autogestões e pessoa física, cada uma com palavras de quem já está procurando a solução.</p>
+          </div>
+          <div class="det" data-i="1">
+            <span class="quando-etapa">Etapa 02 de 04</span>
+            <h3>Página</h3>
+            <span class="tag">LP por público</span>
+            <p>Cada nicho cai numa página feita para ele: o RH vê NR-1 e redução de sinistralidade, a operadora vê parceria e escala, a pessoa física vê preço e acesso rápido.</p>
+          </div>
+          <div class="det" data-i="2">
+            <span class="quando-etapa">Etapa 03 de 04</span>
+            <h3>Contato</h3>
+            <span class="tag">Lead qualificado</span>
+            <p>Formulário com as perguntas certas (porte, número de vidas, tipo de contrato) para o comercial receber o lead já sabendo com quem vai falar.</p>
+          </div>
+          <div class="det" data-i="3">
+            <span class="quando-etapa">Etapa 04 de 04</span>
+            <h3>Ajuste</h3>
+            <span class="tag">Otimização semanal</span>
+            <p>Toda semana olhamos custo por lead e qualidade por nicho e movemos verba para o que gera reunião e contrato, não só clique.</p>
+          </div>
+        <div class="progresso-ciclo"><span></span><span></span><span></span><span></span></div>
+        <p class="rodape-ciclo">O comercial conta quais leads viraram reunião e contrato, e esse retorno volta para ajustar a verba de cada nicho.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ENTREGAS -->
+<section class="moldura escuro">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca">
+      <span class="mono">[ <b>04</b> / 07 ] · O que entregamos</span>
+      <h2>Tudo que entra no <span class="faixa">escopo</span></h2>
+      <p>Um time de especialistas da UPDO cuidando do planejamento, das páginas e da otimização, com reunião de acompanhamento e painel semanal.</p>
+    </div>
+    <div class="revelar grid-3">
+      <div class="card">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z M21 21l-4.3-4.3"/></svg></div>
+        <h3>Planejamento e Google Ads</h3>
+        <ul class="lista"><li>Pesquisa de palavras-chave por nicho</li><li>Campanhas de pesquisa separadas por público</li><li>Remarketing para quem visitou e não converteu</li><li>Palavras negativas para não pagar por clique errado</li><li>Otimização semanal de verba</li></ul>
+      </div>
+      <div class="card">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3z M3 9h18 M8 14h8"/></svg></div>
+        <h3>Landing pages por público</h3>
+        <ul class="lista"><li>Empresas (Corpo e Mente e NR-1)</li><li>Operadoras e autogestões</li><li>Pessoa física, pronta para a venda direta</li><li>Formulário com perguntas de qualificação</li><li>Textos, layout e testes A/B</li></ul>
+      </div>
+      <div class="card">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18 M18 17V9 M13 17V5 M8 17v-3"/></svg></div>
+        <h3>Meta Ads e medição</h3>
+        <ul class="lista"><li>Meta Ads para pessoa física (Instagram e Facebook)</li><li>Criativos estáticos e vídeo curto</li><li>Rastreamento de cada conversão no GA4 e nas plataformas</li><li>Painel semanal por nicho</li><li>Reunião de resultados</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CRONOGRAMA + CASE -->
+<section class="moldura">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca">
+      <span class="mono">[ <b>05</b> / 07 ] · Cronograma</span>
+      <h2>No ar em <span class="faixa">duas semanas</span></h2>
+    </div>
+    <div class="revelar grid-4" style="margin-bottom:56px">
+      <div class="kpi"><span class="sigla">Semana 1</span><p>Imersão, pesquisa de palavras-chave, rastreamento e textos das páginas.</p></div>
+      <div class="kpi"><span class="sigla">Semana 2</span><p>LPs de empresas e operadoras no ar e primeiras campanhas no Google.</p></div>
+      <div class="kpi"><span class="sigla">Lançamento PF</span><p>LP de pessoa física, Google e Meta junto com o lançamento da venda direta.</p></div>
+      <div class="kpi"><span class="sigla">Mês 2 em diante</span><p>Otimização semanal e verba migrando para o nicho que gera mais contrato.</p></div>
+    </div>
+
+    <div class="revelar case">
+      <div>
+        <span class="rot-case">Case real · Empresa de serviços</span>
+        <h2>De indicação como único canal para R$ 3,8 mi em contratos.</h2>
+        <p style="margin-top:14px">Posicionamento por segmento, Google e Meta com perfil de cliente claro e funil de qualificação. O custo por lead caiu de R$ 480 para R$ 127 em cinco meses.</p>
+        <a class="botao" style="margin-top:26px" href="https://www.updo.com.br/marketing-para-servicos" target="_blank" rel="noopener">Ver como atuamos em serviços</a>
+      </div>
+      <div class="numeros">
+        <div><b>+R$ 3,8 mi</b><span>em contratos fechados</span></div>
+        <div><b>+2,4x</b><span>leads qualificados</span></div>
+        <div><b>-74%</b><span>custo por lead</span></div>
+        <div><b>5 meses</b><span>para o resultado</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 INVESTIMENTO -->
+<section class="moldura" id="investimento">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca">
+      <span class="mono">[ <b>06</b> / 07 ] · Investimento</span>
+      <h2>Investimento <span class="faixa">claro</span>, separado da mídia</h2>
+    </div>
+    <div class="revelar preco">
+      <div class="preco-principal">
+        <span class="selo" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#fff">Gestão de mídia · contrato de 6 meses</span>
+        <div class="valor">R$ 4.800 <small>/mês</small></div>
+        <p>Gestão de Google Ads e Meta Ads para os quatro públicos.</p>
+        <div style="margin-top:24px">
+          <div class="linha-preco"><span>Planejamento e campanhas por nicho</span><b>incluso</b></div>
+          <div class="linha-preco"><span>Meta Ads para pessoa física</span><b>incluso</b></div>
+          <div class="linha-preco"><span>Criativos e otimização semanal</span><b>incluso</b></div>
+          <div class="linha-preco"><span>Painel e reunião de resultados</span><b>incluso</b></div>
+          <div class="linha-preco"><span>Implantação: 3 LPs, rastreamento e formulários</span><b>R$ 6.000 · valor único</b></div>
+        </div>
+      </div>
+      <div class="preco-lado">
+        <div class="card lilas">
+          <span class="mono">Verba de mídia sugerida para começar</span>
+          <table class="tabela-midia">
+            <tr><td>Google · Empresas</td><td>R$ 3.000</td></tr>
+            <tr><td>Google · Operadoras e autogestões</td><td>R$ 2.000</td></tr>
+            <tr><td>Google + Meta · Pessoa física</td><td>R$ 3.000</td></tr>
+            <tr><td>Total por mês</td><td>R$ 8.000</td></tr>
+          </table>
+          <p style="margin-top:12px;font-size:14px">Paga direto ao Google e à Meta, fora do valor da UPDO. Ajustamos conforme os resultados.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">LinkedIn Ads (opcional)</h3>
+          <p>Para chegar em decisores de RH e de operadoras por cargo e empresa. Avaliamos depois dos primeiros dados do Google, sem custo adicional de gestão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LIDERANÇA -->
+<section class="moldura">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar lider">
+      <img src="/Imagens/Rodrigo-Bueno-Fundador-UPDO.jpg" alt="Rodrigo Bueno" />
+      <div>
+        <span class="mono">[ <b>07</b> / 07 ] · Quem lidera o projeto</span>
+        <h2 style="margin:14px 0 16px">Rodrigo Bueno, fundador e <span class="faixa">estrategista</span></h2>
+        <p>Há mais de uma década estruturando a geração de demanda de empresas de saúde, educação, varejo, indústria e B2B em todo o Brasil. Professor de educação executiva e pós-graduação na PUCPR, de MBA na UFPR e na Universidade Positivo e de pós-graduação na Faculdade IBRATE.</p>
+        <div class="selos">
+          <img src="/Imagens/logo-rd-gold-UPDO-2025.png" alt="RD Station Partners Gold" />
+          <img src="/Imagens/Google-Search-UPDO.png" alt="Google Partner" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAMENTO -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="revelar fechamento">
+      <span class="selo">Campanhas no ar em duas semanas</span>
+      <h2>Vamos levar a Tempo para <span class="faixa">cada público</span> certo?</h2>
+      <p>Com o aceite, começamos a imersão na mesma semana e deixamos a página de pessoa física pronta para o lançamento da venda direta.</p>
+      <div class="acoes">
+        <a class="botao" href="https://wa.me/5541987112003?text=Ol%C3%A1%2C%20Rodrigo!%20Vi%20a%20proposta%20da%20UPDO%20para%20a%20Tempo%20Sa%C3%BAde%20Digital." target="_blank" rel="noopener">Aprovar pelo WhatsApp</a>
+        <a class="botao branco" href="mailto:contato@updo.com.br?subject=Proposta%20Tempo%20Sa%C3%BAde%20Digital">Tirar uma dúvida</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  UPDO · CNPJ 30.119.930/0001-20 · Curitiba/PR · Proposta válida por 15 dias
+</footer>
+
+<script>
+  // Ciclo das etapas: avança sozinho e responde ao clique.
+  (function () {
+    var nos = document.querySelectorAll('.ciclo .no');
+    var dets = document.querySelectorAll('.detalhe .det');
+    var barras = document.querySelectorAll('.progresso-ciclo span');
+    if (!nos.length) return;
+    var atual = 0, timer;
+    function mostrar(i) {
+      atual = i;
+      nos.forEach(function (n, k) { n.classList.toggle('ativo', k === i); });
+      dets.forEach(function (d, k) { d.classList.toggle('ativo', k === i); });
+      barras.forEach(function (b, k) {
+        b.classList.toggle('feito', k < i);
+        b.classList.remove('agora');
+        if (k === i) { void b.offsetWidth; b.classList.add('agora'); }
+      });
+    }
+    function proximo() { mostrar((atual + 1) % nos.length); }
+    function iniciar() { clearInterval(timer); timer = setInterval(proximo, 4500); }
+    nos.forEach(function (n, k) { n.addEventListener('click', function () { mostrar(k); iniciar(); }); });
+    mostrar(0);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) iniciar();
+  })();
+</script>
+
+<script>
+  // Elementos entram suavemente ao aparecer na tela.
+  (function () {
+    var els = document.querySelectorAll('.revelar');
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (e) { e.classList.add('visivel'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('visivel'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (e) { io.observe(e); });
+
+    // Números do case contam ao aparecer.
+    var nums = document.querySelectorAll('.numeros b');
+    var ion = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        ion.unobserve(en.target);
+        var el = en.target, texto = el.textContent, m = texto.match(/\d[\d.]*/g);
+        if (!m) return;
+        var t0 = performance.now();
+        (function passo(agora) {
+          var f = Math.min((agora - t0) / 1400, 1), e = 1 - Math.pow(1 - f, 3);
+          el.textContent = texto.replace(/\d[\d.]*/g, function (n) {
+            var v = Number(n.replace(/\./g, '')), atual = Math.round(v * e);
+            return atual.toLocaleString('pt-BR');
+          });
+          if (f < 1) requestAnimationFrame(passo); else el.textContent = texto;
+        })(t0);
+      });
+    }, { threshold: 0.5 });
+    nums.forEach(function (n) { ion.observe(n); });
+
+    // Vídeo carrega só no clique.
+    document.querySelectorAll('.video').forEach(function (v) {
+      v.addEventListener('click', function () {
+        v.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + v.dataset.id + '?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Depoimento"></iframe>';
+      }, { once: true });
+    });
+  })();
+</script>
+
+</body>
+</html>
