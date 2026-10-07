@@ -293,6 +293,14 @@
   .produto { border-radius: 24px; padding: 26px; background: #fff; border: 1px solid var(--linha); }
   .produto .rotulo { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--lilas); }
   .produto h3 { margin: 10px 0 8px; }
+
+  /* Carrossel de clientes */
+  .carrossel { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .carrossel .trilha { display: flex; gap: 14px; width: max-content; animation: desliza 60s linear infinite; padding: 4px 0 8px; }
+  .carrossel:hover .trilha { animation-play-state: paused; }
+  .carrossel .logo-cli { width: 180px; flex: none; }
+  @keyframes desliza { to { transform: translateX(calc(-50% - 7px)); } }
+  @media (max-width: 640px) { .carrossel .logo-cli { width: 140px; height: 76px; } .carrossel .trilha { animation-duration: 45s; } }
 </style>
 </head>
 <body>
@@ -330,9 +338,9 @@
         <div class="linha-topo"><span>Plano de mídia · Tempo</span><span class="vivo">por nicho</span></div>
         <p class="titulo-painel">Verba distribuída pelo potencial de cada público.</p>
         <div class="etapa-funil"><div class="rot"><span>Empresas · Corpo e Mente</span><b>Google</b></div><div class="trilho"><span style="width:100%"></span></div></div>
-        <div class="etapa-funil"><div class="rot"><span>Operadoras de planos</span><b>Google</b></div><div class="trilho"><span style="width:62%"></span></div></div>
-        <div class="etapa-funil"><div class="rot"><span>Autogestões</span><b>Google</b></div><div class="trilho"><span style="width:38%"></span></div></div>
-        <div class="etapa-funil"><div class="rot"><span>Pessoa física</span><b>Google + Meta</b></div><div class="trilho"><span style="width:72%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>Operadoras de planos</span><b>Google</b></div><div class="trilho"><span style="width:38%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>Autogestões</span><b>Google</b></div><div class="trilho"><span style="width:16%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>Pessoa física</span><b>Google + Meta</b></div><div class="trilho"><span style="width:77%"></span></div></div>
         <p class="nota">Divisão inicial sugerida. Depois das primeiras semanas, a verba segue o nicho que gera mais reunião e contrato.</p>
       </div>
     </div>
@@ -341,10 +349,10 @@
 <!-- CLIENTES -->
 <section class="clientes">
   <div class="container">
-    <p class="rot-cli">Empresas e instituições que já cresceram com a UPDO</p>
-    <div class="revelar grade-logos"><div class="logo-cli"><img src="/Clientes/proposta/Logo-PUCPR.png" alt="PUCPR" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-UniCV.png" alt="UniCV" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Faculdade-Ibrate.png" alt="Faculdade Ibrate" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-CNA.png" alt="CNA" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Veta-Pos-Graduacao.png" alt="Veta Pós-graduação" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Instituto-Equilibra.png" alt="Instituto Equilibra" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Interpret-2B.png" alt="Interpret 2B" loading="lazy" /></div></div>
-    <p class="rot-cli" style="margin-top:40px">Saúde, serviços, indústria e varejo</p>
-    <div class="revelar grade-logos"><div class="logo-cli"><img src="/Clientes/proposta/Logo-Unimed.png" alt="Unimed" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Ford.png" alt="Ford" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-GMAC.png" alt="GMAC" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Andritz.png" alt="Andritz" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Ademicon.png" alt="Ademicon" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Nextcard.png" alt="Nextcard" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Madeiras-Lane.png" alt="Madeiras Lane" loading="lazy" /></div></div>
+    <p class="rot-cli">Empresas que já cresceram com a UPDO</p>
+  </div>
+  <div class="carrossel" aria-label="Clientes da UPDO">
+    <div class="trilha"><div class="logo-cli"><img src="/Clientes/proposta/Logo-Unimed.png" alt="Unimed" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Ford.png" alt="Ford" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-PUCPR.png" alt="PUCPR" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Andritz.png" alt="Andritz" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-CNA.png" alt="CNA" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Ademicon.png" alt="Ademicon" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Nextcard.png" alt="Nextcard" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-UniCV.png" alt="UniCV" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-GMAC.png" alt="GMAC" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Faculdade-Ibrate.png" alt="Faculdade Ibrate" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Polibrinq.png" alt="Polibrinq" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Teloos.png" alt="Teloos" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Veta-Pos-Graduacao.png" alt="Veta Pós-graduação" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Instituto-Equilibra.png" alt="Instituto Equilibra" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Interpret-2B.png" alt="Interpret 2B" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Madeiras-Lane.png" alt="Madeiras Lane" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Trevisan-Comunicacao-Visual.png" alt="Trevisan" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Unimed.png" alt="Unimed" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Ford.png" alt="Ford" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-PUCPR.png" alt="PUCPR" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Andritz.png" alt="Andritz" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-CNA.png" alt="CNA" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Ademicon.png" alt="Ademicon" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Nextcard.png" alt="Nextcard" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-UniCV.png" alt="UniCV" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-GMAC.png" alt="GMAC" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Faculdade-Ibrate.png" alt="Faculdade Ibrate" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Polibrinq.png" alt="Polibrinq" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Teloos.png" alt="Teloos" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Veta-Pos-Graduacao.png" alt="Veta Pós-graduação" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Instituto-Equilibra.png" alt="Instituto Equilibra" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Interpret-2B.png" alt="Interpret 2B" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Madeiras-Lane.png" alt="Madeiras Lane" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Trevisan-Comunicacao-Visual.png" alt="Trevisan" loading="lazy" /></div></div>
   </div>
 </section>
 
@@ -554,9 +562,9 @@
     </div>
     <div class="revelar preco">
       <div class="preco-principal">
-        <span class="selo" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#fff">Gestão de mídia · contrato de 6 meses</span>
-        <div class="valor">R$ 4.800 <small>/mês</small></div>
-        <p>Gestão de Google Ads e Meta Ads para os quatro públicos.</p>
+        <span class="selo" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#fff">Gestão de mídia · condição de entrada</span>
+        <div class="valor">R$ 3.700 <small>/mês</small></div>
+        <p>Nos seis primeiros meses. A partir do sétimo mês, R$ 4.800/mês, com a operação já validada e escalando.</p>
         <div style="margin-top:24px">
           <div class="linha-preco"><span>Planejamento e campanhas por nicho</span><b>incluso</b></div>
           <div class="linha-preco"><span>Meta Ads para pessoa física</span><b>incluso</b></div>
@@ -569,16 +577,16 @@
         <div class="card lilas">
           <span class="mono">Verba de mídia sugerida para começar</span>
           <table class="tabela-midia">
-            <tr><td>Google · Empresas</td><td>R$ 3.000</td></tr>
-            <tr><td>Google · Operadoras e autogestões</td><td>R$ 2.000</td></tr>
-            <tr><td>Google + Meta · Pessoa física</td><td>R$ 3.000</td></tr>
-            <tr><td>Total por mês</td><td>R$ 8.000</td></tr>
+            <tr><td>Google · Empresas</td><td>R$ 1.300</td></tr>
+            <tr><td>Google · Operadoras e autogestões</td><td>R$ 700</td></tr>
+            <tr><td>Google + Meta · Pessoa física</td><td>R$ 1.000</td></tr>
+            <tr><td>Total por mês</td><td>R$ 3.000</td></tr>
           </table>
-          <p style="margin-top:12px;font-size:14px">Paga direto ao Google e à Meta, fora do valor da UPDO. Ajustamos conforme os resultados.</p>
+          <p style="margin-top:12px;font-size:14px">Paga direto ao Google e à Meta, fora do valor da UPDO. Com essa verba, começamos concentrados nas buscas de maior intenção e ampliamos conforme os resultados.</p>
         </div>
         <div class="card">
           <h3 style="margin-top:0">LinkedIn Ads (opcional)</h3>
-          <p>Para chegar em decisores de RH e de operadoras por cargo e empresa. Avaliamos depois dos primeiros dados do Google, sem custo adicional de gestão.</p>
+          <p>Para chegar em decisores de RH e de operadoras por cargo e empresa. Faz sentido quando a verba crescer; avaliamos junto depois dos primeiros meses.</p>
         </div>
       </div>
     </div>
