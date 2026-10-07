@@ -277,6 +277,48 @@
     .numeros b { font-size: 30px; }
   }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  /* Cronograma em Gantt */
+  .gantt { background: #fff; border: 1px solid var(--linha); border-radius: 28px; padding: 28px 28px 22px; --col: 260px; }
+  .g-topo, .g-linha { display: grid; grid-template-columns: var(--col) 1fr; align-items: center; gap: 16px; }
+  .g-semanas { display: grid; grid-template-columns: repeat(var(--cols), 1fr); font-family: 'JetBrains Mono'; font-size: 12px; color: var(--texto-2); text-align: center; letter-spacing: .08em; }
+  .g-rot { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--texto-2); }
+  .g-corpo { position: relative; margin-top: 30px; }
+  .g-grade { position: absolute; top: 0; bottom: 0; left: calc(var(--col) + 16px); right: 0; display: grid; grid-template-columns: repeat(var(--cols), 1fr); pointer-events: none; }
+  .g-grade i { border-left: 1px dashed var(--linha); }
+  .g-grade i:first-child { border-left-color: transparent; }
+  .g-fase { font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--lilas); margin: 14px 0 4px; }
+  .g-fase:first-of-type { margin-top: 30px; }
+  .g-linha { padding: 6px 0; }
+  .g-tarefa { font-size: 14px; color: var(--texto); line-height: 1.35; }
+  .g-trilho { position: relative; height: 26px; }
+  .g-barra { position: absolute; top: 3px; height: 20px; border-radius: 999px; left: calc(var(--ini) / var(--cols) * 100%); width: calc(var(--dur) / var(--cols) * 100% - 6px); margin-left: 3px; transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(.2,.7,.2,1); transition-delay: var(--atraso); overflow: hidden; }
+  .visivel .g-barra { transform: scaleX(1); }
+  .g-l { background: var(--lilas); }
+  .g-m { background: #8f9bff; }
+  .g-n { background: var(--menta); }
+  .g-o { background: repeating-linear-gradient(135deg, #56fed5 0 8px, #9dffe7 8px 16px); }
+  .g-barra.segue { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+  .g-barra.segue::after { content: '→'; position: absolute; right: 8px; top: 50%; transform: translateY(-52%); font-size: 13px; color: var(--navy); font-weight: 600; }
+  .g-barra::before { content: ''; position: absolute; inset: 0; width: 30%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: brilho 4.2s ease-in-out infinite; animation-delay: calc(var(--atraso) + 1.4s); }
+  .g-hoje { position: absolute; top: 0; bottom: 0; left: calc(var(--col) + 16px + (100% - var(--col) - 16px) * var(--hoje)); border-left: 2px dashed var(--menta-escura); pointer-events: none; }
+  .g-hoje b { position: absolute; top: 18px; left: 6px; font-size: 11px; font-weight: 600; color: var(--navy); background: var(--menta); border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+  .g-marco { position: absolute; top: 0; left: calc(var(--col) + 16px + (100% - var(--col) - 16px) * (var(--sem) / var(--cols))); width: 14px; height: 14px; margin-left: -7px; background: var(--navy); transform: rotate(45deg); border-radius: 3px; }
+  .g-marco b { position: absolute; transform: rotate(-45deg); top: -22px; left: -24px; font-size: 11px; font-weight: 500; color: var(--texto-2); white-space: nowrap; }
+  .g-legenda { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--linha); font-size: 13px; }
+  .g-legenda span { display: inline-flex; align-items: center; gap: 8px; }
+  .g-legenda i { width: 22px; height: 10px; border-radius: 999px; display: inline-block; }
+  .g-legenda i.g-x { width: 10px; height: 10px; border-radius: 2px; transform: rotate(45deg); background: var(--navy); }
+  @media (max-width: 960px) { .gantt { --col: 180px; } }
+  @media (max-width: 640px) {
+    .gantt { padding: 20px 14px 16px; overflow-x: auto; }
+    .gantt > * { min-width: 560px; }
+    .gantt { --col: 150px; }
+    .g-tarefa { font-size: 12.5px; }
+  }
+  .escuro .gantt { color: var(--texto-2); }
+  .gantt .g-semanas span { color: var(--texto-2) !important; }
+  .gantt .g-tarefa { color: var(--texto) !important; }
+  .g-marco.sem-rotulo b { display: none; }
 </style>
 </head>
 <body>
@@ -505,12 +547,25 @@
       <h2>De 14 de outubro até <span class="faixa">fevereiro</span></h2>
       <p>A verba e a intensidade acompanham o calendário da captação: aquecimento no fim do ano, pico em janeiro e fevereiro.</p>
     </div>
-    <div class="revelar tempo">
-      <div class="mes"><span class="quando">Até 14/10</span><h3>Implantação</h3><p>LPs, rastreamento, fluxos no RD Station Marketing, funil no RD Station CRM e primeiros criativos.</p><div class="intensidade"><span style="width:30%"></span></div><p class="rot-int">Base pronta</p></div>
-      <div class="mes"><span class="quando">Out · Nov</span><h3>Aquecimento</h3><p>Campanhas no ar, leitura dos primeiros dados e definição final dos cursos prioritários.</p><div class="intensidade"><span style="width:50%"></span></div><p class="rot-int">Aprender e ajustar</p></div>
-      <div class="mes"><span class="quando">Dezembro</span><h3>Crescimento</h3><p>Verba nos cursos e públicos que respondem melhor. Remarketing para quem já demonstrou interesse.</p><div class="intensidade"><span style="width:68%"></span></div><p class="rot-int">Escalar o que funciona</p></div>
-      <div class="mes"><span class="quando">Janeiro</span><h3>Pico</h3><p>Maior intensidade de mídia e de atendimento, com acompanhamento diário dos números.</p><div class="intensidade"><span style="width:100%"></span></div><p class="rot-int">Máxima captação</p></div>
-      <div class="mes"><span class="quando">Fevereiro</span><h3>Reta final</h3><p>Últimas vagas, remarketing e foco em converter inscritos em matriculados.</p><div class="intensidade"><span style="width:85%"></span></div><p class="rot-int">Fechar matrículas</p></div>
+    <div class="revelar gantt" style="--cols:5;--hoje:0.09">
+      <div class="g-topo"><span class="g-tarefa g-rot">Etapa</span><div class="g-semanas"><span>Out</span><span>Nov</span><span>Dez</span><span>Jan</span><span>Fev</span></div></div>
+      <div class="g-corpo">
+        <div class="g-grade" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="g-hoje" aria-hidden="true"><b>14/10 · campanhas no ar</b></div>
+        <span class="g-marco" style="--sem:1.45" title="Reunião de resultados"><b>Reunião</b></span><span class="g-marco" style="--sem:2.45" title="Reunião de resultados"><b>Reunião</b></span><span class="g-marco" style="--sem:3.45" title="Reunião de resultados"><b>Reunião</b></span><span class="g-marco" style="--sem:4.45" title="Reunião de resultados"><b>Reunião</b></span>
+<div class="g-fase">Preparação</div>
+<div class="g-linha"><span class="g-tarefa">Implantação: LPs, RD Station e rastreamento</span><div class="g-trilho"><span class="g-barra g-l" style="--ini:0.2;--dur:0.25;--atraso:0.00s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Definição dos cursos prioritários</span><div class="g-trilho"><span class="g-barra g-l" style="--ini:0.45;--dur:1.05;--atraso:0.12s"></span></div></div>
+<div class="g-fase">Campanhas</div>
+<div class="g-linha"><span class="g-tarefa">Google + Meta por área</span><div class="g-trilho"><span class="g-barra g-n segue" style="--ini:0.45;--dur:4.55;--atraso:0.24s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Remarketing para quem já demonstrou interesse</span><div class="g-trilho"><span class="g-barra g-n segue" style="--ini:2;--dur:3;--atraso:0.36s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Pico de verba e de atendimento</span><div class="g-trilho"><span class="g-barra g-m segue" style="--ini:3;--dur:2;--atraso:0.48s"></span></div></div>
+<div class="g-fase">Equipe</div>
+<div class="g-linha"><span class="g-tarefa">Treinamento de atendimento (opcional)</span><div class="g-trilho"><span class="g-barra g-m" style="--ini:1;--dur:0.5;--atraso:0.60s"></span></div></div>
+<div class="g-fase">Otimização</div>
+<div class="g-linha"><span class="g-tarefa">Otimização semanal e painel de resultados</span><div class="g-trilho"><span class="g-barra g-o segue" style="--ini:0.45;--dur:4.55;--atraso:0.72s"></span></div></div>
+      </div>
+      <div class="g-legenda"><span><i class="g-l"></i>Preparação</span><span><i class="g-n"></i>Campanhas no ar</span><span><i class="g-m"></i>Pico e treinamento</span><span><i class="g-o"></i>Otimização contínua</span><span><i class="g-x"></i>Reunião mensal de resultados</span></div>
     </div>
   </div>
 </section>
