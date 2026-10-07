@@ -302,6 +302,45 @@
   @keyframes desliza { to { transform: translateX(calc(-50% - 7px)); } }
   @media (max-width: 640px) { .carrossel .logo-cli { width: 140px; height: 76px; } .carrossel .trilha { animation-duration: 45s; } }
   .marcas img.logo-tempo { height: 36px; }
+
+  /* Cronograma em Gantt */
+  .gantt { background: #fff; border: 1px solid var(--linha); border-radius: 28px; padding: 28px 28px 22px; --col: 260px; }
+  .g-topo, .g-linha { display: grid; grid-template-columns: var(--col) 1fr; align-items: center; gap: 16px; }
+  .g-semanas { display: grid; grid-template-columns: repeat(8, 1fr); font-family: 'JetBrains Mono'; font-size: 12px; color: var(--texto-2); text-align: center; letter-spacing: .08em; }
+  .g-rot { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--texto-2); }
+  .g-corpo { position: relative; margin-top: 30px; }
+  .g-grade { position: absolute; top: 0; bottom: 0; left: calc(var(--col) + 16px); right: 0; display: grid; grid-template-columns: repeat(8, 1fr); pointer-events: none; }
+  .g-grade i { border-left: 1px dashed var(--linha); }
+  .g-grade i:first-child { border-left-color: transparent; }
+  .g-fase { font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--lilas); margin: 14px 0 4px; }
+  .g-fase:first-of-type { margin-top: 30px; }
+  .g-linha { padding: 6px 0; }
+  .g-tarefa { font-size: 14px; color: var(--texto); line-height: 1.35; }
+  .g-trilho { position: relative; height: 26px; }
+  .g-barra { position: absolute; top: 3px; height: 20px; border-radius: 999px; left: calc(var(--ini) * 12.5%); width: calc(var(--dur) * 12.5% - 6px); margin-left: 3px; transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(.2,.7,.2,1); transition-delay: var(--atraso); overflow: hidden; }
+  .visivel .g-barra { transform: scaleX(1); }
+  .g-l { background: var(--lilas); }
+  .g-m { background: #8f9bff; }
+  .g-n { background: var(--menta); }
+  .g-o { background: repeating-linear-gradient(135deg, #56fed5 0 8px, #9dffe7 8px 16px); }
+  .g-barra.segue { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+  .g-barra.segue::after { content: '→'; position: absolute; right: 8px; top: 50%; transform: translateY(-52%); font-size: 13px; color: var(--navy); font-weight: 600; }
+  .g-barra::before { content: ''; position: absolute; inset: 0; width: 30%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: brilho 4.2s ease-in-out infinite; animation-delay: calc(var(--atraso) + 1.4s); }
+  .g-hoje { position: absolute; top: 0; bottom: 0; left: calc(var(--col) + 16px + (100% - var(--col) - 16px) * 0.25); border-left: 2px dashed var(--menta-escura); pointer-events: none; }
+  .g-hoje b { position: absolute; top: 18px; left: 6px; font-size: 11px; font-weight: 600; color: var(--navy); background: var(--menta); border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+  .g-marco { position: absolute; top: 0; left: calc(var(--col) + 16px + (100% - var(--col) - 16px) * (var(--sem) / 8)); width: 14px; height: 14px; margin-left: -7px; background: var(--navy); transform: rotate(45deg); border-radius: 3px; }
+  .g-marco b { position: absolute; transform: rotate(-45deg); top: -22px; left: -24px; font-size: 11px; font-weight: 500; color: var(--texto-2); white-space: nowrap; }
+  .g-legenda { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--linha); font-size: 13px; }
+  .g-legenda span { display: inline-flex; align-items: center; gap: 8px; }
+  .g-legenda i { width: 22px; height: 10px; border-radius: 999px; display: inline-block; }
+  .g-legenda i.g-x { width: 10px; height: 10px; border-radius: 2px; transform: rotate(45deg); background: var(--navy); }
+  @media (max-width: 960px) { .gantt { --col: 180px; } }
+  @media (max-width: 640px) {
+    .gantt { padding: 20px 14px 16px; overflow-x: auto; }
+    .gantt > * { min-width: 560px; }
+    .gantt { --col: 150px; }
+    .g-tarefa { font-size: 12.5px; }
+  }
 </style>
 </head>
 <body>
@@ -528,12 +567,28 @@
     <div class="revelar cabeca">
       <span class="mono">[ <b>05</b> / 07 ] · Cronograma</span>
       <h2>No ar em <span class="faixa">duas semanas</span></h2>
+      <p>Planejamento e páginas nas duas primeiras semanas, campanhas no ar a partir da terceira e otimização toda semana. A pessoa física entra junto com o lançamento da venda direta.</p>
     </div>
-    <div class="revelar grid-4" style="margin-bottom:56px">
-      <div class="kpi"><span class="sigla">Semana 1</span><p>Imersão, pesquisa de palavras-chave, rastreamento e textos das páginas.</p></div>
-      <div class="kpi"><span class="sigla">Semana 2</span><p>LPs de empresas e operadoras no ar e primeiras campanhas no Google.</p></div>
-      <div class="kpi"><span class="sigla">Lançamento PF</span><p>LP de pessoa física, Google e Meta junto com o lançamento da venda direta.</p></div>
-      <div class="kpi"><span class="sigla">Mês 2 em diante</span><p>Otimização semanal e verba migrando para o nicho que gera mais contrato.</p></div>
+    <div class="revelar gantt" style="margin-bottom:56px">
+      <div class="g-topo"><span class="g-tarefa g-rot">Etapa</span><div class="g-semanas"><span>S1</span><span>S2</span><span>S3</span><span>S4</span><span>S5</span><span>S6</span><span>S7</span><span>S8</span></div></div>
+      <div class="g-corpo">
+        <div class="g-grade" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="g-hoje" aria-hidden="true"><b>Campanhas no ar</b></div>
+        <span class="g-marco" style="--sem:3.5" title="Reunião 1"><b>Reunião 1</b></span><span class="g-marco" style="--sem:7.5" title="Reunião 2"><b>Reunião 2</b></span>
+<div class="g-fase">Planejamento</div>
+<div class="g-linha"><span class="g-tarefa">Imersão e pesquisa de palavras-chave</span><div class="g-trilho"><span class="g-barra g-l" style="--ini:0;--dur:1;--atraso:0.00s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Rastreamento, GA4 e conversões</span><div class="g-trilho"><span class="g-barra g-l" style="--ini:0;--dur:2;--atraso:0.12s"></span></div></div>
+<div class="g-fase">Páginas</div>
+<div class="g-linha"><span class="g-tarefa">LP Empresas (Corpo e Mente e NR-1)</span><div class="g-trilho"><span class="g-barra g-m" style="--ini:0;--dur:2;--atraso:0.24s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">LP Operadoras e autogestões</span><div class="g-trilho"><span class="g-barra g-m" style="--ini:1;--dur:1;--atraso:0.36s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">LP Pessoa física</span><div class="g-trilho"><span class="g-barra g-m" style="--ini:1;--dur:2;--atraso:0.48s"></span></div></div>
+<div class="g-fase">Campanhas</div>
+<div class="g-linha"><span class="g-tarefa">Google · Empresas, operadoras e autogestões</span><div class="g-trilho"><span class="g-barra g-n segue" style="--ini:2;--dur:6;--atraso:0.60s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Google + Meta · Pessoa física (lançamento)</span><div class="g-trilho"><span class="g-barra g-n segue" style="--ini:3;--dur:5;--atraso:0.72s"></span></div></div>
+<div class="g-fase">Otimização</div>
+<div class="g-linha"><span class="g-tarefa">Otimização semanal de verba e anúncios</span><div class="g-trilho"><span class="g-barra g-o segue" style="--ini:2;--dur:6;--atraso:0.84s"></span></div></div>
+      </div>
+      <div class="g-legenda"><span><i class="g-l"></i>Planejamento</span><span><i class="g-m"></i>Landing pages</span><span><i class="g-n"></i>Campanhas no ar</span><span><i class="g-o"></i>Otimização contínua</span><span><i class="g-x"></i>Reunião de resultados</span></div>
     </div>
 
     <div class="revelar case">
