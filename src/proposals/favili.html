@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Proposta UPDO · Faculdade Vidal (Favili) · Vestibular 2027.1</title>
+<title>Proposta UPDO · Faculdade Vidal e Escola Normal Rural</title>
 <meta name="description" content="Proposta da UPDO para a campanha de captação de graduação da Faculdade Vidal, de outubro a fevereiro." />
 <meta property="og:title" content="Proposta UPDO · Faculdade Vidal" />
 <meta property="og:description" content="Campanha de captação de graduação para o vestibular 2027.1." />
@@ -319,6 +319,57 @@
   .gantt .g-semanas span { color: var(--texto-2) !important; }
   .gantt .g-tarefa { color: var(--texto) !important; }
   .g-marco.sem-rotulo b { display: none; }
+
+  /* Frentes e vestibular */
+  .frentes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .frente { background: #fff; border: 1px solid var(--linha); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; }
+  .frente .rotulo { font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--lilas); }
+  .frente h3 { margin: 10px 0 6px; }
+  .frente p { font-size: 15px; }
+  .frente .meta { margin-top: auto; padding-top: 18px; }
+  .frente .meta b { display: block; font-family: 'Plus Jakarta Sans'; font-size: 28px; font-weight: 500; color: var(--texto); line-height: 1.1; }
+  .frente .meta span { font-size: 13px; }
+  .barra-meta { height: 8px; border-radius: 999px; background: var(--fundo); margin-top: 10px; overflow: hidden; }
+  .barra-meta i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--lilas), var(--menta)); width: 0; transition: width 1.4s cubic-bezier(.2,.7,.2,1) .3s; }
+  .visivel .barra-meta i { width: var(--v); }
+  .cortes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .corte { border-radius: 28px; padding: 32px; position: relative; overflow: hidden; }
+  .corte.um { background: var(--navy); color: rgba(255,255,255,.72); }
+  .corte.um h3 { color: #fff; }
+  .corte.dois { background: #fff; border: 1px solid var(--linha); }
+  .corte .rotulo { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--menta); }
+  .corte.dois .rotulo { color: var(--lilas); }
+  .corte h3 { font-size: 1.6rem; margin: 10px 0 18px; }
+  .passos { list-style: none; position: relative; }
+  .passos::before { content: ''; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--menta), rgba(86,254,213,.15)); }
+  .corte.dois .passos::before { background: linear-gradient(var(--lilas), rgba(101,117,255,.15)); }
+  .passos li { position: relative; padding-left: 46px; margin-bottom: 18px; }
+  .passos li:last-child { margin-bottom: 0; }
+  .passos li .pt { position: absolute; left: 0; top: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--menta); color: var(--navy); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; }
+  .corte.dois .passos li .pt { background: var(--lilas); color: #fff; }
+  .passos li b { display: block; color: inherit; font-weight: 600; }
+  .corte.um .passos li b { color: #fff; }
+  .corte.dois .passos li b { color: var(--texto); }
+  .passos li span { font-size: 15px; }
+  .oferta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .oferta span { background: rgba(86,254,213,.12); color: var(--menta); border: 1px solid rgba(86,254,213,.3); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 500; }
+  .aviso-pico { margin-top: 20px; display: flex; gap: 14px; align-items: center; background: var(--menta-clara); border-radius: 20px; padding: 18px 22px; color: var(--texto); font-size: 16px; }
+  .aviso-pico b { font-weight: 600; }
+  .kommo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
+  .fluxo-kommo { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .fk-linha { display: grid; grid-template-columns: 1fr 34px 1fr; align-items: center; gap: 8px; }
+  .fk-caixa { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 12px 14px; color: #fff; font-size: 14px; }
+  .fk-caixa small { display: block; color: rgba(255,255,255,.55); font-size: 12px; }
+  .fk-caixa.destaque { background: var(--menta); color: var(--navy); border-color: transparent; font-weight: 600; text-align: center; }
+  .fk-seta { color: var(--menta); text-align: center; font-size: 18px; }
+  @media (max-width: 960px) { .frentes { grid-template-columns: 1fr 1fr; } .cortes, .kommo { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .frentes { grid-template-columns: 1fr; } .corte { padding: 24px; } }
+
+  .tabela-midia { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .tabela-midia td { padding: 12px 0; border-bottom: 1px solid var(--linha); font-size: 15px; }
+  .tabela-midia td:last-child { text-align: right; color: var(--texto); font-weight: 500; white-space: nowrap; }
+  .tabela-midia tr:last-child td { border-bottom: 0; font-weight: 600; color: var(--texto); }
+  .g-marco.rotulo-lado b { transform: rotate(-45deg) translate(8px, 0); top: -2px; left: 14px; transform-origin: left center; color: var(--navy); font-weight: 600; background: #fff; padding: 0 4px; }
 </style>
 </head>
 <body>
@@ -344,29 +395,27 @@
 
     <div class="topo-grid">
       <div>
-        <span class="selo">Proposta · Faculdade Vidal (Favili)</span>
-        <h1>Captação de graduação com <span class="faixa">previsibilidade</span> para o vestibular 2027.1</h1>
-        <p class="lead">Campanha de outubro a fevereiro com Google e Meta, landing pages por área, automação no RD Station Marketing levando cada lead ao RD Station CRM da equipe comercial e treinamento para o time converter mais.</p>
+        <span class="selo">Proposta · Faculdade Vidal e Escola Normal Rural</span>
+        <h1>Mais matrículas na faculdade e na escola, com <span class="faixa">um só funil</span></h1>
+        <p class="lead">Tráfego pago para o concurso de bolsas, o vestibular, o EAD, a pós e a Escola Normal Rural, com páginas para cada oferta e o Kommo centralizando os leads das duas instituições para as vendedoras.</p>
         <div class="acoes">
           <a class="botao" href="#investimento">Ver investimento</a>
-          <a class="botao branco" href="#estrategia">Ver a estratégia</a>
+          <a class="botao branco" href="#vestibular">Ver o vestibular</a>
         </div>
       </div>
 
       <div class="painel">
-        <div class="linha-topo"><span>Funil de captação · Favili</span><span class="vivo">out → fev</span></div>
-        <p class="titulo-painel">Do anúncio à matrícula, medido etapa por etapa.</p>
-        <div class="etapa-funil"><div class="rot"><span>Alcance</span><b>Google + Meta</b></div><div class="trilho"><span style="width:100%"></span></div></div>
-        <div class="etapa-funil"><div class="rot"><span>Lead interessado</span><b>LP por área</b></div><div class="trilho"><span style="width:72%"></span></div></div>
-        <div class="etapa-funil"><div class="rot"><span>Atendimento</span><b>RD Station CRM</b></div><div class="trilho"><span style="width:48%"></span></div></div>
-        <div class="etapa-funil"><div class="rot"><span>Inscrição</span><b>Vestibular</b></div><div class="trilho"><span style="width:28%"></span></div></div>
-        <div class="etapa-funil"><div class="rot"><span>Matrícula</span><b>Meta da campanha</b></div><div class="trilho"><span style="width:16%"></span></div></div>
-        <p class="nota">Ilustração do funil que vamos acompanhar. Os números reais entram no painel semanal a partir da primeira semana de campanha.</p>
+        <div class="linha-topo"><span>Metas de matrícula · Grupo Vidal</span><span class="vivo">out → fev</span></div>
+        <p class="titulo-painel">Onde estamos e aonde queremos chegar.</p>
+        <div class="etapa-funil"><div class="rot"><span>Escola Normal Rural</span><b>950 de 1.200 alunos</b></div><div class="trilho"><span style="width:79%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>EAD</span><b>~10 de 2.500 vagas</b></div><div class="trilho"><span style="width:3%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>Graduação presencial</span><b>vestibular 2027.1</b></div><div class="trilho"><span style="width:55%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>Pós-graduação</span><b>crescer</b></div><div class="trilho"><span style="width:40%"></span></div></div>
+        <p class="nota">Escola e EAD com números informados pela instituição. Graduação e pós ganham metas por curso junto com a direção.</p>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- CLIENTES -->
 <section class="clientes">
@@ -378,41 +427,64 @@
   </div>
 </section>
 
-<!-- 01 CONTEXTO -->
+<!-- 01 PONTO DE PARTIDA -->
 <section class="moldura">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
     <div class="revelar cabeca">
-      <span class="mono">[ <b>01</b> / 08 ] · O ponto de partida</span>
-      <h2>O que entendemos do <span class="faixa">momento da Favili</span></h2>
-      <p>A Faculdade Vidal tem o que importa para captar: cursos bem avaliados, corpo docente com mais de 80% de mestres e doutores e uma estrutura de mais de 15 mil m² em Limoeiro do Norte. O desafio está em transformar isso em matrícula com processo.</p>
+      <span class="mono">[ <b>01</b> / 10 ] · O ponto de partida</span>
+      <h2>Quatro frentes, <span class="faixa">um mesmo grupo</span></h2>
+      <p>A Faculdade Vidal tem cursos bem avaliados, corpo docente com mais de 80% de mestres e doutores e uma estrutura de mais de 15 mil m² em Limoeiro do Norte. A escola do grupo também está no plano. O desafio é transformar tudo isso em matrícula, com processo.</p>
     </div>
-    <div class="revelar grid-3">
-      <div class="card lilas">
-        <div class="icone l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg></div>
-        <h3>Prazo curto, campanha longa</h3>
-        <p>A campanha de graduação começa em 14/10 e vai até fevereiro. Precisa entrar no ar rápido, mas com estrutura para crescer até o pico de janeiro e fevereiro.</p>
-      </div>
-      <div class="card menta">
-        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4a3.5 3.5 0 0 1 0 7"/><path d="M21.5 20a6.5 6.5 0 0 0-4-6"/></svg></div>
-        <h3>Lead que chega precisa ser atendido</h3>
-        <p>Marketing, CRM, equipe e gestão comercial ainda não conversam como um sistema. Sem isso, o lead de mídia esfria antes de virar inscrição.</p>
-      </div>
-      <div class="card">
-        <div class="icone l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div>
-        <h3>Cada área tem um público</h3>
-        <p>Quem procura Direito pensa diferente de quem procura Enfermagem ou Administração. A campanha fala com cada área, e as bolsas entram como argumento central da oferta.</p>
-      </div>
+    <div class="revelar frentes">
+      <div class="frente"><span class="rotulo">Graduação presencial</span><h3>Vestibular em dois cortes</h3><p>Concurso de bolsas em novembro e vestibular direto até fevereiro, com Saúde, Direito e Negócios.</p><div class="meta"><b>2 cortes</b><span>bolsas e vestibular direto</span></div></div>
+      <div class="frente"><span class="rotulo">EAD</span><h3>Capacidade ociosa</h3><p>Estrutura para 2.500 vagas e uma média de 10 alunos hoje. A maior oportunidade de crescimento do grupo.</p><div class="meta"><b>2.500 vagas</b><span>~10 alunos hoje</span><div class="barra-meta"><i style="--v:3%"></i></div></div></div>
+      <div class="frente"><span class="rotulo">Pós-graduação</span><h3>Demanda o ano todo</h3><p>Campanhas contínuas por área para quem já se formou e quer especialização.</p><div class="meta"><b>Contínua</b><span>captação o ano inteiro</span></div></div>
+      <div class="frente"><span class="rotulo">Escola Normal Rural</span><h3>Escola de Limoeiro</h3><p>Matrículas para 2027 com comunicação para as famílias da região.</p><div class="meta"><b>950 → 1.200</b><span>meta de alunos</span><div class="barra-meta"><i style="--v:79%"></i></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- 02 ESTRATÉGIA -->
+<!-- 02 VESTIBULAR -->
+<section class="moldura" id="vestibular">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca">
+      <span class="mono">[ <b>02</b> / 10 ] · O vestibular 2027.1</span>
+      <h2>Dois cortes, <span class="faixa">duas campanhas</span></h2>
+      <p>Cada corte tem uma oferta e um prazo. A mídia muda de mensagem conforme o calendário, e a verba se concentra onde está a matrícula.</p>
+    </div>
+    <div class="revelar cortes">
+      <div class="corte um">
+        <span class="rotulo">1º corte · Concurso de bolsas</span>
+        <h3>Bolsa de 50% para quem passa</h3>
+        <ul class="passos">
+          <li><span class="pt">1</span><b>Inscrições até 20/11</b><span>Campanha com urgência: vagas limitadas por curso e bolsa de 50%.</span></li>
+          <li><span class="pt">2</span><b>Provas em 21 e 22/11, das 8h às 20h</b><span>Os candidatos concorrem entre si, curso a curso. Lembretes automáticos para ninguém faltar.</span></li>
+          <li><span class="pt">3</span><b>Matrícula a partir de 23/11</b><span>Contato imediato com os aprovados para garantir a vaga.</span></li>
+        </ul>
+        <div class="oferta"><span>50% de desconto no curso</span><span>Matrícula R$ 150</span><span>1ª mensalidade R$ 150</span></div>
+      </div>
+      <div class="corte dois">
+        <span class="rotulo">2º corte · Vestibular direto</span>
+        <h3>Prova, resultado e matrícula na hora</h3>
+        <ul class="passos">
+          <li><span class="pt">1</span><b>Inscrição</b><span>Campanha contínua por área até fevereiro, com quem não fez o concurso e com quem não ganhou bolsa.</span></li>
+          <li><span class="pt">2</span><b>Prova e resultado</b><span>O candidato faz o vestibular e já recebe o resultado.</span></li>
+          <li><span class="pt">3</span><b>Matrícula imediata</b><span>A vendedora recebe o aprovado no Kommo e conduz a matrícula no mesmo dia.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="revelar aviso-pico"><div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><span><b>Pico de vendas no fim de outubro e em novembro.</b> Por isso a implantação é rápida e o concurso de bolsas recebe a maior parte da verba logo no início.</span></div>
+  </div>
+</section>
+
+<!-- 03 ESTRATÉGIA -->
 <section class="moldura" id="estrategia">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
     <div class="revelar cabeca centro">
-      <span class="mono">[ <b>02</b> / 08 ] · A estratégia</span>
+      <span class="mono">[ <b>03</b> / 10 ] · A estratégia</span>
       <h2>Quatro etapas ligadas<br/>ao <span class="faixa">mesmo funil</span></h2>
       <p>Não é só ligar anúncio. Cada etapa passa o lead para a próxima, e a gente mede onde ele trava.</p>
     </div>
@@ -461,14 +533,14 @@
           <div class="det" data-i="1">
             <span class="quando-etapa">Etapa 02 de 04</span>
             <h3>Conversão</h3>
-            <span class="tag">LPs por área + criativos</span>
-            <p>Três landing pages por área (Saúde, Direito e Negócios) com os cursos, as bolsas, os diferenciais da Favili e um formulário curto que não deixa o interessado desistir.</p>
+            <span class="tag">LPs por frente + criativos</span>
+            <p>Páginas para o concurso de bolsas, a graduação por área, o EAD, a pós e a escola, cada uma com a oferta certa e um formulário curto que não deixa o interessado desistir.</p>
           </div>
           <div class="det" data-i="2">
             <span class="quando-etapa">Etapa 03 de 04</span>
             <h3>Automação</h3>
-            <span class="tag">RD Station Marketing → CRM</span>
-            <p>O lead entra no RD Station Marketing, recebe nutrição pelo curso de interesse e cai no RD Station CRM já com origem, curso, interesse em bolsa e responsável.</p>
+            <span class="tag">Kommo + WhatsApp</span>
+            <p>O lead cai no Kommo já separado entre faculdade e escola, com curso, origem e interesse em bolsa, e é distribuído automaticamente para a vendedora certa, com follow-up no WhatsApp.</p>
           </div>
           <div class="det" data-i="3">
             <span class="quando-etapa">Etapa 04 de 04</span>
@@ -483,106 +555,109 @@
   </div>
 </section>
 
-<!-- 03 ENTREGAS -->
+<!-- 04 ENTREGAS -->
 <section class="moldura escuro">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
     <div class="revelar cabeca">
-      <span class="mono">[ <b>03</b> / 08 ] · O que entregamos</span>
+      <span class="mono">[ <b>04</b> / 10 ] · O que entregamos</span>
       <h2>Tudo que entra no <span class="faixa">escopo</span></h2>
-      <p>Um time de especialistas da UPDO cuidando da campanha do começo ao fim, com reunião de acompanhamento e ajuste semanal.</p>
+      <p>Um time de especialistas da UPDO cuidando do tráfego, das páginas e do Kommo, com reunião de acompanhamento e ajuste semanal. Sem gestão de redes sociais: o foco é matrícula.</p>
     </div>
     <div class="revelar grid-3">
       <div class="card">
-        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
         <h3>Tráfego pago</h3>
-        <ul class="lista"><li>Planejamento de mídia por área e curso prioritário</li><li>Google Ads (pesquisa e Performance Max)</li><li>Meta Ads (Instagram e Facebook)</li><li>Remarketing para quem visitou e não se inscreveu</li><li>Otimização semanal de verba</li></ul>
+        <ul class="lista"><li>Google Ads e Meta Ads para as quatro frentes</li><li>Campanha do concurso de bolsas com urgência</li><li>Vestibular direto por área até fevereiro</li><li>Remarketing para quem visitou e não se inscreveu</li><li>Otimização semanal de verba</li></ul>
       </div>
       <div class="card">
-        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 14h8"/></svg></div>
-        <h3>Landing pages e criativos</h3>
-        <ul class="lista"><li>Três landing pages por área: Saúde, Direito e Negócios</li><li>Seção de bolsas e formas de ingresso</li><li>Criativos estáticos e em vídeo curto</li><li>Testes A/B de oferta e chamada</li><li>Rastreamento de cada conversão</li></ul>
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3z M3 9h18 M8 14h8"/></svg></div>
+        <h3>Páginas e criativos</h3>
+        <ul class="lista"><li>LP do concurso de bolsas</li><li>LPs da graduação por área (Saúde, Direito e Negócios)</li><li>LP do EAD e LP da pós-graduação</li><li>LP da Escola Normal Rural para as famílias</li><li>Criativos estáticos e em vídeo curto</li></ul>
       </div>
       <div class="card">
-        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h6"/><circle cx="18" cy="16" r="3"/></svg></div>
-        <h3>RD Station e CRM</h3>
-        <ul class="lista"><li>Configuração do RD Station Marketing</li><li>Fluxos de nutrição por curso de interesse</li><li>Lead scoring para priorizar quem está pronto</li><li>Lead entrando no RD Station CRM já com etapa e responsável</li><li>Painel semanal com os números da campanha</li></ul>
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z"/></svg></div>
+        <h3>Kommo e automações</h3>
+        <ul class="lista"><li>Implantação do Kommo para faculdade e escola</li><li>Funis separados por instituição e curso</li><li>Distribuição automática de leads para as vendedoras</li><li>WhatsApp integrado, lembretes da prova e follow-up</li><li>Treinamento das vendedoras no Kommo</li></ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 04 TREINAMENTO -->
+<!-- 05 KOMMO -->
 <section class="moldura">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
-    <div class="revelar grid-2" style="align-items:center; gap:56px">
+    <div class="revelar kommo">
       <div>
-        <div class="revelar cabeca" style="margin-bottom:0">
-          <span class="mono">[ <b>04</b> / 08 ] · Treinamento comercial · opcional</span>
-          <h2>Lead bom precisa de <span class="faixa">atendimento rápido</span></h2>
-          <p>A mídia traz o interessado. Quem transforma em matrícula é a equipe. Por isso sugerimos um treinamento de atendimento para a equipe, conduzido por quem dá aula de vendas e neurovendas em pós-graduação e MBA.</p>
+        <div class="cabeca" style="margin-bottom:0">
+          <span class="mono">[ <b>05</b> / 10 ] · Kommo centralizado</span>
+          <h2>Cada lead chega <span class="faixa">certinho</span> na vendedora</h2>
+          <p>Hoje o lead de mídia precisa achar o caminho até o atendimento. Com o Kommo, faculdade e escola ficam no mesmo lugar, cada uma com o seu funil, e ninguém perde um interessado.</p>
+          <ul class="lista" style="margin-top:20px"><li>Formulários das LPs e do site entram direto no Kommo</li><li>Lead separado por instituição, curso e interesse em bolsa</li><li>Mensagem automática no WhatsApp em segundos</li><li>Lembrete da prova e da matrícula para o candidato</li><li>Gestão vê o funil inteiro e a performance de cada vendedora</li></ul>
         </div>
       </div>
-      <div class="card menta">
-        <h3 style="margin-top:0">O que a equipe vai aprender</h3>
-        <ul class="lista">
-          <li>Primeiro contato em poucos minutos, com roteiro para WhatsApp e ligação</li>
-          <li>Como apresentar curso, bolsas, diferenciais e formas de pagamento sem parecer script</li>
-          <li>As objeções mais comuns na graduação e como responder cada uma</li>
-          <li>Cadência de follow-up até a inscrição e até a matrícula</li>
-          <li>Como registrar tudo no RD Station CRM para a gestão enxergar o funil</li>
-        </ul>
+      <div class="fluxo-kommo escuro" style="background:var(--navy)">
+        <div class="fk-linha"><div class="fk-caixa">Google e Meta<small>anúncios por frente</small></div><div class="fk-seta">→</div><div class="fk-caixa">Landing page<small>bolsas, área, EAD, pós, escola</small></div></div>
+        <div class="fk-seta">↓</div>
+        <div class="fk-caixa destaque">Kommo · Grupo Vidal</div>
+        <div class="fk-seta">↓</div>
+        <div class="fk-linha"><div class="fk-caixa">Funil Faculdade<small>graduação, EAD e pós</small></div><div class="fk-seta">·</div><div class="fk-caixa">Funil Escola<small>Escola Normal Rural</small></div></div>
+        <div class="fk-seta">↓</div>
+        <div class="fk-linha"><div class="fk-caixa">Vendedora certa<small>distribuição automática</small></div><div class="fk-seta">→</div><div class="fk-caixa">Matrícula<small>com WhatsApp e lembretes</small></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 05 CRONOGRAMA -->
+<!-- 06 CRONOGRAMA -->
 <section class="moldura escuro">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
     <div class="revelar cabeca">
-      <span class="mono">[ <b>05</b> / 08 ] · Cronograma</span>
+      <span class="mono">[ <b>06</b> / 10 ] · Cronograma</span>
       <h2>De 14 de outubro até <span class="faixa">fevereiro</span></h2>
-      <p>A verba e a intensidade acompanham o calendário da captação: aquecimento no fim do ano, pico em janeiro e fevereiro.</p>
+      <p>Concurso de bolsas na frente, porque o pico de vendas é no fim de outubro e em novembro. Depois, o vestibular direto até fevereiro, com EAD, pós e escola rodando junto.</p>
     </div>
     <div class="revelar gantt" style="--cols:5;--hoje:0.09">
       <div class="g-topo"><span class="g-tarefa g-rot">Etapa</span><div class="g-semanas"><span>Out</span><span>Nov</span><span>Dez</span><span>Jan</span><span>Fev</span></div></div>
       <div class="g-corpo">
         <div class="g-grade" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <div class="g-hoje" aria-hidden="true"><b>14/10 · campanhas no ar</b></div>
-        <span class="g-marco" style="--sem:1.45" title="Reunião de resultados"><b>Reunião</b></span><span class="g-marco" style="--sem:2.45" title="Reunião de resultados"><b>Reunião</b></span><span class="g-marco" style="--sem:3.45" title="Reunião de resultados"><b>Reunião</b></span><span class="g-marco" style="--sem:4.45" title="Reunião de resultados"><b>Reunião</b></span>
+        <span class="g-marco rotulo-lado" style="--sem:1.68" title="Provas do concurso de bolsas"><b>Provas 21 e 22/11</b></span>
 <div class="g-fase">Preparação</div>
-<div class="g-linha"><span class="g-tarefa">Implantação: LPs, RD Station e rastreamento</span><div class="g-trilho"><span class="g-barra g-l" style="--ini:0.2;--dur:0.25;--atraso:0.00s"></span></div></div>
-<div class="g-linha"><span class="g-tarefa">Definição dos cursos prioritários</span><div class="g-trilho"><span class="g-barra g-l" style="--ini:0.45;--dur:1.05;--atraso:0.12s"></span></div></div>
-<div class="g-fase">Campanhas</div>
-<div class="g-linha"><span class="g-tarefa">Google + Meta por área</span><div class="g-trilho"><span class="g-barra g-n segue" style="--ini:0.45;--dur:4.55;--atraso:0.24s"></span></div></div>
-<div class="g-linha"><span class="g-tarefa">Remarketing para quem já demonstrou interesse</span><div class="g-trilho"><span class="g-barra g-n segue" style="--ini:2;--dur:3;--atraso:0.36s"></span></div></div>
-<div class="g-linha"><span class="g-tarefa">Pico de verba e de atendimento</span><div class="g-trilho"><span class="g-barra g-m segue" style="--ini:3;--dur:2;--atraso:0.48s"></span></div></div>
-<div class="g-fase">Equipe</div>
-<div class="g-linha"><span class="g-tarefa">Treinamento de atendimento (opcional)</span><div class="g-trilho"><span class="g-barra g-m" style="--ini:1;--dur:0.5;--atraso:0.60s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">LPs, rastreamento e campanhas no ar</span><div class="g-trilho"><span class="g-barra g-l" style="--ini:0.2;--dur:0.25;--atraso:0.00s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Implantação do Kommo (faculdade e escola)</span><div class="g-trilho"><span class="g-barra g-l" style="--ini:0.3;--dur:0.8999999999999999;--atraso:0.10s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Treinamento das vendedoras</span><div class="g-trilho"><span class="g-barra g-m" style="--ini:1.0;--dur:0.3999999999999999;--atraso:0.20s"></span></div></div>
+<div class="g-fase">1º corte</div>
+<div class="g-linha"><span class="g-tarefa">Inscrições do concurso de bolsas</span><div class="g-trilho"><span class="g-barra g-n" style="--ini:0.45;--dur:1.22;--atraso:0.30s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Provas (21 e 22/11) e matrícula dos bolsistas</span><div class="g-trilho"><span class="g-barra g-m" style="--ini:1.67;--dur:0.5300000000000002;--atraso:0.40s"></span></div></div>
+<div class="g-fase">2º corte</div>
+<div class="g-linha"><span class="g-tarefa">Vestibular direto: prova, resultado e matrícula</span><div class="g-trilho"><span class="g-barra g-n segue" style="--ini:2.0;--dur:3.0;--atraso:0.50s"></span></div></div>
+<div class="g-fase">Outras frentes</div>
+<div class="g-linha"><span class="g-tarefa">EAD e pós-graduação</span><div class="g-trilho"><span class="g-barra g-n segue" style="--ini:0.45;--dur:4.55;--atraso:0.60s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Escola Normal Rural (matrículas 2027)</span><div class="g-trilho"><span class="g-barra g-n" style="--ini:0.45;--dur:3.55;--atraso:0.70s"></span></div></div>
 <div class="g-fase">Otimização</div>
-<div class="g-linha"><span class="g-tarefa">Otimização semanal e painel de resultados</span><div class="g-trilho"><span class="g-barra g-o segue" style="--ini:0.45;--dur:4.55;--atraso:0.72s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Remarketing e otimização semanal</span><div class="g-trilho"><span class="g-barra g-o segue" style="--ini:0.45;--dur:4.55;--atraso:0.80s"></span></div></div>
       </div>
-      <div class="g-legenda"><span><i class="g-l"></i>Preparação</span><span><i class="g-n"></i>Campanhas no ar</span><span><i class="g-m"></i>Pico e treinamento</span><span><i class="g-o"></i>Otimização contínua</span><span><i class="g-x"></i>Reunião mensal de resultados</span></div>
+      <div class="g-legenda"><span><i class="g-l"></i>Preparação</span><span><i class="g-n"></i>Campanhas e inscrições</span><span><i class="g-m"></i>Provas, matrícula e treinamento</span><span><i class="g-o"></i>Otimização contínua</span><span><i class="g-x"></i>Marco do concurso</span></div>
     </div>
   </div>
 </section>
 
-<!-- 06 INDICADORES + CASE -->
+<!-- 07 INDICADORES + CASE -->
 <section class="moldura">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
     <div class="revelar cabeca">
-      <span class="mono">[ <b>06</b> / 08 ] · Como medimos</span>
+      <span class="mono">[ <b>07</b> / 10 ] · Como medimos</span>
       <h2>Números que a direção <span class="faixa">acompanha toda semana</span></h2>
     </div>
     <div class="revelar grid-4" style="margin-bottom:56px">
-      <div class="kpi"><span class="sigla">CPL</span><p>Custo por lead, por área, curso e canal.</p></div>
-      <div class="kpi"><span class="sigla">Contato</span><p>Quanto dos leads a equipe atendeu e em quanto tempo.</p></div>
-      <div class="kpi"><span class="sigla">Inscrição</span><p>Leads que viraram inscrição no vestibular.</p></div>
-      <div class="kpi"><span class="sigla">CAC</span><p>Investimento por matrícula, curso a curso.</p></div>
+      <div class="kpi"><span class="sigla">CPL</span><p>Custo por lead por frente, curso e canal.</p></div>
+      <div class="kpi"><span class="sigla">Contato</span><p>Tempo até a vendedora falar com o lead, no Kommo.</p></div>
+      <div class="kpi"><span class="sigla">Inscrição</span><p>Inscritos no concurso de bolsas e no vestibular.</p></div>
+      <div class="kpi"><span class="sigla">Matrícula</span><p>Matrículas e custo por matrícula em cada frente.</p></div>
     </div>
 
     <div class="revelar case">
@@ -615,65 +690,73 @@
   </div>
 </section>
 
-<!-- 07 INVESTIMENTO -->
+<!-- 08 INVESTIMENTO -->
 <section class="moldura" id="investimento">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
     <div class="revelar cabeca">
-      <span class="mono">[ <b>07</b> / 08 ] · Investimento</span>
-      <h2>Investimento claro, <span class="faixa">do início ao fim</span> da campanha</h2>
+      <span class="mono">[ <b>08</b> / 10 ] · Investimento</span>
+      <h2>Investimento claro, <span class="faixa">do início ao fim</span></h2>
     </div>
     <div class="revelar preco">
       <div class="preco-principal">
-        <span class="selo" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#fff">Gestão da campanha · outubro a fevereiro</span>
-        <div class="valor">R$ 4.200 <small>/mês</small></div>
-        <p>Cinco parcelas mensais, de outubro a fevereiro.</p>
+        <span class="selo" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#fff">Faculdade e escola · outubro a fevereiro</span>
+        <div class="valor">R$ 6.820 <small>/mês</small></div>
+        <p>Tráfego e páginas para as quatro frentes, sem gestão de redes sociais.</p>
         <div style="margin-top:24px">
-          <div class="linha-preco"><span>Gestão de Google Ads e Meta Ads</span><b>incluso</b></div>
+          <div class="linha-preco"><span>Google Ads e Meta Ads: bolsas, vestibular, EAD, pós e escola</span><b>incluso</b></div>
           <div class="linha-preco"><span>Landing pages e criativos</span><b>incluso</b></div>
-          <div class="linha-preco"><span>Automação no RD Station Marketing e CRM</span><b>incluso</b></div>
-          <div class="linha-preco"><span>Painel e reunião semanal de resultados</span><b>incluso</b></div>
-          <div class="linha-preco"><span>Implantação (LPs, automação e rastreamento)</span><b><span class="riscado">R$ 4.500</span><span class="isento">isento</span></b></div>
+          <div class="linha-preco"><span>Remarketing e otimização semanal</span><b>incluso</b></div>
+          <div class="linha-preco"><span>Painel e reunião de resultados</span><b>incluso</b></div>
+          <div class="linha-preco"><span>Implantação das LPs e do rastreamento</span><b><span class="riscado">R$ 4.500</span><span class="isento">isento</span></b></div>
         </div>
       </div>
       <div class="preco-lado">
+        <div class="card menta">
+          <span class="mono">Implantação do Kommo · valor único</span>
+          <p class="titulo" style="font-size:2.4rem;margin:10px 0 4px">R$ 4.500</p>
+          <p>Funis da faculdade e da escola, automações, WhatsApp, distribuição de leads e treinamento das vendedoras. A licença do Kommo fica por conta do grupo.</p>
+        </div>
         <div class="card lilas">
           <span class="mono">Verba de mídia sugerida</span>
-          <p class="titulo" style="font-size:2.4rem;margin:10px 0 4px">R$ 5.000 <small style="font-size:1rem;color:var(--texto-2);font-weight:400">/mês</small></p>
-          <p>Para começar, dividida entre Google e Meta e paga direto às plataformas pela faculdade. Ajustamos conforme os resultados, com reforço em janeiro e fevereiro.</p>
-        </div>
-        <div class="card menta">
-          <span class="mono">Opcional · valor único</span>
-          <p class="titulo" style="font-size:2.4rem;margin:10px 0 4px">R$ 2.000</p>
-          <p><strong style="color:var(--texto);font-weight:500">Treinamento de atendimento</strong> para a equipe comercial, com roteiros de WhatsApp e ligação, objeções e follow-up.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin-top:0">Ferramentas</h3>
-          <p>A faculdade já usa RD Station Marketing e RD Station CRM. Trabalhamos dentro das contas atuais, sem custo extra de ferramenta.</p>
+          <table class="tabela-midia">
+            <tr><td>Graduação · bolsas e vestibular</td><td>R$ 3.000</td></tr>
+            <tr><td>EAD</td><td>R$ 1.500</td></tr>
+            <tr><td>Escola Normal Rural</td><td>R$ 1.500</td></tr>
+            <tr><td>Pós-graduação</td><td>R$ 1.000</td></tr>
+            <tr><td>Total por mês</td><td>R$ 7.000</td></tr>
+          </table>
+          <p style="margin-top:12px;font-size:14px">Paga direto ao Google e à Meta pelo grupo, fora do valor da UPDO. Mais forte no concurso de bolsas em outubro e novembro.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 08 PRÓXIMOS PASSOS + LIDERANÇA -->
+<!-- 09 DEPOIS -->
 <section class="moldura">
   <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
   <div class="container">
     <div class="revelar cabeca">
-      <span class="mono">[ <b>08</b> / 08 ] · Depois da campanha</span>
-      <h2>Uma base para a Favili <span class="faixa">crescer o ano todo</span></h2>
-      <p>A campanha resolve o vestibular 2027.1. Os dados e o processo que ela gera abrem o caminho para estruturar a operação comercial de forma permanente.</p>
+      <span class="mono">[ <b>09</b> / 10 ] · Depois da campanha</span>
+      <h2>Uma base para o grupo <span class="faixa">crescer o ano todo</span></h2>
+      <p>Com o Kommo rodando e os dados da campanha, o próximo passo é estruturar a operação comercial de forma permanente.</p>
     </div>
-    <div class="revelar fase2 duas" style="margin-bottom:96px">
-      <div class="card"><span class="depois">próxima fase</span><div class="icone l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/></svg></div><h3>Playbook comercial</h3><p>Roteiros, etapas e regras de atendimento documentados para a equipe vender do mesmo jeito.</p></div>
-      <div class="card"><span class="depois">próxima fase</span><div class="icone l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></div><h3>Gestão comercial</h3><p>Metas, rotina semanal e indicadores para a direção acompanhar a captação ao longo do ano.</p></div>
+    <div class="revelar fase2 duas">
+      <div class="card"><span class="depois">próxima fase</span><div class="icone l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/></svg></div><h3>Playbook comercial</h3><p>Roteiros, etapas e regras de atendimento documentados para as vendedoras venderem do mesmo jeito.</p></div>
+      <div class="card"><span class="depois">próxima fase</span><div class="icone l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18 M18 17V9 M13 17V5 M8 17v-3"/></svg></div><h3>Gestão comercial</h3><p>Metas, rotina semanal e indicadores para a direção acompanhar a captação ao longo do ano.</p></div>
     </div>
+  </div>
+</section>
 
+<!-- 10 LIDERANÇA -->
+<section class="moldura">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
     <div class="revelar lider">
       <img src="/Imagens/Rodrigo-Bueno-Fundador-UPDO.jpg" alt="Rodrigo Bueno" />
       <div>
-        <span class="mono">Quem lidera o projeto</span>
+        <span class="mono">[ <b>10</b> / 10 ] · Quem lidera o projeto</span>
         <h2 style="margin:14px 0 16px">Rodrigo Bueno, fundador e <span class="faixa">estrategista</span></h2>
         <p>Há mais de uma década estruturando a captação de instituições de ensino, varejistas, e-commerces e empresas B2B em todo o Brasil. Professor de educação executiva e pós-graduação na PUCPR, de MBA na UFPR e na Universidade Positivo e de pós-graduação na Faculdade IBRATE.</p>
         <div class="selos">
@@ -689,9 +772,9 @@
 <section style="padding-top:0">
   <div class="container">
     <div class="revelar fechamento">
-      <span class="selo">Início em 14 de outubro</span>
-      <h2>Vamos colocar a captação da Favili no ar <span class="faixa">com estrutura</span>?</h2>
-      <p>Com o aceite, começamos a implantação no mesmo dia para as campanhas entrarem no ar na data combinada.</p>
+      <span class="selo">Campanhas no ar em 14 de outubro</span>
+      <h2>Vamos encher as turmas da faculdade e da escola <span class="faixa">com estrutura</span>?</h2>
+      <p>Com o aceite, começamos a implantação no mesmo dia para o concurso de bolsas pegar o pico de outubro e novembro.</p>
       <div class="acoes">
         <a class="botao" href="https://wa.me/5541987112003?text=Ol%C3%A1%2C%20Rodrigo!%20Vi%20a%20proposta%20da%20UPDO%20para%20a%20Faculdade%20Vidal." target="_blank" rel="noopener">Aprovar pelo WhatsApp</a>
         <a class="botao branco" href="mailto:contato@updo.com.br?subject=Proposta%20Faculdade%20Vidal">Tirar uma dúvida</a>
