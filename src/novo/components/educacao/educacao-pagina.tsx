@@ -30,6 +30,7 @@ const instituicoes = [
     src: "/Clientes/Logo Instituto Equilibra.png",
   },
   { name: "Veta Pós-graduação", src: "/Clientes/Logo-Veta-Pos-Graduacao.png" },
+  { name: "Faculdade Vidal", src: "/Clientes/Logo Faculdade Vidal.png" },
   { name: "UniCV", src: "/Clientes/Logo UniCV.png" },
   { name: "Interpret 2B", src: "/Clientes/Logo Interpret 2B.png" },
 ];
@@ -200,7 +201,7 @@ const EducacaoPagina = () => (
               </div>
             </div>
           </div>
-          <ul className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4 lg:grid-cols-7">
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4 lg:grid-cols-8">
             {instituicoes.map((logo) => (
               <li
                 key={logo.name}
