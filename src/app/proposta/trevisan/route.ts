@@ -1,17 +1,8 @@
-import { promises as fs } from "node:fs";
-import path from "node:path";
+import { propostaIndisponivel } from "@/lib/proposta-indisponivel";
 
 export const dynamic = "force-static";
 
+// Proposta desativada por enquanto; o conteúdo continua em src/proposals/trevisan.html para reativar
 export async function GET() {
-  const htmlPath = path.join(process.cwd(), "src", "proposals", "trevisan.html");
-  const html = await fs.readFile(htmlPath, "utf8");
-
-  return new Response(html, {
-    headers: {
-      "content-type": "text/html; charset=utf-8",
-      "x-robots-tag": "noindex, nofollow",
-      "cache-control": "public, max-age=0, must-revalidate",
-    },
-  });
+  return propostaIndisponivel();
 }
