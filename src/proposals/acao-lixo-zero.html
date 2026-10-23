@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Proposta UPDO · Ação Consultoria Ambiental · Piloto Meta Lixo Zero</title>
+<meta name="description" content="Proposta da UPDO para o piloto da Plataforma Meta Lixo Zero e da rastreabilidade de resíduos de saúde no BIOOS." />
+<meta property="og:title" content="Proposta UPDO · Piloto Meta Lixo Zero" />
+<meta property="og:description" content="Plataforma Onde Vai? e rastreabilidade dos resíduos de saúde, do gerador ao CDF." />
+<meta property="og:image" content="https://www.updo.com.br/og?titulo=Piloto%20da%20Meta%20Lixo%20Zero%20no%20BIOOS&rotulo=Proposta" />
+<link rel="icon" href="/Imagens/favicon%20agencia%20updo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0a1220;
+    --navy-2: #121b2c;
+    --menta: #56fed5;
+    --menta-escura: #1fc9a3;
+    --lilas: #6575ff;
+    --lilas-claro: #eef0ff;
+    --menta-clara: #e9fff9;
+    --fundo: #f2f5fa;
+    --texto: #0a1220;
+    --texto-2: #4b5567;
+    --linha: rgba(10, 18, 32, 0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--fundo); color: var(--texto-2); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, .titulo { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--texto); font-weight: 500; letter-spacing: -0.02em; line-height: 1.12; }
+  h1 { font-size: clamp(2.4rem, 5.4vw, 4.4rem); }
+  h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
+  h3 { font-size: 1.25rem; line-height: 1.3; }
+  a { color: inherit; }
+  .faixa { background: linear-gradient(transparent 60%, var(--menta) 60%, var(--menta) 92%, transparent 92%); padding: 0 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+  .mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(10, 18, 32, 0.55); }
+  .mono b { color: var(--lilas); font-weight: 500; }
+  .escuro .mono { color: rgba(255, 255, 255, 0.6); }
+  .selo { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--linha); background: #fff; border-radius: 999px; padding: 6px 14px; font-size: 14px; color: var(--texto); }
+  .selo::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--menta); box-shadow: 0 0 0 3px rgba(86, 254, 213, 0.25); }
+
+  /* Seções com moldura de grade, igual ao site */
+  section { position: relative; padding: 112px 0; }
+  section.moldura::before { content: ''; position: absolute; inset: 0 auto 0 0; left: 0; right: 0; border-top: 1px solid var(--linha); pointer-events: none; }
+  .grade { position: absolute; inset: 0; pointer-events: none; }
+  .grade > div { max-width: 1228px; margin: 0 auto; height: 100%; border-left: 1px solid var(--linha); border-right: 1px solid var(--linha); position: relative; }
+  .grade svg { position: absolute; top: -6.5px; width: 13px; height: 13px; color: #9aa3b5; }
+  .grade svg.e { left: -7px; } .grade svg.d { right: -7px; }
+  .escuro { background: var(--navy); color: rgba(255, 255, 255, 0.7); }
+  .escuro h2, .escuro h3 { color: #fff; }
+  .escuro .grade > div { border-color: rgba(255, 255, 255, 0.08); }
+  .cabeca { max-width: 760px; margin-bottom: 56px; }
+  .cabeca .mono { display: block; margin-bottom: 18px; }
+  .cabeca p { margin-top: 16px; font-size: 18px; }
+  .centro { text-align: center; margin-left: auto; margin-right: auto; }
+
+  /* Topo */
+  .topo { padding: 40px 0 120px; overflow: hidden; }
+  .topo::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle, rgba(101, 117, 255, 0.18) 1px, transparent 1.5px); background-size: 26px 26px; -webkit-mask-image: radial-gradient(ellipse 60% 55% at 78% 25%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 60% 55% at 78% 25%, #000 20%, transparent 75%); pointer-events: none; z-index: -1; }
+  .topo .brilho { position: absolute; bottom: -140px; left: 50%; transform: translateX(-50%); width: 760px; height: 300px; background: rgba(86, 254, 213, 0.22); filter: blur(70px); border-radius: 50%; z-index: -1; }
+  .barra { display: flex; align-items: center; justify-content: space-between; background: #fff; border-radius: 999px; padding: 10px 12px 10px 24px; box-shadow: 0 10px 30px rgba(10, 18, 32, 0.06); margin-bottom: 88px; gap: 16px; }
+  .marcas { display: flex; align-items: center; gap: 16px; }
+  .marcas img { height: 48px; width: auto; display: block; }
+  .marcas .x { color: #9aa3b5; font-size: 20px; }
+  .barra a.botao { padding: 10px 20px; font-size: 15px; }
+  .topo-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+  .topo h1 { margin: 22px 0 22px; }
+  .topo p.lead { font-size: 19px; max-width: 560px; }
+  .botao { display: inline-flex; align-items: center; gap: 10px; background: var(--menta); color: var(--navy); text-decoration: none; font-weight: 600; border-radius: 999px; padding: 15px 26px; font-size: 16px; transition: transform .2s; white-space: nowrap; }
+  .botao:hover { transform: translateY(-2px); }
+  .botao.branco { background: #fff; border: 1px solid var(--linha); }
+  .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .painel { background: var(--navy); border-radius: 28px; padding: 26px; color: #fff; box-shadow: 0 30px 60px rgba(10, 18, 32, 0.18); }
+  .painel .linha-topo { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255,255,255,.7); }
+  .painel .vivo { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.08); border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+  .painel .vivo::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--menta); animation: pulsa 1.6s infinite; }
+  @keyframes pulsa { 50% { opacity: .3; } }
+  .painel .titulo-painel { font-family: 'Plus Jakarta Sans'; font-size: 20px; font-weight: 500; margin: 14px 0 20px; }
+  .etapa-funil { margin-bottom: 14px; }
+  .etapa-funil .rot { display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 6px; }
+  .etapa-funil .rot b { color: #fff; font-weight: 500; }
+  .trilho { height: 8px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; position: relative; }
+  .trilho span { display: block; height: 100%; border-radius: 999px; background: var(--lilas); position: relative; overflow: hidden; animation: cresce 1.4s ease-out both; }
+  .trilho span::after { content: ''; position: absolute; inset: 0; width: 35%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent); animation: brilho 3.8s ease-in-out infinite; }
+  .etapa-funil:last-child .trilho span { background: var(--menta); }
+  @keyframes cresce { from { width: 0 !important; } }
+  @keyframes brilho { 0% { transform: translateX(-120%); } 50%, 100% { transform: translateX(320%); } }
+  .painel .nota { margin-top: 18px; background: rgba(255,255,255,.05); border-radius: 16px; padding: 14px 16px; font-size: 14px; color: rgba(255,255,255,.65); }
+
+  /* Cards */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .card { background: #fff; border-radius: 24px; padding: 30px; border: 1px solid var(--linha); }
+  .card h3 { margin: 18px 0 10px; }
+  .card p { font-size: 16px; }
+  .card.lilas { background: var(--lilas-claro); border-color: transparent; }
+  .card.lilas .icone, .card.menta .icone { background: #fff; }
+  .card.menta { background: var(--menta-clara); border-color: transparent; }
+  .escuro .card { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
+  .escuro .card p { color: rgba(255,255,255,.65); }
+  .icone { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: var(--menta-clara); color: var(--navy); }
+  .icone.l { background: var(--lilas-claro); color: var(--lilas); }
+  .escuro .icone { background: var(--menta); color: var(--navy); }
+  .icone svg { width: 22px; height: 22px; }
+  ul.lista { list-style: none; margin-top: 14px; }
+  ul.lista li { position: relative; padding-left: 28px; margin-top: 10px; font-size: 16px; }
+  ul.lista li::before { content: ''; position: absolute; left: 0; top: 4px; width: 18px; height: 18px; border-radius: 50%; background: var(--menta) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a1220' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/11px no-repeat; }
+  .escuro ul.lista li { color: rgba(255,255,255,.75); }
+
+  /* Fluxo do funil */
+  .fluxo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .fluxo::before { content: ''; position: absolute; top: 31px; left: 12%; right: 12%; height: 2px; background: linear-gradient(90deg, var(--lilas), var(--menta)); opacity: .5; }
+  .passo { text-align: center; padding: 0 14px; position: relative; }
+  .passo .num { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: var(--navy); color: var(--menta); font-family: 'Plus Jakarta Sans'; font-size: 22px; font-weight: 600; position: relative; z-index: 1; box-shadow: 0 0 0 8px var(--fundo); }
+  .passo h3 { margin-bottom: 8px; }
+  .passo p { font-size: 15px; }
+  .passo .tag { display: inline-block; margin-top: 12px; font-size: 13px; border-radius: 999px; padding: 4px 12px; background: var(--lilas-claro); color: var(--lilas); font-weight: 500; }
+
+  /* Ciclo das quatro etapas */
+  .ciclo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .ciclo { position: relative; width: min(100%, 440px); aspect-ratio: 1; margin: 0 auto; }
+  .ciclo .anel { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ciclo .arco { stroke-dashoffset: 0; animation: corre 1.2s linear infinite; }
+  @keyframes corre { to { stroke-dashoffset: -22; } }
+  .ciclo .cometa { transform-origin: 200px 200px; animation: gira 8s linear infinite; }
+  .ciclo .pontilhado { transform-origin: 200px 200px; animation: gira 40s linear infinite reverse; }
+  @keyframes gira { to { transform: rotate(360deg); } }
+  .centro-ciclo { position: absolute; inset: 31%; border-radius: 50%; background: #fff; box-shadow: 0 20px 50px rgba(10,18,32,.08), 0 0 0 14px rgba(86,254,213,.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; font-family: 'Plus Jakarta Sans'; color: var(--texto); font-size: 15px; line-height: 1.25; }
+  .centro-ciclo img { width: 44px; height: 44px; }
+  .no { position: absolute; transform: translate(-50%, -50%); background: none; border: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px; font: inherit; }
+  .no0 { left: 50%; top: 12.5%; } .no1 { left: 87.5%; top: 50%; } .no2 { left: 50%; top: 87.5%; } .no3 { left: 12.5%; top: 50%; }
+  .no .bolinha { width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--lilas-claro); color: var(--lilas); transition: all .4s; }
+  .no .bolinha svg { width: 24px; height: 24px; }
+  .no .nome { font-size: 13px; font-weight: 500; color: var(--texto); background: #fff; border-radius: 999px; padding: 3px 12px; box-shadow: 0 4px 12px rgba(10,18,32,.06); transition: all .4s; }
+  .no.ativo .bolinha { background: var(--navy); color: var(--menta); transform: scale(1.14); box-shadow: 0 0 0 6px rgba(86,254,213,.35); }
+  .no.ativo .nome { background: var(--menta); }
+  .detalhe { position: relative; min-height: 300px; }
+  .det { position: absolute; inset: 0 0 auto 0; opacity: 0; transform: translateY(10px); transition: opacity .5s, transform .5s; pointer-events: none; background: #fff; border-radius: 28px; padding: 34px; border: 1px solid var(--linha); }
+  .det.ativo { opacity: 1; transform: none; pointer-events: auto; position: relative; }
+  .det .quando-etapa { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--lilas); }
+  .det h3 { font-size: 1.7rem; margin: 10px 0 12px; }
+  .det .tag { display: inline-block; font-size: 13px; border-radius: 999px; padding: 4px 12px; background: var(--menta-clara); color: var(--navy); font-weight: 500; margin-bottom: 14px; }
+  .progresso-ciclo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 22px; }
+  .progresso-ciclo span { height: 5px; border-radius: 999px; background: rgba(10,18,32,.08); overflow: hidden; position: relative; }
+  .progresso-ciclo span.feito { background: var(--lilas); }
+  .progresso-ciclo span.agora::after { content: ''; position: absolute; inset: 0; background: var(--menta); transform-origin: left; animation: enche 4.5s linear forwards; }
+  @keyframes enche { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .rodape-ciclo { margin-top: 16px; font-size: 15px; }
+
+  /* Logos de clientes */
+  .clientes { padding: 32px 0 96px; }
+  .rot-cli { text-align: center; font-size: 15px; margin-bottom: 18px; }
+  .grade-logos { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
+  .logo-cli { background: #fff; border: 1px solid var(--linha); border-radius: 18px; height: 92px; display: flex; align-items: center; justify-content: center; padding: 14px 18px; }
+  .logo-cli img { width: auto; height: auto; max-width: 78%; max-height: 44px; object-fit: contain; }
+  .logo-cli { padding: 8px 10px !important; transition: transform .3s, box-shadow .3s; }
+  .logo-cli:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(10,18,32,.08); }
+
+  /* Depoimento em vídeo */
+  .depoimento { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; margin-top: 40px; background: #fff; border: 1px solid var(--linha); border-radius: 32px; padding: 24px; }
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; background: var(--navy); cursor: pointer; }
+  .video img, .video iframe { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; }
+  .video .play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 78px; height: 78px; border-radius: 50%; border: 0; background: var(--menta); color: var(--navy); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 0 10px rgba(86,254,213,.3); animation: pulsa-play 2s ease-in-out infinite; }
+  .video .play svg { width: 30px; height: 30px; margin-left: 4px; }
+  @keyframes pulsa-play { 50% { box-shadow: 0 0 0 18px rgba(86,254,213,.12); } }
+  .texto-depo { padding-right: 24px; }
+
+  /* Entrada suave ao rolar */
+  .revelar { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+  .revelar.visivel { opacity: 1; transform: none; }
+  .no-js .revelar { opacity: 1; transform: none; }
+  .topo h1, .topo .lead, .topo .acoes, .topo .selo, .painel { animation: sobe .9s cubic-bezier(.2,.7,.2,1) both; }
+  .topo .lead { animation-delay: .12s; } .topo .acoes { animation-delay: .22s; } .painel { animation-delay: .3s; }
+  @keyframes sobe { from { opacity: 0; transform: translateY(24px); } }
+  .painel { animation-name: sobe, flutua; animation-duration: .9s, 6s; animation-delay: .3s, 1.2s; animation-iteration-count: 1, infinite; animation-timing-function: cubic-bezier(.2,.7,.2,1), ease-in-out; }
+  @keyframes flutua { 50% { transform: translateY(-8px); } }
+  .card, .kpi, .mes { transition: transform .3s, box-shadow .3s; }
+  .card:hover, .kpi:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(10,18,32,.08); }
+
+  /* Linha do tempo */
+  .tempo { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .mes { border-radius: 22px; padding: 24px 22px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+  .mes .quando { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--menta); }
+  .mes h3 { font-size: 18px; margin: 10px 0 8px; }
+  .mes p { font-size: 14px; color: rgba(255,255,255,.62); }
+  .mes .intensidade { margin-top: 16px; height: 6px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+  .mes .intensidade span { display: block; height: 100%; background: linear-gradient(90deg, var(--lilas), var(--menta)); border-radius: 999px; }
+  .mes .rot-int { margin-top: 6px; font-size: 12px; color: rgba(255,255,255,.45); }
+
+  /* Indicadores */
+  .kpi { background: #fff; border-radius: 20px; padding: 22px; border: 1px solid var(--linha); }
+  .kpi .sigla { font-family: 'Plus Jakarta Sans'; font-size: 26px; color: var(--texto); font-weight: 600; }
+  .kpi p { font-size: 14px; margin-top: 6px; }
+
+  /* Case */
+  .case { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: #3f4fd6; background: linear-gradient(135deg, #4757e6, #3442c4); border-radius: 32px; padding: 56px; color: rgba(255,255,255,.8); }
+  .case h2 { color: #fff; font-size: clamp(1.7rem, 3vw, 2.4rem); }
+  .case .rot-case { color: var(--menta); font-size: 14px; font-weight: 500; margin-bottom: 12px; display: block; }
+  .numeros { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 30px; }
+  .numeros div { border-top: 1px solid rgba(255,255,255,.2); padding-top: 14px; }
+  .numeros b { display: block; font-family: 'Plus Jakarta Sans'; font-size: 36px; color: #fff; font-weight: 500; line-height: 1.1; }
+  .numeros span { font-size: 14px; }
+
+  /* Investimento */
+  .preco { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: stretch; }
+  .preco-principal { background: var(--navy); color: rgba(255,255,255,.7); border-radius: 32px; padding: 44px; position: relative; overflow: hidden; }
+  .preco-principal::after { content: ''; position: absolute; right: -80px; bottom: -120px; width: 320px; height: 320px; background: rgba(86,254,213,.18); filter: blur(60px); border-radius: 50%; }
+  .preco-principal .valor { font-family: 'Plus Jakarta Sans'; color: #fff; font-size: clamp(3rem, 6vw, 4.6rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1; margin: 18px 0 6px; }
+  .preco-principal .valor small { font-size: 22px; color: rgba(255,255,255,.6); font-weight: 400; }
+  .linha-preco { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1); font-size: 16px; }
+  .linha-preco:last-of-type { border-bottom: 0; }
+  .linha-preco b { color: #fff; font-weight: 500; white-space: nowrap; }
+  .riscado { text-decoration: line-through; color: rgba(255,255,255,.45) !important; margin-right: 8px; font-weight: 400 !important; }
+  .isento { color: var(--menta) !important; }
+  .preco-lado { display: flex; flex-direction: column; gap: 20px; }
+
+  /* Fase 2 */
+  .fase2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .fase2 .card { position: relative; }
+  .fase2.duas { grid-template-columns: repeat(2, 1fr); }
+  .fase2 .card .depois { position: absolute; top: 24px; right: 24px; font-size: 12px; border-radius: 999px; padding: 3px 10px; background: var(--fundo); color: var(--texto-2); }
+
+  /* Quem lidera */
+  .lider { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: center; }
+  .lider > img { width: 100%; border-radius: 28px; display: block; box-shadow: 10px 10px 0 var(--menta); }
+  .selos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .selos { gap: 14px !important; }
+  .selos img { height: 84px; width: auto; background: #fff; border-radius: 18px; padding: 12px 18px; border: 1px solid var(--linha); }
+
+  /* Fechamento */
+  .fechamento { background: var(--navy); border-radius: 32px; padding: 72px 40px; text-align: center; color: rgba(255,255,255,.7); position: relative; overflow: hidden; }
+  .fechamento h2 { color: #fff; max-width: 760px; margin: 18px auto 16px; }
+  .fechamento p { max-width: 600px; margin: 0 auto; }
+  .fechamento .acoes { justify-content: center; }
+  .fechamento .selo { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); color: #fff; }
+  footer { padding: 40px 0 56px; font-size: 14px; text-align: center; color: rgba(10,18,32,.5); }
+
+  @media (max-width: 960px) {
+    section { padding: 80px 0; }
+    .topo-grid, .case, .preco, .lider { grid-template-columns: 1fr; }
+    .grid-3, .grid-4, .fase2 { grid-template-columns: 1fr 1fr; }
+    .tempo { grid-template-columns: 1fr 1fr; }
+    .ciclo-wrap { grid-template-columns: 1fr; gap: 32px; }
+    .depoimento { grid-template-columns: 1fr; gap: 24px; }
+    .texto-depo { padding: 0 8px 8px; }
+    .grade-logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .fase2.duas { grid-template-columns: 1fr 1fr; }
+    .lider > img { max-width: 320px; }
+    .grade { display: none; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    section { padding: 64px 0; }
+    .grid-3, .grid-2, .grid-4, .fase2, .fase2.duas, .tempo { grid-template-columns: 1fr; }
+    .no .bolinha { width: 48px; height: 48px; }
+    .grade-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .logo-cli:last-child { grid-column: span 2; }
+    .selos img { height: 68px; }
+    .clientes { padding-bottom: 64px; }
+    .no .nome { font-size: 12px; padding: 2px 10px; }
+    .centro-ciclo { font-size: 13px; }
+    .det { padding: 26px; }
+    .barra { padding: 8px 8px 8px 18px; margin-bottom: 56px; }
+    .barra a.botao { display: none; }
+    .marcas { width: 100%; justify-content: space-between; padding-right: 10px; }
+    .marcas .x { display: none; }
+    .marcas img { height: 32px; }
+    .case, .preco-principal { padding: 32px 24px; }
+    .card { padding: 24px; }
+    .fechamento { padding: 52px 22px; }
+    .botao { width: 100%; justify-content: center; }
+    .numeros b { font-size: 30px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+
+  .marca-cliente { font-family: 'Plus Jakarta Sans'; font-weight: 600; color: var(--texto); font-size: 18px; letter-spacing: -0.01em; }
+  .marca-cliente small { display: block; font-size: 11px; font-weight: 500; color: var(--texto-2); letter-spacing: .08em; text-transform: uppercase; }
+  .publico { display: flex; flex-direction: column; }
+  .publico .canais { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .publico .canal { font-size: 12px; font-weight: 500; border-radius: 999px; padding: 4px 10px; background: var(--fundo); color: var(--texto); }
+  .publico .busca { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--linha); font-size: 14px; }
+  .publico .busca span { display: inline-block; margin: 4px 4px 0 0; font-family: 'JetBrains Mono'; font-size: 12px; background: var(--lilas-claro); color: var(--lilas); border-radius: 8px; padding: 3px 8px; }
+  .escuro .publico .canal { background: rgba(255,255,255,.08); color: #fff; }
+  .tabela-midia { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .tabela-midia td { padding: 12px 0; border-bottom: 1px solid var(--linha); font-size: 15px; }
+  .tabela-midia td:last-child { text-align: right; color: var(--texto); font-weight: 500; white-space: nowrap; }
+  .tabela-midia tr:last-child td { border-bottom: 0; font-weight: 600; color: var(--texto); }
+  .produto { border-radius: 24px; padding: 26px; background: #fff; border: 1px solid var(--linha); }
+  .produto .rotulo { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--lilas); }
+  .produto h3 { margin: 10px 0 8px; }
+
+  /* Carrossel de clientes */
+  .carrossel { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .carrossel .trilha { display: flex; gap: 14px; width: max-content; animation: desliza 60s linear infinite; padding: 4px 0 8px; }
+  .carrossel:hover .trilha { animation-play-state: paused; }
+  .carrossel .logo-cli { width: 180px; flex: none; }
+  @keyframes desliza { to { transform: translateX(calc(-50% - 7px)); } }
+  @media (max-width: 640px) { .carrossel .logo-cli { width: 140px; height: 76px; } .carrossel .trilha { animation-duration: 45s; } }
+  .marcas img.logo-tempo { height: 36px; }
+
+  /* Cronograma em Gantt */
+  .gantt { background: #fff; border: 1px solid var(--linha); border-radius: 28px; padding: 28px 28px 22px; --col: 260px; }
+  .g-topo, .g-linha { display: grid; grid-template-columns: var(--col) 1fr; align-items: center; gap: 16px; }
+  .g-semanas { display: grid; grid-template-columns: repeat(8, 1fr); font-family: 'JetBrains Mono'; font-size: 12px; color: var(--texto-2); text-align: center; letter-spacing: .08em; }
+  .g-rot { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--texto-2); }
+  .g-corpo { position: relative; margin-top: 30px; }
+  .g-grade { position: absolute; top: 0; bottom: 0; left: calc(var(--col) + 16px); right: 0; display: grid; grid-template-columns: repeat(8, 1fr); pointer-events: none; }
+  .g-grade i { border-left: 1px dashed var(--linha); }
+  .g-grade i:first-child { border-left-color: transparent; }
+  .g-fase { font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--lilas); margin: 14px 0 4px; }
+  .g-fase:first-of-type { margin-top: 30px; }
+  .g-linha { padding: 6px 0; }
+  .g-tarefa { font-size: 14px; color: var(--texto); line-height: 1.35; }
+  .g-trilho { position: relative; height: 26px; }
+  .g-barra { position: absolute; top: 3px; height: 20px; border-radius: 999px; left: calc(var(--ini) * 12.5%); width: calc(var(--dur) * 12.5% - 6px); margin-left: 3px; transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(.2,.7,.2,1); transition-delay: var(--atraso); overflow: hidden; }
+  .visivel .g-barra { transform: scaleX(1); }
+  .g-l { background: var(--lilas); }
+  .g-m { background: #8f9bff; }
+  .g-n { background: var(--menta); }
+  .g-o { background: repeating-linear-gradient(135deg, #56fed5 0 8px, #9dffe7 8px 16px); }
+  .g-barra.segue { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+  .g-barra.segue::after { content: '→'; position: absolute; right: 8px; top: 50%; transform: translateY(-52%); font-size: 13px; color: var(--navy); font-weight: 600; }
+  .g-barra::before { content: ''; position: absolute; inset: 0; width: 30%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: brilho 4.2s ease-in-out infinite; animation-delay: calc(var(--atraso) + 1.4s); }
+  .g-hoje { position: absolute; top: 0; bottom: 0; left: calc(var(--col) + 16px + (100% - var(--col) - 16px) * 0.25); border-left: 2px dashed var(--menta-escura); pointer-events: none; }
+  .g-hoje b { position: absolute; top: 18px; left: 6px; font-size: 11px; font-weight: 600; color: var(--navy); background: var(--menta); border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+  .g-marco { position: absolute; top: 0; left: calc(var(--col) + 16px + (100% - var(--col) - 16px) * (var(--sem) / 8)); width: 14px; height: 14px; margin-left: -7px; background: var(--navy); transform: rotate(45deg); border-radius: 3px; }
+  .g-marco b { position: absolute; transform: rotate(-45deg); top: -22px; left: -24px; font-size: 11px; font-weight: 500; color: var(--texto-2); white-space: nowrap; }
+  .g-legenda { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--linha); font-size: 13px; }
+  .g-legenda span { display: inline-flex; align-items: center; gap: 8px; }
+  .g-legenda i { width: 22px; height: 10px; border-radius: 999px; display: inline-block; }
+  .g-legenda i.g-x { width: 10px; height: 10px; border-radius: 2px; transform: rotate(45deg); background: var(--navy); }
+  @media (max-width: 960px) { .gantt { --col: 180px; } }
+  @media (max-width: 640px) {
+    .gantt { padding: 20px 14px 16px; overflow-x: auto; }
+    .gantt > * { min-width: 560px; }
+    .gantt { --col: 150px; }
+    .g-tarefa { font-size: 12.5px; }
+  }
+  .marca-texto { font-weight: 700; font-size: 17px; letter-spacing: -.01em; line-height: 1.1; }
+  .marca-texto small { display: block; font-weight: 500; font-size: 12px; opacity: .7; letter-spacing: .08em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="estrela" viewBox="0 0 12 12"><path fill="currentColor" d="M6 0Q6.7 5.3 12 6Q6.7 6.7 6 12Q5.3 6.7 0 6Q5.3 5.3 6 0Z"/></symbol>
+  </defs>
+</svg>
+
+<!-- TOPO -->
+<section class="topo">
+  <div class="container">
+    <div class="barra">
+      <div class="marcas">
+        <img src="/Imagens/Agencia-UPDO.svg" alt="UPDO" />
+        <span class="x">×</span>
+        <span class="marca-texto">Ação<small>Consultoria Ambiental</small></span>
+      </div>
+      <a class="botao" href="#investimento">Ver investimento</a>
+    </div>
+
+    <div class="topo-grid">
+      <div>
+        <span class="selo">Proposta · Ação Consultoria Ambiental</span>
+        <h1>Piloto da <span class="faixa">Meta Lixo Zero</span> no BIOOS</h1>
+        <p class="lead">Uma plataforma aberta por QR Code para cada pessoa saber o destino certo de cada resíduo e um sistema que rastreia os resíduos de saúde do gerador ao CDF. Simples, rápido de implantar e pronto para provar o Método Ação antes de escalar.</p>
+        <div class="acoes">
+          <a class="botao" href="#investimento">Ver investimento</a>
+          <a class="botao branco" href="#modulos">Ver o piloto</a>
+        </div>
+      </div>
+
+      <div class="painel">
+        <div class="linha-topo"><span>Piloto · BIOOS</span><span class="vivo">8 semanas</span></div>
+        <p class="titulo-painel">O que entra no piloto.</p>
+        <div class="etapa-funil"><div class="rot"><span>Plataforma Onde Vai?</span><b>moradores e equipes</b></div><div class="trilho"><span style="width:100%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>Rastreabilidade RSS</span><b>Central de RSS</b></div><div class="trilho"><span style="width:100%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>Painel da Ação</span><b>conteúdo e números</b></div><div class="trilho"><span style="width:100%"></span></div></div>
+        <div class="etapa-funil"><div class="rot"><span>Comunidade, desafios e ESG</span><b>Fase 2</b></div><div class="trilho"><span style="width:30%"></span></div></div>
+        <p class="nota">A Fase 2 entra quando o piloto mostrar uso, mudança de comportamento e valor para o gestor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CLIENTES -->
+<section class="clientes">
+  <div class="container">
+    <p class="rot-cli">Empresas que já cresceram com a UPDO</p>
+  </div>
+  <div class="carrossel" aria-label="Clientes da UPDO">
+    <div class="trilha"><div class="logo-cli"><img src="/Clientes/proposta/Logo-Unimed.png" alt="Unimed" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Ford.png" alt="Ford" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-PUCPR.png" alt="PUCPR" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Andritz.png" alt="Andritz" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-CNA.png" alt="CNA" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Ademicon.png" alt="Ademicon" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Nextcard.png" alt="Nextcard" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-UniCV.png" alt="UniCV" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-GMAC.png" alt="GMAC" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Faculdade-Ibrate.png" alt="Faculdade Ibrate" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Polibrinq.png" alt="Polibrinq" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Teloos.png" alt="Teloos" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Veta-Pos-Graduacao.png" alt="Veta Pós-graduação" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Instituto-Equilibra.png" alt="Instituto Equilibra" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Interpret-2B.png" alt="Interpret 2B" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Madeiras-Lane.png" alt="Madeiras Lane" loading="lazy" /></div><div class="logo-cli"><img src="/Clientes/proposta/Logo-Trevisan-Comunicacao-Visual.png" alt="Trevisan" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Unimed.png" alt="Unimed" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Ford.png" alt="Ford" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-PUCPR.png" alt="PUCPR" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Andritz.png" alt="Andritz" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-CNA.png" alt="CNA" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Ademicon.png" alt="Ademicon" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Nextcard.png" alt="Nextcard" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-UniCV.png" alt="UniCV" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-GMAC.png" alt="GMAC" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Faculdade-Ibrate.png" alt="Faculdade Ibrate" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Polibrinq.png" alt="Polibrinq" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Teloos.png" alt="Teloos" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Veta-Pos-Graduacao.png" alt="Veta Pós-graduação" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Instituto-Equilibra.png" alt="Instituto Equilibra" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Interpret-2B.png" alt="Interpret 2B" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Madeiras-Lane.png" alt="Madeiras Lane" loading="lazy" /></div><div class="logo-cli" aria-hidden="true"><img src="/Clientes/proposta/Logo-Trevisan-Comunicacao-Visual.png" alt="Trevisan" loading="lazy" /></div></div>
+  </div>
+</section>
+
+
+<!-- 01 PONTO DE PARTIDA -->
+<section class="moldura">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca">
+      <span class="mono">[ <b>01</b> / 07 ] · O ponto de partida</span>
+      <h2>Um PGRS que <span class="faixa">sai do papel</span></h2>
+      <p>O plano, os coletores e as empresas contratadas não garantem, sozinhos, a segregação certa na origem. O piloto conecta quem gera, quem opera e quem faz a gestão, com informação no momento da decisão e dados para comprovar o resultado.</p>
+    </div>
+    <div class="revelar grid-3">
+      <div class="produto"><span class="rotulo">Quem gera</span><h3>Moradores, lojistas e equipes</h3><p>Escaneiam o QR Code e descobrem em segundos como preparar, onde e quando entregar cada resíduo, sem baixar app nem fazer cadastro.</p></div>
+      <div class="produto"><span class="rotulo">Quem opera</span><h3>Central de RSS</h3><p>O operador escaneia a etiqueta, registra o peso no tablet e fecha o lote, com histórico completo de cada volume de resíduo de saúde.</p></div>
+      <div class="produto"><span class="rotulo">Quem faz a gestão</span><h3>Ação e gestor do BIOOS</h3><p>Conteúdo, regras e números num painel simples, com relatórios por gerador e os resultados da Meta Lixo Zero para mostrar à comunidade.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 MÓDULOS -->
+<section class="moldura escuro" id="modulos">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca">
+      <span class="mono">[ <b>02</b> / 07 ] · O piloto</span>
+      <h2>Dois módulos, <span class="faixa">um só sistema</span></h2>
+      <p>Uma aplicação web que funciona no celular, no tablet e no computador, com o visual da Ação. Sem loja de aplicativos, sem instalação e com um painel único para administrar tudo.</p>
+    </div>
+    <div class="revelar grid-2">
+      <div class="card publico">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z M21 21l-4.3-4.3"/></svg></div>
+        <h3>Plataforma Meta Lixo Zero</h3>
+        <p>O canal da comunidade do BIOOS, aberto pelo QR Code nas estações e áreas comuns. Responde a dúvida na hora em que ela aparece.</p>
+        <div class="canais"><span class="canal">Onde Vai?</span><span class="canal">Detalhe do resíduo</span><span class="canal">Calendário</span><span class="canal">Vídeos</span><span class="canal">Nossos resultados</span><span class="canal">Dúvidas</span></div>
+        <div class="busca">Exemplos de busca:<br/><span>garrafa pet</span><span>pilha</span><span>óleo de cozinha</span><span>isopor</span></div>
+      </div>
+      <div class="card publico">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h3v3h-3z M20 14v7 M14 20h3"/></svg></div>
+        <h3>Rastreabilidade RSS · BIOOS</h3>
+        <p>O controle dos resíduos de serviços de saúde, do gerador à destinação final, no padrão das etiquetas e do fluxo que vocês já desenharam.</p>
+        <div class="canais"><span class="canal">Etiquetas com QR</span><span class="canal">Tablet do operador</span><span class="canal">Lote interno</span><span class="canal">Romaneio</span><span class="canal">MTR e CDF</span><span class="canal">Relatórios</span></div>
+        <div class="busca">Grupos de resíduo:<br/><span>A · infectante</span><span>B · químico</span><span>E · perfurocortante</span><span>rejeitos</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 COMO FUNCIONA -->
+<section class="moldura" id="estrategia">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca centro">
+      <span class="mono">[ <b>03</b> / 07 ] · Rastreabilidade RSS</span>
+      <h2>Do gerador ao CDF,<br/>em <span class="faixa">quatro etapas</span></h2>
+      <p>Cada volume de resíduo de saúde do BIOOS ganha uma identidade e um histórico, sem papel e sem preenchimento à mão.</p>
+    </div>
+    <div class="revelar ciclo-wrap">
+      <div class="ciclo" aria-label="Ciclo da rastreabilidade em quatro etapas">
+        <svg class="anel" viewBox="0 0 400 400" aria-hidden="true">
+          <defs>
+            <marker id="seta-ciclo" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#6575ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <linearGradient id="grad-ciclo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6575ff"/><stop offset="1" stop-color="#56fed5"/></linearGradient>
+          </defs>
+          <path d="M251.3 59.0 A150 150 0 0 1 341.0 148.7" fill="none" stroke="#6575ff" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round" marker-end="url(#seta-ciclo)" class="arco"/>
+          <path d="M341.0 251.3 A150 150 0 0 1 251.3 341.0" fill="none" stroke="#6575ff" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round" marker-end="url(#seta-ciclo)" class="arco"/>
+          <path d="M148.7 341.0 A150 150 0 0 1 59.0 251.3" fill="none" stroke="#6575ff" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round" marker-end="url(#seta-ciclo)" class="arco"/>
+          <path d="M59.0 148.7 A150 150 0 0 1 148.7 59.0" fill="none" stroke="#6575ff" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round" marker-end="url(#seta-ciclo)" class="arco"/>
+          <circle cx="200" cy="200" r="150" fill="none" stroke="url(#grad-ciclo)" stroke-width="3" stroke-dasharray="60 882" stroke-linecap="round" class="cometa"/>
+          <circle cx="200" cy="200" r="174" fill="none" stroke="rgba(101,117,255,0.25)" stroke-width="1" stroke-dasharray="2 8" class="pontilhado"/>
+        </svg>
+        <div class="centro-ciclo">
+          <img src="/Imagens/favicon%20agencia%20updo.png" alt="" />
+          <span>Rastreabi-<br/>lidade</span>
+        </div>
+        <button class="no no0" data-i="0" aria-label="Etiqueta">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h3v3h-3z M20 14v7 M14 20h3"/></svg></span>
+          <span class="nome">Etiqueta</span>
+        </button>
+        <button class="no no1" data-i="1" aria-label="Pesagem">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18 M5 21h14 M6 7h12 M6 7l-3 7a3 3 0 0 0 6 0z M18 7l-3 7a3 3 0 0 0 6 0z"/></svg></span>
+          <span class="nome">Pesagem</span>
+        </button>
+        <button class="no no2" data-i="2" aria-label="Lote">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z M3 8v8l9 5 9-5V8 M12 13v8"/></svg></span>
+          <span class="nome">Lote</span>
+        </button>
+        <button class="no no3" data-i="3" aria-label="Comprovação">
+          <span class="bolinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z M14 3v6h6 M9 14l2 2 4-4"/></svg></span>
+          <span class="nome">Comprovação</span>
+        </button>
+      </div>
+      <div class="detalhe">
+          <div class="det ativo" data-i="0">
+            <span class="quando-etapa">Etapa 01 de 04</span>
+            <h3>Etiqueta</h3>
+            <span class="tag">QR Code único</span>
+            <p>O sistema gera as etiquetas em sequência para cada gerador, grupo de resíduo e andar, prontas para imprimir. O gerador só cola no saco ou recipiente.</p>
+          </div>
+          <div class="det" data-i="1">
+            <span class="quando-etapa">Etapa 02 de 04</span>
+            <h3>Pesagem</h3>
+            <span class="tag">Tablet na Central de RSS</span>
+            <p>O operador escaneia o QR com a câmera do tablet e digita o peso. Data, hora, gerador, grupo e operador ficam registrados na hora.</p>
+          </div>
+          <div class="det" data-i="2">
+            <span class="quando-etapa">Etapa 03 de 04</span>
+            <h3>Lote</h3>
+            <span class="tag">Lote interno e romaneio</span>
+            <p>Os volumes formam o lote do gerador, com romaneio diário em PDF e status de cada lote: aberto, fechado, encaminhado e aguardando CDF.</p>
+          </div>
+          <div class="det" data-i="3">
+            <span class="quando-etapa">Etapa 04 de 04</span>
+            <h3>Comprovação</h3>
+            <span class="tag">MTR e CDF vinculados</span>
+            <p>O número da MTR e o CDF do destinador ficam ligados ao lote, fechando a rastreabilidade com destinação comprovada e relatório por gerador.</p>
+          </div>
+        <div class="progresso-ciclo"><span></span><span></span><span></span><span></span></div>
+        <p class="rodape-ciclo">Na versão do piloto o peso é digitado. A leitura automática da balança entra na Fase 2, sem refazer nada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ENTREGAS -->
+<section class="moldura escuro">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca">
+      <span class="mono">[ <b>04</b> / 07 ] · O que entregamos</span>
+      <h2>Tudo que entra no <span class="faixa">piloto</span></h2>
+      <p>Escopo fechado para o piloto no BIOOS. O que não está nesta lista entra na Fase 2 ou como ajuste à parte.</p>
+    </div>
+    <div class="revelar grid-3">
+      <div class="card">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z M21 21l-4.3-4.3"/></svg></div>
+        <h3>Plataforma Meta Lixo Zero</h3>
+        <ul class="lista"><li>Página inicial aberta por QR Code, sem login</li><li>Onde Vai?: busca com nomes e sinônimos</li><li>Detalhe do resíduo: como preparar, onde e quando entregar</li><li>Calendário e pontos de entrega</li><li>Vídeos (YouTube) e Nossos resultados</li><li>Formulário de dúvidas e sugestões</li></ul>
+      </div>
+      <div class="card">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z M3 8v8l9 5 9-5V8 M12 13v8"/></svg></div>
+        <h3>Rastreabilidade RSS</h3>
+        <ul class="lista"><li>Cadastro de geradores, conjuntos e andares</li><li>Etiquetas com QR em sequência, em PDF para impressão</li><li>Tablet: escanear pela câmera e digitar o peso</li><li>Lote interno com status até o CDF</li><li>Romaneio diário em PDF</li><li>Registro da MTR e do CDF e relatório mensal por gerador</li></ul>
+      </div>
+      <div class="card">
+        <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18 M18 17V9 M13 17V5 M8 17v-3"/></svg></div>
+        <h3>Painel e implantação</h3>
+        <ul class="lista"><li>Painel da Ação para resíduos, regras, conteúdos e números</li><li>Acesso do gestor aos relatórios</li><li>Visual com a identidade da Ação</li><li>Carga inicial do banco de resíduos com a Ação</li><li>Treinamento da equipe da Central de RSS</li><li>30 dias de garantia após a entrega</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CRONOGRAMA -->
+<section class="moldura">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca">
+      <span class="mono">[ <b>05</b> / 07 ] · Cronograma</span>
+      <h2>Piloto no ar em <span class="faixa">oito semanas</span></h2>
+      <p>Levantamento e protótipo nas duas primeiras semanas, desenvolvimento em seguida e implantação com treinamento no fim. A Ação aprova as telas antes do desenvolvimento.</p>
+    </div>
+    <div class="revelar gantt" style="margin-bottom:24px">
+      <div class="g-topo"><span class="g-tarefa g-rot">Etapa</span><div class="g-semanas"><span>S1</span><span>S2</span><span>S3</span><span>S4</span><span>S5</span><span>S6</span><span>S7</span><span>S8</span></div></div>
+      <div class="g-corpo">
+        <div class="g-grade" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <span class="g-marco" style="--sem:2" title="Aprovação das telas"><b>Telas aprovadas</b></span><span class="g-marco" style="--sem:7.5" title="Entrega"><b>Entrega</b></span>
+<div class="g-fase">Levantamento</div>
+<div class="g-linha"><span class="g-tarefa">Imersão: banco de resíduos e fluxo da Central de RSS</span><div class="g-trilho"><span class="g-barra g-l" style="--ini:0;--dur:1;--atraso:0.00s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Protótipo das telas e aprovação</span><div class="g-trilho"><span class="g-barra g-l" style="--ini:1;--dur:1;--atraso:0.12s"></span></div></div>
+<div class="g-fase">Desenvolvimento</div>
+<div class="g-linha"><span class="g-tarefa">Plataforma Meta Lixo Zero</span><div class="g-trilho"><span class="g-barra g-m" style="--ini:2;--dur:3;--atraso:0.24s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Rastreabilidade RSS (etiquetas, tablet, lotes)</span><div class="g-trilho"><span class="g-barra g-m" style="--ini:2;--dur:4;--atraso:0.36s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Painel da Ação e relatórios</span><div class="g-trilho"><span class="g-barra g-m" style="--ini:4;--dur:2;--atraso:0.48s"></span></div></div>
+<div class="g-fase">Implantação</div>
+<div class="g-linha"><span class="g-tarefa">Testes com a equipe e carga do banco</span><div class="g-trilho"><span class="g-barra g-n" style="--ini:6;--dur:1;--atraso:0.60s"></span></div></div>
+<div class="g-linha"><span class="g-tarefa">Treinamento e lançamento no BIOOS</span><div class="g-trilho"><span class="g-barra g-n" style="--ini:7;--dur:1;--atraso:0.72s"></span></div></div>
+      </div>
+      <div class="g-legenda"><span><i class="g-l"></i>Levantamento</span><span><i class="g-m"></i>Desenvolvimento</span><span><i class="g-n"></i>Implantação</span><span><i class="g-x"></i>Marcos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 INVESTIMENTO -->
+<section class="moldura" id="investimento">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar cabeca">
+      <span class="mono">[ <b>06</b> / 07 ] · Investimento</span>
+      <h2>Investimento <span class="faixa">claro</span>, em etapas</h2>
+    </div>
+    <div class="revelar preco">
+      <div class="preco-principal">
+        <span class="selo" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#fff">Piloto · desenvolvimento e implantação</span>
+        <div class="valor">R$ 22.000 <small>valor único</small></div>
+        <p>Em três parcelas: 40% no aceite, 30% na aprovação das telas e 30% na entrega.</p>
+        <div style="margin-top:24px">
+          <div class="linha-preco"><span>Plataforma Meta Lixo Zero</span><b>incluso</b></div>
+          <div class="linha-preco"><span>Rastreabilidade RSS</span><b>incluso</b></div>
+          <div class="linha-preco"><span>Painel da Ação e relatórios</span><b>incluso</b></div>
+          <div class="linha-preco"><span>Treinamento e 30 dias de garantia</span><b>incluso</b></div>
+          <div class="linha-preco"><span>Hospedagem, suporte e manutenção</span><b>R$ 990 · por mês</b></div>
+        </div>
+      </div>
+      <div class="preco-lado">
+        <div class="card lilas">
+          <span class="mono">Fase 2 · depois do piloto</span>
+          <table class="tabela-midia">
+            <tr><td>Comunidade Lixo Zero (vídeos com moderação)</td><td>✓</td></tr>
+            <tr><td>Desafios, Prática que Inspira e Presente Circular</td><td>✓</td></tr>
+            <tr><td>Painel ESG e evidências do PGRS</td><td>✓</td></tr>
+            <tr><td>Balança com leitura automática e SINIR</td><td>✓</td></tr>
+            <tr><td>Vários empreendimentos</td><td>✓</td></tr>
+          </table>
+          <p style="margin-top:12px;font-size:14px">Orçada com os resultados do piloto na mão, para investir no que de fato funcionou.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Fora do valor</h3>
+          <p>Balança, tablet, suporte e etiquetas ficam por conta do BIOOS (a solução com peso digitado custa de R$ 1.550 a R$ 2.350 por estação). Ajustes fora do escopo do piloto: R$ 150 por hora, aprovados antes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 07 LIDERANÇA -->
+<section class="moldura">
+  <div class="grade"><div><svg class="e"><use href="#estrela"/></svg><svg class="d"><use href="#estrela"/></svg></div></div>
+  <div class="container">
+    <div class="revelar lider">
+      <img src="/Imagens/Rodrigo-Bueno-Fundador-UPDO.jpg" alt="Rodrigo Bueno" />
+      <div>
+        <span class="mono">[ <b>07</b> / 07 ] · Quem lidera o projeto</span>
+        <h2 style="margin:14px 0 16px">Rodrigo Bueno, fundador e <span class="faixa">estrategista</span></h2>
+        <p>Há mais de uma década estruturando a geração de demanda de empresas de saúde, educação, varejo, indústria e B2B em todo o Brasil. Professor de educação executiva e pós-graduação na PUCPR, de MBA na UFPR e na Universidade Positivo e de pós-graduação na Faculdade IBRATE.</p>
+        <div class="selos">
+          <img src="/Imagens/logo-rd-gold-UPDO-2025.png" alt="RD Station Partners Gold" />
+          <img src="/Imagens/Google-Search-UPDO.png" alt="Google Partner" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAMENTO -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="revelar fechamento">
+      <span class="selo">Piloto no ar em oito semanas</span>
+      <h2>Vamos colocar o <span class="faixa">PGRS em prática</span>?</h2>
+      <p>Com o aceite, começamos a imersão na mesma semana: o banco de resíduos com a Ação e o fluxo da Central de RSS do BIOOS.</p>
+      <div class="acoes">
+        <a class="botao" href="https://wa.me/5541987112003?text=Ol%C3%A1%2C%20Rodrigo!%20Vi%20a%20proposta%20da%20UPDO%20para%20o%20piloto%20da%20Meta%20Lixo%20Zero." target="_blank" rel="noopener">Aprovar pelo WhatsApp</a>
+        <a class="botao branco" href="mailto:contato@updo.com.br?subject=Proposta%20Piloto%20Meta%20Lixo%20Zero">Tirar uma dúvida</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  UPDO · CNPJ 30.119.930/0001-20 · Curitiba/PR · Proposta válida por 15 dias
+</footer>
+
+<script>
+  // Ciclo das etapas: avança sozinho e responde ao clique.
+  (function () {
+    var nos = document.querySelectorAll('.ciclo .no');
+    var dets = document.querySelectorAll('.detalhe .det');
+    var barras = document.querySelectorAll('.progresso-ciclo span');
+    if (!nos.length) return;
+    var atual = 0, timer;
+    function mostrar(i) {
+      atual = i;
+      nos.forEach(function (n, k) { n.classList.toggle('ativo', k === i); });
+      dets.forEach(function (d, k) { d.classList.toggle('ativo', k === i); });
+      barras.forEach(function (b, k) {
+        b.classList.toggle('feito', k < i);
+        b.classList.remove('agora');
+        if (k === i) { void b.offsetWidth; b.classList.add('agora'); }
+      });
+    }
+    function proximo() { mostrar((atual + 1) % nos.length); }
+    function iniciar() { clearInterval(timer); timer = setInterval(proximo, 4500); }
+    nos.forEach(function (n, k) { n.addEventListener('click', function () { mostrar(k); iniciar(); }); });
+    mostrar(0);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) iniciar();
+  })();
+</script>
+
+<script>
+  // Elementos entram suavemente ao aparecer na tela.
+  (function () {
+    var els = document.querySelectorAll('.revelar');
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (e) { e.classList.add('visivel'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('visivel'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (e) { io.observe(e); });
+
+    // Números do case contam ao aparecer.
+    var nums = document.querySelectorAll('.numeros b');
+    var ion = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        ion.unobserve(en.target);
+        var el = en.target, texto = el.textContent, m = texto.match(/\d[\d.]*/g);
+        if (!m) return;
+        var t0 = performance.now();
+        (function passo(agora) {
+          var f = Math.min((agora - t0) / 1400, 1), e = 1 - Math.pow(1 - f, 3);
+          el.textContent = texto.replace(/\d[\d.]*/g, function (n) {
+            var v = Number(n.replace(/\./g, '')), atual = Math.round(v * e);
+            return atual.toLocaleString('pt-BR');
+          });
+          if (f < 1) requestAnimationFrame(passo); else el.textContent = texto;
+        })(t0);
+      });
+    }, { threshold: 0.5 });
+    nums.forEach(function (n) { ion.observe(n); });
+
+    // Vídeo carrega só no clique.
+    document.querySelectorAll('.video').forEach(function (v) {
+      v.addEventListener('click', function () {
+        v.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + v.dataset.id + '?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Depoimento"></iframe>';
+      }, { once: true });
+    });
+  })();
+</script>
+
+</body>
+</html>
