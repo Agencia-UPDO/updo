@@ -1,4 +1,6 @@
 // Contas da calculadora de CAC e LTV (base: planilha LTV x CAC da UPDO), sem nada de tela.
+// A pessoa diz o que vende e quantos clientes novos quer por mês; a calculadora mostra quanto ela pode pagar por cliente
+// e quanto investir, em 3 cenários de CAC máximo (30%, 40% e 55% do LTV).
 
 export type TipoNegocio = 'unica' | 'recompra' | 'recorrente' | 'setup';
 
@@ -11,9 +13,9 @@ export type Custo = {
   extra?: boolean;
 };
 
-export type CustoAquisicao = { id: string; nome: string; valor: number };
-
 export type Entradas = {
+  // Nome do produto ou serviço (opcional; sem nome vira "Produto 1", "Produto 2"...)
+  nome: string;
   tipo: TipoNegocio;
   // Preço de cada compra, ou a mensalidade na recorrência
   ticket: number;
@@ -25,13 +27,43 @@ export type Entradas = {
   // Cancelamento por mês, em % (recorrência e setup + mensalidade)
   churn: number;
   custos: Custo[];
-  investimento: number;
-  // Outros custos de aquisição por mês (time comercial, agência, ferramentas): entram no CAC, não no ROAS
-  custosAquisicao: CustoAquisicao[];
-  clientesNovos: number;
-  // Taxa de conversão de lead em venda, em % (opcional: 0 = não informada)
+  // Quantos clientes novos por mês a pessoa quer
+  clientesDesejados: number;
+  // De cada 100 leads, quantos viram venda
   conversaoLead: number;
+  // A pessoa não sabe a taxa: usamos uma referência conservadora (CONVERSAO_PADRAO), avisando que é estimativa
+  conversaoNaoSei: boolean;
+  // Segmento do negócio (vai para a RD no campo "Setor da empresa"); "Outro" com o que a pessoa vende
+  segmento: string;
+  segmentoOutro: string;
 };
+
+// Taxa de lead em venda usada quando a pessoa não sabe a dela (conservadora)
+export const CONVERSAO_PADRAO = 5;
+
+// Segmentos (os setores do site e os mais comuns entre quem anuncia)
+export const SEGMENTOS = [
+  'SaaS / Software',
+  'Serviços B2B (para empresas)',
+  'Serviços B2C (para pessoa física)',
+  'Consultoria e serviços profissionais',
+  'Advocacia e contabilidade',
+  'Indústria',
+  'E-commerce',
+  'Varejo / Loja física',
+  'Educação',
+  'Cursos online / Infoprodutos',
+  'Saúde / Clínicas',
+  'Estética e beleza',
+  'Imobiliário / Construção',
+  'Financeiro / seguros / consórcio',
+  'Franquias',
+  'Turismo e eventos',
+  'Alimentação',
+  'Automotivo',
+  'Agronegócio',
+  'Outro',
+];
 
 // Cenários de CAC máximo, em % do LTV (os da planilha)
 export const CENARIOS = [
@@ -49,6 +81,7 @@ export const TIPOS: { id: TipoNegocio; nome: string; descricao: string }[] = [
 
 // Exemplo fictício que vem preenchido (não é de nenhum cliente): loja com recompra, ticket de R$ 290, 10 compras por ano durante 2 anos
 export const EXEMPLO: Entradas = {
+  nome: 'Linha de cosméticos',
   tipo: 'recompra',
   ticket: 290,
   setup: 1200,
@@ -62,20 +95,35 @@ export const EXEMPLO: Entradas = {
     { id: 'comissao', nome: 'Comissão', modo: '%', valor: 4 },
     { id: 'cpv', nome: 'Produto / matéria-prima', modo: 'R$', valor: 62 },
   ],
-  investimento: 14500,
-  custosAquisicao: [],
-  clientesNovos: 11,
+  clientesDesejados: 20,
   conversaoLead: 8,
+  conversaoNaoSei: false,
+  segmento: 'Varejo / Loja física',
+  segmentoOutro: '',
 };
 
-// Ajustes do simulador: ticket e CAC em % sobre o informado; churn substitui o informado (null = sem ajuste)
-export type Ajustes = { ticketPct: number; cacPct: number; churn: number | null };
+// Calculadora em branco (a pessoa preenche ou usa o exemplo)
+export const VAZIO: Entradas = {
+  ...EXEMPLO,
+  nome: '',
+  tipo: 'unica',
+  ticket: 0,
+  setup: 0,
+  custos: EXEMPLO.custos.map((c) => ({ ...c, valor: 0 })),
+  clientesDesejados: 0,
+  conversaoLead: 0,
+  conversaoNaoSei: false,
+  segmento: '',
+};
+
+// Ajustes do simulador: ticket em % sobre o informado; churn e clientes substituem o informado (null = sem ajuste)
+export type Ajustes = { ticketPct: number; churn: number | null; clientes: number | null };
 
 export type Resultado = ReturnType<typeof calcular>;
 
 const custoDe = (custos: Custo[], preco: number) => custos.reduce((t, c) => t + (c.modo === '%' ? (preco * c.valor) / 100 : c.valor), 0);
 
-export function calcular(e: Entradas, aj: Ajustes = { ticketPct: 0, cacPct: 0, churn: null }) {
+export function calcular(e: Entradas, aj: Ajustes = { ticketPct: 0, churn: null, clientes: null }) {
   const ticket = e.ticket * (1 + aj.ticketPct / 100);
   const churn = Math.max(aj.churn ?? e.churn, 0.1) / 100;
   const temSetup = e.tipo === 'setup';
@@ -95,36 +143,39 @@ export function calcular(e: Entradas, aj: Ajustes = { ticketPct: 0, cacPct: 0, c
 
   const receitaVida = ticket * compras + setup;
   const ltv = margem * compras + margemSetup;
-  // Receita e margem da 1ª compra (ou 1º mês com o setup)
-  const receitaPrimeira = ticket + setup;
   const margemPrimeira = margem + margemSetup;
-
-  const outrosAquisicao = e.custosAquisicao.reduce((t, c) => t + c.valor, 0);
-  const cacInformado = e.clientesNovos > 0 ? (e.investimento + outrosAquisicao) / e.clientesNovos : 0;
-  const cac = cacInformado * (1 + aj.cacPct / 100);
-  // Quanto do CAC é mídia e quanto é time/ferramentas (com o ajuste do simulador)
-  const cacMidia = e.clientesNovos > 0 ? (e.investimento * (1 + aj.cacPct / 100)) / e.clientesNovos : 0;
-  const ltvCac = cac > 0 ? ltv / cac : null;
-  const cacMaximo = CENARIOS.map((c) => ({ ...c, valor: Math.max(ltv, 0) * c.pct }));
-  const moderado = cacMaximo[1].valor;
-
-  // Payback (fórmula da planilha): CAC ÷ margem que o cliente deixa por mês. O setup, que entra na hora, abate o CAC antes
-  const faltaPagar = Math.max(cac - margemSetup, 0);
-  const paybackMeses = margemMes == null ? null : faltaPagar === 0 ? 0 : margemMes > 0 ? faltaPagar / margemMes : Infinity;
-  // Venda única: quantas vendas de margem pagam um CAC
-  const vendasParaPagar = margemPrimeira > 0 ? cac / margemPrimeira : Infinity;
-
-  const clientes = e.clientesNovos;
-  // Investimento total (mídia + outros custos de aquisição) para o ROI; o ROAS é só sobre a mídia
-  const investimento = cac * clientes;
-  const midia = cacMidia * clientes;
-  const roasPrimeira = midia > 0 ? (clientes * receitaPrimeira) / midia : null;
-  const roasVida = midia > 0 ? (clientes * receitaVida) / midia : null;
-  const roiPrimeira = investimento > 0 ? (clientes * margemPrimeira - investimento) / investimento : null;
-  const roiVida = investimento > 0 ? (clientes * ltv - investimento) / investimento : null;
   // ROAS que empata a mídia com a margem da 1ª venda: abaixo disso, cada venda nova dá prejuízo até recomprar
   const roasEmpate = margemPct > 0 ? 1 / margemPct : null;
-  const cplMaximo = e.conversaoLead > 0 ? moderado * (e.conversaoLead / 100) : null;
+
+  // Plano para trazer N clientes por mês em cada cenário (planilha LTV x CAC):
+  // CAC máximo = % do LTV; investimento = clientes × CAC; o retorno é na vida dos clientes
+  const desejados = Math.max(aj.clientes ?? e.clientesDesejados, 0);
+  const conversaoUsada = e.conversaoNaoSei ? CONVERSAO_PADRAO : e.conversaoLead;
+  const conversao = conversaoUsada > 0 ? conversaoUsada / 100 : null;
+  const plano = CENARIOS.map((cen) => {
+    const cac = Math.max(ltv, 0) * cen.pct;
+    const investimento = cac * desejados;
+    const receita = receitaVida * desejados;
+    const lucro = ltv * desejados - investimento;
+    // Payback: CAC ÷ margem por mês (o setup, que entra na hora, abate antes). Venda única: quantas vendas de margem pagam o CAC
+    const faltaPagar = Math.max(cac - margemSetup, 0);
+    const payback = margemMes == null ? null : faltaPagar === 0 ? 0 : margemMes > 0 ? faltaPagar / margemMes : Infinity;
+    return {
+      ...cen,
+      cac,
+      investimento,
+      receita,
+      lucro,
+      roi: investimento > 0 ? lucro / investimento : null,
+      roas: investimento > 0 ? receita / investimento : null,
+      ltvCac: 1 / cen.pct,
+      payback,
+      vendasParaPagar: margemPrimeira > 0 ? cac / margemPrimeira : Infinity,
+      // Com a taxa de lead em venda: quantos leads por mês e quanto cada lead pode custar
+      leads: conversao ? desejados / conversao : null,
+      cpl: conversao ? cac * conversao : null,
+    };
+  });
 
   return {
     ticket,
@@ -136,40 +187,29 @@ export function calcular(e: Entradas, aj: Ajustes = { ticketPct: 0, cacPct: 0, c
     vidaMeses,
     receitaVida,
     ltv,
-    cac,
-    cacInformado,
-    cacMidia,
-    outrosAquisicao,
-    ltvCac,
-    cacMaximo,
-    paybackMeses,
-    vendasParaPagar,
-    roasPrimeira,
-    roasVida,
-    roiPrimeira,
-    roiVida,
     roasEmpate,
-    cplMaximo,
+    desejados,
+    plano,
+    // Taxa de lead em venda usada nas contas (em %) e se é a referência padrão
+    conversaoUsada,
+    conversaoEstimada: e.conversaoNaoSei,
     churn: churn * 100,
   };
 }
 
-// Leitura do LTV:CAC: abaixo de 1 perde dinheiro, de 1 a 3 paga mas aperta, 3 ou mais é saudável
-export function saudeLtvCac(r: number | null) {
-  if (r == null) return { tom: 'neutro' as const, rotulo: 'Informe investimento e clientes' };
-  if (r < 1) return { tom: 'ruim' as const, rotulo: 'Cada cliente custa mais do que deixa' };
-  if (r < 3) return { tom: 'atencao' as const, rotulo: 'Paga a aquisição, mas com pouca folga' };
-  return { tom: 'bom' as const, rotulo: 'Saudável: espaço para investir mais' };
-}
+// Em quanto tempo o retorno acontece (a vida do cliente): "em 20 meses", ou "na venda" quando é venda única
+export const horizonte = (r: Resultado) => (r.vidaMeses == null ? 'na venda' : `em ${Math.round(r.vidaMeses)} meses`);
 
-// Calculadora em branco (versão final: a pessoa preenche ou usa o exemplo)
-export const VAZIO: Entradas = {
-  ...EXEMPLO,
-  tipo: 'unica',
-  ticket: 0,
-  setup: 0,
-  custos: EXEMPLO.custos.map((c) => ({ ...c, valor: 0 })),
-  investimento: 0,
-  clientesNovos: 0,
-  conversaoLead: 0,
-};
+// ROI como múltiplo ("2,3x") e em uma frase simples, para não parecer exagerado
+export const roiMultiplo = (roi: number | null) => (roi == null || !Number.isFinite(roi) ? '—' : `${roi.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}x`);
+export const roiFrase = (roi: number | null, r: Resultado) =>
+  roi == null || !Number.isFinite(roi)
+    ? ''
+    : roi >= 0
+      ? `Cada R$ 1 investido volta R$ ${roi.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} de lucro ${horizonte(r)}.`
+      : `Cada R$ 1 investido perde R$ ${Math.abs(roi).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${horizonte(r)}.`;
+
+// Vários produtos na mesma calculadora (análise por produto)
+export type Produto = { id: string; e: Entradas };
+export const MAX_PRODUTOS = 6;
+export const nomeProduto = (p: Produto, i: number) => p.e.nome.trim() || `Produto ${i + 1}`;

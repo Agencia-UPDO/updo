@@ -101,3 +101,14 @@ body.menu-aberto .nld-chatbot {
   80% { opacity: 1; }
   100% { left: 100%; opacity: 0; }
 }
+
+/* Ferramentas: campos de número sem as setinhas de subir e descer (a pessoa digita o valor) */
+.ferramenta input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.ferramenta input[type='number']::-webkit-inner-spin-button,
+.ferramenta input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

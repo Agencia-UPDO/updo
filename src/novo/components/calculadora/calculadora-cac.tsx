@@ -5,14 +5,17 @@ import ButtonPrimarySubmit from '@/novo/components/shared/ui/button/button-prima
 import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
 import { siteConfig } from '@/config/site';
 import { jaLiberado, lerCadastro, salvarCadastro } from '@/novo/components/ferramentas/cadastro';
-import { ArrowLeft, Check, Download, Loader2, Lock, Pencil, Plus, RotateCcw, Sparkles, X } from 'lucide-react';
-import { type FormEvent, type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { type Ajustes, type Custo, type Entradas, type TipoNegocio, EXEMPLO, TIPOS, VAZIO, calcular, saudeLtvCac } from './calculo';
+import { ArrowLeft, CalendarCheck, Check, Download, Loader2, Lock, Pencil, Plus, Repeat, Rocket, RotateCcw, ShoppingBag, Sparkles, Target, X, type LucideIcon } from 'lucide-react';
+import { type FormEvent, type ReactNode, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { type Ajustes, type Custo, type Entradas, type TipoNegocio, EXEMPLO, TIPOS, VAZIO, calcular, CONVERSAO_PADRAO, horizonte, MAX_PRODUTOS, nomeProduto, type Produto, roiFrase, roiMultiplo, SEGMENTOS } from './calculo';
+import { enviarConversao } from '@/novo/components/ferramentas/cadastro';
 import { COMECAR_COM_EXEMPLO } from '@/novo/data/ferramentas';
 
 const FORM_NAME = 'calculadora-cac';
 // Os números da pessoa ficam salvos no navegador para ela voltar e ajustar
 const CHAVE_DADOS = 'updo-calculadora-dados';
+// Os produtos que a pessoa calculou (análise por produto)
+const CHAVE_PRODUTOS = 'updo-calculadora-produtos';
 
 const brl = (v: number, casas = 0) =>
   Number.isFinite(v) ? v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: casas, maximumFractionDigits: casas }) : '—';
@@ -27,12 +30,12 @@ const meses = (v: number | null) => {
   return `${num(m)} ${m <= 1 ? 'mês' : 'meses'}`;
 };
 
-const TONS = {
-  bom: { texto: 'text-primary-700', fundo: 'bg-primary-500', anel: 'ring-primary-500/30' },
-  atencao: { texto: 'text-amber-600', fundo: 'bg-amber-400', anel: 'ring-amber-400/30' },
-  ruim: { texto: 'text-red-600', fundo: 'bg-red-500', anel: 'ring-red-500/30' },
-  neutro: { texto: 'text-secondary/60', fundo: 'bg-stroke-3', anel: 'ring-stroke-3/40' },
-};
+// Cores dos 3 cenários (as da planilha LTV x CAC): verde, amarelo e vermelho
+const CORES_CENARIO = {
+  conservador: { borda: 'border-primary-500', fundo: 'bg-primary-50', texto: 'text-primary-800', ponto: 'bg-primary-500' },
+  moderado: { borda: 'border-amber-400', fundo: 'bg-amber-50', texto: 'text-amber-700', ponto: 'bg-amber-400' },
+  agressivo: { borda: 'border-red-400', fundo: 'bg-red-50', texto: 'text-red-700', ponto: 'bg-red-500' },
+} as const;
 
 const inputClass =
   'border-stroke-3 text-tagline-1 text-secondary placeholder:text-secondary/40 focus:border-secondary w-full rounded-xl border bg-white px-4 py-3 outline-none transition-colors';
@@ -41,15 +44,78 @@ const botaoAdicionar =
   'border-stroke-3 text-tagline-2 text-secondary hover:border-secondary mt-4 inline-flex items-center gap-2 rounded-full border border-dashed px-4 py-2 font-medium transition-colors';
 const botaoRemover = 'text-secondary/45 hover:text-secondary hover:bg-background-3 flex size-9 shrink-0 items-center justify-center rounded-lg transition-colors';
 
+// Explicação de cada termo técnico, em uma frase simples (aparece no "?")
+const DICAS = {
+  ltv: 'LTV é quanto um cliente deixa de lucro (já descontados os custos de cada venda) durante todo o tempo que compra de você.',
+  churn: 'Churn é a parte dos clientes que cancela a cada mês. Com 5% ao mês, o cliente fica, em média, 20 meses.',
+  margem: 'Margem de contribuição é o que sobra de cada venda depois de pagar os custos dela (imposto, cartão, comissão, produto).',
+  cac: 'CAC é quanto custa trazer um cliente novo: tudo o que você gasta para vender (mídia, agência e time comercial) dividido pelos clientes que entram.',
+  cpl: 'CPL é quanto custa cada lead (contato interessado). O CPL ideal é o CAC máximo vezes a taxa de leads que viram venda.',
+  roas: 'ROAS é quanto volta de receita para cada R$ 1 investido em anúncios. ROAS de 4x = R$ 4 de receita para cada R$ 1.',
+  roasEmpate: 'Abaixo desse ROAS, a margem da primeira venda não paga o anúncio. Acima dele, cada venda já começa no lucro.',
+  roi: 'ROI é quanto sobra de lucro para cada R$ 1 investido, depois de pagar o investimento. ROI de 1,5x = R$ 1,50 de lucro para cada R$ 1.',
+  payback: 'Payback é o tempo que o cliente leva para devolver, em margem, o que custou para trazê-lo.',
+  ltvCac: 'LTV:CAC mostra quantas vezes o cliente devolve o que custou. O saudável é 3 ou mais.',
+};
+
+// "?" pequeno ao lado de um termo: abre ao passar o mouse, ao focar com o teclado ou ao tocar (celular)
+function Dica({ texto, claro = false }: { texto: string; claro?: boolean }) {
+  const [aberta, setAberta] = useState(false);
+  const id = useId();
+  return (
+    <span className="relative inline-flex align-middle" onMouseEnter={() => setAberta(true)} onMouseLeave={() => setAberta(false)}>
+      <button
+        type="button"
+        aria-label="O que é isso?"
+        aria-describedby={aberta ? id : undefined}
+        aria-expanded={aberta}
+        onClick={(ev) => {
+          ev.preventDefault();
+          ev.stopPropagation();
+          setAberta((a) => !a);
+        }}
+        onFocus={() => setAberta(true)}
+        onBlur={() => setAberta(false)}
+        className={cn(
+          'ml-1 inline-flex size-4 items-center justify-center rounded-full border text-[0.625rem] leading-none font-semibold transition-colors',
+          claro ? 'border-white/40 text-white/70 hover:border-white hover:text-white' : 'border-secondary/30 text-secondary/55 hover:border-secondary hover:text-secondary',
+        )}
+      >
+        ?
+      </button>
+      {aberta && (
+        <span
+          id={id}
+          role="tooltip"
+          className="bg-secondary text-tagline-3 absolute bottom-full left-1/2 z-30 mb-2 w-64 max-w-[80vw] -translate-x-1/2 rounded-xl px-3.5 py-2.5 text-left font-normal whitespace-normal text-white shadow-[0_12px_32px_-12px_rgba(7,17,31,0.6)]"
+        >
+          {texto}
+        </span>
+      )}
+    </span>
+  );
+}
+
+// Ícone e exemplos do dia a dia de cada tipo de venda (etapa 1)
+const VISUAL_TIPO: Record<TipoNegocio, { icone: LucideIcon; exemplos: string }> = {
+  unica: { icone: ShoppingBag, exemplos: 'Imóvel, carro, curso, corretagem de plano de saúde ou seguro' },
+  recompra: { icone: Repeat, exemplos: 'Loja, restaurante, e-commerce' },
+  recorrente: { icone: CalendarCheck, exemplos: 'SaaS, academia, plano de saúde (operadora)' },
+  setup: { icone: Rocket, exemplos: 'Software com implantação, agência' },
+};
+
+// Exemplos do nome do produto (mudam a cada produto novo)
+const EXEMPLOS_PRODUTO = ['consulta, matrícula, projeto', 'ingresso de show, plano mensal', 'pacote de serviço, curso online'];
+
 // Exemplos que aparecem no nome de cada custo novo
 const EXEMPLOS_VENDA = ['Frete', 'Embalagem', 'Taxa do marketplace'];
-const EXEMPLOS_AQUISICAO = ['Time comercial (salários)', 'Agência', 'Ferramentas / CRM'];
 
-function Numero({ id, rotulo, valor, onChange, prefixo, sufixo, ajuda, passo = 1 }: { id: string; rotulo: string; valor: number; onChange: (v: number) => void; prefixo?: string; sufixo?: string; ajuda?: string; passo?: number }) {
+function Numero({ id, rotulo, valor, onChange, prefixo, sufixo, ajuda, dica, passo = 1 }: { id: string; rotulo: string; valor: number; onChange: (v: number) => void; prefixo?: string; sufixo?: string; ajuda?: string; dica?: string; passo?: number }) {
   return (
     <div>
       <label htmlFor={id} className={labelClass}>
         {rotulo}
+        {dica && <Dica texto={dica} />}
       </label>
       <div className="relative">
         {prefixo && <span className="text-secondary/50 text-tagline-2 pointer-events-none absolute top-1/2 left-4 -translate-y-1/2">{prefixo}</span>}
@@ -59,7 +125,9 @@ function Numero({ id, rotulo, valor, onChange, prefixo, sufixo, ajuda, passo = 1
           inputMode="decimal"
           min={0}
           step={passo}
-          value={Number.isFinite(valor) ? valor : ''}
+          value={Number.isFinite(valor) && valor !== 0 ? valor : ''}
+          placeholder="0"
+          onFocus={(ev) => ev.target.select()}
           onChange={(ev) => onChange(ev.target.value === '' ? 0 : Number(ev.target.value))}
           className={cn(inputClass, prefixo && 'pl-11', sufixo && 'pr-16')}
         />
@@ -113,7 +181,9 @@ function LinhaCusto({ custo, exemplo, onChange, onRemover }: { custo: Custo; exe
           inputMode="decimal"
           min={0}
           step={custo.modo === '%' ? 0.5 : 1}
-          value={custo.valor}
+          value={custo.valor || ''}
+          placeholder="0"
+          onFocus={(ev) => ev.target.select()}
           onChange={(ev) => onChange({ ...custo, valor: ev.target.value === '' ? 0 : Number(ev.target.value) })}
           className={cn(inputClass, custo.modo === 'R$' ? 'pl-11' : 'pr-10')}
         />
@@ -137,11 +207,14 @@ function LinhaCusto({ custo, exemplo, onChange, onRemover }: { custo: Custo; exe
   );
 }
 
-function Cartao({ rotulo, valor, detalhe, tom, destaque = false }: { rotulo: string; valor: string; detalhe?: string; tom?: keyof typeof TONS; destaque?: boolean }) {
+function Cartao({ rotulo, valor, detalhe, dica, destaque = false }: { rotulo: string; valor: string; detalhe?: string; dica?: string; destaque?: boolean }) {
   return (
     <div className={cn('rounded-2xl p-5', destaque ? 'bg-secondary text-white' : 'border-stroke-4 border bg-white')}>
-      <p className={cn('text-tagline-2 font-medium', destaque ? 'text-white/65' : 'text-secondary/60')}>{rotulo}</p>
-      <p className={cn('font-titulo mt-1 text-[1.75rem] leading-tight font-semibold tabular-nums', destaque ? 'text-primary-500' : tom ? TONS[tom].texto : 'text-secondary')}>{valor}</p>
+      <p className={cn('text-tagline-2 font-medium', destaque ? 'text-white/65' : 'text-secondary/60')}>
+        {rotulo}
+        {dica && <Dica texto={dica} claro={destaque} />}
+      </p>
+      <p className={cn('font-titulo mt-1 text-[1.75rem] leading-tight font-semibold tabular-nums', destaque ? 'text-primary-500' : 'text-secondary')}>{valor}</p>
       {detalhe && <p className={cn('text-tagline-3 mt-1', destaque ? 'text-white/55' : 'text-secondary/55')}>{detalhe}</p>}
     </div>
   );
@@ -159,75 +232,143 @@ function Deslizante({ rotulo, valor, min, max, passo, onChange, mostrar }: { rot
   );
 }
 
-const SEM_AJUSTE: Ajustes = { ticketPct: 0, cacPct: 0, churn: null };
+const SEM_AJUSTE: Ajustes = { ticketPct: 0, churn: null, clientes: null };
 
 const PASSOS = ['Como você vende', 'Preço', 'Custos', 'Aquisição', 'Resultado'] as const;
 const RESULTADO = 4;
 
-// Cartões do resultado (LTV:CAC, LTV, CAC, payback, ROAS, ROI, CAC máximo); também aparecem embaçados atrás do cadastro
-function Resultados({ e, r, aj }: { e: Entradas; r: ReturnType<typeof calcular>; aj: Ajustes }) {
+// Resultado: quanto investir para ter os clientes que a pessoa quer, nos 3 cenários (verde, amarelo, vermelho), e o LTV.
+// Também aparece embaçado atrás do cadastro
+function Resultados({ e, r }: { e: Entradas; r: ReturnType<typeof calcular> }) {
   const recorrente = e.tipo === 'recorrente' || e.tipo === 'setup';
-  const saude = saudeLtvCac(r.ltvCac);
-  const simulando = aj.ticketPct !== 0 || aj.cacPct !== 0 || aj.churn != null;
-  const roi = e.tipo === 'unica' ? r.roiPrimeira : r.roiVida;
+  const [cons, mod, agr] = r.plano;
   return (
-    <div className="grid grid-cols-12 gap-4">
-      <div className="col-span-12 space-y-4 lg:col-span-5">
-        <div className="bg-secondary relative overflow-hidden rounded-3xl p-6 text-white md:p-7">
+    <div className="space-y-4">
+      <SeusAlvos r={r} />
+      <div className="grid grid-cols-12 gap-4">
+        <div className="bg-secondary relative col-span-12 overflow-hidden rounded-3xl p-6 text-white md:p-7 lg:col-span-5">
           <div className="from-lilas-500/35 pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-gradient-to-br to-transparent blur-2xl" />
-          <p className="text-tagline-2 font-medium text-white/65">LTV : CAC {simulando && <span className="text-lilas-200">· simulação</span>}</p>
-          <div className="mt-2 flex items-end gap-4">
-            <p className="font-titulo text-[3.5rem] leading-none font-semibold text-white tabular-nums">{r.ltvCac == null ? '—' : `${num(r.ltvCac)} : 1`}</p>
-            <span className={cn('mb-2 size-3 rounded-full ring-4', TONS[saude.tom].fundo, TONS[saude.tom].anel)} />
-          </div>
-          <p className="text-tagline-2 mt-3 text-white/80">{saude.rotulo}</p>
-          <div className="mt-5 h-2 overflow-hidden rounded-full bg-white/10">
-            <div className={cn('h-full rounded-full transition-all duration-500', TONS[saude.tom].fundo)} style={{ width: `${Math.min((r.ltvCac ?? 0) / 5, 1) * 100}%` }} />
-          </div>
-          <div className="text-tagline-3 mt-1.5 flex justify-between text-white/45">
-            <span>0</span>
-            <span>1</span>
-            <span>3 (saudável)</span>
-            <span>5+</span>
-          </div>
-        </div>
-        <div className="border-stroke-4 rounded-2xl border bg-white p-5">
-          <p className="text-tagline-2 text-secondary/60 font-medium">CAC máximo por cliente</p>
-          <div className="mt-3 grid grid-cols-3 gap-2">
-            {r.cacMaximo.map((c) => (
-              <div key={c.id} className={cn('rounded-xl px-3 py-2.5', c.id === 'moderado' ? 'bg-lilas-50' : 'bg-background-2')}>
-                <p className="text-tagline-3 text-secondary/60">
-                  {c.nome} · {Math.round(c.pct * 100)}%
+          <p className="text-tagline-2 flex items-center gap-2 font-medium text-white/65">
+            <Target className="size-4" /> Para ter {num(r.desejados, 0)} {r.desejados === 1 ? 'cliente novo' : 'clientes novos'} por mês
+          </p>
+          <p className="font-titulo mt-3 text-[2.5rem] leading-none font-semibold text-white tabular-nums">{brl(mod.investimento)}</p>
+          <p className="text-tagline-2 mt-2 text-white/75">por mês no cenário moderado (CAC de até {brl(mod.cac)} por cliente)</p>
+          <div className="mt-5 grid grid-cols-3 gap-2 border-t border-white/10 pt-4">
+            {[cons, mod, agr].map((p) => (
+              <div key={p.id}>
+                <p className="text-tagline-3 flex items-center gap-1.5 text-white/55">
+                  <span className={cn('size-2 rounded-full', CORES_CENARIO[p.id].ponto)} />
+                  {p.nome}
                 </p>
-                <p className="font-titulo text-secondary text-[1.125rem] font-semibold tabular-nums">{brl(c.valor)}</p>
+                <p className="font-titulo mt-1 text-[1.05rem] font-semibold text-white tabular-nums">{brl(p.investimento)}</p>
               </div>
             ))}
           </div>
-          {r.cplMaximo != null && (
-            <p className="text-tagline-2 text-secondary/70 mt-3">
-              Com {num(e.conversaoLead)}% de conversão, cada lead pode custar até <strong className="text-secondary">{brl(r.cplMaximo, 2)}</strong> (cenário moderado).
-            </p>
-          )}
+        </div>
+        <div className="col-span-12 grid grid-cols-2 content-start gap-3 lg:col-span-7 xl:grid-cols-3">
+          <Cartao rotulo="LTV (margem)" dica={DICAS.ltv} valor={brl(r.ltv)} detalhe={e.tipo === 'unica' ? 'margem de uma venda' : `${num(r.compras, 0)} ${recorrente ? 'meses' : 'compras'} · receita ${brl(r.receitaVida)}`} />
+          <Cartao rotulo={`Margem por ${recorrente ? 'mês' : 'venda'}`} dica={DICAS.margem} valor={brl(r.margem, 2)} detalhe={`${pct(r.margemPct, 1)} do preço`} />
+          <Cartao rotulo="ROAS mínimo para empatar" dica={DICAS.roasEmpate} valor={vezes(r.roasEmpate)} detalhe="na 1ª venda, com a sua margem" />
         </div>
       </div>
-      <div className="col-span-12 grid grid-cols-2 content-start gap-3 sm:grid-cols-3 lg:col-span-7 lg:grid-cols-2 xl:grid-cols-3">
-        <Cartao rotulo="LTV (margem)" valor={brl(r.ltv)} detalhe={e.tipo === 'unica' ? 'margem de uma venda' : `${num(r.compras, 0)} ${recorrente ? 'meses' : 'compras'} · receita ${brl(r.receitaVida)}`} />
-        <Cartao
-          rotulo="CAC atual"
-          valor={brl(r.cac)}
-          detalhe={r.outrosAquisicao ? `mídia ${brl(r.cacMidia)} + outros ${brl(r.cac - r.cacMidia)} por cliente` : `${brl(e.investimento * (1 + aj.cacPct / 100))} ÷ ${num(e.clientesNovos, 0)} clientes`}
-          tom={r.cac > r.cacMaximo[1].valor ? 'ruim' : 'bom'}
-        />
-        <Cartao
-          rotulo={e.tipo === 'unica' ? 'Vendas para pagar o CAC' : 'Payback do CAC'}
-          valor={e.tipo === 'unica' ? (r.vendasParaPagar <= 1 ? 'na 1ª venda' : `${num(r.vendasParaPagar)} vendas`) : meses(r.paybackMeses)}
-          detalhe={e.tipo === 'unica' ? 'margem de quantas vendas paga um cliente' : r.vidaMeses && r.paybackMeses != null && r.paybackMeses > r.vidaMeses ? 'mais que o tempo de vida do cliente' : 'meses de margem até o cliente se pagar'}
-          tom={e.tipo === 'unica' ? (r.vendasParaPagar <= 1 ? 'bom' : 'ruim') : r.paybackMeses == null || !Number.isFinite(r.paybackMeses) || (r.vidaMeses != null && r.paybackMeses > r.vidaMeses) ? 'ruim' : r.paybackMeses <= 12 ? 'bom' : 'atencao'}
-        />
-        <Cartao rotulo="ROAS mínimo para empatar" valor={vezes(r.roasEmpate)} detalhe="na 1ª venda, com a sua margem" />
-        <Cartao rotulo="ROAS atual" valor={vezes(r.roasPrimeira)} detalhe={e.tipo === 'unica' ? 'receita ÷ mídia' : `1ª venda · na vida do cliente ${vezes(r.roasVida)}`} tom={r.roasPrimeira != null && r.roasEmpate != null && r.roasPrimeira < r.roasEmpate && e.tipo === 'unica' ? 'ruim' : undefined} />
-        <Cartao rotulo="ROI sobre a margem" valor={pct(roi)} detalhe={e.tipo === 'unica' ? 'lucro da margem ÷ investimento' : `na vida do cliente · 1ª venda ${pct(r.roiPrimeira)}`} tom={roi != null && roi < 0 ? 'ruim' : 'bom'} />
+      <PlanoClientes e={e} r={r} />
+    </div>
+  );
+}
+
+// Os alvos para as campanhas: custo por venda (CAC máximo) e custo por lead (CAC × taxa de lead em venda) nos 3 cenários
+function SeusAlvos({ r }: { r: ReturnType<typeof calcular> }) {
+  const faixa = (rotulo: string, ajuda: string, valores: (number | null)[], casas: number, dica: string) => (
+    <div className="grid gap-3 md:grid-cols-[220px_1fr] md:items-center">
+      <div>
+        <p className="font-titulo text-tagline-1 text-secondary font-semibold">
+          {rotulo}
+          <Dica texto={dica} />
+        </p>
+        <p className="text-tagline-3 text-secondary/55">{ajuda}</p>
       </div>
+      <div className="grid grid-cols-3 gap-2">
+        {r.plano.map((p, i) => {
+          const cor = CORES_CENARIO[p.id];
+          return (
+            <div key={p.id} className={cn('rounded-xl border-2 px-3 py-2.5', cor.borda, cor.fundo)}>
+              <p className={cn('text-tagline-3 flex items-center gap-1.5 font-medium', cor.texto)}>
+                <span className={cn('size-2 rounded-full', cor.ponto)} />
+                {p.nome}
+              </p>
+              <p className="font-titulo text-secondary text-[1.2rem] font-semibold tabular-nums">até {valores[i] == null ? '—' : brl(valores[i]!, casas)}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+  return (
+    <div className="border-stroke-4 space-y-4 rounded-3xl border bg-white p-6 md:p-7">
+      <div>
+        <p className="font-titulo text-heading-6 text-secondary font-medium">Seus alvos</p>
+        <p className="text-tagline-2 mt-1">Use estes números como meta nas suas campanhas: acima deles, cada cliente novo começa a sair caro.</p>
+      </div>
+      {faixa('Custo por venda ideal', 'quanto pode custar cada cliente novo', r.plano.map((p) => p.cac), 0, DICAS.cac)}
+      {faixa(
+        'Custo por lead ideal',
+        `com ${num(r.conversaoUsada)}% dos leads virando venda${r.conversaoEstimada ? ' (estimativa)' : ''}`,
+        r.plano.map((p) => p.cpl),
+        2,
+        DICAS.cpl,
+      )}
+      {r.plano[0].leads != null && (
+        <p className="text-tagline-3 text-secondary/60">
+          Para {num(r.desejados, 0)} clientes por mês, são cerca de <strong className="text-secondary">{num(Math.ceil(r.plano[0].leads), 0)} leads por mês</strong>.
+          {r.conversaoEstimada ? ` Como você não sabe a sua taxa, usamos ${CONVERSAO_PADRAO}%, uma referência conservadora.` : ''}
+        </p>
+      )}
+    </div>
+  );
+}
+
+// Os 3 cenários lado a lado: investimento, CAC máximo, retorno, payback e, com a taxa de lead em venda, leads e CPL
+function PlanoClientes({ e, r }: { e: Entradas; r: ReturnType<typeof calcular> }) {
+  const linha = (rotulo: string, valor: string, cor?: string, dica?: string) => (
+    <div className="flex justify-between gap-2">
+      <dt className="text-secondary/60">
+        {rotulo}
+        {dica && <Dica texto={dica} />}
+      </dt>
+      <dd className={cn('font-semibold tabular-nums', cor ?? 'text-secondary')}>{valor}</dd>
+    </div>
+  );
+  return (
+    <div className="border-stroke-4 rounded-3xl border bg-white p-6 md:p-7">
+      <p className="font-titulo text-heading-6 text-secondary font-medium">Quanto investir para ter {num(r.desejados, 0)} clientes novos por mês</p>
+      <p className="text-tagline-2 mt-1">O CAC máximo de cada cenário é uma parte do LTV (o que o cliente deixa de margem). Receita, lucro, ROI e ROAS são na vida desses clientes ({r.vidaMeses == null ? 'na venda' : `${Math.round(r.vidaMeses)} meses`}).</p>
+      <div className="mt-5 grid gap-3 md:grid-cols-3">
+        {r.plano.map((p) => {
+          const cor = CORES_CENARIO[p.id];
+          return (
+            <div key={p.id} className={cn('rounded-2xl border-2 p-5', cor.borda, cor.fundo)}>
+              <p className={cn('text-tagline-2 flex items-center gap-2 font-semibold', cor.texto)}>
+                <span className={cn('size-2.5 rounded-full', cor.ponto)} />
+                {p.nome} · CAC de {Math.round(p.pct * 100)}% do LTV
+              </p>
+              <p className="text-tagline-3 text-secondary/60 mt-3">Investimento por mês</p>
+              <p className="font-titulo text-secondary text-[1.6rem] leading-tight font-semibold tabular-nums">{brl(p.investimento)}</p>
+              <p className="text-tagline-3 text-secondary/60">CAC de até {brl(p.cac)} por cliente</p>
+              <dl className="text-tagline-3 border-secondary/10 mt-4 space-y-1.5 border-t pt-3">
+                {linha(`Receita ${horizonte(r)}`, brl(p.receita))}
+                {linha('Lucro na margem', brl(p.lucro))}
+                {linha(`ROI · ROAS ${horizonte(r)}`, `${roiMultiplo(p.roi)} · ${vezes(p.roas)}`, cor.texto, `${DICAS.roi} ${DICAS.roas}`)}
+                {linha(e.tipo === 'unica' ? 'Vendas para pagar o CAC' : 'Payback do CAC', e.tipo === 'unica' ? (p.vendasParaPagar <= 1 ? 'na 1ª venda' : `${num(p.vendasParaPagar)} vendas`) : meses(p.payback), undefined, DICAS.payback)}
+                {linha('LTV : CAC', `${num(p.ltvCac)} : 1`, undefined, DICAS.ltvCac)}
+                {p.leads != null && linha('Leads por mês', num(Math.ceil(p.leads), 0))}
+                {p.cpl != null && linha('Custo máximo por lead', brl(p.cpl, 2), undefined, DICAS.cpl)}
+              </dl>
+              {roiFrase(p.roi, r) && <p className={cn('text-tagline-3 mt-3 font-medium', cor.texto)}>{roiFrase(p.roi, r)}</p>}
+            </div>
+          );
+        })}
+      </div>
+      {r.conversaoEstimada && <p className="text-tagline-3 text-secondary/55 mt-3">Leads e custo por lead calculados com {CONVERSAO_PADRAO}% de conversão (estimativa, porque você marcou &ldquo;não sei&rdquo;).</p>}
     </div>
   );
 }
@@ -273,11 +414,15 @@ function Progresso({ passo, alcancado, onIr }: { passo: number; alcancado: numbe
 }
 
 export default function CalculadoraCac() {
-  const [e, setE] = useState<Entradas>(COMECAR_COM_EXEMPLO ? EXEMPLO : VAZIO);
+  const [produtos, setProdutos] = useState<Produto[]>([{ id: 'p1', e: COMECAR_COM_EXEMPLO ? EXEMPLO : VAZIO }]);
+  const [atual, setAtual] = useState('p1');
+  const e = (produtos.find((p) => p.id === atual) ?? produtos[0]).e;
+  const setE = (v: Entradas | ((x: Entradas) => Entradas)) => setProdutos((ps) => ps.map((p) => (p.id === atual ? { ...p, e: typeof v === 'function' ? v(p.e) : v } : p)));
+  // Produtos já avisados à RD (a cada produto novo calculado, uma conversão de atualização)
+  const avisados = useRef<Set<string>>(new Set());
   const [carregou, setCarregou] = useState(false);
   const [aj, setAj] = useState<Ajustes>(SEM_AJUSTE);
   const [liberado, setLiberado] = useState(false);
-  const [desejados, setDesejados] = useState(20);
   const [passo, setPasso] = useState(0);
   // Até onde a pessoa já chegou (as etapas até aqui ficam clicáveis na barra)
   const [alcancado, setAlcancado] = useState(0);
@@ -290,8 +435,12 @@ export default function CalculadoraCac() {
     if (jaLiberado()) setLiberado(true);
     // Números que a pessoa já tinha preenchido neste navegador
     try {
-      const salvo = JSON.parse(localStorage.getItem(CHAVE_DADOS) ?? 'null') as Entradas | null;
-      if (salvo?.custos) setE({ ...VAZIO, ...salvo });
+      const lista = JSON.parse(localStorage.getItem(CHAVE_PRODUTOS) ?? 'null') as { produtos: Produto[]; atual: string } | null;
+      const antigo = JSON.parse(localStorage.getItem(CHAVE_DADOS) ?? 'null') as Entradas | null;
+      if (lista?.produtos?.length) {
+        setProdutos(lista.produtos.map((p) => ({ ...p, e: { ...VAZIO, ...p.e } })));
+        setAtual(lista.produtos.some((p) => p.id === lista.atual) ? lista.atual : lista.produtos[0].id);
+      } else if (antigo?.custos) setProdutos([{ id: 'p1', e: { ...VAZIO, ...antigo } }]);
     } catch {
       // nada salvo
     }
@@ -302,23 +451,62 @@ export default function CalculadoraCac() {
   useEffect(() => {
     if (!carregou) return;
     try {
-      if (e === EXEMPLO) localStorage.removeItem(CHAVE_DADOS);
-      else localStorage.setItem(CHAVE_DADOS, JSON.stringify(e));
+      localStorage.removeItem(CHAVE_DADOS);
+      const proprios = produtos.filter((p) => p.e !== EXEMPLO);
+      if (!proprios.length) localStorage.removeItem(CHAVE_PRODUTOS);
+      else localStorage.setItem(CHAVE_PRODUTOS, JSON.stringify({ produtos, atual }));
     } catch {
       // Sem localStorage: os números valem só nesta visita
     }
-  }, [e, carregou]);
+  }, [produtos, atual, carregou]);
+
+  // Produto novo calculado (a partir do 2º): conversão de atualização na RD com os nomes dos produtos
+  useEffect(() => {
+    if (passo !== RESULTADO || !liberado || produtos.length < 2 || avisados.current.has(atual)) return;
+    const quem = lerCadastro();
+    if (!quem.email) return;
+    avisados.current.add(atual);
+    const lista = produtos.map((p, i) => `${nomeProduto(p, i)} (${num(p.e.clientesDesejados, 0)} clientes/mês)`).join(', ');
+    enviarConversao('calculadora-cac-produto', '/ferramentas/calculadora-cac', { nome: quem.nome ?? '', email: quem.email, mainPain: `Calculadora CAC, ${produtos.length} produtos: ${lista}` }).catch(() => {});
+  }, [passo, liberado, produtos, atual]);
+
+  // Produtos: abrir um, calcular outro (volta à etapa 1 vazio, com o segmento) e remover
+  const irPara = (p: number) => {
+    setPasso(p);
+    requestAnimationFrame(() => topo.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  };
+  const abrirProduto = (id: string) => {
+    setAtual(id);
+    setAj(SEM_AJUSTE);
+    setAviso('');
+    setAlcancado(RESULTADO);
+    irPara(RESULTADO);
+  };
+  const outroProduto = () => {
+    const id = `p${Date.now()}`;
+    setProdutos((ps) => [...ps, { id, e: { ...VAZIO, segmento: e.segmento, segmentoOutro: e.segmentoOutro } }]);
+    setAtual(id);
+    setAj(SEM_AJUSTE);
+    setAviso('');
+    setAlcancado(0);
+    irPara(0);
+  };
+  const removerProduto = (id: string) => {
+    const resto = produtos.filter((p) => p.id !== id);
+    if (!resto.length) return;
+    setProdutos(resto);
+    if (id === atual) setAtual(resto[0].id);
+  };
 
   const set = <K extends keyof Entradas>(k: K, v: Entradas[K]) => setE((x) => ({ ...x, [k]: v }));
   const base = useMemo(() => calcular(e), [e]);
   const r = useMemo(() => calcular(e, aj), [e, aj]);
   const recorrente = e.tipo === 'recorrente' || e.tipo === 'setup';
-  const simulando = aj.ticketPct !== 0 || aj.cacPct !== 0 || aj.churn != null;
+  const simulando = aj.ticketPct !== 0 || aj.churn != null || aj.clientes != null;
   const extrasVenda = e.custos.filter((c) => c.extra);
   // Custos que a pessoa adicionou, para o resumo que vai para a RD
   const resumoExtras = [
     ...extrasVenda.filter((c) => c.valor).map((c) => `${c.nome || 'custo'} ${c.modo === '%' ? `${num(c.valor)}%` : brl(c.valor, 2)}/venda`),
-    ...e.custosAquisicao.filter((c) => c.valor).map((c) => `${c.nome || 'aquisição'} ${brl(c.valor)}/mês`),
   ];
 
   // O que falta para seguir de cada etapa (vazio = pode seguir)
@@ -329,7 +517,9 @@ export default function CalculadoraCac() {
       if (recorrente && !(e.churn > 0)) return 'Informe o cancelamento por mês (churn).';
     }
     if (p === 2 && base.margem <= 0) return 'Os custos estão maiores que o preço: confira os valores.';
-    if (p === 3 && !(e.clientesNovos > 0)) return 'Informe quantos clientes novos entram por mês.';
+    if (p === 0 && !e.segmento) return 'Escolha o seu segmento.';
+    if (p === 3 && !(e.clientesDesejados > 0)) return 'Informe quantos clientes novos você quer por mês.';
+    if (p === 3 && !e.conversaoNaoSei && !(e.conversaoLead > 0)) return 'Informe de cada 100 leads quantos viram venda, ou marque "não sei".';
     return '';
   };
 
@@ -346,7 +536,13 @@ export default function CalculadoraCac() {
   };
 
   return (
-    <div className="[&_[role=radio]]:cursor-pointer [&_a]:cursor-pointer [&_button:not(:disabled)]:cursor-pointer [&_input[type=range]]:cursor-pointer">
+    <div
+      // A rodinha do mouse nunca muda o valor de um campo de número (tira o foco antes)
+      onWheelCapture={(ev) => {
+        const alvo = ev.target as HTMLElement;
+        if (alvo instanceof HTMLInputElement && alvo.type === 'number' && document.activeElement === alvo) alvo.blur();
+      }}
+      className="ferramenta [&_[role=radio]]:cursor-pointer [&_a]:cursor-pointer [&_button:not(:disabled)]:cursor-pointer [&_input[type=range]]:cursor-pointer">
       <section className="relative isolate pt-32 pb-8 md:pt-40 lg:pt-44">
         <div className="main-container">
           <div className="max-w-[760px] space-y-5">
@@ -358,7 +554,7 @@ export default function CalculadoraCac() {
               Quanto você <span className="text-lilas-500">pode pagar</span> por um cliente?
             </h1>
             <p>
-              Responda 4 etapas rápidas e veja seu LTV, o CAC que você tem hoje, o CAC máximo saudável, em quantos meses o investimento volta e o ROAS mínimo para não ter prejuízo.
+              Conte o que você vende e quantos clientes novos quer por mês. A calculadora mostra o seu LTV, quanto você pode pagar por cliente e quanto investir por mês em 3 cenários, com retorno e payback.
             </p>
           </div>
         </div>
@@ -367,6 +563,11 @@ export default function CalculadoraCac() {
       <section className="pb-18 md:pb-28">
         <div ref={topo} className="main-container scroll-mt-28">
           <div className={cn('mx-auto', passo === RESULTADO ? 'max-w-[1200px]' : 'max-w-[760px]')}>
+            {produtos.length > 1 && passo < RESULTADO && (
+              <p className="text-tagline-2 text-secondary/70 mb-3">
+                Calculando: <strong className="text-secondary">{nomeProduto(produtos.find((p) => p.id === atual)!, produtos.findIndex((p) => p.id === atual))}</strong>
+              </p>
+            )}
             <Progresso passo={passo} alcancado={alcancado} onIr={ir} />
 
             <div key={passo} className="animate-[metodo-entra_.35s_ease-out] motion-reduce:animate-none">
@@ -385,13 +586,53 @@ export default function CalculadoraCac() {
                           e.tipo === t.id ? 'border-secondary bg-secondary text-white shadow-[0_12px_32px_-16px_rgba(7,17,31,0.6)]' : 'border-stroke-4 hover:border-stroke-3 bg-background-2',
                         )}
                       >
-                        <span className="flex items-center gap-2">
-                          <span className={cn('size-2.5 rounded-full', e.tipo === t.id ? 'bg-primary-500' : 'bg-stroke-3')} />
-                          <span className={cn('font-titulo text-tagline-1 font-semibold', e.tipo === t.id ? 'text-white' : 'text-secondary')}>{t.nome}</span>
-                        </span>
-                        <span className={cn('text-tagline-3 mt-1.5 block', e.tipo === t.id ? 'text-white/65' : 'text-secondary/60')}>{t.descricao}</span>
+                        {(() => {
+                          const { icone: Icone, exemplos } = VISUAL_TIPO[t.id];
+                          const ativo = e.tipo === t.id;
+                          return (
+                            <span className="flex items-start gap-3">
+                              <span className={cn('flex size-11 shrink-0 items-center justify-center rounded-xl transition-colors', ativo ? 'bg-primary-500 text-secondary' : 'bg-lilas-100 text-lilas-700')}>
+                                <Icone className="size-5" strokeWidth={1.75} aria-hidden="true" />
+                              </span>
+                              <span className="min-w-0">
+                                <span className={cn('font-titulo text-tagline-1 block font-semibold', ativo ? 'text-white' : 'text-secondary')}>{t.nome}</span>
+                                <span className={cn('text-tagline-3 mt-0.5 block font-medium', ativo ? 'text-primary-500' : 'text-lilas-700')}>{exemplos}</span>
+                                <span className={cn('text-tagline-3 mt-1 block', ativo ? 'text-white/65' : 'text-secondary/60')}>{t.descricao}</span>
+                              </span>
+                            </span>
+                          );
+                        })()}
                       </button>
                     ))}
+                  </div>
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    <div className="sm:col-span-2">
+                      <label htmlFor="nomeProduto" className={labelClass}>
+                        Nome do produto ou serviço <span className="text-secondary/45 font-normal">(opcional)</span>
+                      </label>
+                      <input id="nomeProduto" value={e.nome} onChange={(ev) => set('nome', ev.target.value)} placeholder={`Ex.: ${EXEMPLOS_PRODUTO[produtos.findIndex((p) => p.id === atual) % EXEMPLOS_PRODUTO.length]} (sem nome, vira "Produto ${produtos.findIndex((p) => p.id === atual) + 1}")`} className={inputClass} />
+                    </div>
+                    <div>
+                      <label htmlFor="segmento" className={labelClass}>
+                        Qual é o seu segmento?
+                      </label>
+                      <select id="segmento" value={e.segmento} onChange={(ev) => set('segmento', ev.target.value)} className={cn(inputClass, 'cursor-pointer')}>
+                        <option value="">Escolha</option>
+                        {SEGMENTOS.map((s) => (
+                          <option key={s} value={s}>
+                            {s}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    {e.segmento === 'Outro' && (
+                      <div>
+                        <label htmlFor="segmentoOutro" className={labelClass}>
+                          O que você vende?
+                        </label>
+                        <input id="segmentoOutro" value={e.segmentoOutro} onChange={(ev) => set('segmentoOutro', ev.target.value)} placeholder="Ex.: consórcio, energia solar" className={inputClass} />
+                      </div>
+                    )}
                   </div>
                   <p className="text-tagline-3 text-secondary/55 mt-4">
                     {e === EXEMPLO ? 'Já vem com um exemplo preenchido para você ver como funciona. ' : 'Não tem os números à mão? '}
@@ -417,6 +658,7 @@ export default function CalculadoraCac() {
                       <Numero
                         id="churn"
                         rotulo="Cancelamento por mês (churn)"
+                        dica={DICAS.churn}
                         sufixo="% / mês"
                         passo={0.5}
                         valor={e.churn}
@@ -445,7 +687,10 @@ export default function CalculadoraCac() {
                     <Plus className="size-4" /> Adicionar custo
                   </button>
                   <div className="bg-background-3 mt-6 flex flex-wrap items-baseline justify-between gap-2 rounded-2xl px-5 py-4">
-                    <span className="text-tagline-2 text-secondary/70">Margem de contribuição por {recorrente ? 'mês' : 'compra'}</span>
+                    <span className="text-tagline-2 text-secondary/70">
+                      Margem de contribuição por {recorrente ? 'mês' : 'compra'}
+                      <Dica texto={DICAS.margem} />
+                    </span>
                     <span className="font-titulo text-secondary text-[1.25rem] font-semibold tabular-nums">
                       {brl(base.margem, 2)} <span className="text-secondary/50 text-tagline-2 font-medium">· {pct(base.margemPct, 1)}</span>
                     </span>
@@ -454,46 +699,25 @@ export default function CalculadoraCac() {
               )}
 
               {passo === 3 && (
-                <Etapa n={4} titulo="Aquisição" descricao="Quanto você investe para trazer clientes novos hoje.">
-                  <div className="grid gap-5 sm:grid-cols-3">
-                    <Numero id="investimento" rotulo="Mídia por mês" prefixo="R$" valor={e.investimento} onChange={(v) => set('investimento', v)} ajuda="Google, Meta e outros anúncios" />
-                    <Numero id="clientes" rotulo="Clientes novos por mês" valor={e.clientesNovos} onChange={(v) => set('clientesNovos', v)} />
-                    <Numero id="conversao" rotulo="Lead → venda (opcional)" sufixo="%" passo={0.5} valor={e.conversaoLead} onChange={(v) => set('conversaoLead', v)} ajuda="De cada 100 leads, quantos compram" />
-                  </div>
-                  {e.custosAquisicao.length > 0 && (
-                    <div className="mt-5 space-y-3">
-                      {e.custosAquisicao.map((c, k) => (
-                        <div key={c.id} className="grid grid-cols-[1fr_120px_auto] items-center gap-2 sm:grid-cols-[1fr_160px_auto]">
-                          <input
-                            aria-label="Nome do custo de aquisição"
-                            placeholder={EXEMPLOS_AQUISICAO[k % EXEMPLOS_AQUISICAO.length]}
-                            value={c.nome}
-                            onChange={(ev) => set('custosAquisicao', e.custosAquisicao.map((x, j) => (j === k ? { ...x, nome: ev.target.value } : x)))}
-                            className={cn(inputClass, 'text-tagline-2 py-2.5 font-medium')}
-                          />
-                          <div className="relative">
-                            <span className="text-secondary/50 text-tagline-2 pointer-events-none absolute top-1/2 left-4 -translate-y-1/2">R$</span>
-                            <input
-                              aria-label={`${c.nome || 'Custo de aquisição'} por mês`}
-                              type="number"
-                              inputMode="decimal"
-                              min={0}
-                              value={c.valor}
-                              onChange={(ev) => set('custosAquisicao', e.custosAquisicao.map((x, j) => (j === k ? { ...x, valor: Number(ev.target.value) || 0 } : x)))}
-                              className={cn(inputClass, 'py-2.5 pl-11')}
-                            />
-                          </div>
-                          <button type="button" onClick={() => set('custosAquisicao', e.custosAquisicao.filter((_, j) => j !== k))} aria-label="Remover custo" className={botaoRemover}>
-                            <X className="size-4" />
-                          </button>
-                        </div>
-                      ))}
-                      <p className="text-tagline-3 text-secondary/55">Valores por mês. Somam com a mídia no CAC; o ROAS continua só sobre a mídia.</p>
+                <Etapa n={4} titulo="Sua meta de clientes" descricao="Diga quantos clientes novos você quer por mês. A calculadora mostra quanto investir para chegar lá.">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Numero id="desejados" rotulo="Quantos clientes novos você quer por mês?" valor={e.clientesDesejados} onChange={(v) => set('clientesDesejados', v)} ajuda="Deste produto ou serviço" />
+                    <div>
+                      <Numero
+                        id="conversao"
+                        rotulo="De cada 100 leads, quantos viram venda?"
+                        sufixo="%"
+                        passo={0.5}
+                        valor={e.conversaoNaoSei ? CONVERSAO_PADRAO : e.conversaoLead}
+                        onChange={(v) => setE((x) => ({ ...x, conversaoLead: v, conversaoNaoSei: false }))}
+                        ajuda={e.conversaoNaoSei ? `Usando ${CONVERSAO_PADRAO}%, uma referência conservadora (estimativa)` : 'Para saber quantos leads você precisa e quanto cada um pode custar'}
+                      />
+                      <label className="text-tagline-2 text-secondary mt-2 flex cursor-pointer items-center gap-2">
+                        <input type="checkbox" checked={e.conversaoNaoSei} onChange={(ev) => set('conversaoNaoSei', ev.target.checked)} className="accent-secondary size-4 cursor-pointer" />
+                        Não sei
+                      </label>
                     </div>
-                  )}
-                  <button type="button" onClick={() => set('custosAquisicao', [...e.custosAquisicao, { id: `aq-${Date.now()}`, nome: '', valor: 0 }])} className={botaoAdicionar}>
-                    <Plus className="size-4" /> Adicionar custo de aquisição
-                  </button>
+                  </div>
                 </Etapa>
               )}
 
@@ -506,7 +730,7 @@ export default function CalculadoraCac() {
                         { rotulo: TIPOS.find((t) => t.id === e.tipo)!.nome, p: 0 },
                         { rotulo: `${recorrente ? 'mensalidade' : 'ticket'} ${brl(e.ticket)}`, p: 1 },
                         { rotulo: `margem ${pct(base.margemPct, 1)}`, p: 2 },
-                        { rotulo: `${brl(e.investimento + r.outrosAquisicao)}/mês · ${num(e.clientesNovos, 0)} clientes`, p: 3 },
+                        { rotulo: `meta de ${num(e.clientesDesejados, 0)} clientes/mês`, p: 3 },
                       ].map((x) => (
                         <button
                           key={x.p}
@@ -518,16 +742,18 @@ export default function CalculadoraCac() {
                         </button>
                       ))}
                     </div>
-                    <Resultados e={e} r={r} aj={aj} />
-                    <Acoes e={e} r={r} />
+                    <BarraProdutos produtos={produtos} atual={atual} onAbrir={abrirProduto} onRemover={removerProduto} onOutro={outroProduto} />
+                    <Resultados e={e} r={r} />
+                    {produtos.length >= 2 && <ComparaProdutos produtos={produtos} atual={atual} onAbrir={abrirProduto} />}
+                    <Acoes e={e} r={r} produtos={produtos} />
                   </div>
                 ) : (
                   <div className="grid grid-cols-12 items-start gap-6">
                     <div className="col-span-12 lg:col-span-5">
-                      <Cadastro r={r} tipo={e.tipo} extras={resumoExtras} onLiberar={() => setLiberado(true)} />
+                      <Cadastro r={r} tipo={e.tipo} segmento={e.segmento === 'Outro' ? `Outro: ${e.segmentoOutro}` : e.segmento} extras={resumoExtras} onLiberar={() => setLiberado(true)} />
                     </div>
                     <div aria-hidden className="pointer-events-none col-span-7 hidden blur-[7px] select-none lg:block">
-                      <Resultados e={e} r={r} aj={aj} />
+                      <Resultados e={e} r={r} />
                     </div>
                   </div>
                 ))}
@@ -568,10 +794,10 @@ export default function CalculadoraCac() {
                 <Sparkles className="size-4" /> Simulador
               </p>
               <h2 className="text-white">E se…?</h2>
-              <p className="text-white/65">Mexa nos números e veja na hora o efeito no LTV:CAC, no payback e no CAC máximo. Os resultados acima também mudam.</p>
+              <p className="text-white/65">Mexa nos números e veja na hora o efeito no LTV, no CAC máximo e no investimento. Os resultados acima também mudam.</p>
               <div className="space-y-7 rounded-3xl border border-white/10 bg-white/[0.04] p-6">
                 <Deslizante rotulo="Ticket / mensalidade" min={-30} max={50} passo={5} valor={aj.ticketPct} onChange={(v) => setAj((a) => ({ ...a, ticketPct: v }))} mostrar={`${aj.ticketPct > 0 ? '+' : ''}${aj.ticketPct}% · ${brl(r.ticket)}`} />
-                <Deslizante rotulo="Custo de aquisição (CAC)" min={-50} max={50} passo={5} valor={aj.cacPct} onChange={(v) => setAj((a) => ({ ...a, cacPct: v }))} mostrar={`${aj.cacPct > 0 ? '+' : ''}${aj.cacPct}% · ${brl(r.cac)}`} />
+                <Deslizante rotulo="Clientes novos por mês" min={1} max={Math.max(100, e.clientesDesejados * 3)} passo={1} valor={aj.clientes ?? e.clientesDesejados} onChange={(v) => setAj((a) => ({ ...a, clientes: v }))} mostrar={`${num(r.desejados, 0)} clientes`} />
                 {recorrente && (
                   <Deslizante rotulo="Cancelamento por mês" min={0.5} max={20} passo={0.5} valor={aj.churn ?? e.churn} onChange={(v) => setAj((a) => ({ ...a, churn: v }))} mostrar={`${num(aj.churn ?? e.churn)}% · ${num(100 / (aj.churn ?? e.churn))} meses`} />
                 )}
@@ -586,9 +812,9 @@ export default function CalculadoraCac() {
             <div className="col-span-12 space-y-6 lg:col-span-7">
               <div className="grid gap-3 sm:grid-cols-3">
                 {[
-                  { rotulo: 'LTV:CAC', antes: base.ltvCac == null ? '—' : `${num(base.ltvCac)} : 1`, depois: r.ltvCac == null ? '—' : `${num(r.ltvCac)} : 1` },
                   { rotulo: 'LTV', antes: brl(base.ltv), depois: brl(r.ltv) },
-                  { rotulo: e.tipo === 'unica' ? 'Vendas p/ pagar' : 'Payback', antes: e.tipo === 'unica' ? num(base.vendasParaPagar) : meses(base.paybackMeses), depois: e.tipo === 'unica' ? num(r.vendasParaPagar) : meses(r.paybackMeses) },
+                  { rotulo: 'CAC máximo (moderado)', antes: brl(base.plano[1].cac), depois: brl(r.plano[1].cac) },
+                  { rotulo: 'Investimento (moderado)', antes: brl(base.plano[1].investimento), depois: brl(r.plano[1].investimento) },
                 ].map((x) => (
                   <div key={x.rotulo} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
                     <p className="text-tagline-2 text-white/55">{x.rotulo}</p>
@@ -598,32 +824,6 @@ export default function CalculadoraCac() {
                 ))}
               </div>
 
-              <div className="rounded-3xl bg-white p-6 md:p-7">
-                <div className="flex flex-wrap items-end justify-between gap-4">
-                  <div>
-                    <p className="font-titulo text-heading-6 text-secondary font-medium">Quanto investir para crescer</p>
-                    <p className="text-tagline-2 mt-1">Investimento por mês para trazer os clientes que você quer, em cada cenário de CAC máximo.</p>
-                  </div>
-                  <label className="text-tagline-2 text-secondary flex items-center gap-2 font-medium">
-                    Clientes novos / mês
-                    <input type="number" min={1} value={desejados} onChange={(ev) => setDesejados(Math.max(Number(ev.target.value) || 0, 0))} className={cn(inputClass, 'w-24 py-2')} />
-                  </label>
-                </div>
-                <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                  {r.cacMaximo.map((c) => (
-                    <div key={c.id} className={cn('rounded-2xl p-4', c.id === 'moderado' ? 'bg-lilas-50' : 'bg-background-2')}>
-                      <p className="text-tagline-3 text-secondary/60">
-                        {c.nome} · CAC até {brl(c.valor)}
-                      </p>
-                      <p className="font-titulo text-secondary mt-1 text-[1.375rem] font-semibold tabular-nums">{brl(c.valor * desejados)}</p>
-                      <p className="text-tagline-3 text-secondary/55">por mês</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-tagline-2 text-secondary/70 mt-4">
-                  Com o CAC de hoje ({brl(r.cac)}), {num(desejados, 0)} clientes custariam <strong className="text-secondary">{brl(r.cac * desejados)}</strong> por mês.
-                </p>
-              </div>
 
               <Acoes e={e} r={r} escuro />
             </div>
@@ -635,7 +835,7 @@ export default function CalculadoraCac() {
 }
 
 // Formulário que libera o resultado: vai para a RD Station como conversão "calculadora-cac" (mesma rota dos formulários do site)
-function Cadastro({ r, tipo, extras, onLiberar }: { r: ReturnType<typeof calcular>; tipo: TipoNegocio; extras: string[]; onLiberar: () => void }) {
+function Cadastro({ r, tipo, segmento, extras, onLiberar }: { r: ReturnType<typeof calcular>; tipo: TipoNegocio; segmento: string; extras: string[]; onLiberar: () => void }) {
   const [dados, setDados] = useState({ nome: '', email: '', telefone: '' });
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState('');
@@ -650,10 +850,11 @@ function Cadastro({ r, tipo, extras, onLiberar }: { r: ReturnType<typeof calcula
     const formData = {
       ...dados,
       businessType: TIPOS.find((t) => t.id === tipo)?.nome ?? tipo,
+      sector: segmento,
       ticket: brl(r.ticket),
       // Resumo do resultado no campo "principal dor", para o comercial já ligar sabendo o cenário
       mainPain: [
-        `Calculadora CAC: LTV:CAC ${r.ltvCac == null ? '—' : num(r.ltvCac)} · CAC ${brl(r.cac)} · LTV ${brl(r.ltv)} · CAC máx. moderado ${brl(r.cacMaximo[1].valor)}`,
+        `Calculadora CAC: quer ${num(r.desejados, 0)} clientes/mês · LTV ${brl(r.ltv)} · CAC máx. moderado ${brl(r.plano[1].cac)} · investimento moderado ${brl(r.plano[1].investimento)}/mês`,
         extras.length ? `Custos extras: ${extras.join(', ')}` : '',
       ]
         .filter(Boolean)
@@ -731,7 +932,7 @@ function Cadastro({ r, tipo, extras, onLiberar }: { r: ReturnType<typeof calcula
 
 
 // Botões do resultado: "Quero ajuda no meu marketing" (WhatsApp da UPDO com os números + conversão na RD) e o PDF do diagnóstico
-function Acoes({ e, r, escuro = false }: { e: Entradas; r: ReturnType<typeof calcular>; escuro?: boolean }) {
+function Acoes({ e, r, produtos = [], escuro = false }: { e: Entradas; r: ReturnType<typeof calcular>; produtos?: Produto[]; escuro?: boolean }) {
   const [gerando, setGerando] = useState(false);
 
   const pedirAjuda = () => {
@@ -739,9 +940,9 @@ function Acoes({ e, r, escuro = false }: { e: Entradas; r: ReturnType<typeof cal
     const msg = [
       'Olá! Fiz a calculadora de CAC e LTV da UPDO e quero ajuda no meu marketing.',
       `*Tipo:* ${TIPOS.find((t) => t.id === e.tipo)?.nome}`,
-      `*LTV:CAC:* ${r.ltvCac == null ? '—' : num(r.ltvCac)} : 1`,
-      `*CAC atual:* ${brl(r.cac)} (máximo saudável ${brl(r.cacMaximo[1].valor)})`,
-      `*LTV:* ${brl(r.ltv)}`,
+      `*Meta:* ${num(r.desejados, 0)} clientes novos por mês`,
+      `*LTV:* ${brl(r.ltv)} · *CAC máximo (moderado):* ${brl(r.plano[1].cac)}`,
+      `*Investimento (moderado):* ${brl(r.plano[1].investimento)} por mês`,
     ].join('\n');
     window.open(`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
     try {
@@ -760,7 +961,7 @@ function Acoes({ e, r, escuro = false }: { e: Entradas; r: ReturnType<typeof cal
           formName: 'calculadora-cac-quero-ajuda',
           pagePath: '/ferramentas/calculadora-cac',
           pageUrl: window.location.href,
-          formData: { nome: quem.nome ?? '', email: quem.email, mainPain: `Pediu ajuda pela calculadora: LTV:CAC ${r.ltvCac == null ? '—' : num(r.ltvCac)} · CAC ${brl(r.cac)} · LTV ${brl(r.ltv)}` },
+          formData: { nome: quem.nome ?? '', email: quem.email, mainPain: `Pediu ajuda pela calculadora: quer ${num(r.desejados, 0)} clientes/mês · LTV ${brl(r.ltv)} · investimento moderado ${brl(r.plano[1].investimento)}/mês` },
         }),
       }).catch(() => {});
     }
@@ -770,7 +971,7 @@ function Acoes({ e, r, escuro = false }: { e: Entradas; r: ReturnType<typeof cal
     setGerando(true);
     try {
       const [{ pdf }, { RelatorioPdf }] = await Promise.all([import('@react-pdf/renderer'), import('./relatorio-pdf')]);
-      const blob = await pdf(<RelatorioPdf e={e} origem={window.location.origin} nome={lerCadastro().nome} />).toBlob();
+      const blob = await pdf(<RelatorioPdf e={e} produtos={produtos} origem={window.location.origin} nome={lerCadastro().nome} />).toBlob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -784,7 +985,7 @@ function Acoes({ e, r, escuro = false }: { e: Entradas; r: ReturnType<typeof cal
 
   return (
     <div className={cn('flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center', !escuro && 'rounded-3xl bg-white p-4 md:p-5')}>
-      <ButtonPrimarySubmit type="button" onClick={pedirAjuda} text="Quero ajuda no meu marketing" className="h-14 w-full sm:w-auto [&>span]:w-full" />
+      <ButtonPrimarySubmit type="button" onClick={pedirAjuda} text="Quero ajuda no meu marketing" className="h-14 w-full sm:w-auto max-md:text-[0.875rem] [&>span]:w-full max-md:[&>span]:gap-x-2 max-md:[&>span]:pl-4" />
       <button
         type="button"
         onClick={baixarPdf}
@@ -802,6 +1003,103 @@ function Acoes({ e, r, escuro = false }: { e: Entradas; r: ReturnType<typeof cal
           <WhatsAppIcon color="currentColor" className="size-4" /> Fale direto com o time da UPDO
         </p>
       )}
+    </div>
+  );
+}
+
+
+// Produtos calculados: uma aba por produto (abrir, remover) e o botão para calcular outro
+function BarraProdutos({ produtos, atual, onAbrir, onRemover, onOutro }: { produtos: Produto[]; atual: string; onAbrir: (id: string) => void; onRemover: (id: string) => void; onOutro: () => void }) {
+  return (
+    <div className="flex flex-wrap items-center gap-2 rounded-2xl bg-white px-4 py-3">
+      <span className="text-tagline-2 text-secondary/60 mr-1">{produtos.length > 1 ? 'Seus produtos:' : 'Produto:'}</span>
+      {produtos.map((p, i) => {
+        const ativo = p.id === atual;
+        return (
+          <span key={p.id} className={cn('inline-flex items-center rounded-full border transition-colors', ativo ? 'border-secondary bg-secondary text-white' : 'border-stroke-3 text-secondary hover:border-secondary')}>
+            <button type="button" onClick={() => onAbrir(p.id)} aria-pressed={ativo} className="text-tagline-2 max-w-[220px] truncate py-1.5 pr-1 pl-3.5 font-medium">
+              {nomeProduto(p, i)}
+            </button>
+            {produtos.length > 1 ? (
+              <button type="button" onClick={() => onRemover(p.id)} aria-label={`Remover ${nomeProduto(p, i)}`} className={cn('mr-1 flex size-6 items-center justify-center rounded-full', ativo ? 'hover:bg-white/15' : 'hover:bg-background-3')}>
+                <X className="size-3.5" />
+              </button>
+            ) : (
+              <span className="w-2.5" />
+            )}
+          </span>
+        );
+      })}
+      {produtos.length < MAX_PRODUTOS && (
+        <button type="button" onClick={onOutro} className="border-stroke-3 text-tagline-2 text-lilas-700 hover:border-lilas-500 ml-auto inline-flex items-center gap-1.5 rounded-full border border-dashed px-4 py-1.5 font-medium transition-colors">
+          <Plus className="size-4" /> Calcular outro produto
+        </button>
+      )}
+    </div>
+  );
+}
+
+// Comparação entre os produtos (2 ou mais): uma coluna por produto, destaque para o de maior lucro e o total para bater todas as metas
+function ComparaProdutos({ produtos, atual, onAbrir }: { produtos: Produto[]; atual: string; onAbrir: (id: string) => void }) {
+  const lista = produtos.map((p, i) => ({ p, nome: nomeProduto(p, i), r: calcular(p.e) }));
+  const melhor = lista.reduce((a, b) => (b.r.plano[1].lucro > a.r.plano[1].lucro ? b : a));
+  const total = [0, 1, 2].map((k) => lista.reduce((t, x) => t + x.r.plano[k].investimento, 0));
+  const linhas: { rotulo: string; valor: (x: (typeof lista)[number]) => string; dica?: string }[] = [
+    { rotulo: 'Tipo de venda', valor: (x) => TIPOS.find((t) => t.id === x.p.e.tipo)?.nome ?? '' },
+    { rotulo: 'LTV (margem)', valor: (x) => brl(x.r.ltv), dica: DICAS.ltv },
+    { rotulo: 'Margem por venda', valor: (x) => `${brl(x.r.margem, 2)} · ${pct(x.r.margemPct, 1)}`, dica: DICAS.margem },
+    { rotulo: 'Custo por venda ideal (moderado)', valor: (x) => `até ${brl(x.r.plano[1].cac)}`, dica: DICAS.cac },
+    { rotulo: 'Custo por lead ideal (moderado)', valor: (x) => (x.r.plano[1].cpl == null ? '—' : `até ${brl(x.r.plano[1].cpl, 2)}`), dica: DICAS.cpl },
+    { rotulo: 'Clientes novos por mês', valor: (x) => num(x.r.desejados, 0) },
+    { rotulo: 'Investimento por mês (moderado)', valor: (x) => brl(x.r.plano[1].investimento) },
+    { rotulo: 'Lucro na margem (moderado)', valor: (x) => `${brl(x.r.plano[1].lucro)} ${horizonte(x.r)}` },
+    { rotulo: 'ROI (moderado)', valor: (x) => `${roiMultiplo(x.r.plano[1].roi)} ${horizonte(x.r)}`, dica: DICAS.roi },
+  ];
+  return (
+    <div className="border-stroke-4 rounded-3xl border bg-white p-6 md:p-7">
+      <p className="font-titulo text-heading-6 text-secondary font-medium">Seus produtos lado a lado</p>
+      <p className="text-tagline-2 mt-1">
+        Em destaque, o produto que deixa mais lucro na margem com a meta de clientes de cada um. No mesmo cenário, o ROI é o mesmo para todos (o CAC é a mesma fatia do LTV); o que muda é o tamanho do lucro.
+      </p>
+      <div className="-mx-2 mt-5 overflow-x-auto px-2">
+        <table className="w-full min-w-[560px] text-[0.9375rem] tabular-nums">
+          <thead>
+            <tr className="border-stroke-4 border-b text-left">
+              <th className="text-tagline-3 text-secondary/55 sticky left-0 z-10 bg-white py-2 pr-3 font-medium" />
+              {lista.map((x) => (
+                <th key={x.p.id} className={cn('px-3 py-2 align-bottom', x === melhor && 'bg-primary-50 rounded-t-xl')}>
+                  {x === melhor && <span className="text-tagline-3 text-primary-800 block font-semibold">Maior lucro</span>}
+                  <button type="button" onClick={() => onAbrir(x.p.id)} className={cn('font-titulo text-tagline-1 text-left font-semibold hover:underline', x.p.id === atual ? 'text-lilas-700' : 'text-secondary')}>
+                    {x.nome}
+                  </button>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {linhas.map((l) => (
+              <tr key={l.rotulo} className="border-stroke-4 border-b">
+                <td className="text-tagline-2 text-secondary/65 sticky left-0 z-10 min-w-[150px] bg-white py-2.5 pr-3">
+                  {l.rotulo}
+                  {l.dica && <Dica texto={l.dica} />}
+                </td>
+                {lista.map((x) => (
+                  <td key={x.p.id} className={cn('text-secondary px-3 py-2.5 font-medium', x === melhor && 'bg-primary-50')}>
+                    {l.valor(x)}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="bg-secondary mt-5 rounded-2xl px-5 py-4 text-white">
+        <p className="text-tagline-2 text-white/70">Para bater as metas de todos os produtos</p>
+        <p className="font-titulo mt-1 text-[1.5rem] font-semibold text-white tabular-nums">{brl(total[1])} por mês</p>
+        <p className="text-tagline-3 mt-1 text-white/60">
+          no moderado · de {brl(total[0])} (conservador) a {brl(total[2])} (agressivo)
+        </p>
+      </div>
     </div>
   );
 }

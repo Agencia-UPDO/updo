@@ -1,6 +1,6 @@
 import { Document, Font, Image, Link, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
 import { siteConfig } from '@/config/site';
-import { type Entradas, TIPOS, calcular, saudeLtvCac } from './calculo';
+import { type Entradas, TIPOS, calcular, CONVERSAO_PADRAO, horizonte, nomeProduto, type Produto, roiFrase, roiMultiplo } from './calculo';
 
 // Diagnóstico em PDF da calculadora (A4, 3 páginas), gerado no navegador. Fontes e logos ficam em /public/calculadora.
 
@@ -12,7 +12,6 @@ export const LILAS_CLARO = '#f1f2ff';
 export const CINZA = '#5b6472';
 export const LINHA = '#e3e7ed';
 export const FUNDO = '#f4f5f8';
-const COR_TOM = { bom: MENTA_ESCURO, atencao: '#d48a00', ruim: '#d6372b', neutro: CINZA };
 
 let fontesProntas = false;
 export function registrarFontes(origem: string) {
@@ -87,40 +86,25 @@ function Cartao({ rotulo, valor, detalhe, cor }: { rotulo: string; valor: string
   );
 }
 
-// Leitura em linguagem simples do resultado, com recomendações conforme o cenário
+// Leitura em linguagem simples do resultado, com recomendações
 function diagnostico(e: Entradas, r: ReturnType<typeof calcular>) {
-  const saude = saudeLtvCac(r.ltvCac);
-  const resumo =
-    saude.tom === 'ruim'
-      ? 'Hoje cada cliente novo custa mais do que deixa de margem ao longo da relação. Crescer investindo mais em mídia, do jeito que está, aumenta o prejuízo.'
-      : saude.tom === 'atencao'
-        ? 'A aquisição se paga, mas com pouca folga. Qualquer aumento no custo da mídia ou queda na conversão pode zerar o lucro dos clientes novos.'
-        : saude.tom === 'bom'
-          ? 'A relação entre o que um cliente deixa e o que custa trazê-lo é saudável. Há espaço para investir mais e acelerar o crescimento.'
-          : 'Informe o investimento e os clientes novos por mês para ver o diagnóstico completo.';
+  const [cons, mod, agr] = r.plano;
+  const resumo = `Para ter ${num(r.desejados, 0)} clientes novos por mês, o investimento fica entre ${brl(cons.investimento)} (conservador) e ${brl(agr.investimento)} (agressivo) por mês. No cenário moderado, cada cliente pode custar até ${brl(mod.cac)}, e o investimento é de ${brl(mod.investimento)} por mês.`;
   const dicas: string[] = [];
-  if (saude.tom === 'ruim' || saude.tom === 'atencao') {
-    dicas.push(
-      r.cac > r.cacMaximo[1].valor
-        ? `Baixar o CAC: o teto saudável (moderado) é ${brl(r.cacMaximo[1].valor)} por cliente e hoje ele está em ${brl(r.cac)}. Melhorar a conversão de lead em venda e a página de destino costuma ser o caminho mais rápido.`
-        : `Seu CAC (${brl(r.cac)}) já está abaixo do teto moderado (${brl(r.cacMaximo[1].valor)}), mas a folga é pequena. Ganhar eficiência no funil (mais vendas com os mesmos leads) aumenta essa margem de segurança.`,
-    );
-    dicas.push(e.tipo === 'unica' ? 'Aumentar o ticket com ofertas complementares (upsell e combos) melhora a margem de cada venda.' : 'Aumentar o tempo de vida do cliente (retenção, recompra, programas de relacionamento) eleva o LTV sem gastar mais com mídia.');
-  }
-  if (saude.tom === 'bom') dicas.push(`Dá para escalar: com o CAC moderado de ${brl(r.cacMaximo[1].valor)}, cada cliente novo continua lucrativo. Aumente o investimento aos poucos e acompanhe o CAC mês a mês.`);
+  dicas.push(`Comece pelo conservador (${brl(cons.cac)} por cliente) e suba para o moderado se o CAC real ficar abaixo do teto. O agressivo (${brl(agr.cac)}) acelera o crescimento, mas com folga menor.`);
+  dicas.push(e.tipo === 'unica' ? 'Aumentar o ticket com ofertas complementares (upsell e combos) aumenta o quanto você pode pagar por cliente.' : 'Aumentar o tempo de vida do cliente (retenção, recompra, relacionamento) eleva o LTV e, com ele, o CAC que você pode pagar.');
   if (r.margemPct < 0.3) dicas.push(`A margem de contribuição está em ${pct(r.margemPct, 1)}. Com margem baixa, o ROAS mínimo para empatar sobe (${vezes(r.roasEmpate)}): revise preço e custos variáveis.`);
-  if (r.paybackMeses != null && Number.isFinite(r.paybackMeses) && r.paybackMeses > 12) dicas.push(`O CAC leva ${meses(r.paybackMeses)} para voltar. Payback longo exige caixa para crescer; planeje o fluxo antes de aumentar a mídia.`);
-  if (r.cplMaximo != null) dicas.push(`Com ${num(e.conversaoLead)}% de conversão, cada lead pode custar até ${brl(r.cplMaximo, 2)}. Use esse número como teto nas campanhas.`);
-  return { saude, resumo, dicas };
+  if (mod.payback != null && Number.isFinite(mod.payback) && mod.payback > 12) dicas.push(`No moderado, o CAC leva ${meses(mod.payback)} para voltar. Payback longo exige caixa para crescer; planeje o fluxo antes de aumentar a mídia.`);
+  if (mod.cpl != null && mod.leads != null) dicas.push(`Com ${num(r.conversaoUsada)}% de conversão${r.conversaoEstimada ? ' (estimativa)' : ''}, você precisa de cerca de ${num(Math.ceil(mod.leads), 0)} leads por mês, e cada lead pode custar até ${brl(mod.cpl, 2)} no moderado. Use esse número como teto nas campanhas.`);
+  return { resumo, dicas };
 }
 
-export function RelatorioPdf({ e, origem, nome }: { e: Entradas; origem: string; nome?: string }) {
+export function RelatorioPdf({ e, produtos = [], origem, nome }: { e: Entradas; produtos?: Produto[]; origem: string; nome?: string }) {
   registrarFontes(origem);
   const r = calcular(e);
-  const { saude, resumo, dicas } = diagnostico(e, r);
+  const { resumo, dicas } = diagnostico(e, r);
   const recorrente = e.tipo === 'recorrente' || e.tipo === 'setup';
   const hoje = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
-  const roi = e.tipo === 'unica' ? r.roiPrimeira : r.roiVida;
   const zap = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent('Olá! Fiz a calculadora de CAC e LTV da UPDO e quero ajuda para melhorar meus números.')}`;
 
   const entradas: [string, string][] = [
@@ -131,10 +115,9 @@ export function RelatorioPdf({ e, origem, nome }: { e: Entradas; origem: string;
     ...(recorrente ? [['Cancelamento (churn)', `${num(e.churn)}% ao mês · ${num(100 / Math.max(e.churn, 0.1))} meses de vida`] as [string, string]] : []),
     ...e.custos.filter((c) => c.valor).map((c) => [c.nome || 'Custo', c.modo === '%' ? `${num(c.valor)}% do preço` : `${brl(c.valor, 2)} por venda`] as [string, string]),
     [`Margem de contribuição por ${recorrente ? 'mês' : 'compra'}`, `${brl(r.margem, 2)} (${pct(r.margemPct, 1)})`],
-    ['Mídia por mês', brl(e.investimento)],
-    ...e.custosAquisicao.filter((c) => c.valor).map((c) => [c.nome || 'Outro custo de aquisição', `${brl(c.valor)} por mês`] as [string, string]),
-    ['Clientes novos por mês', num(e.clientesNovos, 0)],
-    ...(e.conversaoLead ? [['Conversão de lead em venda', `${num(e.conversaoLead)}%`] as [string, string]] : []),
+    ['Meta de clientes novos por mês', num(e.clientesDesejados, 0)],
+    ['Leads que viram venda', `${num(r.conversaoUsada)}%${r.conversaoEstimada ? ' (estimativa)' : ''}`],
+    ...(e.segmento ? [['Segmento', e.segmento === 'Outro' ? e.segmentoOutro || 'Outro' : e.segmento] as [string, string]] : []),
   ];
 
   return (
@@ -147,6 +130,7 @@ export function RelatorioPdf({ e, origem, nome }: { e: Entradas; origem: string;
             <Text style={s.etiqueta}>Diagnóstico de aquisição</Text>
           </View>
           <Text style={s.titulo}>Diagnóstico de CAC e LTV</Text>
+          {e.nome.trim() ? <Text style={[s.subtitulo, { color: '#ffffff', fontSize: 12, marginTop: 4 }]}>{e.nome.trim()}</Text> : null}
           <Text style={s.subtitulo}>
             {nome ? `Preparado para ${nome} · ` : ''}
             {hoje}
@@ -154,51 +138,82 @@ export function RelatorioPdf({ e, origem, nome }: { e: Entradas; origem: string;
         </View>
 
         <View style={s.corpo}>
-          <View style={s.veredito}>
-            <View style={{ width: 150 }}>
-              <Text style={s.rotulo}>LTV : CAC</Text>
-              <Text style={[s.razao, { color: COR_TOM[saude.tom] }]}>{r.ltvCac == null ? '—' : `${num(r.ltvCac)} : 1`}</Text>
+          <View style={[s.veredito, { alignItems: 'stretch' }]}>
+            <View style={{ width: 210 }}>
+              <Text style={s.rotulo}>Para ter {num(r.desejados, 0)} clientes novos por mês</Text>
+              <Text style={{ fontFamily: 'Jakarta', fontWeight: 700, fontSize: 26, color: LILAS, marginTop: 4 }}>{brl(r.plano[1].investimento)}</Text>
+              <Text style={[s.detalhe, { fontSize: 8.5 }]}>por mês no moderado · CAC até {brl(r.plano[1].cac)}</Text>
             </View>
             <View style={{ flex: 1, paddingLeft: 14, borderLeftWidth: 1, borderLeftColor: LINHA }}>
-              <Text style={{ fontFamily: 'Jakarta', fontWeight: 700, fontSize: 12, color: COR_TOM[saude.tom] }}>{saude.rotulo}</Text>
-              <Text style={{ fontSize: 9, color: CINZA, marginTop: 5, lineHeight: 1.45 }}>{resumo}</Text>
-              <Text style={{ fontSize: 7.5, color: CINZA, marginTop: 6 }}>Referência: abaixo de 1 perde dinheiro · de 1 a 3 paga com pouca folga · 3 ou mais é saudável</Text>
+              <Text style={{ fontSize: 9, color: CINZA, lineHeight: 1.45 }}>{resumo}</Text>
             </View>
           </View>
+
+          <Text style={s.secao}>Seus alvos para as campanhas</Text>
+          {[
+            { rot: 'Custo por venda ideal', vals: r.plano.map((pl) => brl(pl.cac)) },
+            { rot: `Custo por lead ideal (${num(r.conversaoUsada)}% de conversão${r.conversaoEstimada ? ', estimativa' : ''})`, vals: r.plano.map((pl) => (pl.cpl == null ? '—' : brl(pl.cpl, 2))) },
+          ].map((linha) => (
+            <View key={linha.rot} style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
+              <Text style={{ width: 170, fontSize: 9, fontWeight: 600 }}>{linha.rot}</Text>
+              {r.plano.map((pl, i) => {
+                const cor = pl.id === 'conservador' ? MENTA_ESCURO : pl.id === 'moderado' ? '#d48a00' : '#d6372b';
+                return (
+                  <View key={pl.id} style={{ flex: 1, marginLeft: 6, borderWidth: 1.2, borderColor: cor, borderRadius: 7, paddingVertical: 5, paddingHorizontal: 8 }}>
+                    <Text style={{ fontSize: 7, color: cor, fontWeight: 600 }}>{pl.nome}</Text>
+                    <Text style={{ fontSize: 10.5, fontFamily: 'Jakarta', fontWeight: 700 }}>até {linha.vals[i]}</Text>
+                  </View>
+                );
+              })}
+            </View>
+          ))}
+          <Text style={{ fontSize: 7.8, color: CINZA, marginBottom: 12 }}>
+            Acima destes valores, cada cliente novo começa a sair caro.{r.conversaoEstimada ? ` Taxa de conversão de ${CONVERSAO_PADRAO}% usada como referência conservadora.` : ''}
+          </Text>
 
           <Text style={s.secao}>Seus indicadores</Text>
           <View style={s.grade}>
             <Cartao rotulo="LTV (margem)" valor={brl(r.ltv)} detalhe={e.tipo === 'unica' ? 'margem de uma venda' : `${num(r.compras, 0)} ${recorrente ? 'meses' : 'compras'} · receita ${brl(r.receitaVida)}`} />
-            <Cartao rotulo="CAC atual" valor={brl(r.cac)} detalhe={r.outrosAquisicao ? `mídia ${brl(r.cacMidia)} + outros ${brl(r.cac - r.cacMidia)}` : 'investimento ÷ clientes novos'} cor={r.cac > r.cacMaximo[1].valor ? COR_TOM.ruim : COR_TOM.bom} />
-            <Cartao
-              rotulo={e.tipo === 'unica' ? 'Vendas para pagar o CAC' : 'Payback do CAC'}
-              valor={e.tipo === 'unica' ? (r.vendasParaPagar <= 1 ? 'na 1ª venda' : `${num(r.vendasParaPagar)} vendas`) : meses(r.paybackMeses)}
-              detalhe="tempo até o cliente se pagar"
-            />
+            <Cartao rotulo={`Margem por ${recorrente ? 'mês' : 'venda'}`} valor={brl(r.margem, 2)} detalhe={`${pct(r.margemPct, 1)} do preço`} />
             <Cartao rotulo="ROAS mínimo para empatar" valor={vezes(r.roasEmpate)} detalhe="na 1ª venda, com a sua margem" />
-            <Cartao rotulo="ROAS atual" valor={vezes(r.roasPrimeira)} detalhe={e.tipo === 'unica' ? 'receita ÷ mídia' : `na vida do cliente ${vezes(r.roasVida)}`} />
-            <Cartao rotulo="ROI sobre a margem" valor={pct(roi)} detalhe={e.tipo === 'unica' ? 'lucro da margem ÷ investimento' : 'na vida do cliente'} cor={roi != null && roi < 0 ? COR_TOM.ruim : COR_TOM.bom} />
           </View>
 
-          <Text style={[s.secao, { marginTop: 6 }]}>Quanto você pode pagar por cliente</Text>
+          <Text style={[s.secao, { marginTop: 6 }]}>Quanto investir em cada cenário</Text>
           <View style={{ flexDirection: 'row', marginHorizontal: -5 }}>
-            {r.cacMaximo.map((c) => (
-              <View key={c.id} style={{ flex: 1, paddingHorizontal: 5 }}>
-                <View style={{ borderRadius: 10, padding: 12, backgroundColor: c.id === 'moderado' ? LILAS_CLARO : FUNDO }}>
-                  <Text style={s.rotulo}>
-                    {c.nome} · {Math.round(c.pct * 100)}% do LTV
-                  </Text>
-                  <Text style={[s.valor, c.id === 'moderado' ? { color: LILAS } : {}]}>{brl(c.valor)}</Text>
-                  <Text style={s.detalhe}>{brl(c.valor * Math.max(e.clientesNovos, 1))} por mês para {num(Math.max(e.clientesNovos, 1), 0)} clientes</Text>
+            {r.plano.map((pl) => {
+              const cor = pl.id === 'conservador' ? MENTA_ESCURO : pl.id === 'moderado' ? '#d48a00' : '#d6372b';
+              const linha = (rot: string, val: string) => (
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 3 }}>
+                  <Text style={{ fontSize: 7.8, color: CINZA }}>{rot}</Text>
+                  <Text style={{ fontSize: 7.8, fontWeight: 600 }}>{val}</Text>
                 </View>
-              </View>
-            ))}
+              );
+              return (
+                <View key={pl.id} style={{ flex: 1, paddingHorizontal: 5 }}>
+                  <View style={{ borderRadius: 10, padding: 11, borderWidth: 1.5, borderColor: cor }}>
+                    <Text style={{ fontSize: 8.5, fontWeight: 600, color: cor }}>
+                      {pl.nome} · {Math.round(pl.pct * 100)}% do LTV
+                    </Text>
+                    <Text style={[s.valor, { fontSize: 15 }]}>{brl(pl.investimento)}</Text>
+                    <Text style={s.detalhe}>por mês · CAC até {brl(pl.cac)}</Text>
+                    <View style={{ marginTop: 5 }}>
+                      {linha(`Receita ${horizonte(r)}`, brl(pl.receita))}
+                      {linha('Lucro na margem', brl(pl.lucro))}
+                      {linha('ROI · ROAS', `${roiMultiplo(pl.roi)} · ${vezes(pl.roas)}`)}
+                      {linha(e.tipo === 'unica' ? 'Vendas p/ pagar' : 'Payback', e.tipo === 'unica' ? num(pl.vendasParaPagar) : meses(pl.payback))}
+                      {linha('LTV : CAC', `${num(pl.ltvCac)} : 1`)}
+                      {pl.leads != null ? linha('Leads por mês', num(Math.ceil(pl.leads), 0)) : null}
+                      {pl.cpl != null ? linha('Custo máx. por lead', brl(pl.cpl, 2)) : null}
+                    </View>
+                    {roiFrase(pl.roi, r) ? <Text style={{ fontSize: 7.5, color: cor, marginTop: 6, lineHeight: 1.35 }}>{roiFrase(pl.roi, r)}</Text> : null}
+                  </View>
+                </View>
+              );
+            })}
           </View>
-          {r.cplMaximo != null && (
-            <Text style={{ fontSize: 9, color: CINZA, marginTop: 10 }}>
-              Custo máximo por lead (cenário moderado, {num(e.conversaoLead)}% de conversão): <Text style={{ color: NAVY, fontWeight: 600 }}>{brl(r.cplMaximo, 2)}</Text>
-            </Text>
-          )}
+          <Text style={{ fontSize: 7.5, color: CINZA, marginTop: 7 }}>
+            Receita, lucro, ROI e ROAS são na vida dos clientes ({r.vidaMeses == null ? 'na venda' : `${Math.round(r.vidaMeses)} meses`}). ROI = (lucro na margem − investimento) ÷ investimento.
+          </Text>
         </View>
         <Rodape />
       </Page>
@@ -239,6 +254,7 @@ export function RelatorioPdf({ e, origem, nome }: { e: Entradas; origem: string;
         <Rodape />
       </Page>
 
+      {produtos.length >= 2 && <PaginaProdutos produtos={produtos} />}
       <PaginaUpdo origem={origem} zap={zap} />
     </Document>
   );
@@ -309,5 +325,59 @@ export function PaginaUpdo({ origem, zap }: { origem: string; zap: string }) {
       </View>
     </View>
   </Page>
+  );
+}
+
+// Página com todos os produtos lado a lado (quando a pessoa calculou mais de um)
+function PaginaProdutos({ produtos }: { produtos: Produto[] }) {
+  const lista = produtos.map((p, i) => ({ p, nome: nomeProduto(p, i), r: calcular(p.e) }));
+  const melhor = lista.reduce((a, b) => (b.r.plano[1].lucro > a.r.plano[1].lucro ? b : a));
+  const total = [0, 1, 2].map((k) => lista.reduce((t, x) => t + x.r.plano[k].investimento, 0));
+  const linhas: [string, (x: (typeof lista)[number]) => string][] = [
+    ['Tipo de venda', (x) => TIPOS.find((t) => t.id === x.p.e.tipo)?.nome ?? ''],
+    ['LTV (margem)', (x) => brl(x.r.ltv)],
+    ['Margem por venda', (x) => `${brl(x.r.margem, 2)} (${pct(x.r.margemPct, 1)})`],
+    ['Custo por venda ideal (moderado)', (x) => brl(x.r.plano[1].cac)],
+    ['Custo por lead ideal (moderado)', (x) => (x.r.plano[1].cpl == null ? '—' : brl(x.r.plano[1].cpl, 2))],
+    ['Clientes novos por mês', (x) => num(x.r.desejados, 0)],
+    ['Investimento por mês (moderado)', (x) => brl(x.r.plano[1].investimento)],
+    ['Investimento (conservador · agressivo)', (x) => `${brl(x.r.plano[0].investimento)} · ${brl(x.r.plano[2].investimento)}`],
+    ['Lucro na margem (moderado)', (x) => `${brl(x.r.plano[1].lucro)} ${horizonte(x.r)}`],
+    ['ROI (moderado)', (x) => `${roiMultiplo(x.r.plano[1].roi)} ${horizonte(x.r)}`],
+  ];
+  return (
+    <Page size="A4" orientation={lista.length > 3 ? 'landscape' : 'portrait'} style={[s.pagina, { paddingTop: 36 }]}>
+      <View style={s.corpo}>
+        <Text style={s.secao}>Seus produtos lado a lado</Text>
+        <Text style={{ fontSize: 8.5, color: CINZA, marginBottom: 10 }}>Em destaque, o produto que deixa mais lucro na margem com a meta de clientes de cada um.</Text>
+        <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderBottomColor: LINHA, paddingBottom: 5 }}>
+          <Text style={{ width: 150, fontSize: 8 }} />
+          {lista.map((x) => (
+            <Text key={x.p.id} style={{ flex: 1, fontSize: 9, fontFamily: 'Jakarta', fontWeight: 700, color: x === melhor ? MENTA_ESCURO : NAVY }}>
+              {x.nome}
+              {x === melhor ? ' (maior lucro)' : ''}
+            </Text>
+          ))}
+        </View>
+        {linhas.map(([rot, f]) => (
+          <View key={rot} style={{ flexDirection: 'row', borderBottomWidth: 1, borderBottomColor: LINHA, paddingVertical: 5 }}>
+            <Text style={{ width: 150, fontSize: 8, color: CINZA }}>{rot}</Text>
+            {lista.map((x) => (
+              <Text key={x.p.id} style={{ flex: 1, fontSize: 8.5, fontWeight: 600 }}>
+                {f(x)}
+              </Text>
+            ))}
+          </View>
+        ))}
+        <View style={{ marginTop: 14, backgroundColor: NAVY, borderRadius: 10, padding: 14 }}>
+          <Text style={{ fontSize: 9, color: '#c9d1dc' }}>Para bater as metas de todos os produtos</Text>
+          <Text style={{ fontSize: 18, fontFamily: 'Jakarta', fontWeight: 700, color: '#ffffff', marginTop: 3 }}>{brl(total[1])} por mês</Text>
+          <Text style={{ fontSize: 8.5, color: '#c9d1dc', marginTop: 2 }}>
+            no moderado · de {brl(total[0])} (conservador) a {brl(total[2])} (agressivo)
+          </Text>
+        </View>
+      </View>
+      <Rodape />
+    </Page>
   );
 }

@@ -6,7 +6,7 @@ import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
 import { cn } from '@/novo/utils/cn';
 import { ArrowLeft, Check, ClipboardPaste, Download, Lightbulb, Loader2, Pencil, Plus, X } from 'lucide-react';
 import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { GraficoAcumulado, GraficoAcumuladoBarras, GraficoAnos, GraficoAnual, GraficoDessazAnos, GraficoDessazonalizado, GraficoMensal, GraficoPctAcumulado, GraficoSazonalidade, GraficoSerie } from './graficos';
+import { GraficoAcumulado, GraficoAnos, GraficoAnual, GraficoDessazAnos, GraficoDessazonalizado, GraficoMensal, GraficoPctAcumulado, GraficoSazonalidade, GraficoSerie } from './graficos';
 import { type Cenario, type Entradas, type Resultado, MESES, MESES_CURTOS, anosCompletos, calcular, exemplo, hoje, insights, lerColado, lerNumero, periodoYtd, valorDoCenario, vazio } from './calculo';
 import { COMECAR_COM_EXEMPLO } from '@/novo/data/ferramentas';
 
@@ -118,7 +118,7 @@ function CampoValor({ valor, medida, onChange, travado = false, rotulo, placehol
       disabled={travado}
       placeholder={travado ? '—' : (placeholder ?? (medida === 'faturamento' ? 'R$' : 'qtd'))}
       value={travado ? '' : (editando ?? formatado)}
-      onFocus={() => setEditando(valor == null ? '' : medida === 'faturamento' ? String(valor).replace('.', ',') : String(Math.round(valor)))}
+      onFocus={() => setEditando(valor == null || valor === 0 ? '' : medida === 'faturamento' ? String(valor).replace('.', ',') : String(Math.round(valor)))}
       onChange={(ev) => {
         setEditando(ev.target.value);
         const n = lerNumero(ev.target.value);
@@ -224,7 +224,13 @@ export default function ProjecaoVendas() {
     `Projeção de ${unidade}: ${r.anoAtual} acumulado ${periodoYtd(r)} ${fmt(r.ytdAtual)} (${r.ytdAnterior ? sinal(r.ytdAtual / r.ytdAnterior - 1) : '—'} vs ${r.anoAtual - 1}) · fechamento previsto ${fmt(r.fechamentoAtual)} · meta ${r.proximoAno} ${fmt(anualProx)} · mês mais forte ${MESES[r.forte?.m ?? 0]} · mais fraco ${MESES[r.fraco?.m ?? 0]}`;
 
   return (
-    <div className="[&_[role=radio]]:cursor-pointer [&_a]:cursor-pointer [&_button:not(:disabled)]:cursor-pointer">
+    <div
+      // A rodinha do mouse nunca muda o valor de um campo de número (tira o foco antes)
+      onWheelCapture={(ev) => {
+        const alvo = ev.target as HTMLElement;
+        if (alvo instanceof HTMLInputElement && alvo.type === 'number' && document.activeElement === alvo) alvo.blur();
+      }}
+      className="ferramenta [&_[role=radio]]:cursor-pointer [&_a]:cursor-pointer [&_button:not(:disabled)]:cursor-pointer">
       <section className="relative isolate pt-32 pb-8 md:pt-40 lg:pt-44">
         <div className="main-container">
           <div className="max-w-[780px] space-y-5">
@@ -650,14 +656,12 @@ function Resultados({
             <Painel titulo="Previsão × receita, mensal" texto="Barras: atrás a previsão (meta) de cada mês e na frente a receita, verde quando bateu e vermelha quando ficou abaixo, com o % atingido. Linhas (eixo da direita): a previsão acumulada (cinza), a receita acumulada (laranja) e a tendência pontilhada da receita acumulada até dezembro.">
               <GraficoMensal r={r} fmt={fmt} />
             </Painel>
-            <div className="grid grid-cols-12 gap-4">
-              <Painel className="col-span-12 xl:col-span-7" titulo="Previsão × receita, acumulado" texto="O mesmo, somando mês a mês desde janeiro, com o % da previsão acumulada atingido em cima de cada barra.">
-                <GraficoAcumuladoBarras r={r} fmt={fmt} />
-              </Painel>
-              <Painel className="col-span-12 xl:col-span-5" titulo="Meta × meta acumulada" texto="Quanto da meta acumulada já foi atingido até cada mês. Acima da linha de 100%, o ano está em dia.">
-                <GraficoPctAcumulado r={r} />
-              </Painel>
-            </div>
+            <Painel
+              titulo="Previsão × receita, acumulado"
+              texto="Barras: quanto da previsão acumulada já foi atingido até cada mês (verde a partir de 100%, vermelho abaixo). Linhas (eixo da direita): a previsão acumulada até dezembro (cinza), a receita acumulada até o último mês fechado (laranja) e a tendência pontilhada da receita."
+            >
+              <GraficoPctAcumulado r={r} fmt={fmt} />
+            </Painel>
             <Painel titulo={`Mês a mês: ${r.anoAtual} contra os anos anteriores`} texto={`Cada cor é um ano, com uma bolinha por mês. Em laranja, ${r.anoAtual}: a linha cheia é o realizado e a tracejada é a previsão até dezembro.`}>
               <GraficoAnos r={r} fmt={fmt} />
             </Painel>
@@ -819,7 +823,7 @@ function Resultados({
       </div>
 
       <div className="flex flex-col gap-3 rounded-3xl bg-white p-4 sm:flex-row sm:flex-wrap sm:items-center md:p-5">
-        <ButtonPrimarySubmit type="button" onClick={ajuda} text="Quero ajuda no meu marketing" className="h-14 w-full sm:w-auto [&>span]:w-full" />
+        <ButtonPrimarySubmit type="button" onClick={ajuda} text="Quero ajuda no meu marketing" className="h-14 w-full sm:w-auto max-md:text-[0.875rem] [&>span]:w-full max-md:[&>span]:gap-x-2 max-md:[&>span]:pl-4" />
         <button
           type="button"
           onClick={baixarPdf}

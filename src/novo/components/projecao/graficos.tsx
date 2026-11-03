@@ -296,42 +296,59 @@ export function GraficoMensal({ r, fmt }: { r: Resultado; fmt: Fmt }) {
   return <Grafico option={option} altura={310} rotulo={`Previsão e receita de cada mês de ${r.anoAtual}`} />;
 }
 
-// 4. Previsão × receita – acumulado (gráfico da planilha): o mesmo, somando mês a mês, com o % atingido em cima
-export function GraficoAcumuladoBarras({ r, fmt }: { r: Resultado; fmt: Fmt }) {
+// Previsão × receita – acumulado (o gráfico da planilha): barras com o % da previsão acumulada atingido em cada mês fechado
+// (verde a partir de 100%, vermelho abaixo) e a linha de 100%; no eixo da direita, a previsão acumulada até dezembro,
+// a receita acumulada até o último mês fechado e a tendência pontilhada da receita
+export function GraficoPctAcumulado({ r, fmt }: { r: Resultado; fmt: Fmt }) {
   const option = useMemo(() => {
-    // Soma mês a mês: o realizado até o último mês fechado e, depois, o previsto
-    const acumulado = r.previstoMes.reduce<number[]>((a, v, m) => [...a, (a[m - 1] ?? 0) + (r.realizado[m] ?? v)], []);
-    const receita = acumulado.map((v, m) => (m <= r.ateMes ? v : null));
-    const futuro = acumulado.map((v, m) => (m > r.ateMes ? v : null));
-    return opcaoSobreposta({ r, fmt, previsao: r.acompanhamento.map((l) => l.metaAcum), receita, futuro, rotuloPct: true });
-  }, [r, fmt]);
-  return <Grafico option={option} altura={310} rotulo={`Previsão e receita acumuladas de ${r.anoAtual}`} />;
-}
-
-// 3. % da meta acumulada atingido mês a mês (verde a partir de 100%)
-export function GraficoPctAcumulado({ r }: { r: Resultado }) {
-  const option = useMemo(() => {
-    const dados = r.acompanhamento.map((l) => (l.pctAcum == null ? null : Math.round(l.pctAcum * 1000) / 10));
-    const max = Math.max(110, ...dados.filter((v): v is number => v != null).map((v) => Math.ceil(v / 10) * 10 + 10));
+    const pctMes = r.acompanhamento.map((l) => (l.pctAcum == null ? null : Math.round(l.pctAcum * 1000) / 10));
+    const max = Math.max(120, ...pctMes.filter((v): v is number => v != null).map((v) => Math.ceil(v / 10) * 10 + 10));
+    const previsao = r.acompanhamento.map((l) => l.metaAcum);
+    const receita = r.acompanhamento.map((_, m) => (m <= r.ateMes ? r.acumReal[m] : null));
+    const tendencia = r.ritmoMes == null ? null : MESES.map((_, m) => r.ritmoMes! * (m + 1));
+    const rotulo = { show: true, position: 'top', distance: 9, fontSize: 10.5, fontWeight: 600, color: COR.navy, backgroundColor: 'rgba(255,255,255,0.9)', padding: [1, 3], borderRadius: 4, formatter: (p: { value: number }) => `${Math.round(p.value)}%` };
+    const barra = (cor: string, claro: string) => ({ color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: claro }, { offset: 1, color: cor }] }, borderRadius: [6, 6, 0, 0] });
     return {
       animationDuration: 700,
-      grid: { left: 8, right: 34, top: 24, bottom: 4, containLabel: true },
-      tooltip: { ...tooltipBase, valueFormatter: (v: unknown) => (typeof v === 'number' ? `${v.toLocaleString('pt-BR')}% da meta acumulada` : '—') },
+      grid: { left: 8, right: 8, top: 40, bottom: 4, containLabel: true },
+      legend: { ...legenda, data: ['Receita acima da previsão', 'Receita abaixo da previsão', 'Previsão acumulada', 'Receita acumulada', ...(tendencia ? ['Tendência acumulada'] : [])] },
+      tooltip: {
+        ...tooltipBase,
+        formatter: (params: { dataIndex: number }[]) => {
+          const i = params[0]?.dataIndex ?? 0;
+          const pct = pctMes[i];
+          const rec = receita[i];
+          const corpo =
+            linhaTooltip('#94a3b8', 'Previsão acumulada', fmt(previsao[i])) +
+            (rec != null ? linhaTooltip(ACUM, 'Receita acumulada', fmt(rec)) : tendencia ? linhaTooltip(ACUM, 'Tendência', fmt(tendencia[i])) : '') +
+            (pct != null ? `<div style="margin-top:6px;padding-top:6px;border-top:1px solid #1f3048;display:flex;justify-content:space-between;gap:24px;color:${pct >= 100 ? '#56fed5' : '#fca5a5'}"><span>Da previsão acumulada</span><b>${pct.toLocaleString('pt-BR')}%</b></div>` : '');
+          return `<div style="min-width:240px"><div style="color:#9aa8bb;margin-bottom:4px">${MESES[i]} de ${r.anoAtual}</div>${corpo}</div>`;
+        },
+      },
       xAxis: { type: 'category', data: MESES_CURTOS, ...eixoBase, splitLine: { show: false } },
-      yAxis: { type: 'value', min: 0, max, ...eixoBase, axisLabel: { ...eixoBase.axisLabel, formatter: (v: number) => `${v}%` } },
+      yAxis: [
+        { type: 'value', min: 0, max, ...eixoBase, axisLabel: { ...eixoBase.axisLabel, formatter: (v: number) => `${v}%` } },
+        { type: 'value', min: 0, position: 'right', ...eixoBase, splitLine: { show: false }, axisLabel: { ...eixoBase.axisLabel, formatter: (v: number) => fmt(v, true) } },
+      ],
       series: [
         {
-          name: '% acumulado',
+          name: 'Receita acima da previsão',
           type: 'bar',
+          stack: 'pct',
           barMaxWidth: 26,
-          data: dados.map((v) => (v == null ? null : { value: v, itemStyle: { color: v >= 100 ? { ...gradiente(VERDE, 1), colorStops: [{ offset: 0, color: '#56fed5' }, { offset: 1, color: VERDE }] } : { ...gradiente(VERMELHO, 1), colorStops: [{ offset: 0, color: '#fca5a5' }, { offset: 1, color: VERMELHO }] }, borderRadius: [6, 6, 0, 0] } })),
-          label: { show: true, position: 'top', distance: 9, fontSize: 10.5, fontWeight: 600, color: COR.navy, formatter: (p: { value: number }) => `${Math.round(p.value)}%` },
-          markLine: { silent: true, symbol: 'none', lineStyle: { color: AZUL, type: 'dashed', width: 1.5 }, label: { formatter: 'meta', color: AZUL, fontSize: 10, position: 'end' }, data: [{ yAxis: 100 }] },
+          data: pctMes.map((v) => (v != null && v >= 100 ? v : null)),
+          itemStyle: barra(VERDE, '#56fed5'),
+          label: rotulo,
+          markLine: { silent: true, symbol: 'none', lineStyle: { color: AZUL, type: 'solid', width: 2 }, label: { formatter: '100%', color: AZUL, fontSize: 10, position: 'insideEndTop' }, data: [{ yAxis: 100 }] },
         },
+        { name: 'Receita abaixo da previsão', type: 'bar', stack: 'pct', barMaxWidth: 26, data: pctMes.map((v) => (v != null && v < 100 ? v : null)), itemStyle: barra(VERMELHO, '#fca5a5'), label: rotulo },
+        { name: 'Previsão acumulada', type: 'line', yAxisIndex: 1, symbol: 'circle', symbolSize: 9, data: previsao, lineStyle: { color: '#94a3b8', width: 3 }, itemStyle: { color: '#ffffff', borderColor: '#94a3b8', borderWidth: 2.5 }, z: 5 },
+        { name: 'Receita acumulada', type: 'line', yAxisIndex: 1, symbol: 'circle', symbolSize: 9, data: receita, lineStyle: { color: ACUM, width: 3 }, itemStyle: { color: '#ffffff', borderColor: ACUM, borderWidth: 2.5 }, z: 6 },
+        ...(tendencia ? [{ name: 'Tendência acumulada', type: 'line', yAxisIndex: 1, symbol: 'none', data: tendencia, lineStyle: { color: ACUM, width: 1.5, type: 'dotted' }, itemStyle: { color: ACUM }, z: 4 }] : []),
       ],
     };
-  }, [r]);
-  return <Grafico option={option} altura={300} rotulo={`Percentual da meta acumulada atingido em cada mês de ${r.anoAtual}`} />;
+  }, [r, fmt]);
+  return <Grafico option={option} altura={340} rotulo={`Previsão e receita acumuladas de ${r.anoAtual}, com o percentual da previsão atingido em cada mês`} />;
 }
 
 // 4. Total por ano com a reta de tendência (regressão), o fechamento previsto do ano atual e a projeção do próximo
