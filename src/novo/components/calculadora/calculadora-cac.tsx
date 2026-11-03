@@ -4,9 +4,9 @@ import { cn } from '@/novo/utils/cn';
 import ButtonPrimarySubmit from '@/novo/components/shared/ui/button/button-primary-submit';
 import { siteConfig } from '@/config/site';
 import { avisarFerramenta, jaLiberado, lerCadastro, marcarEnviada, salvarCadastro } from '@/novo/components/ferramentas/cadastro';
-import { ArrowLeft, CalendarCheck, Check, Lock, Pencil, Plus, Repeat, Rocket, RotateCcw, ShoppingBag, ShoppingCart, Target, UserRound, X, type LucideIcon } from 'lucide-react';
+import { ArrowLeft, CalendarCheck, Check, ChevronDown, Hourglass, Lock, Pencil, Plus, Repeat, Rocket, RotateCcw, ShoppingBag, ShoppingCart, SlidersHorizontal, Target, TrendingUp, UserRound, Wallet, X, type LucideIcon } from 'lucide-react';
 import { type FormEvent, type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { type Ajustes, type Custo, type Entradas, type TipoNegocio, EXEMPLO, TIPOS, VAZIO, calcular, CONVERSAO_PADRAO, horizonte, MAX_PRODUTOS, nomeProduto, type Produto, roiFrase, roiMultiplo, SEGMENTOS } from './calculo';
+import { type Ajustes, type Custo, type Entradas, type TipoNegocio, EXEMPLO, TIPOS, VAZIO, calcular, CONVERSAO_PADRAO, horizonte, MAX_PRODUTOS, nomeProduto, type Produto, roiMultiplo, SEGMENTOS } from './calculo';
 import { enviarConversao } from '@/novo/components/ferramentas/cadastro';
 import { COMECAR_COM_EXEMPLO } from '@/novo/data/ferramentas';
 import AcoesFerramenta from '@/novo/components/ferramentas/acoes-ferramenta';
@@ -58,6 +58,7 @@ const DICAS = {
   roi: 'ROI é quanto sobra de lucro para cada R$ 1 investido, depois de pagar o investimento. ROI de 1,5x = R$ 1,50 de lucro para cada R$ 1.',
   payback: 'Payback é o tempo que o cliente leva para devolver, em margem, o que custou para trazê-lo.',
   ltvCac: 'LTV:CAC mostra quantas vezes o cliente devolve o que custou. O saudável é 3 ou mais.',
+  investimento: 'Quanto investir por mês em marketing e vendas para trazer os clientes que você quer: clientes por mês vezes o custo por venda do cenário.',
   stopLoss: 'Stop loss é o custo por venda em que você para: pagando o LTV inteiro por um cliente, toda a margem dele vai para a aquisição e não sobra lucro.',
 };
 
@@ -177,19 +178,6 @@ function LinhaCusto({ custo, exemplo, onChange, onRemover }: { custo: Custo; exe
   );
 }
 
-function Cartao({ rotulo, valor, detalhe, dica, destaque = false }: { rotulo: string; valor: string; detalhe?: string; dica?: string; destaque?: boolean }) {
-  return (
-    <div className={cn('rounded-2xl p-5', destaque ? 'bg-secondary text-white' : 'border-stroke-4 border bg-white')}>
-      <p className={cn('text-tagline-2 font-medium', destaque ? 'text-white/65' : 'text-secondary/60')}>
-        {rotulo}
-        {dica && <Dica texto={dica} claro={destaque} />}
-      </p>
-      <p className={cn('font-titulo mt-1 text-[1.75rem] leading-tight font-semibold tabular-nums', destaque ? 'text-primary-500' : 'text-secondary')}>{valor}</p>
-      {detalhe && <p className={cn('text-tagline-3 mt-1', destaque ? 'text-white/55' : 'text-secondary/55')}>{detalhe}</p>}
-    </div>
-  );
-}
-
 function Deslizante({ rotulo, valor, min, max, passo, onChange, mostrar }: { rotulo: string; valor: number; min: number; max: number; passo: number; onChange: (v: number) => void; mostrar: string }) {
   return (
     <label className="block">
@@ -207,103 +195,128 @@ const SEM_AJUSTE: Ajustes = { ticketPct: 0, churn: null, clientes: null };
 const PASSOS = ['Como você vende', 'Preço', 'Custos', 'Aquisição', 'Resultado'] as const;
 const RESULTADO = 4;
 
-// Resultado: quanto investir para ter os clientes que a pessoa quer, nos 3 cenários (verde, amarelo, vermelho), e o LTV.
+// Resultado sem número repetido: o destaque (quanto investir, de conservador a agressivo, com LTV, margem e ROAS mínimo ao lado)
+// e o plano dos 3 cenários numa tabela só (investimento, custo por lead, custo por venda, ROI e payback), com o limite embaixo.
 // Também aparece embaçado atrás do cadastro
 function Resultados({ e, r }: { e: Entradas; r: ReturnType<typeof calcular> }) {
   const recorrente = e.tipo === 'recorrente' || e.tipo === 'setup';
-  const [cons, mod, agr] = r.plano;
+  const [cons, , agr] = r.plano;
+  const mini = (rotulo: string, valor: string, dica: string) => (
+    <div>
+      <p className="text-tagline-3 text-secondary/60 font-medium">
+        {rotulo}
+        <Dica texto={dica} />
+      </p>
+      <p className="font-titulo text-secondary text-[1rem] font-semibold tabular-nums sm:text-[1.25rem]">{valor}</p>
+    </div>
+  );
   return (
     <div className="space-y-4">
-      <SeusAlvos r={r} />
-      <div className="grid grid-cols-12 gap-4">
-        <div className="bg-secondary relative col-span-12 overflow-hidden rounded-3xl p-6 text-white md:p-7 lg:col-span-5">
-          <div className="from-lilas-500/35 pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-gradient-to-br to-transparent blur-2xl" />
-          <p className="text-tagline-2 flex items-center gap-2 font-medium text-white/65">
+      <div className="border-stroke-4 grid gap-5 rounded-3xl border bg-white p-6 md:p-7 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-10">
+        <div>
+          <p className="text-tagline-2 text-secondary/60 flex items-center gap-2 font-medium">
             <Target className="size-4" /> Para ter {num(r.desejados, 0)} {r.desejados === 1 ? 'cliente novo' : 'clientes novos'} por mês
           </p>
-          <p className="font-titulo mt-3 text-[2.5rem] leading-none font-semibold text-white tabular-nums">{brl(mod.investimento)}</p>
-          <p className="text-tagline-2 mt-2 text-white/75">por mês no cenário moderado (CAC de até {brl(mod.cac)} por cliente)</p>
-          <div className="mt-5 grid grid-cols-3 gap-2 border-t border-white/10 pt-4">
-            {[cons, mod, agr].map((p) => (
-              <div key={p.id}>
-                <p className="text-tagline-3 flex items-center gap-1.5 text-white/55">
-                  <span className={cn('size-2 rounded-full', CORES_CENARIO[p.id].ponto)} />
-                  {p.nome}
-                </p>
-                <p className="font-titulo mt-1 text-[1.05rem] font-semibold text-white tabular-nums">{brl(p.investimento)}</p>
-              </div>
-            ))}
-          </div>
+          <p className="font-titulo text-secondary mt-2 text-[1.75rem] leading-tight font-semibold md:text-[2.1rem]">
+            invista entre <span className="tabular-nums">{brl(cons.investimento)}</span> e <span className="tabular-nums">{brl(agr.investimento)}</span> por mês
+          </p>
         </div>
-        <div className="col-span-12 grid grid-cols-2 content-start gap-3 lg:col-span-7 xl:grid-cols-3">
-          <Cartao rotulo="LTV (margem)" dica={DICAS.ltv} valor={brl(r.ltv)} detalhe={e.tipo === 'unica' ? 'margem de uma venda' : `${num(r.compras, 0)} ${recorrente ? 'meses' : 'compras'} · receita ${brl(r.receitaVida)}`} />
-          <Cartao rotulo={`Margem por ${recorrente ? 'mês' : 'venda'}`} dica={DICAS.margem} valor={brl(r.margem, 2)} detalhe={`${pct(r.margemPct, 1)} do preço`} />
-          <Cartao rotulo="ROAS mínimo para empatar" dica={DICAS.roasEmpate} valor={vezes(r.roasEmpate)} detalhe="na 1ª venda, com a sua margem" />
+        <div className="border-stroke-4 grid grid-cols-3 gap-3 border-t pt-4 sm:gap-4 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
+          {mini('LTV', brl(r.ltv), DICAS.ltv)}
+          {mini(`Margem por ${recorrente ? 'mês' : 'venda'}`, brl(r.margem, 2), DICAS.margem)}
+          {mini('ROAS mínimo', vezes(r.roasEmpate), DICAS.roasEmpate)}
         </div>
       </div>
-      <PlanoClientes e={e} r={r} />
+      <PlanoCenarios e={e} r={r} />
     </div>
   );
 }
 
-// Os alvos para as campanhas: custo por venda (CAC máximo) e custo por lead (CAC × taxa de lead em venda) nos 3 cenários
-function SeusAlvos({ r }: { r: ReturnType<typeof calcular> }) {
-  const faixa = (Icone: LucideIcon, rotulo: string, ajuda: string, valores: (number | null)[], casas: number, dica: string) => (
-    <div className="grid gap-3 md:grid-cols-[280px_1fr] md:items-center">
-      <div className="flex items-start gap-3">
-        <span className="bg-lilas-100 text-lilas-700 flex size-9 shrink-0 items-center justify-center rounded-xl">
-          <Icone className="size-[1.125rem]" strokeWidth={1.75} aria-hidden="true" />
-        </span>
-        <div>
-          <p className="font-titulo text-tagline-1 text-secondary font-semibold whitespace-nowrap">
-            {rotulo}
-            <Dica texto={dica} />
-          </p>
-          <p className="text-tagline-3 text-secondary/55">{ajuda}</p>
-        </div>
-      </div>
-      <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
-        {r.plano.map((p, i) => {
-          const cor = CORES_CENARIO[p.id];
-          return (
-            <div key={p.id} className={cn('min-w-0 rounded-xl border-2 px-2 py-1.5 sm:px-3 sm:py-2', cor.borda, cor.fundo)}>
-              <p className={cn('flex items-center gap-1.5 text-[0.6875rem] font-medium sm:text-[0.75rem]', cor.texto)}>
-                <span className={cn('size-2 shrink-0 rounded-full', cor.ponto)} />
-                <span className="truncate">{p.nome}</span>
-              </p>
-              <p className="font-titulo text-secondary text-[0.875rem] leading-tight font-semibold whitespace-nowrap tabular-nums sm:text-[1.05rem]">
-                <span className="text-secondary/50 text-[0.75rem] font-medium max-sm:hidden">até </span>
-                {valores[i] == null ? '—' : brl(valores[i]!, casas)}
-              </p>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
+// Os 3 cenários numa tabela só: uma linha por número, uma coluna por cenário (verde, amarelo, vermelho)
+function PlanoCenarios({ e, r }: { e: Entradas; r: ReturnType<typeof calcular> }) {
+  const linhas: { icone: LucideIcon; rotulo: string; ajuda: string; dica: string; valores: string[] }[] = [
+    { icone: Wallet, rotulo: 'Investimento por mês', ajuda: `para ${num(r.desejados, 0)} clientes novos`, dica: DICAS.investimento, valores: r.plano.map((p) => brl(p.investimento)) },
+    {
+      icone: UserRound,
+      rotulo: 'Custo por lead ideal',
+      ajuda: `com ${num(r.conversaoUsada)}% dos leads virando venda${r.conversaoEstimada ? ' (estimativa)' : ''}`,
+      dica: DICAS.cpl,
+      valores: r.plano.map((p) => (p.cpl == null ? '—' : `até ${brl(p.cpl, 2)}`)),
+    },
+    { icone: ShoppingCart, rotulo: 'Custo por venda ideal', ajuda: 'quanto pode custar cada cliente novo', dica: DICAS.cac, valores: r.plano.map((p) => `até ${brl(p.cac)}`) },
+    { icone: TrendingUp, rotulo: 'ROI', ajuda: `lucro para cada R$ 1, ${horizonte(r)}`, dica: DICAS.roi, valores: r.plano.map((p) => roiMultiplo(p.roi)) },
+    {
+      icone: Hourglass,
+      rotulo: e.tipo === 'unica' ? 'Vendas para pagar o CAC' : 'Payback',
+      ajuda: e.tipo === 'unica' ? 'quantas vendas devolvem o custo' : 'tempo para o cliente se pagar',
+      dica: DICAS.payback,
+      valores: r.plano.map((p) => (e.tipo === 'unica' ? (p.vendasParaPagar <= 1 ? 'na 1ª venda' : `${num(p.vendasParaPagar)} vendas`) : meses(p.payback))),
+    },
+  ];
   return (
-    <div className="border-stroke-4 space-y-4 rounded-3xl border bg-white p-6 md:p-7">
-      <div>
-        <p className="font-titulo text-heading-6 text-secondary font-medium">Seus alvos</p>
-        <p className="text-tagline-2 mt-1">Use estes números como meta nas suas campanhas: acima deles, cada cliente novo começa a sair caro.</p>
+    <div className="border-stroke-4 rounded-3xl border bg-white p-6 md:p-7">
+      <p className="font-titulo text-heading-6 text-secondary font-medium">Seu plano em 3 cenários</p>
+      <p className="text-tagline-2 mt-1">Use os custos por lead e por venda como meta nas campanhas: acima deles, cada cliente novo começa a sair caro.</p>
+      <div className="mt-5 space-y-3">
+        <div className="hidden gap-3 md:grid md:grid-cols-[280px_1fr]">
+          <span />
+          <div className="grid grid-cols-3 gap-2">
+            {r.plano.map((p) => (
+              <p key={p.id} className={cn('text-tagline-2 flex items-center gap-1.5 px-1 font-semibold', CORES_CENARIO[p.id].texto)}>
+                <span className={cn('size-2 rounded-full', CORES_CENARIO[p.id].ponto)} />
+                {p.nome} <span className="text-secondary/45 font-normal">· {Math.round(p.pct * 100)}% do LTV</span>
+              </p>
+            ))}
+          </div>
+        </div>
+        {linhas.map((l) => (
+          <div key={l.rotulo} className="grid gap-2 md:grid-cols-[280px_1fr] md:items-center md:gap-3">
+            <div className="flex items-start gap-3">
+              <span className="bg-lilas-100 text-lilas-700 flex size-9 shrink-0 items-center justify-center rounded-xl">
+                <l.icone className="size-[1.125rem]" strokeWidth={1.75} aria-hidden="true" />
+              </span>
+              <div>
+                <p className="font-titulo text-tagline-1 text-secondary font-semibold whitespace-nowrap">
+                  {l.rotulo}
+                  <Dica texto={l.dica} />
+                </p>
+                <p className="text-tagline-3 text-secondary/55">{l.ajuda}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+              {r.plano.map((p, i) => {
+                const cor = CORES_CENARIO[p.id];
+                return (
+                  <div key={p.id} className={cn('min-w-0 rounded-xl border-2 px-2 py-1.5 sm:px-3 sm:py-2', cor.borda, cor.fundo)}>
+                    <p className={cn('flex items-center gap-1.5 text-[0.6875rem] font-medium md:hidden', cor.texto)}>
+                      <span className={cn('size-2 shrink-0 rounded-full', cor.ponto)} />
+                      <span className="truncate">{p.nome}</span>
+                    </p>
+                    <p className="font-titulo text-secondary text-[0.875rem] leading-tight font-semibold whitespace-nowrap tabular-nums sm:text-[1.05rem]">
+                      {l.valores[i].startsWith('até ') ? (
+                        <>
+                          <span className="text-secondary/50 text-[0.75rem] font-medium max-sm:hidden">até </span>
+                          {l.valores[i].slice(4)}
+                        </>
+                      ) : (
+                        l.valores[i]
+                      )}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </div>
-      {faixa(
-        UserRound,
-        'Custo por lead ideal',
-        `com ${num(r.conversaoUsada)}% dos leads virando venda${r.conversaoEstimada ? ' (estimativa)' : ''}`,
-        r.plano.map((p) => p.cpl),
-        2,
-        DICAS.cpl,
-      )}
-      {faixa(ShoppingCart, 'Custo por venda ideal', 'quanto pode custar cada cliente novo', r.plano.map((p) => p.cac), 0, DICAS.cac)}
       {r.plano[0].leads != null && (
-        <p className="text-tagline-3 text-secondary/60">
+        <p className="text-tagline-3 text-secondary/60 mt-4">
           Para {num(r.desejados, 0)} clientes por mês, são cerca de <strong className="text-secondary">{num(Math.ceil(r.plano[0].leads), 0)} leads por mês</strong>.
           {r.conversaoEstimada ? ` Como você não sabe a sua taxa, usamos ${CONVERSAO_PADRAO}%, uma referência conservadora.` : ''}
         </p>
       )}
       {r.ltv > 0 && (
-        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 rounded-xl border border-red-200 bg-red-50/60 px-4 py-3">
+        <div className="mt-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 rounded-xl border border-red-200 bg-red-50/60 px-4 py-3">
           <p className="text-tagline-2 font-semibold text-red-700">
             Limite (stop loss): acima de {brl(r.ltv)} por venda, você paga para vender
             <Dica texto={DICAS.stopLoss} />
@@ -311,52 +324,6 @@ function SeusAlvos({ r }: { r: ReturnType<typeof calcular> }) {
           <p className="text-tagline-3 text-secondary/60">{r.vidaMeses == null ? 'É toda a margem da venda.' : `É toda a margem que o cliente deixa ${horizonte(r)}, e esse dinheiro só volta ao longo desse tempo.`}</p>
         </div>
       )}
-    </div>
-  );
-}
-
-// Os 3 cenários lado a lado: investimento, CAC máximo, retorno, payback e, com a taxa de lead em venda, leads e CPL
-function PlanoClientes({ e, r }: { e: Entradas; r: ReturnType<typeof calcular> }) {
-  const linha = (rotulo: string, valor: string, cor?: string, dica?: string) => (
-    <div className="flex justify-between gap-2">
-      <dt className="text-secondary/60">
-        {rotulo}
-        {dica && <Dica texto={dica} />}
-      </dt>
-      <dd className={cn('font-semibold tabular-nums', cor ?? 'text-secondary')}>{valor}</dd>
-    </div>
-  );
-  return (
-    <div className="border-stroke-4 rounded-3xl border bg-white p-6 md:p-7">
-      <p className="font-titulo text-heading-6 text-secondary font-medium">Quanto investir para ter {num(r.desejados, 0)} clientes novos por mês</p>
-      <p className="text-tagline-2 mt-1">O CAC máximo de cada cenário é uma parte do LTV (o que o cliente deixa de margem). Receita, lucro, ROI e ROAS são na vida desses clientes ({r.vidaMeses == null ? 'na venda' : `${Math.round(r.vidaMeses)} meses`}).</p>
-      <div className="mt-5 grid gap-3 md:grid-cols-3">
-        {r.plano.map((p) => {
-          const cor = CORES_CENARIO[p.id];
-          return (
-            <div key={p.id} className={cn('rounded-2xl border-2 p-5', cor.borda, cor.fundo)}>
-              <p className={cn('text-tagline-2 flex items-center gap-2 font-semibold', cor.texto)}>
-                <span className={cn('size-2.5 rounded-full', cor.ponto)} />
-                {p.nome} · CAC de {Math.round(p.pct * 100)}% do LTV
-              </p>
-              <p className="text-tagline-3 text-secondary/60 mt-3">Investimento por mês</p>
-              <p className="font-titulo text-secondary text-[1.6rem] leading-tight font-semibold tabular-nums">{brl(p.investimento)}</p>
-              <p className="text-tagline-3 text-secondary/60">CAC de até {brl(p.cac)} por cliente</p>
-              <dl className="text-tagline-3 border-secondary/10 mt-4 space-y-1.5 border-t pt-3">
-                {linha(`Receita ${horizonte(r)}`, brl(p.receita))}
-                {linha('Lucro na margem', brl(p.lucro))}
-                {linha(`ROI · ROAS ${horizonte(r)}`, `${roiMultiplo(p.roi)} · ${vezes(p.roas)}`, cor.texto, `${DICAS.roi} ${DICAS.roas}`)}
-                {linha(e.tipo === 'unica' ? 'Vendas para pagar o CAC' : 'Payback do CAC', e.tipo === 'unica' ? (p.vendasParaPagar <= 1 ? 'na 1ª venda' : `${num(p.vendasParaPagar)} vendas`) : meses(p.payback), undefined, DICAS.payback)}
-                {linha('LTV : CAC', `${num(p.ltvCac)} : 1`, undefined, DICAS.ltvCac)}
-                {p.leads != null && linha('Leads por mês', num(Math.ceil(p.leads), 0))}
-                {p.cpl != null && linha('Custo máximo por lead', brl(p.cpl, 2), undefined, DICAS.cpl)}
-              </dl>
-              {roiFrase(p.roi, r) && <p className={cn('text-tagline-3 mt-3 font-medium', cor.texto)}>{roiFrase(p.roi, r)}</p>}
-            </div>
-          );
-        })}
-      </div>
-      {r.conversaoEstimada && <p className="text-tagline-3 text-secondary/55 mt-3">Leads e custo por lead calculados com {CONVERSAO_PADRAO}% de conversão (estimativa, porque você marcou &ldquo;não sei&rdquo;).</p>}
     </div>
   );
 }
@@ -415,6 +382,7 @@ export default function CalculadoraCac() {
   // Até onde a pessoa já chegou (as etapas até aqui ficam clicáveis na barra)
   const [alcancado, setAlcancado] = useState(0);
   const [aviso, setAviso] = useState('');
+  const [simular, setSimular] = useState(false);
   const topo = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -749,12 +717,18 @@ export default function CalculadoraCac() {
                     <BarraProdutos produtos={produtos} atual={atual} onAbrir={abrirProduto} onRemover={removerProduto} onOutro={outroProduto} />
                     <Resultados e={e} r={r} />
                     {produtos.length >= 2 && <ComparaProdutos produtos={produtos} atual={atual} onAbrir={abrirProduto} />}
-                    <div className="border-stroke-4 grid grid-cols-12 gap-6 rounded-3xl border bg-white p-6 md:p-7 lg:gap-10">
+                    <div className="border-stroke-4 rounded-3xl border bg-white">
+                      <button type="button" onClick={() => setSimular((x) => !x)} aria-expanded={simular} className="flex w-full items-center justify-between gap-3 p-5 text-left md:px-7">
+                        <span className="text-tagline-1 text-secondary flex items-center gap-2.5 font-semibold">
+                          <SlidersHorizontal className="text-lilas-700 size-4" /> Simular outros números
+                          <span className="text-tagline-3 text-secondary/50 font-normal max-sm:hidden">e se o ticket ou a meta de clientes mudar?</span>
+                        </span>
+                        <ChevronDown className={cn('text-secondary/50 size-5 shrink-0 transition-transform', simular && 'rotate-180')} />
+                      </button>
+                      {simular && (
+                    <div className="grid grid-cols-12 gap-6 px-6 pb-6 md:px-7 md:pb-7 lg:gap-10">
                       <div className="col-span-12 space-y-5 lg:col-span-5">
-                        <div>
-                          <p className="font-titulo text-heading-6 text-secondary font-medium">E se…?</p>
-                          <p className="text-tagline-2 mt-1">Mexa nos números e veja na hora o efeito no LTV, no CAC máximo e no investimento. Os resultados acima também mudam.</p>
-                        </div>
+                        <p className="text-tagline-2">Mexa nos números e veja na hora o efeito no custo por venda e no investimento. O plano acima também muda.</p>
                         <div className="bg-background-3 space-y-6 rounded-2xl p-5">
                           <Deslizante rotulo="Ticket / mensalidade" min={-30} max={50} passo={5} valor={aj.ticketPct} onChange={(v) => setAj((a) => ({ ...a, ticketPct: v }))} mostrar={`${aj.ticketPct > 0 ? '+' : ''}${aj.ticketPct}% · ${brl(r.ticket)}`} />
                           <Deslizante rotulo="Clientes novos por mês" min={1} max={Math.max(100, e.clientesDesejados * 3)} passo={1} valor={aj.clientes ?? e.clientesDesejados} onChange={(v) => setAj((a) => ({ ...a, clientes: v }))} mostrar={`${num(r.desejados, 0)} clientes`} />
@@ -768,9 +742,8 @@ export default function CalculadoraCac() {
                           )}
                         </div>
                       </div>
-                      <div className="col-span-12 grid content-center gap-3 sm:grid-cols-3 lg:col-span-7">
+                      <div className="col-span-12 grid content-center gap-3 sm:grid-cols-2 lg:col-span-7">
                         {[
-                          { rotulo: 'LTV', antes: brl(base.ltv), depois: brl(r.ltv) },
                           { rotulo: 'CAC máximo (moderado)', antes: brl(base.plano[1].cac), depois: brl(r.plano[1].cac) },
                           { rotulo: 'Investimento (moderado)', antes: brl(base.plano[1].investimento), depois: brl(r.plano[1].investimento) },
                         ].map((x) => (
@@ -781,6 +754,8 @@ export default function CalculadoraCac() {
                           </div>
                         ))}
                       </div>
+                    </div>
+                      )}
                     </div>
                     <Acoes e={e} r={r} produtos={produtos} />
                   </div>

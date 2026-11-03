@@ -141,18 +141,22 @@ export function RelatorioPdf({ e, produtos = [], origem, nome }: { e: Entradas; 
           <View style={[s.veredito, { alignItems: 'stretch' }]}>
             <View style={{ width: 210 }}>
               <Text style={s.rotulo}>Para ter {num(r.desejados, 0)} clientes novos por mês</Text>
-              <Text style={{ fontFamily: 'Jakarta', fontWeight: 700, fontSize: 26, color: LILAS, marginTop: 4 }}>{brl(r.plano[1].investimento)}</Text>
-              <Text style={[s.detalhe, { fontSize: 8.5 }]}>por mês no moderado · CAC até {brl(r.plano[1].cac)}</Text>
+              <Text style={{ fontFamily: 'Jakarta', fontWeight: 700, fontSize: 19, color: LILAS, marginTop: 4 }}>
+                {brl(r.plano[0].investimento)} a {brl(r.plano[2].investimento)}
+              </Text>
+              <Text style={[s.detalhe, { fontSize: 8.5 }]}>por mês, do conservador ao agressivo</Text>
             </View>
             <View style={{ flex: 1, paddingLeft: 14, borderLeftWidth: 1, borderLeftColor: LINHA }}>
               <Text style={{ fontSize: 9, color: CINZA, lineHeight: 1.45 }}>{resumo}</Text>
             </View>
           </View>
 
-          <Text style={s.secao}>Seus alvos para as campanhas</Text>
+          <Text style={s.secao}>Seu plano em 3 cenários</Text>
           {[
-            { rot: `Custo por lead ideal (${num(r.conversaoUsada)}% de conversão${r.conversaoEstimada ? ', estimativa' : ''})`, vals: r.plano.map((pl) => (pl.cpl == null ? '—' : brl(pl.cpl, 2))) },
-            { rot: 'Custo por venda ideal', vals: r.plano.map((pl) => brl(pl.cac)) },
+            { rot: 'Investimento por mês', vals: r.plano.map((pl) => brl(pl.investimento)), teto: false },
+            { rot: `Custo por lead ideal (${num(r.conversaoUsada)}% de conversão${r.conversaoEstimada ? ', estimativa' : ''})`, vals: r.plano.map((pl) => (pl.cpl == null ? '—' : brl(pl.cpl, 2))), teto: true },
+            { rot: 'Custo por venda ideal', vals: r.plano.map((pl) => brl(pl.cac)), teto: true },
+            { rot: `ROI ${horizonte(r)}`, vals: r.plano.map((pl) => roiMultiplo(pl.roi)), teto: false },
           ].map((linha) => (
             <View key={linha.rot} style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
               <Text style={{ width: 170, fontSize: 9, fontWeight: 600 }}>{linha.rot}</Text>
@@ -161,7 +165,10 @@ export function RelatorioPdf({ e, produtos = [], origem, nome }: { e: Entradas; 
                 return (
                   <View key={pl.id} style={{ flex: 1, marginLeft: 6, borderWidth: 1.2, borderColor: cor, borderRadius: 7, paddingVertical: 5, paddingHorizontal: 8 }}>
                     <Text style={{ fontSize: 7, color: cor, fontWeight: 600 }}>{pl.nome}</Text>
-                    <Text style={{ fontSize: 10.5, fontFamily: 'Jakarta', fontWeight: 700 }}>até {linha.vals[i]}</Text>
+                    <Text style={{ fontSize: 10.5, fontFamily: 'Jakarta', fontWeight: 700 }}>
+                      {linha.teto ? 'até ' : ''}
+                      {linha.vals[i]}
+                    </Text>
                   </View>
                 );
               })}
