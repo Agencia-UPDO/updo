@@ -8,10 +8,10 @@ import Badge from '@/novo/components/shared/ui/badge/badge';
 import ButtonPrimaryV2 from '@/novo/components/shared/ui/button/button-primary-v2';
 import { ferramentas } from '@/novo/data/ferramentas';
 import { balance } from '@/novo/utils/balance';
-import { Clock, Sparkles } from 'lucide-react';
+import { Clock } from 'lucide-react';
 import Link from 'next/link';
 
-// Vitrine das ferramentas gratuitas: um card por ferramenta (data/ferramentas.ts) e um card de "em breve"
+// Vitrine das ferramentas gratuitas: um card por ferramenta (data/ferramentas.ts), dois por linha
 const FerramentasPagina = () => (
   <>
     <section className="relative isolate pt-32 pb-18 md:pt-40 lg:pt-48 xl:pb-28">
@@ -35,7 +35,7 @@ const FerramentasPagina = () => (
 
         <ul className="grid grid-cols-12 gap-5 md:gap-6">
           {ferramentas.map((f, i) => (
-            <RevealAnimation key={f.href} delay={0.2 + i * 0.1} className="col-span-12 md:col-span-6 xl:col-span-4">
+            <RevealAnimation key={f.href} delay={0.2 + i * 0.1} className="col-span-12 md:col-span-6">
               <li className="h-full">
                 <Link
                   href={f.href}
@@ -65,16 +65,6 @@ const FerramentasPagina = () => (
               </li>
             </RevealAnimation>
           ))}
-
-          <RevealAnimation delay={0.2 + ferramentas.length * 0.1} className="col-span-12 md:col-span-6 xl:col-span-4">
-            <li className="border-stroke-3 flex h-full min-h-[320px] flex-col items-start justify-center gap-4 rounded-3xl border border-dashed bg-white/60 p-7 backdrop-blur-sm md:p-8">
-              <IconChip icon={Sparkles} tone="lilas" size="lg" />
-              <div className="space-y-2">
-                <p className="font-titulo text-heading-6 text-secondary font-medium">Novas ferramentas em breve</p>
-                <p className="text-tagline-2">Estamos preparando outras calculadoras e diagnósticos para marketing, vendas e atendimento.</p>
-              </div>
-            </li>
-          </RevealAnimation>
         </ul>
       </div>
     </section>
