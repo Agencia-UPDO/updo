@@ -2,7 +2,7 @@
 
 import { siteConfig } from '@/config/site';
 import { CloseIcon } from '@/novo/components/shared/icons';
-import { casesMenu, empresaMenu, servicos, setores, type NavLink } from '@/novo/data/navegacao';
+import { casesMenu, empresaMenu, ferramentasMenu, servicos, setores, type NavLink } from '@/novo/data/navegacao';
 import { useMediaQuery } from '@/novo/hooks/useMediaQuery';
 import { cn } from '@/novo/utils/cn';
 import HeroFundo from '@/novo/components/home/hero-fundo';
@@ -13,13 +13,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-type GrupoId = 'servicos' | 'setores' | 'cases' | 'empresa';
+type GrupoId = 'servicos' | 'setores' | 'cases' | 'empresa' | 'ferramentas';
 
 const grupos: { id: GrupoId; titulo: string; links: NavLink[]; tone: 'menta' | 'lilas' }[] = [
   { id: 'servicos', titulo: 'Serviços', links: servicos, tone: 'menta' },
   { id: 'setores', titulo: 'Setores', links: setores, tone: 'lilas' },
   { id: 'cases', titulo: 'Cases', links: casesMenu, tone: 'menta' },
   { id: 'empresa', titulo: 'Sobre', links: empresaMenu, tone: 'lilas' },
+  { id: 'ferramentas', titulo: 'Ferramentas', links: ferramentasMenu, tone: 'menta' },
 ];
 
 const MobileMenu = () => {
@@ -189,15 +190,15 @@ const MobileMenu = () => {
                         </li>
                       );
                     })}
-                    {(grupo.id === 'servicos' || grupo.id === 'setores') && (
+                    {(grupo.id === 'servicos' || grupo.id === 'setores' || grupo.id === 'ferramentas') && (
                       <li className="pb-2">
                         <Link
-                          href={grupo.id === 'servicos' ? '/servicos' : '/setores'}
+                          href={grupo.id === 'servicos' ? '/servicos' : grupo.id === 'setores' ? '/setores' : '/ferramentas'}
                           onClick={close}
                           tabIndex={expandido ? undefined : -1}
                           className="text-tagline-2 text-lilas-500 flex items-center gap-1.5 px-3 py-2.5 font-medium"
                         >
-                          {grupo.id === 'servicos' ? 'Ver todos os serviços' : 'Ver todos os setores'}
+                          {grupo.id === 'servicos' ? 'Ver todos os serviços' : grupo.id === 'setores' ? 'Ver todos os setores' : 'Ver todas as ferramentas'}
                           <ArrowRight className="size-4" aria-hidden="true" />
                         </Link>
                       </li>

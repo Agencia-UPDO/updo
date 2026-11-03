@@ -1,4 +1,5 @@
 import { siteConfig } from '@/config/site';
+import { ferramentas } from '@/novo/data/ferramentas';
 import {
   Activity,
   Bot,
@@ -150,12 +151,16 @@ export const empresaMenu: NavLink[] = [
   },
 ];
 
+// Ferramentas gratuitas no menu (a lista vem de data/ferramentas.ts)
+export const ferramentasMenu: NavLink[] = ferramentas.map((f) => ({ title: f.titulo, href: f.href, icon: f.icone, description: f.resumo }));
+
 export const menuPrincipal: NavLink[] = [
   { title: 'Sobre', href: '/sobre' },
   { title: 'Como trabalhamos', href: '/o-que-fazemos' },
   { title: 'Cases', href: '/cases' },
   { title: 'Treinamentos', href: '/treinamentos-corporativos' },
   { title: 'Insights', href: 'https://insights.updo.com.br' },
+  { title: 'Ferramentas', href: '/ferramentas' },
 ];
 
 export const rodapeColunas: { title: string; links: NavLink[] }[] = [
@@ -176,6 +181,7 @@ export const rodapeColunas: { title: string; links: NavLink[] }[] = [
       { title: 'Treinamentos', href: '/treinamentos-corporativos' },
       { title: 'Diagnóstico', href: '/diagnostico' },
       { title: 'Insights', href: 'https://insights.updo.com.br' },
+      { title: 'Ferramentas', href: '/ferramentas' },
     ],
   },
 ];

@@ -4,7 +4,7 @@ import RevealAnimation from '@/novo/components/animation/reveal-animation';
 import IconChip, { type IconChipTone } from '@/novo/components/shared/icon-chip';
 import { ArrowDownIcon, ArrowRightIcon } from '@/novo/components/shared/icons';
 import ButtonPrimaryV2 from '@/novo/components/shared/ui/button/button-primary-v2';
-import { casesMenu, empresaMenu, servicos, setores, type NavLink } from '@/novo/data/navegacao';
+import { casesMenu, empresaMenu, ferramentasMenu, servicos, setores, type NavLink } from '@/novo/data/navegacao';
 import { useNavbarScroll } from '@/novo/hooks/useScrollHeader';
 import { cn } from '@/novo/utils/cn';
 import { CheckCircle2, Funnel, ArrowRight } from 'lucide-react';
@@ -12,7 +12,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
 
-type MenuId = 'servicos' | 'setores' | 'cases' | 'empresa';
+type MenuId = 'servicos' | 'setores' | 'cases' | 'empresa' | 'ferramentas';
 
 const ListaMenu = ({
   links,
@@ -212,6 +212,25 @@ const Navbar = () => {
                     Insights
                   </a>
                 </li>
+                <li className="py-2.5" onMouseEnter={() => setMenuAberto('ferramentas')}>
+                  <button
+                    type="button"
+                    aria-expanded={menuAberto === 'ferramentas'}
+                    onClick={() => setMenuAberto((atual) => (atual === 'ferramentas' ? null : 'ferramentas'))}
+                    className={cn(
+                      'text-tagline-1 hover:text-secondary flex cursor-pointer items-center gap-1 rounded-full border px-4 py-2 transition-all duration-200',
+                      menuAberto === 'ferramentas' ? 'border-stroke-2 text-secondary' : 'text-secondary/70 border-transparent'
+                    )}
+                  >
+                    Ferramentas
+                    <ArrowDownIcon
+                      className={cn(
+                        'size-4 translate-y-px stroke-current stroke-[1.5] transition-transform duration-300',
+                        menuAberto === 'ferramentas' && 'rotate-180'
+                      )}
+                    />
+                  </button>
+                </li>
               </ul>
             </nav>
 
@@ -356,6 +375,30 @@ const Navbar = () => {
                 Ver todos os cases
                 <ArrowRightIcon className="size-4 stroke-current" />
               </Link>
+            </Painel>
+
+            <Painel aberto={menuAberto === 'ferramentas'} className="right-0 left-auto w-[640px]">
+              <div className="grid grid-cols-[1fr_240px] gap-5">
+                <div>
+                  <p className="text-tagline-3 text-secondary/50 mb-2 px-3 font-medium">Ferramentas gratuitas</p>
+                  <ListaMenu links={ferramentasMenu} tone="menta" colunas={1} />
+                  <Link
+                    href="/ferramentas"
+                    onClick={() => setMenuAberto(null)}
+                    className="text-tagline-2 text-secondary hover:text-lilas-500 mt-2 inline-flex items-center gap-1.5 px-3 font-medium transition-colors"
+                  >
+                    Ver todas as ferramentas
+                    <ArrowRight className="size-4" aria-hidden="true" />
+                  </Link>
+                </div>
+                <CardDestaque
+                  href="/diagnostico"
+                  rotulo="Gratuito"
+                  titulo="Diagnóstico estratégico"
+                  texto="Quer ajuda com os seus números? Mapeamos onde seu marketing e seu comercial perdem vendas."
+                  cta="Agendar diagnóstico"
+                />
+              </div>
             </Painel>
 
             <Painel aberto={menuAberto === 'empresa'} className="left-[300px] w-[700px]">

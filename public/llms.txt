@@ -42,6 +42,12 @@ Contato: contato@updo.com.br · WhatsApp +55 41 98711-2003 · Rua Francisco Roch
 - [Marketing B2B](https://www.updo.com.br/marketing-para-b2b): pipeline qualificado e processo comercial sem depender de indicação.
 - [Marketing para Empresas de Serviços](https://www.updo.com.br/marketing-para-servicos): posicionamento e geração de lead qualificado para planos de saúde, consultorias, seguros e outros serviços.
 
+## Ferramentas gratuitas
+
+- [Ferramentas](https://www.updo.com.br/ferramentas): calculadoras gratuitas para entender os números de marketing e vendas.
+- [Calculadora de CAC e LTV](https://www.updo.com.br/ferramentas/calculadora-cac): LTV, CAC atual e máximo, LTV:CAC, payback em meses e ROAS mínimo para venda única, recompra, assinatura ou setup + mensalidade, com diagnóstico em PDF.
+- [Projeção de vendas e sazonalidade](https://www.updo.com.br/ferramentas/projecao-vendas): tendência (média móvel de 12 meses), índice de sazonalidade, acumulado do ano contra os anteriores, fechamento previsto e meta mês a mês do próximo ano.
+
 ## Cases
 
 - [Todos os cases](https://www.updo.com.br/cases): resultados organizados por setor.

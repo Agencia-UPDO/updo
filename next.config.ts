@@ -4,6 +4,10 @@ const nextConfig: NextConfig = {
   experimental: {
     globalNotFound: true,
   },
+  // A calculadora mudou para a área de ferramentas
+  async redirects() {
+    return [{ source: "/calculadora-cac", destination: "/ferramentas/calculadora-cac", permanent: true }];
+  },
   images: {
     remotePatterns: [
       {
