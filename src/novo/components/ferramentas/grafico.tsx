@@ -32,7 +32,7 @@ export function Grafico({ option, altura = 320, rotulo }: { option: EChartsCoreO
     let observador: ResizeObserver | null = null;
     (async () => {
       const [core, charts, componentes, render] = await Promise.all([import('echarts/core'), import('echarts/charts'), import('echarts/components'), import('echarts/renderers')]);
-      core.use([charts.LineChart, charts.BarChart, componentes.GridComponent, componentes.TooltipComponent, componentes.LegendComponent, componentes.MarkAreaComponent, componentes.MarkLineComponent, render.SVGRenderer]);
+      core.use([charts.LineChart, charts.BarChart, charts.RadarChart, componentes.RadarComponent, componentes.GridComponent, componentes.TooltipComponent, componentes.LegendComponent, componentes.MarkAreaComponent, componentes.MarkLineComponent, render.SVGRenderer]);
       if (!vivo || !caixa.current) return;
       const g = core.init(caixa.current, undefined, { renderer: 'svg' });
       grafico.current = g;

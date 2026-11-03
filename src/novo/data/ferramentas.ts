@@ -1,4 +1,4 @@
-import { Calculator, CircleDollarSign, TrendingUp, type LucideIcon } from 'lucide-react';
+import { Calculator, CircleDollarSign, Eye, TrendingUp, type LucideIcon } from 'lucide-react';
 
 // true: as ferramentas abrem com um exemplo preenchido (fase de aprovação).
 // false: abrem vazias, com o link "Preencher com um exemplo" (versão para publicar).
@@ -47,5 +47,15 @@ export const ferramentas: Ferramenta[] = [
     icone: CircleDollarSign,
     entregas: ['Resultado na hora', 'Lucro ou prejuízo', 'ROI na vida do cliente', 'PDF'],
     tempo: '1 minuto',
+  },
+  {
+    titulo: 'Análise dos 5 sentidos',
+    resumo: 'Neuromarketing: o quanto a marca emociona',
+    descricao:
+      'Dê uma nota para o quanto a sua marca ativa a visão, o toque, o cheiro, o som e o gosto do cliente, compare com os concorrentes e receba dicas práticas.',
+    href: '/ferramentas/analise-5-sentidos',
+    icone: Eye,
+    entregas: ['Índice sensorial', 'Radar × concorrentes', 'Dicas práticas', 'PDF'],
+    tempo: '3 minutos',
   },
 ];

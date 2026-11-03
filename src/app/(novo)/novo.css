@@ -112,3 +112,10 @@ body.menu-aberto .nld-chatbot {
   -webkit-appearance: none;
   margin: 0;
 }
+
+/* Nada pode empurrar a página para o lado no celular (balão do "?", menu fora da tela, gráficos):
+   o que passar da largura da tela é cortado, sem criar rolagem lateral. "clip" não quebra o sticky. */
+html,
+body {
+  overflow-x: clip;
+}

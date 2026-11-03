@@ -154,3 +154,48 @@ export const conteudoRoi: ConteudoFerramenta = {
     },
   ],
 };
+
+export const conteudoSentidos: ConteudoFerramenta = {
+  titulo: 'Entenda o neuromarketing e a análise dos 5 sentidos',
+  blocos: [
+    {
+      titulo: 'O que é marketing sensorial',
+      paragrafos: [
+        'O neuromarketing estuda como o cérebro decide uma compra, e boa parte dessa decisão é emocional. O marketing sensorial usa os cinco sentidos (visão, toque, cheiro, som e gosto) para criar essa emoção: quanto mais sentidos uma marca ativa de forma coerente, mais o cliente lembra dela e mais valor ele percebe.',
+        'A visão costuma ser o sentido mais trabalhado, com logo, cores e fotos. Os outros quatro quase sempre ficam esquecidos, e é justamente aí que uma marca consegue se diferenciar dos concorrentes.',
+      ],
+    },
+    {
+      titulo: 'Como a análise funciona',
+      paragrafos: [
+        'Você dá uma nota de 0 a 10 para o quanto a sua marca ativa cada sentido no cliente. Se não souber, as perguntas de sim ou não de cada sentido sugerem a nota. O índice sensorial é a soma das cinco notas sobre 50, de 0 a 100: a partir de 70 a experiência é forte, de 40 a 69 é média e abaixo de 40 é fraca.',
+        'Para comparar, você dá as notas de até dois concorrentes do ponto de vista de cliente. O gráfico de radar mostra as formas sobrepostas, e o placar mostra, sentido por sentido, onde você ganha e onde perde.',
+      ],
+      formulas: ['Índice sensorial = (visão + toque + cheiro + som + gosto) ÷ 50 × 100'],
+    },
+    {
+      titulo: 'Exemplo',
+      paragrafos: [
+        'Uma loja de artes marciais tem nota 10 em visão, toque e cheiro (vitrine organizada, quimonos para experimentar, cheiro de tecido novo), 7 em som e 0 em gosto. O índice é 74 de 100, uma experiência forte. A maior oportunidade está no gosto: oferecer água saborizada ou um isotônico depois da aula experimental, por exemplo, ativa um sentido que nenhum concorrente usa.',
+      ],
+    },
+  ],
+  perguntas: [
+    {
+      pergunta: 'O que é marketing sensorial?',
+      resposta: 'É usar os cinco sentidos (visão, toque, cheiro, som e gosto) na experiência da marca para criar emoção e memória. Um cheiro na loja, uma trilha nos vídeos ou um unboxing caprichado fazem o cliente lembrar da marca e perceber mais valor.',
+    },
+    {
+      pergunta: 'Como medir o quanto a marca ativa os sentidos?',
+      resposta: 'Dê uma nota de 0 a 10 para cada sentido, pensando na experiência do cliente com a loja, o produto, o site e o atendimento. Somando as cinco notas e dividindo por 50, você tem um índice de 0 a 100 que pode acompanhar ao longo do tempo.',
+    },
+    {
+      pergunta: 'Marketing sensorial funciona para loja online e para serviços?',
+      resposta: 'Sim. No online, o toque e o cheiro entram pela embalagem e pelo unboxing, e o som pelos vídeos e áudios. Em serviços, entram o ambiente das reuniões, o kit de boas-vindas, o café servido e o tom de voz no atendimento.',
+    },
+    {
+      pergunta: 'Como comparar a minha marca com a do concorrente?',
+      resposta: 'Dê as notas do concorrente com o mesmo critério que usou para a sua marca, como se você fosse cliente dele. O radar e o placar mostram em quais sentidos você está na frente e em quais o concorrente ganha.',
+    },
+  ],
+};

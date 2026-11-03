@@ -11,6 +11,7 @@ const routes = [
   { path: "/ferramentas/calculadora-cac", priority: 0.8 },
   { path: "/ferramentas/projecao-vendas", priority: 0.8 },
   { path: "/ferramentas/calculadora-roi", priority: 0.8 },
+  { path: "/ferramentas/analise-5-sentidos", priority: 0.8 },
   { path: "/treinamentos-corporativos", priority: 0.85 },
   { path: "/cases", priority: 0.8 },
   { path: "/cases/educacao", priority: 0.75 },

@@ -1,12 +1,12 @@
 'use client';
 
 import { cn } from '@/novo/utils/cn';
-import ButtonPrimarySubmit from '@/novo/components/shared/ui/button/button-primary-submit';
 import { avisarFerramenta, CadastroFerramenta, jaLiberado, lerCadastro, pedirAjuda } from '@/novo/components/ferramentas/cadastro';
 import { Dica } from '@/novo/components/ferramentas/dica';
 import { COMECAR_COM_EXEMPLO } from '@/novo/data/ferramentas';
-import { CircleCheck, CircleAlert, CircleX, Download, Loader2, RotateCcw } from 'lucide-react';
+import { CircleCheck, CircleAlert, CircleX, RotateCcw } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
+import AcoesFerramenta from '@/novo/components/ferramentas/acoes-ferramenta';
 import { type Entradas, type Resultado, EXEMPLO, VAZIO, calcular, completo, leitura, roiFrase, roiMultiplo } from './calculo';
 
 const FORM_NAME = 'calculadora-roi';
@@ -241,20 +241,7 @@ function Acoes({ e, r }: { e: Entradas; r: Resultado }) {
     }
   };
 
-  return (
-    <div className="flex flex-col gap-3 rounded-3xl bg-white p-4 sm:flex-row sm:items-center md:p-5">
-      <ButtonPrimarySubmit type="button" onClick={ajuda} text="Quero ajuda no meu marketing" className="h-14 w-full sm:w-auto max-md:text-[0.875rem] [&>span]:w-full max-md:[&>span]:gap-x-2 max-md:[&>span]:pl-4" />
-      <button
-        type="button"
-        onClick={baixarPdf}
-        disabled={gerando}
-        className="text-tagline-1 border-stroke-3 text-secondary hover:border-secondary hover:bg-background-2 inline-flex h-14 shrink-0 items-center whitespace-nowrap justify-center gap-2 rounded-full border px-6 font-medium transition-all duration-300 active:scale-[0.98] disabled:opacity-60"
-      >
-        {gerando ? <Loader2 className="size-5 animate-spin" /> : <Download className="size-5" />}
-        {gerando ? 'Gerando PDF…' : 'Baixar resultado em PDF'}
-      </button>
-    </div>
-  );
+  return <AcoesFerramenta onAjuda={ajuda} onPdf={baixarPdf} gerando={gerando} />;
 }
 
 export default function CalculadoraRoi() {

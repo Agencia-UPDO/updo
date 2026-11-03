@@ -48,6 +48,7 @@ Contato: contato@updo.com.br · WhatsApp +55 41 98711-2003 · Rua Francisco Roch
 - [Calculadora de CAC e LTV](https://www.updo.com.br/ferramentas/calculadora-cac): a partir do que a empresa vende (venda única, recompra, assinatura ou setup + mensalidade), do preço, dos custos e da meta de clientes, calcula o LTV, o CAC máximo em 3 cenários (30%, 40% e 55% do LTV), o investimento mensal, o custo por lead ideal, payback e ROI, com diagnóstico em PDF.
 - [Projeção de vendas e sazonalidade](https://www.updo.com.br/ferramentas/projecao-vendas): tendência (média móvel de 12 meses), índice de sazonalidade, acumulado do ano contra os anteriores, fechamento previsto e meta mês a mês do próximo ano.
 - [Calculadora de ROI e ROAS](https://www.updo.com.br/ferramentas/calculadora-roi): ROI e ROAS de uma campanha a partir do investimento, das vendas, do faturamento e da margem, ROAS para empatar, lucro ou prejuízo e o retorno na vida do cliente, com resultado em PDF.
+- [Análise dos 5 sentidos (neuromarketing)](https://www.updo.com.br/ferramentas/analise-5-sentidos): nota de 0 a 10 para o quanto a marca ativa visão, toque, cheiro, som e gosto, índice sensorial de 0 a 100, radar comparando com até 2 concorrentes e dicas práticas por sentido para loja física, online ou serviço, com resultado em PDF.
 
 ## Cases
 

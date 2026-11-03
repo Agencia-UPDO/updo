@@ -4,11 +4,12 @@ import { cn } from '@/novo/utils/cn';
 import ButtonPrimarySubmit from '@/novo/components/shared/ui/button/button-primary-submit';
 import { siteConfig } from '@/config/site';
 import { avisarFerramenta, jaLiberado, lerCadastro, marcarEnviada, salvarCadastro } from '@/novo/components/ferramentas/cadastro';
-import { ArrowLeft, CalendarCheck, Check, Download, Loader2, Lock, Pencil, Plus, Repeat, Rocket, RotateCcw, ShoppingBag, ShoppingCart, Target, UserRound, X, type LucideIcon } from 'lucide-react';
+import { ArrowLeft, CalendarCheck, Check, Lock, Pencil, Plus, Repeat, Rocket, RotateCcw, ShoppingBag, ShoppingCart, Target, UserRound, X, type LucideIcon } from 'lucide-react';
 import { type FormEvent, type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { type Ajustes, type Custo, type Entradas, type TipoNegocio, EXEMPLO, TIPOS, VAZIO, calcular, CONVERSAO_PADRAO, horizonte, MAX_PRODUTOS, nomeProduto, type Produto, roiFrase, roiMultiplo, SEGMENTOS } from './calculo';
 import { enviarConversao } from '@/novo/components/ferramentas/cadastro';
 import { COMECAR_COM_EXEMPLO } from '@/novo/data/ferramentas';
+import AcoesFerramenta from '@/novo/components/ferramentas/acoes-ferramenta';
 import { Dica } from '@/novo/components/ferramentas/dica';
 
 const FORM_NAME = 'calculadora-cac';
@@ -918,7 +919,7 @@ function Cadastro({ r, tipo, segmento, extras, onLiberar }: { r: ReturnType<type
 
 
 // Botões do resultado: "Quero ajuda no meu marketing" (WhatsApp da UPDO com os números + conversão na RD) e o PDF do diagnóstico
-function Acoes({ e, r, produtos = [], escuro = false }: { e: Entradas; r: ReturnType<typeof calcular>; produtos?: Produto[]; escuro?: boolean }) {
+function Acoes({ e, r, produtos = [] }: { e: Entradas; r: ReturnType<typeof calcular>; produtos?: Produto[] }) {
   const [gerando, setGerando] = useState(false);
 
   const pedirAjuda = () => {
@@ -969,23 +970,7 @@ function Acoes({ e, r, produtos = [], escuro = false }: { e: Entradas; r: Return
     }
   };
 
-  return (
-    <div className={cn('flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center', !escuro && 'rounded-3xl bg-white p-4 md:p-5')}>
-      <ButtonPrimarySubmit type="button" onClick={pedirAjuda} text="Quero ajuda no meu marketing" className="h-14 w-full sm:w-auto max-md:text-[0.875rem] [&>span]:w-full max-md:[&>span]:gap-x-2 max-md:[&>span]:pl-4" />
-      <button
-        type="button"
-        onClick={baixarPdf}
-        disabled={gerando}
-        className={cn(
-          'text-tagline-1 inline-flex h-14 items-center justify-center gap-2 rounded-full border px-6 font-medium transition-all duration-300 active:scale-[0.98] disabled:opacity-60',
-          escuro ? 'border-white/20 text-white hover:border-white/50 hover:bg-white/5' : 'border-stroke-3 text-secondary hover:border-secondary hover:bg-background-2',
-        )}
-      >
-        {gerando ? <Loader2 className="size-5 animate-spin" /> : <Download className="size-5" />}
-        {gerando ? 'Gerando PDF…' : 'Baixar diagnóstico em PDF'}
-      </button>
-    </div>
-  );
+  return <AcoesFerramenta onAjuda={pedirAjuda} onPdf={baixarPdf} gerando={gerando} />;
 }
 
 

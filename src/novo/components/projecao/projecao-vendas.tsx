@@ -3,10 +3,11 @@
 import { avisarFerramenta, CadastroFerramenta, jaLiberado, lerCadastro, pedirAjuda } from '@/novo/components/ferramentas/cadastro';
 import ButtonPrimarySubmit from '@/novo/components/shared/ui/button/button-primary-submit';
 import { cn } from '@/novo/utils/cn';
-import { ArrowLeft, Check, ClipboardPaste, Download, Lightbulb, Loader2, Pencil, Plus, X } from 'lucide-react';
+import { ArrowLeft, Check, ClipboardPaste, Lightbulb, Pencil, Plus, X } from 'lucide-react';
 import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { GraficoAcumulado, GraficoAnos, GraficoAnual, GraficoDessazAnos, GraficoDessazonalizado, GraficoMensal, GraficoPctAcumulado, GraficoSazonalidade, GraficoSerie } from './graficos';
 import { type Cenario, type Entradas, type Resultado, MESES, MESES_CURTOS, anosCompletos, calcular, exemplo, hoje, insights, lerColado, lerNumero, periodoYtd, valorDoCenario, vazio } from './calculo';
+import AcoesFerramenta from '@/novo/components/ferramentas/acoes-ferramenta';
 import { COMECAR_COM_EXEMPLO } from '@/novo/data/ferramentas';
 
 const FORM_NAME = 'projecao-vendas';
@@ -828,18 +829,7 @@ function Resultados({
         )}
       </div>
 
-      <div className="flex flex-col gap-3 rounded-3xl bg-white p-4 sm:flex-row sm:flex-wrap sm:items-center md:p-5">
-        <ButtonPrimarySubmit type="button" onClick={ajuda} text="Quero ajuda no meu marketing" className="h-14 w-full sm:w-auto max-md:text-[0.875rem] [&>span]:w-full max-md:[&>span]:gap-x-2 max-md:[&>span]:pl-4" />
-        <button
-          type="button"
-          onClick={baixarPdf}
-          disabled={gerando}
-          className="border-stroke-3 text-secondary hover:border-secondary hover:bg-background-2 text-tagline-1 inline-flex h-14 items-center justify-center gap-2 rounded-full border px-6 font-medium transition-all duration-300 active:scale-[0.98] disabled:opacity-60"
-        >
-          {gerando ? <Loader2 className="size-5 animate-spin" /> : <Download className="size-5" />}
-          {gerando ? 'Gerando PDF…' : 'Baixar projeção em PDF'}
-        </button>
-      </div>
+      <AcoesFerramenta onAjuda={ajuda} onPdf={baixarPdf} gerando={gerando} />
     </div>
   );
 }
