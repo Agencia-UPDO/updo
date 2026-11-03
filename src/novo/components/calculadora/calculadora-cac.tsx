@@ -11,6 +11,7 @@ import { enviarConversao } from '@/novo/components/ferramentas/cadastro';
 import { COMECAR_COM_EXEMPLO } from '@/novo/data/ferramentas';
 import AcoesFerramenta from '@/novo/components/ferramentas/acoes-ferramenta';
 import { Dica } from '@/novo/components/ferramentas/dica';
+import { useTextoNumero } from '@/novo/components/ferramentas/texto-numero';
 
 const FORM_NAME = 'calculadora-cac';
 // Os números da pessoa ficam salvos no navegador para ela voltar e ajustar
@@ -75,6 +76,7 @@ const EXEMPLOS_PRODUTO = ['consulta, matrícula, projeto', 'ingresso de show, pl
 const EXEMPLOS_VENDA = ['Frete', 'Embalagem', 'Taxa do marketplace'];
 
 function Numero({ id, rotulo, valor, onChange, prefixo, sufixo, ajuda, dica, passo = 1 }: { id: string; rotulo: string; valor: number; onChange: (v: number) => void; prefixo?: string; sufixo?: string; ajuda?: string; dica?: string; passo?: number }) {
+  const campo = useTextoNumero(valor, onChange);
   return (
     <div>
       <label htmlFor={id} className={labelClass}>
@@ -89,10 +91,9 @@ function Numero({ id, rotulo, valor, onChange, prefixo, sufixo, ajuda, dica, pas
           inputMode="decimal"
           min={0}
           step={passo}
-          value={Number.isFinite(valor) && valor !== 0 ? valor : ''}
+          {...campo}
           placeholder="0"
           onFocus={(ev) => ev.target.select()}
-          onChange={(ev) => onChange(ev.target.value === '' ? 0 : Number(ev.target.value))}
           className={cn(inputClass, prefixo && 'pl-11', sufixo && 'pr-16')}
         />
         {sufixo && <span className="text-secondary/50 text-tagline-2 pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">{sufixo}</span>}
@@ -119,6 +120,7 @@ function Etapa({ n, titulo, descricao, children }: { n: number; titulo: string; 
 
 // Um custo por venda: os fixos mostram o nome; os que a pessoa adicionou têm nome editável e botão de remover
 function LinhaCusto({ custo, exemplo, onChange, onRemover }: { custo: Custo; exemplo: string; onChange: (c: Custo) => void; onRemover: () => void }) {
+  const campo = useTextoNumero(custo.valor, (v) => onChange({ ...custo, valor: v }));
   return (
     <div className="grid grid-cols-[1fr_auto] items-end gap-2 sm:grid-cols-[1fr_140px_auto]">
       {custo.extra ? (
@@ -135,7 +137,12 @@ function LinhaCusto({ custo, exemplo, onChange, onRemover }: { custo: Custo; exe
           </button>
         </div>
       ) : (
-        <p className="text-tagline-2 text-secondary col-span-2 font-medium sm:col-span-1 sm:pb-3">{custo.nome}</p>
+        <div className="col-span-2 flex items-center justify-between gap-2 sm:col-span-1 sm:pb-1">
+          <p className="text-tagline-2 text-secondary font-medium">{custo.nome}</p>
+          <button type="button" onClick={onRemover} aria-label={`Remover ${custo.nome}`} title="Não tenho esse custo" className={botaoRemover}>
+            <X className="size-4" />
+          </button>
+        </div>
       )}
       <div className="relative">
         {custo.modo === 'R$' && <span className="text-secondary/50 text-tagline-2 pointer-events-none absolute top-1/2 left-4 -translate-y-1/2">R$</span>}
@@ -145,10 +152,9 @@ function LinhaCusto({ custo, exemplo, onChange, onRemover }: { custo: Custo; exe
           inputMode="decimal"
           min={0}
           step={custo.modo === '%' ? 0.5 : 1}
-          value={custo.valor || ''}
+          {...campo}
           placeholder="0"
           onFocus={(ev) => ev.target.select()}
-          onChange={(ev) => onChange({ ...custo, valor: ev.target.value === '' ? 0 : Number(ev.target.value) })}
           className={cn(inputClass, custo.modo === 'R$' ? 'pl-11' : 'pr-10')}
         />
         {custo.modo === '%' && <span className="text-secondary/50 text-tagline-2 pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">%</span>}

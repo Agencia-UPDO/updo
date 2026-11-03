@@ -3,6 +3,7 @@
 import { cn } from '@/novo/utils/cn';
 import { avisarFerramenta, CadastroFerramenta, jaLiberado, lerCadastro, pedirAjuda } from '@/novo/components/ferramentas/cadastro';
 import { Dica } from '@/novo/components/ferramentas/dica';
+import { useTextoNumero } from '@/novo/components/ferramentas/texto-numero';
 import { COMECAR_COM_EXEMPLO } from '@/novo/data/ferramentas';
 import { CircleCheck, CircleAlert, CircleX, RotateCcw } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
@@ -44,6 +45,7 @@ const CORES = {
 } as const;
 
 function Numero({ id, rotulo, valor, onChange, prefixo, sufixo, ajuda, dica, opcional }: { id: string; rotulo: string; valor: number; onChange: (v: number) => void; prefixo?: string; sufixo?: string; ajuda?: string; dica?: string; opcional?: boolean }) {
+  const campo = useTextoNumero(valor, onChange);
   return (
     <div>
       <label htmlFor={id} className={labelClass}>
@@ -58,10 +60,9 @@ function Numero({ id, rotulo, valor, onChange, prefixo, sufixo, ajuda, dica, opc
           type="number"
           inputMode="decimal"
           min={0}
-          value={Number.isFinite(valor) && valor !== 0 ? valor : ''}
+          {...campo}
           placeholder="0"
           onFocus={(ev) => ev.target.select()}
-          onChange={(ev) => onChange(ev.target.value === '' ? 0 : Number(ev.target.value))}
           className={cn(inputClass, prefixo && 'pl-11', sufixo && 'pr-16')}
         />
         {sufixo && <span className="text-secondary/50 text-tagline-2 pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">{sufixo}</span>}
@@ -74,6 +75,7 @@ function Numero({ id, rotulo, valor, onChange, prefixo, sufixo, ajuda, dica, opc
 // Margem em % do faturamento ou em R$ por venda (como os custos da calculadora de CAC)
 function CampoMargem({ e, onChange }: { e: Entradas; onChange: (parcial: Partial<Entradas>) => void }) {
   const real = e.margemModo === 'R$';
+  const campo = useTextoNumero(e.margem, (v) => onChange({ margem: v }));
   return (
     <div>
       <label htmlFor="margem" className={labelClass}>
@@ -88,10 +90,9 @@ function CampoMargem({ e, onChange }: { e: Entradas; onChange: (parcial: Partial
             type="number"
             inputMode="decimal"
             min={0}
-            value={e.margem || ''}
+            {...campo}
             placeholder="0"
             onFocus={(ev) => ev.target.select()}
-            onChange={(ev) => onChange({ margem: ev.target.value === '' ? 0 : Number(ev.target.value) })}
             className={cn(inputClass, real ? 'pl-11' : 'pr-10')}
           />
           {!real && <span className="text-secondary/50 text-tagline-2 pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">%</span>}
