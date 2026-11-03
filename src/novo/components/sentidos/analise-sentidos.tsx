@@ -94,9 +94,9 @@ function LinhaSentido({ id, valor, onChange, compacto = false }: { id: SentidoId
       />
       {!compacto && (
         <>
-          <div className="text-tagline-3 text-secondary/55 mt-1 grid grid-cols-3 gap-2">
+          <div className="text-secondary/55 mt-1 grid grid-cols-2 gap-2 text-[0.6875rem] leading-snug sm:grid-cols-3 sm:text-[0.75rem]">
             <span>0: {s.zero}</span>
-            <span className="text-center">5: {s.cinco}</span>
+            <span className="text-center max-sm:hidden">5: {s.cinco}</span>
             <span className="text-right">10: {s.dez}</span>
           </div>
           <button type="button" onClick={() => setAjuda((a) => !a)} className="text-tagline-2 text-lilas-700 mt-3 inline-flex items-center gap-1.5 font-medium underline-offset-2 hover:underline">
@@ -139,6 +139,8 @@ function LinhaSentido({ id, valor, onChange, compacto = false }: { id: SentidoId
 function GraficoRadar({ e, r }: { e: Entradas; r: Resultado }) {
   const option = useMemo(() => {
     const marcas = [{ nome: r.nome, notas: e.notas }, ...r.concorrentes.map((c) => ({ nome: c.nome, notas: c.notas }))];
+    // No celular o radar fica menor e os nomes com ícone menores, para nada ser cortado nas bordas
+    const estreito = typeof window !== 'undefined' && window.innerWidth < 640;
     return {
       animationDuration: 600,
       legend: { data: marcas.map((m) => m.nome), bottom: 0, left: 'center', icon: 'circle', itemWidth: 10, itemHeight: 10, itemGap: 18, textStyle: { color: COR.navy, fontSize: 12 } },
@@ -152,15 +154,15 @@ function GraficoRadar({ e, r }: { e: Entradas; r: Resultado }) {
       },
       radar: {
         center: ['50%', '48%'],
-        radius: '62%',
+        radius: estreito ? '50%' : '62%',
         indicator: SENTIDOS.map((s) => ({ name: s.id, max: 10 })),
         splitNumber: 5,
         // Nome de cada ponta com o ícone do sentido ao lado
         axisName: {
           formatter: (id: string) => `{${id}|} {nome|${SENTIDOS.find((s) => s.id === id)?.nome}}`,
           rich: {
-            nome: { color: COR.navy, fontSize: 12, fontWeight: 600, fontFamily: 'Inter, sans-serif', padding: [0, 0, 0, 2] },
-            ...Object.fromEntries(SENTIDOS.map((s) => [s.id, { height: 16, width: 16, backgroundColor: { image: iconeSvg(s.id, '#4d58e8') } }])),
+            nome: { color: COR.navy, fontSize: estreito ? 11 : 12, fontWeight: 600, fontFamily: 'Inter, sans-serif', padding: [0, 0, 0, 2] },
+            ...Object.fromEntries(SENTIDOS.map((s) => [s.id, { height: estreito ? 14 : 16, width: estreito ? 14 : 16, backgroundColor: { image: iconeSvg(s.id, '#4d58e8') } }])),
           },
         },
         splitLine: { lineStyle: { color: COR.linha } },
