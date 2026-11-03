@@ -79,12 +79,18 @@ export function avisarFerramenta(formName: string, pagePath: string, formData: R
   enviarConversao(formName, pagePath, { nome: quem.nome ?? '', email: quem.email, telefone: quem.telefone ?? '', ...formData }).catch(() => {});
 }
 
-// "Quero ajuda no meu marketing": WhatsApp da UPDO com o resumo e, para quem tem cadastro, conversão na RD
-export function pedirAjuda({ formName, pagePath, linhas, resumo }: { formName: string; pagePath: string; linhas: string[]; resumo: string }) {
-  window.open(`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(linhas.join('\n'))}`, '_blank', 'noopener');
-  marcarLead(formName, pagePath.split('/').pop() ?? pagePath);
-  const quem = lerCadastro();
-  if (quem.email) enviarConversao(formName, pagePath, { nome: quem.nome ?? '', email: quem.email, mainPain: resumo }).catch(() => {});
+// "Quero ajuda no meu marketing": link do WhatsApp da UPDO com o resumo (um link de verdade, como os outros botões de WhatsApp
+// do site, que o Tag Manager já mede no clique) e, para quem tem cadastro, a conversão na RD. Não manda o evento "Lead":
+// o lead já contou no cadastro, e o clique não pode contar a mesma pessoa de novo
+export type Ajuda = { href: string; aoClicar: () => void };
+export function pedirAjuda({ formName, pagePath, linhas, resumo }: { formName: string; pagePath: string; linhas: string[]; resumo: string }): Ajuda {
+  return {
+    href: `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(linhas.join('\n'))}`,
+    aoClicar: () => {
+      const quem = lerCadastro();
+      if (quem.email) enviarConversao(formName, pagePath, { nome: quem.nome ?? '', email: quem.email, mainPain: resumo }).catch(() => {});
+    },
+  };
 }
 
 const inputClass =

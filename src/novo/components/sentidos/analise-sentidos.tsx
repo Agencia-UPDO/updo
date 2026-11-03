@@ -312,8 +312,7 @@ const resumo = (e: Entradas, r: Resultado) =>
 function Acoes({ e, r }: { e: Entradas; r: Resultado }) {
   const [gerando, setGerando] = useState(false);
 
-  const ajuda = () =>
-    pedirAjuda({
+  const ajuda = pedirAjuda({
       formName: 'analise-5-sentidos-quero-ajuda',
       pagePath: PAGINA,
       resumo: `Pediu ajuda pela ${resumo(e, r)}`,
@@ -341,7 +340,7 @@ function Acoes({ e, r }: { e: Entradas; r: Resultado }) {
     }
   };
 
-  return <AcoesFerramenta onAjuda={ajuda} onPdf={baixarPdf} gerando={gerando} />;
+  return <AcoesFerramenta ajuda={ajuda} onPdf={baixarPdf} gerando={gerando} />;
 }
 
 export default function AnaliseSentidos() {

@@ -2,8 +2,7 @@
 
 import { cn } from '@/novo/utils/cn';
 import ButtonPrimarySubmit from '@/novo/components/shared/ui/button/button-primary-submit';
-import { siteConfig } from '@/config/site';
-import { avisarFerramenta, jaLiberado, lerCadastro, marcarEnviada, salvarCadastro } from '@/novo/components/ferramentas/cadastro';
+import { avisarFerramenta, jaLiberado, lerCadastro, marcarEnviada, pedirAjuda, salvarCadastro } from '@/novo/components/ferramentas/cadastro';
 import { ArrowLeft, CalendarCheck, Check, ChevronDown, Hourglass, Lock, Pencil, Plus, Repeat, Rocket, RotateCcw, ShoppingBag, ShoppingCart, SlidersHorizontal, Target, TrendingUp, UserRound, Wallet, X, type LucideIcon } from 'lucide-react';
 import { type FormEvent, type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { type Ajustes, type Custo, type Entradas, type TipoNegocio, EXEMPLO, TIPOS, VAZIO, calcular, CONVERSAO_PADRAO, horizonte, MAX_PRODUTOS, nomeProduto, type Produto, roiMultiplo, SEGMENTOS } from './calculo';
@@ -903,37 +902,18 @@ function Cadastro({ r, tipo, segmento, extras, onLiberar }: { r: ReturnType<type
 function Acoes({ e, r, produtos = [] }: { e: Entradas; r: ReturnType<typeof calcular>; produtos?: Produto[] }) {
   const [gerando, setGerando] = useState(false);
 
-  const pedirAjuda = () => {
-    const quem = lerCadastro();
-    const msg = [
+  const ajuda = pedirAjuda({
+    formName: 'calculadora-cac-quero-ajuda',
+    pagePath: '/ferramentas/calculadora-cac',
+    linhas: [
       'Olá! Fiz a calculadora de CAC e LTV da UPDO e quero ajuda no meu marketing.',
       `*Tipo:* ${TIPOS.find((t) => t.id === e.tipo)?.nome}`,
       `*Meta:* ${num(r.desejados, 0)} clientes novos por mês`,
       `*LTV:* ${brl(r.ltv)} · *CAC máximo (moderado):* ${brl(r.plano[1].cac)}`,
       `*Investimento (moderado):* ${brl(r.plano[1].investimento)} por mês`,
-    ].join('\n');
-    window.open(`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
-    try {
-      const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer = w.dataLayer || [];
-      w.dataLayer.push({ event: 'Lead', formName: 'calculadora-cac-quero-ajuda', location: 'calculadora-cac' });
-    } catch {
-      // Tracking não pode bloquear o WhatsApp
-    }
-    // A conversão na RD precisa do e-mail do cadastro
-    if (quem.email) {
-      fetch('/api/rd-conversion', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          formName: 'calculadora-cac-quero-ajuda',
-          pagePath: '/ferramentas/calculadora-cac',
-          pageUrl: window.location.href,
-          formData: { nome: quem.nome ?? '', email: quem.email, mainPain: `Pediu ajuda pela calculadora: quer ${num(r.desejados, 0)} clientes/mês · LTV ${brl(r.ltv)} · investimento moderado ${brl(r.plano[1].investimento)}/mês` },
-        }),
-      }).catch(() => {});
-    }
-  };
+    ],
+    resumo: `Pediu ajuda pela calculadora: quer ${num(r.desejados, 0)} clientes/mês · LTV ${brl(r.ltv)} · investimento moderado ${brl(r.plano[1].investimento)}/mês`,
+  });
 
   const baixarPdf = async () => {
     setGerando(true);
@@ -951,7 +931,7 @@ function Acoes({ e, r, produtos = [] }: { e: Entradas; r: ReturnType<typeof calc
     }
   };
 
-  return <AcoesFerramenta onAjuda={pedirAjuda} onPdf={baixarPdf} gerando={gerando} />;
+  return <AcoesFerramenta ajuda={ajuda} onPdf={baixarPdf} gerando={gerando} />;
 }
 
 

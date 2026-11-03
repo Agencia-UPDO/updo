@@ -1,17 +1,22 @@
 'use client';
 
-import ButtonPrimarySubmit from '@/novo/components/shared/ui/button/button-primary-submit';
+import ButtonPrimary from '@/novo/components/shared/ui/button/button-primary';
+import type { Ajuda } from '@/novo/components/ferramentas/cadastro';
 import { Download, Loader2 } from 'lucide-react';
 
 // Botões do fim do resultado, iguais em todas as ferramentas: "Quero ajuda no meu marketing" e "Baixar PDF".
 // Lado a lado, meio a meio e com a mesma fonte quando o card tem espaço (pela largura do card, não da tela); um embaixo do outro
 // quando não tem. Em cards estreitos o texto do botão verde encurta para "Quero ajuda", em vez de diminuir a fonte.
-export default function AcoesFerramenta({ onAjuda, onPdf, gerando }: { onAjuda: () => void; onPdf: () => void; gerando: boolean }) {
+export default function AcoesFerramenta({ ajuda, onPdf, gerando }: { ajuda: Ajuda; onPdf: () => void; gerando: boolean }) {
   return (
     <div className="@container rounded-3xl bg-white p-4 md:p-5">
       <div className="grid gap-3 @[40rem]:grid-cols-2">
-        <ButtonPrimarySubmit type="button" onClick={onAjuda} text="Quero ajuda no meu marketing" className="h-14 w-full [&>span]:w-full @[40rem]:hidden @[46rem]:block" />
-        <ButtonPrimarySubmit type="button" onClick={onAjuda} text="Quero ajuda" className="hidden h-14 w-full [&>span]:w-full @[40rem]:block @[46rem]:hidden" />
+        <a href={ajuda.href} target="_blank" rel="noopener noreferrer" onClick={ajuda.aoClicar} className="flex @[40rem]:hidden @[46rem]:flex">
+          <ButtonPrimary text="Quero ajuda no meu marketing" className="h-14 w-full max-md:h-14 max-md:min-h-0 max-md:text-tagline-1 [&>span]:max-md:min-h-0" />
+        </a>
+        <a href={ajuda.href} target="_blank" rel="noopener noreferrer" onClick={ajuda.aoClicar} className="hidden @[40rem]:flex @[46rem]:hidden">
+          <ButtonPrimary text="Quero ajuda" className="h-14 w-full" />
+        </a>
         <button
           type="button"
           onClick={onPdf}

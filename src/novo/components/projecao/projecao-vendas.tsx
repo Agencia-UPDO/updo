@@ -515,8 +515,7 @@ function Resultados({
       setGerando(false);
     }
   };
-  const ajuda = () =>
-    pedirAjuda({
+  const ajuda = pedirAjuda({
       formName: 'projecao-vendas-quero-ajuda',
       pagePath: PAGINA,
       linhas: [
@@ -820,7 +819,7 @@ function Resultados({
         )}
       </div>
 
-      <AcoesFerramenta onAjuda={ajuda} onPdf={baixarPdf} gerando={gerando} />
+      <AcoesFerramenta ajuda={ajuda} onPdf={baixarPdf} gerando={gerando} />
     </div>
   );
 }
