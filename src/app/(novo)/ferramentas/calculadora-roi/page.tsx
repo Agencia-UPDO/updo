@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { imagemOg } from "@/novo/utils/og";
 import SchemaFerramenta from "@/novo/components/ferramentas/schema-ferramenta";
+import ExplicacaoFerramenta from "@/novo/components/ferramentas/explicacao-ferramenta";
+import { conteudoRoi } from "@/novo/data/ferramentas-conteudo";
 import CalculadoraRoi from "@/novo/components/roi/calculadora-roi";
 
 const descricao =
@@ -32,6 +34,7 @@ export default function CalculadoraRoiPagina() {
     <>
       <SchemaFerramenta slug="calculadora-roi" nome="Calculadora de ROI e ROAS" descricao={metadata.description as string} />
       <CalculadoraRoi />
+      <ExplicacaoFerramenta slug="calculadora-roi" conteudo={conteudoRoi} />
     </>
   );
 }

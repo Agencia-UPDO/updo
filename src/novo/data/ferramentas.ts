@@ -22,7 +22,7 @@ export const ferramentas: Ferramenta[] = [
     titulo: 'Calculadora de CAC e LTV',
     resumo: 'Quanto você pode pagar por um cliente',
     descricao:
-      'Descubra quanto você pode pagar por um cliente: LTV, CAC atual e máximo, LTV:CAC, payback em meses e o ROAS mínimo para não ter prejuízo.',
+      'Descubra quanto você pode pagar por um cliente e quanto investir para ter os clientes que quer: LTV, CAC e custo por lead ideais em 3 cenários, payback e ROI.',
     href: '/ferramentas/calculadora-cac',
     icone: Calculator,
     entregas: ['Diagnóstico na hora', 'PDF com os resultados', 'Simulador "E se…?"'],
