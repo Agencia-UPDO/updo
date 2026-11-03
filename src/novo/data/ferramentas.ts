@@ -1,4 +1,4 @@
-import { Calculator, TrendingUp, type LucideIcon } from 'lucide-react';
+import { Calculator, CircleDollarSign, TrendingUp, type LucideIcon } from 'lucide-react';
 
 // true: as ferramentas abrem com um exemplo preenchido (fase de aprovação).
 // false: abrem vazias, com o link "Preencher com um exemplo" (versão para publicar).
@@ -37,5 +37,15 @@ export const ferramentas: Ferramenta[] = [
     icone: TrendingUp,
     entregas: ['Meta mês a mês', 'Meses fortes e fracos', 'Meta × realizado', 'PDF'],
     tempo: '3 minutos',
+  },
+  {
+    titulo: 'Calculadora de ROI e ROAS',
+    resumo: 'Se a sua campanha deu lucro',
+    descricao:
+      'Coloque o investimento, as vendas, o faturamento e a margem de uma campanha e veja o ROI, o ROAS, se ela deu lucro e quanto rende na vida do cliente.',
+    href: '/ferramentas/calculadora-roi',
+    icone: CircleDollarSign,
+    entregas: ['Resultado na hora', 'Lucro ou prejuízo', 'ROI na vida do cliente', 'PDF'],
+    tempo: '1 minuto',
   },
 ];

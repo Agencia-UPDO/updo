@@ -1,8 +1,7 @@
 'use client';
 
-import { CadastroFerramenta, jaLiberado, lerCadastro, pedirAjuda } from '@/novo/components/ferramentas/cadastro';
+import { avisarFerramenta, CadastroFerramenta, jaLiberado, lerCadastro, pedirAjuda } from '@/novo/components/ferramentas/cadastro';
 import ButtonPrimarySubmit from '@/novo/components/shared/ui/button/button-primary-submit';
-import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
 import { cn } from '@/novo/utils/cn';
 import { ArrowLeft, Check, ClipboardPaste, Download, Lightbulb, Loader2, Pencil, Plus, X } from 'lucide-react';
 import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
@@ -222,6 +221,13 @@ export default function ProjecaoVendas() {
   };
   const resumoRd = () =>
     `Projeção de ${unidade}: ${r.anoAtual} acumulado ${periodoYtd(r)} ${fmt(r.ytdAtual)} (${r.ytdAnterior ? sinal(r.ytdAtual / r.ytdAnterior - 1) : '—'} vs ${r.anoAtual - 1}) · fechamento previsto ${fmt(r.fechamentoAtual)} · meta ${r.proximoAno} ${fmt(anualProx)} · mês mais forte ${MESES[r.forte?.m ?? 0]} · mais fraco ${MESES[r.fraco?.m ?? 0]}`;
+
+  // Já cadastrado em outra ferramenta: a conversão desta vai para a RD quando o resultado fica parado na tela por 3 segundos
+  useEffect(() => {
+    if (passo !== RESULTADO || !liberado || !r.ok) return;
+    const timer = window.setTimeout(() => avisarFerramenta(FORM_NAME, PAGINA, { businessType: `Projeção de ${unidade}`, mainPain: resumoRd() }), 3000);
+    return () => window.clearTimeout(timer);
+  });
 
   return (
     <div
@@ -833,9 +839,6 @@ function Resultados({
           {gerando ? <Loader2 className="size-5 animate-spin" /> : <Download className="size-5" />}
           {gerando ? 'Gerando PDF…' : 'Baixar projeção em PDF'}
         </button>
-        <p className="text-tagline-3 text-secondary/55 flex items-center gap-1.5 sm:ml-auto">
-          <WhatsAppIcon color="currentColor" className="size-4" /> Fale direto com o time da UPDO
-        </p>
       </div>
     </div>
   );

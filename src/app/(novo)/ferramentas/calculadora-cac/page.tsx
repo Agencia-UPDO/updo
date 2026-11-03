@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { imagemOg } from "@/novo/utils/og";
+import SchemaFerramenta from "@/novo/components/ferramentas/schema-ferramenta";
 import CalculadoraCac from "@/novo/components/calculadora/calculadora-cac";
 
 export const metadata: Metadata = {
@@ -25,5 +26,10 @@ export const metadata: Metadata = {
 };
 
 export default function CalculadoraCacPagina() {
-  return <CalculadoraCac />;
+  return (
+    <>
+      <SchemaFerramenta slug="calculadora-cac" nome="Calculadora de CAC e LTV" descricao={metadata.description as string} />
+      <CalculadoraCac />
+    </>
+  );
 }

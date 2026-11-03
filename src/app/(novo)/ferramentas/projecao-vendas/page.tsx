@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { imagemOg } from "@/novo/utils/og";
+import SchemaFerramenta from "@/novo/components/ferramentas/schema-ferramenta";
 import ProjecaoVendas from "@/novo/components/projecao/projecao-vendas";
 
 export const metadata: Metadata = {
@@ -25,5 +26,10 @@ export const metadata: Metadata = {
 };
 
 export default function ProjecaoVendasPagina() {
-  return <ProjecaoVendas />;
+  return (
+    <>
+      <SchemaFerramenta slug="projecao-vendas" nome="Projeção de vendas e sazonalidade" descricao={metadata.description as string} />
+      <ProjecaoVendas />
+    </>
+  );
 }

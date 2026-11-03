@@ -151,8 +151,8 @@ export function RelatorioPdf({ e, produtos = [], origem, nome }: { e: Entradas; 
 
           <Text style={s.secao}>Seus alvos para as campanhas</Text>
           {[
-            { rot: 'Custo por venda ideal', vals: r.plano.map((pl) => brl(pl.cac)) },
             { rot: `Custo por lead ideal (${num(r.conversaoUsada)}% de conversão${r.conversaoEstimada ? ', estimativa' : ''})`, vals: r.plano.map((pl) => (pl.cpl == null ? '—' : brl(pl.cpl, 2))) },
+            { rot: 'Custo por venda ideal', vals: r.plano.map((pl) => brl(pl.cac)) },
           ].map((linha) => (
             <View key={linha.rot} style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
               <Text style={{ width: 170, fontSize: 9, fontWeight: 600 }}>{linha.rot}</Text>
@@ -168,7 +168,7 @@ export function RelatorioPdf({ e, produtos = [], origem, nome }: { e: Entradas; 
             </View>
           ))}
           <Text style={{ fontSize: 7.8, color: CINZA, marginBottom: 12 }}>
-            Acima destes valores, cada cliente novo começa a sair caro.{r.conversaoEstimada ? ` Taxa de conversão de ${CONVERSAO_PADRAO}% usada como referência conservadora.` : ''}
+            Acima destes valores, cada cliente novo começa a sair caro. Limite (stop loss): acima de {brl(r.ltv)} por venda, você paga para vender.{r.conversaoEstimada ? ` Taxa de conversão de ${CONVERSAO_PADRAO}% usada como referência conservadora.` : ''}
           </Text>
 
           <Text style={s.secao}>Seus indicadores</Text>

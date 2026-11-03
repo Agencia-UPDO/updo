@@ -2,14 +2,14 @@
 
 import { cn } from '@/novo/utils/cn';
 import ButtonPrimarySubmit from '@/novo/components/shared/ui/button/button-primary-submit';
-import WhatsAppIcon from '@/novo/components/shared/whatsapp-icon';
 import { siteConfig } from '@/config/site';
-import { jaLiberado, lerCadastro, salvarCadastro } from '@/novo/components/ferramentas/cadastro';
-import { ArrowLeft, CalendarCheck, Check, Download, Loader2, Lock, Pencil, Plus, Repeat, Rocket, RotateCcw, ShoppingBag, Sparkles, Target, X, type LucideIcon } from 'lucide-react';
-import { type FormEvent, type ReactNode, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { avisarFerramenta, jaLiberado, lerCadastro, marcarEnviada, salvarCadastro } from '@/novo/components/ferramentas/cadastro';
+import { ArrowLeft, CalendarCheck, Check, Download, Loader2, Lock, Pencil, Plus, Repeat, Rocket, RotateCcw, ShoppingBag, ShoppingCart, Target, UserRound, X, type LucideIcon } from 'lucide-react';
+import { type FormEvent, type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { type Ajustes, type Custo, type Entradas, type TipoNegocio, EXEMPLO, TIPOS, VAZIO, calcular, CONVERSAO_PADRAO, horizonte, MAX_PRODUTOS, nomeProduto, type Produto, roiFrase, roiMultiplo, SEGMENTOS } from './calculo';
 import { enviarConversao } from '@/novo/components/ferramentas/cadastro';
 import { COMECAR_COM_EXEMPLO } from '@/novo/data/ferramentas';
+import { Dica } from '@/novo/components/ferramentas/dica';
 
 const FORM_NAME = 'calculadora-cac';
 // Os números da pessoa ficam salvos no navegador para ela voltar e ajustar
@@ -56,45 +56,8 @@ const DICAS = {
   roi: 'ROI é quanto sobra de lucro para cada R$ 1 investido, depois de pagar o investimento. ROI de 1,5x = R$ 1,50 de lucro para cada R$ 1.',
   payback: 'Payback é o tempo que o cliente leva para devolver, em margem, o que custou para trazê-lo.',
   ltvCac: 'LTV:CAC mostra quantas vezes o cliente devolve o que custou. O saudável é 3 ou mais.',
+  stopLoss: 'Stop loss é o custo por venda em que você para: pagando o LTV inteiro por um cliente, toda a margem dele vai para a aquisição e não sobra lucro.',
 };
-
-// "?" pequeno ao lado de um termo: abre ao passar o mouse, ao focar com o teclado ou ao tocar (celular)
-function Dica({ texto, claro = false }: { texto: string; claro?: boolean }) {
-  const [aberta, setAberta] = useState(false);
-  const id = useId();
-  return (
-    <span className="relative inline-flex align-middle" onMouseEnter={() => setAberta(true)} onMouseLeave={() => setAberta(false)}>
-      <button
-        type="button"
-        aria-label="O que é isso?"
-        aria-describedby={aberta ? id : undefined}
-        aria-expanded={aberta}
-        onClick={(ev) => {
-          ev.preventDefault();
-          ev.stopPropagation();
-          setAberta((a) => !a);
-        }}
-        onFocus={() => setAberta(true)}
-        onBlur={() => setAberta(false)}
-        className={cn(
-          'ml-1 inline-flex size-4 items-center justify-center rounded-full border text-[0.625rem] leading-none font-semibold transition-colors',
-          claro ? 'border-white/40 text-white/70 hover:border-white hover:text-white' : 'border-secondary/30 text-secondary/55 hover:border-secondary hover:text-secondary',
-        )}
-      >
-        ?
-      </button>
-      {aberta && (
-        <span
-          id={id}
-          role="tooltip"
-          className="bg-secondary text-tagline-3 absolute bottom-full left-1/2 z-30 mb-2 w-64 max-w-[80vw] -translate-x-1/2 rounded-xl px-3.5 py-2.5 text-left font-normal whitespace-normal text-white shadow-[0_12px_32px_-12px_rgba(7,17,31,0.6)]"
-        >
-          {texto}
-        </span>
-      )}
-    </span>
-  );
-}
 
 // Ícone e exemplos do dia a dia de cada tipo de venda (etapa 1)
 const VISUAL_TIPO: Record<TipoNegocio, { icone: LucideIcon; exemplos: string }> = {
@@ -224,10 +187,10 @@ function Deslizante({ rotulo, valor, min, max, passo, onChange, mostrar }: { rot
   return (
     <label className="block">
       <span className="flex items-baseline justify-between gap-3">
-        <span className="text-tagline-2 font-medium text-white/80">{rotulo}</span>
-        <span className="font-titulo text-primary-500 text-[1.125rem] font-semibold tabular-nums">{mostrar}</span>
+        <span className="text-tagline-2 text-secondary font-medium">{rotulo}</span>
+        <span className="font-titulo text-lilas-700 text-[1.125rem] font-semibold tabular-nums">{mostrar}</span>
       </span>
-      <input type="range" min={min} max={max} step={passo} value={valor} onChange={(ev) => onChange(Number(ev.target.value))} className="accent-primary-500 mt-3 w-full cursor-pointer" />
+      <input type="range" min={min} max={max} step={passo} value={valor} onChange={(ev) => onChange(Number(ev.target.value))} className="accent-lilas-500 mt-3 w-full cursor-pointer" />
     </label>
   );
 }
@@ -278,25 +241,33 @@ function Resultados({ e, r }: { e: Entradas; r: ReturnType<typeof calcular> }) {
 
 // Os alvos para as campanhas: custo por venda (CAC máximo) e custo por lead (CAC × taxa de lead em venda) nos 3 cenários
 function SeusAlvos({ r }: { r: ReturnType<typeof calcular> }) {
-  const faixa = (rotulo: string, ajuda: string, valores: (number | null)[], casas: number, dica: string) => (
-    <div className="grid gap-3 md:grid-cols-[220px_1fr] md:items-center">
-      <div>
-        <p className="font-titulo text-tagline-1 text-secondary font-semibold">
-          {rotulo}
-          <Dica texto={dica} />
-        </p>
-        <p className="text-tagline-3 text-secondary/55">{ajuda}</p>
+  const faixa = (Icone: LucideIcon, rotulo: string, ajuda: string, valores: (number | null)[], casas: number, dica: string) => (
+    <div className="grid gap-3 md:grid-cols-[280px_1fr] md:items-center">
+      <div className="flex items-start gap-3">
+        <span className="bg-lilas-100 text-lilas-700 flex size-9 shrink-0 items-center justify-center rounded-xl">
+          <Icone className="size-[1.125rem]" strokeWidth={1.75} aria-hidden="true" />
+        </span>
+        <div>
+          <p className="font-titulo text-tagline-1 text-secondary font-semibold whitespace-nowrap">
+            {rotulo}
+            <Dica texto={dica} />
+          </p>
+          <p className="text-tagline-3 text-secondary/55">{ajuda}</p>
+        </div>
       </div>
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
         {r.plano.map((p, i) => {
           const cor = CORES_CENARIO[p.id];
           return (
-            <div key={p.id} className={cn('rounded-xl border-2 px-3 py-2.5', cor.borda, cor.fundo)}>
-              <p className={cn('text-tagline-3 flex items-center gap-1.5 font-medium', cor.texto)}>
-                <span className={cn('size-2 rounded-full', cor.ponto)} />
-                {p.nome}
+            <div key={p.id} className={cn('min-w-0 rounded-xl border-2 px-2 py-1.5 sm:px-3 sm:py-2', cor.borda, cor.fundo)}>
+              <p className={cn('flex items-center gap-1.5 text-[0.6875rem] font-medium sm:text-[0.75rem]', cor.texto)}>
+                <span className={cn('size-2 shrink-0 rounded-full', cor.ponto)} />
+                <span className="truncate">{p.nome}</span>
               </p>
-              <p className="font-titulo text-secondary text-[1.2rem] font-semibold tabular-nums">até {valores[i] == null ? '—' : brl(valores[i]!, casas)}</p>
+              <p className="font-titulo text-secondary text-[0.875rem] leading-tight font-semibold whitespace-nowrap tabular-nums sm:text-[1.05rem]">
+                <span className="text-secondary/50 text-[0.75rem] font-medium max-sm:hidden">até </span>
+                {valores[i] == null ? '—' : brl(valores[i]!, casas)}
+              </p>
             </div>
           );
         })}
@@ -309,19 +280,29 @@ function SeusAlvos({ r }: { r: ReturnType<typeof calcular> }) {
         <p className="font-titulo text-heading-6 text-secondary font-medium">Seus alvos</p>
         <p className="text-tagline-2 mt-1">Use estes números como meta nas suas campanhas: acima deles, cada cliente novo começa a sair caro.</p>
       </div>
-      {faixa('Custo por venda ideal', 'quanto pode custar cada cliente novo', r.plano.map((p) => p.cac), 0, DICAS.cac)}
       {faixa(
+        UserRound,
         'Custo por lead ideal',
         `com ${num(r.conversaoUsada)}% dos leads virando venda${r.conversaoEstimada ? ' (estimativa)' : ''}`,
         r.plano.map((p) => p.cpl),
         2,
         DICAS.cpl,
       )}
+      {faixa(ShoppingCart, 'Custo por venda ideal', 'quanto pode custar cada cliente novo', r.plano.map((p) => p.cac), 0, DICAS.cac)}
       {r.plano[0].leads != null && (
         <p className="text-tagline-3 text-secondary/60">
           Para {num(r.desejados, 0)} clientes por mês, são cerca de <strong className="text-secondary">{num(Math.ceil(r.plano[0].leads), 0)} leads por mês</strong>.
           {r.conversaoEstimada ? ` Como você não sabe a sua taxa, usamos ${CONVERSAO_PADRAO}%, uma referência conservadora.` : ''}
         </p>
+      )}
+      {r.ltv > 0 && (
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 rounded-xl border border-red-200 bg-red-50/60 px-4 py-3">
+          <p className="text-tagline-2 font-semibold text-red-700">
+            Limite (stop loss): acima de {brl(r.ltv)} por venda, você paga para vender
+            <Dica texto={DICAS.stopLoss} />
+          </p>
+          <p className="text-tagline-3 text-secondary/60">{r.vidaMeses == null ? 'É toda a margem da venda.' : `É toda a margem que o cliente deixa ${horizonte(r)}, e esse dinheiro só volta ao longo desse tempo.`}</p>
+        </div>
       )}
     </div>
   );
@@ -504,6 +485,22 @@ export default function CalculadoraCac() {
   const recorrente = e.tipo === 'recorrente' || e.tipo === 'setup';
   const simulando = aj.ticketPct !== 0 || aj.churn != null || aj.clientes != null;
   const extrasVenda = e.custos.filter((c) => c.extra);
+
+  // Já cadastrado em outra ferramenta: a conversão desta vai para a RD quando o resultado fica parado na tela por 3 segundos
+  useEffect(() => {
+    if (passo !== RESULTADO || !liberado) return;
+    const timer = window.setTimeout(
+      () =>
+        avisarFerramenta(FORM_NAME, '/ferramentas/calculadora-cac', {
+          businessType: TIPOS.find((t) => t.id === e.tipo)?.nome ?? e.tipo,
+          sector: e.segmento === 'Outro' ? `Outro: ${e.segmentoOutro}` : e.segmento,
+          ticket: brl(base.ticket),
+          mainPain: `Calculadora CAC: quer ${num(base.desejados, 0)} clientes/mês · LTV ${brl(base.ltv)} · CAC máx. moderado ${brl(base.plano[1].cac)} · investimento moderado ${brl(base.plano[1].investimento)}/mês`,
+        }),
+      3000,
+    );
+    return () => window.clearTimeout(timer);
+  }, [passo, liberado, e, base]);
   // Custos que a pessoa adicionou, para o resumo que vai para a RD
   const resumoExtras = [
     ...extrasVenda.filter((c) => c.valor).map((c) => `${c.nome || 'custo'} ${c.modo === '%' ? `${num(c.valor)}%` : brl(c.valor, 2)}/venda`),
@@ -745,6 +742,39 @@ export default function CalculadoraCac() {
                     <BarraProdutos produtos={produtos} atual={atual} onAbrir={abrirProduto} onRemover={removerProduto} onOutro={outroProduto} />
                     <Resultados e={e} r={r} />
                     {produtos.length >= 2 && <ComparaProdutos produtos={produtos} atual={atual} onAbrir={abrirProduto} />}
+                    <div className="border-stroke-4 grid grid-cols-12 gap-6 rounded-3xl border bg-white p-6 md:p-7 lg:gap-10">
+                      <div className="col-span-12 space-y-5 lg:col-span-5">
+                        <div>
+                          <p className="font-titulo text-heading-6 text-secondary font-medium">E se…?</p>
+                          <p className="text-tagline-2 mt-1">Mexa nos números e veja na hora o efeito no LTV, no CAC máximo e no investimento. Os resultados acima também mudam.</p>
+                        </div>
+                        <div className="bg-background-3 space-y-6 rounded-2xl p-5">
+                          <Deslizante rotulo="Ticket / mensalidade" min={-30} max={50} passo={5} valor={aj.ticketPct} onChange={(v) => setAj((a) => ({ ...a, ticketPct: v }))} mostrar={`${aj.ticketPct > 0 ? '+' : ''}${aj.ticketPct}% · ${brl(r.ticket)}`} />
+                          <Deslizante rotulo="Clientes novos por mês" min={1} max={Math.max(100, e.clientesDesejados * 3)} passo={1} valor={aj.clientes ?? e.clientesDesejados} onChange={(v) => setAj((a) => ({ ...a, clientes: v }))} mostrar={`${num(r.desejados, 0)} clientes`} />
+                          {recorrente && (
+                            <Deslizante rotulo="Cancelamento por mês" min={0.5} max={20} passo={0.5} valor={aj.churn ?? e.churn} onChange={(v) => setAj((a) => ({ ...a, churn: v }))} mostrar={`${num(aj.churn ?? e.churn)}% · ${num(100 / (aj.churn ?? e.churn))} meses`} />
+                          )}
+                          {simulando && (
+                            <button type="button" onClick={() => setAj(SEM_AJUSTE)} className="text-tagline-2 text-secondary/70 hover:text-secondary inline-flex items-center gap-2">
+                              <RotateCcw className="size-4" /> Voltar aos números informados
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                      <div className="col-span-12 grid content-center gap-3 sm:grid-cols-3 lg:col-span-7">
+                        {[
+                          { rotulo: 'LTV', antes: brl(base.ltv), depois: brl(r.ltv) },
+                          { rotulo: 'CAC máximo (moderado)', antes: brl(base.plano[1].cac), depois: brl(r.plano[1].cac) },
+                          { rotulo: 'Investimento (moderado)', antes: brl(base.plano[1].investimento), depois: brl(r.plano[1].investimento) },
+                        ].map((x) => (
+                          <div key={x.rotulo} className="border-stroke-4 rounded-2xl border p-5">
+                            <p className="text-tagline-2 text-secondary/60">{x.rotulo}</p>
+                            <p className="font-titulo text-secondary mt-1 text-[1.5rem] font-semibold tabular-nums">{x.depois}</p>
+                            <p className="text-tagline-3 text-secondary/50">hoje: {x.antes}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                     <Acoes e={e} r={r} produtos={produtos} />
                   </div>
                 ) : (
@@ -785,51 +815,6 @@ export default function CalculadoraCac() {
         </div>
       </section>
 
-      {passo === RESULTADO && liberado && (
-        <section className="bg-secondary relative isolate overflow-hidden py-16 md:py-24">
-          <div className="from-lilas-500/25 pointer-events-none absolute -top-40 left-1/3 -z-10 size-[520px] rounded-full bg-gradient-to-br to-transparent blur-3xl" />
-          <div className="main-container grid grid-cols-12 gap-8 lg:gap-12">
-            <div className="col-span-12 space-y-4 lg:col-span-5">
-              <p className="text-tagline-2 text-primary-500 flex items-center gap-2 font-medium">
-                <Sparkles className="size-4" /> Simulador
-              </p>
-              <h2 className="text-white">E se…?</h2>
-              <p className="text-white/65">Mexa nos números e veja na hora o efeito no LTV, no CAC máximo e no investimento. Os resultados acima também mudam.</p>
-              <div className="space-y-7 rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-                <Deslizante rotulo="Ticket / mensalidade" min={-30} max={50} passo={5} valor={aj.ticketPct} onChange={(v) => setAj((a) => ({ ...a, ticketPct: v }))} mostrar={`${aj.ticketPct > 0 ? '+' : ''}${aj.ticketPct}% · ${brl(r.ticket)}`} />
-                <Deslizante rotulo="Clientes novos por mês" min={1} max={Math.max(100, e.clientesDesejados * 3)} passo={1} valor={aj.clientes ?? e.clientesDesejados} onChange={(v) => setAj((a) => ({ ...a, clientes: v }))} mostrar={`${num(r.desejados, 0)} clientes`} />
-                {recorrente && (
-                  <Deslizante rotulo="Cancelamento por mês" min={0.5} max={20} passo={0.5} valor={aj.churn ?? e.churn} onChange={(v) => setAj((a) => ({ ...a, churn: v }))} mostrar={`${num(aj.churn ?? e.churn)}% · ${num(100 / (aj.churn ?? e.churn))} meses`} />
-                )}
-                {simulando && (
-                  <button type="button" onClick={() => setAj(SEM_AJUSTE)} className="text-tagline-2 inline-flex items-center gap-2 text-white/70 hover:text-white">
-                    <RotateCcw className="size-4" /> Voltar aos números informados
-                  </button>
-                )}
-              </div>
-            </div>
-
-            <div className="col-span-12 space-y-6 lg:col-span-7">
-              <div className="grid gap-3 sm:grid-cols-3">
-                {[
-                  { rotulo: 'LTV', antes: brl(base.ltv), depois: brl(r.ltv) },
-                  { rotulo: 'CAC máximo (moderado)', antes: brl(base.plano[1].cac), depois: brl(r.plano[1].cac) },
-                  { rotulo: 'Investimento (moderado)', antes: brl(base.plano[1].investimento), depois: brl(r.plano[1].investimento) },
-                ].map((x) => (
-                  <div key={x.rotulo} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                    <p className="text-tagline-2 text-white/55">{x.rotulo}</p>
-                    <p className="font-titulo text-primary-500 mt-1 text-[1.5rem] font-semibold tabular-nums">{x.depois}</p>
-                    <p className="text-tagline-3 text-white/45">hoje: {x.antes}</p>
-                  </div>
-                ))}
-              </div>
-
-
-              <Acoes e={e} r={r} escuro />
-            </div>
-          </div>
-        </section>
-      )}
     </div>
   );
 }
@@ -880,7 +865,8 @@ function Cadastro({ r, tipo, segmento, extras, onLiberar }: { r: ReturnType<type
         body: JSON.stringify({ formName: FORM_NAME, pagePath: '/ferramentas/calculadora-cac', pageUrl: window.location.href, formData }),
       });
       if (!res.ok) throw new Error();
-      salvarCadastro({ nome: dados.nome, email: dados.email });
+      salvarCadastro({ nome: dados.nome, email: dados.email, telefone: dados.telefone });
+      marcarEnviada(FORM_NAME);
       onLiberar();
     } catch {
       setErro('Não conseguimos enviar agora. Tente novamente em alguns segundos.');
@@ -998,11 +984,6 @@ function Acoes({ e, r, produtos = [], escuro = false }: { e: Entradas; r: Return
         {gerando ? <Loader2 className="size-5 animate-spin" /> : <Download className="size-5" />}
         {gerando ? 'Gerando PDF…' : 'Baixar diagnóstico em PDF'}
       </button>
-      {!escuro && (
-        <p className="text-tagline-3 text-secondary/55 flex items-center gap-1.5 sm:ml-auto">
-          <WhatsAppIcon color="currentColor" className="size-4" /> Fale direto com o time da UPDO
-        </p>
-      )}
     </div>
   );
 }

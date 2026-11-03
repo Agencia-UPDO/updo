@@ -47,6 +47,7 @@ Contato: contato@updo.com.br · WhatsApp +55 41 98711-2003 · Rua Francisco Roch
 - [Ferramentas](https://www.updo.com.br/ferramentas): calculadoras gratuitas para entender os números de marketing e vendas.
 - [Calculadora de CAC e LTV](https://www.updo.com.br/ferramentas/calculadora-cac): LTV, CAC atual e máximo, LTV:CAC, payback em meses e ROAS mínimo para venda única, recompra, assinatura ou setup + mensalidade, com diagnóstico em PDF.
 - [Projeção de vendas e sazonalidade](https://www.updo.com.br/ferramentas/projecao-vendas): tendência (média móvel de 12 meses), índice de sazonalidade, acumulado do ano contra os anteriores, fechamento previsto e meta mês a mês do próximo ano.
+- [Calculadora de ROI e ROAS](https://www.updo.com.br/ferramentas/calculadora-roi): ROI e ROAS de uma campanha a partir do investimento, das vendas, do faturamento e da margem, ROAS para empatar, lucro ou prejuízo e o retorno na vida do cliente, com resultado em PDF.
 
 ## Cases
 

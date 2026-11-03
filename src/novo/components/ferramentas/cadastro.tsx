@@ -10,7 +10,8 @@ const CHAVE = 'updo-ferramentas-cadastro';
 // Chave antiga, da primeira versão da calculadora de CAC
 const CHAVE_ANTIGA = 'updo-calculadora-cac';
 
-export type Cadastro = { nome?: string; email?: string };
+// enviadas: ferramentas cuja conversão já foi para a RD (cada uma vai uma vez por pessoa)
+export type Cadastro = { nome?: string; email?: string; telefone?: string; enviadas?: string[] };
 
 export function lerCadastro(): Cadastro {
   try {
@@ -22,7 +23,7 @@ export function lerCadastro(): Cadastro {
 
 export function salvarCadastro(c: Cadastro) {
   try {
-    localStorage.setItem(CHAVE, JSON.stringify({ ...c, em: new Date().toISOString() }));
+    localStorage.setItem(CHAVE, JSON.stringify({ ...lerCadastro(), ...c, em: new Date().toISOString() }));
   } catch {
     // Sem localStorage: libera só nesta visita
   }
@@ -63,6 +64,21 @@ export async function enviarConversao(formName: string, pagePath: string, formDa
   return res.ok;
 }
 
+// Marca a ferramenta como já enviada para a RD (o cadastro dela, ou o envio automático abaixo)
+export function marcarEnviada(formName: string) {
+  const c = lerCadastro();
+  salvarCadastro({ enviadas: [...new Set([...(c.enviadas ?? []), formName])] });
+}
+
+// Quem já se cadastrou em outra ferramenta não preenche de novo: ao ver o resultado desta, a conversão dela vai sozinha
+// para a RD com os dados salvos, uma vez só por ferramenta (assim a RD mostra todas as ferramentas que cada lead usou)
+export function avisarFerramenta(formName: string, pagePath: string, formData: Record<string, unknown>) {
+  const quem = lerCadastro();
+  if (!quem.email || quem.enviadas?.includes(formName)) return;
+  marcarEnviada(formName);
+  enviarConversao(formName, pagePath, { nome: quem.nome ?? '', email: quem.email, telefone: quem.telefone ?? '', ...formData }).catch(() => {});
+}
+
 // "Quero ajuda no meu marketing": WhatsApp da UPDO com o resumo e, para quem tem cadastro, conversão na RD
 export function pedirAjuda({ formName, pagePath, linhas, resumo }: { formName: string; pagePath: string; linhas: string[]; resumo: string }) {
   window.open(`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(linhas.join('\n'))}`, '_blank', 'noopener');
@@ -90,7 +106,8 @@ export function CadastroFerramenta({ formName, pagePath, extras, onLiberar }: { 
     marcarLead(formName, pagePath.split('/').pop() ?? pagePath, formData);
     try {
       if (!(await enviarConversao(formName, pagePath, formData))) throw new Error();
-      salvarCadastro({ nome: dados.nome, email: dados.email });
+      salvarCadastro({ nome: dados.nome, email: dados.email, telefone: dados.telefone });
+      marcarEnviada(formName);
       onLiberar();
     } catch {
       setErro('Não conseguimos enviar agora. Tente novamente em alguns segundos.');
