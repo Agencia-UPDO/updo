@@ -4,12 +4,14 @@ import ButtonPrimarySubmit from '@/novo/components/shared/ui/button/button-prima
 import { Download, Loader2 } from 'lucide-react';
 
 // Botões do fim do resultado, iguais em todas as ferramentas: "Quero ajuda no meu marketing" e "Baixar PDF".
-// Lado a lado quando o card tem espaço (o PDF no tamanho do texto, o "Quero ajuda" com o resto) (pela largura do card, não da tela); um embaixo do outro quando não tem.
+// Lado a lado, meio a meio e com a mesma fonte quando o card tem espaço (pela largura do card, não da tela); um embaixo do outro
+// quando não tem. Em cards estreitos o texto do botão verde encurta para "Quero ajuda", em vez de diminuir a fonte.
 export default function AcoesFerramenta({ onAjuda, onPdf, gerando }: { onAjuda: () => void; onPdf: () => void; gerando: boolean }) {
   return (
     <div className="@container rounded-3xl bg-white p-4 md:p-5">
-      <div className="grid gap-3 @[29rem]:grid-cols-[1fr_auto]">
-        <ButtonPrimarySubmit type="button" onClick={onAjuda} text="Quero ajuda no meu marketing" className="h-14 w-full text-[0.9375rem] [&>span]:w-full [&>span]:gap-x-2 [&>span]:pl-5" />
+      <div className="grid gap-3 @[40rem]:grid-cols-2">
+        <ButtonPrimarySubmit type="button" onClick={onAjuda} text="Quero ajuda no meu marketing" className="h-14 w-full [&>span]:w-full @[40rem]:hidden @[46rem]:block" />
+        <ButtonPrimarySubmit type="button" onClick={onAjuda} text="Quero ajuda" className="hidden h-14 w-full [&>span]:w-full @[40rem]:block @[46rem]:hidden" />
         <button
           type="button"
           onClick={onPdf}
