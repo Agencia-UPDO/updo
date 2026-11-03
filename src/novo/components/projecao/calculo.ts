@@ -28,41 +28,6 @@ export function hoje(data = new Date()) {
   return { ano: data.getFullYear(), ultimoMes: data.getMonth() - 1 };
 }
 
-// Exemplo disfarçado de um caso real (planilha "Projeção com regressão" da UPDO): mesma sazonalidade, crescimento e pontos fora da curva,
-// com cada mês alterado de 5% para cima ou para baixo e tudo levado aos anos mais recentes. Nenhum valor é o original.
-// Os 3 primeiros viram os anos fechados antes do atual; o ano atual vem preenchido até o último mês fechado
-const EXEMPLOS = {
-  faturamento: {
-    anos: [
-      [194810, 211020, 203890, 125600, 133070, 228790, 306640, 253290, 251780, 243650, 317930, 252140],
-      [231110, 253570, 201870, 162410, 273400, 201050, 286580, 231790, 328700, 331490, 336550, 207070],
-      [237080, 229800, 305540, 219600, 279810, 289470, 274650, 316420, 210660, 273550, 312520, 254200],
-    ],
-    atual: [239830, 183800, 366880, 266400, 276300, 260230, 303030, 191720, 318800, 328050, 378740, 261950],
-  },
-  // O mesmo caso em número de vendas (ticket médio de uns R$ 1.100)
-  vendas: {
-    anos: [
-      [170, 185, 178, 112, 116, 203, 270, 223, 232, 221, 288, 226],
-      [211, 237, 180, 141, 248, 181, 268, 203, 310, 287, 307, 187],
-      [212, 217, 283, 193, 254, 266, 238, 276, 193, 254, 283, 229],
-    ],
-    atual: [218, 163, 346, 253, 251, 225, 273, 180, 285, 286, 333, 243],
-  },
-};
-
-export function exemplo(data = new Date(), medida: Medida = 'faturamento'): Entradas {
-  const { ano, ultimoMes } = hoje(data);
-  const ex = EXEMPLOS[medida];
-  return {
-    medida,
-    historico: ex.anos.map((valores, i) => ({ ano: ano - ex.anos.length + i, valores })),
-    atual: ex.atual.map((v, m) => (m <= ultimoMes ? v : null)),
-    extraAgressivo: 10,
-    metaPropria: 0,
-  };
-}
-
 // Projeção em branco: 3 anos fechados antes do atual e o ano atual sem realizado
 export const vazio = (data = new Date()): Entradas => ({ medida: 'faturamento', historico: historicoVazio(3, data), atual: Array(12).fill(null), extraAgressivo: 10, metaPropria: 0 });
 

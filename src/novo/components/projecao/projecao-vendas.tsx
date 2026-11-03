@@ -6,9 +6,8 @@ import { cn } from '@/novo/utils/cn';
 import { ArrowLeft, Check, ClipboardPaste, Lightbulb, Pencil, Plus, X } from 'lucide-react';
 import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { GraficoAcumulado, GraficoAnos, GraficoAnual, GraficoDessazAnos, GraficoDessazonalizado, GraficoMensal, GraficoPctAcumulado, GraficoSazonalidade, GraficoSerie } from './graficos';
-import { type Cenario, type Entradas, type Resultado, MESES, MESES_CURTOS, anosCompletos, calcular, exemplo, hoje, insights, lerColado, lerNumero, periodoYtd, valorDoCenario, vazio } from './calculo';
+import { type Cenario, type Entradas, type Resultado, MESES, MESES_CURTOS, anosCompletos, calcular, hoje, insights, lerColado, lerNumero, periodoYtd, valorDoCenario, vazio } from './calculo';
 import AcoesFerramenta from '@/novo/components/ferramentas/acoes-ferramenta';
-import { COMECAR_COM_EXEMPLO } from '@/novo/data/ferramentas';
 
 const FORM_NAME = 'projecao-vendas';
 const PAGINA = '/ferramentas/projecao-vendas';
@@ -47,6 +46,12 @@ function lerSalvo(): Salvo | null {
   try {
     const s = JSON.parse(localStorage.getItem(CHAVE_DADOS) ?? 'null') as Salvo | null;
     if (!s?.e?.historico) return null;
+    // O exemplo antigo da ferramenta (tirado em nov/2026) não conta como número da pessoa
+    const inicio = s.e.historico[0]?.valores.slice(0, 3).join(',');
+    if (inicio === '194810,211020,203890' || inicio === '170,185,178') {
+      localStorage.removeItem(CHAVE_DADOS);
+      return null;
+    }
     const { ano } = hoje();
     if (s.ano === ano) return s;
     const historico = [...s.e.historico, { ano: s.ano, valores: s.e.atual }].filter((a) => a.ano < ano).slice(-5);
@@ -144,8 +149,7 @@ function LinhaMeses({ valores, medida, onChange, ate = 11 }: { valores: (number 
 }
 
 export default function ProjecaoVendas() {
-  const [e, setE] = useState<Entradas>(() => (COMECAR_COM_EXEMPLO ? exemplo() : vazio()));
-  const [comExemplo, setComExemplo] = useState(COMECAR_COM_EXEMPLO);
+  const [e, setE] = useState<Entradas>(() => vazio());
   // Data em que os números da pessoa foram salvos neste navegador (null = nada salvo)
   const [salvoEm, setSalvoEm] = useState<string | null>(null);
   const [carregou, setCarregou] = useState(false);
@@ -165,22 +169,23 @@ export default function ProjecaoVendas() {
     const salvo = lerSalvo();
     if (salvo) {
       setE(salvo.e);
-      setComExemplo(false);
       setSalvoEm(salvo.em);
     }
     setCarregou(true);
   }, []);
 
-  // Salva os números da pessoa (o exemplo não) a cada mudança
+  // Salva os números da pessoa a cada mudança
   useEffect(() => {
-    if (!carregou || comExemplo) return;
+    if (!carregou) return;
     try {
+      // Sem nenhum número preenchido não há o que guardar
+      if (![...e.historico.flatMap((x) => x.valores), ...e.atual].some((v) => v != null)) return localStorage.removeItem(CHAVE_DADOS);
       const em = new Date().toISOString();
       localStorage.setItem(CHAVE_DADOS, JSON.stringify({ ano: hoje().ano, em, e } satisfies Salvo));
     } catch {
       // Sem localStorage: os números valem só nesta visita
     }
-  }, [e, comExemplo, carregou]);
+  }, [e, carregou]);
 
   const limparDados = () => {
     try {
@@ -189,7 +194,6 @@ export default function ProjecaoVendas() {
       // nada salvo
     }
     setE((x) => ({ ...vazio(), medida: x.medida }));
-    setComExemplo(false);
     setSalvoEm(null);
   };
 
@@ -276,7 +280,7 @@ export default function ProjecaoVendas() {
                         type="button"
                         role="radio"
                         aria-checked={e.medida === t.id}
-                        onClick={() => (comExemplo ? setE(exemplo(new Date(), t.id)) : set('medida', t.id))}
+                        onClick={() => set('medida', t.id)}
                         className={cn(
                           'rounded-2xl border-2 p-4 text-left transition-all',
                           e.medida === t.id ? 'border-secondary bg-secondary text-white shadow-[0_12px_32px_-16px_rgba(7,17,31,0.6)]' : 'border-stroke-4 hover:border-stroke-3 bg-background-2',
@@ -290,7 +294,7 @@ export default function ProjecaoVendas() {
                       </button>
                     ))}
                   </div>
-                  {salvoEm && !comExemplo && (
+                  {salvoEm && (
                     <div className="bg-primary-50 text-tagline-2 text-secondary mt-5 flex flex-wrap items-center justify-between gap-2 rounded-2xl px-4 py-3">
                       <span>
                         Seus números estão salvos neste navegador (desde {new Date(salvoEm).toLocaleDateString('pt-BR')}). É só completar o mês novo{r.ultimoMes >= 0 ? ` (${MESES[r.ultimoMes].toLowerCase()})` : ''}.
@@ -300,19 +304,6 @@ export default function ProjecaoVendas() {
                       </button>
                     </div>
                   )}
-                  <p className="text-tagline-3 text-secondary/55 mt-4">
-                    {comExemplo ? 'Já vem preenchido com um exemplo para você ver como funciona. ' : 'Não tem os números à mão? '}
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setE((x) => (comExemplo ? { ...vazio(), medida: x.medida } : exemplo(new Date(), x.medida)));
-                        setComExemplo(!comExemplo);
-                      }}
-                      className="text-lilas-700 font-medium underline-offset-2 hover:underline"
-                    >
-                      {comExemplo ? 'Limpar e usar os meus números' : 'Preencher com um exemplo'}
-                    </button>
-                  </p>
                 </Etapa>
               )}
 
@@ -332,7 +323,7 @@ export default function ProjecaoVendas() {
                       onClick={limparDados}
                       className="text-tagline-2 text-secondary/60 hover:text-secondary rounded-full px-3 py-2"
                     >
-                      Limpar o exemplo e usar os meus números
+                      Limpar os números
                     </button>
                   </div>
                   {colando && (
@@ -340,7 +331,7 @@ export default function ProjecaoVendas() {
                       <p className="text-tagline-2 text-secondary/75">
                         Copie da planilha uma linha por ano (12 meses, com ou sem o ano na frente) ou 12 linhas de meses com um ano por coluna, e cole aqui. Sem o ano escrito, entendemos que a última linha é {r.anoAtual - 1}.
                       </p>
-                      <textarea value={colado} onChange={(ev) => setColado(ev.target.value)} rows={5} className={cn(inputClass, 'font-mono text-[0.8125rem]')} placeholder={`${r.anoAtual - 1}\t216.520,47\t217.645,57\t…`} />
+                      <textarea value={colado} onChange={(ev) => setColado(ev.target.value)} rows={5} className={cn(inputClass, 'font-mono text-[0.8125rem]')} placeholder={`${r.anoAtual - 1}\tjan\tfev\tmar\t…\tdez`} />
                       <ButtonPrimarySubmit type="button" onClick={aplicarColado} text="Usar esses números" className="h-13" />
                     </div>
                   )}
